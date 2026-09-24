@@ -38664,7 +38664,8 @@
     <effects>
       <!-- London's shared setup (user 2026-09-24: 'the system is dirty and has duplicities') - every player gets it through
            zpLondonAttackerSetup / zpLondonDefenderSetup: the Military Camp, Istanbul's PopulationCap 250 and no houses, the
-           Versailles / Paris cathedral, bank and tower techs, no standard revolutions, the London House of Stuart extension,
+           cathedral's Art Patron (nothing papal - London is Anglican, owner 2026-09-25), the Versailles / Paris bank and
+           tower techs, no standard revolutions, the London House of Stuart extension,
            and the trade-route plan (no post upgrades; the road posts deliver resources; the St Paul's / Minster route techs) -->
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
@@ -38677,9 +38678,8 @@
         </target>
       </effect>
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
-      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
@@ -38691,6 +38691,10 @@
       <effect type="TechStatus" status="active">DETradeRouteAllResourcesShadow</effect>
       <effect type="TechStatus" status="obtainable">zpLondonDeptfordStation</effect>
       <effect type="TechStatus" status="obtainable">zpLondonEastIndiaCompany</effect>
+      <!-- the Istanbul ferry system, named for London (owner 2026-09-25): researched at the Minster -->
+      <effect type="TechStatus" status="obtainable">zpIstanbulFerrySystem</effect>
+      <effect type="SetName" tech="zpIstanbulFerrySystem" newname="503598">
+      </effect>
     </effects>
   </tech>
   <tech name="zpStuartAbilityBig" type="Normal">

@@ -56,10 +56,13 @@ class TestStartingTechsByTeam:
         assert "<status>UNOBTAINABLE</status>" in b and "<flag>Shadow</flag>" in b
         assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpMilitaryCamp<', b) and 'proto="zpMilitaryCamp" page="6" column="2"' in b
         assert '<effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">' in b     # Istanbul's zpBosporusMapSetup
-        for st, tech in (("active", "zpSPCDisableHousesShadow"), ("obtainable", "DESPCPapalLegate"), ("obtainable", "DESPCExcommunication"), ("obtainable", "zpSPCArtPatronCathedral"),
+        for st, tech in (("active", "zpSPCDisableHousesShadow"), ("obtainable", "zpSPCArtPatronCathedral"), ("obtainable", "zpSPCBlessedCity"), ("obtainable", "zpIstanbulFerrySystem"),
                          ("obtainable", "DESPCBankLoan"), ("obtainable", "DESPCMercenaryBounties"), ("active", "zpForbidRevolutions"),
                          ("active", "zpExtendedStuartLondon")):     # Versailles / Paris: the Metropolitan cathedral and the bank techs
             assert ('<effect type="TechStatus" status="%s">%s</effect>' % (st, tech)) in b, tech
+        for tech in ("DESPCPapalLegate", "zpSPCPapalLegateSingle", "DESPCExcommunication", "zpSPCPapalBlessingPrague"):
+            assert (">%s<" % tech) not in b, tech     # nothing papal: London is Anglican (owner 2026-09-25)
+        assert '<effect type="SetName" tech="zpIstanbulFerrySystem" newname="503598">' in b     # Team London Ferry System
         for n, pair in (("zpLondonAttackerSetup", ("zpNatParliamentBigbuttonDisableShadow", "zpNatParliamentoffShadow")),
                         ("zpLondonDefenderSetup", ("zpNatStuartBigbuttonDisableShadow", "zpNatStuartoffShadow"))):
             s_ = _tech(n)
