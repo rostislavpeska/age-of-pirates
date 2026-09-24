@@ -48,7 +48,8 @@ environment; their individual failure causes must be established by the probe.
 | Shell is Linux/cloud with no Windows desktop execution | This route is unavailable there. Use an authorized Windows agent/connector. |
 | WSL can execute Windows programs | Use Windows `powershell.exe` and Windows paths, then probe; interoperability alone does not prove app access. |
 | `GetActiveObject` missing | Use Windows PowerShell 5.1, not PowerShell 7. Do not install Python packages to solve this. |
-| Cannot attach / `0x800401E3` | Confirm Photoshop is running, the user/session and elevation match, and COM registration exists. Do not launch or repair registration implicitly. |
+| Cannot attach / `0x800401E3` | Confirm Photoshop is running, the user/session and elevation match, and COM registration exists. Do not launch or repair registration implicitly; on the operator's word use `scripts/start_photoshop.ps1`. |
+| `Photoshop.exe` running, no main window, still `0x800401E3` | Seen 2026-09-24: a windowless instance with two PSDs open did not attach, and a new launch became a **second** instance beside it. List PIDs and command lines (`Win32_Process`), leave that process alone and ask before starting another copy. |
 | Class not registered | Inspect the installed version/registration. Skill discovery does not install Photoshop or its license. |
 | Wrong documents | Stop before writes; reconnect to the intended session. A process name alone does not identify the document. |
 | Call rejected / `0x80010001` / server busy | A modal dialog or ongoing operation may block COM. Resolve the actual blocker; retry read-only once when ready. Do not loop a mutating script. |

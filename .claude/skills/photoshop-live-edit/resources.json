@@ -3,6 +3,7 @@
   "files": [
     "SKILL.md",
     "scripts/photoshop.ps1",
+    "scripts/start_photoshop.ps1",
     "scripts/inspect.jsx",
     "scripts/smoke_test.jsx",
     "references/connection.md",

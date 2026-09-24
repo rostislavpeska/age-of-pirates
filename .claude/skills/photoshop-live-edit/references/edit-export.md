@@ -51,6 +51,15 @@ For a PNG/TGA source with live edits, save a layered PSD copy as the editable so
 do not silently overwrite the original raster or flatten the only edited document.
 Never substitute an older disk file for dirty live content.
 
+The Color blend mode is `BlendMode.COLORBLEND`. `BlendMode.COLOR` does not exist,
+and assigning it throws a misleading "invalid enumeration value", which a localized
+Photoshop shows in its UI language. Check any other enum name against the DOM
+reference before use. On CC 2018 driven over COM (2026-09-24), a script that set
+`app.displayDialogs = DialogModes.NO` then failed in `artLayers.add()`, and restoring
+the saved value in `finally` threw that same error. The same calls worked without
+touching `displayDialogs`. If a restore in `finally` can throw, give it its own `try`
+so it does not hide the real error; label the steps to find the failing call.
+
 For tint/contrast changes, use a named correction layer/adjustment with the intended
 semantic mask. Read existing layer visibility and blend modes before appending.
 Reuse/update the task's own correction layer deliberately to avoid compounding

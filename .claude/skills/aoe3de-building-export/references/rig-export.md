@@ -12,7 +12,7 @@ Run the included audit from the skill directory:
 blender model.blend -b --python scripts/inspect_static_rig.py -- --out report.json --materials mata matb matc
 ```
 
-Limit `--objects` when the scene contains reference meshes. Change `--materials` to the exact slots accepted by the target profile. The report does not prove bind matrices or serialized output.
+Limit `--objects` when the scene contains reference meshes. Change `--materials` to the exact slots accepted by the target profile. The report does not compare corner normals or prove bind matrices or serialized output.
 
 ## Counts and topology
 
@@ -21,6 +21,34 @@ Track evaluated vertices and triangles per mesh and globally, then inspect seria
 Avoid joining logical building sections merely for convenience. If a consuming project has a per-mesh or total budget, monitor both throughout modeling and export.
 
 Prepare an export duplicate with only the intended UV/color/attribute layers for the verified converter recipe. Multiple material slots do not by themselves mean FBX layered textures. Triangulate only the export copy and inspect long or crossing diagonals around windows, curved walls and ledges.
+
+## Preserve shading through extraction and export
+
+Treat per-face-corner normals as asset data, separately from positions and UVs.
+In Blender versions exposing a `custom_normal` mesh attribute, a generic attribute
+allowlist can silently delete it. Keep the version's custom-normal data; verify
+evaluated corner vectors before and after cleanup, topology edits and triangulation.
+The attribute's presence alone does not prove its vectors survived correctly.
+
+Use the unmodified original asset as the reference for retained faces. Comparing
+only the edited source with its exported/reimported copy can validate the same
+damaged normals twice. Match complete triangles by positions and UV corners,
+accounting for known transforms, winding and deliberate translations. UVs alone
+are ambiguous on repeated atlas regions. Require complete, unambiguous coverage
+of the surfaces being restored; record unmatched/new faces separately.
+
+Compare normalized corner vectors in the same coordinate frame and report maximum
+angular error and affected-corner count. Use a precision-aware angular tolerance,
+not exact floating-point equality or rounded-vector hashes. Check normals independently from tangents:
+recalculating tangents cannot repair an incorrect normal. Do not globally flatten
+curved towers or ornament. If shared-vertex normal handling prevents faithful
+export, splitting affected face corners on an export duplicate is a possible
+fallback; retain the editable source, monitor serialized vertex growth, and verify
+positions, UVs, winding and normals again after conversion.
+
+Inspect fixed-light textured, unlit basecolor and normal-map-disabled views from
+both sides before changing texture brightness. A Blender render cannot establish
+the destination engine's material resolution or shading.
 
 ## Scale and axes
 
@@ -40,3 +68,8 @@ pwsh -File scripts/convert_fbx_to_gr2.ps1 `
 ```
 
 If the converter blocks on a GUI dialog or fails, inspect the actual message and artifacts. Do not loop retries or install stale output.
+
+Check the application/MCP result as well as the shell exit code: a bridge can
+return a structured error while its launcher exits successfully. Stop dependent
+conversion after an export error. Verify the intended file set and fresh hashes
+before proceeding; do not mix partial output with files from an earlier attempt.

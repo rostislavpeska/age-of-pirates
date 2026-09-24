@@ -15,6 +15,15 @@ Shared material UVs cannot hold different location-specific AO values at the sam
 Choose explicitly: identical repeated modules with identical AO context; unique AO variants/islands for different contacts; an extra unique AO UV/map only if the destination supports it; or shared micro-occlusion without location-specific AO. For constrained destinations, prefer supported atlas variants instead of adding an unsupported UV layer. Use a non-overlapping temporary bake layout and transfer validated variants/maps with padding. Record every shared region's AO policy.
 
 ## Postproduction
+
+Unexpected dark/light regions are not automatically texture defects. Compare
+per-corner mesh normals with the unmodified original model before changing color
+or AO, especially after roofs, stairs or adjacent faces were removed. Inspect
+unlit basecolor, normal-map-disabled shading and the full material under the same
+lights. If unlit color is intact but lighting changes, investigate geometry
+normals, tangents and material interpretation first. Preserve texture pixels when
+the demonstrated fault is in exported vertex data.
+
 Unify walls with walls and roof metals with roof metals under fixed lighting; do not force different materials to identical tones. Inspect roughness, metallic and AO before repeatedly darkening diffuse. Basecolor is sRGB; normals/masks are data. Use semantic masks for stone warmth/darkness and decorative contrast, preserving roofs, glass, gold and other maps unless requested. Normal strength/vector changes are separate from diffuse edits. Capture unsaved Photoshop sources safely before using them.
 Save layered sources and versioned outputs. Verify unchanged pixels outside masks, channels, dimensions, mip behavior and packed/external image paths. Texture-only edits normally do not require model reconversion; geometry, UV, rig and material bindings do.
 

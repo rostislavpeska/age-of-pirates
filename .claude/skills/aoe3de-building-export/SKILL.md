@@ -34,10 +34,10 @@ a valid license or a working automation connection. Missing tools block only the
 dependent step; do not install, upgrade or silently substitute them during preflight.
 
 1. Identify the exact Blender file, scene, export objects, installed target and a known-working game reference. Preserve hashes and checkpoints.
-2. Audit source and evaluated geometry, armature modifiers, deform weights, UV layers, material slots, transforms and bounds independently. `scripts/inspect_static_rig.py` is a read-only Blender audit, not proof of converter or game behavior.
-3. Export from a duplicate prepared for the verified target profile. Triangulate only the export copy and inspect its diagonals.
+2. Audit source and evaluated geometry, corner normals, armature modifiers, deform weights, UV layers, material slots, transforms and bounds independently. For derived assets, compare retained surfaces with the unmodified original model: the edited Blender source may already contain shading damage. `scripts/inspect_static_rig.py` does not compare corner normals or prove converter/game behavior.
+3. Export from a duplicate prepared for the verified target profile. Preserve custom corner-normal data during attribute cleanup. Triangulate only the export copy and inspect its diagonals and shading against the original reference.
 4. If the operator performs or supplies a manual FBX export, treat that file as authoritative. Do not silently replace it with an automated export or regenerate it.
-5. Convert into an empty staging directory. Verify the actual GR2 structure, mesh/bone bindings, counts, dependencies and bounds before installation. A successful converter exit and a valid header are only sanity checks.
+5. Convert into an empty staging directory only after the complete intended export succeeds. Verify the actual GR2 structure, corner normals/tangent basis, mesh/bone and material bindings, counts, dependencies and bounds before installation. A successful converter exit and a valid header are only sanity checks; a round-trip can preserve an already-broken source.
 6. Keep editable texture sources synchronized with shipped TGA/DDT outputs. Once an operator manually corrects a PSD or equivalent source, export from that live source; do not rerun an earlier generator over it.
 7. Validate material and animation XML against a working target asset, then apply the consuming mod's line-ending, XMB and reference rules.
 8. Report Blender validation, conversion validation and in-game validation separately.

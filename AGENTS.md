@@ -83,6 +83,8 @@ For geometry use `.claude/skills/blender-architecture/SKILL.md`; for UVs and tex
 For live Photoshop documents, layered edits or texture exports, read
 `.claude/skills/photoshop-live-edit/SKILL.md`. It includes the tested Windows COM/JSX
 connection used in this project; absence of Photoshop MCP does not rule out that route.
+When the user asks to start Photoshop, run its `start_photoshop.ps1` with `-LocalConfig config/tool-paths.local.json`
+(ignored, this device's application paths; initialize from the skill-library-audit `tool-paths.example.json`).
 Archive/XMB work starts with `.claude/skills/bar-extract/SKILL.md`, then its referenced
 `aoe3de-bar-archives` tools. The reusable packages are implementations, not competing
 AoP entry points. Keep AoP-specific routing out of their public instructions.

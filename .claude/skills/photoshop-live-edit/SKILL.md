@@ -30,6 +30,28 @@ changes layers or installs anything during the inventory. It reports Photoshop
 version, open document IDs/paths, unsaved state, selected layers and layer structure.
 
 Read [connection diagnosis and evidence](references/connection.md) if it fails.
+
+## Start Photoshop when the operator asks
+
+A cannot-attach result (`0x800401E3`) usually means Photoshop is not running. Say
+so. Start it only when the operator asks, or has approved a task that needs it:
+
+```powershell
+powershell.exe -NoProfile -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/start_photoshop.ps1 -LocalConfig <local tool-paths file>
+```
+
+The starter attaches first and starts nothing if Photoshop already answers. If a
+`Photoshop.exe` is running but does not attach, it stops and lists the PIDs and
+command lines. That process may still be loading, blocked by a dialog or hidden,
+and may hold another agent's documents. Start a second copy only on the operator's
+word, using `-AllowSecondInstance`. Otherwise it resolves the executable in this
+order: `-PhotoshopPath`, then `tools.photoshop.path` in the local tool-paths file,
+then the `Photoshop.Application` COM registration. It starts the normal desktop
+application, waits for COM to attach (`-TimeoutSec`, default 180) and prints the
+inventory. It never kills, saves or closes anything. The local file uses the
+[tool-paths schema](../skill-library-audit/assets/tool-paths.example.json). It stays
+on the device and is ignored by version control; the project says where it lives.
+Without the file, the COM registration is enough on a standard installation.
 Do not equate a missing MCP entry with an unavailable application. Do not install
 a new server, use screen clicks, or repeatedly retry failing calls when a working
 script route is available. A cloud agent without Windows desktop access cannot use
