@@ -380,3 +380,22 @@ minutes). The largest groups now are:
 - forward-base buildings.
 
 **Next:** run 23 tests the gate spreading for economic buildings, committed as f417f295.
+
+## Run 23 - economic buildings spread over the wall gates - London 3v2, 30 min cap - commit 89568d3a (AI f417f295)
+
+The load was clean (hash 4ba6c5a84d61), and the quit ran unattended. Game time reached 48 minutes.
+
+**Verdict: FAIL (P2; P3 for P3 and P4).** L0-L8, P0, P1, U1 and U2 PASS.
+
+| Player | Gates used (field placements) | Countryside eco placement failures | Mills / Plantations | Failures at 30:00 / 48:00 | Top failures |
+|---|---|---|---|---|---|
+| P2 | 3 (6/1/5) | 1 | 5 / 8 | 26 / 52 | Blockhouse 27, Forward Tower 15 |
+| P3 | 3 (3/4/8) | 0 placement, 9 Mill "can't path" | 2 / 6 | 26 / 95 | Outpost 34, Barracks 29, Artillery Depot 25 |
+| P4 | 3 (3/2/3) | 0 | 0 / 7 | 22 / 61 | Outpost 31, Trading Post 9 |
+| P5 | 2 (3/7) | 4 | 0 / 5 | 34 / 94 | Outpost 37, Artillery Depot 23, Barracks 20 |
+
+**Reading:** the spreading works. Countryside placement failures fell from up to 27 + 27 per player (run 21) to 0-4,
+and Mills now stand next to the Plantations. P3 had 9 Mill "can't path" failures at one gate point; that point
+still needs checking. Towers (Outpost and Blockhouse) are now the largest group everywhere.
+
+**Next:** run 24 tests the towers at the wall gates (4526ea00).
