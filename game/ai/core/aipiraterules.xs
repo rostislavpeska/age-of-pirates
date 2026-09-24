@@ -31,6 +31,8 @@ extern int gLondonDiagPass = 0;
 // round 2 (2026-09-23): war plan + gate killer. Run 15 measured kbCanPath2 = 1 across both standing gaia bridge
 // gates and one area group for both banks, so the crossing is judged by the gates' state, not by the pathfinder.
 extern int gLondonWarPasses = 0;                // passes held
+extern int gLondonGateArr = -1;                 // scratch array for the fresh gate query (londonBlockingGate)
+extern int gLondonBlockCount = 0;               // blocking gates the last londonBlockingGate call found
 extern int gLondonGatePlan = -1;                // the gate killer's reserve, pri 90 (Paris cityGateKiller)
 extern int gLondonGateKind = 0;                 // the current target: 1 near Keep gate, 2 our bridge gate, 3 far bridge gate, 4 far Keep gate
 extern int gLondonArmyFloor = 20;               // units in the reserve before any order; londonSetup sets 8 in test mode
@@ -333,7 +335,7 @@ minInterval 1
       gIsLondon = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r5 2026-09-24 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r6 2026-09-24 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -8225,30 +8227,80 @@ int londonFarBridgeGate(void)
 }
 
 //==============================================================================
-// londonKeepGate - the closest standing gaia SPCFortGate of a Keep's walls (within 40 m: the export's gates stand
-// 13.4 m off the building, 13.3's sweep is 40 m), never a bridge gate
+// londonBlockingGate - the blocking SPCFortGate closest to our town centre within radius of pos, FRESH every call, any
+// owner: gaia or an enemy's gate blocks, ours or an ally's does not (londonGateBlocks). Never by a remembered id: the
+// map converts the bridge gates to whoever holds the bridge post and REBUILDS a destroyed gate from its socket as a new
+// unit (zplondon.xs 13.5) - run 31: every AI tracked the setup ids 207 / 232, saw both die, released, and a rebuilt
+// red gate then stood unseen on the bridge while the armies idled at it (owner 2026-09-24, 'eliminate the between
+// states'). bridge == false skips the bridge's own gates (within 25 m of the marker). Sets gLondonBlockCount.
+//==============================================================================
+int londonBlockingGate(vector pos = cInvalidVector, float radius = 25.0, bool bridge = true)
+{
+   int q = -1;
+   int n = 0;
+   int gate = -1;
+   int best = -1;
+   float d = 0.0;
+   float bestD = 100000.0;
+   vector tcVec = cInvalidVector;
+
+   gLondonBlockCount = 0;
+   if (pos == cInvalidVector)
+   {
+      return (-1);
+   }
+   if (gLondonGateArr < 0)
+   {
+      gLondonGateArr = xsArrayCreateInt(16, -1, "London gate scratch");
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   // the shared query object: copy the results out before anything else queries
+   q = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAny, cUnitStateAlive, pos, radius);
+   n = kbUnitQueryExecute(q);
+   if (n > 16)
+   {
+      n = 16;
+   }
+   for (i = 0; < n)
+   {
+      xsArraySetInt(gLondonGateArr, i, kbUnitQueryGetResult(q, i));
+   }
+   for (i = 0; < n)
+   {
+      gate = xsArrayGetInt(gLondonGateArr, i);
+      if (bridge == false && gLondonBridgeVec != cInvalidVector)
+      {
+         if (distance(kbUnitGetPosition(gate), gLondonBridgeVec) < 25.0)
+         {
+            continue;
+         }
+      }
+      if (londonGateBlocks(gate) == false)
+      {
+         continue;
+      }
+      gLondonBlockCount = gLondonBlockCount + 1;
+      d = distance(kbUnitGetPosition(gate), tcVec);
+      if (d < bestD)
+      {
+         bestD = d;
+         best = gate;
+      }
+   }
+   return (best);
+}
+
+//==============================================================================
+// londonKeepGate - the blocking gate of a Keep's walls (within 40 m: the export's gates stand 13.4 m off the building,
+// 13.3's sweep is 40 m), fresh and any owner (a captured Keep's gates are converted with it), never a bridge gate
 //==============================================================================
 int londonKeepGate(int keep = -1)
 {
-   int gateQuery = -1;
-   int gateCount = 0;
-   int gate = -1;
-
    if (keep < 0)
    {
       return (-1);
    }
-   gateQuery = createAdvancedGaiaUnitQuery(cUnitTypeSPCFortGate, cUnitStateAlive, kbUnitGetPosition(keep), 40.0, true);
-   gateCount = kbUnitQueryExecute(gateQuery);
-   for (i = 0; < gateCount)
-   {
-      gate = kbUnitQueryGetResult(gateQuery, i);
-      if (gate != gLondonGateA && gate != gLondonGateB)
-      {
-         return (gate);
-      }
-   }
-   return (-1);
+   return (londonBlockingGate(kbUnitGetPosition(keep), 40.0, false));
 }
 
 //==============================================================================
@@ -8266,15 +8318,16 @@ int londonGateTarget(void)
       gLondonGateKind = 1;
       return (gate);
    }
-   if (londonGateBlocks(gLondonGateOurs) == true)
-   {
-      gLondonGateKind = 2;
-      return (gLondonGateOurs);
-   }
-   gate = londonFarBridgeGate();
-   if (londonGateBlocks(gate) == true)
+   // the bridge: whatever gate blocks there now (the rebuilt / converted one included), our side first
+   gate = londonBlockingGate(gLondonBridgeVec, 25.0, true);
+   if (gate >= 0)
    {
       gLondonGateKind = 3;
+      if (distance(kbUnitGetPosition(gate), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))) <
+          distance(gLondonBridgeVec, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))))
+      {
+         gLondonGateKind = 2;
+      }
       return (gate);
    }
    if (gLondonWarState == 2)
@@ -8322,13 +8375,10 @@ minInterval 10
 {
    static int lastBeat = -60000;
    bool crossingOpen = true;
-   int farGate = londonFarBridgeGate();
+   int farGate = londonBlockingGate(gLondonBridgeVec, 25.0, true);   // the blocking bridge gate closest to us, fresh
+   int blockers = gLondonBlockCount;
 
-   if (londonGateBlocks(gLondonGateOurs) == true)
-   {
-      crossingOpen = false;
-   }
-   if (londonGateBlocks(farGate) == true)
+   if (farGate >= 0)
    {
       crossingOpen = false;
    }
@@ -8349,15 +8399,15 @@ minInterval 10
       {
          gLondonWarState = 1;
          lastBeat = xsGetTime();
-         aiEcho("LONDONWAR p" + cMyID + " held - crossing closed, ours " + gLondonGateOurs + " hp " + kbUnitGetCurrentHitpoints(gLondonGateOurs)
-                + " owner " + kbUnitGetPlayerID(gLondonGateOurs) + " far " + farGate + " hp " + kbUnitGetCurrentHitpoints(farGate) + " owner " + kbUnitGetPlayerID(farGate));
+         aiEcho("LONDONWAR p" + cMyID + " held - crossing closed, " + blockers + " blocking bridge gate(s), nearest " + farGate
+                + " hp " + kbUnitGetCurrentHitpoints(farGate) + " owner " + kbUnitGetPlayerID(farGate));
          return;
       }
       if (xsGetTime() - lastBeat >= 60000)
       {
          lastBeat = xsGetTime();
-         aiEcho("LONDONWAR p" + cMyID + " path closed, held " + gLondonWarPasses + " passes, ours " + gLondonGateOurs + " hp " + kbUnitGetCurrentHitpoints(gLondonGateOurs)
-                + " far " + farGate + " hp " + kbUnitGetCurrentHitpoints(farGate) + " age " + kbGetAge());
+         aiEcho("LONDONWAR p" + cMyID + " path closed, held " + gLondonWarPasses + " passes, " + blockers + " blocking bridge gate(s), nearest " + farGate
+                + " hp " + kbUnitGetCurrentHitpoints(farGate) + " owner " + kbUnitGetPlayerID(farGate) + " age " + kbGetAge());
       }
       return;
    }
@@ -8370,8 +8420,7 @@ minInterval 10
       xsEnableRule("mostHatedEnemy");
       xsEnableRule("attackManager");
       xsEnableRule("raidEnabler");
-      aiEcho("LONDONWAR p" + cMyID + " released - crossing open after " + gLondonWarPasses + " held passes, ours " + gLondonGateOurs + " owner " + kbUnitGetPlayerID(gLondonGateOurs)
-             + " far " + farGate + " owner " + kbUnitGetPlayerID(farGate));
+      aiEcho("LONDONWAR p" + cMyID + " released - crossing open after " + gLondonWarPasses + " held passes, no blocking gate at the bridge");
       return;
    }
    if (xsGetTime() - lastBeat >= 60000)
@@ -8429,10 +8478,17 @@ minInterval 5
    {
       if (gLondonWarState == 2)
       {
-         aiEcho("LONDONGATE p" + cMyID + " no gate left - reserve released to the stock attack");
-         aiPlanDestroy(gLondonGatePlan);
-         gLondonGatePlan = -1;
-         xsDisableSelf();
+         if (gLondonGatePlan >= 0)
+         {
+            aiEcho("LONDONGATE p" + cMyID + " no gate left - reserve released to the stock attack; watching for a rebuilt or converted gate");
+            aiPlanDestroy(gLondonGatePlan);
+            gLondonGatePlan = -1;
+         }
+         else if (xsGetTime() - lastBeat >= 60000)
+         {
+            lastBeat = xsGetTime();
+            aiEcho("LONDONGATE p" + cMyID + " idle - no blocking gate");
+         }
          return;
       }
       if (xsGetTime() - lastBeat >= 60000)
@@ -8443,6 +8499,11 @@ minInterval 5
       return;
    }
 
+   if (gLondonGatePlan < 0 && gLondonWarState == 2)
+   {
+      aiEcho("LONDONGATE p" + cMyID + " gate " + target + " reappeared kind " + londonGateKindName(gLondonGateKind) + " owner "
+             + kbUnitGetPlayerID(target) + " hp " + kbUnitGetCurrentHitpoints(target) + " - reserve again");
+   }
    if (gLondonGatePlan < 0)
    {
       gLondonGatePlan = aiPlanCreate("London Gate Killer", cPlanReserve);

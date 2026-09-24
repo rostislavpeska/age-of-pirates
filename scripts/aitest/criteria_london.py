@@ -70,7 +70,7 @@ def evaluate(files, events_path=None):
     for p in players:
         ok = False
         for l in ai[p]:
-            if "LONDONSETUP p%d" % p in l and "marker not found" not in l:
+            if "LONDONSETUP p%d" % p in l and "marker not found" not in l and "construction blocks" not in l:
                 ids = {k: int(v) for k, v in re.findall(r"(socket|ours|keepNear|keepFar) (-?\d+)", l)}
                 gates = re.search(r"gates (-?\d+) (-?\d+)", l)
                 found = re.search(r"gates found (\d+) keeps found (\d+)", l)
@@ -221,6 +221,25 @@ def evaluate(files, events_path=None):
             if rows[p] and rows[p][-1][0] >= 1500 and not (field and eco):
                 bad.append("P%d(field line %s, eco building %s)" % (p, field, eco))
         add("P3", "a countryside field placement and an eco building by 25:00", not bad, "failing: %s" % (bad or "none"))
+
+    # round 6 - no dead end at the bridge (run 31: a rebuilt / converted bridge gate stood unseen after the release):
+    # every 'gate <id> reappeared' is followed within 180 s by 'tasked n on <id>' or 'gate <id> down'
+    r6 = [p for p in players if any(re.search(r"LONDON p%d build r([6-9])" % p, l) for l in ai[p])]
+    if r6:
+        bad = []
+        for p in r6:
+            for l in ai[p]:
+                m = re.search(r"LONDONGATE p%d gate (\d+) reappeared" % p, l)
+                if not m:
+                    continue
+                t0, gid = gtime(l), m.group(1)
+                ok = any(gtime(k) is not None and t0 <= gtime(k) <= t0 + 180 and
+                         (re.search(r"LONDONGATE p%d tasked \d+ on %s " % (p, gid), k) or
+                          re.search(r"LONDONGATE p%d gate %s down" % (p, gid), k)) for k in ai[p])
+                if not ok:
+                    bad.append("P%d gate %s at %ds" % (p, gid, t0))
+        add("L9", "a reappeared bridge / Keep gate is tasked or down within 180 s", not bad,
+            "failing: %s" % (bad or "none"))
 
     # round 5 - the forward base at our bridgehead (owner 2026-09-24): when the stock AI asks for one, the point is
     # London's; judged only for players whose record shows the ask

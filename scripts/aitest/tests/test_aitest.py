@@ -242,8 +242,8 @@ class TestLondonOnlyPlacement:
                 continue
             assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
 
-    def test_build_echo_is_round_five(self):
-        assert "build r5 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_six(self):
+        assert "build r6 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -409,6 +409,8 @@ APPROVED_LONDON_CODE = {
     ("aipiraterules.xs", "londonDiag"): "plan round 1 (test mode only)",
     ("aipiraterules.xs", "londonFarBridgeGate"): "plan round 2",
     ("aipiraterules.xs", "londonKeepGate"): "plan round 2",
+    # owner 2026-09-24: 'fix the dead-end state ... eliminate the between states' (run 31, rebuilt bridge gate)
+    ("aipiraterules.xs", "londonBlockingGate"): "gates found fresh, any owner, classified - no remembered ids",
     ("aipiraterules.xs", "londonGateTarget"): "plan round 2",
     ("aipiraterules.xs", "londonWarPlan"): "plan round 2",
     ("aipiraterules.xs", "londonGateKiller"): "plan round 2",
@@ -464,3 +466,20 @@ def test_contested_decisions_carry_no_london_branch(fn):
     # the stock rules that decide WHAT the AI contests (sockets, the bridge post, natives, forward base, towers) never
     # branch on London; only the forward base's PLACE is approved (selectForwardBaseLocation)
     assert all(name != fn for _, name in _units_with_london_code()), fn
+
+
+class TestRoundSixCriteria:
+    def base(self):
+        return [l.replace("build r3", "build r6") for l in london_record()]
+
+    def verdicts(self, L):
+        return {r[0]: r[2] for r in criteria_london.evaluate({2: sorted(L, key=criteria_london.gtime)})}
+
+    def test_a_reappeared_gate_that_is_tasked_passes(self):
+        L = self.base() + ["00:20:00  (1): LONDONGATE p2 gate 900 reappeared kind bridgeFar owner 3 hp 2000 - reserve again",
+                           "00:21:00  (1): LONDONGATE p2 tasked 30 on 900 bridgeFar guard -1 hp 2000"]
+        assert self.verdicts(L)["L9"] == "PASS"
+
+    def test_a_reappeared_gate_left_alone_fails(self):
+        L = self.base() + ["00:20:00  (1): LONDONGATE p2 gate 900 reappeared kind bridgeFar owner 3 hp 2000 - reserve again"]
+        assert self.verdicts(L)["L9"] == "FAIL"
