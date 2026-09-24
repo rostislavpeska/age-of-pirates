@@ -66,6 +66,34 @@ def main():
         time.sleep(2.5)
         shot(os.path.join(out, "base_%s.png" % name))
         print("%s: %d px, camera to %d,%d" % (name, len(pts), mx, my))
+    countryside(mm, box, park, out)
+
+
+def countryside(mm, box, park, out):
+    """The fields behind the city walls: the map is a rotated rectangle on the minimap with the river along its long
+    axis, so the countryside behind each bank's wall is the strip along the two long outer edges. The axes come from
+    the lit minimap pixels (PCA); three shots per edge at -90 / 0 / +90 px along the long axis, 85 % out along the short."""
+    import numpy as np
+    im = np.array(mm).astype(int)
+    h, w, _ = im.shape
+    ys, xs = np.mgrid[0:h, 0:w]
+    lit = (((xs - w / 2) ** 2 + (ys - h / 2) ** 2) < (0.82 * w / 2) ** 2) & (im.sum(axis=2) > 90)
+    pts = np.stack([xs[lit], ys[lit]], 1).astype(float)
+    if len(pts) < 500:
+        print("countryside: minimap not readable")
+        return
+    c = pts.mean(0)
+    ev, evec = np.linalg.eigh(np.cov((pts - c).T))
+    major, minor = evec[:, 1], evec[:, 0]
+    half_w = np.percentile(np.abs((pts - c) @ minor), 97)
+    for side, sgn in (("a", 1.0), ("b", -1.0)):
+        for k, along in enumerate((-90.0, 0.0, 90.0)):
+            q = c + major * along * w / 400.0 + minor * sgn * 0.85 * half_w
+            driver.click(int(q[0]) + box[0], int(q[1]) + box[1])
+            move(park)
+            time.sleep(2.5)
+            shot(os.path.join(out, "countryside_%s%d.png" % (side, k + 1)))
+    print("countryside: 6 shots along both outer edges")
 
 
 if __name__ == "__main__":

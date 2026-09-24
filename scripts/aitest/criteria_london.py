@@ -229,10 +229,10 @@ def evaluate(files, events_path=None):
         asked = [p for p in r5 if any("LONDONPLACE p%d forward base next to the bridge" % p in l for l in ai[p])]
         bad = []
         for p in asked:
-            n = sum(1 for l in ai[p] if re.search(r"BuildPlan\(\d+: Forward .*failing because building placement failed", l))
+            n = sum(1 for l in ai[p] if re.search(r"BuildPlan\(\d+: Forward .*failing because (building placement failed|we can't path)", l))
             if n > 3:
                 bad.append("P%d(%d Forward placement failures)" % (p, n))
-        add("P4", "forward base at the bridgehead: <= 3 Forward placement failures", not bad,
+        add("P4", "forward base at the bridgehead: <= 3 Forward placement / can't-path failures", not bad,
             "asked by %s; failing: %s" % (asked or "nobody", bad or "none"), na=not asked)
     return results
 
