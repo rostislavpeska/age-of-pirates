@@ -33,6 +33,14 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    `python -m pytest scripts/aitest/tests -q` before every AI commit. Start every AI change with the
    `ai-edit` skill; see `docs/ai_scripting_guidelines.md` rule 13.
 
+8. **Images an agent makes never go into the repo.** Screenshots, captures, renders, previews, plots and test
+   captures are written to the session scratchpad (or a tool's own temp folder), never next to code, docs or
+   tests. `.gitignore` ignores png/jpg/jpeg/bmp/gif/webp everywhere except `art/` and `data/wpfg/` (runtime
+   assets), `docs/images/` and `docs/assets/` (curated docs images) and `.claude/skills/` (tool assets); an image
+   enters one of those only on the user's word. Tests do not depend on screenshots in the repo: build the image
+   in the test or skip when the capture is absent. Never add a one-off ignore line for a new image folder - the
+   rule already covers it.
+
 ## Where things are
 
 - Skills: `.claude/skills/` - `bar-extract` (vanilla files, XML<->XMB), `aoe-building-pipeline` (buildings,

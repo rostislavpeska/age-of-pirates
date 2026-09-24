@@ -57,3 +57,42 @@ sandbox/census/samples/regen/
 
 # Claude skills are tracked source; only device settings stay local
 /.claude/settings.local.json
+
+# Images (AGENTS.md hard rule 8): screenshots, captures, renders and plots made by agents never enter the repo.
+# Ignored everywhere; re-included only in the image homes below (runtime art, UI icons, curated docs, skill assets).
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.gif
+*.webp
+!/art/**/*.png
+!/art/**/*.jpg
+!/art/**/*.jpeg
+!/art/**/*.bmp
+!/art/**/*.gif
+!/art/**/*.webp
+!/data/wpfg/**/*.png
+!/data/wpfg/**/*.jpg
+!/data/wpfg/**/*.jpeg
+!/data/wpfg/**/*.bmp
+!/data/wpfg/**/*.gif
+!/data/wpfg/**/*.webp
+!/docs/images/**/*.png
+!/docs/images/**/*.jpg
+!/docs/images/**/*.jpeg
+!/docs/images/**/*.bmp
+!/docs/images/**/*.gif
+!/docs/images/**/*.webp
+!/docs/assets/**/*.png
+!/docs/assets/**/*.jpg
+!/docs/assets/**/*.jpeg
+!/docs/assets/**/*.bmp
+!/docs/assets/**/*.gif
+!/docs/assets/**/*.webp
+!/.claude/skills/**/*.png
+!/.claude/skills/**/*.jpg
+!/.claude/skills/**/*.jpeg
+!/.claude/skills/**/*.bmp
+!/.claude/skills/**/*.gif
+!/.claude/skills/**/*.webp
