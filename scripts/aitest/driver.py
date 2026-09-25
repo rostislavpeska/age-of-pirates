@@ -152,11 +152,10 @@ def type_text(text):
         _send_key(0, ord(ch), 0x0004 | 0x0002); time.sleep(0.03)
 
 
-def minimap_signature():
-    """A coarse fingerprint of the lobby's minimap (2880x1800 sheet: centre 2330,360, radius ~180): a 9 x 9 grid
-    of pixels. It changes whenever another map is selected."""
-    cx, cy = int(2330 * SW / 2880), int(360 * SH / 1800)
-    r = int(150 * SW / 2880)
+def minimap_signature(nav):
+    """A coarse fingerprint of the lobby's minimap (sheet point lobby_minimap: the centre and a radius r inside the
+    disc): a 9 x 9 grid of pixels. It changes whenever another map is selected."""
+    cx, cy, r = nav["lobby_minimap"]["x"], nav["lobby_minimap"]["y"], nav["lobby_minimap"]["r"]
     return tuple(pixel_at(cx + dx * r // 4, cy + dy * r // 4) for dx in range(-4, 5) for dy in range(-4, 5))
 
 
@@ -188,10 +187,10 @@ def select_map(nav, name, shot_path=None, custom=False):
     filtered list), take the first tile, OK. `name` must be specific enough that the wanted map is the first tile.
     Verified twice: the lobby preview must be a round minimap (not the square All Maps parchment) and must differ
     from before unless it was already this map. shot_path: a lobby screenshot for the visual check."""
-    for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok"):
+    for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok", "lobby_minimap", "lobby_minimap_corner"):
         if k not in nav:
             print("   coordinate sheet lacks %s - cannot select a map" % k); return False
-    before = minimap_signature()
+    before = minimap_signature(nav)
     focus_game()
     guard(); click(nav["lobby_mapbutton"]["x"], nav["lobby_mapbutton"]["y"]); time.sleep(3)
     guard(); click(nav["picker_search"]["x"], nav["picker_search"]["y"]); time.sleep(0.8)
@@ -224,12 +223,13 @@ def select_map(nav, name, shot_path=None, custom=False):
     if not wait_probe(nav["lobby_probe"], 15):
         print("   map picker did not return to the lobby"); return False
     time.sleep(2)
-    corner = pixel_at(int(2185 * SW / 2880), int(215 * SH / 1800))
+    # lobby_minimap_corner: outside the round minimap but inside the square 'All Maps' parchment
+    corner = pixel_at(nav["lobby_minimap_corner"]["x"], nav["lobby_minimap_corner"]["y"])
     if corner is None or max(corner) > 70:
         print("   the lobby shows no round minimap (corner %s) - probably the random 'All Maps' tile; '%s' not selected"
               % (corner, name))
         return False
-    if minimap_signature() == before:
+    if minimap_signature(nav) == before:
         print("   the lobby minimap did not change - '%s' was already selected, or the pick failed" % name)
     if shot_path:
         try:
@@ -557,18 +557,16 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
     return -1
 
 
-def yes_no_dialog_up():
-    """The game's modal Yes/No dialog (resignation offer, Quit, Restart): the left edges of its Yes and No buttons,
-    measured 2026-09-24 on three dialogs: (960,1008) = (70,29,14) and (1540,1008) = (63,26,13); plain terrain differs."""
-    a = pixel_at(960 * SW // 2880, 1008 * SH // 1800)
-    b = pixel_at(1540 * SW // 2880, 1008 * SH // 1800)
-    if a is None or b is None:
+def yes_no_dialog_up(nav):
+    """The game's modal Yes/No dialog (resignation offer, Quit, Restart): the left edges of its Yes and No buttons
+    (sheet points yesno_yes_edge / yesno_no_edge; 2880x1800 measured 2026-09-24 on three dialogs); plain terrain
+    differs. A sheet without them cannot see the dialog."""
+    if "yesno_yes_edge" not in nav or "yesno_no_edge" not in nav:
         return False
-    return (max(abs(x - y) for x, y in zip(a, (70, 29, 14))) <= 10 and
-            max(abs(x - y) for x, y in zip(b, (63, 26, 13))) <= 10)
+    return probe_ok(nav["yesno_yes_edge"], 10) and probe_ok(nav["yesno_no_edge"], 10)
 
 
-def watch_verdict(pos, cap_s, blind=False):
+def watch_verdict(nav, pos, cap_s, blind=False):
     t0 = time.time()
     events = []
     sail_at = None
@@ -581,11 +579,11 @@ def watch_verdict(pos, cap_s, blind=False):
                 return "GAME-CRASHED", events
             # a beaten AI offers its resignation in a modal Yes/No dialog that PAUSES the game (run 24: Napoleon at
             # 27:01, the rest of the cap frozen); the Yes/No buttons' left edges identify it - accept
-            if yes_no_dialog_up():
+            if yes_no_dialog_up(nav):
                 focus_game()
-                click(1139 * SW // 2880, 1008 * SH // 1800); time.sleep(1.5)
-                if yes_no_dialog_up():          # the first click after a focus change is eaten
-                    click(1139 * SW // 2880, 1008 * SH // 1800); time.sleep(1.5)
+                click(nav["quit_yes"]["x"], nav["quit_yes"]["y"]); time.sleep(1.5)   # the same Yes as the Quit dialog
+                if yes_no_dialog_up(nav):       # the first click after a focus change is eaten
+                    click(nav["quit_yes"]["x"], nav["quit_yes"]["y"]); time.sleep(1.5)
                 msg = "AI RESIGNATION DIALOG accepted at %ds of the cap" % int(time.time() - t0)
                 events.append(msg); print("   " + msg)
         return "BLIND-CAP", events
@@ -738,7 +736,7 @@ def main():
         t0 = time.time()
         ai_mtime = time.strftime("%Y%m%d-%H%M%S",
                                  time.localtime(os.path.getmtime(AI_FILE)))
-        verdict, events = watch_verdict(pos, a.cap_min * 60, a.blind)
+        verdict, events = watch_verdict(nav, pos, a.cap_min * 60, a.blind)
         secs = int(time.time() - t0)
         rd = os.path.join(runs_dir, "run_%03d" % run_no)
         os.makedirs(rd, exist_ok=True)

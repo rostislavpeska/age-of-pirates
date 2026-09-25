@@ -54,6 +54,17 @@ home-screen probe pixel stops matching.
 
 Scripts must NEVER hardcode game-UI coordinates. New clickable points go
 into the `POINTS` table in `calibrate.py` AND the sheet consumers via
-`nav["<name>"]` in `driver.py` - both, in the same change. Ad-hoc probes in
+`nav["<name>"]` in `driver.py` - both, in the same change.
+
+Not even as a literal scaled by the screen size (`x * SW / 2880`): the lobby
+panel and the in-match HUD are right-anchored and the menus centred, so a
+scaled point lands elsewhere on another aspect ratio (2026-09-25, 2560x1080).
+`test_no_screen_coordinates_scaled_in_code` enforces it. Probe and crop
+points live in the sheet too: `lobby_minimap` (centre + fingerprint `r`),
+`lobby_minimap_corner`, `yesno_yes_edge` / `yesno_no_edge`,
+`minimap_center.r` (snapshot crop) and `mouse_park`. The picker, menu and
+dialog points are measured from live screenshots
+(`probe.py shot` + `driver.pixel_at`); `calibrate.py`'s hover table covers
+only the original six. Ad-hoc probes in
 agent sessions should read the active sheet (`load_coords()` in driver.py)
 rather than repeating literals.

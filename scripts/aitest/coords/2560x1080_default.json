@@ -1,21 +1,30 @@
 {
-  "_comment": "2560x1080 ultrawide. Menus render a CENTERED 1920x1080 safe area (x+320); lobby panel and in-match HUD are RIGHT-EDGE anchored (x+640). home/lobby/cog/quit measured live 2026-08-26. quit_yes still derived - confirm on first use. NOTE: the game eats the first click after losing focus - always AppActivate in the same step before clicking.",
+  "_comment": "2560x1080 ultrawide. Menus render a CENTERED 1920x1080 safe area (x+320); lobby panel and in-match HUD are RIGHT-EDGE anchored (x+640). home/lobby/cog/quit measured live 2026-08-26. NOTE: the game eats the first click after losing focus - always AppActivate in the same step before clicking. 2026-09-25 (agent, live screenshots): home_skirmish moved to the Skirmish button under the new Continue button (444,435 gold; y 490 is Multiplayer now) + also = the Exit button background (400,1000); lobby_probe = the Play button (as 2880x1800); map picker points measured (the picker is centred, the lobby panel right-anchored); lobby_minimap disc centre 2195,245, rim radius 127, fingerprint r 105; lobby_minimap_corner outside the disc (39,27,13). In a match (Istanbul 4 players, 2026-09-25): cog -> Quit (2391,411) -> Yes (1081,612) -> home live-validated; menu_live_probe = the Quit button's background plateau (80,34,17) from x 2326 (left-edge gradient from 2278, as 2880x1800); the Quit dialog's Yes / No left edges at y 612 (edges x 906 / 1306) give the 2880x1800 colours (70,29,14) / (63,26,13); minimap_center = the in-match disc centre 2399,898, rim radius ~153 (the old 2320,900 was off the centre). NOT MEASURED, DERIVED: menu_post_probe / postmatch_quit on the live menu's Restart row (y 275) - on 2880x1800 the post-match Quit sits on the live Restart row; confirm on the first match that ends with a post-match menu.",
   "home_skirmish": {
     "x": 444,
-    "y": 490,
+    "y": 435,
     "rgb": [
       212,
       181,
       104
-    ]
+    ],
+    "also": {
+      "x": 400,
+      "y": 1000,
+      "rgb": [
+        80,
+        34,
+        17
+      ]
+    }
   },
   "lobby_probe": {
-    "x": 2277,
-    "y": 430,
+    "x": 2287,
+    "y": 1020,
     "rgb": [
-      169,
-      132,
-      76
+      82,
+      34,
+      17
     ]
   },
   "lobby_play": {
@@ -43,8 +52,106 @@
     "rgb": null
   },
   "minimap_center": {
-    "x": 2320,
-    "y": 900,
+    "x": 2399,
+    "y": 898,
+    "rgb": null,
+    "r": 155
+  },
+  "lobby_mapbutton": {
+    "x": 2276,
+    "y": 428,
+    "rgb": null
+  },
+  "lobby_minimap": {
+    "x": 2195,
+    "y": 245,
+    "r": 105,
+    "rgb": null
+  },
+  "lobby_minimap_corner": {
+    "x": 2093,
+    "y": 143,
+    "rgb": null
+  },
+  "picker_search": {
+    "x": 1549,
+    "y": 145,
+    "rgb": null
+  },
+  "picker_type": {
+    "x": 640,
+    "y": 143,
+    "rgb": null
+  },
+  "picker_type_all": {
+    "x": 563,
+    "y": 182,
+    "rgb": null
+  },
+  "picker_type_custom": {
+    "x": 576,
+    "y": 207,
+    "rgb": null
+  },
+  "picker_first": {
+    "x": 513,
+    "y": 324,
+    "rgb": null
+  },
+  "picker_second": {
+    "x": 764,
+    "y": 324,
+    "rgb": null
+  },
+  "picker_ok": {
+    "x": 1850,
+    "y": 1010,
+    "rgb": null
+  },
+  "menu_live_probe": {
+    "x": 2334,
+    "y": 411,
+    "rgb": [
+      80,
+      34,
+      17
+    ]
+  },
+  "menu_post_probe": {
+    "x": 2334,
+    "y": 275,
+    "rgb": [
+      80,
+      34,
+      17
+    ]
+  },
+  "postmatch_quit": {
+    "x": 2394,
+    "y": 275,
+    "rgb": null
+  },
+  "yesno_yes_edge": {
+    "x": 960,
+    "y": 612,
+    "rgb": [
+      70,
+      29,
+      14
+    ]
+  },
+  "yesno_no_edge": {
+    "x": 1348,
+    "y": 612,
+    "rgb": [
+      63,
+      26,
+      13
+    ]
+  },
+  "mouse_park": {
+    "x": 1280,
+    "y": 40,
     "rgb": null
   }
 }

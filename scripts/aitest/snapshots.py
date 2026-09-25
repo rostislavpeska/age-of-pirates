@@ -5,7 +5,8 @@ walls + the minimap ... before you end the test').
 
 Takes: minimap.png (the minimap crop), full.png, then base_<colour>.png for each player colour found on the minimap -
 the camera is moved by clicking the centroid of that colour's pixels on the minimap (the densest cluster = the base).
-Only moves the camera; never selects or orders anything. Measured on the 2880x1800 sheet (minimap_center).
+Only moves the camera; never selects or orders anything. Reads the sheet's minimap_center (with its crop radius r) and
+mouse_park.
 """
 import json
 import os
@@ -120,9 +121,9 @@ def main():
     from PIL import Image
     nav = driver.load_coords()
     cx, cy = nav["minimap_center"]["x"], nav["minimap_center"]["y"]
-    r = 200 * driver.SW // 2880
+    r = nav["minimap_center"]["r"]                     # the crop's half-width: the whole disc
     driver.focus_game()
-    park = (driver.SW // 2, 60 * driver.SH // 1800)   # the mouse off the minimap: its hover tooltip covers it
+    park = (nav["mouse_park"]["x"], nav["mouse_park"]["y"])   # the mouse off the minimap: its hover tooltip covers it
     move(park)
     time.sleep(1.0)
     full = os.path.join(out, "full.png")

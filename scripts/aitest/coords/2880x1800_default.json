@@ -1,5 +1,5 @@
 {
-  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia; 2026-09-24: menu_live_probe / menu_post_probe = button background (81,34,17) at x 2560 - the plateau of a left-edge gradient, x 2460 = (48,19,9), x 2500 = (68,29,14): MEASURE, never shift a probe unmeasured - of the in-match menu at y 615 (Quit) and the post-match menu at y 414 (Quit; Restart in the live menu)",
+  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia; 2026-09-24: menu_live_probe / menu_post_probe = button background (81,34,17) at x 2560 - the plateau of a left-edge gradient, x 2460 = (48,19,9), x 2500 = (68,29,14): MEASURE, never shift a probe unmeasured - of the in-match menu at y 615 (Quit) and the post-match menu at y 414 (Quit; Restart in the live menu); 2026-09-25: the driver's and snapshots' former 2880x1800 literals moved here unchanged - lobby_minimap (fingerprint centre + r), lobby_minimap_corner, yesno_yes_edge / yesno_no_edge (the resignation dialog; its Yes = quit_yes), minimap_center.r (snapshot crop), mouse_park",
   "home_skirmish": {
     "x": 187,
     "y": 652,
@@ -59,7 +59,8 @@
   "minimap_center": {
     "x": 2641,
     "y": 1562,
-    "rgb": null
+    "rgb": null,
+    "r": 200
   },
   "popup_close": {
     "x": 1064,
@@ -122,6 +123,40 @@
   "picker_second": {
     "x": 666,
     "y": 576,
+    "rgb": null
+  },
+  "lobby_minimap": {
+    "x": 2330,
+    "y": 360,
+    "r": 150,
+    "rgb": null
+  },
+  "lobby_minimap_corner": {
+    "x": 2185,
+    "y": 215,
+    "rgb": null
+  },
+  "yesno_yes_edge": {
+    "x": 960,
+    "y": 1008,
+    "rgb": [
+      70,
+      29,
+      14
+    ]
+  },
+  "yesno_no_edge": {
+    "x": 1540,
+    "y": 1008,
+    "rgb": [
+      63,
+      26,
+      13
+    ]
+  },
+  "mouse_park": {
+    "x": 1440,
+    "y": 60,
     "rgb": null
   }
 }

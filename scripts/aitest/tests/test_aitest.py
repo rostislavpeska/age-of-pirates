@@ -200,10 +200,21 @@ class TestDriverInput:
 
     def test_select_map_needs_its_sheet_points(self):
         import json
-        sheet = json.load(open(os.path.join(AITEST, "coords", "2880x1800_default.json")))
-        for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok", "lobby_probe", "postmatch_quit",
-                  "menu_live_probe", "menu_post_probe"):
-            assert k in sheet, k
+        for name in ("2880x1800_default", "2560x1080_default"):
+            sheet = json.load(open(os.path.join(AITEST, "coords", name + ".json")))
+            for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok", "lobby_probe", "postmatch_quit",
+                      "menu_live_probe", "menu_post_probe", "lobby_minimap", "lobby_minimap_corner",
+                      "yesno_yes_edge", "yesno_no_edge", "mouse_park"):
+                assert k in sheet, (name, k)
+            assert "r" in sheet["lobby_minimap"] and "r" in sheet["minimap_center"], name
+
+    def test_no_screen_coordinates_scaled_in_code(self):
+        # 2026-09-25: the 2880x1800 literals scaled by SW/SH read the wrong pixels on 2560x1080 (the lobby panel is
+        # right-anchored, the menus centred) - every screen point comes from the coordinate sheet (ui-calibrate)
+        for f in ("driver.py", "snapshots.py"):
+            code = [ln.split("#")[0] for ln in open(os.path.join(AITEST, f), encoding="utf-8")]
+            hits = [ln.strip() for ln in code if re.search(r"\b(2880|1800)\b", ln) and not ln.lstrip().startswith(('"', "'"))]
+            assert not hits, (f, hits)
 
 
 # ---- round 4: London-only placement ----------------------------------------------------------------------------
@@ -337,8 +348,9 @@ class TestRoundFourCriteria:
 def test_home_probe_needs_a_second_pixel():
     # the in-match terrain under the Skirmish button matched the single home pixel (run 18): two pixels now
     import json
-    sheet = json.load(open(os.path.join(AITEST, "coords", "2880x1800_default.json")))
-    assert "also" in sheet["home_skirmish"]
+    for name in ("2880x1800_default", "2560x1080_default"):
+        sheet = json.load(open(os.path.join(AITEST, "coords", name + ".json")))
+        assert "also" in sheet["home_skirmish"], name
 
 
 # ---- XS syntax lint: constructs the engine's parser rejected in game (each one cost a run) ----------------------
