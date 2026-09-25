@@ -321,7 +321,7 @@ def ensure_solved(rs: ResolvedScene) -> None:
         if p.x is None or p.z is None:
             continue    # runtime anchor: stays undrawable
         cx_m, cz_m = g.x_frac_to_m(p.x), g.z_frac_to_m(p.z)
-        r_max = float(p.max_dist_m or 0.0)
+        r_max = float(p.max_dist_m or 0.0) + float(getattr(p, "drift_m", 0.0) or 0.0)
         r_min = min(float(p.min_dist_m or 0.0), r_max)
         if r_max <= 0.0:
             # pinned placement: the engine cannot move it — report

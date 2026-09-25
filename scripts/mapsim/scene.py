@@ -217,6 +217,9 @@ class ResolvedPlacement:
     # model could not evaluate (honest limitation, reports only).
     anchor_x: Optional[float] = None
     anchor_z: Optional[float] = None
+    # How far the anchor itself may be off: the read-back position of another def the engine may move this far
+    # (xs_extract.Drifting; zpIceland.xs pirate controller -> pirate city).
+    drift_m: float = 0.0
     solve_unsat: Optional[List[str]] = None
     solve_skipped: Optional[List[str]] = None
     # Filled by the .xs bridge (2026-09-24, twin review F4; curated scenes

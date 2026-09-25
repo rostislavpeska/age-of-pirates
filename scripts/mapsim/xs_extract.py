@@ -468,6 +468,7 @@ class XPlacement:
     # 36 grouping defs at line 207), so line-keyed lookups labelled all of
     # them as the last one (twin review F2, 2026-09-24).
     def_handle: Optional[int] = None
+    drift: float = 0.0                 # metres the anchor may be off (a Drifting read-back position)
 
 
 @dataclass
@@ -548,6 +549,28 @@ class _Return(Exception):
     def __init__(self, value: Any = None):
         super().__init__()
         self.value = value
+
+
+class Drifting(float):
+    """A coordinate read back from a placed def (rmGetUnitPosition(rmGetUnitPlacedOfPlayer(def, 0))) whose def the
+    engine may move up to `drift` metres from its authored anchor. Survives xsVectorGetX/Z and the
+    metre/tile/fraction conversions; any other arithmetic returns a plain float (the drift is then dropped, the
+    conservative side). zpIceland.xs: 'pirate controller 1' is authored at the centre with max distance 0.45 map
+    and its constraints put it on the SW shore; 'pirate city 1' is placed within 22 m of the read-back position."""
+
+    def __new__(cls, value: float, drift: float):
+        obj = super().__new__(cls, value)
+        obj.drift = drift
+        return obj
+
+
+class DriftVec(tuple):
+    """("vec", x, y, z) read back from a movable placed def; carries its drift in metres."""
+
+    def __new__(cls, x: float, y: float, z: float, drift: float):
+        obj = super().__new__(cls, ("vec", x, y, z))
+        obj.drift = drift
+        return obj
 
 
 class OpaqueDef(int):
@@ -1200,8 +1223,8 @@ class Extractor:
         if name in ("xsVectorGetX", "xsVectorGetY", "xsVectorGetZ"):
             v = args[0]
             if isinstance(v, tuple) and len(v) == 4 and v[0] == "vec":
-                return float(v[{"xsVectorGetX": 1, "xsVectorGetY": 2,
-                                "xsVectorGetZ": 3}[name]])
+                c = float(v[{"xsVectorGetX": 1, "xsVectorGetY": 2, "xsVectorGetZ": 3}[name]])
+                return Drifting(c, v.drift) if isinstance(v, DriftVec) else c
             src = v.expr if isinstance(v, Tainted) else repr(v)
             return Tainted(f"{name}({src})")
         if name == "xsVectorSet":
@@ -1216,6 +1239,10 @@ class Extractor:
                 anchor = self.def_last_anchor.get(ref[1])
                 if anchor is not None:
                     sx, sz = self._need_size()
+                    d = res.defs.get(ref[1])
+                    md = d.max_dist if d is not None else 0.0
+                    if md and not isinstance(md, Tainted) and float(md) > 0.0:
+                        return DriftVec(anchor[0] * sx, 0.0, anchor[1] * sz, float(md))
                     return ("vec", anchor[0] * sx, 0.0, anchor[1] * sz)
             return Tainted("rmGetUnitPosition(...)")
         if name == "xsVectorNormalize":
@@ -1723,7 +1750,8 @@ class Extractor:
                 players=[player], x=x, z=z, count=count,
                 variant="|".join(self.variant_stack),
                 nominal=self.alt_depth == 0,
-                def_handle=int(args[0])))
+                def_handle=int(args[0]),
+                drift=max(getattr(x, "drift", 0.0), getattr(z, "drift", 0.0))))
             return 1
         if name == "rmPlaceObjectDefAtAreaLoc":
             # (def, player, area, count): at the area's location (rm_commands_reference); an area without a
@@ -1971,6 +1999,8 @@ def _to_str(v: Any) -> str:
 def _t(v: Any, fn) -> Any:
     if isinstance(v, Tainted):
         return Tainted(f"conv({v.expr})")
+    if isinstance(v, Drifting):
+        return Drifting(fn(float(v)), v.drift)
     return fn(float(v))
 
 
