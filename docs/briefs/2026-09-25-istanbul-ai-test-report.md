@@ -86,8 +86,9 @@ owner's 'one team only'.
 **Regression vs the proven fleet split (`d33dba2e`, 2026-08-27):** the hull test and `istanbulMonitorMaintain` are
 identical; the pool priority is 100 instead of 96 (deliberate). **Not restored: the fallback** - with fewer than 2
 gun-fleet hulls, 4+ warships of any kind (`gIstanbulGunShipMin = 4`) attacked the gun. Without it a gun fleet stuck
-below 2 hulls idles (p2 above), and a civ with no pirate ship or monitor never attacks a gun. Restoring that block
-as it was is the owner's decision (AI edit).
+below 2 hulls idles (p2 above), and a civ with no pirate ship or monitor never attacks a gun. **Owner decision 2026-09-25: NOT restored**
+('rather no merge ... the custom landing and custom dock builder never worked properly') - the fallback belongs to
+the stripped custom-landing design; do not re-add it as a 'regression fix'.
 
-**Open AI items (owner's word needed):** the fallback above; `pirateForwardBasePoint`'s distance rule (with one
+**Open AI item (owner's word needed):** `pirateForwardBasePoint`'s distance rule (with one
 enemy-beach marker per player the map already decides the side).
