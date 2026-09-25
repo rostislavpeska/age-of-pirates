@@ -289,8 +289,8 @@ class TestLondonOnlyPlacement:
                        ("forwardTowerBaseManager();", "pirateForwardTowerBaseManager();")}
             assert set(diff) <= allowed, (rule, diff)
 
-    def test_build_echo_is_round_twelve(self):
-        assert "build r12 2026-09-25" in core("aipiraterules.xs")
+    def test_build_echo_is_round_thirteen(self):
+        assert "build r13 2026-09-25" in core("aipiraterules.xs")
 
     def test_istanbul_places_the_construction_markers_on_both_landing_beaches(self):
         # owner 2026-09-25: the forward base next to the Fisherman's guild - after every placement, before UNIT IDS
@@ -578,3 +578,47 @@ class TestFieldDistance:
         L = self.base() + ["00:15:00  (1): LONDONPLACE p2 field Plantation plan 5 at the countryside 1/2 dist 95.2",
                            "00:18:00  (1): LONDONPLACE p2 field Plantation plan 6 at the countryside 1/2 dist 310.0"]
         assert self.verdicts(L)["F1"] == "FAIL"
+
+
+# ---- OWNER FEATURES MUST NOT DISAPPEAR (owner 2026-09-25: "The issue is extremely fatal ... If not discovered, the
+# impact would be BRUTAL") ------------------------------------------------------------------------------------------
+# 570d65a2 (2026-08-27, "strip to three concerns") deleted Istanbul's fleet split - the owner's own design - and the
+# suite stayed green: it tested that the code which exists is well-formed, never that the owner's behaviours exist.
+# Every behaviour the owner ordered is listed here with the rules / functions that implement it. A rule that is gone or
+# never enabled fails the suite. Removing or changing an entry is the owner's approval step, as for APPROVED_LONDON_CODE.
+OWNER_FEATURES = {
+    "istanbul fleet split": {
+        "quote": "'Pirate ships should attack the Naval Guns, because they have bonus against them (same monitors) and "
+                 "other ships should guard the Naval Forts' (owner 2026-09-25; first built 893135a4, 2026-08-25)",
+        "rules": ["istanbulGunFleet", "istanbulGunRaid", "istanbulMonitorMaintain"],
+        "functions": ["istanbulIsGunFleetHull"],
+    },
+    "forward base at the enemy construction block": {
+        "quote": "'can be also enemy bridgehead' + 'target the unique units instead of the map spot' (owner 2026-09-24); "
+                 "Istanbul: next to the Fisherman's Guild (owner 2026-09-25)",
+        "rules": ["pirateForwardBaseWatch"],
+        "functions": ["pirateForwardBasePoint"],
+    },
+}
+
+
+@pytest.mark.parametrize("feature", sorted(OWNER_FEATURES))
+def test_owner_features_are_still_in_the_ai(feature):
+    t = _strip_comments(core("aipiraterules.xs"))
+    spec = OWNER_FEATURES[feature]
+    for r in spec["rules"]:
+        assert re.search(r"^rule\s+%s\s*$" % r, t, re.M), "%s: rule %s is gone - %s" % (feature, r, spec["quote"])
+        assert re.search(r'xsEnableRule\("%s"\)' % r, t), "%s: rule %s is never enabled - %s" % (feature, r, spec["quote"])
+    for fn in spec["functions"]:
+        found = re.search(r"^(?:void|int|float|bool|vector|string)\s+%s\s*\(" % fn, t, re.M)
+        assert found, "%s: function %s is gone - %s" % (feature, fn, spec["quote"])
+
+
+def test_the_gun_fleet_sits_at_exactly_100():
+    # stock gatherNavy (aiassertivewall.xs 7406) drains every warship whose plan's desired priority is not exactly
+    # 24, 25, 99 or 100 into the amphibious assault - the August pool at 96 would be emptied at the first landing
+    t = _strip_comments(core("aipiraterules.xs"))
+    assert re.search(r"aiPlanSetDesiredPriority\(gIstanbulGunFleetPlan,\s*100\)", t)
+    assert "if (aiPlanGetDesiredPriority(unitPlanID) == 99)" in core("aiassertivewall.xs")
+    assert "aiPlanGetDesiredPriority(unitPlanID) == 100 ||" in core("aiassertivewall.xs")
+

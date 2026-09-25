@@ -326,16 +326,20 @@ minInterval 1
       xsEnableRule("istanbulPalaceMission");
       xsEnableRule("istanbulPalaceHomeKiller");
       xsEnableRule("istanbulPalaceHold");
+      // ON - THE FLEET SPLIT (owner 2026-09-25, restored: 'Pirate ships should attack the Naval Guns, because they have
+      // bonus against them (same monitors) and other ships should guard the Naval Forts'). Pirate hulls and monitors go
+      // to the gun fleet and attack the enemy's zpAntiShipGun; every other warship stays with the fort rules above.
+      // Deleted by 570d65a2 (2026-08-27) without the owner's word - a regression; see
+      // docs/briefs/2026-09-25-istanbul-fleet-split-restore.md.
+      xsEnableRule("istanbulGunFleet");
+      xsEnableRule("istanbulGunRaid");
+      xsEnableRule("istanbulMonitorMaintain");
       // the gun REBUILD - see buildPirateSocketTowers; the map already
       // grants zpSPCIstanbulSocketsAI and waits for the proxy
       xsEnableRule("buildPirateSocketTowers");
-      // EXPERIMENT 2026-08-27 (user directive): the custom beach-marker
-      // landing is OFF; the map now uses the STOCK AssertiveWall amphibious
-      // assault instead. istanbulLanding is left in the file, simply not
-      // enabled, so this is a one-line revert.
-      // The stage stays cForbidAmphibiousAssault (set above) until the gate
-      // rule below sees a fixed gun die - that preserves the one gate the
-      // custom rule had which the stock system has no equivalent for.
+      // The landing is the STOCK AssertiveWall amphibious assault (user directive 2026-08-27). The custom landing
+      // (istanbulLanding) and its gate (istanbulAmphibiousGate, 'a fixed gun must die first') were deleted by 570d65a2:
+      // the stock landing runs ungated (run 14, 2026-09-25: stage 0 landings from 08:47).
       xsEnableRule("istanbulAreaRecalc");   // one-shot KB rebuild at ~90s
    }
 
@@ -351,7 +355,7 @@ minInterval 1
       xsEnableRule("londonSetup");
       xsEnableRule("londonPlanPlacer");
       aiSetHandler("londonBuildingPlacementFailedHandler", cXSBuildingPlacementFailedHandler);
-      aiEcho("LONDON p" + cMyID + " build r12 2026-09-25 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r13 2026-09-25 - marker found, London rules on");
    }
 
    // Forward base at the enemy construction block %%%%%%%%%%%%%%%%%%%%%%%
@@ -363,7 +367,7 @@ minInterval 1
    {
       gPirateForwardBaseMap = true;
       xsEnableRule("pirateForwardBaseWatch");
-      aiEcho("PIRATEFB p" + cMyID + " build r12 2026-09-25 - " + kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny)
+      aiEcho("PIRATEFB p" + cMyID + " build r13 2026-09-25 - " + kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny)
              + " construction markers, forward base at the enemy construction block");
    }
 
@@ -7214,25 +7218,130 @@ minInterval 10
 //==============================================================================
 // istanbulGunFleet   -   the standing Fixed-Gun-killer pool (THE FLEET SPLIT)
 //
-// Fort guardians / gun killers / landing fleet. Gun-fleet membership has ONE
-// definition, istanbulIsGunFleetHull below: pirate hulls (the gun's 0.5 malus
-// plus the Breaching Shot bonus) and the per-civ monitor-class (the building
-// bonus) - pirates are rare, and monitors are the answer for a player with no
-// pirate settlement. The pool is a reserve at priority 96: above the guardian
-// killer sweep (90) and the fort garrison (95), below the landing army (99)
-// and transport (100) - no KOTH rule can steal from it, and it can never
-// steal from the landing. The escort helper skips >= 95, so pool hulls never
-// get pulled into escort duty. gIstanbulGunFleetMin is the FLOOR: fewer hulls
-// than this never engage a fixed gun - one ship against a gun is a gift.
+// Owner 2026-09-25: 'Pirate ships should attack the Naval Guns, because they have bonus against them (same monitors)
+// and other ships should guard the Naval Forts.' Restored from 893135a4 after 570d65a2 deleted it (2026-08-27).
+//
+// Gun-fleet membership has ONE definition, istanbulIsGunFleetHull below: pirate hulls (the gun's 0.5 malus plus the
+// Breaching Shot bonus) and the per-civ monitor-class (the building bonus). Every other warship is the fort rules'.
+//
+// PRIORITY 100, not the original 96. Since 570d65a2 the stock landing runs here, and stock gatherNavy
+// (aiassertivewall.xs 7406) drains every warship whose plan's DESIRED priority is not exactly 24, 25, 99 or 100 into
+// gAmphibiousAssaultPlan - a 96 pool would be emptied at the first landing. At 100 the fort keepers
+// (addWarshipsToPlan at pri 100 skips >= 100), istanbulFortRaid (skips >= 99) and the KOTH combat plan (60) cannot take
+// a pool hull either. The pool itself TAKES pirate and monitor hulls out of the two fort keepers (gIstanbulGuardianPlan,
+// gIstanbulGarrisonPlan - the owner's run 14 screenshot: pirate ships parked at a Naval Fort) and out of anything
+// below 99; it leaves the stock landing (99) and transports alone. gIstanbulGunFleetMin is the FLOOR: fewer hulls than
+// this never engage a gun - one ship against a gun is a gift.
 //==============================================================================
+int gIstanbulGunFleetPlan = -1;
+int gIstanbulGunFleetMin = 2;    // FLOOR: never attack a gun with fewer
+
+// The single definition of gun-fleet membership - every rule asks this.
+bool istanbulIsGunFleetHull(int unitID = -1)
+{
+   if (kbUnitIsType(unitID, cUnitTypeAbstractPirateShip) == true)
+   {
+      return (true);
+   }
+   if (kbUnitGetProtoUnitID(unitID) == gMonitorUnit)
+   {
+      return (true);
+   }
+   return (false);
+}
+
+rule istanbulGunFleet
+inactive
+minInterval 10
+{
+   // ONE query over all warships, filtered by the membership predicate - two
+   // interleaved simple queries would share the single static query object
+   int fleetQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int fleetCount = kbUnitQueryExecute(fleetQuery);
+   if (fleetCount <= 0)
+   {
+      return;
+   }
+   if (gIstanbulGunFleetPlan < 0)
+   {
+      gIstanbulGunFleetPlan = aiPlanCreate("Istanbul Gun Fleet", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip, 0, 0, 24);
+      aiPlanSetNoMoreUnits(gIstanbulGunFleetPlan, true);
+      aiPlanSetDesiredPriority(gIstanbulGunFleetPlan, 100);   // exactly 100: see the header
+      aiPlanSetActive(gIstanbulGunFleetPlan);
+   }
+   if (aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip) >= 24)
+   {
+      return;   // at the plan cap - aiPlanAddUnit would fail silently
+   }
+   int collected = 0;
+   int tempUnit = -1;
+   int tempPlan = -1;
+   for (i = 0; < fleetCount)
+   {
+      tempUnit = kbUnitQueryGetResult(fleetQuery, i);
+      if (istanbulIsGunFleetHull(tempUnit) == false)
+      {
+         continue;
+      }
+      tempPlan = kbUnitGetPlanID(tempUnit);
+      if (tempPlan == gIstanbulGunFleetPlan)
+      {
+         continue;   // already ours
+      }
+      if (tempPlan >= 0 && tempPlan != gIstanbulGuardianPlan && tempPlan != gIstanbulGarrisonPlan)
+      {
+         if (aiPlanGetType(tempPlan) == cPlanTransport)
+         {
+            continue;   // a transport keeps its ship
+         }
+         if (aiPlanGetActualPriority(tempPlan) >= 99)
+         {
+            continue;   // the stock landing (gAmphibiousAssaultPlan, 99) keeps its ships
+         }
+      }
+      aiPlanAddUnit(gIstanbulGunFleetPlan, tempUnit);
+      collected = collected + 1;
+   }
+   if (collected > 0)
+   {
+      aiEcho("GUNFLEET p" + cMyID + " +" + collected + " hulls, "
+                + aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip) + " held");
+   }
+}
+
 //==============================================================================
 // istanbulMonitorMaintain - monitors are otherwise NEVER trained here:
 // navyManager rewrites gMonitorMaintain's quantity to the count of EXISTING
 // monitors (0) every 30 s (aimilitary.xs:2385-2392), so the stock plan can
 // never bootstrap. Own global, stock recipe (donor aimilitary.xs:2025),
-// gated on availability + a live dock. Trained monitors join the pri-96 gun
-// fleet automatically and break the STAGED beach-gun deadlocks.
+// gated on availability + a live dock. Trained monitors join the gun fleet
+// (pri 100) automatically. Restored from 893135a4 (owner 2026-09-25).
 //==============================================================================
+int gIstanbulMonitorMaintain = -1;
+
+rule istanbulMonitorMaintain
+inactive
+minInterval 30
+{
+   if (gIstanbulMonitorMaintain >= 0)
+   {
+      xsDisableSelf();
+      return;
+   }
+   if (kbProtoUnitAvailable(gMonitorUnit) == false)
+   {
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypeAbstractDock, cUnitStateAlive) < 1)
+   {
+      return;
+   }
+   gIstanbulMonitorMaintain = createSimpleMaintainPlan(gMonitorUnit, 2, false, kbBaseGetMainID(cMyID), 1);
+   aiEcho("MONITORMAINT p" + cMyID + " maintain up - 2 monitor-class hulls");
+   xsDisableSelf();
+}
+
 //==============================================================================
 // THE PALACE CHAIN - the other half of the victory condition
 //
@@ -7972,22 +8081,108 @@ minInterval 15
 // The anti-ship guns are what stop a fleet reaching anything, so this rule does
 // NOT wait for a fort of our own the way istanbulFortRaid does.
 //
-// WHICH HULLS: the FLEET SPLIT (fort guardians / gun killers / landing fleet).
-// Gun killers are whatever istanbulIsGunFleetHull admits - pirate hulls and
-// the per-civ monitor-class - held by istanbulGunFleet at pri 96 so no KOTH
-// rule can steal them.
+// WHICH HULLS: the FLEET SPLIT (owner 2026-09-25). Gun killers are whatever
+// istanbulIsGunFleetHull admits - pirate hulls and the per-civ monitor-class -
+// held by istanbulGunFleet at pri 100 so no KOTH rule can steal them. Every
+// other warship guards the Naval Forts.
 //
-// Two ways to qualify:
-//    >= gIstanbulGunFleetMin hulls in the gun fleet   (pirates + monitors)
-//    >= gIstanbulGunShipMin  warships of any kind     (fallback: empty pool)
-// The fallback never touches ships in plans >= 90 - reserves keep their jobs -
-// so an AI with no specialists still answers the guns without wrecking the
-// KOTH fleet.
-//
-// While a landing wave is staged, gIstanbulGunPriority (the gun covering the
-// beach) overrides the nearest-to-home pick, so the gun fleet and the landing
-// converge on the same blocker instead of zigzagging between two targets.
+// Restored from 893135a4 without two parts of the original:
+//  - the FALLBACK (>= 4 warships of any kind onto a gun when the pool is empty)
+//    sent non-pirate ships at the guns - against the owner's split; an open
+//    owner question in the brief, not code;
+//  - gIstanbulGunPriority, the beach gun of the deleted custom landing.
 //==============================================================================
+int gIstanbulGunRaidEcho = -60000;   // last 'waiting' echo (ms)
+
+rule istanbulGunRaid
+inactive
+minInterval 15
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   if (gIstanbulGunFleetPlan < 0)
+   {
+      return;   // no pool yet
+   }
+
+   int gunQuery = createSimpleUnitQuery(cUnitTypezpAntiShipGun, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   int gunCount = kbUnitQueryExecute(gunQuery);
+   if (gunCount <= 0)
+   {
+      return;
+   }
+
+   // the enemy gun nearest to our base; resolved before any other query runs
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int targetGun = -1;
+   float bestDist = 100000.0;
+   float gunDist = 0.0;
+   int tempUnit = -1;
+   for (i = 0; < gunCount)
+   {
+      tempUnit = kbUnitQueryGetResult(gunQuery, i);
+      gunDist = distance(kbUnitGetPosition(tempUnit), homeBase);
+      if (gunDist < bestDist)
+      {
+         bestDist = gunDist;
+         targetGun = tempUnit;
+      }
+   }
+   if (targetGun < 0)
+   {
+      return;
+   }
+
+   // stale-roster guard (17:39 test, August: "fleet 7/2 -> 0 hulls" - dead ships
+   // counted as held): only hulls that still belong to us count
+   int gunHeld = 0;
+   int rosterN = aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip);
+   for (i = 0; < rosterN)
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (kbUnitGetPlayerID(tempUnit) != cMyID)
+      {
+         continue;
+      }
+      gunHeld = gunHeld + 1;
+   }
+   if (gunHeld < gIstanbulGunFleetMin)
+   {
+      // not a gun fleet yet - one ship against a gun is a gift; the refusal is echoed once a minute
+      if (xsGetTime() - gIstanbulGunRaidEcho >= 60000)
+      {
+         gIstanbulGunRaidEcho = xsGetTime();
+         aiEcho("GUNRAID p" + cMyID + " waiting: gun fleet " + gunHeld + "/" + gIstanbulGunFleetMin + ", " + gunCount
+                + " enemy guns");
+      }
+      return;
+   }
+
+   int sent = 0;
+   for (i = 0; < rosterN)
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (kbUnitGetPlayerID(tempUnit) != cMyID)
+      {
+         continue;   // stale roster entry
+      }
+      aiTaskUnitWork(tempUnit, targetGun);
+      sent = sent + 1;
+   }
+   aiEcho("GUNRAID p" + cMyID + " fleet " + gunHeld + "/" + gIstanbulGunFleetMin
+             + " -> " + sent + " gun-fleet hulls onto gun " + targetGun);
+}
+
 //==============================================================================
 // istanbulAreaRecalc   -   one-shot KB rebuild, the areaRebuild question answered
 //
@@ -8394,6 +8589,21 @@ void aiTestPlacementFailedHandler(int baseID = -1, int puid = -1)
    if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
       gPlacementFailuresDock = gPlacementFailuresDock + 1;
+      // where the dock plan searched (echo only, 2026-09-25: Istanbul run 14 - every dock failure 'placement failed',
+      // 12-15 per AI, one AI never got a dock): the plan's two placement points (aibuildings.xs 1374: main base,
+      // navy point) and gNavyVec
+      int dockFailPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, puid);
+      vector dockFailP0 = cInvalidVector;
+      vector dockFailP1 = cInvalidVector;
+      if (dockFailPlan >= 0)
+      {
+         dockFailP0 = aiPlanGetVariableVector(dockFailPlan, cBuildPlanDockPlacementPoint, 0);
+         dockFailP1 = aiPlanGetVariableVector(dockFailPlan, cBuildPlanDockPlacementPoint, 1);
+      }
+      aiEcho("AIDOCKFAIL p" + cMyID + " #" + gPlacementFailuresDock + " plan " + dockFailPlan
+             + " point0 " + xsVectorGetX(dockFailP0) + "/" + xsVectorGetZ(dockFailP0)
+             + " point1 " + xsVectorGetX(dockFailP1) + "/" + xsVectorGetZ(dockFailP1)
+             + " navyvec " + xsVectorGetX(gNavyVec) + "/" + xsVectorGetZ(gNavyVec));
    }
    buildingPlacementFailedHandler(baseID, puid);
 }
