@@ -452,3 +452,18 @@ class TestRandomBaseHeight:
                         'rmSetAreaBaseHeight(a, rmRandFloat(0.6, 0.9)); rmBuildArea(a); }')
         area = next(iter(run_src(src).areas.values()))
         assert area.base_height == pytest.approx(0.6)
+
+
+class TestRouteWaypointsFromTheNominalArm:
+    """zpnewguinea.xs creates one route and adds its waypoints in both arms of `if (mapVariant == 1)`; keeping both made
+    one zigzag route across the map, and the continent's 'avoid trade route' cut the land in half."""
+
+    def test_only_the_nominal_arm_adds_waypoints(self):
+        src = HEADER + ('int v = rmRandInt(1, 2); int tr = rmCreateTradeRoute();\n'
+                        'if (v == 1) { rmAddTradeRouteWaypoint(tr, 0.1, 0.0); rmAddTradeRouteWaypoint(tr, 0.9, 0.0); }\n'
+                        'else { rmAddTradeRouteWaypoint(tr, 0.1, 1.0); rmAddTradeRouteWaypoint(tr, 0.9, 1.0); }\n'
+                        'rmBuildTradeRoute(tr, "water_trail"); }')
+        ex = run_src(src)
+        # lo roll: v = 1, the then arm is nominal
+        assert list(ex.route_waypoints.values()) == [[(0.1, 0.0), (0.9, 0.0)]]
+        assert ex.waypoints == [(0.1, 0.0), (0.9, 0.0)]

@@ -1710,7 +1710,7 @@ class Extractor:
             return h
         if name == "rmRiverAddWaypoint":
             r = res.rivers.get(args[0])
-            if r is not None:
+            if r is not None and self.alt_depth == 0:     # nominal arm only, as for route waypoints
                 r.waypoints.append((args[1], args[2]))
             return 0
         if name == "rmRiverSetShallowRadius":
@@ -1860,6 +1860,12 @@ class Extractor:
             res.route_waypoints[h] = []
             return h
         if name == "rmAddTradeRouteWaypoint":
+            # Waypoints from the NOMINAL arm only (2026-09-25): zpnewguinea.xs creates one route and adds its five
+            # waypoints in both arms of `if (mapVariant == 1)` (south coast or north coast); keeping both made one
+            # zigzag route straight across the map, and the continent's 'avoid trade route' cut the land in half
+            # (live 2p minimap: one continent, a single route along the coast).
+            if self.alt_depth > 0:
+                return 0
             res.waypoints.append((args[1], args[2]))
             if args[0] in res.route_waypoints:
                 res.route_waypoints[args[0]].append((args[1], args[2]))
