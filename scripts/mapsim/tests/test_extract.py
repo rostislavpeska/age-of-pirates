@@ -280,3 +280,24 @@ class TestNoBlockScope:
         ex = run_src(self.SRC, Scenario(4, 2))
         a = next(a for a in ex.areas.values() if a.name == "site2")
         assert (a.x, a.z) == (0.5, 0.25)
+
+
+class TestHalfKnownAnchors:
+    """zpnewguinea.xs (every player count) and zplabradorcoast.xs (6 players) crashed mapsim with a TypeError: an
+    anchor with a literal x and a runtime z reached the geometry code as (0.5, None)."""
+
+    SRC = HEADER + ('float zr = rmRandFloat(0.3, 0.6);\n'
+                    'int c = rmCreateArea("center"); rmSetAreaSize(c, 0.04, 0.04); rmSetAreaLocation(c, 0.5, zr);\n'
+                    'rmBuildArea(c);\n'
+                    'int d = rmCreateObjectDef("stopper"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                    'rmPlaceObjectDefAtLoc(d, 0, 0.29, rmPlayerLocZFraction(3), 1); }')
+
+    def test_random_axis_takes_the_middle_and_unknown_axis_makes_it_runtime(self):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import run_checks
+        rs = extraction_to_resolved(run_src(self.SRC, Scenario(6, 2)))
+        a = next(a for a in rs.areas if a.name == "center")
+        assert (a.x, round(a.z, 3), a.approx) == (0.5, 0.45, True)
+        p = next(p for p in rs.placements if p.name == "stopper")
+        assert (p.x is None) == (p.z is None)
+        run_checks(rs)                      # no TypeError

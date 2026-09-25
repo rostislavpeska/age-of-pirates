@@ -7,7 +7,7 @@ engine-placed areas — flagged, never guessed.
 
 from __future__ import annotations
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Tuple
 
 from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario, height_floods
 from scripts.mapsim.units import MapGrid
@@ -16,6 +16,28 @@ from scripts.mapsim.xs_extract import Extraction, Tainted, XArea, XDef
 
 def _num(v: Any) -> Optional[float]:
     return None if v is None or isinstance(v, Tainted) else float(v)
+
+
+def _anchor(xv: Any, zv: Any) -> Tuple[Optional[float], Optional[float], bool]:
+    """(x, z, approx) of an authored anchor. A random draw with literal bounds on ONE axis (zpnewguinea.xs 263:
+    rmSetAreaLocation(center, 0.5, centrePlacement) with centrePlacement = rmRandFloat(0.3, 0.6)) takes the middle
+    of its range, marked approximate. When one axis stays unknown (zplabradorcoast.xs 266 at 6 players:
+    rmPlayerLocZFraction(...)), the anchor is runtime on BOTH axes - a half-known anchor crashed every geometry
+    consumer (TypeError on None), 2026-09-25 sweep: New Guinea at every player count, Labrador Coast at 6."""
+    x, z = _num(xv), _num(zv)
+    if (x is None) == (z is None):
+        return x, z, False
+
+    def mid(v):
+        if isinstance(v, Tainted) and v.lo is not None and v.hi is not None \
+                and not isinstance(v.lo, Tainted) and not isinstance(v.hi, Tainted):
+            return (float(v.lo) + float(v.hi)) / 2.0
+        return None
+    x = x if x is not None else mid(xv)
+    z = z if z is not None else mid(zv)
+    if x is None or z is None:
+        return None, None, False
+    return x, z, True
 
 
 def _literal_players(raw: List[Any]) -> List[int]:
@@ -66,8 +88,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     areas: List[ResolvedArea] = []
     resolved_anchor: dict = {}   # extraction handle -> (x, z) incl. ring anchors
     for handle, a in ex.areas.items():
-        x, z = _num(a.x), _num(a.z)
-        approx = False
+        x, z, approx = _anchor(a.x, a.z)
         if x is None and ring:
             # Player/team-anchored areas (rmSetAreaLocPlayer/LocTeam) get a
             # deterministic NOMINAL anchor on the placement ring.
@@ -163,7 +184,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                 proto_ref = getattr(d.proto, "str_prefix", None) or ""
         else:
             proto_ref = str(d.proto or d.name)
-        x, z = _num(p.x), _num(p.z)
+        x, z, p_approx = _anchor(p.x, p.z)
         runtime = None
         if isinstance(p.x, Tainted) or isinstance(p.z, Tainted):
             runtime = getattr(p.x, "expr", None) or getattr(p.z, "expr", None) or "runtime"
@@ -173,7 +194,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         players = _literal_players(p.players)
         placements.append(ResolvedPlacement(
             name=d.name, line=p.def_line, proto=proto_ref, kind=kind,
-            x=x, z=z, runtime_expr=runtime, approx=False,
+            x=x, z=z, runtime_expr=runtime, approx=p_approx,
             min_dist_m=_num(d.min_dist) or 0.0,
             max_dist_m=_num(d.max_dist) or 0.0,
             terrain_affinity="either",           # curation semantics; unknown from .xs
