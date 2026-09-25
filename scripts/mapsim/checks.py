@@ -361,15 +361,16 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
             for r in radii:
                 if satisfied:
                     break
+                me = (anchor_m[0], anchor_m[1], p.line)   # its own deposited unit is no obstacle
                 if r == 0.0:
-                    if spec_allowed(field_ctx, anchor_m, spec, p.line, gf) is not False:
+                    if spec_allowed(field_ctx, anchor_m, spec, p.line, gf, exclude_self=me) is not False:
                         satisfied = True
                     continue
                 for k in range(16):
                     theta = 2.0 * math.pi * k / 16.0
                     sample = (anchor_m[0] + r * math.cos(theta),
                               anchor_m[1] + r * math.sin(theta))
-                    if spec_allowed(field_ctx, sample, spec, p.line, gf) is not False:
+                    if spec_allowed(field_ctx, sample, spec, p.line, gf, exclude_self=me) is not False:
                         satisfied = True
                         break
             if not satisfied:

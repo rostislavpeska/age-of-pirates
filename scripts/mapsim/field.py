@@ -244,7 +244,8 @@ class FieldContext:
 
 def point_allowed(ctx: FieldContext, p_m: Tuple[float, float], spec: Dict[str, Any],
                   before_line: Optional[int] = None,
-                  exclude_line: Optional[int] = None) -> Optional[bool]:
+                  exclude_line: Optional[int] = None,
+                  exclude_self=None) -> Optional[bool]:
     """True/False when the constraint kind is evaluable; None when opaque.
 
     exclude_line: skip class shapes created on this line — an area's own
@@ -317,6 +318,9 @@ def point_allowed(ctx: FieldContext, p_m: Tuple[float, float], spec: Dict[str, A
                 continue
             if exclude_line is not None and line == exclude_line:
                 continue
+            if exclude_self is not None and line == exclude_self[2] \
+                    and abs(px - exclude_self[0]) < 0.5 and abs(pz - exclude_self[1]) < 0.5:
+                continue    # the placement's own unit (zptorresstrait.xs 'player TC' avoiding 'TownCenter')
             if dist(p_m, (px, pz)) < d:
                 return False
         return True

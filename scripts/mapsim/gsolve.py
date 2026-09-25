@@ -127,7 +127,7 @@ class _GrownFields:
 
 
 def spec_allowed(ctx: FieldContext, p_m, spec: Dict, line: int, gf: Optional["_GrownFields"] = None,
-                 exclude_line: Optional[int] = None) -> Optional[bool]:
+                 exclude_line: Optional[int] = None, exclude_self=None) -> Optional[bool]:
     """One constraint at one point: class / area / terrain distances from the BUILT grid when gf is given (grown
     reality, not authored discs), everything else - and whatever the grid cannot answer - through
     field.point_allowed. Shared by the grouping solver and the object-placement check (2026-09-25: Eyre Basin's
@@ -157,7 +157,8 @@ def spec_allowed(ctx: FieldContext, p_m, spec: Dict, line: int, gf: Optional["_G
             if d is not None:
                 ok = d <= float(spec["distance_m"])
     if ok is None:
-        ok = point_allowed(ctx, p_m, spec, before_line=line, exclude_line=exclude_line)
+        ok = point_allowed(ctx, p_m, spec, before_line=line, exclude_line=exclude_line,
+                           exclude_self=exclude_self)
     return ok
 
 
