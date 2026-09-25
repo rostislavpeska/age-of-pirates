@@ -590,8 +590,9 @@ def check_koth(rs: ResolvedScene) -> List[Finding]:
     nx, nz, step = tg.nx, tg.nz, gf.step_m
 
     def passable(i, j):
-        if tg.cliff_band and tg.cliff_band[j][i]:
-            return False
+        # Land and walkable shallows; cliff rims do NOT separate: the model cannot see the ramps that
+        # rmSetAreaCliffEdge leaves in a rim, and the question is whether WATER isolates the hill (Winter Wonderland
+        # II's hill plateau inside its cliff terraces is mainland: owner ground truth 2026-09-25).
         return not tg.water[j][i] or tg.wwalk[j][i]
 
     deep = [(i, j) for j in range(nz) for i in range(nx) if tg.water[j][i] and not tg.wwalk[j][i]]
@@ -627,7 +628,25 @@ def check_koth(rs: ResolvedScene) -> List[Finding]:
                 if 0 <= ni < nx and 0 <= nj < nz and (ni, nj) not in seen and passable(ni, nj):
                     seen.add((ni, nj))
                     q.append((ni, nj))
-        tiles = round(len(seen) * (step / rs.grid.TILE_M) ** 2)
+        # 'tiles' = the hill's own island: land connected through LAND only. Walkable shallows decide player reach
+        # but do not make the island bigger - Barrier Reef's KotH islet sits in reef shallows that join ~12 700
+        # tiles of reef and islands in the live editor capture (none reaches a player), yet it is a tiny island
+        # (owner ground truth). 'reach_tiles' is the whole land + shallows component.
+        cell_tiles = (step / rs.grid.TILE_M) ** 2
+        land0 = next(((i, j) for i, j in sorted(seen, key=lambda c: (c[0] - i0) ** 2 + (c[1] - j0) ** 2)
+                      if not tg.water[j][i]), None)
+        own = set()
+        if land0 is not None:
+            own = {land0}
+            q2 = deque([land0])
+            while q2:
+                i, j = q2.popleft()
+                for ni, nj in ((i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)):
+                    if (ni, nj) in seen and (ni, nj) not in own and not tg.water[nj][ni]:
+                        own.add((ni, nj))
+                        q2.append((ni, nj))
+        tiles = round(len(own) * cell_tiles)
+        reach_tiles = round(len(seen) * cell_tiles)
         reaches = [k for k, s_ in enumerate(starts) if gf.cell(s_) in seen]
         code = tg.land[j0][i0]
         land_name = (tg.land_order[code - 1] if code else
@@ -637,13 +656,16 @@ def check_koth(rs: ResolvedScene) -> List[Finding]:
         island = not reaches
         tiny = island and tiles < KOTH_TINY_TILES
         where = ("a tiny island" if tiny else "an island" if island else "land connected to a player start")
-        msg = (f"hill on {land_name!r}: {where} of {tiles} tiles; nearest deep water "
+        msg = (f"hill on {land_name!r}: {where} of {tiles} land tiles"
+               + (f" ({reach_tiles} with the walkable shallows)" if reach_tiles > tiles else "")
+               + "; nearest deep water "
                f"{'none' if deep_m is None else f'{deep_m} m'}"
                + (f" - a ship within {KOTH_CAPTURE_M:g} m captures it" if ship else ""))
         verdict = "KOTH_TINY_ISLAND" if tiny else "KOTH_ISLAND" if island else "KOTH_MAINLAND"
         out.append(Finding("koth", p.name, verdict, "info", msg,
                            approximate=True,
-                           details={"land": land_name, "tiles": tiles, "island": island, "tiny": tiny,
+                           details={"land": land_name, "tiles": tiles, "reach_tiles": reach_tiles,
+                                    "island": island, "tiny": tiny,
                                     "reaches_player_start": len(reaches) > 0, "deep_water_m": deep_m,
                                     "ship_capture": ship, "hill_m": [round(hx, 1), round(hz, 1)]}))
     return out

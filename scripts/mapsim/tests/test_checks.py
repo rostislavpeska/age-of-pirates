@@ -359,3 +359,44 @@ class TestKothFinding:
         src = tmp_path / "koth.xs"
         src.write_text(KOTH_SEA.replace("XX", "0.9").replace("ZZ", "0.1"), encoding="utf-8")
         assert check_koth(extraction_to_resolved(extract(src, Scenario(2, 2)))) == []
+
+
+class TestKothConnectivity:
+    """Refinements measured against the live KotH captures (forced-KotH editor copies, 2026-09-25)."""
+
+    def _koth(self, tmp_path, body, sc=Scenario(2, 2, koth=True)):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import check_koth
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "k.xs"
+        src.write_text("void main(void) {\n rmSetMapSize(400, 400);\n" + body + "\n}\n", encoding="utf-8")
+        return check_koth(extraction_to_resolved(extract(src, sc)))
+
+    def test_a_cliff_ring_does_not_isolate_the_hill(self, tmp_path):
+        # Winter Wonderland II: the hill plateau inside cliff terraces is mainland (owner) - rims have ramps the
+        # model cannot see, and the question is whether WATER isolates the hill.
+        (f,) = self._koth(tmp_path, '''
+ rmTerrainInitialize("grass");
+ rmSetPlacementSection(0.1, 0.9); rmPlacePlayersCircular(0.35, 0.35, 0.0);
+ int mesa = rmCreateArea("mesa"); rmSetAreaSize(mesa, 0.05, 0.05); rmSetAreaLocation(mesa, 0.5, 0.5);
+ rmSetAreaCliffType(mesa, "Rocky Mountain2"); rmSetAreaCliffHeight(mesa, 6, 1, 0.5); rmBuildArea(mesa);
+ ypKingsHillPlacer(0.5, 0.5, 0.0, 0);''')
+        assert f.verdict == "KOTH_MAINLAND", f.message
+
+    def test_shallows_join_but_do_not_enlarge_the_island(self, tmp_path):
+        # Barrier Reef: the islet sits in walkable reef shallows joining other land; its own island stays tiny.
+        (f,) = self._koth(tmp_path, '''
+ rmSetSeaLevel(1.0); rmTerrainInitialize("water"); rmSetSeaType("caribbean coast");
+ rmSetPlacementSection(0.1, 0.9); rmPlacePlayersCircular(0.2, 0.2, 0.0);
+ int home = rmCreateArea("home"); rmSetAreaSize(home, 0.3, 0.3); rmSetAreaLocation(home, 0.5, 0.5);
+ rmSetAreaBaseHeight(home, 2.0); rmSetAreaCoherence(home, 1.0); rmBuildArea(home);
+ int reef = rmCreateArea("reef"); rmSetAreaSize(reef, 0.03, 0.03); rmSetAreaLocation(reef, 0.88, 0.12);
+ rmSetAreaBaseHeight(reef, 0.8); rmSetAreaCoherence(reef, 1.0); rmBuildArea(reef);
+ int other = rmCreateArea("other isle"); rmSetAreaSize(other, rmAreaTilesToFraction(900), rmAreaTilesToFraction(900));
+ rmSetAreaLocation(other, 0.93, 0.07); rmSetAreaBaseHeight(other, 2.0); rmSetAreaCoherence(other, 1.0); rmBuildArea(other);
+ int isle = rmCreateArea("koth isle"); rmSetAreaSize(isle, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+ rmSetAreaLocation(isle, 0.84, 0.16); rmSetAreaBaseHeight(isle, 2.0); rmSetAreaCoherence(isle, 1.0); rmBuildArea(isle);
+ ypKingsHillPlacer(0.84, 0.16, 0.0, 0);''')
+        assert f.verdict == "KOTH_TINY_ISLAND", f.message
+        assert f.details["tiles"] < 400 < f.details["reach_tiles"]
+        assert not f.details["reaches_player_start"]
