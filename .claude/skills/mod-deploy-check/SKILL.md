@@ -1,6 +1,6 @@
 ---
 name: mod-deploy-check
-description: Pre-zip audit and deployment protocol for publishing the Age of Pirates mod to the ageofempires.com mod portal. Use before every zip/upload, when asked "is the mod folder clean", "check before I zip", "anything weird in the mod files", "deployment protocol", "how do I publish/update the mod", or after a session that touched data/*.xml (stale XMB twins). Deployment is from LOCAL FILES, never from git.
+description: Pre-zip audit, deployment protocol and the zip builder for the Age of Pirates mod portal. Use before every zip/upload, when asked to "compile/export prod", "production zip", "beta zip", "strip <map> from the release", "is the mod folder clean", "check before I zip", "deployment protocol", "how do I publish/update the mod", or after a session that touched data/*.xml (stale XMB twins). Deployment is from LOCAL FILES, never from git.
 ---
 
 # Deploying Age of Pirates - protocol and pre-zip check
@@ -78,10 +78,9 @@ an estimate from that ratio.
    directly inside the zip, no wrapper folder, nothing else. Write the zip
    OUTSIDE the game folders (the mod root is fine; `*.zip` is gitignored).
    `info.json` is optional in a zipped submission.
-   **The zip is made by the user, by hand, as the final deployment step.** Scripted zip
-   export has proven less reliable than the manual one (2026-09-17). Never create a zip
-   unprompted or as a side effect of the check; do it only when the user explicitly asks
-   for the export, and then audit the result with `--zip` before they upload it.
+   The owner usually zips by hand. Build one only when the owner asks for the export
+   ("compile prod", "export the zip"), never unprompted or as a side effect of the check,
+   and always with `make_zip.py` (next section), then audit the result with `--zip`.
 5. **Size**: compressed zip <= 2 GB.
 6. **Upload** at https://www.ageofempires.com/mods/create/ (new) or the mod's own
    page (update). The portal refuses a mod without **tags**; set thumbnail and
@@ -91,6 +90,46 @@ an estimate from that ratio.
    compare the game process start time against the XMB mtimes before judging
    anything (the engine loads XMBs at process start).
 8. **Then** commit and push - git records what was shipped; it does not ship it.
+
+## Building the zip: beta or production
+
+```bash
+Z=.claude/skills/mod-deploy-check/scripts/make_zip.py
+python $Z age-of-pirates-beta-<date>.zip                                           # beta, nothing stripped
+python $Z age-of-pirates-prod-<date>.zip --strip-map istanbul --strip-map london   # prod without two maps
+python .claude/skills/mod-deploy-check/scripts/prezip_check.py --zip <that zip>    # then the audit
+```
+
+Both kinds use the same script, and both can strip maps. What differs is who decides (owner 2026-09-25):
+
+| build | strip |
+|---|---|
+| **beta** | full content by default; strip only the maps the owner names in the request |
+| **prod** | **ask first, every time:** "Which maps should I strip from prod?" Often the answer is none. Build only after the answer; never reuse an earlier strip list, never assume one |
+
+**Stripping means maps, nothing else.** `--strip-map NAME` leaves out every file whose name
+contains NAME directly in `randmaps/` or `game/randmaps/`: the `.xs`, the `.xml` (lobby descriptor) and the
+`.mods.xml`. Groupings, protos, art, sounds and icons stay (owner 2026-09-25: no special stripping of units or art).
+Read the printed `STRIP` lines: they must name exactly the maps the owner asked for (a short NAME can match more).
+A NAME matching no `.xs` stops the build.
+
+- **Never strip by changing the repo** (no move, delete or `git mv` of map files). The script leaves them out of
+  the zip only; the folders and git stay as they are.
+- **Why:** on 2026-09-11 a production build moved only `zpistanbulb.xml` out of the folder (a `git mv` to
+  `playground/release-hold`); `zpistanbulb.xs` and `zpistanbulb.mods.xml` shipped, and Istanbul still appeared in
+  the lobby. All files of the map go, and the script checks the finished zip for leftovers.
+- **Always left out:** files in a `backup` folder and gitignored files (the untracked `.tga` exports).
+- **Temp name:** the zip is written as `<name>.part.zip`, which the `*.zip` gitignore rule covers, so a commit in
+  the meantime cannot pick it up. It is renamed only after the check passes (CRC of every entry, the five folders
+  only, no stripped map left). A failed check keeps the `.part.zip` name.
+- **Speed:** deflate level 6, `.png` stored. 2026-09-25 prod: 6,563 files, 2.82 GB -> 1.929 GB in 80 s (the level-9
+  beta took 181 s for 1.896 GB). Headroom to the 2 GB limit is ~70 MB: if a build prints OVER THE LIMIT, the fix is
+  content, not a compression flag.
+- **Checking in game:** the owner's own machine also lists the Steam-root test copies (`000_istanbul`,
+  `00000_zplondon` ...), which never ship. Check a stripped zip's lobby on the test device, not by the root
+  test maps.
+- **Report** the zip name, the `STRIP` lines (or "nothing stripped"), files, size against 2 GB, and the `--zip`
+  audit.
 
 ## Known history
 
