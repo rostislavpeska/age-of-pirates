@@ -76,6 +76,38 @@ def connected_influence_segments(area: ResolvedArea, g) -> List[tuple]:
     return [s for s, k in zip(segs, keep) if k]
 
 
+def _closed_loop_interior(nx: int, nz: int, step: float, g, segs) -> List[Tuple[int, int]]:
+    """Cells inside influence segments that close into loops (every end point shared by an even number of segments):
+    they seed the flood like the segments themselves (2026-09-25). zptorresstrait.xs draws each big island as a
+    triangle of three segments; the live minimaps show solid triangles, where the segment band left the inside sea
+    and 2 of the 6 real Town Centers in it. Even-odd rule over all the segments; [] when any end is open."""
+    if len(segs) < 3:
+        return []
+    ends: Dict[Tuple[float, float], int] = {}
+    for x1, z1, x2, z2 in segs:
+        for q in ((round(x1, 3), round(z1, 3)), (round(x2, 3), round(z2, 3))):
+            ends[q] = ends.get(q, 0) + 1
+    if any(v % 2 for v in ends.values()):
+        return []
+    P = [(g.x_frac_to_m(x1), g.z_frac_to_m(z1), g.x_frac_to_m(x2), g.z_frac_to_m(z2)) for x1, z1, x2, z2 in segs]
+    x_lo = max(0, int(min(min(a, c) for a, _, c, _ in P) / step))
+    x_hi = min(nx - 1, int(max(max(a, c) for a, _, c, _ in P) / step))
+    z_lo = max(0, int(min(min(b, d) for _, b, _, d in P) / step))
+    z_hi = min(nz - 1, int(max(max(b, d) for _, b, _, d in P) / step))
+    out = []
+    for j in range(z_lo, z_hi + 1):
+        pz = (j + 0.5) * step
+        for i in range(x_lo, x_hi + 1):
+            px = (i + 0.5) * step
+            inside = False
+            for ax, az, bx, bz in P:
+                if (az > pz) != (bz > pz) and px < ax + (pz - az) * (bx - ax) / (bz - az):
+                    inside = not inside
+            if inside:
+                out.append((i, j))
+    return out
+
+
 def _area_shapes_m(rs: ResolvedScene, area: ResolvedArea) -> List[tuple]:
     """An area's deterministic footprint: its disc plus a capsule along each
     anchor-connected influence segment (the engine grows the area along
@@ -862,11 +894,17 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
         # the previous "Uluru forms AT its segment ring" calibration was a
         # y-flip misread of the rotated minimap — the massif is at the
         # anchor (E7, see connected_influence_segments).
-        for x1, z1, x2, z2 in connected_influence_segments(area, g):
+        live_segs = connected_influence_segments(area, g)
+        for x1, z1, x2, z2 in live_segs:
             seeds += _raster_cells(nx, nz, step,
                                    g.x_frac_to_m(x1), g.z_frac_to_m(z1),
                                    g.x_frac_to_m(x2), g.z_frac_to_m(z2))
         budget = max(1, round(math.pi * area.radius_m ** 2 / (step * step)))
+        interior = _closed_loop_interior(nx, nz, step, g, live_segs)
+        if interior and len(interior) <= budget:
+            # Only a loop the budget can fill: equal-cost interior seeds beyond the budget would be claimed in
+            # raster order (zpphilippines.xs 'migration island': a 0.04 area inside a wider square of segments).
+            seeds += interior
 
         depth_field = landdist_field = None
         if any(s["kind"] == "terrain" for s in specs):
