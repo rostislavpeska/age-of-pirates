@@ -483,3 +483,37 @@ void main(void) {
         assert by["city"].drift_m == pytest.approx(180.0) and by["decor"].drift_m == 0.0
         v = {f.name: f.verdict for f in run_checks(rs)}
         assert v["city"] != "CONSTRAINT_UNSAT" and v["decor"] == "CONSTRAINT_UNSAT"
+
+
+class TestDenseSearchDisc:
+    """The engine searches the whole min..max disc; check_placement sampled three rings (min, mid, max) of 16
+    directions and missed small qualifying spots. Treasure Island 6p 'Controler 1' ('ferry v. water', 18 m) was UNSAT
+    with a qualifying point 16 m from water inside its 30 m disc; the full sweep lost 41 such false UNSAT errors
+    (Iceland 'stay in cliff2' x19, Malta 'bonus mine', Philippines 'maltese controller 2', ...)."""
+
+    SRC = """
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmTerrainInitialize("grass");
+   int target = rmCreateArea("target");
+   rmSetAreaSize(target, rmAreaTilesToFraction(12), rmAreaTilesToFraction(12));
+   rmSetAreaLocation(target, 0.52, 0.5);
+   rmSetAreaBaseHeight(target, 1.0);
+   rmBuildArea(target);
+   int stay = rmCreateAreaConstraint("stay in target", target);
+   int d = rmCreateObjectDef("probe");
+   rmAddObjectDefItem(d, "Deer", 1, 0.0);
+   rmSetObjectDefMaxDistance(d, 40.0);
+   rmAddObjectDefConstraint(d, stay);
+   rmPlaceObjectDefAtLoc(d, 0, 0.5, 0.5);
+}
+"""
+
+    def test_a_small_spot_between_the_old_rings_is_found(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "dense.xs"
+        src.write_text(self.SRC, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        fs = [f for f in run_checks(rs) if f.name == "probe"]
+        assert fs and all(f.verdict != "CONSTRAINT_UNSAT" for f in fs), [f.message for f in fs]
