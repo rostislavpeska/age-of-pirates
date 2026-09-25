@@ -726,16 +726,16 @@ def ring_positions(player_events, players: int, teams: int):
     # recorded without the flag (hand-built lists) count as nominal.
     player_events = [e for e in player_events if e.get("nominal", True)]
     evs = [e for e in player_events if _is_circ(e) or _is_line(e)]
+    placed = {}
+    for e in player_events:
+        if e.get("call") != "rmPlacePlayer":
+            continue
+        p = e.get("player")
+        x, z = _n(e.get("x")), _n(e.get("z"))
+        if (p is not None and not isinstance(p, Tainted)
+                and x is not None and z is not None):
+            placed.setdefault(int(p), (x, z))
     if not evs:
-        placed = {}
-        for e in player_events:
-            if e.get("call") != "rmPlacePlayer":
-                continue
-            p = e.get("player")
-            x, z = _n(e.get("x")), _n(e.get("z"))
-            if (p is not None and not isinstance(p, Tainted)
-                    and x is not None and z is not None):
-                placed.setdefault(int(p), (x, z))
         if all(k in placed for k in range(1, players + 1)):
             return [placed[k] for k in range(1, players + 1)]
         return None
@@ -783,19 +783,26 @@ def ring_positions(player_events, players: int, teams: int):
         t = e.get("team")
         if t is not None and not isinstance(t, Tainted) and int(t) not in team_evs:
             team_evs[int(t)] = e
+    # A player placed by rmPlacePlayer keeps that spot; group calls place the others (2026-09-25, live editor saves):
+    # Istanbul calls rmPlacePlayer for every player and then a full ring, and the real Town Centers stand on the
+    # rmPlacePlayer spots (2p ring fractions 0.052 / 0.551 against 0.054 / 0.563; the ring would give 0 / 0.5).
+    # Team calls place their own team only; a team no call covers keeps its rmPlacePlayer spots (Versailles: team 1
+    # on a line, the attackers by rmPlacePlayer) or else stands at the map centre (Aztec City places team 0 only;
+    # the real team-1 Town Center is 0.03 from the centre at 2p and 6p).
+    untargeted = [e for e in evs if e.get("team") is None]
+    members = {t: [k for k in range(n) if k * n_teams // n == t] for t in range(n_teams)}
     out = []
-    if len(team_evs) >= 2:
-        members = {t: [k for k in range(n) if k * n_teams // n == t]
-                   for t in range(n_teams)}
-        for k in range(n):
-            t = k * n_teams // n
-            ev = team_evs.get(t, evs[0])
-            mem = members[t]
-            out.append(_pos(ev, mem.index(k), len(mem)))
-        return out
-    ev = evs[0]
     for k in range(n):
-        out.append(_pos(ev, k, n, whole_ring=True))
+        if k + 1 in placed:
+            out.append(placed[k + 1])
+            continue
+        t = k * n_teams // n
+        if t in team_evs:
+            out.append(_pos(team_evs[t], members[t].index(k), len(members[t])))
+        elif untargeted:
+            out.append(_pos(untargeted[0], k, n, whole_ring=True))
+        else:
+            out.append((0.5, 0.5))
     return out
 
 

@@ -417,3 +417,27 @@ class TestNominalPlayerPlacement:
         ex = run_src(src, Scenario(2, 2))
         # lo-roll: t = 0.0, so `t > 0.5` is false - the else arm is nominal
         assert ring_positions(ex.player_events, 2, 2) == [(0.9, 0.9), (0.1, 0.1)]
+
+
+class TestPartialPlayerPlacement:
+    """Explicit rmPlacePlayer spots win over a later ring (Istanbul); team calls place only their team, the others keep
+    rmPlacePlayer spots (Versailles) or stand at the map centre (Aztec City)."""
+
+    def test_explicit_spots_beat_a_later_ring(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + 'rmPlacePlayer(1, 0.6, 0.8); rmPlacePlayer(2, 0.4, 0.2); rmPlacePlayersCircular(0.42, 0.42, 0); }'
+        ex = run_src(src, Scenario(2, 2))
+        assert ring_positions(ex.player_events, 2, 2) == [(0.6, 0.8), (0.4, 0.2)]
+
+    def test_one_team_call_and_explicit_spots(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('rmSetPlacementTeam(1); rmPlacePlayersLine(0.2, 0.9, 0.8, 0.9, 0, 0);\n'
+                        'rmPlacePlayer(1, 0.3, 0.2); rmPlacePlayer(2, 0.5, 0.2); rmPlacePlayer(3, 0.7, 0.2); }')
+        pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
+        assert pos == [(0.3, 0.2), (0.5, 0.2), (0.7, 0.2), (0.2, 0.9), (0.5, 0.9), (0.8, 0.9)]
+
+    def test_team_without_a_call_stands_at_the_centre(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + 'rmSetPlacementTeam(0); rmSetPlacementSection(0.1875, 0.8535); rmPlacePlayersCircular(0.42, 0.42, 0); }'
+        pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
+        assert pos[3:] == [(0.5, 0.5)] * 3 and all(abs(p[0] - 0.5) > 0.1 or abs(p[1] - 0.5) > 0.1 for p in pos[:3])
