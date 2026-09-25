@@ -82,6 +82,23 @@ class TestPointAllowed:
         assert point_allowed(ctx, (219.0, 200.0), spec) is True
         assert point_allowed(ctx, (217.0, 200.0), spec) is False
 
+    def test_route_counts_only_once_built(self):
+        """zpcoldwar.xs builds its islands (20 m 'trade route' constraint) at line 530 and the routes at 641+: the
+        live minimap has land across both routes, where mapsim carved a channel along each."""
+        scene = Scene({
+            "config": {"size_ladder": [[1, 400]], "sea_level": 1.0, "world_circle": True},
+            "areas": [], "placements": [],
+            "trade_route": {"waypoints": [{"point": [0.5, 0.2]}, {"point": [0.5, 0.8]}]},
+            "player_placement": {}, "constraints": {},
+        })
+        rs = scene.resolve(SC)
+        rs.trade_route_lines = [641]
+        ctx = FieldContext(rs)
+        spec = {"kind": "route_distance", "distance_m": 10.0}
+        assert point_allowed(ctx, (205.0, 200.0), spec, before_line=530) is True
+        assert point_allowed(ctx, (205.0, 200.0), spec, before_line=700) is False
+        assert point_allowed(ctx, (205.0, 200.0), spec) is False
+
     def test_opaque_returns_none(self):
         ctx = self._ctx([])
         assert point_allowed(ctx, (0.0, 0.0), {"kind": "opaque", "desc": "x"}) is None
