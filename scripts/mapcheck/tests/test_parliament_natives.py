@@ -405,8 +405,8 @@ class TestLondon:
 
     def test_london_allocates_its_own_three_natives_and_the_jewish_chain(self):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
-        assert "rmAllocateSubCivs(3)" in t
-        for i, civ in ((0, "zpParliament"), (1, "Stuart"), (2, "jewish")):
+        assert "rmAllocateSubCivs(4)" in t     # + the pirates (owner 2026-09-25)
+        for i, civ in ((0, "zpParliament"), (1, "Stuart"), (2, "jewish"), (3, "NatPirates")):
             assert 'rmSetSubCiv(%d, "%s")' % (i, civ) in t, civ
         for s in ("zpSansculottes", "SPCBourbon", "zpBonusBourbon"):
             assert s not in t, s

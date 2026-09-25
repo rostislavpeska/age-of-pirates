@@ -369,7 +369,8 @@ void main(void)
 	int subCiv0=-1;
 	int subCiv1=-1;
 	int subCiv2=-1;
-	if (rmAllocateSubCivs(3) == true)
+	int subCiv3=-1;
+	if (rmAllocateSubCivs(4) == true)
 	{
 		subCiv0=rmGetCivID("zpParliament");
 		rmEchoInfo("subCiv0 is zpParliament "+subCiv0);
@@ -383,6 +384,10 @@ void main(void)
 		rmEchoInfo("subCiv2 is jewish "+subCiv2);
 		if (subCiv2 >= 0)
 			rmSetSubCiv(2, "jewish");
+		subCiv3=rmGetCivID("NatPirates");
+		rmEchoInfo("subCiv3 is NatPirates "+subCiv3);
+		if (subCiv3 >= 0)
+			rmSetSubCiv(3, "NatPirates");
 	}
 
 	// Paris frame, long axis on z: 360 m = 6.6 + row 00 + 4 + row 0 + 10.2 + road + 3 + row 1 + 7 x 34 + 6.6
@@ -671,8 +676,8 @@ void main(void)
 	// the bridge (their x kept as its own expression, not locX78: the asked post goes through the lane snap and this
 	// form is the censused one); each bank's grouping origin z = shore edge harbourShoreTiles off the REAL leg, the
 	// export's top edge back to the origin
-	float harbour1X = xRoad - rmXMetersToFraction(rowGapNearM + 6.5 * rowPitchM) + rmXMetersToFraction(harbour1ShiftM);   // user 2026-09-24: northeast
-	float harbour2X = xRoad - rmXMetersToFraction(rowGapNearM + 3.5 * rowPitchM);
+	float harbour1X = rmXMetersToFraction(102.0);   // owner 2026-09-25 (the pirates): 57 -> 102 m, room for the pirates after the ramp
+	float harbour2X = rmXMetersToFraction(176.0);   // owner 2026-09-25: 142 -> 176 m - 74 m after harbour 1, nearer the bridge
 	float harbourNZ = zLaneN + rmZTilesToFraction(harbourShoreTiles) - rmZMetersToFraction(hNTopEdgeM);
 	float harbourSZ = zLaneS - rmZTilesToFraction(harbourShoreTiles) + rmZMetersToFraction(hSTopEdgeM);
 
@@ -824,6 +829,46 @@ void main(void)
 	rmPlaceObjectDefAtLoc(harbourN2GuardDef, 0, harbourN2GuardX, harbourN2GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS1GuardDef, 0, harbourS1GuardX, harbourS1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);
+
+	// THE PIRATES (owner 2026-09-25, built on the root copy 0000_zzplondon_pirates: 'You need to spawn them right after the
+	// bridge'): EU_Natives_Pirates_01 (water side -z = the north bank) with the water groupings - right after the bridge (6),
+	// the harbours (7) and their guards (8), before every area (8.5 ramps on). Not between the bridge and the guards: the
+	// guards' literal trigger indices (365 / 370 / 375 / 380) would move by the grouping's 51 units. The north bank's
+	// first riverside deco (11) gives it the slot - ramp, pirates, harbour 1, deco, harbour 2, deco, bridge, deco, ramp.
+	int piratesN = rmCreateGrouping("pirates north", "EU_Natives_Pirates_01");
+	// the PLAIN grouping call (owner: 'You use grouping Inst'): the export is selectassingleunit / workonassingleunit 1, unlike
+	// the instance-placed London groupings (0 / 0); Elbe places its pirate villages with rmPlaceGroupingAtLoc too
+	rmSetGroupingMinDistance(piratesN, 0.0);
+	rmSetGroupingMaxDistance(piratesN, 0.0);
+	rmAddGroupingToClass(piratesN, rmClassID("classPlateau"));
+	rmPlaceGroupingAtLoc(piratesN, 0, rmXMetersToFraction(56.0), harbourNZ + rmZTilesToFraction(1));   // one tile toward the city
+	                                                                    // (+z on the north bank; owner 2026-09-25 '1 tile more to the city')
+	rmEchoInfo("LONDON pirates: north x 56 m z " + rmZFractionToMeters(harbourNZ + rmZTilesToFraction(1)) + " m, harbours x 102 / 176 m");
+	// its water flag RIGHT after the camp (the socket is the camp's last unit: socket = flag - 1, Istanbul 4285), in the
+	// grouping's own water rows straight in front of the socket (local x +4.86, z -13 m; the platforms end at -8.3 m)
+	int pirateFlagDefN = rmCreateObjectDef("pirate water flag north");
+	rmAddObjectDefItem(pirateFlagDefN, "zpPirateWaterSpawnFlag1", 1, 0.0);
+	rmSetObjectDefAllowOverlap(pirateFlagDefN, true);
+	rmSetObjectDefMinDistance(pirateFlagDefN, 0.0);
+	rmSetObjectDefMaxDistance(pirateFlagDefN, 0.0);
+	rmPlaceObjectDefAtLoc(pirateFlagDefN, 0, rmXMetersToFraction(60.8571), harbourNZ + rmZTilesToFraction(1) - rmZMetersToFraction(13.0));
+	// the SOUTH bank (owner 2026-09-25: 'Craft reversed pirates _02 just turned 180 degrees and spawn them'): EU_Natives_Pirates_02,
+	// _01 turned 180 degrees (water side +z), at the same x, mirrored against the south lane leg: as far from zLaneS as
+	// the north pirates are from zLaneN. The south bank's first riverside deco (11) gives it the slot too.
+	int piratesS = rmCreateGrouping("pirates south", "EU_Natives_Pirates_02");
+	rmSetGroupingMinDistance(piratesS, 0.0);
+	rmSetGroupingMaxDistance(piratesS, 0.0);
+	rmAddGroupingToClass(piratesS, rmClassID("classPlateau"));
+	float piratesSZ = zLaneS - (harbourNZ + rmZTilesToFraction(1) - zLaneN);
+	rmPlaceGroupingAtLoc(piratesS, 0, rmXMetersToFraction(56.0), piratesSZ);
+	rmEchoInfo("LONDON pirates: south x 56 m z " + rmZFractionToMeters(piratesSZ) + " m");
+	// its water flag right after the camp, in front of the socket (local x -8.86, z +12 m; the platforms end at +6.3 m)
+	int pirateFlagDefS = rmCreateObjectDef("pirate water flag south");
+	rmAddObjectDefItem(pirateFlagDefS, "zpPirateWaterSpawnFlag2", 1, 0.0);
+	rmSetObjectDefAllowOverlap(pirateFlagDefS, true);
+	rmSetObjectDefMinDistance(pirateFlagDefS, 0.0);
+	rmSetObjectDefMaxDistance(pirateFlagDefS, 0.0);
+	rmPlaceObjectDefAtLoc(pirateFlagDefS, 0, rmXMetersToFraction(47.1429), piratesSZ + rmZMetersToFraction(12.0));
 
 	// ---- 8.5 THE CITY RAMPS, SOUTHWEST + NORTHEAST (user 2026-09-24). The first cut - Istanbul's round city beach (zpistanbulb.xs 1677-1734)
 	// at the quay's height on the wall line - punched a round cobbled tongue through the wall ('extremely creepy'); the user
@@ -1257,11 +1302,9 @@ void main(void)
 	float decoX2 = (harbour1X + harbour2X) * 0.5;
 	float decoX3 = (harbour2X + xRoad + rmXMetersToFraction(bridgeOffX) - rmXMetersToFraction(bridgeWestWallM)) * 0.5;
 	float decoX4 = (xRoad + rmXMetersToFraction(bridgeOffX + bridgeEastWallM) + 1.0) * 0.5 - rmXMetersToFraction(deco4ShiftM);   // user 2026-09-24: southwest, room for the northeast ramps
-	rmPlaceGroupingAtLoc(riversideS, 0, decoX1, decoZs);
 	rmPlaceGroupingAtLoc(riversideS, 0, decoX2, decoZs);
 	rmPlaceGroupingAtLoc(riversideS, 0, decoX3, decoZs);
 	rmPlaceGroupingAtLoc(riversideS, 0, decoX4, decoZs);
-	rmPlaceGroupingAtLoc(riversideN, 0, decoX1, decoZn);
 	rmPlaceGroupingAtLoc(riversideN, 0, decoX2, decoZn);
 	rmPlaceGroupingAtLoc(riversideN, 0, decoX3, decoZn);
 	rmPlaceGroupingAtLoc(riversideN, 0, decoX4, decoZn);
@@ -1939,10 +1982,22 @@ void main(void)
 	//  lane's ship (built in 1) and the land route's wagon (built in 3.9, Paris's gate order) - both before the harbour
 	//  posts (7-8) and before every section-10 instance. The 2026-09-18 13:26 census measured +1 when only the lane
 	//  existed (posts = engine ids 7-10 after six RM placements). Grouping instances: 3, measured 2026-09-22 (test copies
-	//  00000_zplondon_shift0..3); the individual shift is still under test on the same copies.
+	//  00000_zplondon_shift0..3); the individual shift (object defs) is instanceIdShiftIndividual below - 3, confirmed by the pirates 2026-09-25.
 	//  Nugget protos are the nuggetmods <nuggetunit> of the latched difficulty, never the authored placeholder.
 	// ========================================================================
 	int instanceIdShift = 3;   // the ONLY shift left: rmGetGroupingInstanceUnitByType + 3 = the index the trigger compiler wants (measured 2026-09-22)
+	// THE PIRATES (owner 2026-09-25: 'use the unitshift individual to target waterflag and socket'):
+	// Istanbul's law (zpistanbulb.xs 4214-4238 / 4285) - rmGetUnitPlaced (object defs) + instanceIdShiftIndividual; each
+	// camp's socket is its grouping's LAST unit and its water flag is placed right after it: socket = flag - 1. The value
+	// is London's instance shift (Istanbul's two are equal) - confirmed in game 2026-09-25 (owner: 'All works').
+	int instanceIdShiftIndividual = 3;
+	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0) + instanceIdShiftIndividual;
+	int pirateFlagS = rmGetUnitPlaced(pirateFlagDefS, 0) + instanceIdShiftIndividual;
+	int pirateSocketN = pirateFlagN - 1;
+	int pirateSocketS = pirateFlagS - 1;
+	string pirate1Socket = ""+pirateSocketN;   // Iceland's names: village 1 = the north camp (flag 1), village 2 = the south (flag 2)
+	string pirate2Socket = ""+pirateSocketS;
+	rmEchoInfo("pirate ids: flag N="+pirateFlagN+" socket N="+pirateSocketN+" flag S="+pirateFlagS+" socket S="+pirateSocketS);
 	// THE HARBOUR IDS ARE LITERAL INDICES (fix B, in game 2026-09-22 18:38): a trigger parameter is a unit INDEX - the trigger
 	// compiler resolves it to the engine id (Trigger/trigtemp.xs: trUnitSelectByID(...)); anything else is emitted as
 	// trUnitSelect("..."), a select-by-name that hits nothing. rmGetUnitPlaced on a ferry docked on the lane returns the
@@ -3154,6 +3209,34 @@ void main(void)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(true);
 	}
+	// the pirates' switcher - Iceland's Activate Tortuga verbatim (zpIceland.xs 2934-2959; the Baltic pirate set)
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Tortuga"+k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpTheBlackFlag"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesBaltic"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
 	// human players get the dialog; the AI rolls a leader instead (14.4)
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{
@@ -3177,11 +3260,615 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Parliament" + k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Jewish" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga" + k));   // the pirates (Iceland)
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
+	// ---- THE PIRATES' SHIPS AND AI CAPTAINS - Iceland verbatim (zpIceland.xs 3043-3599 and 4113-4152), on the camps' ids above
+	// Privateer training
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("TrainPrivateer1ON Plr"+k);
+	rmCreateTrigger("TrainPrivateer1OFF Plr"+k);
+	rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
+
+
+	rmCreateTrigger("TrainPrivateer2ON Plr"+k);
+	rmCreateTrigger("TrainPrivateer2OFF Plr"+k);
+	rmCreateTrigger("TrainPrivateer2TIME Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpPrivateerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2OFF_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2TIME_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer2OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer2TIME_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer2"); //operator
+	rmSetTriggerEffectParamInt("Status",0);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpPrivateerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1OFF_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1TIME_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer1OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer1TIME_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer1"); //operator
+	rmSetTriggerEffectParamInt("Status",0);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// Unique ship Training
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("UniqueShip1TIMEPlr"+k);
+
+	rmCreateTrigger("BlackbTrain1ONPlr"+k);
+	rmCreateTrigger("BlackbTrain1OFFPlr"+k);
+
+	rmCreateTrigger("GraceTrain1ONPlr"+k);
+	rmCreateTrigger("GraceTrain1OFFPlr"+k);
+
+	rmCreateTrigger("CaesarTrain1ONPlr"+k);
+	rmCreateTrigger("CaesarTrain1OFFPlr"+k);
+
+	rmCreateTrigger("PirateDestroyerTrain1ONPlr"+k);
+	rmCreateTrigger("PirateDestroyerTrain1OFFPlr"+k);
+
+	
+	rmCreateTrigger("UniqueShip2TIMEPlr"+k);
+
+	rmCreateTrigger("BlackbTrain2ONPlr"+k);
+	rmCreateTrigger("BlackbTrain2OFFPlr"+k);
+
+	rmCreateTrigger("GraceTrain2ONPlr"+k);
+	rmCreateTrigger("GraceTrain2OFFPlr"+k);
+
+	rmCreateTrigger("CaesarTrain2ONPlr"+k);
+	rmCreateTrigger("CaesarTrain2OFFPlr"+k);
+
+	rmCreateTrigger("PirateDestroyerTrain2ONPlr"+k);
+	rmCreateTrigger("PirateDestroyerTrain2OFFPlr"+k);
+	
+	rmSwitchToTrigger(rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("GraceTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("GraceTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCRevenantSteamerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainRevenantSteamer2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCPirateDestroyerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPirateDestroyer2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	
+
+	// Build limit reducer
+	rmSwitchToTrigger(rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Blackbeard
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Grace
+	rmSwitchToTrigger(rmTriggerID("GraceTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("GraceTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Caesar
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCRevenantSteamerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainRevenantSteamer1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Destroyer
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCPirateDestroyerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPirateDestroyer1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	}
+
+
+	// Pirate trading post activation
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Pirates1on Player"+k);
+	rmCreateTrigger("Pirates1off Player"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates1on_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates1off_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Pirates2on Player"+k);
+	rmCreateTrigger("Pirates2off Player"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates2on_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Player"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates2off_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+
+	// AI Pirate Captains
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Pirate Captain"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int pirateCaptain=-1;
+	pirateCaptain = rmRandInt(1,3);
+
+	if (pirateCaptain==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackbeard"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBeauregard"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
 	// 14.4 AI Commonwealth - Paris's AI Revolutionary Fractions (zpparis.xs 3393-3466): only the defenders' AIs (Parliament
 	// sits in their city; the attackers see its button greyed), at Industrial, and only while the AI HOLDS a Parliament
 	// post - cTechzpNativeParliament is zpParliament's Age0 agetech (civmods), active only with the post, checked in the

@@ -1122,7 +1122,8 @@ class TestSouthwestCityRamps:
                      "rampZa = wallN - (rampSteps - rampK) * rampStepN;", "rampZb = wallN;"):
             assert line in s, line
         assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("rmCreateArea(\"ramp south step \"") < t.index("quaySegment(0.0, wallS")
-        assert "float harbour1X = xRoad - rmXMetersToFraction(rowGapNearM + 6.5 * rowPitchM) + rmXMetersToFraction(harbour1ShiftM);" in t
+        # owner 2026-09-25 (the pirates after the southwest ramp, built on 0000_zzplondon_pirates): the harbours at 102 / 176 m
+        assert "float harbour1X = rmXMetersToFraction(102.0);" in t and "float harbour2X = rmXMetersToFraction(176.0);" in t
         assert "float decoX2 = (harbour1X + harbour2X) * 0.5;" in t
         steam_twin(LONDON, "00000_zplondon.xs")
 
@@ -1205,13 +1206,19 @@ class TestScope:
     def test_unit_ids_derive_in_one_block_through_the_two_shifts(self):
         # Istanbul's architecture (zpistanbulb.xs 4173-4193): both shifts declared together at the head of 13, every id through them
         t = _code(_text(LONDON))
-        assert t.count("int instanceIdShift = 3;") == 1 and "instanceIdShiftIndividual" not in t   # grouping shift measured 2026-09-22; the object-def ids are literal indices (fix B)
+        assert t.count("int instanceIdShift = 3;") == 1   # grouping shift measured 2026-09-22; the harbours' object-def ids are literal indices (fix B)
+        # the pirates (owner 2026-09-25, 'All works'): Istanbul's individual shift for their water flags, the socket = flag - 1
+        assert t.count("int instanceIdShiftIndividual = 3;") == 1 and t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 3;")
+        for s in ("N", "S"):
+            assert ("int pirateFlag%s = rmGetUnitPlaced(pirateFlagDef%s, 0) + instanceIdShiftIndividual;" % (s, s)) in t
+            assert ("int pirateSocket%s = pirateFlag%s - 1;" % (s, s)) in t
         assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int harbourN1PostUnit")
         for s, post, guard in (("N1", 169, 365), ("N2", 170, 370), ("S1", 171, 375), ("S2", 172, 380)):                # fix B: literal indices (census 2026-09-22) + 3 for the bridge's E / F sockets and marker (2026-09-22 late)
             assert ("int harbour%sPostUnit = %d;" % (s, post)) in t and ("int harbour%sGuardUnit = %d;" % (s, guard)) in t and ("rmSetTriggerConditionParam(\"NuggetObject\", \"\" + harbour%sGuardUnit);" % s) in t
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
         assert len(inst) == 21 and all(r.endswith("+ instanceIdShift;") for r in inst)   # 14 + the four Tower gate sockets + the bridge's port socket and E / F (2026-09-22)
-        plain = chr(10).join(l for l in t.split(chr(10)) if not re.match(r"\s*int \w+Socket\dUnit = \w+MarkUnit - [1-4];$", l))   # AztecCity 1348-1351: marker - n is the one admitted literal form
+        plain = chr(10).join(l for l in t.split(chr(10)) if not re.match(r"\s*int \w+Socket\dUnit = \w+MarkUnit - [1-4];$", l)   # AztecCity 1348-1351: marker - n
+                             and not re.match(r"\s*int pirateSocket[NS] = pirateFlag[NS] - 1;$", l))                        # Istanbul 4285: the camp's socket
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", plain.replace("Idx", "").replace("Tiles", ""))   # no other literal id arithmetic
 
     def test_twin_identical_and_crlf(self, steam_twin):

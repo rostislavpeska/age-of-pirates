@@ -3566,7 +3566,7 @@
       <string _locid="503565">Pick your leader of Parliament. \n • Cromwell, Inchiquin or Myddelton: each brings his own regiment and two Parliament techs \n • Raises the Commonwealth's flag over your city&lt;color=1.0, 0.0, 0.0&gt;\n • Available only for the team "DEFENDERS".&lt;/color&gt;</string>
       <string _locid="503566">Opens the extended House of Stuart. \n • Unlocks Sovereign of the Seas \n • Unlocks The Last Cavalier \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Turns every Lowlander into a Whitecoat&lt;color=1.0, 0.0, 0.0&gt;\n • Available only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="503567">Restoration of the Monarchy</string>
-      <string _locid="503568">London 1660 Historical Map: \nEleven years without a king have worn the Commonwealth out. General Monck has opened the road from the north and Charles Stuart is sailing home from exile, while Parliament's men dig in behind the Thames. Both teams have the same goal: take both Royal Keeps, the twin castles on the river, and hold them for eight minutes. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Royalists which can use special House of Stuart techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliamentarians which can use special Parliament techs \n\nSettlements: House of Stuart, Parliament, Jewish Quarter \n\nMaximum recommended players: 4</string>
+      <string _locid="503568">London 1660 Historical Map: \nEleven years without a king have worn the Commonwealth out. General Monck has opened the road from the north and Charles Stuart is sailing home from exile, while Parliament's men dig in behind the Thames. Both teams have the same goal: take both Royal Keeps, the twin castles on the river, and hold them for eight minutes. Both sides can use different native techs. Two pirate havens at the mouth of the Thames, one on each bank, offer their captains and ships to whoever holds their trading post. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Royalists which can use special House of Stuart techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliamentarians which can use special Parliament techs \n\nSettlements: House of Stuart, Parliament, Jewish Quarter, Pirates \n\nMaximum recommended players: 4</string>
       <string _locid="503569">Achieve a Team Victory by capturing and holding both Royal Keeps for eight minutes. Take your team's native trading posts to get more advanced native improvements. Whoever holds the Toll Station on London Bridge holds the crossing, its gates and its towers. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; House of Stuart natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliament natives</string>
       <string _locid="503570">ZP Underbrush Greek Columns</string>
       <string _locid="503571">ZP NAT British Guards</string>
@@ -3598,6 +3598,9 @@
       <string _locid="503596">East India Trading Company</string>
       <string _locid="503597">Upgrades London's Thames Trade Route to East India Trading Company ships for all players: they deliver resources faster and provide greater line of sight. Only one player can research it.</string>
       <string _locid="503598">Team London Ferry System</string>
+      <string _locid="503599">Pirate House Small</string>
+      <string _locid="503600">ZP NAT House Pirates Small</string>
+      <string _locid="503601">ZP NAT House Pirates Small Flat</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
