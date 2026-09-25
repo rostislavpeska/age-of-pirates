@@ -35,3 +35,15 @@ def test_main_forwards_arguments_to_sim(capsys):
     with pytest.raises(SystemExit) as e:
         main_mod.main(["--help"])
     assert e.value.code == 0 and "--xs" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("minimap", [False, True])
+def test_render_draws_players_in_both_views(tmp_path, minimap):
+    """Owner 2026-09-25 "add players": numbered team-coloured starts and an off-start Town Center render in the
+    top-down and the minimap view (the scene is test_textmap's island: 2 starts, player 2's TC 30 m north)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from test_textmap import island_scene
+    rs = island_scene()
+    findings = run_checks(rs)
+    out = render(rs, findings, tmp_path / f"players_{minimap}.png", title="players", minimap=minimap)
+    assert out.is_file() and out.stat().st_size > 50_000

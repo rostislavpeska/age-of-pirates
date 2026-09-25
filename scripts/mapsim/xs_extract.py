@@ -69,6 +69,32 @@ class Tainted:
         return f"?{self.expr}"
 
 
+class OneOf(Tainted):
+    """A runtime pick from a KNOWN set (2026-09-25): an element of a vector array read at a runtime index, or a
+    component of such a pick. Everything that handles Tainted handles it (it IS runtime); what it adds is the
+    candidate list, aligned by position, and the pool it came from, so a placement at (xsVectorGetX(v),
+    xsVectorGetZ(v)) of one pick becomes 'one of these spots'. zplondon.xs shuffles its city cells and places the
+    market, bank, suburbs, Academy, treasures and every house at runtime indices; each block lands on one of the
+    cells, and the houses fill every cell left free - the SET of block spots is exact, only which block sits where
+    is random."""
+
+    __slots__ = ("candidates", "pool")
+
+    def __init__(self, expr: str, candidates, pool: int):
+        super().__init__(expr)
+        self.candidates = list(candidates)
+        self.pool = pool
+
+
+def _array_pool_add(arr: Dict[str, Any], value: Any) -> None:
+    """Every concrete vector an array has held (and the candidates of every pick written into it)."""
+    pool = arr.setdefault("__pool__", [])
+    vals = value.candidates if isinstance(value, OneOf) else [value]
+    for v in vals:
+        if isinstance(v, tuple) and len(v) == 4 and v[0] == "vec" and v not in pool:
+            pool.append(v)
+
+
 # ---------------------------------------------------------------------------
 # Lexer
 # ---------------------------------------------------------------------------
@@ -474,6 +500,8 @@ class XPlacement:
     # them as the last one (twin review F2, 2026-09-24).
     def_handle: Optional[int] = None
     drift: float = 0.0                 # metres the anchor may be off (a Drifting read-back position)
+    # A runtime spot picked from a KNOWN set (OneOf): every possible (x, z); the placement lands on one of them.
+    candidates: List[Tuple[float, float]] = dfield(default_factory=list)
 
 
 @dataclass
@@ -520,6 +548,8 @@ class Extraction:
     connections: Dict[int, "XConnection"] = dfield(default_factory=dict)
     constraints: Dict[str, Dict[str, Any]] = dfield(default_factory=dict)
     player_events: List[Dict[str, Any]] = dfield(default_factory=list)
+    # line -> (condition, nominal outcome) of every random `if` decided at the low roll (the map may roll otherwise)
+    random_choices: Dict[int, Tuple[str, bool]] = dfield(default_factory=dict)
     warnings: List[str] = dfield(default_factory=list)
 
     def warn(self, msg: str) -> None:
@@ -921,6 +951,8 @@ class Extractor:
                 # each compound once, not at both mirror spots).
                 nom_then = (value.nominal_bool
                             if value.nominal_bool is not None else True)
+                if "rmRand" in value.expr and value.nominal_bool is not None:
+                    self.res.random_choices.setdefault(line, (value.expr, bool(nom_then)))
                 # `return` / `break` inside an arm (2026-09-24): BOTH arms
                 # still run (state, as above); the NOMINAL arm's unwinding
                 # decides - re-raised, with its value, after the other arm.
@@ -1264,6 +1296,9 @@ class Extractor:
             return Tainted(f"rmRandFloat({args[0]},{args[1]})", lo=args[0], hi=args[1])
         if name in ("xsVectorGetX", "xsVectorGetY", "xsVectorGetZ"):
             v = args[0]
+            if isinstance(v, OneOf):
+                k = {"xsVectorGetX": 1, "xsVectorGetY": 2, "xsVectorGetZ": 3}[name]
+                return OneOf(f"{name}({v.expr})", [float(c[k]) for c in v.candidates], v.pool)
             if isinstance(v, tuple) and len(v) == 4 and v[0] == "vec":
                 c = float(v[{"xsVectorGetX": 1, "xsVectorGetY": 2, "xsVectorGetZ": 3}[name]])
                 return Drifting(c, v.drift) if isinstance(v, DriftVec) else c
@@ -1299,10 +1334,15 @@ class Extractor:
             return len(arr["__array__"]) if isinstance(arr, dict) else Tainted("xsArrayGetSize(...)")
         if name in ("xsArrayCreateInt", "xsArrayCreateFloat", "xsArrayCreateString",
                     "xsArrayCreateBool", "xsArrayCreateVector"):
-            return {"__array__": [args[1]] * int(args[0]) if not isinstance(args[0], Tainted) else []}
+            arr = {"__array__": [args[1]] * int(args[0]) if not isinstance(args[0], Tainted) else []}
+            if name == "xsArrayCreateVector" and len(args) > 1:
+                _array_pool_add(arr, args[1])
+            return arr
         if name in ("xsArraySetInt", "xsArraySetFloat", "xsArraySetString", "xsArraySetBool",
                     "xsArraySetVector"):
             arr, idx, value = args
+            if isinstance(arr, dict) and name == "xsArraySetVector":
+                _array_pool_add(arr, value)
             if isinstance(arr, dict) and not isinstance(idx, Tainted):
                 lst = arr["__array__"]
                 while len(lst) <= int(idx):
@@ -1321,6 +1361,11 @@ class Extractor:
                 lst = arr["__array__"]
                 if int(idx) < len(lst):
                     return lst[int(idx)]
+            if name == "xsArrayGetVector" and isinstance(arr, dict):
+                # One of the vectors this array has held (cInvalidVector-like fills excluded when real ones exist).
+                pool = [v for v in arr.get("__pool__", []) if v[1] >= 0.0 and v[3] >= 0.0] or arr.get("__pool__", [])
+                if pool:
+                    return OneOf("xsArrayGet(...)", pool, id(arr))
             return Tainted("xsArrayGet(...)")
 
         # --- scenario-resolved reads ---
@@ -1803,13 +1848,18 @@ class Extractor:
                 count = args[4] if len(args) > 4 else 1
             if not isinstance(x, Tainted) and not isinstance(z, Tainted):
                 self.def_last_anchor[args[0]] = (float(x), float(z))
+            cands = []
+            if isinstance(x, OneOf) and isinstance(z, OneOf) and x.pool == z.pool \
+                    and len(x.candidates) == len(z.candidates):
+                cands = list(zip(x.candidates, z.candidates))
             res.placements.append(XPlacement(
                 def_line=d.line, name=d.name, kind="at_loc",
                 players=[player], x=x, z=z, count=count,
                 variant="|".join(self.variant_stack),
                 nominal=self.alt_depth == 0,
                 def_handle=int(args[0]),
-                drift=max(getattr(x, "drift", 0.0), getattr(z, "drift", 0.0))))
+                drift=max(getattr(x, "drift", 0.0), getattr(z, "drift", 0.0)),
+                candidates=cands))
             return 1
         if name == "rmPlaceObjectDefAtAreaLoc":
             # (def, player, area, count): at the area's location (rm_commands_reference); an area without a

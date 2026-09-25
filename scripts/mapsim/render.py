@@ -15,7 +15,7 @@ lower-right, pirate coves at the gulf mouth).
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from scripts.mapsim.checks import Finding
 from scripts.mapsim.geometry import WORLD_CIRCLE_R
@@ -52,6 +52,29 @@ PLAYER_COLORS = {
     1: "#2035e0", 2: "#e02020", 3: "#e8d020", 4: "#8020a0",
     5: "#20a040", 6: "#20c8d8", 7: "#e88820", 8: "#e060b0",
 }
+
+
+def team_color(team: int) -> str:
+    """A team's marker colour: the lobby colour of the team's index (team 0 blue, 1 red, 2 yellow ...)."""
+    return PLAYER_COLORS[team % 8 + 1]
+
+
+def section_arc_degrees(s0: float, s1: float):
+    """matplotlib Arc angles (theta1, theta2; degrees counter-clockwise from +x) of an rmSetPlacementSection(s0, s1)
+    in the pinned engine convention (xs_extract.ring_positions, 2026-08-10): section fraction s sits at 90 - 360 s
+    degrees - 0 = north, clockwise - and an end not past its start wraps, as there. The arc therefore runs
+    through the numbered player starts. (Drawn before 2026-09-25 as 0 = +x counter-clockwise, labelled
+    uncalibrated.)"""
+    if s1 <= s0:
+        s1 += 1.0
+    return 90.0 - s1 * 360.0, 90.0 - s0 * 360.0
+
+
+def _text_on(color: str) -> str:
+    """Black on the light lobby colours (yellow, cyan, orange, pink), white on the dark ones."""
+    r, g, b = (int(color[k:k + 2], 16) for k in (1, 3, 5))
+    return "#000000" if 0.299 * r + 0.587 * g + 0.114 * b > 140 else "#ffffff"
+
 
 VERDICT_COLOR = {
     "OK": "#3fae4c",
@@ -144,12 +167,242 @@ def draw_cliff_outline(ax, tg, tr, linewidth: float = 1.6,
         cs.set_transform(tr)
 
 
+def random_choice_note(rs) -> str:
+    """One line naming the random layout choices mapsim drew at their low roll (xs_extract.random_choices)."""
+    choices = sorted(getattr(rs, "random_choices", {}).items())
+    if not choices:
+        return ""
+    ln, (cond, took) = choices[0]
+    more = f" (+{len(choices) - 1} more)" if len(choices) > 1 else ""
+    return (f"random layout choices drawn at their low roll - the game may roll otherwise: line {ln} "
+            f"{cond.replace('?', '')} -> {'yes' if took else 'no'}{more}")
+
+
+def map_frame(ax, size_x_m: float, size_z_m: float, minimap: bool):
+    """The ONE frame geometry of every map view (preview, minimap preview, comparison panels): fraction space scaled
+    to the true metre aspect, turned +45 deg for the minimap view. Returns (tr, disp, center_d, circ_r_d, rect_pts);
+    `tr` maps map fractions to the axis."""
+    from matplotlib.transforms import Affine2D
+    # Rectangular maps (Paris is 653x360): the scene is authored in fraction
+    # space; a scale transform stretches it to the true meter aspect so the
+    # rotated minimap shows the real rhombus, not a square.
+    aspect = size_z_m / size_x_m
+    sc = Affine2D().scale(1.0, aspect)
+    # World circle in DISPLAY coords: a true circle whose diameter is the
+    # map's LONGER side (Paris minimap ground truth — the 653x360 rectangle
+    # is cut by a circle as wide as the long side). Center is rotation-
+    # invariant, so the same geometry serves both views.
+    center_d = (0.5, 0.5 * aspect)
+    circ_r_d = WORLD_CIRCLE_R * max(1.0, aspect)
+    if minimap:
+        # +45 deg calibrated against elbe_mini.png: the pirate island at
+        # fraction (0.5, 0.95) sits top-LEFT in the in-game minimap.
+        disp = sc + Affine2D().rotate_deg_around(0.5, 0.5 * aspect, 45)
+    else:
+        disp = sc
+        ax.tick_params(labelsize=7)
+    tr = disp + ax.transData
+    rect_pts = disp.transform([(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)])
+    x_lo = min(rect_pts[:, 0].min(), center_d[0] - circ_r_d) - 0.02
+    x_hi = max(rect_pts[:, 0].max(), center_d[0] + circ_r_d) + 0.02
+    z_lo = min(rect_pts[:, 1].min(), center_d[1] - circ_r_d) - 0.02
+    z_hi = max(rect_pts[:, 1].max(), center_d[1] + circ_r_d) + 0.02
+    ax.set_xlim(x_lo, x_hi)
+    ax.set_ylim(z_lo, z_hi)
+    if minimap:
+        ax.set_xticks([])
+        ax.set_yticks([])
+    ax.set_aspect("equal")
+    return tr, disp, center_d, circ_r_d, rect_pts
+
+
+def crop_to_circle(ax, center_d, circ_r_d) -> None:
+    """Minimap view: hard circular crop at the world circle (true circle,
+    diameter = the longer side) — the rotated square diamond overflows it
+    like in-game; a rectangle keeps its short sides inside and only the
+    long-side corners get cut, matching the Paris minimap."""
+    from matplotlib.patches import Circle, PathPatch
+    from matplotlib.path import Path as MplPath
+    big = MplPath([(-2, -2), (3, -2), (3, 3), (-2, 3), (-2, -2)],
+                  [MplPath.MOVETO] + [MplPath.LINETO] * 3 + [MplPath.CLOSEPOLY])
+    circ = MplPath.circle(center_d, circ_r_d)
+    hole = MplPath(circ.vertices[::-1], circ.codes)
+    ax.add_patch(PathPatch(MplPath(list(big.vertices) + list(hole.vertices),
+                                   list(big.codes) + list(hole.codes)),
+                           facecolor="#0e1621", edgecolor="none", zorder=8.5))
+    ax.add_patch(Circle(center_d, circ_r_d, fill=False,
+                        edgecolor="#5d788f", linewidth=1.6, zorder=8.6))
+
+
+def draw_start(ax, tr, x: float, z: float, label, team: Optional[int], player_colour: Optional[str] = None) -> None:
+    """A player start, the same symbol in every view: a disc in the player's colour, a ring in the team colour, the
+    number on it (mapsim: the lobby slot; game panel: the owner id of the Town Center)."""
+    try:
+        n = int(label)
+    except (TypeError, ValueError):
+        n = 0
+    fill = player_colour or PLAYER_COLORS.get(n, "#9aa0a6")
+    ring = team_color(team) if team is not None else "#ffffff"
+    ax.scatter([x], [z], marker="o", s=130, color=fill, edgecolors=ring, linewidths=2.2,
+               zorder=9.3, transform=tr)
+    ax.annotate(str(label), (x, z), xycoords=tr, ha="center", va="center", fontsize=6.5, fontweight="bold",
+                color=_text_on(fill), zorder=9.4)
+
+
+# Game objects drawn on the game panel of render_compare: proto -> (marker, colour, size, legend text).
+GAME_OBJECT_STYLE = {
+    "sockettraderoute": ("D", ROUTE, 28, "trade route socket (game)"),
+    "socket": ("D", "#c9a0dc", 22, "native socket (game)"),
+    "ypkingshill": ("*", "#ffd21f", 260, "King of the Hill hill"),
+}
+
+
+def _game_style(proto: str):
+    low = proto.lower()
+    if low in GAME_OBJECT_STYLE:
+        return GAME_OBJECT_STYLE[low]
+    if low.startswith("socket") and low != "sockettraderoute":
+        return GAME_OBJECT_STYLE["socket"]
+    return None
+
+
+def render_compare(rs: ResolvedScene, findings: List[Finding], game, out_path: Path,
+                   title: Optional[str] = None, minimap_png: Optional[Path] = None, tg=None) -> Dict[str, Any]:
+    """mapsim next to the game, every panel drawn with the SAME codes (terrain classes, cliff border, trade routes,
+    groupings, player starts, KotH) in the same frame (the minimap view):
+      GAME minimap (the captured crop, when given) | GAME map (the save: terrain, cliff border, Town Centers,
+      sockets, KotH hill) | MAPSIM (the full preview) | ERRORS (grey = same; red = real land or shallows that mapsim
+      draws as deep water; blue = real deep water that mapsim draws as land or shallows).
+    `game` is a groundtruth.GameMap. Returns the stats written into the title."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Rectangle
+
+    from scripts.mapsim.field import terrain_grid
+    from scripts.mapsim.scene import team_of
+
+    if tg is None:
+        tg = terrain_grid(rs, cell_tiles=1.0)
+    gg = game.grid
+    ncol = 4 if minimap_png else 3
+    fig, axes = plt.subplots(1, ncol, figsize=(7.2 * ncol, 8.2), dpi=150)
+    axes = list(axes)
+    if minimap_png:
+        from PIL import Image
+        axes[0].imshow(Image.open(minimap_png).convert("RGB"))
+        axes[0].set_xticks([])
+        axes[0].set_yticks([])
+        axes[0].set_title("GAME minimap (live editor capture)", fontsize=10, color="#f2f2f2")
+        axes = axes[1:]
+    ax_g, ax_m, ax_e = axes
+
+    # GAME panel: the save's terrain with the preview's codes.
+    tr, _disp, center_d, circ_r_d, _rect = map_frame(ax_g, game.size_x_m, game.size_z_m, True)
+    ax_g.set_facecolor("#0e1621")
+    im = ax_g.imshow(terrain_rgba(gg), extent=(0, 1, 0, 1), origin="lower", interpolation="nearest", zorder=1.5)
+    im.set_transform(tr)
+    draw_cliff_outline(ax_g, gg, tr)
+    seen_styles = {}
+    # Buildings (what groupings put down) in the grouping-footprint code of the preview: a 50% dark square with a
+    # light edge, player-owned ones in the player colour.
+    from scripts.refdata.catalogs import proto_counts_as
+    for u in game.units:
+        proto = str(u["proto"])
+        if u.get("fx") is None or proto == "TownCenter" or _game_style(proto) is not None:
+            continue
+        if not proto_counts_as(proto, "LogicalTypeBuildingsNotWalls"):
+            continue
+        face = PLAYER_COLORS.get(u.get("player") or 0, "#000000")
+        ax_g.scatter([u["fx"]], [u["fz"]], marker="s", s=14, color=face, alpha=0.6, edgecolors="#e8e0d0",
+                     linewidths=0.4, zorder=5.5, transform=tr)
+        seen_styles["building (game) - grouping footprint code"] = ("s", "#000000")
+    for u in game.units:
+        st = _game_style(str(u["proto"]))
+        if st is None or u.get("fx") is None:
+            continue
+        marker, col, size, label = st
+        ax_g.scatter([u["fx"]], [u["fz"]], marker=marker, s=size, color=col, edgecolors="#000000", linewidths=0.6,
+                     zorder=9, transform=tr)
+        seen_styles[label] = (marker, col)
+    n_players, n_teams = rs.scenario.players, rs.scenario.teams
+    for u in game.town_centers():
+        p = u.get("player") or 0
+        team = team_of(p, n_players, n_teams) if 1 <= p <= n_players else None
+        draw_start(ax_g, tr, u["fx"], u["fz"], p, team)
+    crop_to_circle(ax_g, center_d, circ_r_d)
+    ax_g.set_title("GAME map (from the save: terrain, cliffs, buildings, Town Centers, sockets;\n"
+                   "the save holds trade route sockets, not the route line)", fontsize=10, color="#f2f2f2")
+
+    # MAPSIM panel: the preview itself.
+    handles = render(rs, findings, out_path, minimap=True, tg=tg, ax=ax_m) or []
+    ax_m.set_title("MAPSIM", fontsize=10, color="#f2f2f2")
+
+    # ERRORS panel: the game grid against mapsim's, per game tile.
+    tr_e, _d, c_e, r_e, _r = map_frame(ax_e, game.size_x_m, game.size_z_m, True)
+    ax_e.set_facecolor("#0e1621")
+    err = np.zeros((gg.nz, gg.nx, 4))
+    n = same = red = blue = 0
+    R = 0.5 * 0.98
+    for j in range(gg.nz):
+        fz = (j + 0.5) / gg.nz
+        for i in range(gg.nx):
+            fx = (i + 0.5) / gg.nx
+            if (fx - 0.5) ** 2 + (fz - 0.5) ** 2 > R * R:
+                continue
+            ci = min(tg.nx - 1, int(fx * tg.nx))
+            cj = min(tg.nz - 1, int(fz * tg.nz))
+            m_deep = bool(tg.water[cj][ci]) and not bool(tg.wwalk[cj][ci])
+            g_deep = gg.is_deep(i, j)
+            n += 1
+            if m_deep == g_deep:
+                same += 1
+                err[j, i] = (0.28, 0.28, 0.28, 1.0) if g_deep else (0.6, 0.6, 0.6, 1.0)
+            elif m_deep:
+                red += 1
+                err[j, i] = (0.92, 0.16, 0.16, 1.0)
+            else:
+                blue += 1
+                err[j, i] = (0.16, 0.47, 1.0, 1.0)
+    im = ax_e.imshow(err, extent=(0, 1, 0, 1), origin="lower", interpolation="nearest", zorder=1.5)
+    im.set_transform(tr_e)
+    draw_cliff_outline(ax_e, tg, tr_e)
+    crop_to_circle(ax_e, c_e, r_e)
+    ax_e.set_title("ERRORS: red = real land/shallows drawn as deep water, blue = the reverse", fontsize=10, color="#f2f2f2")
+
+    stats = {"tiles": n, "match": same / n if n else 0.0, "red": red / n if n else 0.0, "blue": blue / n if n else 0.0,
+             "tcs": len(game.town_centers()),
+             "tcs_on_mapsim_land": sum(1 for u in game.town_centers() if tg.is_land_frac(u["fx"], u["fz"]))}
+    sc = rs.scenario
+    tag = f"P{sc.players} T{sc.teams}" + (" KOTH" if sc.koth else "")
+    fig.suptitle(f"{title or 'map'} — {tag} — mapsim vs the game: terrain match {100 * stats['match']:.1f}%, "
+                 f"red {100 * stats['red']:.1f}%, blue {100 * stats['blue']:.1f}%, "
+                 f"Town Centers on mapsim land {stats['tcs_on_mapsim_land']}/{stats['tcs']}"
+                 + ("\n" + random_choice_note(rs) if random_choice_note(rs) else ""), fontsize=12,
+                 color="#f2f2f2")
+    handles = list(handles) + [Line2D([], [], marker=m, linestyle="", color=c, markeredgecolor="#000000",
+                                      markersize=7, label=lab) for lab, (m, c) in seen_styles.items()]
+    handles.append(Line2D([], [], marker="o", linestyle="", color=PLAYER_COLORS[1], markeredgecolor="#ffffff",
+                          markersize=7, label="game Town Center: number = its owner, ring = team"))
+    fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=7, framealpha=0.9)
+    fig.subplots_adjust(bottom=0.2, top=0.9, wspace=0.03)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_path, facecolor="#0e1621")
+    plt.close(fig)
+    return stats
+
+
 def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
            title: Optional[str] = None,
            field_points: Optional[List] = None,
            field_label: Optional[str] = None,
            constraint_layers: Optional[List] = None,
-           minimap: bool = False) -> Path:
+           minimap: bool = False, tg=None, ax=None):
+    """tg: the built TerrainGrid when the caller already has it (sim.run_scenario shares textmap.display_grid
+    with the text map); computed here otherwise. ax: draw into this axis (render_compare's mapsim panel) and return
+    the legend handles instead of saving a file."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -166,39 +419,12 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     grid = rs.grid
     verdicts: Dict[str, Finding] = {f.name: f for f in findings if f.scope == "placement"}
 
-    fig, ax = plt.subplots(figsize=(10, 10), dpi=200)
-    # Rectangular maps (Paris is 653x360): the scene is authored in fraction
-    # space; a scale transform stretches it to the true meter aspect so the
-    # rotated minimap shows the real rhombus, not a square.
-    aspect = grid.size_z_m / grid.size_x_m
-    sc = Affine2D().scale(1.0, aspect)
-    # World circle in DISPLAY coords: a true circle whose diameter is the
-    # map's LONGER side (Paris minimap ground truth — the 653x360 rectangle
-    # is cut by a circle as wide as the long side). Center is rotation-
-    # invariant, so the same geometry serves both views.
-    center_d = (0.5, 0.5 * aspect)
-    circ_r_d = WORLD_CIRCLE_R * max(1.0, aspect)
-    if minimap:
-        # +45 deg calibrated against elbe_mini.png: the pirate island at
-        # fraction (0.5, 0.95) sits top-LEFT in the in-game minimap.
-        rot = Affine2D().rotate_deg_around(0.5, 0.5 * aspect, 45)
-        disp = sc + rot
-        tr = disp + ax.transData
+    own_figure = ax is None
+    if own_figure:
+        fig, ax = plt.subplots(figsize=(10, 10), dpi=200)
     else:
-        disp = sc
-        tr = sc + ax.transData
-        ax.tick_params(labelsize=7)
-    rect_pts = disp.transform([(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)])
-    x_lo = min(rect_pts[:, 0].min(), center_d[0] - circ_r_d) - 0.02
-    x_hi = max(rect_pts[:, 0].max(), center_d[0] + circ_r_d) + 0.02
-    z_lo = min(rect_pts[:, 1].min(), center_d[1] - circ_r_d) - 0.02
-    z_hi = max(rect_pts[:, 1].max(), center_d[1] + circ_r_d) + 0.02
-    ax.set_xlim(x_lo, x_hi)
-    ax.set_ylim(z_lo, z_hi)
-    if minimap:
-        ax.set_xticks([])
-        ax.set_yticks([])
-    ax.set_aspect("equal")
+        fig = ax.figure
+    tr, disp, center_d, circ_r_d, rect_pts = map_frame(ax, grid.size_x_m, grid.size_z_m, minimap)
     ax.set_facecolor("#0e1621" if minimap else WATER)
 
     from matplotlib.patches import Ellipse
@@ -235,7 +461,8 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
 
     # Terrain: budget-growth shapes over the initialized base, classified
     # per water body / cliff kind (see terrain_rgba).
-    tg = terrain_grid(rs, cell_tiles=1.0)
+    if tg is None:
+        tg = terrain_grid(rs, cell_tiles=1.0)
     rgba = terrain_rgba(tg)
     im = ax.imshow(rgba, extent=(0, 1, 0, 1), origin="lower",
                    interpolation="nearest", zorder=1.5)
@@ -391,16 +618,34 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                 sections = list(branch["variants"][0].get("sections", {}).values())
             r_mid = (branch["min"] + branch["max"]) / 2.0
             for s, e in sections:
-                arc = Arc((0.5, 0.5), 2 * r_mid, 2 * r_mid,
-                          theta1=s * 360.0, theta2=e * 360.0,
+                try:
+                    theta1, theta2 = section_arc_degrees(float(s), float(e))
+                except (TypeError, ValueError):
+                    continue
+                arc = Arc((0.5, 0.5), 2 * r_mid, 2 * r_mid, theta1=theta1, theta2=theta2,
                           edgecolor=RING, linewidth=2.6, alpha=0.9, zorder=3.4)
                 arc.set_transform(tr)
                 ax.add_patch(arc)
-            if sections:
-                ax.text(0.5, 0.985, "section arcs assume 0°=+X CCW (uncalibrated, E3)",
-                        fontsize=6, ha="center", va="top", color=RING, alpha=0.8,
-                        transform=ax.transAxes)
         break
+
+    # Player starts (owner 2026-09-25: "add players"): the NOMINAL start of every player (ResolvedScene.player_locs)
+    # as a small numbered disc in its TEAM colour - the game's lobby colour of the team's index, so an FFA shows
+    # each player in its own lobby colour. A Town Center placement that does not stand on its start (farther than
+    # textmap.TC_APART_M) gets its own square with a tether back to the start; one on its start IS the disc.
+    from scripts.mapsim.textmap import player_starts, town_centers_apart
+    starts = player_starts(rs)
+    tcs_apart = town_centers_apart(rs)
+    team_of_player = {pl: t for pl, t, _x, _z in starts}
+    for p, players, start in tcs_apart:
+        t = next((team_of_player[pl] for pl in players if pl in team_of_player), None)
+        col = team_color(t) if t is not None else "#d8d2c0"
+        if start is not None:
+            ax.plot([start[0], p.x], [start[1], p.z], color=col, linewidth=0.9, linestyle=(0, (2, 1)),
+                    alpha=0.9, zorder=9.2, transform=tr)
+        ax.scatter([p.x], [p.z], marker="s", s=34, color=col, edgecolors="#ffffff", linewidths=0.8,
+                   zorder=9.25, transform=tr)
+    for pl, t, x, z in starts:
+        draw_start(ax, tr, x, z, pl, t)
 
     # Layer 3, groupings: the REAL footprint box as a 50% dark rectangle —
     # and ONLY the box, never a verdict dot on top (user directive
@@ -468,6 +713,27 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                        facecolors="none", edgecolors="#d8d2c0",
                        linewidths=0.8, alpha=0.85, zorder=5.4, transform=tr)
 
+    # ZONE groupings (2026-09-25): a runtime spot known to be ONE of a set of spots (placement.candidates; London's
+    # shuffled city cells). Every candidate spot is drawn ONCE with the grouping-footprint code, hatched = "a grouping
+    # stands here, which one is random" - never one invented spot per grouping.
+    zone_cells = {}
+    for p in rs.placements:
+        if not p.is_grouping or p.x is not None or not getattr(p, "candidates", None):
+            continue
+        dims = _grouping_dims(p)
+        if dims is None:
+            continue
+        boxed_groupings.add(id(p))
+        for cx, cz in p.candidates:
+            zone_cells.setdefault((round(cx, 5), round(cz, 5)), (dims, set()))[1].add(p.name)
+    for (cx, cz), (dims, names) in zone_cells.items():
+        x0 = cx + dims[0] / grid.size_x_m
+        z0 = cz + dims[1] / grid.size_z_m
+        r = _Rect((x0, z0), (dims[2] - dims[0]) / grid.size_x_m, (dims[3] - dims[1]) / grid.size_z_m,
+                  facecolor="#000000", alpha=0.35, hatch="////", edgecolor="#e8e0d0", linewidth=0.6, zorder=5.5)
+        r.set_transform(tr)
+        ax.add_patch(r)
+
     undrawable = 0
     for p in rs.placements:
         if id(p) in boxed_groupings:
@@ -528,15 +794,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     # like in-game; a rectangle keeps its short sides inside and only the
     # long-side corners get cut, matching the Paris minimap.
     if minimap:
-        big = MplPath([(-2, -2), (3, -2), (3, 3), (-2, 3), (-2, -2)],
-                      [MplPath.MOVETO] + [MplPath.LINETO] * 3 + [MplPath.CLOSEPOLY])
-        circ = MplPath.circle(center_d, circ_r_d)
-        hole = MplPath(circ.vertices[::-1], circ.codes)
-        ax.add_patch(PathPatch(MplPath(list(big.vertices) + list(hole.vertices),
-                                       list(big.codes) + list(hole.codes)),
-                               facecolor="#0e1621", edgecolor="none", zorder=8.5))
-        ax.add_patch(Circle(center_d, circ_r_d, fill=False,
-                            edgecolor="#5d788f", linewidth=1.6, zorder=8.6))
+        crop_to_circle(ax, center_d, circ_r_d)
 
     handles = [
         Line2D([], [], marker="s", linestyle="", color=LAND, label="land (buildable)"),
@@ -558,6 +816,10 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                label="grouping with unsatisfiable constraints"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
     ] + ([
+        Rectangle((0, 0), 1, 1, facecolor="#000000", alpha=0.35, hatch="////", edgecolor="#e8e0d0",
+                  label="grouping spot, identity random (one of several groupings lands here)"),
+    ] if zone_cells else []) + [
+    ] + ([
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["EDGE_RISK"], label="warning"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OFF_MAP"], label="error"),
@@ -567,12 +829,37 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         Line2D([], [], color=ROUTE, linestyle="--", label="trade route"),
         Line2D([], [], color=RING, linestyle="--", label="player ring"),
     ]
+    if starts:
+        n_teams = max(t for _pl, t, _x, _z in starts) + 1
+        if n_teams <= 4:
+            for t in range(n_teams):
+                members = [pl for pl, tt, _x, _z in starts if tt == t]
+                who = (f"players {members[0]}-{members[-1]}" if len(members) > 1 else f"player {members[0]}")
+                handles.append(Line2D([], [], marker="o", linestyle="", color="#9aa0a6",
+                                      markeredgecolor=team_color(t), markeredgewidth=2.0, markersize=7,
+                                      label=f"team {t + 1} ring: start slots {who.split(' ', 1)[1]}"))
+        else:
+            handles.append(Line2D([], [], marker="o", linestyle="", color="#9aa0a6",
+                                  markeredgecolor=team_color(0), markeredgewidth=2.0, markersize=7,
+                                  label="player start: ring = team"))
+        handles.append(Line2D([], [], marker="o", linestyle="", color=PLAYER_COLORS[1], markeredgecolor="#ffffff",
+                              markersize=7, label="start slot N = lobby slot (fill = its player colour; the game "
+                                                  "may give the slot another player id)"))
+    if tcs_apart:
+        handles.append(Line2D([], [], marker="s", linestyle=(0, (2, 1)), color="#d8d2c0",
+                              markeredgecolor="#ffffff", markersize=5,
+                              label="Town Center placed away from its start (tether)"))
+    if any(f.scope == "koth" for f in findings or []):
+        handles.append(Line2D([], [], marker="*", linestyle="", color="#ffd21f", markeredgecolor="#000000",
+                              markersize=9, label="King of the Hill hill"))
     if constraint_layers:
         handles += [
             Line2D([], [], color="#e63946", linestyle="--", label="keep-out margin"),
             Line2D([], [], color="#1d3d22", linestyle="--", label="must stay inside"),
             Line2D([], [], color="#f2f2f2", linestyle="--", label="confinement box"),
         ]
+    if not own_figure:
+        return handles
     legend = ax.legend(handles=handles, loc="lower right", fontsize=6.5, framealpha=0.85)
     legend.set_zorder(10)
 
@@ -583,6 +870,8 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     if nsup:
         note += f" | {nsup} alternative spawn-chance placements suppressed"
     view = " | minimap view (+45°, Elbe-calibrated)" if minimap else ""
+    if random_choice_note(rs):
+        note += "\n" + random_choice_note(rs)
     ax.set_title((title or "map preview") + f" — {tag} — {grid.size_x_m:.0f} m{note}{view}",
                  fontsize=10)
 

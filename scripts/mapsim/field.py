@@ -722,6 +722,10 @@ class TerrainGrid:
     # grown reality, not authored discs (a mesa's authored disc covers the
     # valleys its grown claim leaves open).
     class_cells: Dict[str, List[Tuple[int, int]]] = dfield(default_factory=dict)
+    # One record per build step in build order (area / river / connection): {"kind", "name", "line", "category",
+    # "cells" (claimed at build time), "budget" (the area's tile budget in cells; None for rivers and causeways)} -
+    # the text map's area table (textmap.py) reads it.
+    builds: List[Dict[str, Any]] = dfield(default_factory=list)
 
     def cell_of_frac(self, x: float, z: float) -> Tuple[int, int]:
         i = min(self.nx - 1, max(0, int(x * self.nx)))
@@ -844,7 +848,11 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                            sea_level=rs.sea_level,
                            shortfalls=dict(shortfalls))
 
-    def _emit(kind: str, name: str, line: int, category: str, cells_) -> None:
+    builds: List[Dict[str, Any]] = []
+
+    def _emit(kind: str, name: str, line: int, category: str, cells_, budget: Optional[int] = None) -> None:
+        builds.append({"kind": kind, "name": name, "line": line, "category": category,
+                       "cells": len(cells_), "budget": budget})
         if on_step is not None:
             on_step({"kind": kind, "name": name, "line": line,
                      "category": category, "cells": list(cells_),
@@ -1223,12 +1231,13 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
             shortfalls[area.name] = (len(cells), budget)
         if area.cliff_type is not None:
             step_cat += " + cliff " + ("rock" if area.cliff_raised() else "rim")
-        _emit("area", area.name, area.line, step_cat, cells)
+        _emit("area", area.name, area.line, step_cat, cells, budget)
     return TerrainGrid(nx, nz, cell_tiles, land, marker, land_order,
                        water=water, wdepth=wdepth, wwalk=wwalk, cliff=cliff,
                        cliff_band=cliff_band, cliff_order=cliff_order,
                        sea_level=rs.sea_level, shortfalls=shortfalls,
-                       cliff_claims=cliff_claims, class_cells=class_cells)
+                       cliff_claims=cliff_claims, class_cells=class_cells,
+                       builds=builds)
 
 
 @dataclass

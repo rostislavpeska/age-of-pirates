@@ -204,6 +204,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             name=d.name, line=p.def_line, proto=proto_ref, kind=kind,
             x=x, z=z, runtime_expr=runtime, approx=p_approx or float(getattr(p, "drift", 0.0)) > 0.0,
             drift_m=float(getattr(p, "drift", 0.0)),
+            candidates=list(getattr(p, "candidates", []) or []),
             min_dist_m=_num(d.min_dist) or 0.0,
             max_dist_m=_num(d.max_dist) or 0.0,
             terrain_affinity="either",           # curation semantics; unknown from .xs
@@ -319,6 +320,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         constraints=constraints,
         trade_routes=trade_routes,
         trade_route_lines=trade_route_lines,
+        random_choices=dict(getattr(ex, "random_choices", {}) or {}),
         rivers=rivers,
         connections=connections,
         base_is_water=base_is_water,

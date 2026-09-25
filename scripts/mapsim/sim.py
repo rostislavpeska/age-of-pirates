@@ -4,6 +4,8 @@ Usage (from the repo root):
   python scripts/mapsim/sim.py --matrix
   python scripts/mapsim/sim.py --players 5 --teams 2
   python scripts/mapsim/sim.py --scene path/to/scene.json --players 3 --teams 3 --koth
+  python scripts/mapsim/sim.py --xs game/randmaps/zpatols.xs --players 6 --teams 2 --text
+    (--png or --text also writes map_<map>_P6_T2.txt: the text map an agent reads)
 
 Exit codes: 0 clean (warnings allowed), 1 any error-severity finding,
 2 usage error.
@@ -46,11 +48,24 @@ def scenario_tag(sc: Scenario) -> str:
 
 def run_scenario(scene: Scene, sc: Scenario, out_dir: Path, png: bool = False,
                  field_entity: str = "", minimap: bool = False,
-                 rs=None, blocksize: float = 16.0, tag_prefix: str = "") -> List[Finding]:
+                 rs=None, blocksize: float = 16.0, tag_prefix: str = "",
+                 text: bool = False) -> List[Finding]:
     if rs is None:
         rs = scene.resolve(sc)
         blocksize = float(scene.data.get("trade_route", {}).get("blocksize_m", 16.0))
     findings = run_checks(rs, blocksize_m=blocksize)
+    map_title = tag_prefix.rstrip('_') or (scene.data.get("map", "map") if scene else "map")
+
+    # The built terrain is computed once and shared by the preview and the text map (textmap.display_grid).
+    display_tg = None
+    if png or text:
+        from scripts.mapsim.textmap import display_grid, write_text_map
+        display_tg = display_grid(rs)
+        # The text map (owner 2026-09-25: the tool is for the agent, who must read and debug a map from it) goes
+        # with every preview, and alone with --text.
+        path = write_text_map(rs, findings, out_dir / f"map_{tag_prefix}{scenario_tag(sc)}.txt",
+                              title=map_title, tg=display_tg)
+        print(f"  text map: {path}")
 
     if png:
         from scripts.mapsim import render
@@ -75,12 +90,11 @@ def run_scenario(scene: Scene, sc: Scenario, out_dir: Path, png: bool = False,
                         print(f"  --field: opaque constraints not in overlay: {skipped}")
             name = f"preview_{tag_prefix}{scenario_tag(sc)}.png"
             path = render.render(rs, findings, out_dir / name,
-                                 title=(tag_prefix.rstrip('_') or
-                                        (scene.data.get("map", "map") if scene else "map")),
+                                 title=map_title,
                                  field_points=field_points,
                                  field_label=field_entity or None,
                                  constraint_layers=constraint_layers,
-                                 minimap=minimap)
+                                 minimap=minimap, tg=display_tg)
             print(f"  preview: {path}")
         else:
             print("  preview skipped: matplotlib not installed for this interpreter "
@@ -121,7 +135,11 @@ def main(argv: List[str]) -> int:
     parser.add_argument("--matrix", action="store_true",
                         help="run the standard {2,3,5,7,8} x {2-team, FFA} matrix")
     parser.add_argument("--png", action="store_true",
-                        help="also render a schematic preview PNG per scenario")
+                        help="also render a schematic preview PNG per scenario "
+                             "(and the text map, map_*.txt)")
+    parser.add_argument("--text", action="store_true",
+                        help="write the agent-readable text map map_*.txt (ASCII terrain grid, "
+                             "players, areas vs budget, KotH, findings) without a PNG")
     parser.add_argument("--field", default="",
                         help="overlay the feasibility field of this area on the preview")
     parser.add_argument("--xs", type=Path, default=None,
@@ -158,7 +176,7 @@ def main(argv: List[str]) -> int:
             rs = extraction_to_resolved(ex)
             findings = run_scenario(None, sc, args.out, png=args.png,
                                     field_entity=args.field, minimap=args.minimap,
-                                    rs=rs, tag_prefix=prefix)
+                                    rs=rs, tag_prefix=prefix, text=args.text)
             any_error |= any(f.severity == "error" for f in findings)
             if args.layers:
                 from scripts.mapsim import render
@@ -177,7 +195,8 @@ def main(argv: List[str]) -> int:
     scene = Scene.load(args.scene)
     for sc in scenarios:
         findings = run_scenario(scene, sc, args.out, png=args.png,
-                                field_entity=args.field, minimap=args.minimap)
+                                field_entity=args.field, minimap=args.minimap,
+                                text=args.text)
         any_error |= any(f.severity == "error" for f in findings)
     print(f"reports written to {args.out}")
     return 1 if any_error else 0

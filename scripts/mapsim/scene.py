@@ -229,6 +229,8 @@ class ResolvedPlacement:
     # How far the anchor itself may be off: the read-back position of another def the engine may move this far
     # (xs_extract.Drifting; zpIceland.xs pirate controller -> pirate city).
     drift_m: float = 0.0
+    # ZONE certainty: a runtime spot known to be ONE of these (x, z) fractions (xs_extract.OneOf; London's city blocks).
+    candidates: List[Tuple[float, float]] = field(default_factory=list)
     solve_unsat: Optional[List[str]] = None
     solve_skipped: Optional[List[str]] = None
     # Filled by the .xs bridge (2026-09-24, twin review F4; curated scenes
@@ -271,6 +273,8 @@ class ResolvedScene:
     groupings_solved: bool = False      # gsolve.ensure_solved ran (idempotence)
     # NOMINAL player start locations (fractions) from the placement calls - xs pipeline only (bridge).
     player_locs: List[Tuple[float, float]] = field(default_factory=list)
+    # line -> (condition, outcome) of every random `if` mapsim decided at its low roll (xs_extract.random_choices)
+    random_choices: Dict[int, Tuple[str, bool]] = field(default_factory=dict)
 
     def all_routes(self) -> List[List[Tuple[float, float]]]:
         return self.trade_routes or ([self.trade_route_waypoints] if self.trade_route_waypoints else [])
