@@ -70,6 +70,20 @@ on 2026-09-22 after verifying a repo copy existed for each. A stale root copy sh
 constraint-reactive: the engine searches for a feasible point; a native grouping is also gated on
 its subciv roll, so absence at one player count is normal (rm-census's judge tells the two apart).
 
+### Known placement issues (proven in game, 2026-09-25, `0000_zzplondon_pirates`)
+
+- **The instance API skips single-unit groupings.** `rmPlaceGroupingInstanceAtLoc` places nothing, silently, for a
+  grouping exported with `<selectassingleunit>1</selectassingleunit>` / `<workonassingleunit>1</workonassingleunit>`
+  (native-village exports such as `EU_Natives_Pirates_01`). London's instance-placed groupings (bridge, harbours) are
+  0 / 0. Read the header first; a single-unit grouping takes `rmSetGroupingMinDistance(g, 0.0)`,
+  `rmSetGroupingMaxDistance(g, 0.0)` and `rmPlaceGroupingAtLoc(g, 0, x, z)` (Elbe's pirate villages do the same).
+- **No water units in a grouping on a baked quay or pier.** Land and air units are fine where the grouping's baked heights
+  raise the ground (London Bridge carries land houses and sockets over the river); a water-movement unit
+  (`zpHarbourPlatform`) standing on a raised cell blocks the whole grouping. Owner rule: land + air only - strip the
+  water units. Check before placing: each unit's `movementtype` (the map's .mods.xml, then protomods, then the live
+  protoy) against the height of the tile under it, tile i centred on 2i m (`round(pos / 2)`); the working London bridge
+  and harbour exports show no mismatch under that convention.
+
 ## Verify
 
 `census_judge.py` fingerprints every grouping by its socket/flag unit and reports rolled / absent /

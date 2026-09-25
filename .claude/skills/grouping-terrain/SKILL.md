@@ -59,7 +59,8 @@ Rules the scripts enforce and you must respect:
 
 ## 3. Map-side placement is separate
 
-Where the whole grouping lands is the map script (`rmPlaceGroupingAtLoc` / `rmPlaceGroupingInstanceAtLoc`
+Where the whole grouping lands is the map script (`rmPlaceGroupingAtLoc` / `rmPlaceGroupingInstanceAtLoc` - which
+call, and why water units must not sit on the baked quay: rm-groupings-deploy, "Known placement issues")
 in `randmaps/zpXXX.xs` and its game-root twin under
 `C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\Game\RandMaps\`). Moving the grouping by metres:
 `0.5 + rmXTilesToFraction(4) - rmZMetersToFraction(1.0)`. Edit both twins; their only legitimate
