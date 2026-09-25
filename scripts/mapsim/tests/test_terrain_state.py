@@ -238,7 +238,7 @@ class TestGoldenGrids:
         assert got == golden
 
 
-DEAD_SEA_LIKE = """
+DEAD_SEA_LIKE = r"""
 void main(void) {
    rmSetStatusText("", 0.1);
    rmSetMapSize(400, 400);
