@@ -251,3 +251,269 @@ class TestRealSceneSmoke:
         findings = run_checks(rs, blocksize_m=float(scene.data["trade_route"]["blocksize_m"]))
         hard = [f for f in findings if f.severity == "error"]
         assert hard == [], [f.to_dict() for f in hard]
+
+
+ISLAND_IN_LAKE = """
+void main(void) {
+   rmSetStatusText("", 0.1);
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(6.0);
+   rmTerrainInitialize("deccan\ground_grass3_deccan");
+   int lake = rmCreateArea("lake");
+   rmSetAreaSize(lake, 0.2, 0.2);
+   rmSetAreaLocation(lake, 0.5, 0.5);
+   rmSetAreaWaterType(lake, "great lakes");
+   rmSetAreaBaseHeight(lake, 0.0);
+   rmBuildArea(lake);
+   int isle = rmCreateArea("King's Island");
+   rmSetAreaSize(isle, rmAreaTilesToFraction(200), rmAreaTilesToFraction(200));
+   rmSetAreaLocation(isle, 0.5, 0.5);
+   rmSetAreaBaseHeight(isle, 1.0);
+   rmSetAreaCoherence(isle, 1.0);
+   rmBuildArea(isle);
+   int dry = rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 4.0);
+   int obj = rmCreateObjectDef("marker");
+   rmAddObjectDefItem(obj, "ypKingsHill", 1, 0);
+   rmAddObjectDefConstraint(obj, dry);
+   rmPlaceObjectDefAtLoc(obj, 0, 0.5, 0.5, 1);
+   rmSetStatusText("", 1.0);
+}
+"""
+
+
+class TestTerrainConstraintsSeeBuiltTerrain:
+    """zpeyrebasin.xs KotH (2026-09-25): a land-initialized map builds its King's Island (base 1.0, 200 tiles) on
+    top of the water-typed lake and places the hill there with 'kings hill avoids impassable land' (Land, false,
+    4 m). The game places it (owner: Eyre Basin's hill stands on a tiny island). mapsim tested the constraint
+    against the lake's authored disc, which ignores the island built over it, and reported CONSTRAINT_UNSAT. The
+    grouping solver already measured water distance on the built grid; object placements now do the same."""
+
+    def test_island_hill_is_placeable(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "isle.xs"
+        src.write_text(ISLAND_IN_LAKE, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        f = [x for x in run_checks(rs) if x.name == "marker"]
+        assert f and f[0].verdict != "CONSTRAINT_UNSAT", f[0].message
+
+
+KOTH_SEA = """
+void main(void) {
+   rmSetStatusText("", 0.1);
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("water");
+   rmSetSeaType("caribbean coast");
+   rmSetPlacementSection(0.1, 0.9);
+   rmPlacePlayersCircular(0.2, 0.2, 0.0);
+   int home = rmCreateArea("home");
+   rmSetAreaSize(home, 0.3, 0.3);
+   rmSetAreaLocation(home, 0.5, 0.5);
+   rmSetAreaBaseHeight(home, 2.0);
+   rmSetAreaCoherence(home, 1.0);
+   rmBuildArea(home);
+   int isle = rmCreateArea("koth isle");
+   rmSetAreaSize(isle, rmAreaTilesToFraction(250), rmAreaTilesToFraction(250));
+   rmSetAreaLocation(isle, 0.9, 0.1);
+   rmSetAreaBaseHeight(isle, 2.0);
+   rmSetAreaCoherence(isle, 1.0);
+   rmBuildArea(isle);
+   if (rmGetIsKOTH())
+      ypKingsHillPlacer(XX, ZZ, 0.0, 0);
+   rmSetStatusText("", 1.0);
+}
+"""
+
+
+class TestKothFinding:
+    """check_koth (feedback 2026-09-25 item 2): the land the hill stands on, its size, whether a player start
+    reaches it by land or shallows, and the distance to deep water (ypkingshill.tactics AutoConvert 12 m: ships
+    capture). Owner ground truth it reproduces on the real maps: tiny islands on Eyre Basin, Burma, Dead Sea, Torres
+    Strait, Labrador Coast, Cold War; bigger islands on Polynesia, Cook Islands, Melanesia, Elbe, Atols."""
+
+    def _koth(self, tmp_path, x, z):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import check_koth
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "koth.xs"
+        src.write_text(KOTH_SEA.replace("XX", str(x)).replace("ZZ", str(z)), encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2, koth=True)))
+        return check_koth(rs)
+
+    def test_tiny_island_hill(self, tmp_path):
+        (f,) = self._koth(tmp_path, 0.9, 0.1)
+        assert f.verdict == "KOTH_TINY_ISLAND", f.message
+        assert f.details["land"] == "koth isle" and 200 <= f.details["tiles"] < 600
+        assert not f.details["reaches_player_start"] and 0 < f.details["deep_water_m"] < 40
+
+    def test_mainland_hill(self, tmp_path):
+        (f,) = self._koth(tmp_path, 0.5, 0.5)
+        assert f.verdict == "KOTH_MAINLAND", f.message
+        assert f.details["reaches_player_start"] and f.details["land"] == "home"
+
+    def test_no_koth_no_finding(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import check_koth
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "koth.xs"
+        src.write_text(KOTH_SEA.replace("XX", "0.9").replace("ZZ", "0.1"), encoding="utf-8")
+        assert check_koth(extraction_to_resolved(extract(src, Scenario(2, 2)))) == []
+
+
+class TestKothConnectivity:
+    """Refinements measured against the live KotH captures (forced-KotH editor copies, 2026-09-25)."""
+
+    def _koth(self, tmp_path, body, sc=Scenario(2, 2, koth=True)):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import check_koth
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "k.xs"
+        src.write_text("void main(void) {\n rmSetMapSize(400, 400);\n" + body + "\n}\n", encoding="utf-8")
+        return check_koth(extraction_to_resolved(extract(src, sc)))
+
+    def test_a_cliff_ring_does_not_isolate_the_hill(self, tmp_path):
+        # Winter Wonderland II: the hill plateau inside cliff terraces is mainland (owner) - rims have ramps the
+        # model cannot see, and the question is whether WATER isolates the hill.
+        (f,) = self._koth(tmp_path, '''
+ rmTerrainInitialize("grass");
+ rmSetPlacementSection(0.1, 0.9); rmPlacePlayersCircular(0.35, 0.35, 0.0);
+ int mesa = rmCreateArea("mesa"); rmSetAreaSize(mesa, 0.05, 0.05); rmSetAreaLocation(mesa, 0.5, 0.5);
+ rmSetAreaCliffType(mesa, "Rocky Mountain2"); rmSetAreaCliffHeight(mesa, 6, 1, 0.5); rmBuildArea(mesa);
+ ypKingsHillPlacer(0.5, 0.5, 0.0, 0);''')
+        assert f.verdict == "KOTH_MAINLAND", f.message
+
+    def test_shallows_join_but_do_not_enlarge_the_island(self, tmp_path):
+        # Barrier Reef: the islet sits in walkable reef shallows joining other land; its own island stays tiny.
+        (f,) = self._koth(tmp_path, '''
+ rmSetSeaLevel(1.0); rmTerrainInitialize("water"); rmSetSeaType("caribbean coast");
+ rmSetPlacementSection(0.1, 0.9); rmPlacePlayersCircular(0.2, 0.2, 0.0);
+ int home = rmCreateArea("home"); rmSetAreaSize(home, 0.3, 0.3); rmSetAreaLocation(home, 0.5, 0.5);
+ rmSetAreaBaseHeight(home, 2.0); rmSetAreaCoherence(home, 1.0); rmBuildArea(home);
+ int reef = rmCreateArea("reef"); rmSetAreaSize(reef, 0.03, 0.03); rmSetAreaLocation(reef, 0.88, 0.12);
+ rmSetAreaBaseHeight(reef, 0.8); rmSetAreaCoherence(reef, 1.0); rmBuildArea(reef);
+ int other = rmCreateArea("other isle"); rmSetAreaSize(other, rmAreaTilesToFraction(900), rmAreaTilesToFraction(900));
+ rmSetAreaLocation(other, 0.93, 0.07); rmSetAreaBaseHeight(other, 2.0); rmSetAreaCoherence(other, 1.0); rmBuildArea(other);
+ int isle = rmCreateArea("koth isle"); rmSetAreaSize(isle, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+ rmSetAreaLocation(isle, 0.84, 0.16); rmSetAreaBaseHeight(isle, 2.0); rmSetAreaCoherence(isle, 1.0); rmBuildArea(isle);
+ ypKingsHillPlacer(0.84, 0.16, 0.0, 0);''')
+        assert f.verdict == "KOTH_TINY_ISLAND", f.message
+        assert f.details["tiles"] < 400 < f.details["reach_tiles"]
+        assert not f.details["reaches_player_start"]
+
+
+class TestOwnUnitIsNoObstacle:
+    """zptorresstrait.xs 771: one 'player TC' def placed per player with 'avoid Town Center Far' (TownCenter,
+    60 m). Each nominal TC is deposited at its own anchor, so every TC 'avoided itself' at 0 m: CONSTRAINT_UNSAT at
+    every player count, although the game places them (owner ground truth; live editor Torres Strait 2p/6p). The
+    placement's own unit is skipped; the other players' TCs still count."""
+
+    SRC = """
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmTerrainInitialize("grass");
+   rmSetPlacementSection(0.1, 0.9);
+   rmPlacePlayersCircular(0.35, 0.35, 0.0);
+   int far = rmCreateTypeDistanceConstraint("avoid Town Center Far", "TownCenter", 60.0);
+   int tc = rmCreateObjectDef("player TC");
+   rmAddObjectDefItem(tc, "TownCenter", 1, 0.0);
+   rmSetObjectDefMaxDistance(tc, 50.0);
+   rmAddObjectDefConstraint(tc, far);
+   for (i = 1; <= cNumberNonGaiaPlayers)
+      rmPlaceObjectDefAtLoc(tc, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+}
+"""
+
+    def _tc(self, tmp_path, players):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "tc.xs"
+        src.write_text(self.SRC, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(players, 2)))
+        return [f for f in run_checks(rs) if f.name == "player TC"]
+
+    def test_spread_town_centers_are_placeable(self, tmp_path):
+        fs = self._tc(tmp_path, 2)
+        assert fs and all(f.verdict != "CONSTRAINT_UNSAT" for f in fs), [f.message for f in fs]
+
+
+class TestReadBackDrift:
+    """zpIceland.xs 624-716: 'pirate controller 1' is authored at (0.5, 0.5) with max distance 0.45 map and
+    'ferry v. water' (within 20 m of water), so the engine puts it on the shore; 'pirate city 1' is then placed
+    within 22 m of the controller's READ-BACK position with the same 20 m water rule. mapsim read the controller
+    back at its authored centre: CONSTRAINT_UNSAT 'ferry v. water' (Iceland 2p/6p, Barrier Reef) on maps that play.
+    A read-back anchor now carries the source def's max distance as drift; a def merely authored at the same spot
+    does not."""
+
+    SRC = """
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("water");
+   rmSetSeaType("caribbean coast");
+   int land = rmCreateArea("land"); rmSetAreaSize(land, 0.5, 0.5); rmSetAreaLocation(land, 0.5, 0.5);
+   rmSetAreaBaseHeight(land, 2.0); rmSetAreaCoherence(land, 1.0); rmBuildArea(land);
+   int shore = rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 20.0);
+   int ctl = rmCreateObjectDef("controller");
+   rmAddObjectDefItem(ctl, "zpSPCWaterSpawnPoint", 1, 0.0);
+   rmSetObjectDefMaxDistance(ctl, rmXFractionToMeters(0.45));
+   rmAddObjectDefConstraint(ctl, shore);
+   rmPlaceObjectDefAtLoc(ctl, 0, 0.5, 0.5, 1);
+   vector loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(ctl, 0));
+   int city = rmCreateObjectDef("city");
+   rmAddObjectDefItem(city, "Deer", 1, 0.0);
+   rmSetObjectDefMaxDistance(city, 22.0);
+   rmAddObjectDefConstraint(city, shore);
+   rmPlaceObjectDefAtLoc(city, 0, rmXMetersToFraction(xsVectorGetX(loc)), rmZMetersToFraction(xsVectorGetZ(loc)), 1);
+   int decor = rmCreateObjectDef("decor");
+   rmAddObjectDefItem(decor, "Deer", 1, 0.0);
+   rmSetObjectDefMaxDistance(decor, 22.0);
+   rmAddObjectDefConstraint(decor, shore);
+   rmPlaceObjectDefAtLoc(decor, 0, 0.5, 0.5, 1);
+}
+"""
+
+    def test_read_back_anchor_drifts_and_authored_twin_does_not(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "rb.xs"
+        src.write_text(self.SRC, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        by = {p.name: p for p in rs.placements}
+        assert by["city"].drift_m == pytest.approx(180.0) and by["decor"].drift_m == 0.0
+        v = {f.name: f.verdict for f in run_checks(rs)}
+        assert v["city"] != "CONSTRAINT_UNSAT" and v["decor"] == "CONSTRAINT_UNSAT"
+
+
+class TestDenseSearchDisc:
+    """The engine searches the whole min..max disc; check_placement sampled three rings (min, mid, max) of 16
+    directions and missed small qualifying spots. Treasure Island 6p 'Controler 1' ('ferry v. water', 18 m) was UNSAT
+    with a qualifying point 16 m from water inside its 30 m disc; the full sweep lost 41 such false UNSAT errors
+    (Iceland 'stay in cliff2' x19, Malta 'bonus mine', Philippines 'maltese controller 2', ...)."""
+
+    SRC = """
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmTerrainInitialize("grass");
+   int target = rmCreateArea("target");
+   rmSetAreaSize(target, rmAreaTilesToFraction(12), rmAreaTilesToFraction(12));
+   rmSetAreaLocation(target, 0.52, 0.5);
+   rmSetAreaBaseHeight(target, 1.0);
+   rmBuildArea(target);
+   int stay = rmCreateAreaConstraint("stay in target", target);
+   int d = rmCreateObjectDef("probe");
+   rmAddObjectDefItem(d, "Deer", 1, 0.0);
+   rmSetObjectDefMaxDistance(d, 40.0);
+   rmAddObjectDefConstraint(d, stay);
+   rmPlaceObjectDefAtLoc(d, 0, 0.5, 0.5);
+}
+"""
+
+    def test_a_small_spot_between_the_old_rings_is_found(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "dense.xs"
+        src.write_text(self.SRC, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        fs = [f for f in run_checks(rs) if f.name == "probe"]
+        assert fs and all(f.verdict != "CONSTRAINT_UNSAT" for f in fs), [f.message for f in fs]

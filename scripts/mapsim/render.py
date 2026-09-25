@@ -19,7 +19,7 @@ from typing import Dict, List, Optional
 
 from scripts.mapsim.checks import Finding
 from scripts.mapsim.geometry import WORLD_CIRCLE_R
-from scripts.mapsim.scene import ResolvedScene, _check_when
+from scripts.mapsim.scene import ResolvedScene, _check_when, height_floods
 
 # Layer-2 Terrain Standard palette (plan_mapsim_architecture.md B3): four
 # classes, one swatch each — the legend IS the standard. No paint tints, no
@@ -161,7 +161,6 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
 
     from scripts.mapsim.field import FieldContext, terrain_grid
     from scripts.mapsim.gsolve import ensure_solved
-    from scripts.mapsim.scene import area_floods
     ensure_solved(rs)
 
     grid = rs.grid
@@ -251,8 +250,8 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
             ec, ls, label_col = "#9cc4e4", (0, (2, 3)), "#dbe9f7"
         elif area.is_invisible():
             ec, ls, label_col = "#8f9aa8", (0, (1, 3)), "#aab4c0"
-        elif (area.base_height is not None
-              and area_floods(rs, area)):  # submerged ground / reef
+        elif height_floods(rs.base_is_water, rs.sea_level, area.base_height,
+                           None):  # submerged ground / reef
             ec, ls, label_col = "#6fa8c9", (0, (2, 3)), "#9fc4da"
         else:
             # Painted land: its grown shape IS the information — an authored
@@ -499,6 +498,23 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
             ax.annotate(p.name, (p.x, p.z), xytext=(0, 5),
                         textcoords="offset points", fontsize=5.5,
                         ha="center", color="#f2f2f2", zorder=8, xycoords=tr)
+
+    # The KotH hill (checks.check_koth, 2026-09-25): a gold star at its spot, labelled with the verdict - drawn
+    # whenever the finding exists, independent of DRAW_VERDICT_MARKERS.
+    for f in findings or []:
+        if f.scope != "koth" or not (f.details or {}).get("hill_m"):
+            continue
+        hx, hz = f.details["hill_m"]
+        fx_, fz_ = grid.x_m_to_frac(hx), grid.z_m_to_frac(hz)
+        ax.scatter([fx_], [fz_], marker="*", s=260, color="#ffd21f", edgecolors="#000000",
+                   linewidths=0.9, zorder=9, transform=tr)
+        d = f.details
+        label = ("KotH: tiny island" if d.get("tiny") else "KotH: island" if d.get("island") else "KotH: mainland")
+        label += f", {d.get('tiles')} tiles"
+        if d.get("deep_water_m") is not None:
+            label += f", deep water {d['deep_water_m']:g} m"
+        ax.annotate(label, (fx_, fz_), xytext=(0, 9), textcoords="offset points", fontsize=6.5,
+                    ha="center", color="#ffd21f", zorder=9, xycoords=tr)
 
     x0_, x1_ = ax.get_xlim()
     bar = grid.x_m_to_frac(100.0) / (x1_ - x0_)   # 100 m in axes fraction

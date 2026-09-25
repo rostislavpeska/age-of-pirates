@@ -26,3 +26,12 @@ def test_render_real_scene_smoke(tmp_path, sc):
     out = render(rs, findings, tmp_path / f"preview_{sc.players}.png", title="test")
     assert out.is_file()
     assert out.stat().st_size > 50_000  # a real image, not an empty canvas
+
+
+def test_main_forwards_arguments_to_sim(capsys):
+    """feedback 2026-09-25 item 7: `python -m scripts.mapsim.main --help` printed nothing useful and ran the
+    default matrix; with arguments main() now is sim.py."""
+    from scripts.mapsim import main as main_mod
+    with pytest.raises(SystemExit) as e:
+        main_mod.main(["--help"])
+    assert e.value.code == 0 and "--xs" in capsys.readouterr().out

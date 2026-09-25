@@ -182,3 +182,306 @@ class TestBiasGuard:
         assert ex.warnings == []
         assert ex.map_size_x == 500
         assert len(ex.waypoints) == 16
+
+
+class TestKingsHillHelpers:
+    """ypKOTHInclude.xs (vanilla, Game/RandMaps): ypKingsHillPlacer(x, y, walk, extra) builds object def 'KingsHill'
+    (item ypKingsHill; max distance rmXFractionToMeters(walk); 8 constraints incl. 'kings hill avoids impassable
+    land' Land 4 m, 'kings hill avoids TCs' 45 m, the trade route 6 m) and places it at (x, y) for gaia;
+    ypKingsHillLandfill(x, y, size, height, mix, extra) builds area 'hill placer' (coherence 0.9, base height,
+    mix, smooth 5). mapsim listed the placer as a no-op and did not know the landfill (2026-09-25 feedback item 2:
+    the hill was never drawn or checked)."""
+
+    SRC = HEADER + ('rmTerrainInitialize("water", 0.0); rmSetSeaLevel(1.0);\n'
+                    'ypKingsHillLandfill(0.4, 0.6, 0.01, 2.0, "borneo_sand_a", 0);\n'
+                    'ypKingsHillPlacer(0.4, 0.6, 0.05, 0); }')
+
+    def test_placer_places_the_hill(self):
+        ex = run_src(self.SRC, Scenario(2, 2, koth=True))
+        defs = [d for d in ex.defs.values() if d.name == "KingsHill"]
+        assert len(defs) == 1 and [p for p, _ in defs[0].items] == ["ypKingsHill"]
+        assert defs[0].max_dist == pytest.approx(0.05 * 400)
+        assert "kings hill avoids TCs" in defs[0].constraints and len(defs[0].constraints) == 8
+        pl = [p for p in ex.placements if p.name == "KingsHill"]
+        assert len(pl) == 1 and (pl[0].x, pl[0].z) == (0.4, 0.6)
+        assert not [w for w in ex.warnings if "ypKingsHill" in w]
+
+    def test_landfill_builds_the_hill_placer_area(self):
+        ex = run_src(self.SRC, Scenario(2, 2, koth=True))
+        a = [a for a in ex.areas.values() if a.name == "hill placer"]
+        assert len(a) == 1
+        assert (a[0].x, a[0].z, a[0].base_height, a[0].coherence) == (0.4, 0.6, 2.0, 0.9)
+        assert a[0].size_max_frac == pytest.approx(0.01) and a[0].has_paint
+
+
+class TestKnownEngineCalls:
+    """Feedback 2026-09-25 item 3: calls the extractor skipped with an 'unknown function' warning. Each is now
+    known: no-ops with a reason, opaque constraints, deterministic reads, arrays and vectors."""
+
+    def test_noops_and_opaque_constraints_warn_nothing(self):
+        src = HEADER + ('int a = rmCreateArea("a"); rmSetAreaSize(a, 0.1, 0.1); rmSetAreaLocation(a, 0.5, 0.5);\n'
+                        'rmEnableOutlaw("SaloonOutlawPistol"); rmSetAllMapReveal(true);\n'
+                        'rmSetAreaTerrainLayerVariance(a, false); rmAddAreaCliffEdgeAvoidClass(a, 1, 5.0);\n'
+                        'int d = rmCreateObjectDef("d"); rmSetObjectDefGarrisonStartingUnits(d, true);\n'
+                        'rmSetObjectDefGarrisonSecondaryUnits(d, true); rmAddPlayerResource(1, "Food", 100);\n'
+                        'rmSetPlayerResource(1, "Wood", 50); rmSetNumberInitialColonies(2);\n'
+                        'int ramp = rmCreateCliffRampDistanceConstraint("ramp", a, 10.0);\n'
+                        'int low = rmCreateMaxHeightConstraint("low", 4.0);\n'
+                        'rmAddObjectDefConstraint(d, ramp); rmAddObjectDefConstraint(d, low);\n'
+                        'int t = rmGetTechID("deEUMapSaxony"); }')
+        ex = run_src(src)
+        assert ex.warnings == []
+        assert ex.constraints["ramp"]["kind"] == ex.constraints["low"]["kind"] == "opaque"
+
+    def test_bool_and_vector_arrays_and_normalize(self):
+        src = HEADER + ('int b = xsArrayCreateBool(3, false); xsArraySetBool(b, 2, true);\n'
+                        'int v = xsArrayCreateVector(2, cOriginVector);\n'
+                        'xsArraySetVector(v, 1, xsVectorNormalize(xsVectorSet(3.0, 0.0, 4.0)));\n'
+                        'int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'if (xsArrayGetBool(b, 2)) rmPlaceObjectDefAtLoc(d, 0,\n'
+                        '    xsVectorGetX(xsArrayGetVector(v, 1)), xsVectorGetZ(xsArrayGetVector(v, 1)), 1);\n'
+                        'if (xsArrayGetSize(v) == 2) rmPlaceObjectDefAtLoc(d, 0, 0.1, 0.1, 1); }')
+        ex = run_src(src)
+        assert ex.warnings == []
+        pl = sorted((round(p.x, 3), round(p.z, 3)) for p in ex.placements)
+        assert pl == [(0.1, 0.1), (0.6, 0.8)]
+
+    def test_ffa_closer_area_and_place_at_area_loc(self):
+        src = HEADER + ('int a1 = rmCreateArea("near"); rmSetAreaSize(a1, 0.05, 0.05); rmSetAreaLocation(a1, 0.2, 0.2);\n'
+                        'int a2 = rmCreateArea("far"); rmSetAreaSize(a2, 0.05, 0.05); rmSetAreaLocation(a2, 0.8, 0.8);\n'
+                        'int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'rmPlaceObjectDefAtAreaLoc(d, 0, rmFindCloserArea(0.3, 0.3, a1, a2), 1);\n'
+                        'if (rmGetIsFFA()) rmPlaceObjectDefAtLoc(d, 0, 0.9, 0.1, 1); }')
+        ex = run_src(src, Scenario(3, 3))
+        assert ex.warnings == []
+        assert sorted((p.x, p.z) for p in ex.placements) == [(0.2, 0.2), (0.9, 0.1)]
+        assert [(p.x, p.z) for p in run_src(src, Scenario(4, 2)).placements] == [(0.2, 0.2)]
+
+class TestNoBlockScope:
+    """XS has no block scope (skills rm-objects-herds, rm-skeleton): a variable declared in a branch that did not
+    run still exists, at zero. zpeyrebasin.xs declares ControllerLoc2 only for 4+ players and builds pirate_site2 at
+    it for every player count; the extractor warned 'unknown variable' and lost the area's location."""
+
+    SRC = HEADER + ('if (cNumberNonGaiaPlayers >= 4) {\n'
+                    '   vector loc2 = xsVectorSet(200.0, 0.0, 100.0);\n'
+                    '   int flag2 = 7;\n'
+                    '}\n'
+                    'int site = rmCreateArea("site2"); rmSetAreaSize(site, 0.01, 0.01);\n'
+                    'rmSetAreaLocation(site, rmXMetersToFraction(xsVectorGetX(loc2)), '
+                    'rmZMetersToFraction(xsVectorGetZ(loc2))); rmBuildArea(site); }')
+
+    def test_undeclared_branch_variable_is_zero(self):
+        ex = run_src(self.SRC, Scenario(2, 2))
+        assert ex.warnings == []
+        a = next(a for a in ex.areas.values() if a.name == "site2")
+        assert (a.x, a.z) == (0.0, 0.0)
+
+    def test_declared_branch_variable_keeps_its_value(self):
+        ex = run_src(self.SRC, Scenario(4, 2))
+        a = next(a for a in ex.areas.values() if a.name == "site2")
+        assert (a.x, a.z) == (0.5, 0.25)
+
+
+class TestHalfKnownAnchors:
+    """zpnewguinea.xs (every player count) and zplabradorcoast.xs (6 players) crashed mapsim with a TypeError: an
+    anchor with a literal x and a runtime z reached the geometry code as (0.5, None)."""
+
+    SRC = HEADER + ('float zr = rmRandFloat(0.3, 0.6);\n'
+                    'int c = rmCreateArea("center"); rmSetAreaSize(c, 0.04, 0.04); rmSetAreaLocation(c, 0.5, zr);\n'
+                    'rmBuildArea(c);\n'
+                    'int d = rmCreateObjectDef("stopper"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                    'rmPlaceObjectDefAtLoc(d, 0, 0.29, rmPlayerLocZFraction(3), 1); }')
+
+    def test_random_axis_takes_the_middle_and_unknown_axis_makes_it_runtime(self):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import run_checks
+        rs = extraction_to_resolved(run_src(self.SRC, Scenario(6, 2)))
+        a = next(a for a in rs.areas if a.name == "center")
+        assert (a.x, round(a.z, 3), a.approx) == (0.5, 0.45, True)
+        p = next(p for p in rs.placements if p.name == "stopper")
+        assert (p.x is None) == (p.z is None)
+        run_checks(rs)                      # no TypeError
+
+
+class TestNominalArmStateWins:
+    """zpzealand.xs 479-511: bonusVariation = rmRandInt(1,2); the bonus island's location is set in both arms of
+    `if (bonusVariation == 1)` and the KotH hill likewise. The extractor ran both arms with LAST write winning for
+    state (the else arm's island at (0.6, 0.0)) but recorded the NOMINAL (then) arm's placements (hill at (0.4,
+    0.9)): the hill stood in open sea, KOTH_NO_LAND / CONSTRAINT_UNSAT. The live KotH capture (6p) shows the hill on
+    a 2 321-tile island. State now follows the nominal arm too."""
+
+    SRC = HEADER + ('int v = rmRandInt(1, 2);\n'
+                    'int isle = rmCreateArea("bonus island"); rmSetAreaSize(isle, 0.02, 0.02);\n'
+                    'if (v == 1) rmSetAreaLocation(isle, 0.4, 1.0); else rmSetAreaLocation(isle, 0.6, 0.0);\n'
+                    'rmBuildArea(isle);\n'
+                    'int d = rmCreateObjectDef("hill"); rmAddObjectDefItem(d, "ypKingsHill", 1, 0);\n'
+                    'if (v == 1) rmPlaceObjectDefAtLoc(d, 0, 0.4, 0.9, 1); else rmPlaceObjectDefAtLoc(d, 0, 0.6, 0.1, 1); }')
+
+    def test_area_state_follows_the_nominal_arm(self):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        rs = extraction_to_resolved(run_src(self.SRC))
+        isle = next(a for a in rs.areas if a.name == "bonus island")
+        hill = next(p for p in rs.placements if p.name == "hill")
+        assert (isle.x, isle.z) == (0.4, 1.0) and (hill.x, hill.z) == (0.4, 0.9)
+
+
+class TestContinue:
+    """`continue` was read as a bare name and ignored; zplondon.xs filler() (`if (taken) continue;`) then placed the
+    Academy on the first cell of each range whether taken or not (twin on the live London save: 11 groupings
+    MISSING instead of 2)."""
+
+    def test_continue_skips_to_the_next_iteration(self):
+        src = HEADER + ('int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'for (i = 0; < 3) { if (i < 2) continue; rmPlaceObjectDefAtLoc(d, 0, 0.1 * i, 0.5, 1); } }')
+        ex = run_src(src)
+        assert [(round(p.x, 2), p.z) for p in ex.placements] == [(0.2, 0.5)] and ex.warnings == []
+
+
+class TestArrayWrittenAtRuntimeIndex:
+    """zplondon.xs marks shuffled city cells taken with xsArraySetBool(gCityLocsStatus, <runtime index>, true); the
+    extractor dropped writes at runtime indices, so filler() saw every cell free. A write at a runtime index could
+    hit any element: every later read of that array is runtime."""
+
+    def test_reads_after_a_runtime_index_write_are_runtime(self):
+        src = HEADER + ('int s = xsArrayCreateBool(4, false); xsArraySetBool(s, rmRandInt(0, 3), true);\n'
+                        'int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'if (xsArrayGetBool(s, 0) == false) rmPlaceObjectDefAtLoc(d, 0, 0.1, 0.1, 1); }')
+        ex = run_src(src)
+        assert [p.nominal for p in ex.placements] == [True] and ex.placements[0].variant != ""
+
+
+class TestSectionSpacing:
+    """rmPlacePlayersCircular inside a placement SECTION spaces the players from end to end. Measured against the
+    census of live editor saves (6 players, 2 teams): Dead Sea (0.2-wide team sections) ~35 deg between teammates,
+    Eyre Basin (0.25) 43-44 deg, Black Sea (0.182) 33-36 deg; mapsim spaced them width / n (24, 30, 22 deg)."""
+
+    def test_team_section_endpoints_included(self):
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('rmSetPlacementTeam(0); rmSetPlacementSection(0.7, 0.9); rmPlacePlayersCircular(0.37, 0.37, 0);\n'
+                        'rmSetPlacementTeam(1); rmSetPlacementSection(0.2, 0.4); rmPlacePlayersCircular(0.37, 0.37, 0); }')
+        ex = run_src(src, Scenario(6, 2))
+        pos = ring_positions(ex.player_events, 6, 2)
+        def frac(p):
+            return (math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0
+        fr = sorted(round(frac(p), 3) for p in pos)
+        assert fr == [0.2, 0.3, 0.4, 0.7, 0.8, 0.9]
+
+    def test_single_ring_section_by_width(self):
+        """One ring for everyone: a half-ring section at 2p is end to end (Mississippi 0.25-0.745: real 0.27 / 0.71),
+        a 0.7 section is two even slots (Philippines 0.15-0.85: real 0.13 / 0.50), a near-full one too (Atols
+        0.375-0.374: real 0.37 / 0.87), and the designers' 5/6 at 6p is end to end (Atols 0.125-0.959)."""
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+
+        def fracs(sec, n):
+            src = HEADER + 'rmSetPlacementSection(%s); rmPlacePlayersCircular(0.3, 0.3, 0); }' % sec
+            pos = ring_positions(run_src(src, Scenario(n, 2)).player_events, n, 2)
+            return sorted(round((math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0, 3) for p in pos)
+        assert fracs("0.25, 0.745", 2) == [0.25, 0.745]
+        assert fracs("0.15, 0.85", 2) == [0.15, 0.5]
+        assert fracs("0.375, 0.374", 2) == [0.375, 0.875]
+        assert fracs("0.125, 0.959", 6) == pytest.approx([0.125 + k * 0.834 / 5 for k in range(6)], abs=0.002)
+
+    def test_wide_team_section_stays_end_to_end(self):
+        """Malta 6p: team sections 0.05-0.71 and 0.206-0.883 (0.677 > 2/3) put each team end to end (real team 2 at
+        0.2 / 0.547 / 0.875)."""
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('rmSetPlacementTeam(0); rmSetPlacementSection(0.05, 0.71); rmPlacePlayersCircular(0.3, 0.3, 0);\n'
+                        'rmSetPlacementTeam(1); rmSetPlacementSection(0.206, 0.883); rmPlacePlayersCircular(0.3, 0.3, 0); }')
+        pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
+        fr = [(math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0 for p in pos[3:]]
+        assert fr == pytest.approx([0.206, 0.5445, 0.883], abs=0.001)
+
+    def test_full_ring_stays_even(self):
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+        ex = run_src(HEADER + 'rmPlacePlayersCircular(0.37, 0.37, 0); }', Scenario(4, 2))
+        pos = ring_positions(ex.player_events, 4, 2)
+        fr = sorted(round((math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0, 3) for p in pos)
+        assert fr == [0.0, 0.25, 0.5, 0.75]
+
+
+class TestNominalPlayerPlacement:
+    """Both arms of a random `if` record player placement; the positions come from the nominal arm (the lo-roll), the
+    world the placements describe. After the nominal arm moved last, the first event per team was the other arm's."""
+
+    def test_team_start_swap_uses_the_nominal_arm(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('float t = rmRandFloat(0.0, 1.0);\n'
+                        'if (t > 0.5) { rmSetPlacementTeam(0); rmPlacePlayersLine(0.1, 0.1, 0.1, 0.1, 0, 0);'
+                        ' rmSetPlacementTeam(1); rmPlacePlayersLine(0.9, 0.9, 0.9, 0.9, 0, 0); }\n'
+                        'else { rmSetPlacementTeam(0); rmPlacePlayersLine(0.9, 0.9, 0.9, 0.9, 0, 0);'
+                        ' rmSetPlacementTeam(1); rmPlacePlayersLine(0.1, 0.1, 0.1, 0.1, 0, 0); } }')
+        ex = run_src(src, Scenario(2, 2))
+        # lo-roll: t = 0.0, so `t > 0.5` is false - the else arm is nominal
+        assert ring_positions(ex.player_events, 2, 2) == [(0.9, 0.9), (0.1, 0.1)]
+
+
+class TestPartialPlayerPlacement:
+    """Explicit rmPlacePlayer spots win over a later ring (Istanbul); team calls place only their team, the others keep
+    rmPlacePlayer spots (Versailles) or stand at the map centre (Aztec City)."""
+
+    def test_explicit_spots_beat_a_later_ring(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + 'rmPlacePlayer(1, 0.6, 0.8); rmPlacePlayer(2, 0.4, 0.2); rmPlacePlayersCircular(0.42, 0.42, 0); }'
+        ex = run_src(src, Scenario(2, 2))
+        assert ring_positions(ex.player_events, 2, 2) == [(0.6, 0.8), (0.4, 0.2)]
+
+    def test_one_team_call_and_explicit_spots(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('rmSetPlacementTeam(1); rmPlacePlayersLine(0.2, 0.9, 0.8, 0.9, 0, 0);\n'
+                        'rmPlacePlayer(1, 0.3, 0.2); rmPlacePlayer(2, 0.5, 0.2); rmPlacePlayer(3, 0.7, 0.2); }')
+        pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
+        assert pos == [(0.3, 0.2), (0.5, 0.2), (0.7, 0.2), (0.2, 0.9), (0.5, 0.9), (0.8, 0.9)]
+
+    def test_team_without_a_call_stands_at_the_centre(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + 'rmSetPlacementTeam(0); rmSetPlacementSection(0.1875, 0.8535); rmPlacePlayersCircular(0.42, 0.42, 0); }'
+        pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
+        assert pos[3:] == [(0.5, 0.5)] * 3 and all(abs(p[0] - 0.5) > 0.1 or abs(p[1] - 0.5) > 0.1 for p in pos[:3])
+
+
+class TestRandomBaseHeight:
+    """zpnewguinea.xs raises its continent to rmRandFloat(0.6, 0.9) over a -1.6 sea. The random height was dropped, so
+    the continent had no height and stayed sea (live minimaps: one continent over most of the map)."""
+
+    def test_random_height_takes_the_nominal_roll(self):
+        src = HEADER + ('int a = rmCreateArea("continent"); rmSetAreaSize(a, 0.5, 0.5);'
+                        'rmSetAreaBaseHeight(a, rmRandFloat(0.6, 0.9)); rmBuildArea(a); }')
+        area = next(iter(run_src(src).areas.values()))
+        assert area.base_height == pytest.approx(0.6)
+
+
+class TestRouteWaypointsFromTheNominalArm:
+    """zpnewguinea.xs creates one route and adds its waypoints in both arms of `if (mapVariant == 1)`; keeping both made
+    one zigzag route across the map, and the continent's 'avoid trade route' cut the land in half."""
+
+    def test_only_the_nominal_arm_adds_waypoints(self):
+        src = HEADER + ('int v = rmRandInt(1, 2); int tr = rmCreateTradeRoute();\n'
+                        'if (v == 1) { rmAddTradeRouteWaypoint(tr, 0.1, 0.0); rmAddTradeRouteWaypoint(tr, 0.9, 0.0); }\n'
+                        'else { rmAddTradeRouteWaypoint(tr, 0.1, 1.0); rmAddTradeRouteWaypoint(tr, 0.9, 1.0); }\n'
+                        'rmBuildTradeRoute(tr, "water_trail"); }')
+        ex = run_src(src)
+        # lo roll: v = 1, the then arm is nominal
+        assert list(ex.route_waypoints.values()) == [[(0.1, 0.0), (0.9, 0.0)]]
+        assert ex.waypoints == [(0.1, 0.0), (0.9, 0.0)]
+
+
+class TestOneTeamModel:
+    """rmGetPlayerTeam, the ring and the team areas use one model, scene.team_of: contiguous blocks (1,2,3 against 4,5,6
+    at 6 players / 2 teams), as in 44 of 44 live P6T2 editor saves. rmGetPlayerTeam alternated until 2026-09-25, so
+    maps that seat players by rmGetPlayerTeam put a team on both banks of the ring's model."""
+
+    def test_team_of_blocks(self):
+        from scripts.mapsim.scene import team_of
+        assert [team_of(p, 6, 2) for p in range(1, 7)] == [0, 0, 0, 1, 1, 1]
+        assert [team_of(p, 7, 2) for p in range(1, 8)] == [0, 0, 0, 0, 1, 1, 1]
+        assert [team_of(p, 2, 2) for p in (1, 2)] == [0, 1]
+
+    def test_rm_get_player_team_uses_it(self):
+        src = HEADER + ('int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);'
+                        'for (i = 1; <= 6) { if (rmGetPlayerTeam(i) == 0) rmPlaceObjectDefAtLoc(d, 0, 0.1 * i, 0.5, 1); } }')
+        ex = run_src(src, Scenario(6, 2))
+        assert [round(p.x, 2) for p in ex.placements] == [0.1, 0.2, 0.3]

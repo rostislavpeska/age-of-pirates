@@ -14,7 +14,8 @@ grouping anchors' z residual is at most 1.50 m at 685 and at most 1.00 m - the e
 more than SIZE_WARN_M away from the script's is warned (a wrong --players / --teams or map); a save without a
 single terrain header falls back to the script's size with a warning. report['size'] records both.
 
-TEAM LAYOUT: mapsim answers rmGetPlayerTeam with an alternating model ((p-1) % teams). The lobby can differ: on
+TEAM LAYOUT: mapsim answers rmGetPlayerTeam with its one team model (scene.team_of: contiguous blocks, 1,2/3,4 at 4
+players / 2 teams; it alternated until 2026-09-25). The lobby can differ: on
 mapview_london4p_live players 1 and 2 share the north bank (lobby teams {1,2} / {3,4}). --team-layout 1,2/3,4 (team
 0 = the lobby's first team, then team 1, ...) makes the extractions answer rmGetPlayerTeam / rmGetNumberPlayersOnTeam
 from the lobby; without it owner mismatches that a different layout explains are reported with the layout the census
@@ -185,7 +186,7 @@ def key_label(proto: str) -> str:
 
 def parse_team_layout(text: Optional[str], players: int, teams: int) -> Optional[Dict[int, int]]:
     """'1,2/3,4' -> {1: 0, 2: 0, 3: 1, 4: 1}: the lobby's teams in order (team 0 first). Every player 1..players
-    exactly once in exactly `teams` groups; ValueError otherwise. None / '' -> None (mapsim's alternating model)."""
+    exactly once in exactly `teams` groups; ValueError otherwise. None / '' -> None (mapsim's model, scene.team_of)."""
     if not text:
         return None
     groups = [g for g in str(text).replace(" ", "").split("/")]
@@ -201,6 +202,12 @@ def parse_team_layout(text: Optional[str], players: int, teams: int) -> Optional
     if len(groups) != teams or sorted(out) != list(range(1, players + 1)):
         raise ValueError("team layout %r: needs every player 1..%d once in %d teams" % (text, players, teams))
     return out
+
+
+def _model_layout(players: int, teams: int) -> Dict[int, int]:
+    """mapsim's own lobby layout (scene.team_of) as {player: team}."""
+    from scripts.mapsim.scene import team_of as _team_of
+    return {p: _team_of(p, players, teams) for p in range(1, players + 1)}
 
 
 def format_team_layout(team_of: Dict[int, int]) -> str:
@@ -326,7 +333,7 @@ class ExpectedScene:
     groupings_source: str
     script_size_m: Optional[Tuple[float, float]] = None   # what the script's rmSetMapSize asked (mapsim's size)
     size_source: str = "script"               # "save": extracted at the census's own map size
-    team_layout: Optional[Dict[int, int]] = None           # lobby player -> team (None = mapsim's (p-1) % teams)
+    team_layout: Optional[Dict[int, int]] = None           # lobby player -> team (None = mapsim's scene.team_of)
 
 
 # ----------------------------------------------------------------------------- grouping members
@@ -432,7 +439,7 @@ def _twin_extractor(XE, scenario, roll: Optional[str] = None, size_m: Optional[T
     .res.map_size_x / _z, 2026-09-24):
       roll 'lo' / 'hi': every literal rmRandInt / rmRandFloat returns its low / high bound (a coin world);
       size_m: rmSetMapSize takes the save's (x, z) metres - every later conversion uses it, as the engine's does;
-      team_of: rmGetPlayerTeam / rmGetNumberPlayersOnTeam answer from the lobby's layout instead of (p-1) % teams.
+      team_of: rmGetPlayerTeam / rmGetNumberPlayersOnTeam answer from the lobby's layout instead of scene.team_of.
     .asked_size keeps what the script's rmSetMapSize asked."""
     team_n = Counter(team_of.values()) if team_of else Counter()
 
@@ -1241,7 +1248,7 @@ def suggest_team_layout(expected: Sequence[TwinObject], groupings: Sequence[Grou
     the model put p, so q plays on p's team. Only a complete, consistent assignment of players 1..players to `teams`
     teams is returned (a hint for --team-layout; measured 2026-09-24 on mapview_london4p_live: 1,2/3,4, which
     --team-layout then confirms with 0 mismatches)."""
-    model = team_layout or {p: (p - 1) % max(1, teams) for p in range(1, players + 1)}
+    model = team_layout or _model_layout(players, teams)
     fit: Dict[int, Set[int]] = defaultdict(set)
     for g in groupings:
         if len(set(g.owners_expected)) == 1 and len(g.owners_seen) == 1:
@@ -1531,12 +1538,12 @@ def build(xs_path: Path, players: int, teams: int, census: Optional[Path], out_d
         counts = join(exp.objects, actual, tol_m, exp.groupings, member_tol_m, exp.excluded_protos, sx, sz)
         mismatches = owner_mismatches(exp.objects, exp.groupings)
         if mismatches:
-            model = team_of or {p: (p - 1) % max(1, teams) for p in range(1, players + 1)}
+            model = team_of or _model_layout(players, teams)
             hint = suggest_team_layout(exp.objects, exp.groupings, players, teams, team_of)
             msg = "owner mismatches on %d placements (the census owner is not the expected player)" % len(mismatches)
             if hint and hint != model:
                 msg += ": the census owners fit --team-layout %s (%s %s)" % (
-                    format_team_layout(hint), "the run used" if team_of else "mapsim's (p-1) % teams model is",
+                    format_team_layout(hint), "the run used" if team_of else "mapsim's team model is",
                     format_team_layout(model))
             warnings.append(msg)
     else:
@@ -1636,7 +1643,7 @@ def main(argv=None):
               Path(a.xs).stem, a.players, a.teams, rep["size_x_m"], rep["size_z_m"],
               "the save's" if sz_["used"] == "save" else "the script's",
               (", the script asks %g x %g" % tuple(sz_["script_m"])) if sz_["used"] == "save" and sz_["script_m"]
-              and sz_["gap_m"] else "", rep["team_layout"] or "(p-1) % teams",
+              and sz_["gap_m"] else "", rep["team_layout"] or "mapsim model (1,2/3,4 blocks)",
               Path(rep["census"]).name if rep["census"] else "none", rep["tol_m"], rep["member_tol_m"],
               rep["groupings_source"]))
     print("  counts %s" % rep["counts"])

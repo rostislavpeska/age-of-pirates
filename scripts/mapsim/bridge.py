@@ -7,15 +7,37 @@ engine-placed areas — flagged, never guessed.
 
 from __future__ import annotations
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Tuple
 
-from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario
+from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario, height_floods, team_of
 from scripts.mapsim.units import MapGrid
 from scripts.mapsim.xs_extract import Extraction, Tainted, XArea, XDef
 
 
 def _num(v: Any) -> Optional[float]:
     return None if v is None or isinstance(v, Tainted) else float(v)
+
+
+def _anchor(xv: Any, zv: Any) -> Tuple[Optional[float], Optional[float], bool]:
+    """(x, z, approx) of an authored anchor. A random draw with literal bounds on ONE axis (zpnewguinea.xs 263:
+    rmSetAreaLocation(center, 0.5, centrePlacement) with centrePlacement = rmRandFloat(0.3, 0.6)) takes the middle
+    of its range, marked approximate. When one axis stays unknown (zplabradorcoast.xs 266 at 6 players:
+    rmPlayerLocZFraction(...)), the anchor is runtime on BOTH axes - a half-known anchor crashed every geometry
+    consumer (TypeError on None), 2026-09-25 sweep: New Guinea at every player count, Labrador Coast at 6."""
+    x, z = _num(xv), _num(zv)
+    if (x is None) == (z is None):
+        return x, z, False
+
+    def mid(v):
+        if isinstance(v, Tainted) and v.lo is not None and v.hi is not None \
+                and not isinstance(v.lo, Tainted) and not isinstance(v.hi, Tainted):
+            return (float(v.lo) + float(v.hi)) / 2.0
+        return None
+    x = x if x is not None else mid(xv)
+    z = z if z is not None else mid(zv)
+    if x is None or z is None:
+        return None, None, False
+    return x, z, True
 
 
 def _literal_players(raw: List[Any]) -> List[int]:
@@ -53,7 +75,6 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         raise ValueError("extraction has no map size")
     grid = MapGrid(ex.map_size_x, ex.map_size_z)
     sea = ex.sea_level if ex.sea_level is not None else 0.0
-
     from scripts.mapsim.waterdata import is_water_type_name
     # Missing rmTerrainInitialize is a documented map error (guide:10508);
     # fall back to the historical water-base assumption.
@@ -67,14 +88,8 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     areas: List[ResolvedArea] = []
     resolved_anchor: dict = {}   # extraction handle -> (x, z) incl. ring anchors
     for handle, a in ex.areas.items():
-        x, z = _num(a.x), _num(a.z)
-        if x is None or z is None:
-            # Half-known anchor (one axis runtime-dependent): the location
-            # is runtime as a whole. Before 2026-09-25 a concrete x with a
-            # None z crashed every consumer (zpnewguinea all scenarios,
-            # zplabradorcoast P6).
-            x = z = None
-        approx = False
+        x, z, approx = _anchor(a.x, a.z)
+        team_chain: List[Tuple[float, float, float, float]] = []
         if x is None and ring:
             # Player/team-anchored areas (rmSetAreaLocPlayer/LocTeam) get a
             # deterministic NOMINAL anchor on the placement ring.
@@ -85,7 +100,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                 # Teams occupy contiguous ring blocks; anchor at the block's
                 # angular midpoint member.
                 members = [k for k in range(n_players)
-                           if k * n_teams // n_players == a.loc_team]
+                           if team_of(k + 1, n_players, n_teams) == a.loc_team]
                 if members:
                     import math
                     xs = [ring[k][0] - 0.5 for k in members]
@@ -94,26 +109,31 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                     r = sum(math.hypot(px, pz) for px, pz in zip(xs, zs)) / len(members)
                     x, z = 0.5 + r * math.cos(ang), 0.5 + r * math.sin(ang)
                     approx = True
+                    # The area grows over EVERY member, not around one point (2026-09-25, Balearic Islands 6p live
+                    # minimap: each team island is a crescent holding its three Town Centers over ~100 deg of the
+                    # ring - a 329 m span that a disc of the 0.11 budget, radius 139 m, cannot cover; mapsim's
+                    # disc left 3 of the 6 real Town Centers in water). The members' ring positions, consecutive
+                    # teammates joined, seed the flood like influence segments; the budget is unchanged.
+                    team_chain = [(ring[k0][0], ring[k0][1], ring[k1][0], ring[k1][1])
+                                  for k0, k1 in zip(members, members[1:])]
         resolved_anchor[handle] = (x, z)
         frac_max = _num(a.size_max_frac)
         frac_min = _num(a.size_min_frac)
         if frac_max is None:
             continue    # size never set or runtime-dependent: not modelable
         segs = [tuple(float(c) for c in s) for s in a.influence_segments
-                if not any(isinstance(c, Tainted) for c in s)]
+                if not any(isinstance(c, Tainted) for c in s)] + team_chain
         areas.append(ResolvedArea(
             name=a.name, line=a.line, x=x, z=z,
             radius_m=grid.area_frac_to_radius_m(frac_max),
             radius_min_m=grid.area_frac_to_radius_m(frac_min if frac_min is not None else frac_max),
             base_height=a.base_height,
             # A water-type area is water even with a raised base height (the
-            # Riverina cascade lifts the SURFACE, guide:7772-7783). A base
-            # height is land at/above the sea plane of a flooded base, and
-            # at any height on a land-initialized base, which has no sea
-            # plane (2026-09-25; scene.area_floods has the evidence) - the
-            # grid still floods it per cell where a lake's plane covers it.
+            # Riverina cascade lifts the SURFACE, guide:7772-7783).
+            # On a land base an explicit base height below the sea level is
+            # still land (scene.height_floods: Dead Sea, Eyre Basin).
             creates_land=(a.water_type is None and a.base_height is not None
-                          and (a.base_height >= sea or not base_is_water)),
+                          and not height_floods(base_is_water, sea, a.base_height, None)),
             obey_world_circle=a.obey_world_circle,
             coherence=a.coherence,
             smooth_distance=a.smooth,
@@ -172,19 +192,18 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                 proto_ref = getattr(d.proto, "str_prefix", None) or ""
         else:
             proto_ref = str(d.proto or d.name)
-        x, z = _num(p.x), _num(p.z)
+        x, z, p_approx = _anchor(p.x, p.z)
         runtime = None
         if isinstance(p.x, Tainted) or isinstance(p.z, Tainted):
             runtime = getattr(p.x, "expr", None) or getattr(p.z, "expr", None) or "runtime"
-        if x is None or z is None:
-            x = z = None     # half-known anchor = runtime (see the area loop)
         kind = {"at_loc": "at_loc", "in_area": "in_area", "at_point": "at_point_runtime"}[p.kind]
         count = p.count if not isinstance(p.count, Tainted) else \
             (int(p.count.hi) if p.count.hi is not None else 1)
         players = _literal_players(p.players)
         placements.append(ResolvedPlacement(
             name=d.name, line=p.def_line, proto=proto_ref, kind=kind,
-            x=x, z=z, runtime_expr=runtime, approx=False,
+            x=x, z=z, runtime_expr=runtime, approx=p_approx or float(getattr(p, "drift", 0.0)) > 0.0,
+            drift_m=float(getattr(p, "drift", 0.0)),
             min_dist_m=_num(d.min_dist) or 0.0,
             max_dist_m=_num(d.max_dist) or 0.0,
             terrain_affinity="either",           # curation semantics; unknown from .xs
@@ -207,11 +226,13 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         ))
 
     trade_routes = []
+    trade_route_lines = []
     for handle in sorted(ex.route_waypoints):
         wps = [(float(x), float(z)) for x, z in ex.route_waypoints[handle]
                if not isinstance(x, Tainted) and not isinstance(z, Tainted)]
         if len(wps) >= 2:
             trade_routes.append(wps)
+            trade_route_lines.append(ex.route_build_lines.get(handle))
     waypoints = trade_routes[0] if trade_routes else []
 
     connections = []
@@ -238,8 +259,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                             "base_height": c.base_height,
                             "x1": x1, "z1": z1, "x2": x2, "z2": z2,
                             "r1_m": grid.area_frac_to_radius_m(r1) if r1 else 0.0,
-                            "r2_m": grid.area_frac_to_radius_m(r2) if r2 else 0.0,
-                            "classes": list(getattr(c, "classes", []))})
+                            "r2_m": grid.area_frac_to_radius_m(r2) if r2 else 0.0})
 
     rivers = []
     # RECT-MAP RIVER UNITS (pinned 2026-08-09): the engine reads river
@@ -287,7 +307,6 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         constraints[cname] = spec
 
     return ResolvedScene(
-        player_starts=[(float(x), float(z)) for x, z in (ring or [])],
         suppressed_variants=suppressed,
         scenario=ex.scenario,
         grid=grid,
@@ -299,10 +318,13 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         player_placement={"branches": branches},
         constraints=constraints,
         trade_routes=trade_routes,
+        trade_route_lines=trade_route_lines,
         rivers=rivers,
         connections=connections,
         base_is_water=base_is_water,
         base_elevation_m=(ex.terrain_init_height
                           if ex.terrain_init_height is not None else 0.0),
         sea_type=ex.sea_type,
+        player_locs=[(float(x), float(z)) for x, z in (ring or [])
+                     if not isinstance(x, Tainted) and not isinstance(z, Tainted)],
     )

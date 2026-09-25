@@ -146,7 +146,8 @@ class TestPilotProfiles:
     def test_tortuga_profile_valid(self):
         prof, errs = profmod.load("zptortuga")
         assert errs == [] and prof is not None
-        assert len(prof.known_issues) == 3
+        # 3 -> 1 on 2026-09-25: the two SIM:CONSTRAINT_UNSAT entries no longer fire (see the suppress-gate test).
+        assert len(prof.known_issues) == 1
 
     @pytest.mark.slow
     @pytest.mark.local("steam")
@@ -169,8 +170,11 @@ class TestPilotProfiles:
         assert fails == [], [f"{f.check}: {f.message}" for f in fails]
         known = [f for f in res.findings
                  if f.message.startswith("[known:")]
-        # 2 controllers + 3 per-player starting defs (TC/silver/deer).
         # The G2 anchor entry stopped firing at P2 when the ring adopted
         # the true engine convention (north-zero clockwise, 2026-08-10)
         # — it still fires at P7, so the profile entry stays.
-        assert len(known) == 5
+        # The two SIM:CONSTRAINT_UNSAT entries (2 controllers + 3 per-player
+        # starting defs "on pre-island water") were removed 2026-09-25: object
+        # placements now test terrain constraints on the BUILT grid, where the
+        # engine-grown islands are land, so none of the five fires at P2-P8.
+        assert len(known) == 0

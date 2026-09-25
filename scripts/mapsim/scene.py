@@ -74,8 +74,8 @@ def _check_when(when: Dict[str, Any], sc: Scenario) -> bool:
             if not sc.teams > expected:
                 return False
         elif key in ("offteam_players_lte", "offteam_players_gte"):
-            # Players NOT on team 0 under the alternating team model
-            # ((p-1) mod teams) — Independence War lumps every non-0 team
+            # Players NOT on team 0 (team_of: the same count under the old
+            # alternating model) — Independence War lumps every non-0 team
             # onto the "west" shore counter, and its fort path shuts off
             # when either lumped shore exceeds 4 players.
             offteam = sc.players - math.ceil(sc.players / sc.teams)
@@ -92,6 +92,15 @@ def _check_when(when: Dict[str, Any], sc: Scenario) -> bool:
         else:
             raise ValueError(f"unknown when-condition {key!r}")
     return True
+
+
+def team_of(player: int, players: int, teams: int) -> int:
+    """The team (0-based) of lobby player `player` (1-based): contiguous blocks in lobby order, 1,2,3 against 4,5,6 at
+    6 players / 2 teams. The ONE team model of mapsim - rmGetPlayerTeam, rmGetNumberPlayersOnTeam, the placement ring,
+    team-anchored areas, the preview and the twin all use it (until 2026-09-25 rmGetPlayerTeam alternated,
+    (p - 1) % teams, while the ring used blocks). Ground truth: in 44 of 44 live P6T2 editor saves players 1-3 share
+    one side (Versailles' attackers, Malta's team sections, Aztec City's team-0 ring, both London saves 1,2/3,4)."""
+    return (int(player) - 1) * max(1, int(teams)) // max(1, int(players))
 
 
 def resolve_branch(value: Any, sc: Scenario, grid: Optional[MapGrid] = None) -> Any:
@@ -183,23 +192,6 @@ class ResolvedArea:
         return grid.x_m_to_frac(self.radius_m)
 
 
-def area_floods(rs: "ResolvedScene", a: ResolvedArea) -> bool:
-    """Whether an area's authored claim is WATER when it builds, for the
-    analytic (disc/capsule) model - the grid (field.terrain_grid) decides
-    per cell. Water types always; an elevation mask (B2.6f); a base height
-    only UNDER the sea plane of a flooded base (strictly below: at the
-    plane is land, B2.4). On a land-initialized map there is no sea plane
-    (vanilla Mexico / Fertile Crescent / Manchuria, owner: Dead Sea and
-    Eyre Basin players at 2.0 under sea 6.0 stand on land), so a base
-    height alone never floods there (2026-09-25)."""
-    if a.water_type is not None:
-        return True
-    if a.base_height is not None:
-        return rs.base_is_water and a.base_height < rs.sea_level
-    return (a.is_invisible() and a.has_elevation
-            and a.height_blend < 2.0 and rs.sea_level >= 0.0)
-
-
 @dataclass
 class ResolvedPlacement:
     name: str
@@ -234,6 +226,9 @@ class ResolvedPlacement:
     # model could not evaluate (honest limitation, reports only).
     anchor_x: Optional[float] = None
     anchor_z: Optional[float] = None
+    # How far the anchor itself may be off: the read-back position of another def the engine may move this far
+    # (xs_extract.Drifting; zpIceland.xs pirate controller -> pirate city).
+    drift_m: float = 0.0
     solve_unsat: Optional[List[str]] = None
     solve_skipped: Optional[List[str]] = None
     # Filled by the .xs bridge (2026-09-24, twin review F4; curated scenes
@@ -261,6 +256,8 @@ class ResolvedScene:
     player_placement: Dict[str, Any]
     constraints: Dict[str, Any]
     trade_routes: List[List[Tuple[float, float]]] = field(default_factory=list)
+    # The rmBuildTradeRoute line of each trade_routes entry (xs pipeline); None or missing = always present.
+    trade_route_lines: List[Optional[int]] = field(default_factory=list)
     rivers: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, waypoints, water_type}
     connections: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, base_height, x1..z2}
     # Base terrain from rmTerrainInitialize: a flooded base ("water" or a
@@ -272,16 +269,30 @@ class ResolvedScene:
     sea_type: Optional[str] = None      # rmSetSeaType water body name
     suppressed_variants: int = 0        # alt-arm placements dropped (Part H4)
     groupings_solved: bool = False      # gsolve.ensure_solved ran (idempotence)
-    # NOMINAL start of each player 1..N in fraction space (.xs bridge: the
-    # ring/line/literal placement, xs_extract.ring_positions); [] when the
-    # placement is runtime-dependent or the scene is curated.
-    player_starts: List[Tuple[float, float]] = field(default_factory=list)
+    # NOMINAL player start locations (fractions) from the placement calls - xs pipeline only (bridge).
+    player_locs: List[Tuple[float, float]] = field(default_factory=list)
 
     def all_routes(self) -> List[List[Tuple[float, float]]]:
         return self.trade_routes or ([self.trade_route_waypoints] if self.trade_route_waypoints else [])
 
     def land_areas(self) -> List[ResolvedArea]:
         return [a for a in self.areas if a.creates_land and not a.engine_placed]
+
+
+def height_floods(base_is_water: bool, sea_level: float, base_height: Optional[float],
+                  water_type: Optional[str]) -> bool:
+    """Whether an area WITHOUT a water type becomes water through its explicit base height: only on a
+    water-initialized map (rmTerrainInitialize("water")), where a base height at or below the sea level is sea floor
+    (Cook Islands' -0.25 shoals and -5.0 reef rings, Barrier Reef's -0.5 shallows).
+
+    On a land-initialized map the sea level floods nothing: the water there is what water-typed areas, rivers and
+    water masks put down. Evidence (2026-09-25, live Scenario Editor minimaps at 2880x1800): zpdeadsea.xs
+    (rmTerrainInitialize("deccan\\ground_grass3_deccan"), rmSetSeaLevel(6.0)) shows land everywhere but its
+    water-typed lake - the 'dead sea valley' (base 0.0) and both players' areas (2.0) are dry ground with the Town
+    Centers on them, 2p and 6p; zpeyrebasin.xs (same setup, pirate sites at 1.0) likewise. Venice's 'bonus island' /
+    'port sites' and Versailles' 'countryside N/S' (base 1.0 = sea 1.0, land base) are named and used as land."""
+    return (water_type is None and base_height is not None and base_height <= sea_level
+            and base_is_water)
 
 
 class Scene:
