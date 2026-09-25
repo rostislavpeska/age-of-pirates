@@ -285,11 +285,20 @@ class TestLondonOnlyPlacement:
             assert len(a) == len(b), rule
             diff = [(x.strip(), y.strip()) for x, y in zip(a, b) if x != y]
             allowed = {("location = selectForwardBaseLocation();", "location = pirateForwardBasePoint();"),
+                       ("location = selectForwardBaseBeachHead();", "location = pirateForwardBeachHead();"),
                        ("forwardTowerBaseManager();", "pirateForwardTowerBaseManager();")}
             assert set(diff) <= allowed, (rule, diff)
 
-    def test_build_echo_is_round_eleven(self):
-        assert "build r11 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_twelve(self):
+        assert "build r12 2026-09-25" in core("aipiraterules.xs")
+
+    def test_istanbul_places_the_construction_markers_on_both_landing_beaches(self):
+        # owner 2026-09-25: the forward base next to the Fisherman's guild - after every placement, before UNIT IDS
+        s = open(os.path.join(ROOT, "randmaps", "zpistanbulb.xs"), "rb").read().decode("utf-8")
+        i = s.index('rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker"')
+        assert i < s.index("//  UNIT IDS - every id a trigger targets")
+        assert "rmPlaceObjectDefAtLoc(constrMark, cm, beachDockNX, beachDockNZ);" in s
+        assert "rmPlaceObjectDefAtLoc(constrMark, cm, beachDockSX, beachDockSZ);" in s
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):

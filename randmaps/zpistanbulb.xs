@@ -4177,6 +4177,23 @@ void main(void)
 		if (southCount >= 7) placeWaterFlagInZone(seventhAttacker, flagZoneN);
 	}
 
+	// ---- AI CONSTRUCTION MARKERS (owner 2026-09-25: the forward base 'next to the Fisherman's guild') -------
+	// zpAILondonConstrMarker (editor-only, Tracked, owned by the player so the AI's own query sees it) on both landing
+	// beaches - the land the two Fisherman's Guild islands sit off (beachDockN / beachDockS, the SAME anchors the guilds
+	// and the beaches use). One per player per beach: the AI's forward base / landing goes to the beach on the enemy
+	// side (aipiraterules.xs pirateForwardBasePoint). Placed after every placement and before the UNIT IDS block: the
+	// ids below come from rmGetUnitPlaced and a fixed shift, so nothing moves.
+	int constrMark = rmCreateObjectDef("ai construction marker");
+	rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker", 1, 0.0);
+	rmSetObjectDefAllowOverlap(constrMark, true);
+	rmSetObjectDefMinDistance(constrMark, 0.0);
+	rmSetObjectDefMaxDistance(constrMark, 0.0);
+	for (cm = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmPlaceObjectDefAtLoc(constrMark, cm, beachDockNX, beachDockNZ);
+		rmPlaceObjectDefAtLoc(constrMark, cm, beachDockSX, beachDockSZ);
+	}
+
 	// ========================================================================
 	//  UNIT IDS - every id a trigger targets, derived HERE and nowhere else
 	// ------------------------------------------------------------------------
