@@ -89,6 +89,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     resolved_anchor: dict = {}   # extraction handle -> (x, z) incl. ring anchors
     for handle, a in ex.areas.items():
         x, z, approx = _anchor(a.x, a.z)
+        team_chain: List[Tuple[float, float, float, float]] = []
         if x is None and ring:
             # Player/team-anchored areas (rmSetAreaLocPlayer/LocTeam) get a
             # deterministic NOMINAL anchor on the placement ring.
@@ -108,13 +109,20 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                     r = sum(math.hypot(px, pz) for px, pz in zip(xs, zs)) / len(members)
                     x, z = 0.5 + r * math.cos(ang), 0.5 + r * math.sin(ang)
                     approx = True
+                    # The area grows over EVERY member, not around one point (2026-09-25, Balearic Islands 6p live
+                    # minimap: each team island is a crescent holding its three Town Centers over ~100 deg of the
+                    # ring - a 329 m span that a disc of the 0.11 budget, radius 139 m, cannot cover; mapsim's
+                    # disc left 3 of the 6 real Town Centers in water). The members' ring positions, consecutive
+                    # teammates joined, seed the flood like influence segments; the budget is unchanged.
+                    team_chain = [(ring[k0][0], ring[k0][1], ring[k1][0], ring[k1][1])
+                                  for k0, k1 in zip(members, members[1:])]
         resolved_anchor[handle] = (x, z)
         frac_max = _num(a.size_max_frac)
         frac_min = _num(a.size_min_frac)
         if frac_max is None:
             continue    # size never set or runtime-dependent: not modelable
         segs = [tuple(float(c) for c in s) for s in a.influence_segments
-                if not any(isinstance(c, Tainted) for c in s)]
+                if not any(isinstance(c, Tainted) for c in s)] + team_chain
         areas.append(ResolvedArea(
             name=a.name, line=a.line, x=x, z=z,
             radius_m=grid.area_frac_to_radius_m(frac_max),

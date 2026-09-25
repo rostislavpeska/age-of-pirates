@@ -298,3 +298,39 @@ class TestSeaLevelOnLandBase:
         by = {a.name: a for a in rs.areas}
         assert area_is_land(rs, by["valley"]) and area_is_land(rs, by["home"])
         assert not area_is_land(rs, by["lake"])
+
+
+TEAM_ISLANDS = """
+void main(void) {
+   rmSetMapSize(740, 740);
+   rmSetSeaLevel(1.0);
+   rmSetSeaType("ZP Malta No Waves");
+   rmTerrainInitialize("water");
+   rmSetPlacementSection(0.40, 0.10);
+   rmPlacePlayersCircular(0.29, 0.29, 0);
+   for(i=0; <cNumberTeams) {
+      int teamID = rmCreateArea("team "+i);
+      rmSetAreaSize(teamID, 0.11, 0.11);
+      rmSetAreaBaseHeight(teamID, 2.0);
+      rmSetAreaLocTeam(teamID, i);
+      rmBuildArea(teamID);
+   }
+}
+"""
+
+
+class TestTeamAreaCoversItsMembers:
+    """zpBalearicIslands.xs 6p (2026-09-25): team islands by rmSetAreaLocTeam, teammates ~50 deg apart on the ring.
+    The live minimap shows two crescents, each holding its team's three Town Centers; mapsim grew one disc at the
+    team's mean direction and left the end players in the sea (3 of 6 real Town Centers off mapsim land)."""
+
+    def test_every_player_start_is_on_its_team_island(self, tmp_path):
+        src = tmp_path / "team_islands.xs"
+        src.write_text(TEAM_ISLANDS, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(6, 2)))
+        tg = terrain_grid(rs)
+        for x, z in rs.player_locs:
+            i, j = tg.cell_of_frac(x, z)
+            assert not tg.water[j][i], (round(x, 3), round(z, 3))
+        chains = [a.influence_segments for a in rs.areas if a.name.startswith("team ")]
+        assert [len(c) for c in chains] == [2, 2]
