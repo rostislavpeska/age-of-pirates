@@ -31,6 +31,12 @@ have a same-named HKT body. These are offline observations, not a recipe for
 replacing their architecture. Preserve unexplained donor groups until their
 role is verified.
 
+A later piece-geometry inspection of that early donor found 35 explicitly
+roof-named pieces, all with HKT type 1 (on-death), while some type 0 stage
+geometry also occupies the roof under generic object names. Select affected
+pieces spatially as well as by name. A successful death-only roof-piece test
+does not validate progressive damage; exercise both phases separately.
+
 Use [havok-destruction](../../havok-destruction/SKILL.md) for piece/body matching.
 Similar overall footprints do not prove equivalent collision hulls, rest
 transforms, break groups or vertex bindings. Prove an unchanged clone and one
