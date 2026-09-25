@@ -126,40 +126,54 @@ class _GrownFields:
         return self._field("_water", cells)[j][i]
 
 
+def spec_allowed(ctx: FieldContext, p_m, spec: Dict, line: int, gf: Optional["_GrownFields"] = None,
+                 exclude_line: Optional[int] = None) -> Optional[bool]:
+    """One constraint at one point: class / area / terrain distances from the BUILT grid when gf is given (grown
+    reality, not authored discs), everything else - and whatever the grid cannot answer - through
+    field.point_allowed. Shared by the grouping solver and the object-placement check (2026-09-25: Eyre Basin's
+    King's Island, built over its lake, was invisible to the disc-based terrain test)."""
+    kind = spec.get("kind")
+    ok = None
+    if gf is not None:
+        if kind == "class_distance":
+            d = gf.class_dist(spec["class"], p_m)
+            if d is not None:
+                ok = d >= float(spec["distance_m"])
+        elif kind in ("area_within", "area_distance", "area_max"):
+            d = gf.area_dist(spec.get("area") or "", p_m)
+            if d is not None:
+                if kind == "area_within":
+                    ok = d <= 0.0
+                elif kind == "area_distance":
+                    ok = d >= float(spec.get("distance_m") or 0.0)
+                else:
+                    ok = d <= float(spec.get("distance_m") or 0.0)
+        elif kind == "terrain" and spec.get("avoid") == "water":
+            d = gf.water_dist(p_m)
+            if d is not None:
+                ok = d >= float(spec["distance_m"])
+        elif kind == "terrain_max" and spec.get("near") == "water":
+            d = gf.water_dist(p_m)
+            if d is not None:
+                ok = d <= float(spec["distance_m"])
+    if ok is None:
+        ok = point_allowed(ctx, p_m, spec, before_line=line, exclude_line=exclude_line)
+    return ok
+
+
 def _violations(ctx: FieldContext, p_m, specs, line,
                 gf: Optional[_GrownFields] = None) -> List[str]:
-    out = []
-    for name, spec in specs:
-        kind = spec.get("kind")
-        ok = None
-        if gf is not None:
-            if kind == "class_distance":
-                d = gf.class_dist(spec["class"], p_m)
-                if d is not None:
-                    ok = d >= float(spec["distance_m"])
-            elif kind in ("area_within", "area_distance", "area_max"):
-                d = gf.area_dist(spec.get("area") or "", p_m)
-                if d is not None:
-                    if kind == "area_within":
-                        ok = d <= 0.0
-                    elif kind == "area_distance":
-                        ok = d >= float(spec.get("distance_m") or 0.0)
-                    else:
-                        ok = d <= float(spec.get("distance_m") or 0.0)
-            elif kind == "terrain" and spec.get("avoid") == "water":
-                d = gf.water_dist(p_m)
-                if d is not None:
-                    ok = d >= float(spec["distance_m"])
-            elif kind == "terrain_max" and spec.get("near") == "water":
-                d = gf.water_dist(p_m)
-                if d is not None:
-                    ok = d <= float(spec["distance_m"])
-        if ok is None:
-            ok = point_allowed(ctx, p_m, spec, before_line=line,
-                               exclude_line=line)
-        if ok is False:
-            out.append(name)
-    return out
+    return [name for name, spec in specs
+            if spec_allowed(ctx, p_m, spec, line, gf, exclude_line=line) is False]
+
+
+def grown_fields(rs: ResolvedScene) -> "_GrownFields":
+    """The scene's built-terrain distance fields, computed once and cached on the scene."""
+    gf = getattr(rs, "_grown_fields", None)
+    if gf is None:
+        gf = _GrownFields(rs, terrain_grid(rs, cell_tiles=1.0))
+        rs._grown_fields = gf
+    return gf
 
 
 def _ring_samples(cx_m: float, cz_m: float, r: float):
@@ -258,7 +272,7 @@ def ensure_solved(rs: ResolvedScene) -> None:
     from scripts.refdata.catalogs import grouping_footprint_m
     ctx = FieldContext(rs)
     g = rs.grid
-    gf = _GrownFields(rs, terrain_grid(rs, cell_tiles=1.0))
+    gf = grown_fields(rs)
     gcat = _catalog("grouping")
 
     def _footprint(p):
