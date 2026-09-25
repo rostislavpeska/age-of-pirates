@@ -7,6 +7,11 @@ description: Reusable cross-mod workflow for static Age of Empires III DE buildi
 
 Generic geometry and UV authoring belongs in a modeling skill. This skill begins when an approved building must be rigged, converted and packaged for AoE3DE.
 
+This is the intact/static export workflow. Fractured GR2 models paired with Havok
+destruction files need a donor-aware pipeline supplied by the consuming project:
+piece bindings, collision frames and the body graph must survive together. Do not
+rebuild a damaged runtime model through this skill's static FBX converter recipe.
+
 Read [rig and conversion](references/rig-export.md) before rigging or converting. Read [textures and XML](references/textures-xml.md) before producing runtime assets.
 
 Use the companion [reference library](../aoe3de-reference/SKILL.md) for XML field

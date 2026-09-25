@@ -27,9 +27,12 @@ The early Chinese Town Center's intact meshes total 5,819 vertices / 3,126
 triangles, while its damaged pair has 272 GR2 bones, 221 HKT bodies and 181
 geometry-bearing pieces. The late pair has 342 bones, 291 bodies and 219 pieces.
 All inspected HKT names matched GR2 bones; a GR2 `base` geometry group did not
-have a same-named HKT body. These are offline observations, not a recipe for
-replacing their architecture. Preserve unexplained donor groups until their
-role is verified.
+have a same-named HKT body. These counts came from offline inspection. The later
+[Korean Town Center adaptation](../../havok-destruction/references/chinese-tc-experiment.md)
+received user confirmation that destruction works in game on 2026-09-25. It
+preserved the 221-body graph and refitted 145 hulls to new fractured geometry.
+Preserve unexplained donor groups until their role is verified; success of this
+prototype does not establish every donor or every damage-stage detail.
 
 A later piece-geometry inspection of that early donor found 35 explicitly
 roof-named pieces, all with HKT type 1 (on-death), while some type 0 stage
@@ -39,8 +42,9 @@ does not validate progressive damage; exercise both phases separately.
 
 Use [havok-destruction](../../havok-destruction/SKILL.md) for piece/body matching.
 Similar overall footprints do not prove equivalent collision hulls, rest
-transforms, break groups or vertex bindings. Prove an unchanged clone and one
-small piece edit in game before adapting a whole building set.
+transforms, break groups or vertex bindings. Use the confirmed prototype as the
+baseline for this donor, keeping its hashes and source checkpoints. For a new
+donor, establish a control and a bounded adaptation before expanding to a whole set.
 
 When a legacy mod supplies architectural references, keep its visual identity
 separate from the current DE technical reference. Converted legacy FBX/GXO

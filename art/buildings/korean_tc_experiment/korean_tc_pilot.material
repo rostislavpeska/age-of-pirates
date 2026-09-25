@@ -1,0 +1,11 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_BaseColor" />
+      <texture name="Normals" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_Normals" />
+      <texture name="Masks" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_Masks" />
+      <texture name="Details" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_Details" />
+    </parameters>
+  </submaterial>
+</material>

@@ -9,6 +9,14 @@ Read [aoe3de-building-export](../aoe3de-building-export/SKILL.md) for the shared
 
 For authoring, use [blender-architecture](../blender-architecture/SKILL.md) and [blender-architecture-texturing](../blender-architecture-texturing/SKILL.md) in this repository.
 
+For destructible buildings, use [havok-destruction](../havok-destruction/SKILL.md)
+alongside the intact-model workflow. The Korean Town Center donor adaptation is
+user-confirmed in game (2026-09-25): preserve the donor body graph, replace the
+fractured visible geometry and refit collision hulls. Use that skill's measured
+frames and GR2 binding/export checks; the static FBX converter recipe is not the
+damaged-model pipeline. A physics experiment can use simple existing materials
+while final architecture textures and UVs remain deferred.
+
 Apply the shared skill's local-prerequisite checks before application work. AoP's
 installed converter configuration does not travel with exported skills. For GR2
 structural evidence in this repository, use `scripts/havok/gr2_dump.py` with its

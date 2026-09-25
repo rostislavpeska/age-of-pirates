@@ -48,8 +48,19 @@ Oodle-compressed and the reader cannot open it - that is expected (the tools nev
 - Never move an existing array to another section (crashes the loader). Grow section 0 in place: insert after
   the array, shift every later offset (relocation sources/targets, first16/first8), or append new records at the
   end and only update counts/pointers (what `gr2_splitmesh.py` does).
-- Vanilla damaged roots (`bone_main`) carry a **90-degree Y rest rotation**; intact roots (`Object02`) are
-  identity. Any transform expressed relative to the root differs between the two models.
+- The inspected ship damaged roots (`bone_main`) carry a **90-degree Y rest rotation**; their intact roots
+  (`Object02`) are identity. This is not universal: the early Chinese Town Center has an essentially
+  identity `BONE_MAIN` in both models. Inspect the chosen donor before converting relative transforms.
+- Register newly appended mixed-format vertex buffers in the section's marshalling table, not only in
+  VertexData and relocation records. A Korean damaged-model trial passed CRC and the Python reader but
+  failed native Granny loading intermittently until its missing `(count, data offset, type section,
+  type offset)` entry was added. Native loading and a read-only GXO dump then passed. That trial allocated
+  new metadata in an unused section while retaining the donor's original records; vertices/indices stayed
+  in sections 3/4. The user subsequently confirmed that prototype's destruction works in game
+  (2026-09-25); [the exact build and method](../havok-destruction/references/chinese-tc-experiment.md)
+  are recorded separately. Do not generalize its metadata allocation choice into a requirement for all donors.
+- BoneBinding bounds on transformed destruction pieces are bone-local, not model-space AABBs. Transform
+  the bound vertices through the bone's inverse-world matrix before measuring bounds.
 - Renaming a bone in place (same length or shorter, section 0 string, CRC recomputed) is safe - the root rename
   `bone_main` -> `Object02` is what made one anim pair drive both Treasure Ship stages.
 
@@ -86,12 +97,18 @@ scenes = engine units in the same frame), so no converter is needed for tables.
 
 1. `gr2_dump.py OUT.gr2` - CRC ok, bones/meshes/bindings as intended; `--tracks` on anims (only the intended
    bones, track group = root name).
-2. *Optional, if your converter can dump a GXO*: OUT.gr2 -> GXO. The converter uses the game's Granny DLL, so
-   a crash there (Wine backtrace / hang) = the game would crash; the GXO also shows what it thinks the
-   bones/bindings are.
-3. OUT.gr2 -> FBX (your converter) then `fbx_check.py OUT.fbx VANILLA.fbx DIR` - every loop must match
-   vanilla by position with normals < 0.1 deg and UV distance 0; renders in DIR.
-4. Game test (**game-startup** skill; art changes need a full restart, the user closes the game).
+2. When a compatible native loader is available, require its load check for new buffers or bindings.
+   CRC and this Python reader alone missed the Korean trial's marshalling defect. Direct
+   `GrannyReadEntireFile` / `GrannyGetFileInfo`, or a read-only GXO dump through the configured converter,
+   checks native deserialization. Investigate a native crash before installation; distinguish a load failure
+   from a later converter export failure. Neither predicts every game-rendering or simulation outcome.
+3. For retained static surfaces, use direct decoded-data comparison or an FBX inspection copy plus
+   `fbx_check.py OUT.fbx VANILLA.fbx DIR`. Compare positions, UVs and normalized corner vectors with
+   precision-aware tolerances. Audit deliberately new geometry separately. For a damaged model, compare
+   decoded piece geometry, rigid indices, skeleton matrices and local bounds directly; never rebuild the
+   runtime damaged GR2 from a converter's FBX/GXO inspection copy.
+4. Game test (**game-startup** skill; art changes need a full restart, the user closes the game). Record
+   operator-reported outcomes as such, tied to asset hashes; do not infer unreported stages or quality checks.
 
 ## Frames, units
 

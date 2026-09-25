@@ -1,0 +1,28 @@
+<material>
+  <!--Diagnostic material; matb/matz satisfy retained, unbound donor records. Only mata is model-bound.-->
+  <submaterial name="mata">
+    <materialdef name="destructible" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_BaseColor" />
+      <texture name="Normals" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_Normals" />
+      <texture name="Masks" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_Masks" />
+      <texture name="Details" override="buildings\asian_civs\town_center\china\age_2\textures\china_towncenter_age2_mata_Details" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\asians_accessories\Textures\Asians_accessories_mata_BaseColor" />
+      <texture name="Normals" override="homecity\home_city_props\props_additional\asians_accessories\Textures\Asians_accessories_mata_Normals" />
+      <texture name="Masks" override="homecity\home_city_props\props_additional\asians_accessories\Textures\Asians_accessories_mata_Masks" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible" />
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor" />
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals" />
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks" />
+    </parameters>
+  </submaterial>
+</material>

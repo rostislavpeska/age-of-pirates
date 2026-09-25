@@ -3602,6 +3602,12 @@
       <string _locid="503600">ZP NAT House Pirates Small</string>
       <string _locid="503601">ZP NAT House Pirates Small Flat</string>
 
+      <string _locid="503602">Korean Town Center - Destruction Test</string>
+      <string _locid="503603">ZP TEST Korean Town Center - Destruction Test</string>
+      <string _locid="503604">Chinese Town Center - Destruction Control</string>
+      <string _locid="503605">ZP TEST Chinese Town Center - Destruction Control</string>
+      <string _locid="503606">Experimental Havok destruction test. Compare progressive damage and final collapse with the Chinese donor.</string>
+
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

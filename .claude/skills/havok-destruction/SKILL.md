@@ -1,6 +1,6 @@
 ---
 name: havok-destruction
-description: Understand, inspect and adapt Age of Empires III DE destruction assets - the *_damaged.gr2 piece model, its Havok 2018 *_damaged.hkt rigid-body tagfile (piece types, keyframed vs dynamic, parent links), the .dmg damage templates and the animfile Destruction logic - and make a damaged model carry animation bones (animtrans pattern) so a unit keeps animating and its attachments through the damage stages. Uses scripts/havok/hkt_*.py, gr2_pieces.py, dmg_*.py; no converter needed. Triggers on "damaged model", "hkt", "destruction", "pieces fall", "mast falls", "simskeleton", "animtrans", "the damaged model doesn't animate", "progressive damage stopped working".
+description: Inspect and adapt Age of Empires III DE destruction assets - fractured building geometry, donor Havok body graphs and collision hulls, per-piece GR2 bindings, damage templates and animation XML. Includes the in-game-confirmed Korean Town Center donor adaptation and the animated ship animtrans pattern. Use for damaged models, HKT files, progressive damage, falling pieces, simskeleton and destruction export failures.
 ---
 
 # Destruction models (.hkt / _damaged.gr2) and animated damage stages
@@ -25,7 +25,9 @@ description: Understand, inspect and adapt Age of Empires III DE destruction ass
 
 Tools: `hkt_read.py` (summary), `hkt_props.py` (properties), `hkt_patch.py` (in-place property/motion edits),
 `hkt_write.py` + `hull3d.py` (write a tagfile from a body list - used for the test cube; the generated cube never
-destructed progressively, so authoring a new hkt from scratch is unproven - cloning a vanilla pair is).
+destructed progressively). Creating a new body graph from scratch remains unproven here.
+Preserving a donor graph while replacing building geometry and refitting its collision hulls
+worked for the Korean Town Center: user-confirmed in game on 2026-09-25.
 
 ## Building architecture donors
 
@@ -34,9 +36,17 @@ hint. Compare named bodies/bones, piece vertex bindings, rest transforms, parent
 properties and collision envelopes. Bone count, body count and geometry-piece
 count need not agree: donors can contain proxies, attachment bones and unpaired
 base geometry. Preserve those distinctions instead of forcing a one-to-one
-count. First verify an unchanged clone, then one bounded piece change in both
-intact and damaged states; inspect progressive damage and death in game before
-replicating the technique. An offline match does not prove physics behavior.
+count. For a new donor, first verify an unchanged clone, then one bounded piece
+change in both intact and damaged states; inspect progressive damage and death
+in game before replicating the technique. Reuse a confirmed baseline when one
+exists. An offline match does not prove physics behavior.
+
+For Chinese Town Center donors, read [the confirmed Korean adaptation and measured
+building frames](references/chinese-tc-experiment.md). It records the successful
+artifact hashes, fracture/binding recipe, collision-hull changes and export checks.
+The observed HKT/GR2 axis and unit conversion differs from simply reading both
+as world coordinates. Start with simple materials when the task is a physics proof;
+final UVs and custom texture production need not delay that test.
 
 ## Animated bones in a damaged model (the vanilla `animtrans` pattern)
 
@@ -49,11 +59,15 @@ mast_wood_solid_N (physics piece, no anim track)
 so one anim pair drives both stages and a falling mast takes its sails and flags. Requirements found by test:
 1. intact root name == damaged root name == anim track group name (else the anim does not bind to the
    damaged/sim skeleton: destruction works, nothing animates) - rename the damaged root in place if needed;
-2. the damaged root keeps its vanilla 90-degree Y rest, so the anims must carry **no track for the root** and
+2. in these ship donors, the damaged root keeps its vanilla 90-degree Y rest, so the anims must carry **no track for the root** and
    **no track for bones hung directly under the root** (flags, muzzles, impact points) - only for bones under
    animtrans (else the model turns 90 degrees / the flag and cannons sit off);
 3. `<simskeleton>` = damaged model on the unit's anims (this also brought progressive destruction back);
 4. the .hkt stays untouched: bodies are matched by bone name and the new bones have no bodies (like muzzles).
+
+That 90-degree rest is donor-specific. The early Chinese Town Center has an
+essentially identity `BONE_MAIN` in both intact and damaged models. Inspect the
+actual skeleton and inverse-world matrices; do not impose the ship rotation on buildings.
 
 Build (all Granny-level, no converter): `scripts/havok/dmg_extract.py` (bones, pieces, labels, sail->mast from
 the gr2 + the rig table from `rig_table.py`), `dmg_blender.py` (verification scene: pieces as vertex groups, sail
@@ -67,7 +81,8 @@ damaged file's own sections 3/4 - other sections crash the loader). Full sequenc
   drop the per-vertex bone bindings of destruction models and crash on the big ones - never round-trip a
   `_damaged` model through one; edit the vanilla file in place.
 - The test cube (own hkt from `hkt_write.py`): pieces existed, no progressive damage, chipped piece vanished;
-  the map-based test harness crashed the editor three times. Cloning vanilla pairs is the proven route.
+  the map-based test harness crashed the editor three times. This failed graph-generation recipe is distinct
+  from the later successful Korean building adaptation, which preserved the donor graph and refitted hulls.
 
 Related: **gr2-granny-edit** (formats, GXO grammar, verification ladder, converter note), **unit-bones**,
 **ship-sails**; memory notes `hkt-destruction-format-decoded`, `animtrans-pattern-damaged-models`.

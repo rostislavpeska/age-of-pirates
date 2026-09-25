@@ -76915,6 +76915,304 @@
     <flag>Tracked</flag>
   </unit>
 
+  <!-- Korean Town Center destruction experiment; editor-only, no civilization roster changes. -->
+  <unit id="21207" name="zpKoreanTownCenterTest">
+    <dbid>21207</dbid>
+    <displaynameid>503602</displaynameid>
+    <editornameid>503603</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\korean_tc_experiment\korean_tc_pilot.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\town_center\towncenter_icon.png</icon>
+    <minimapicon>ui\minimap\towncenter</minimapicon>
+    <portraiticon>resources\art\buildings\town_center\towncenter_portrait.png</portraiticon>
+    <rollovertextid>503606</rollovertextid>
+    <shortrollovertextid>503606</shortrollovertextid>
+    <legacyhotkeycontext>TownCenterAccel</legacyhotkeycontext>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <displayedrange>32</displayedrange>
+    <los>38.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>60.0000</buildpoints>
+    <freebuildpoints>270.0000</freebuildpoints>
+    <buildlimit>999</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">500.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>50</maxcontained>
+    <containedregenrate>0.3000</containedregenrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000" />
+    <builderlimit>8</builderlimit>
+    <carrycapacity resourcetype="Food">100.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">100.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">100.0000</carrycapacity>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeTCBuildLimit</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>LogicalTypeValidUprisingKhmelnytskyStarshynaTarget</unittype>
+    <unittype>Building</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractGatherAfterBuild</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
+    <unittype>AbstractMapControlBuilding</unittype>
+    <unittype>AbstractCallRaiders</unittype>
+    <unittype>AgeUpBuilding</unittype>
+    <unittype>LogicalTypeBuildingsHasRangedAttack</unittype>
+    <unittype>LogicalTypeCanSpawnCattle</unittype>
+    <unittype>EconomicBuilding</unittype>
+    <unittype>ConstructableBuilding</unittype>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>UISkipActiveTechs</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <contain>deChasqui</contain>
+    <command page="10" column="7">Delete</command>
+    <tactics>towncenter.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>75.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <active>1</active>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damage>9.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>32.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFood</name>
+      <type>AutoGather</type>
+      <rate type="Food">0.36000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWood</name>
+      <type>AutoGather</type>
+      <rate type="Wood">0.2400000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherGold</name>
+      <type>AutoGather</type>
+      <rate type="Gold">0.2400000</rate>
+    </protoaction>
+  </unit>
+
+  <unit id="21208" name="zpChineseTownCenterControl">
+    <dbid>21208</dbid>
+    <displaynameid>503604</displaynameid>
+    <editornameid>503605</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\korean_tc_experiment\chinese_tc_control.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\town_center\towncenter_icon.png</icon>
+    <minimapicon>ui\minimap\towncenter</minimapicon>
+    <portraiticon>resources\art\buildings\town_center\towncenter_portrait.png</portraiticon>
+    <rollovertextid>503606</rollovertextid>
+    <shortrollovertextid>503606</shortrollovertextid>
+    <legacyhotkeycontext>TownCenterAccel</legacyhotkeycontext>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <displayedrange>32</displayedrange>
+    <los>38.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>60.0000</buildpoints>
+    <freebuildpoints>270.0000</freebuildpoints>
+    <buildlimit>999</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">500.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>50</maxcontained>
+    <containedregenrate>0.3000</containedregenrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000" />
+    <builderlimit>8</builderlimit>
+    <carrycapacity resourcetype="Food">100.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">100.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">100.0000</carrycapacity>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeTCBuildLimit</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>LogicalTypeValidUprisingKhmelnytskyStarshynaTarget</unittype>
+    <unittype>Building</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractGatherAfterBuild</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
+    <unittype>AbstractMapControlBuilding</unittype>
+    <unittype>AbstractCallRaiders</unittype>
+    <unittype>AgeUpBuilding</unittype>
+    <unittype>LogicalTypeBuildingsHasRangedAttack</unittype>
+    <unittype>LogicalTypeCanSpawnCattle</unittype>
+    <unittype>EconomicBuilding</unittype>
+    <unittype>ConstructableBuilding</unittype>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>UISkipActiveTechs</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <contain>deChasqui</contain>
+    <command page="10" column="7">Delete</command>
+    <tactics>towncenter.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>75.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <active>1</active>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damage>9.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>32.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFood</name>
+      <type>AutoGather</type>
+      <rate type="Food">0.36000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWood</name>
+      <type>AutoGather</type>
+      <rate type="Wood">0.2400000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherGold</name>
+      <type>AutoGather</type>
+      <rate type="Gold">0.2400000</rate>
+    </protoaction>
+  </unit>
+
+
 <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
