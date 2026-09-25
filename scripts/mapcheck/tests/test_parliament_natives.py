@@ -130,7 +130,8 @@ class TestProtos:
     def test_trading_post_rows(self):
         s = _read("data/protomods.xml")
         tp = re.search(r'<unit name="TradingPost">.*?</unit>', s, re.S).group(0)
-        assert '<train row="0" page="0" column="1">%s</train>' % LORD in tp
+        # owner 2026-09-25: 'can we swap Redcoat and Lord in Trading post?' - Redcoat first, then the Lord
+        assert '<train row="0" page="0" column="1">zpNatRedcoat</train>' in tp and '<train row="0" page="0" column="3">%s</train>' % LORD in tp
         for pg, c, t in ((1, 1, VET), (1, 1, GUARD), (1, 1, BIG), (2, 0, BASE[0]), (2, 1, BASE[1]), (2, 2, BASE[2]), (2, 3, BASE[3])):
             assert '<tech row="0" page="%d" column="%d">%s</tech>' % (pg, c, t) in tp, t
 
@@ -482,8 +483,10 @@ class TestTeamIronsides:
         s = _read("data/protomods.xml")
         emb = re.search(r'<unit name="NativeEmbassy">.*?</unit>', s, re.S).group(0)
         assert '<train row="0" page="0" column="96">zpNatCataphract</train>' in emb and '<train row="0" page="0" column="137">%s</train>' % IRON in emb
-        for col, u in ((138, BON), (139, BOW), (140, LORD)):  # every Parliament unit trains at the Embassy, own column each
+        rew = re.search(r'<unit[^>]*name="zpNativeEmbassyParisReward"[^>]*>.*?</unit>', s, re.S).group(0)   # the embassy reward
+        for col, u in ((137, IRON), (138, BON), (139, BOW), (140, LORD), (141, "zpNatRedcoat")):  # every Parliament unit, own column
             assert '<train row="0" page="0" column="%d">%s</train>' % (col, u) in emb, u
+            assert '<train row="0" page="0" column="%d">%s</train>' % (col, u) in rew, u     # owner 2026-09-25
         c = _read("data/civmods.xml"); i = c.index("<name>zpParliament</name>"); blk = c[i:c.index("</civ>", i)]
         assert re.search(r"<multipleblocktrain>\s*<building>NativeEmbassy</building>\s*<multipleblockunit>zpNatMercIronside</multipleblockunit>\s*<units>\s*<unit>%s</unit>\s*</units>\s*<unitcounts>\s*<count>1</count>" % IRON, blk)
         t = _techs()
@@ -826,7 +829,7 @@ class TestCoats:
         t = _techs()
         assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<', t["zpNativeParliament"])
         pm = (REPO / "data/protomods.xml").read_text(encoding="utf-8")
-        assert '<train row="0" page="0" column="3">zpNatRedcoat</train>' in pm
+        assert '<train row="0" page="0" column="1">zpNatRedcoat</train>' in pm     # before the Lord (owner 2026-09-25 swap)
         for tech, amt, name in (("zpNatVeteranParliament", "1.20", "503579"), ("zpNatGuardParliament", "1.40", "503580")):
             b = t[tech]
             assert re.search(r'amount="%s" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<' % re.escape(amt), b), tech

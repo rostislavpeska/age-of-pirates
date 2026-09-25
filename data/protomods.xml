@@ -2330,8 +2330,8 @@
     <train row="0" page="0" column="3">zpNatCoureurSansculotte</train>
 
     <!-- PARLIAMENTARIANS -->
-    <train row="0" page="0" column="1">zpNatLord</train>
-    <train row="0" page="0" column="3">zpNatRedcoat</train>
+    <train row="0" page="0" column="3">zpNatLord</train>
+    <train row="0" page="0" column="1">zpNatRedcoat</train>
 
     <!-- BOURBON -->
     <train row="0" page="0" column="1">zpNatRoyalMusketeer</train>
@@ -2696,6 +2696,7 @@
     <train row="0" page="0" column="138">zpNatBonaght</train>
     <train row="0" page="0" column="139">zpNatWelshLongbowman</train>
     <train row="0" page="0" column="140">zpNatLord</train>
+    <train row="0" page="0" column="141">zpNatRedcoat</train>
     <train row="0" page="0" column="96">zpAlexandrianRider</train>
     <train row="0" page="0" column="97">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="98">zpNatMonaspa</train>
@@ -43517,6 +43518,12 @@
     <train row="0" page="0" column="111">zpNatRoyalMusketeer</train>
     <train row="0" page="0" column="112">zpNatRoyalDragoon</train>
     <train row="0" page="0" column="113">zpNatRevolutionary</train>
+    <!-- Parliament (owner 2026-09-25): every Parliament unit, at the Native Embassy's columns -->
+    <train row="0" page="0" column="137">zpNatIronside</train>
+    <train row="0" page="0" column="138">zpNatBonaght</train>
+    <train row="0" page="0" column="139">zpNatWelshLongbowman</train>
+    <train row="0" page="0" column="140">zpNatLord</train>
+    <train row="0" page="0" column="141">zpNatRedcoat</train>
     <tech row="0" page="1" column="1">WarriorSocietyCaribs</tech>
     <tech row="0" page="1" column="1">ChampionCaribs</tech>
     <tech row="0" page="1" column="1">WarriorSocietyMapuche</tech>
@@ -76801,6 +76808,60 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
   </unit>
+  <unit id="21205" name="zpNativeHousePirateSmall">
+    <dbid>21205</dbid>
+    <displaynameid>503599</displaynameid>
+    <editornameid>503600</editornameid>
+    <subciv>NatPirates</subciv>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <animfile>buildings\nassau\nassau_houses.xml</animfile>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+
 <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
