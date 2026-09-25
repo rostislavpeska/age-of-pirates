@@ -3,3 +3,11 @@
      file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
      64988 vanilla: Seleziona un alleato straniero -->
 <string _locid="64988">Seleziona un alleato</string>
+<string _locid="37581">Cattedrale di San Paolo</string>
+<string _locid="37582">La classica cattedrale in pietra chiara, coronata da una scura cupola di piombo.</string>
+<string _locid="37583">San Paolo dalla corona di rame</string>
+<string _locid="37584">Una versione calda, dal tetto di rame, dei colori della cattedrale britannica.</string>
+<string _locid="37585">La Cattedrale d'Argento</string>
+<string _locid="37586">Una versione fredda, argento e bianco, dei colori della cattedrale britannica.</string>
+<string _locid="37587">La Cattedrale Rossa di Wren</string>
+<string _locid="37588">Una versione in mattoni rossi e bronzo dei colori della cattedrale britannica.</string>

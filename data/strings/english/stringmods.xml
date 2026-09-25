@@ -5,6 +5,14 @@
            translation of exactly these ids in data/strings/_rewrites/LANGUAGE.xml, and
            scripts/tools/stringsync.py swaps this block for that file when it builds that language. ===== -->
       <string _locid="64988">Choose an Ally</string>
+      <string _locid="37581">St Paul's Cathedral</string>
+      <string _locid="37582">The classic pale-stone Cathedral, crowned by a dark leaden dome.</string>
+      <string _locid="37583">Copper-Crowned St Paul's</string>
+      <string _locid="37584">A warm copper-roofed version of the British Cathedral's color scheme.</string>
+      <string _locid="37585">The Silver Cathedral</string>
+      <string _locid="37586">A cool silver-and-white version of the British Cathedral's color scheme.</string>
+      <string _locid="37587">Wren's Red Cathedral</string>
+      <string _locid="37588">A red-brick and bronze version of the British Cathedral's color scheme.</string>
       <!-- ===== NEW STRINGS: mod-own ids (400001-400290, 500001+). Copied 1:1 into every language by
            scripts/tools/stringsync.py (build flag). Add new ids here, in ascending order (stringcheck.py). ===== -->
       <!--Version 1.1-->

@@ -3,3 +3,11 @@
      file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
      64988 vanilla: 同盟国を選択してください -->
 <string _locid="64988">同盟相手を選択してください</string>
+<string _locid="37581">セント・ポール大聖堂</string>
+<string _locid="37582">淡い石造りの古典的な大聖堂。暗い鉛のドームを戴く。</string>
+<string _locid="37583">銅の冠のセント・ポール</string>
+<string _locid="37584">イギリスの大聖堂の配色を、銅の屋根で温かく仕上げたもの。</string>
+<string _locid="37585">銀の大聖堂</string>
+<string _locid="37586">イギリスの大聖堂の配色を、銀と白で冷たく仕上げたもの。</string>
+<string _locid="37587">レンの赤い大聖堂</string>
+<string _locid="37588">イギリスの大聖堂の配色を、赤レンガとブロンズで仕上げたもの。</string>

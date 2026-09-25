@@ -7,12 +7,12 @@
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_mata_masks"></texture>
     </parameters>
     <parameters variant="1">
-      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_mata_01_cold_marble_basecolor"></texture>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_mata_02_warm_stone_green_roof_basecolor"></texture>
       <texture name="Normals" override="buildings\london_basilica\textures\stpauls_mata_normals"></texture>
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_mata_masks"></texture>
     </parameters>
     <parameters variant="2">
-      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_mata_02_warm_stone_green_roof_basecolor"></texture>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_mata_01_cold_marble_basecolor"></texture>
       <texture name="Normals" override="buildings\london_basilica\textures\stpauls_mata_normals"></texture>
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_mata_masks"></texture>
     </parameters>
@@ -30,12 +30,12 @@
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks"></texture>
     </parameters>
     <parameters variant="1">
-      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_01_cold_marble_basecolor"></texture>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_02_warm_stone_green_roof_basecolor"></texture>
       <texture name="Normals" override="buildings\london_basilica\textures\stpauls_matb_normals"></texture>
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks"></texture>
     </parameters>
     <parameters variant="2">
-      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_02_warm_stone_green_roof_basecolor"></texture>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_01_cold_marble_basecolor"></texture>
       <texture name="Normals" override="buildings\london_basilica\textures\stpauls_matb_normals"></texture>
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks"></texture>
     </parameters>
@@ -76,12 +76,12 @@
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks"></texture>
     </parameters>
     <parameters variant="1">
-      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_01_cold_marble_basecolor"></texture>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_02_copper_dome_only_basecolor"></texture>
       <texture name="Normals" override="buildings\london_basilica\textures\stpauls_matb_normals"></texture>
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks"></texture>
     </parameters>
     <parameters variant="2">
-      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_02_copper_dome_only_basecolor"></texture>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_01_cold_marble_basecolor"></texture>
       <texture name="Normals" override="buildings\london_basilica\textures\stpauls_matb_normals"></texture>
       <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks"></texture>
     </parameters>

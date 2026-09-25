@@ -1,9 +1,35 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <animfile>
   <component>ModelComp
-    <assetreference type="GrannyModel">
-      <file>buildings\london_basilica\stpauls_age4</file>
-    </assetreference>
+    <logic type="Variation">
+      <!-- Variant 0: Original approved stone -->
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\london_basilica\stpauls_age4</file>
+        </assetreference>
+      </data>
+      <!-- Variant 1: Renovated pale stone / grey roof -->
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\london_basilica\stpauls_age4</file>
+          <materialvariant index="1"></materialvariant>
+        </assetreference>
+      </data>
+      <!-- Variant 2: Warm stone / green roofs / copper dome -->
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\london_basilica\stpauls_age4</file>
+          <materialvariant index="2"></materialvariant>
+        </assetreference>
+      </data>
+      <!-- Variant 3: Smoked red-brown stone / dark roofs / gold dome -->
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\london_basilica\stpauls_age4</file>
+          <materialvariant index="3"></materialvariant>
+        </assetreference>
+      </data>
+    </logic>
     <decal>
       <effecttype>bump</effecttype>
       <texture>buildings\basilica\basilica_age4_ground</texture>

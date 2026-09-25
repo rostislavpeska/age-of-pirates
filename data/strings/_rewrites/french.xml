@@ -3,3 +3,11 @@
      file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
      64988 vanilla: Choisissez un allié étranger -->
 <string _locid="64988">Choisissez un allié</string>
+<string _locid="37581">Cathédrale Saint-Paul</string>
+<string _locid="37582">La cathédrale classique en pierre claire, couronnée d'un dôme de plomb sombre.</string>
+<string _locid="37583">Saint-Paul au dôme de cuivre</string>
+<string _locid="37584">Une version chaleureuse, au toit de cuivre, des couleurs de la cathédrale britannique.</string>
+<string _locid="37585">La cathédrale d'argent</string>
+<string _locid="37586">Une version froide, argent et blanc, des couleurs de la cathédrale britannique.</string>
+<string _locid="37587">La cathédrale rouge de Wren</string>
+<string _locid="37588">Une version en brique rouge et bronze des couleurs de la cathédrale britannique.</string>

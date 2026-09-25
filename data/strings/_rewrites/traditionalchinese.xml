@@ -3,3 +3,11 @@
      file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
      64988 vanilla: 選擇外國盟友 -->
 <string _locid="64988">選擇盟友</string>
+<string _locid="37581">聖保羅大教堂</string>
+<string _locid="37582">經典的淺色石砌大教堂，頂部是深色的鉛製穹頂。</string>
+<string _locid="37583">銅頂聖保羅</string>
+<string _locid="37584">英國大教堂配色的暖色銅頂版本。</string>
+<string _locid="37585">銀色大教堂</string>
+<string _locid="37586">英國大教堂配色的冷色銀白版本。</string>
+<string _locid="37587">雷恩的紅色大教堂</string>
+<string _locid="37588">英國大教堂配色的紅磚與青銅版本。</string>

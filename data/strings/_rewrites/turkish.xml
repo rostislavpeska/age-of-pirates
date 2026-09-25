@@ -3,3 +3,11 @@
      file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
      64988 vanilla: Yabancı bir Müttefik seç -->
 <string _locid="64988">Bir Müttefik seç</string>
+<string _locid="37581">St Paul Katedrali</string>
+<string _locid="37582">Koyu kurşun bir kubbeyle taçlanmış, açık taştan klasik katedral.</string>
+<string _locid="37583">Bakır Taçlı St Paul</string>
+<string _locid="37584">Britanya Katedrali'nin renk düzeninin bakır çatılı sıcak sürümü.</string>
+<string _locid="37585">Gümüş Katedral</string>
+<string _locid="37586">Britanya Katedrali'nin renk düzeninin gümüş ve beyaz soğuk sürümü.</string>
+<string _locid="37587">Wren'in Kızıl Katedrali</string>
+<string _locid="37588">Britanya Katedrali'nin renk düzeninin kırmızı tuğla ve bronz sürümü.</string>

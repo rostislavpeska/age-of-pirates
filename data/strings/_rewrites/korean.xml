@@ -3,3 +3,11 @@
      file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
      64988 vanilla: 외국 동맹 맺기 -->
 <string _locid="64988">동맹 맺기</string>
+<string _locid="37581">세인트 폴 대성당</string>
+<string _locid="37582">밝은 석재의 고전적인 대성당으로, 어두운 납 돔을 얹었습니다.</string>
+<string _locid="37583">구리 지붕의 세인트 폴</string>
+<string _locid="37584">영국 대성당의 색상을 따뜻한 구리 지붕으로 꾸민 버전입니다.</string>
+<string _locid="37585">은빛 대성당</string>
+<string _locid="37586">영국 대성당의 색상을 차가운 은색과 흰색으로 꾸민 버전입니다.</string>
+<string _locid="37587">렌의 붉은 대성당</string>
+<string _locid="37588">영국 대성당의 색상을 붉은 벽돌과 청동으로 꾸민 버전입니다.</string>
