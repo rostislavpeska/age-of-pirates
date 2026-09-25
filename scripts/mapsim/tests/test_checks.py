@@ -400,3 +400,38 @@ class TestKothConnectivity:
         assert f.verdict == "KOTH_TINY_ISLAND", f.message
         assert f.details["tiles"] < 400 < f.details["reach_tiles"]
         assert not f.details["reaches_player_start"]
+
+
+class TestOwnUnitIsNoObstacle:
+    """zptorresstrait.xs 771: one 'player TC' def placed per player with 'avoid Town Center Far' (TownCenter,
+    60 m). Each nominal TC is deposited at its own anchor, so every TC 'avoided itself' at 0 m: CONSTRAINT_UNSAT at
+    every player count, although the game places them (owner ground truth; live editor Torres Strait 2p/6p). The
+    placement's own unit is skipped; the other players' TCs still count."""
+
+    SRC = """
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmTerrainInitialize("grass");
+   rmSetPlacementSection(0.1, 0.9);
+   rmPlacePlayersCircular(0.35, 0.35, 0.0);
+   int far = rmCreateTypeDistanceConstraint("avoid Town Center Far", "TownCenter", 60.0);
+   int tc = rmCreateObjectDef("player TC");
+   rmAddObjectDefItem(tc, "TownCenter", 1, 0.0);
+   rmSetObjectDefMaxDistance(tc, 50.0);
+   rmAddObjectDefConstraint(tc, far);
+   for (i = 1; <= cNumberNonGaiaPlayers)
+      rmPlaceObjectDefAtLoc(tc, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+}
+"""
+
+    def _tc(self, tmp_path, players):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "tc.xs"
+        src.write_text(self.SRC, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(players, 2)))
+        return [f for f in run_checks(rs) if f.name == "player TC"]
+
+    def test_spread_town_centers_are_placeable(self, tmp_path):
+        fs = self._tc(tmp_path, 2)
+        assert fs and all(f.verdict != "CONSTRAINT_UNSAT" for f in fs), [f.message for f in fs]
