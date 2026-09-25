@@ -1282,11 +1282,16 @@ class Extractor:
                 while len(lst) <= int(idx):
                     lst.append(0)
                 lst[int(idx)] = value
+            elif isinstance(arr, dict):
+                # A write at a runtime index could have hit any element: every later read is runtime (2026-09-25:
+                # zplondon.xs marks shuffled city cells taken at runtime indices; dropping those writes let
+                # filler() see every cell free and place the Academy on the first one).
+                arr["__tainted__"] = True
             return 0
         if name in ("xsArrayGetInt", "xsArrayGetFloat", "xsArrayGetString", "xsArrayGetBool",
                     "xsArrayGetVector"):
             arr, idx = args
-            if isinstance(arr, dict) and not isinstance(idx, Tainted):
+            if isinstance(arr, dict) and not isinstance(idx, Tainted) and not arr.get("__tainted__"):
                 lst = arr["__array__"]
                 if int(idx) < len(lst):
                     return lst[int(idx)]
