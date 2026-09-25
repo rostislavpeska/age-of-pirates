@@ -351,18 +351,19 @@ minInterval 1
       xsEnableRule("londonSetup");
       xsEnableRule("londonPlanPlacer");
       aiSetHandler("londonBuildingPlacementFailedHandler", cXSBuildingPlacementFailedHandler);
-      aiEcho("LONDON p" + cMyID + " build r11 2026-09-24 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r12 2026-09-25 - marker found, London rules on");
    }
 
    // Forward base at the enemy construction block %%%%%%%%%%%%%%%%%%%%%%%
-   // Any map whose script gives the player construction block markers (zpAILondonConstrMarker: London 12.11, Paris) -
+   // Any map whose script gives the player construction block markers (zpAILondonConstrMarker: London 12.11, Paris,
+   // Istanbul's landing beaches) -
    // by unit (owner 2026-09-24: 'forwarded base - if player has such unit'); the stock forward-base rules are swapped
    // for the copies by pirateForwardBaseWatch (Istanbul's pattern)
    if (kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny) > 0)
    {
       gPirateForwardBaseMap = true;
       xsEnableRule("pirateForwardBaseWatch");
-      aiEcho("PIRATEFB p" + cMyID + " build r11 2026-09-24 - " + kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny)
+      aiEcho("PIRATEFB p" + cMyID + " build r12 2026-09-25 - " + kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny)
              + " construction markers, forward base at the enemy construction block");
    }
 
@@ -8418,7 +8419,7 @@ bool pirateOnConstructionBlock(vector pos = cInvalidVector)
 vector pirateForwardBasePoint(void)
 {
    static int lastEcho = -60000;
-   string tag = "PARISPLACE";
+   string tag = "PIRATEPLACE";
    int q = -1;
    int n = 0;
    int unit = -1;
@@ -9358,7 +9359,22 @@ minInterval 5
 }
 
 //==============================================================================
-// FORWARD BASE on London and Paris (owner 2026-09-24) - Istanbul's pattern: the stock forwardBaseManager and
+// pirateForwardBeachHead - island maps (Istanbul, owner 2026-09-25): the stock beachhead pick, replaced by the enemy
+// construction marker whenever there is one
+//==============================================================================
+vector pirateForwardBeachHead(void)
+{
+   vector v = pirateForwardBasePoint();
+
+   if (v == cInvalidVector)
+   {
+      return (selectForwardBaseBeachHead());
+   }
+   return (v);
+}
+
+//==============================================================================
+// FORWARD BASE on London, Paris and Istanbul (owner 2026-09-24 / 25) - Istanbul's pattern: the stock forwardBaseManager and
 // forwardTowerBaseManager (switched on by the age monitors in aicore.xs) are switched off by pirateForwardBaseWatch
 // and their copies below run instead. The copies are the stock rules (aibuildings.xs / aiassertivewall.xs of the
 // adopted core 0b2c6aab) with one change each: the location comes from pirateForwardBasePoint.
@@ -9420,7 +9436,7 @@ minInterval 30
             // AssertiveWall: Use the forward island
             if (gStartOnDifferentIslands == true && (gMigrationMap == false))
             {
-               location = selectForwardBaseBeachHead();
+               location = pirateForwardBeachHead();
                if (location == cInvalidVector)
                {  // We never build in base with the tower forward base
                   return;
@@ -9721,7 +9737,7 @@ minInterval 30
             // NOTE: never get here now that the amphibiousAssault runs. Leaving active as a note
             if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
             {
-               location = selectForwardBaseBeachHead();
+               location = pirateForwardBeachHead();
             }
             else if ((cDifficultyCurrent >= cDifficultyModerate)) //(btOffenseDefense >= -10.0) && 
             {
@@ -9944,6 +9960,23 @@ minInterval 1
    static int lastEcho = -60000;
    int fort = -1;
    vector point = cInvalidVector;
+
+   // island maps (Istanbul): the stock amphibious assault lands at a coast point near the enemy base (amphibiousAssault
+   // -> selectPickupPoint) and makes the forward base there. While the navy gathers or bombards, the landing is
+   // re-pointed to the enemy construction marker - every later stage re-reads gAmphibiousAssaultTarget.
+   if (gAmphibiousAssaultTarget != cInvalidVector && gAmphibiousAssaultStage <= cBombardCoast)
+   {
+      if (pirateOnConstructionBlock(gAmphibiousAssaultTarget) == false)
+      {
+         point = pirateForwardBasePoint();
+         if (point != cInvalidVector)
+         {
+            aiEcho("PIRATEFB p" + cMyID + " amphibious landing at " + xsVectorGetX(gAmphibiousAssaultTarget) + "/" + xsVectorGetZ(gAmphibiousAssaultTarget)
+                   + " (stage " + gAmphibiousAssaultStage + ") re-pointed to " + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
+            gAmphibiousAssaultTarget = point;
+         }
+      }
+   }
 
    // the third stock path (run 36, P4 at 12:07 in Age 1): buildingMonitor's 'Forward <building>' plan takes the stock
    // selectForwardBaseLocation and sets state Building. A forward base being built anywhere but a construction block

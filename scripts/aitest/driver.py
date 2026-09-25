@@ -167,6 +167,7 @@ def minimap_signature():
 MAPS = {
     "zpparis": ("Bastille", True),       # Storming of the Bastille
     "zplondon": ("Restoration", True),   # Restoration of the Monarchy
+    "zpistanbulb": ("Revelations", True),   # Revelations of Istanbul
     "amazonia": ("Amazonia", False),
 }
 
