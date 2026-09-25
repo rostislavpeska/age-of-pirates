@@ -8260,7 +8260,7 @@ void main(void)
 	// aop native exclusive loop
 	for(i = 0; <(aopNativeNumber-electorNumber))
 	{
-		nativeChance = rmRandFloat(0,0.20);
+		nativeChance = rmRandFloat(0,0.21);
 		if (merryXmass == 1 && counterXmass <1)
 			nativeChance = 0.13;
 //			nativeChance = 0.41;		// for testing
@@ -8414,6 +8414,12 @@ void main(void)
 			else
 				unknownVillageID = rmCreateGrouping("austrian habsburg"+i, "zpHabsburg_AU_0"+rmRandInt(1,3));
 			counterHabs++;
+		}
+		else if(nativeChance < 0.21 && counterStuart < 1)
+		{
+			rmEchoInfo("subCiv"+i+" is Stuart");
+			unknownVillageID = rmCreateGrouping("stuart village "+i, "ZP_House_Stuart_0"+rmRandInt(1,3));
+			counterStuart++;
 		}
 		else // this is there to still have as much native tps as decided because some can not spawn if you have already 2. Thx Riki.
 		{
