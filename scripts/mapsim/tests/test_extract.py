@@ -314,3 +314,15 @@ class TestContinue:
         ex = run_src(src)
         assert [(round(p.x, 2), p.z) for p in ex.placements] == [(0.2, 0.5)] and ex.warnings == []
 
+
+class TestArrayWrittenAtRuntimeIndex:
+    """zplondon.xs marks shuffled city cells taken with xsArraySetBool(gCityLocsStatus, <runtime index>, true); the
+    extractor dropped writes at runtime indices, so filler() saw every cell free. A write at a runtime index could
+    hit any element: every later read of that array is runtime."""
+
+    def test_reads_after_a_runtime_index_write_are_runtime(self):
+        src = HEADER + ('int s = xsArrayCreateBool(4, false); xsArraySetBool(s, rmRandInt(0, 3), true);\n'
+                        'int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'if (xsArrayGetBool(s, 0) == false) rmPlaceObjectDefAtLoc(d, 0, 0.1, 0.1, 1); }')
+        ex = run_src(src)
+        assert [p.nominal for p in ex.placements] == [True] and ex.placements[0].variant != ""
