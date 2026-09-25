@@ -401,3 +401,19 @@ class TestSectionSpacing:
         pos = ring_positions(ex.player_events, 4, 2)
         fr = sorted(round((math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0, 3) for p in pos)
         assert fr == [0.0, 0.25, 0.5, 0.75]
+
+
+class TestNominalPlayerPlacement:
+    """Both arms of a random `if` record player placement; the positions come from the nominal arm (the lo-roll), the
+    world the placements describe. After the nominal arm moved last, the first event per team was the other arm's."""
+
+    def test_team_start_swap_uses_the_nominal_arm(self):
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('float t = rmRandFloat(0.0, 1.0);\n'
+                        'if (t > 0.5) { rmSetPlacementTeam(0); rmPlacePlayersLine(0.1, 0.1, 0.1, 0.1, 0, 0);'
+                        ' rmSetPlacementTeam(1); rmPlacePlayersLine(0.9, 0.9, 0.9, 0.9, 0, 0); }\n'
+                        'else { rmSetPlacementTeam(0); rmPlacePlayersLine(0.9, 0.9, 0.9, 0.9, 0, 0);'
+                        ' rmSetPlacementTeam(1); rmPlacePlayersLine(0.1, 0.1, 0.1, 0.1, 0, 0); } }')
+        ex = run_src(src, Scenario(2, 2))
+        # lo-roll: t = 0.0, so `t > 0.5` is false - the else arm is nominal
+        assert ring_positions(ex.player_events, 2, 2) == [(0.9, 0.9), (0.1, 0.1)]

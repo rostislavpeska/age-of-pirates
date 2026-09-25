@@ -721,6 +721,10 @@ def ring_positions(player_events, players: int, teams: int):
                 and all(_n(e.get(k)) is not None
                         for k in ("x1", "z1", "x2", "z2")))
 
+    # The NOMINAL world only (2026-09-25): a random `if` records both arms, and since the nominal arm runs last the
+    # first event per team came from the OTHER arm (Paris' mirrored team lines, Malta's teamStartLoc swap). Events
+    # recorded without the flag (hand-built lists) count as nominal.
+    player_events = [e for e in player_events if e.get("nominal", True)]
     evs = [e for e in player_events if _is_circ(e) or _is_line(e)]
     if not evs:
         placed = {}
@@ -1868,12 +1872,12 @@ class Extractor:
                 "max": args[1] if len(args) > 1 else args[0],
                 "variance": args[2] if len(args) > 2 else 0.0,
                 "team": self._pp_state["team"], "section": self._pp_state["section"],
-                "variant": "|".join(self.variant_stack)})
+                "variant": "|".join(self.variant_stack), "nominal": self.alt_depth == 0})
             return 0
         if name == "rmPlacePlayer":
             res.player_events.append({
                 "call": name, "player": args[0], "x": args[1], "z": args[2],
-                "variant": "|".join(self.variant_stack)})
+                "variant": "|".join(self.variant_stack), "nominal": self.alt_depth == 0})
             return 0
         if name == "rmPlacePlayersLine":
             # (x1, z1, x2, z2[, distVariation, spacingVariation]) — the
@@ -1882,7 +1886,7 @@ class Extractor:
                 "call": name,
                 "x1": args[0], "z1": args[1], "x2": args[2], "z2": args[3],
                 "team": self._pp_state["team"],
-                "variant": "|".join(self.variant_stack)})
+                "variant": "|".join(self.variant_stack), "nominal": self.alt_depth == 0})
             return 0
         if name in ("rmPlacePlayersSquare", "rmPlacePlayersRiver"):
             res.player_events.append({"call": name, "args": args,
