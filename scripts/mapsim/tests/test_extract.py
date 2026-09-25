@@ -301,3 +301,16 @@ class TestHalfKnownAnchors:
         p = next(p for p in rs.placements if p.name == "stopper")
         assert (p.x is None) == (p.z is None)
         run_checks(rs)                      # no TypeError
+
+
+class TestContinue:
+    """`continue` was read as a bare name and ignored; zplondon.xs filler() (`if (taken) continue;`) then placed the
+    Academy on the first cell of each range whether taken or not (twin on the live London save: 11 groupings
+    MISSING instead of 2)."""
+
+    def test_continue_skips_to_the_next_iteration(self):
+        src = HEADER + ('int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'for (i = 0; < 3) { if (i < 2) continue; rmPlaceObjectDefAtLoc(d, 0, 0.1 * i, 0.5, 1); } }')
+        ex = run_src(src)
+        assert [(round(p.x, 2), p.z) for p in ex.placements] == [(0.2, 0.5)] and ex.warnings == []
+
