@@ -499,6 +499,23 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                         textcoords="offset points", fontsize=5.5,
                         ha="center", color="#f2f2f2", zorder=8, xycoords=tr)
 
+    # The KotH hill (checks.check_koth, 2026-09-25): a gold star at its spot, labelled with the verdict - drawn
+    # whenever the finding exists, independent of DRAW_VERDICT_MARKERS.
+    for f in findings or []:
+        if f.scope != "koth" or not (f.details or {}).get("hill_m"):
+            continue
+        hx, hz = f.details["hill_m"]
+        fx_, fz_ = grid.x_m_to_frac(hx), grid.z_m_to_frac(hz)
+        ax.scatter([fx_], [fz_], marker="*", s=260, color="#ffd21f", edgecolors="#000000",
+                   linewidths=0.9, zorder=9, transform=tr)
+        d = f.details
+        label = ("KotH: tiny island" if d.get("tiny") else "KotH: island" if d.get("island") else "KotH: mainland")
+        label += f", {d.get('tiles')} tiles"
+        if d.get("deep_water_m") is not None:
+            label += f", deep water {d['deep_water_m']:g} m"
+        ax.annotate(label, (fx_, fz_), xytext=(0, 9), textcoords="offset points", fontsize=6.5,
+                    ha="center", color="#ffd21f", zorder=9, xycoords=tr)
+
     x0_, x1_ = ax.get_xlim()
     bar = grid.x_m_to_frac(100.0) / (x1_ - x0_)   # 100 m in axes fraction
     ax.plot([0.03, 0.03 + bar], [0.035, 0.035], color="#f2f2f2", linewidth=2,

@@ -103,7 +103,7 @@ def run_scenario(scene: Scene, sc: Scenario, out_dir: Path, png: bool = False,
     summary = ", ".join(f"{v}:{n}" for v, n in sorted(counts.items()))
     print(f"[{scenario_tag(sc)}] size {rs.grid.size_x_m:.0f} m | {summary}")
     for f in findings:
-        if f.severity in ("error", "warning"):
+        if f.severity in ("error", "warning") or f.scope == "koth":
             print(f"  {f.severity.upper():7} {f.verdict:18} {f.name}: {f.message}")
     return findings
 

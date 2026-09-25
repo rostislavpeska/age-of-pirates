@@ -255,6 +255,8 @@ class ResolvedScene:
     sea_type: Optional[str] = None      # rmSetSeaType water body name
     suppressed_variants: int = 0        # alt-arm placements dropped (Part H4)
     groupings_solved: bool = False      # gsolve.ensure_solved ran (idempotence)
+    # NOMINAL player start locations (fractions) from the placement calls - xs pipeline only (bridge).
+    player_locs: List[Tuple[float, float]] = field(default_factory=list)
 
     def all_routes(self) -> List[List[Tuple[float, float]]]:
         return self.trade_routes or ([self.trade_route_waypoints] if self.trade_route_waypoints else [])
@@ -271,7 +273,7 @@ def height_floods(base_is_water: bool, sea_level: float, base_height: Optional[f
 
     On a land-initialized map the sea level floods nothing: the water there is what water-typed areas, rivers and
     water masks put down. Evidence (2026-09-25, live Scenario Editor minimaps at 2880x1800): zpdeadsea.xs
-    (rmTerrainInitialize("deccan\ground_grass3_deccan"), rmSetSeaLevel(6.0)) shows land everywhere but its
+    (rmTerrainInitialize("deccan\\ground_grass3_deccan"), rmSetSeaLevel(6.0)) shows land everywhere but its
     water-typed lake - the 'dead sea valley' (base 0.0) and both players' areas (2.0) are dry ground with the Town
     Centers on them, 2p and 6p; zpeyrebasin.xs (same setup, pirate sites at 1.0) likewise. Venice's 'bonus island' /
     'port sites' and Versailles' 'countryside N/S' (base 1.0 = sea 1.0, land base) are named and used as land."""
