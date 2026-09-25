@@ -611,6 +611,13 @@ NOOP_FUNCS = {
     "rmObjectiveAdd", "rmObjectiveSetTeam",
     # victory settings: no geometry
     "rmForbidTradeMonopoly",
+    # 2026-09-25 (feedback item 3): engine calls with no geometry, each used by vanilla maps -
+    # outlaw roster (Arctic Territories, CaspianSea), map visibility, terrain-layer paint variance and cliff-edge
+    # painting (rm_commands_reference), garrison contents and player resources (rm_commands_reference), the
+    # colony count of vanilla unknown.xs, a connection's class membership (connections build no class geometry).
+    "rmEnableOutlaw", "rmSetAllMapReveal", "rmSetAreaTerrainLayerVariance", "rmAddAreaCliffEdgeAvoidClass",
+    "rmSetObjectDefGarrisonStartingUnits", "rmSetObjectDefGarrisonSecondaryUnits", "rmAddPlayerResource",
+    "rmSetPlayerResource", "rmSetNumberInitialColonies", "rmAddConnectionToClass",
 }
 
 # Trigger DSL: parse-and-discard (arguments ARE evaluated by the caller).
@@ -1211,9 +1218,21 @@ class Extractor:
                     sx, sz = self._need_size()
                     return ("vec", anchor[0] * sx, 0.0, anchor[1] * sz)
             return Tainted("rmGetUnitPosition(...)")
-        if name in ("xsArrayCreateInt", "xsArrayCreateFloat", "xsArrayCreateString"):
+        if name == "xsVectorNormalize":
+            v = args[0] if args else None
+            if isinstance(v, tuple) and len(v) == 4 and v[0] == "vec":
+                import math as _m
+                n = _m.sqrt(v[1] ** 2 + v[2] ** 2 + v[3] ** 2)
+                return ("vec", v[1] / n, v[2] / n, v[3] / n) if n > 0 else v
+            return Tainted("xsVectorNormalize(...)")
+        if name == "xsArrayGetSize":
+            arr = args[0] if args else None
+            return len(arr["__array__"]) if isinstance(arr, dict) else Tainted("xsArrayGetSize(...)")
+        if name in ("xsArrayCreateInt", "xsArrayCreateFloat", "xsArrayCreateString",
+                    "xsArrayCreateBool", "xsArrayCreateVector"):
             return {"__array__": [args[1]] * int(args[0]) if not isinstance(args[0], Tainted) else []}
-        if name in ("xsArraySetInt", "xsArraySetFloat", "xsArraySetString"):
+        if name in ("xsArraySetInt", "xsArraySetFloat", "xsArraySetString", "xsArraySetBool",
+                    "xsArraySetVector"):
             arr, idx, value = args
             if isinstance(arr, dict) and not isinstance(idx, Tainted):
                 lst = arr["__array__"]
@@ -1221,7 +1240,8 @@ class Extractor:
                     lst.append(0)
                 lst[int(idx)] = value
             return 0
-        if name in ("xsArrayGetInt", "xsArrayGetFloat", "xsArrayGetString"):
+        if name in ("xsArrayGetInt", "xsArrayGetFloat", "xsArrayGetString", "xsArrayGetBool",
+                    "xsArrayGetVector"):
             arr, idx = args
             if isinstance(arr, dict) and not isinstance(idx, Tainted):
                 lst = arr["__array__"]
@@ -1232,6 +1252,23 @@ class Extractor:
         # --- scenario-resolved reads ---
         if name == "rmGetIsKOTH":
             return sc.koth
+        if name == "rmGetIsFFA":
+            # mapsim's convention (sim.py STANDARD_MATRIX): a free-for-all is one team per player.
+            return sc.teams == sc.players
+        if name == "rmGetTechID":
+            # A tech id for trigger parameters (vanilla Arctic Territories, CaspianSea): runtime, no geometry.
+            return Tainted("rmGetTechID(%s)" % (args[0] if args else ""))
+        if name == "rmFindCloserArea":
+            # (x, z, area1, area2) -> whichever area's location is closer to the point; runtime when a location
+            # is not a literal.
+            x, z, a1, a2 = (list(args) + [None] * 4)[:4]
+            A1, A2 = res.areas.get(a1), res.areas.get(a2)
+            vals = [x, z] + ([A1.x, A1.z, A2.x, A2.z] if A1 and A2 else [None])
+            if any(v is None or isinstance(v, Tainted) for v in vals):
+                return Tainted("rmFindCloserArea(...)")
+            d1 = (float(A1.x) - float(x)) ** 2 + (float(A1.z) - float(z)) ** 2
+            d2 = (float(A2.x) - float(x)) ** 2 + (float(A2.z) - float(z)) ** 2
+            return a1 if d1 <= d2 else a2
         if name == "rmGetPlayerTeam":
             # Deterministic team model: players alternate teams in lobby
             # order ((p-1) mod teams). Concrete so per-team placement
@@ -1444,7 +1481,8 @@ class Extractor:
             res.constraints[cname] = spec
             return h
         if name in ("rmCreateEdgeDistanceConstraint", "rmCreateCliffRampConstraint",
-                    "rmCreateHCGPConstraint"):
+                    "rmCreateHCGPConstraint", "rmCreateCliffRampDistanceConstraint",
+                    "rmCreateMaxHeightConstraint"):
             h = self._new_handle()
             self.constraint_handles[h] = str(args[0])
             res.constraints[str(args[0])] = {"kind": "opaque", "desc": name, "line": line}
@@ -1687,6 +1725,14 @@ class Extractor:
                 nominal=self.alt_depth == 0,
                 def_handle=int(args[0])))
             return 1
+        if name == "rmPlaceObjectDefAtAreaLoc":
+            # (def, player, area, count): at the area's location (rm_commands_reference); an area without a
+            # literal location falls back to the in-area placement.
+            a = res.areas.get(args[2]) if len(args) > 2 else None
+            if a is not None and a.x is not None and not isinstance(a.x, Tainted):
+                return self.call("rmPlaceObjectDefAtLoc",
+                                 [args[0], args[1], a.x, a.z, args[3] if len(args) > 3 else 1], line)
+            return self.call("rmPlaceObjectDefInArea", list(args), line)
         if name in ("rmPlaceObjectDefInArea", "rmPlaceGroupingInArea"):
             # Third grouping placement method (user 2026-08-10): random
             # placement INSIDE an area — cookislands underwater patches,
@@ -1886,6 +1932,7 @@ class Extractor:
 
 def _default(_type: str) -> Any:
     return {"int": 0, "float": 0.0, "string": "", "bool": False}.get(_type, Tainted("uninit"))
+
 
 
 def _to_str(v: Any) -> str:

@@ -212,3 +212,48 @@ class TestKingsHillHelpers:
         assert len(a) == 1
         assert (a[0].x, a[0].z, a[0].base_height, a[0].coherence) == (0.4, 0.6, 2.0, 0.9)
         assert a[0].size_max_frac == pytest.approx(0.01) and a[0].has_paint
+
+
+class TestKnownEngineCalls:
+    """Feedback 2026-09-25 item 3: calls the extractor skipped with an 'unknown function' warning. Each is now
+    known: no-ops with a reason, opaque constraints, deterministic reads, arrays and vectors."""
+
+    def test_noops_and_opaque_constraints_warn_nothing(self):
+        src = HEADER + ('int a = rmCreateArea("a"); rmSetAreaSize(a, 0.1, 0.1); rmSetAreaLocation(a, 0.5, 0.5);\n'
+                        'rmEnableOutlaw("SaloonOutlawPistol"); rmSetAllMapReveal(true);\n'
+                        'rmSetAreaTerrainLayerVariance(a, false); rmAddAreaCliffEdgeAvoidClass(a, 1, 5.0);\n'
+                        'int d = rmCreateObjectDef("d"); rmSetObjectDefGarrisonStartingUnits(d, true);\n'
+                        'rmSetObjectDefGarrisonSecondaryUnits(d, true); rmAddPlayerResource(1, "Food", 100);\n'
+                        'rmSetPlayerResource(1, "Wood", 50); rmSetNumberInitialColonies(2);\n'
+                        'int ramp = rmCreateCliffRampDistanceConstraint("ramp", a, 10.0);\n'
+                        'int low = rmCreateMaxHeightConstraint("low", 4.0);\n'
+                        'rmAddObjectDefConstraint(d, ramp); rmAddObjectDefConstraint(d, low);\n'
+                        'int t = rmGetTechID("deEUMapSaxony"); }')
+        ex = run_src(src)
+        assert ex.warnings == []
+        assert ex.constraints["ramp"]["kind"] == ex.constraints["low"]["kind"] == "opaque"
+
+    def test_bool_and_vector_arrays_and_normalize(self):
+        src = HEADER + ('int b = xsArrayCreateBool(3, false); xsArraySetBool(b, 2, true);\n'
+                        'int v = xsArrayCreateVector(2, cOriginVector);\n'
+                        'xsArraySetVector(v, 1, xsVectorNormalize(xsVectorSet(3.0, 0.0, 4.0)));\n'
+                        'int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'if (xsArrayGetBool(b, 2)) rmPlaceObjectDefAtLoc(d, 0,\n'
+                        '    xsVectorGetX(xsArrayGetVector(v, 1)), xsVectorGetZ(xsArrayGetVector(v, 1)), 1);\n'
+                        'if (xsArrayGetSize(v) == 2) rmPlaceObjectDefAtLoc(d, 0, 0.1, 0.1, 1); }')
+        ex = run_src(src)
+        assert ex.warnings == []
+        pl = sorted((round(p.x, 3), round(p.z, 3)) for p in ex.placements)
+        assert pl == [(0.1, 0.1), (0.6, 0.8)]
+
+    def test_ffa_closer_area_and_place_at_area_loc(self):
+        src = HEADER + ('int a1 = rmCreateArea("near"); rmSetAreaSize(a1, 0.05, 0.05); rmSetAreaLocation(a1, 0.2, 0.2);\n'
+                        'int a2 = rmCreateArea("far"); rmSetAreaSize(a2, 0.05, 0.05); rmSetAreaLocation(a2, 0.8, 0.8);\n'
+                        'int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);\n'
+                        'rmPlaceObjectDefAtAreaLoc(d, 0, rmFindCloserArea(0.3, 0.3, a1, a2), 1);\n'
+                        'if (rmGetIsFFA()) rmPlaceObjectDefAtLoc(d, 0, 0.9, 0.1, 1); }')
+        ex = run_src(src, Scenario(3, 3))
+        assert ex.warnings == []
+        assert sorted((p.x, p.z) for p in ex.placements) == [(0.2, 0.2), (0.9, 0.1)]
+        assert [(p.x, p.z) for p in run_src(src, Scenario(4, 2)).placements] == [(0.2, 0.2)]
+
