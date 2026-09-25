@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any, List, Optional, Tuple
 
-from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario, height_floods
+from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario, height_floods, team_of
 from scripts.mapsim.units import MapGrid
 from scripts.mapsim.xs_extract import Extraction, Tainted, XArea, XDef
 
@@ -100,7 +100,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                 # Teams occupy contiguous ring blocks; anchor at the block's
                 # angular midpoint member.
                 members = [k for k in range(n_players)
-                           if k * n_teams // n_players == a.loc_team]
+                           if team_of(k + 1, n_players, n_teams) == a.loc_team]
                 if members:
                     import math
                     xs = [ring[k][0] - 0.5 for k in members]

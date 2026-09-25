@@ -467,3 +467,21 @@ class TestRouteWaypointsFromTheNominalArm:
         # lo roll: v = 1, the then arm is nominal
         assert list(ex.route_waypoints.values()) == [[(0.1, 0.0), (0.9, 0.0)]]
         assert ex.waypoints == [(0.1, 0.0), (0.9, 0.0)]
+
+
+class TestOneTeamModel:
+    """rmGetPlayerTeam, the ring and the team areas use one model, scene.team_of: contiguous blocks (1,2,3 against 4,5,6
+    at 6 players / 2 teams), as in 44 of 44 live P6T2 editor saves. rmGetPlayerTeam alternated until 2026-09-25, so
+    maps that seat players by rmGetPlayerTeam put a team on both banks of the ring's model."""
+
+    def test_team_of_blocks(self):
+        from scripts.mapsim.scene import team_of
+        assert [team_of(p, 6, 2) for p in range(1, 7)] == [0, 0, 0, 1, 1, 1]
+        assert [team_of(p, 7, 2) for p in range(1, 8)] == [0, 0, 0, 0, 1, 1, 1]
+        assert [team_of(p, 2, 2) for p in (1, 2)] == [0, 1]
+
+    def test_rm_get_player_team_uses_it(self):
+        src = HEADER + ('int d = rmCreateObjectDef("d"); rmAddObjectDefItem(d, "Deer", 1, 0);'
+                        'for (i = 1; <= 6) { if (rmGetPlayerTeam(i) == 0) rmPlaceObjectDefAtLoc(d, 0, 0.1 * i, 0.5, 1); } }')
+        ex = run_src(src, Scenario(6, 2))
+        assert [round(p.x, 2) for p in ex.placements] == [0.1, 0.2, 0.3]
