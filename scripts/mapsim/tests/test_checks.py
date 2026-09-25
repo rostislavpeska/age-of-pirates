@@ -297,3 +297,65 @@ class TestTerrainConstraintsSeeBuiltTerrain:
         f = [x for x in run_checks(rs) if x.name == "marker"]
         assert f and f[0].verdict != "CONSTRAINT_UNSAT", f[0].message
 
+
+KOTH_SEA = """
+void main(void) {
+   rmSetStatusText("", 0.1);
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("water");
+   rmSetSeaType("caribbean coast");
+   rmSetPlacementSection(0.1, 0.9);
+   rmPlacePlayersCircular(0.2, 0.2, 0.0);
+   int home = rmCreateArea("home");
+   rmSetAreaSize(home, 0.3, 0.3);
+   rmSetAreaLocation(home, 0.5, 0.5);
+   rmSetAreaBaseHeight(home, 2.0);
+   rmSetAreaCoherence(home, 1.0);
+   rmBuildArea(home);
+   int isle = rmCreateArea("koth isle");
+   rmSetAreaSize(isle, rmAreaTilesToFraction(250), rmAreaTilesToFraction(250));
+   rmSetAreaLocation(isle, 0.9, 0.1);
+   rmSetAreaBaseHeight(isle, 2.0);
+   rmSetAreaCoherence(isle, 1.0);
+   rmBuildArea(isle);
+   if (rmGetIsKOTH())
+      ypKingsHillPlacer(XX, ZZ, 0.0, 0);
+   rmSetStatusText("", 1.0);
+}
+"""
+
+
+class TestKothFinding:
+    """check_koth (feedback 2026-09-25 item 2): the land the hill stands on, its size, whether a player start
+    reaches it by land or shallows, and the distance to deep water (ypkingshill.tactics AutoConvert 12 m: ships
+    capture). Owner ground truth it reproduces on the real maps: tiny islands on Eyre Basin, Burma, Dead Sea, Torres
+    Strait, Labrador Coast, Cold War; bigger islands on Polynesia, Cook Islands, Melanesia, Elbe, Atols."""
+
+    def _koth(self, tmp_path, x, z):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import check_koth
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "koth.xs"
+        src.write_text(KOTH_SEA.replace("XX", str(x)).replace("ZZ", str(z)), encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2, koth=True)))
+        return check_koth(rs)
+
+    def test_tiny_island_hill(self, tmp_path):
+        (f,) = self._koth(tmp_path, 0.9, 0.1)
+        assert f.verdict == "KOTH_TINY_ISLAND", f.message
+        assert f.details["land"] == "koth isle" and 200 <= f.details["tiles"] < 600
+        assert not f.details["reaches_player_start"] and 0 < f.details["deep_water_m"] < 40
+
+    def test_mainland_hill(self, tmp_path):
+        (f,) = self._koth(tmp_path, 0.5, 0.5)
+        assert f.verdict == "KOTH_MAINLAND", f.message
+        assert f.details["reaches_player_start"] and f.details["land"] == "home"
+
+    def test_no_koth_no_finding(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.checks import check_koth
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "koth.xs"
+        src.write_text(KOTH_SEA.replace("XX", "0.9").replace("ZZ", "0.1"), encoding="utf-8")
+        assert check_koth(extraction_to_resolved(extract(src, Scenario(2, 2)))) == []

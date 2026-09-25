@@ -553,6 +553,102 @@ def check_area_feasibility(rs: ResolvedScene) -> List[Finding]:
     return findings
 
 
+KOTH_PROTO = "ypkingshill"
+KOTH_CAPTURE_M = 12.0     # ypkingshill.tactics: AutoConvert, maxrange 12 m; ConvertsHerds units (ships) capture
+KOTH_TINY_TILES = 600     # owner ground truth 2026-09-25, measured on the built grid: the tiny-island maps come out
+                          # at 200-450 tiles (Eyre Basin, Dead Sea 200, Labrador Coast 302, Torres Strait 352,
+                          # Burma 378, Cold War 450), the bigger-island maps at 800+ (Polynesia, Atols 804)
+
+
+def check_koth(rs: ResolvedScene) -> List[Finding]:
+    """The King of the Hill hill (vanilla ypKingsHillPlacer / map-built KotH defs, item ypKingsHill): on which land it
+    stands, how big that land is, whether it connects to any player's start by land or walkable shallows, and how
+    far the nearest deep water is - a ship within KOTH_CAPTURE_M captures it (ypkingshill.tactics AutoConvert,
+    maxrange 12 m; units with ConvertsHerds). Measured on the BUILT terrain grid (1 cell = 1 tile = 2 m); the
+    hill's anchor is its nominal authored spot, or for rmPlaceObjectDefInArea the target area's anchor (Cook
+    Islands, Melanesia, Elbe, Balearic build their own KotH def). Verdicts: KOTH_MAINLAND (its land reaches a
+    player start), KOTH_TINY_ISLAND (it does not, under KOTH_TINY_TILES), KOTH_ISLAND (a bigger land mass that
+    no player start reaches - Iceland's players start at sea)."""
+    by_name = {a.name: a for a in rs.areas}
+    hills = []
+    for p in rs.placements:
+        if not any(str(t).lower() == KOTH_PROTO for t in (getattr(p, "items", ()) or ())):
+            continue
+        if p.x is not None:
+            hills.append((p, p.x, p.z, float(p.max_dist_m or 0.0)))
+            continue
+        a = next((by_name[r] for r in (p.area_refs or []) if r in by_name and by_name[r].x is not None), None)
+        if a is not None:
+            hills.append((p, a.x, a.z, a.radius_m))
+    if not hills:
+        return []
+    from collections import deque
+    from scripts.mapsim.field import _chamfer_dist_m
+    from scripts.mapsim.gsolve import grown_fields
+    gf = grown_fields(rs)
+    tg = gf.tg
+    nx, nz, step = tg.nx, tg.nz, gf.step_m
+
+    def passable(i, j):
+        if tg.cliff_band and tg.cliff_band[j][i]:
+            return False
+        return not tg.water[j][i] or tg.wwalk[j][i]
+
+    deep = [(i, j) for j in range(nz) for i in range(nx) if tg.water[j][i] and not tg.wwalk[j][i]]
+    deep_fld = _chamfer_dist_m(nx, nz, step, deep) if deep else None
+    starts = [rs.grid.frac_to_m(x, z) for x, z in rs.player_locs]
+    starts += [rs.grid.frac_to_m(p.x, p.z) for p in rs.placements
+               if p.x is not None and any(str(t).lower() in ("towncenter", "coveredwagon")
+                                          for t in (getattr(p, "items", ()) or ()))]
+    out = []
+    for p, fx, fz, reach_m in hills:
+        hx, hz = rs.grid.frac_to_m(fx, fz)
+        i0, j0 = gf.cell((hx, hz))
+        if not passable(i0, j0):          # the engine searches its annulus: nearest passable cell
+            best = None
+            reach = max(1, int(math.ceil(max(reach_m, 8.0) / step)))
+            for dj in range(-reach, reach + 1):
+                for di in range(-reach, reach + 1):
+                    i, j = i0 + di, j0 + dj
+                    if 0 <= i < nx and 0 <= j < nz and passable(i, j):
+                        d2 = di * di + dj * dj
+                        if best is None or d2 < best[0]:
+                            best = (d2, i, j)
+            if best is None:
+                out.append(Finding("koth", p.name, "KOTH_NO_LAND", "error",
+                                   "no land or walkable shallows within the hill's reach", approximate=True))
+                continue
+            _, i0, j0 = best
+        seen = {(i0, j0)}
+        q = deque([(i0, j0)])
+        while q:
+            i, j = q.popleft()
+            for ni, nj in ((i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)):
+                if 0 <= ni < nx and 0 <= nj < nz and (ni, nj) not in seen and passable(ni, nj):
+                    seen.add((ni, nj))
+                    q.append((ni, nj))
+        tiles = round(len(seen) * (step / rs.grid.TILE_M) ** 2)
+        reaches = [k for k, s_ in enumerate(starts) if gf.cell(s_) in seen]
+        code = tg.land[j0][i0]
+        land_name = (tg.land_order[code - 1] if code else
+                     ("the base land" if not rs.base_is_water else "walkable shallows"))
+        deep_m = round(deep_fld[j0][i0], 1) if deep_fld else None
+        ship = deep_m is not None and deep_m <= KOTH_CAPTURE_M
+        island = not reaches
+        tiny = island and tiles < KOTH_TINY_TILES
+        where = ("a tiny island" if tiny else "an island" if island else "land connected to a player start")
+        msg = (f"hill on {land_name!r}: {where} of {tiles} tiles; nearest deep water "
+               f"{'none' if deep_m is None else f'{deep_m} m'}"
+               + (f" - a ship within {KOTH_CAPTURE_M:g} m captures it" if ship else ""))
+        verdict = "KOTH_TINY_ISLAND" if tiny else "KOTH_ISLAND" if island else "KOTH_MAINLAND"
+        out.append(Finding("koth", p.name, verdict, "info", msg,
+                           approximate=True,
+                           details={"land": land_name, "tiles": tiles, "island": island, "tiny": tiny,
+                                    "reaches_player_start": len(reaches) > 0, "deep_water_m": deep_m,
+                                    "ship_capture": ship, "hill_m": [round(hx, 1), round(hz, 1)]}))
+    return out
+
+
 def run_checks(rs: ResolvedScene, blocksize_m: float = 16.0) -> List[Finding]:
     # Groupings solve their constraint-reactive spots ONCE per scene
     # before any verdict is computed (plan Part H3) — checks then judge
@@ -564,4 +660,5 @@ def run_checks(rs: ResolvedScene, blocksize_m: float = 16.0) -> List[Finding]:
     findings += check_trade_route(rs, blocksize_m)
     findings += check_player_ring(rs)
     findings += check_area_feasibility(rs)
+    findings += check_koth(rs)
     return findings

@@ -292,4 +292,6 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         base_elevation_m=(ex.terrain_init_height
                           if ex.terrain_init_height is not None else 0.0),
         sea_type=ex.sea_type,
+        player_locs=[(float(x), float(z)) for x, z in (ring or [])
+                     if not isinstance(x, Tainted) and not isinstance(z, Tainted)],
     )
