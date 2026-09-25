@@ -194,7 +194,8 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         players = _literal_players(p.players)
         placements.append(ResolvedPlacement(
             name=d.name, line=p.def_line, proto=proto_ref, kind=kind,
-            x=x, z=z, runtime_expr=runtime, approx=p_approx,
+            x=x, z=z, runtime_expr=runtime, approx=p_approx or float(getattr(p, "drift", 0.0)) > 0.0,
+            drift_m=float(getattr(p, "drift", 0.0)),
             min_dist_m=_num(d.min_dist) or 0.0,
             max_dist_m=_num(d.max_dist) or 0.0,
             terrain_affinity="either",           # curation semantics; unknown from .xs

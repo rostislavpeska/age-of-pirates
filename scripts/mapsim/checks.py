@@ -356,7 +356,12 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
             if field_ctx is None:
                 field_ctx = FieldContext(rs)
                 gf = grown_fields(rs)
-            radii = sorted({p.min_dist_m, (p.min_dist_m + p.max_dist_m) / 2.0, p.max_dist_m})
+            radii = {p.min_dist_m, (p.min_dist_m + p.max_dist_m) / 2.0, p.max_dist_m}
+            drift = float(getattr(p, "drift_m", 0.0) or 0.0)
+            if drift > 0.0:             # a read-back anchor may be this far off: search further out too
+                radii |= {p.max_dist_m + drift / 4.0, p.max_dist_m + drift / 2.0,
+                          p.max_dist_m + 3.0 * drift / 4.0, p.max_dist_m + drift}
+            radii = sorted(radii)
             satisfied = False
             for r in radii:
                 if satisfied:

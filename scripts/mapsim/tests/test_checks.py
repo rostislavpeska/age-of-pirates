@@ -435,3 +435,51 @@ void main(void) {
     def test_spread_town_centers_are_placeable(self, tmp_path):
         fs = self._tc(tmp_path, 2)
         assert fs and all(f.verdict != "CONSTRAINT_UNSAT" for f in fs), [f.message for f in fs]
+
+
+class TestReadBackDrift:
+    """zpIceland.xs 624-716: 'pirate controller 1' is authored at (0.5, 0.5) with max distance 0.45 map and
+    'ferry v. water' (within 20 m of water), so the engine puts it on the shore; 'pirate city 1' is then placed
+    within 22 m of the controller's READ-BACK position with the same 20 m water rule. mapsim read the controller
+    back at its authored centre: CONSTRAINT_UNSAT 'ferry v. water' (Iceland 2p/6p, Barrier Reef) on maps that play.
+    A read-back anchor now carries the source def's max distance as drift; a def merely authored at the same spot
+    does not."""
+
+    SRC = """
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("water");
+   rmSetSeaType("caribbean coast");
+   int land = rmCreateArea("land"); rmSetAreaSize(land, 0.5, 0.5); rmSetAreaLocation(land, 0.5, 0.5);
+   rmSetAreaBaseHeight(land, 2.0); rmSetAreaCoherence(land, 1.0); rmBuildArea(land);
+   int shore = rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 20.0);
+   int ctl = rmCreateObjectDef("controller");
+   rmAddObjectDefItem(ctl, "zpSPCWaterSpawnPoint", 1, 0.0);
+   rmSetObjectDefMaxDistance(ctl, rmXFractionToMeters(0.45));
+   rmAddObjectDefConstraint(ctl, shore);
+   rmPlaceObjectDefAtLoc(ctl, 0, 0.5, 0.5, 1);
+   vector loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(ctl, 0));
+   int city = rmCreateObjectDef("city");
+   rmAddObjectDefItem(city, "Deer", 1, 0.0);
+   rmSetObjectDefMaxDistance(city, 22.0);
+   rmAddObjectDefConstraint(city, shore);
+   rmPlaceObjectDefAtLoc(city, 0, rmXMetersToFraction(xsVectorGetX(loc)), rmZMetersToFraction(xsVectorGetZ(loc)), 1);
+   int decor = rmCreateObjectDef("decor");
+   rmAddObjectDefItem(decor, "Deer", 1, 0.0);
+   rmSetObjectDefMaxDistance(decor, 22.0);
+   rmAddObjectDefConstraint(decor, shore);
+   rmPlaceObjectDefAtLoc(decor, 0, 0.5, 0.5, 1);
+}
+"""
+
+    def test_read_back_anchor_drifts_and_authored_twin_does_not(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "rb.xs"
+        src.write_text(self.SRC, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        by = {p.name: p for p in rs.placements}
+        assert by["city"].drift_m == pytest.approx(180.0) and by["decor"].drift_m == 0.0
+        v = {f.name: f.verdict for f in run_checks(rs)}
+        assert v["city"] != "CONSTRAINT_UNSAT" and v["decor"] == "CONSTRAINT_UNSAT"
