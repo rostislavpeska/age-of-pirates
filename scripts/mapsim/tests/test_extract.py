@@ -182,3 +182,33 @@ class TestBiasGuard:
         assert ex.warnings == []
         assert ex.map_size_x == 500
         assert len(ex.waypoints) == 16
+
+
+class TestKingsHillHelpers:
+    """ypKOTHInclude.xs (vanilla, Game/RandMaps): ypKingsHillPlacer(x, y, walk, extra) builds object def 'KingsHill'
+    (item ypKingsHill; max distance rmXFractionToMeters(walk); 8 constraints incl. 'kings hill avoids impassable
+    land' Land 4 m, 'kings hill avoids TCs' 45 m, the trade route 6 m) and places it at (x, y) for gaia;
+    ypKingsHillLandfill(x, y, size, height, mix, extra) builds area 'hill placer' (coherence 0.9, base height,
+    mix, smooth 5). mapsim listed the placer as a no-op and did not know the landfill (2026-09-25 feedback item 2:
+    the hill was never drawn or checked)."""
+
+    SRC = HEADER + ('rmTerrainInitialize("water", 0.0); rmSetSeaLevel(1.0);\n'
+                    'ypKingsHillLandfill(0.4, 0.6, 0.01, 2.0, "borneo_sand_a", 0);\n'
+                    'ypKingsHillPlacer(0.4, 0.6, 0.05, 0); }')
+
+    def test_placer_places_the_hill(self):
+        ex = run_src(self.SRC, Scenario(2, 2, koth=True))
+        defs = [d for d in ex.defs.values() if d.name == "KingsHill"]
+        assert len(defs) == 1 and [p for p, _ in defs[0].items] == ["ypKingsHill"]
+        assert defs[0].max_dist == pytest.approx(0.05 * 400)
+        assert "kings hill avoids TCs" in defs[0].constraints and len(defs[0].constraints) == 8
+        pl = [p for p in ex.placements if p.name == "KingsHill"]
+        assert len(pl) == 1 and (pl[0].x, pl[0].z) == (0.4, 0.6)
+        assert not [w for w in ex.warnings if "ypKingsHill" in w]
+
+    def test_landfill_builds_the_hill_placer_area(self):
+        ex = run_src(self.SRC, Scenario(2, 2, koth=True))
+        a = [a for a in ex.areas.values() if a.name == "hill placer"]
+        assert len(a) == 1
+        assert (a[0].x, a[0].z, a[0].base_height, a[0].coherence) == (0.4, 0.6, 2.0, 0.9)
+        assert a[0].size_max_frac == pytest.approx(0.01) and a[0].has_paint
