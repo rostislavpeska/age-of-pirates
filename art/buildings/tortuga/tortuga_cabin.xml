@@ -7,8 +7,8 @@
 	     house
 		<logic type="Variation">
 			<variationid0>
-					<assetreference type="GrannyModel">
-					<file>buildings\tortuga\tortuga_cabin</file>
+					<assetreference type="CompositeModel">
+					<file>buildings\tortuga\tortuga_cabin_x085</file>
 				</assetreference>
 			</variationid0>
 		</logic>
@@ -16,8 +16,8 @@
 			<effecttype>bump</effecttype>
 			<texture>buildings\tavern\tavern_ground</texture>
 			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-			<width>8.00</width>
-			<height>10.00</height>
+			<width>6.80</width>
+			<height>8.50</height>
 		</decal>
 	</component>
 	<anim>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<component>
+	     house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="CompositeModel">
+				<file>buildings\nassau\nassau_cabin_x085</file>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="CompositeModel">
+					<file>buildings\nassau\nassau_cabin_01_x085</file>
+				</assetreference>
+			</variationid1>
+			<variationid2>
+				<assetreference type="CompositeModel">
+					<file>buildings\nassau\nassau_cabin_02_x085</file>
+				</assetreference>
+			</variationid2>
+			<variationid3>
+				<assetreference type="CompositeModel">
+					<file>buildings\nassau\nassau_cabin_05_x085</file>
+				</assetreference>
+			</variationid3>
+			<variationid4>
+			<assetreference type="CompositeModel">
+					<file>buildings\nassau\nassau_cabin_03_x085</file>
+				</assetreference>
+			</variationid4>
+		</logic>
+			<decal>
+			<effecttype>bump</effecttype>
+			<texture>buildings\tavern\tavern_ground</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>8.50</width>
+			<height>6.80</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

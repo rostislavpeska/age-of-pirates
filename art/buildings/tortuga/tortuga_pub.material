@@ -85,4 +85,16 @@
       </texture>
     </parameters>
   </submaterial>
+   <submaterial name="math">
+     <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\tavern\textures\tavern_british_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\tavern\textures\tavern_british_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\tavern\textures\tavern_british_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
 </material>
