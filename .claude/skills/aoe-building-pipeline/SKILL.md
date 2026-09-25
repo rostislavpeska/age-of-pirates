@@ -18,5 +18,6 @@ skill must supply an equivalent inspection capability.
 
 - Read [rig/export evidence](references/rig-export.md) for the Basilica reference, scale and St Pauls geometry/layer failures.
 - Read [textures/XML profile](references/textures-xml.md) for the tested material packing, runtime paths and sound/decal references.
+- For Asian civilization building research, read [Asian routing and donor evidence](references/asian-building-research.md) before choosing age models or a destruction donor.
 - Use helpers under `.claude/skills/aoe3de-building-export/scripts/` from the repository root; there is no separate AoP implementation of those scripts.
 - Before deployment, follow [mod-deploy-check](../mod-deploy-check/SKILL.md); game operation follows [game-startup](../game-startup/SKILL.md).

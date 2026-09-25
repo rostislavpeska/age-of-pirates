@@ -27,6 +27,17 @@ Tools: `hkt_read.py` (summary), `hkt_props.py` (properties), `hkt_patch.py` (in-
 `hkt_write.py` + `hull3d.py` (write a tagfile from a body list - used for the test cube; the generated cube never
 destructed progressively, so authoring a new hkt from scratch is unproven - cloning a vanilla pair is).
 
+## Building architecture donors
+
+For building architecture swaps, a similar footprint is only a donor-selection
+hint. Compare named bodies/bones, piece vertex bindings, rest transforms, parent
+properties and collision envelopes. Bone count, body count and geometry-piece
+count need not agree: donors can contain proxies, attachment bones and unpaired
+base geometry. Preserve those distinctions instead of forcing a one-to-one
+count. First verify an unchanged clone, then one bounded piece change in both
+intact and damaged states; inspect progressive damage and death in game before
+replicating the technique. An offline match does not prove physics behavior.
+
 ## Animated bones in a damaged model (the vanilla `animtrans` pattern)
 
 Battleship/Frigate damaged models repeat every animated bone of the intact model:

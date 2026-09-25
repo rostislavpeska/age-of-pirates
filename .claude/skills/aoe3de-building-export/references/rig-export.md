@@ -50,6 +50,24 @@ Inspect fixed-light textured, unlit basecolor and normal-map-disabled views from
 both sides before changing texture brightness. A Blender render cannot establish
 the destination engine's material resolution or shading.
 
+## UV convention at the GR2 boundary
+
+Record whether an importer consumes raw Granny texture coordinates or converter
+output. In the inspected AoE3DE Chinese Town Center, raw GR2 `(u, v)` becomes
+`(u, 1-v)` in the configured converter's GXO output and in Blender's image UVs.
+A direct raw-buffer importer therefore needs that V conversion once; applying it
+again to GXO/FBX-imported UVs would invert an already corrected map. Verify an
+asymmetric roof/wall landmark and several corresponding numeric UVs before a
+batch import. Treat this as an observed route, not a universal preset for every
+GR2 tool or game.
+
+Stock building UVs can overlap and extend outside the unit square. Preserve their
+coordinates and whole-tile offsets in authoring/export data. Folding tiles is
+useful for an explicitly labelled diagnostic overlay, not a repair operation.
+Do not infer shader/team-colour semantics from a U offset alone. A shaded preview
+without source skeleton/animation evaluation is a rest-mesh reference, not proof
+of the in-game pose.
+
 ## Scale and axes
 
 Derive scale and axis settings from a known-working asset in the same toolchain. Record scene units, object and armature transforms, FBX settings, converter settings and in-game bounds together. Never apply a scale correction twice.
