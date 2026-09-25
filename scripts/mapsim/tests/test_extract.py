@@ -441,3 +441,14 @@ class TestPartialPlayerPlacement:
         src = HEADER + 'rmSetPlacementTeam(0); rmSetPlacementSection(0.1875, 0.8535); rmPlacePlayersCircular(0.42, 0.42, 0); }'
         pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
         assert pos[3:] == [(0.5, 0.5)] * 3 and all(abs(p[0] - 0.5) > 0.1 or abs(p[1] - 0.5) > 0.1 for p in pos[:3])
+
+
+class TestRandomBaseHeight:
+    """zpnewguinea.xs raises its continent to rmRandFloat(0.6, 0.9) over a -1.6 sea. The random height was dropped, so
+    the continent had no height and stayed sea (live minimaps: one continent over most of the map)."""
+
+    def test_random_height_takes_the_nominal_roll(self):
+        src = HEADER + ('int a = rmCreateArea("continent"); rmSetAreaSize(a, 0.5, 0.5);'
+                        'rmSetAreaBaseHeight(a, rmRandFloat(0.6, 0.9)); rmBuildArea(a); }')
+        area = next(iter(run_src(src).areas.values()))
+        assert area.base_height == pytest.approx(0.6)

@@ -1580,8 +1580,16 @@ class Extractor:
             return 0
         if name == "rmSetAreaBaseHeight":
             a = res.areas.get(args[0])
-            if a is not None and not isinstance(args[1], Tainted):
-                a.base_height = float(args[1])
+            v = args[1] if len(args) > 1 else None
+            if a is not None and isinstance(v, Tainted):
+                # A random height takes its nominal (lo) roll, like rmSetAreaCliffHeight (2026-09-25): zpnewguinea.xs
+                # raises its continent to rmRandFloat(0.6, 0.9) over a -1.6 sea; dropped, the continent had no
+                # height and stayed sea (live minimaps: one continent over most of the map; 46 % agreement, 0/2 Town
+                # Centers on mapsim land at 2p).
+                if v.lo is not None:
+                    a.base_height = float(v.lo)
+            elif a is not None and v is not None:
+                a.base_height = float(v)
             return 0
         if name == "rmSetAreaCoherence":
             a = res.areas.get(args[0])
