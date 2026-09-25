@@ -271,6 +271,82 @@ mapsim start. Script: `%TEMP%/mapsim_night/gt_players.py`.
   finding changes.
 - **Test:** `TestTeamAreaCoversItsMembers`.
 
+### 20. A trade route counts only once it is built (`5278d9f1`)
+
+- **Problem:** route-distance constraints measured against every route in the script, including routes built
+  later. Cold War builds its west and east islands (20 m 'trade route' constraint) at line 530 and the routes at
+  641 and later. mapsim carved a deep channel along each route.
+- **Evidence:** the live Cold War minimaps have land right across both routes.
+- **Change:** each route records its `rmBuildTradeRoute` line, and `point_allowed` skips routes built later.
+- **Result:**
+  - Cold War 2p 71.4 → 92.5 % (TCs on land 0/2 → 2/2); 6p 76.8 → 89.3 %.
+  - Tasmania 2p 79.2 → 83.8 %.
+  - Iceland drops 0.6–0.8 %: its island no longer avoids the lava flows built at line 1170 and later, so its
+    budget fills those corridors instead of the edges.
+- **Test:** `test_route_counts_only_once_built`.
+
+### 21–22. New Guinea: a random base height, and the other arm's route (`06eb3367`, `36cb8f1d`)
+
+- **21. A random `rmSetAreaBaseHeight` was dropped.** The continent is raised to `rmRandFloat(0.6, 0.9)` over a
+  −1.6 sea, so without a height it never became land. It now takes the nominal (lo) roll, as
+  `rmSetAreaCliffHeight` already does. Test: `TestRandomBaseHeight`.
+- **22. Waypoints added inside a random `if` were kept from both arms.**
+  - New Guinea adds its route's five waypoints in both arms of `if (mapVariant == 1)`. mapsim made one zigzag route
+    straight across the map, and the continent's 'avoid trade route' cut the land in half.
+  - Route and river waypoints now come from the nominal arm only.
+  - Test: `TestRouteWaypointsFromTheNominalArm`.
+- **Result, both together:** New Guinea 2p 46.3 → 82.2 % (TCs 0/2 → 2/2), 6p 43.1 → 76.2 %. Either fix alone reaches
+  only 56 %.
+- **Sweep:** every OUTSIDE_CIRCLE (11) and OFF_MAP (3) error disappears. They were sockets and stations on the phantom
+  route.
+- **Remaining other-arm leaks (probe, all maps at 2p/6p):** only Kurils adds a class in its other arm
+  (`classAfIsland` on 'small island 3') and builds 'east island village 2 terrain' (a paint area) there. Both are
+  small, so they are left as they are.
+
+### 23. The inside of a closed segment loop seeds the flood (`84425cda`)
+
+- **Problem:** an area drawn as a closed loop of influence segments grew as a band along them, and the inside stayed
+  sea. Torres Strait draws each big island as a triangle (inside about 48,800 m²; budget 86,000 m²). mapsim left a
+  lake in each triangle, with real Town Centers in it.
+- **Change:** a loop's inside seeds the flood when every end point is shared (even-odd rule) and the inside fits the
+  budget.
+- **Result (live minimaps; mean of all 117 cases 86.71 → 86.83 %):**
+  - Torres Strait 2p 77.4 → 82.1 %, 6p 71.8 → 74.7 %;
+  - Tasmania 2p 83.8 → 86.8 %;
+  - Independence War 2p 90.15 → 90.30 %.
+- **Counter case:** Philippines 2p 81.0 → 79.5 %, 6p 77.4 → 76.8 %. Its central diamond fills and shifts the player
+  islands that keep their distance from it. The sweep also gains 2 'ferry v. water' UNSAT per 2p run.
+- **Goldens:** both Independence War golden grids were regenerated, since the fixture's 'centralLake' is a closed
+  loop. P2T2 changes 57 cells and P8T8 100. The commit message says "57 / 1"; 100 is correct.
+- **Outside `scripts/mapsim`:** mapcheck's extraction-path goldens for the same fixture
+  (`scripts/maps/goldens/independence_war.snapshot_P2T2/P8T8.json`) follow in `38267bb4`. A bisect over tonight's
+  commits shows only this fix changes them. They were handled like the test_profile expectations: a dependent
+  expectation, with the reason stated. The owner may prefer to review this.
+- **Test:** `TestClosedSegmentLoopFills`.
+
+## Before and after (whole night)
+
+| measure | baseline (after the WIP revert) | now |
+|---|---|---|
+| sweep runs (all maps × P2T2, P2T2 KotH, P6T2) | 156 | 156 |
+| crashed runs | 4 | 0 |
+| extraction warnings | 1034 | 28 |
+| error findings | 963 | 445 |
+| CONSTRAINT_UNSAT | 538 | 157 |
+| CONFIG | 147 | 10 |
+| AREA_SHORTFALL | 207 | 212 |
+| FEASIBLE_TOO_SMALL | 22 | 16 |
+| OUTSIDE_CIRCLE / OFF_MAP | 0 / 0 | 0 / 0 (10 / 3 midway, all from New Guinea's phantom route) |
+| minimap deep-water agreement, 98 baseline cases | 84.7 % | 87.5 % |
+| real TCs on mapsim land, same cases | 306 / 344 | 338 / 344 |
+| all 117 cases incl. 19 KotH | – | 86.8 %, TCs 387 / 393 |
+| mean distance real TC → nearest mapsim start, 2p / 6p | 34.1 / 56.7 m | 24.1 / 21.1 m |
+
+AREA_SHORTFALL rises slightly because areas that used to be skipped as unmodelable now build. KotH against the owner's
+labels (16 maps × 2p/6p) is correct except Barrier Reef 2p and Labrador Coast 6p (see below). Iceland ("on land")
+reads KOTH_ISLAND of 19,054 / 41,766 tiles. That is the players' own main island on a water-initialized map, so
+there is no separate hill island.
+
 ## Open items and map issues (evidence, cheapest decisive check)
 
 - **Team model: owner decision (a paired change outside mapsim's boundary).**
@@ -297,9 +373,17 @@ mapsim start. Script: `%TEMP%/mapsim_night/gt_players.py`.
   `rmPlacePlayersLine(0.75, 0.8, 0.28, 0.5)` (the other arm uses 0.25, 0.8). The live 6p save played that arm:
   two Town Centers stand 0.13 and 0.23 from the map centre, in the mountains. mapsim now reports 5 UNSAT around
   them, which is correct.
-- **Cold War 2p:** mapsim leaves deep water along the far west and east edges, where the real minimap has land up to
-  the map edge (0/2 real Town Centers on mapsim land). Next check: the glacier areas' world-circle and edge
-  handling.
+- **Cold War 2p:** resolved by fix 20.
+- **Labrador Coast 6p KotH:** the verdict is an island of 3726 tiles, but the owner says tiny.
+  - The koth island touches 'icy patch2'. That is an ice wall of land (base 1.0, no sea level set), built only at 3+
+    players or in KotH.
+  - The 2p KotH capture has no ice wall, and ice draws non-blue on the minimap.
+  - Cheapest decisive check: a live 6p KotH generation, then walking a unit from the hill onto the ice.
+- **The remaining water gaps:**
+  - Barrier Reef 6p (57 %): the reef rocks draw grey/brown, and the reef shallows along the north-east edge draw
+    deep blue.
+  - Atols, Melanesia, Mediterranean and Malta 6p (69–77 %): engine-placed or random islands mapsim cannot place.
+  - Torres Strait 6p (75 %): the real islands reach further toward the centre than the budget flood.
 - **Barrier Reef 2p KotH:** island 2873 tiles, owner says tiny. At 2p mapsim's koth island touches a neighbouring
   land area. Barrier Reef's minimap agreement is also limited: the minimap draws the underwater reef cliffs in cliff
   brown, which the pixel classifier counts as land.
