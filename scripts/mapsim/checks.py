@@ -351,23 +351,25 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
             # Terrain / class / route constraints: deterministic annulus
             # sampling — satisfied if ANY sample point in the search annulus
             # is allowed (WP3b; import here to avoid a module cycle).
-            from scripts.mapsim.field import FieldContext, point_allowed
+            from scripts.mapsim.field import FieldContext
+            from scripts.mapsim.gsolve import grown_fields, spec_allowed
             if field_ctx is None:
                 field_ctx = FieldContext(rs)
+                gf = grown_fields(rs)
             radii = sorted({p.min_dist_m, (p.min_dist_m + p.max_dist_m) / 2.0, p.max_dist_m})
             satisfied = False
             for r in radii:
                 if satisfied:
                     break
                 if r == 0.0:
-                    if point_allowed(field_ctx, anchor_m, spec, p.line) is not False:
+                    if spec_allowed(field_ctx, anchor_m, spec, p.line, gf) is not False:
                         satisfied = True
                     continue
                 for k in range(16):
                     theta = 2.0 * math.pi * k / 16.0
                     sample = (anchor_m[0] + r * math.cos(theta),
                               anchor_m[1] + r * math.sin(theta))
-                    if point_allowed(field_ctx, sample, spec, p.line) is not False:
+                    if spec_allowed(field_ctx, sample, spec, p.line, gf) is not False:
                         satisfied = True
                         break
             if not satisfied:

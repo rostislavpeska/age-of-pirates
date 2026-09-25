@@ -251,3 +251,49 @@ class TestRealSceneSmoke:
         findings = run_checks(rs, blocksize_m=float(scene.data["trade_route"]["blocksize_m"]))
         hard = [f for f in findings if f.severity == "error"]
         assert hard == [], [f.to_dict() for f in hard]
+
+
+ISLAND_IN_LAKE = """
+void main(void) {
+   rmSetStatusText("", 0.1);
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(6.0);
+   rmTerrainInitialize("deccan\ground_grass3_deccan");
+   int lake = rmCreateArea("lake");
+   rmSetAreaSize(lake, 0.2, 0.2);
+   rmSetAreaLocation(lake, 0.5, 0.5);
+   rmSetAreaWaterType(lake, "great lakes");
+   rmSetAreaBaseHeight(lake, 0.0);
+   rmBuildArea(lake);
+   int isle = rmCreateArea("King's Island");
+   rmSetAreaSize(isle, rmAreaTilesToFraction(200), rmAreaTilesToFraction(200));
+   rmSetAreaLocation(isle, 0.5, 0.5);
+   rmSetAreaBaseHeight(isle, 1.0);
+   rmSetAreaCoherence(isle, 1.0);
+   rmBuildArea(isle);
+   int dry = rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 4.0);
+   int obj = rmCreateObjectDef("marker");
+   rmAddObjectDefItem(obj, "ypKingsHill", 1, 0);
+   rmAddObjectDefConstraint(obj, dry);
+   rmPlaceObjectDefAtLoc(obj, 0, 0.5, 0.5, 1);
+   rmSetStatusText("", 1.0);
+}
+"""
+
+
+class TestTerrainConstraintsSeeBuiltTerrain:
+    """zpeyrebasin.xs KotH (2026-09-25): a land-initialized map builds its King's Island (base 1.0, 200 tiles) on
+    top of the water-typed lake and places the hill there with 'kings hill avoids impassable land' (Land, false,
+    4 m). The game places it (owner: Eyre Basin's hill stands on a tiny island). mapsim tested the constraint
+    against the lake's authored disc, which ignores the island built over it, and reported CONSTRAINT_UNSAT. The
+    grouping solver already measured water distance on the built grid; object placements now do the same."""
+
+    def test_island_hill_is_placeable(self, tmp_path):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        from scripts.mapsim.xs_extract import extract
+        src = tmp_path / "isle.xs"
+        src.write_text(ISLAND_IN_LAKE, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        f = [x for x in run_checks(rs) if x.name == "marker"]
+        assert f and f[0].verdict != "CONSTRAINT_UNSAT", f[0].message
+
