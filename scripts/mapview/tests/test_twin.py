@@ -257,14 +257,14 @@ class TestOwners:
         assert g.owner == "ok" and g.owners_expected == [1, 2]
 
     def test_suggest_team_layout(self):
-        """Seats of the alternating model (1,3 / 2,4) owned 1, 3, 2, 4 in the census: the lobby was 1,2 / 3,4."""
+        """Seats of mapsim's model (scene.team_of: 1,2 / 3,4) owned 1, 3, 2, 4 in the census: the lobby was 1,3 / 2,4."""
         gs = []
         for p, q in ((1, 1), (2, 3), (3, 2), (4, 4)):
             g = _gi(VILLAGE, [_spot(100.0 * p, 100.0)], gid="seat#%d" % p, players=[p])
             g.owners_expected, g.owners_seen, g.verdict = [p], {q: 10}, "matched"
             gs.append(g)
-        assert TW.suggest_team_layout([], gs, 4, 2) == {1: 0, 2: 0, 3: 1, 4: 1}
-        assert TW.format_team_layout({1: 0, 2: 0, 3: 1, 4: 1}) == "1,2/3,4"
+        assert TW.suggest_team_layout([], gs, 4, 2) == {1: 0, 3: 0, 2: 1, 4: 1}
+        assert TW.format_team_layout({1: 0, 3: 0, 2: 1, 4: 1}) == "1,3/2,4"
         gs[1].owners_seen = {1: 10}                                         # player 1 on two teams: no hint
         assert TW.suggest_team_layout([], gs, 4, 2) is None
 
@@ -409,16 +409,16 @@ class TestExpectedLondon:
         assert all(-1e-6 <= d <= 1.0 + 1e-6 for d in dz) and max(dz) > 0.25
 
     def test_the_lobby_team_layout_moves_the_seats(self, london4):
-        """Same team = same bank: under mapsim's (p-1) % teams model players 1 and 3 share a bank, under the lobby
-        layout 1,2/3,4 of both London saves players 1 and 2 do."""
+        """Same team = same bank. mapsim's own team model (scene.team_of, contiguous blocks since 2026-09-25) seats
+        1,2 against 3,4 - the lobby layout of both London saves; an explicit layout 1,3/2,4 moves the seats."""
         def seats(exp):
             return {g.players[0]: g.spots[0]["z_m"] for g in exp.groupings if g.name == "player london"}
         model = seats(london4)
-        lobby_scene = TW.expected_scene(LONDON, 4, 2, team_layout={1: 0, 2: 0, 3: 1, 4: 1})
-        lobby = seats(lobby_scene)
-        assert model[1] == model[3] != model[2] == model[4]
-        assert lobby[1] == lobby[2] != lobby[3] == lobby[4]
-        assert lobby_scene.team_layout == {1: 0, 2: 0, 3: 1, 4: 1} and london4.team_layout is None
+        other_scene = TW.expected_scene(LONDON, 4, 2, team_layout={1: 0, 3: 0, 2: 1, 4: 1})
+        other = seats(other_scene)
+        assert model[1] == model[2] != model[3] == model[4]
+        assert other[1] == other[3] != other[2] == other[4]
+        assert other_scene.team_layout == {1: 0, 3: 0, 2: 1, 4: 1} and london4.team_layout is None
 
     def test_in_area_groupings_are_unmodelled_not_judged_at_the_solvers_guess(self):
         """wf verify M3: zpcaribbeanwars 2p places its island cities in_area; gsolve gives them a spot, the engine

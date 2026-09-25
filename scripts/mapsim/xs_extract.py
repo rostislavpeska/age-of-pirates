@@ -33,7 +33,7 @@ from dataclasses import dataclass, field as dfield
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from scripts.mapsim.scene import Scenario
+from scripts.mapsim.scene import Scenario, team_of
 
 
 class ExtractError(Exception):
@@ -792,13 +792,13 @@ def ring_positions(player_events, players: int, teams: int):
     # on a line, the attackers by rmPlacePlayer) or else stands at the map centre (Aztec City places team 0 only;
     # the real team-1 Town Center is 0.03 from the centre at 2p and 6p).
     untargeted = [e for e in evs if e.get("team") is None]
-    members = {t: [k for k in range(n) if k * n_teams // n == t] for t in range(n_teams)}
+    members = {t: [k for k in range(n) if team_of(k + 1, n, n_teams) == t] for t in range(n_teams)}
     out = []
     for k in range(n):
         if k + 1 in placed:
             out.append(placed[k + 1])
             continue
-        t = k * n_teams // n
+        t = team_of(k + 1, n, n_teams)
         if t in team_evs:
             out.append(_pos(team_evs[t], members[t].index(k), len(members[t])))
         elif untargeted:
@@ -1344,12 +1344,15 @@ class Extractor:
             d2 = (float(A2.x) - float(x)) ** 2 + (float(A2.z) - float(z)) ** 2
             return a1 if d1 <= d2 else a2
         if name == "rmGetPlayerTeam":
-            # Deterministic team model: players alternate teams in lobby
-            # order ((p-1) mod teams). Concrete so per-team placement
-            # branches (fort slot counters) exercise BOTH shores.
+            # Deterministic team model scene.team_of (contiguous blocks, the model every part of mapsim uses; it
+            # alternated here until 2026-09-25). Concrete so per-team placement branches exercise both shores.
+            # Outside 1..players (gaia) keeps the old value.
             if isinstance(args[0], Tainted):
                 return Tainted(f"rmGetPlayerTeam({args[0].expr})")
-            return (int(args[0]) - 1) % max(1, sc.teams)
+            p = int(args[0])
+            if 1 <= p <= sc.players:
+                return team_of(p, sc.players, sc.teams)
+            return (p - 1) % max(1, sc.teams)
         if name == "rmGetNomadStart":
             return sc.nomad
         if name == "rmGetNumberPlayersOnTeam":
