@@ -7,10 +7,18 @@
     "references/sources-seamless.md",
     "references/uv-ao.md",
     "scripts/check_tile.py",
-    "scripts/validate_uv.py"
+    "scripts/validate_uv.py",
+    "references/chart-joining.md",
+    "scripts/uv_metrics.py",
+    "scripts/test_uv_metrics.py",
+    "scripts/blender_uv_layout.py",
+    "scripts/blender_hybrid_uv.py",
+    "scripts/blender_ao_review.py",
+    "scripts/ao_chart_constraints.py"
   ],
   "skills": [
-    "skill-library-audit"
+    "skill-library-audit",
+    "blender-high-low-baking"
   ],
   "external": [
     {
@@ -32,8 +40,10 @@
       "id": "python",
       "kind": "executable",
       "requiredFor": [
+        "ao-constraints",
         "tile-check",
-        "uv-check"
+        "uv-check",
+        "uv-density"
       ],
       "optional": false,
       "note": "Use the selected interpreter; presence does not establish runtime compatibility.",
@@ -59,10 +69,13 @@
       "id": "numpy",
       "kind": "python-package",
       "requiredFor": [
-        "tile-check"
+        "ao-constraints",
+        "tile-check",
+        "uv-density",
+        "uv-edit"
       ],
       "optional": false,
-      "note": "Used by the standalone tiling checker.",
+      "note": "Used by density, AO feasibility, Blender layout/bake helpers and the standalone tiling checker.",
       "distribution": "numpy",
       "modules": [
         "numpy"

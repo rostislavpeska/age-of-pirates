@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/process.md",
+    "scripts/bake_pair.py",
+    "scripts/build_specimen.py",
+    "scripts/audit_unique_uv.py"
+  ],
+  "skills": ["blender-architecture", "blender-architecture-texturing", "skill-library-audit"],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": ["bake"],
+      "optional": false,
+      "note": "The bake helpers execute inside the verified Blender session. bpy, bmesh, mathutils and NumPy must be available in that interpreter; presence alone does not verify the live document or bake output.",
+      "commands": ["blender"],
+      "modules": ["bpy", "bmesh", "mathutils", "numpy"]
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["uv-check"],
+      "optional": false,
+      "note": "The unique-UV checker uses the standard library and can also run within Blender.",
+      "commands": ["python", "python3"]
+    }
+  ]
+}

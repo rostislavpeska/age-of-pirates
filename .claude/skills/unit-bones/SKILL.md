@@ -45,7 +45,12 @@ or from converter-made models are already in engine units.
 - **Flag/banner bones**: only add `bone_banner_a1..a3` / `bone_flag_civ` if the ship should show those flags.
   The mod's animfiles inherit battleship attachment lines (`civflag_a1`, `civflag_a2`, `pendentflag_a3`) that
   are inert until the bones exist; the Treasure Ship must show the garrison flag only.
-- **Do not put two flag bones on one mast**; the garrison flag has its own mast.
+- **Follow the actual donor's flag mounts.** The Treasure Ship uses a separate
+  garrison mast; that is not a universal building rule. The Chinese age-2 Town
+  Center has civ and garrison attachment bones at different heights on one mast.
+  Its damaged model parents them to `animtrans01` and `animtrans02`, respectively;
+  do not apply the static ship attachment rule blindly. See the measured
+  [Town Center evidence](../aoe-building-pipeline/references/asian-roof-normal-evidence.md#town-center-flag-mounts).
 - **Animations override the rest pose**: a Blender-baked anim carries a constant track for every bone; moving a
   bone in the model does nothing while such an anim plays. Filter tracks (`anim_tracks.py`) or re-export.
 - `LODError` 1304.65 for added bones (vanilla value); InverseWorld = inverse(world).T; verified on 151 bones.

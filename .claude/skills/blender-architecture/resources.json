@@ -3,13 +3,33 @@
   "files": [
     "SKILL.md",
     "references/construction.md",
-    "scripts/audit_mesh.py"
+    "scripts/audit_mesh.py",
+    "references/surface-visibility.md",
+    "scripts/surface_visibility.py",
+    "scripts/test_surface_visibility.py"
   ],
   "skills": [
     "blender-architecture-texturing",
     "skill-library-audit"
   ],
   "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["surface-audit"],
+      "optional": false,
+      "commands": ["python", "python3"],
+      "note": "Runs standalone visibility primitives and regression tests."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": ["surface-audit"],
+      "optional": false,
+      "distribution": "numpy",
+      "modules": ["numpy"],
+      "note": "Required for deterministic camera-cone and convex-render-shell audits."
+    },
     {
       "id": "blender",
       "kind": "application",

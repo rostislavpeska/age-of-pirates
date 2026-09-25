@@ -3,7 +3,8 @@ name: blender-architecture-texturing
 description: Plans and validates architectural texture regions, texel density, researched decorative atlases, seamless materials and AO while preserving unrelated UVs and maps. Use for architectural UV, material, baking and texture-source work in Blender.
 ---
 # Architecture texturing
-This is the initial policy/repair baseline. Detailed UV automation requires a later dedicated review with the user; do not present it as settled.
+Architectural chart design precedes density normalization and packing. The tested
+diagnostic helpers are not an automatic production unwrap solver.
 
 ## Local prerequisites
 
@@ -22,9 +23,11 @@ validator uses Python's standard library. These offline checks do not establish
 that Blender, Photoshop or Painter is connected. Missing optional Painter support
 does not block Blender-only work; use it only for the selected workflow.
 
-1. Read [regions and density](references/regions-density.md) before unwrapping. Plan semantic regions, not just efficient packing.
+1. Read [regions and density](references/regions-density.md) and [chart joining, reuse and AO](references/chart-joining.md) before unwrapping. Plan coherent facade/roof charts and reusable trim families before packing. A density-correct atlas of thousands of tiny construction faces is not an accepted architectural layout. AO variation within one chart is valid; incompatible values at the same reused texel are the actual conflict.
 2. Read [sources and seamless textures](references/sources-seamless.md) when acquiring/generating materials. ALWAYS research real ornament. Preserve rich detail through texture/normal relief where silhouettes do not need geometry.
 3. Read [UV repair and AO](references/uv-ao.md) before atlas edits, baking and postproduction. Identify exact faces; preserve unrelated geometry, UVs, materials, normals and pixels. Do not repack an atlas to repair one window.
+   For modeled high-poly relief projected onto a low mesh, use the companion
+   [blender-high-low-baking](../blender-high-low-baking/SKILL.md) workflow and specimen checks.
 4. Apply an orientation-marked UV checker before decorative maps. Check both axes for density/stretch and mirrored motifs. Repeated elements must share projection depths and density.
 5. Inspect all angles after applying textures, especially under autonomous work: opposite towers, under ledges, sill floors, reveals, arch crowns and interiors. Compare unlit basecolor, AO-only, normal-disabled and final material views when diagnosing faults.
 6. For Painter read [MCP feasibility](references/painter-mcp.md). A project existing online is not proof of local compatibility. Do not install/upgrade it as a side effect of texturing.

@@ -3,7 +3,7 @@ name: blender-architecture
 description: Builds and repairs architectural Blender models with approved blockouts, realistic construction profiles, editable topology and monitored geometry budgets. Use for architectural blockout, modeling, topology repair and geometry review in Blender.
 ---
 # Architecture modeling
-Read [construction and review](references/construction.md) for geometry work. Use the sibling `blender-architecture-texturing` skill for UV/material planning.
+Read [construction and review](references/construction.md) for geometry work. Before removing hidden faces or classifying low-detail backs, read [surface visibility and destruction](references/surface-visibility.md). Use the sibling `blender-architecture-texturing` skill for UV/material planning.
 
 ## Local prerequisites
 

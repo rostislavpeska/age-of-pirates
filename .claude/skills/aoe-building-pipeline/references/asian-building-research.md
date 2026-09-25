@@ -18,6 +18,49 @@ villager buildability. Intersect with builder commands and later unlocks;
 separate consulate, shipment, wagon, regicide and other conditional buildings.
 Different wonder age-up proto records can use the same animfile and geometry.
 
+## Ground decals as scale references
+
+Before approving building scale, inspect the active component's `decal`: texture,
+width, height, offset/rotation if present, and state/age routing. Load a decoded
+preview outside the mod into Blender with preserved alpha. Size the ground plane
+from the XML's world dimensions, accounting for the model's actual export scale
+and axis mapping; image resolution does not determine world size. Align it to the
+unit origin, not the mesh bounding-box center. Validate UV orientation against the
+original donor foundations and, when available, a matched in-game view. Do not
+silently resize a decal to fit a new model.
+
+The installed `buildings/town_center/town_center.xml` has these shared Chinese and
+Japanese completed-building references (2026-09-25):
+
+| User art tier | Texture relative to `buildings/asian_civs/town_center/` | Width x height |
+| --- | --- | --- |
+| Age 0 | `asian_age1_ground` | 12 x 12 |
+| Age 1-2 | `china/china_footprint` | 12 x 12 |
+| Age 3-4 | `china/china_footprint_age04` | 12 x 12 |
+
+Both cultures share these textures; there is no separate Japanese completed-TC
+decal in these branches. Construction branches differ: some Japanese stages use
+`castle_ground` at 11 x 11 and stage 3 uses `asian_age1_ground` at 10 x 10. Resolve
+each active component rather than applying one completed-building size everywhere.
+The extracted companion `_basecolor` maps provide 2048-square DE previews with
+alpha; the unsuffixed legacy textures are 256-square. Preserve provenance for both.
+
+For the Korean pilot, one Blender unit equals one raw export coordinate unit:
+Blender XYZ = GR2 (X, -Z, Y). A quarter-turned planar UV, U=0.5+BlenderY/12 and
+V=0.5-BlenderX/12, aligns the shared footprint's wood foundations with the donor's
+L plan. This alignment was checked in Blender, not newly calibrated from an engine
+capture. It is evidence for this pilot, not a universal decal UV orientation.
+
+Use a slight ground-plane separation to avoid z-fighting, a 12 x 12 boundary and
+unit ticks, and top/RTS views. Keep age alternatives mutually exclusive to avoid
+stacked alpha darkening. Pack preview images into the research blend. Link the
+authoring model into a separate decal-review scene; keep guide geometry out of
+source/export collections and bake targets. An `export_exclude` custom property
+is documentation, not automatic exporter behavior: export explicit model objects.
+The decal includes feathered terrain and painted foundations; its rectangular
+extent is distinct from model bounds and gameplay obstruction. Compare all three
+without treating the decal rectangle as the exact collision footprint.
+
 Exclude home-city scenes by use, not every path containing `homecity`: gameplay
 Asian buildings reference accessory/fence textures stored there. Resolve those
 texture dependencies and retain archive paths in runtime materials. Never copy
@@ -50,3 +93,10 @@ When a legacy mod supplies architectural references, keep its visual identity
 separate from the current DE technical reference. Converted legacy FBX/GXO
 rest meshes and textures can support silhouette review; they do not establish
 DE material packing, destruction compatibility or export settings.
+
+## Roof geometry and normal-map evidence
+
+Read [the measured vanilla eave study](asian-roof-normal-evidence.md) when planning
+Asian roof UVs or tile bakes. Circular tile ends in the sampled Chinese/Japanese
+Town Centers are largely normal-map detail carried by continuous eave strips;
+their appearance alone does not justify adding a cylinder for every roof tile.

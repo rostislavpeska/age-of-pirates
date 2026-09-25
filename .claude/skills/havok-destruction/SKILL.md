@@ -48,6 +48,15 @@ The observed HKT/GR2 axis and unit conversion differs from simply reading both
 as world coordinates. Start with simple materials when the task is a physics proof;
 final UVs and custom texture production need not delay that test.
 
+An open intact render shell does not require open debris. Keep the closed fracture
+source and independently author damaged thickness/caps. Hidden-face certificates
+transfer only when the hiding geometry stays opaque, retained and in the same
+relative transform through the relevant damage stages. Rest-pose camera-facing
+tests cannot exempt backs of freely rotating pieces. Inspect actual donor topology:
+vanilla damage meshes can contain open or nonmanifold details, so watertightness of
+every render component is not a universal Havok requirement. Collision hulls remain
+separate from render-mesh visibility and must not be inferred from missing faces.
+
 ## Animated bones in a damaged model (the vanilla `animtrans` pattern)
 
 Battleship/Frigate damaged models repeat every animated bone of the intact model:
