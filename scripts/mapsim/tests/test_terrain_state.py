@@ -7,6 +7,7 @@ of 2026-08-08 (Paris/Civil War land bases, Riverina cascade, Cook Islands
 underwater cliffs).
 """
 
+import math
 from pathlib import Path
 
 import pytest
@@ -372,3 +373,178 @@ class TestClosedSegmentLoopFills:
         tg = terrain_grid(extraction_to_resolved(extract(src, Scenario(2, 2))))
         i, j = tg.cell_of_frac(0.2, 0.38)
         assert tg.water[j][i]
+
+
+ONE_ISLAND = r"""
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmSetSeaType("%(sea)s");
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("%(init)s");
+   int island = rmCreateArea("island");
+   rmSetAreaSize(island, %(size)s, %(size)s);
+   rmSetAreaLocation(island, 0.5, 0.5);
+   rmSetAreaCoherence(island, %(coh)s);
+   rmSetAreaBaseHeight(island, 2.0);
+   rmSetAreaSmoothDistance(island, 20);
+   rmBuildArea(island);
+}
+"""
+
+
+def _island(tmp_path, sea, size, coh, init="water"):
+    src = tmp_path / "one_island.xs"
+    src.write_text(ONE_ISLAND % {"sea": sea, "size": size, "coh": coh, "init": init}, encoding="utf-8")
+    rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+    tg = terrain_grid(rs)
+    step = rs.grid.size_x_m / tg.nx
+    dry = sum(1 for j in range(tg.nz) for i in range(tg.nx) if not tg.water[j][i])
+    nondeep = sum(1 for j in range(tg.nz) for i in range(tg.nx) if not tg.water[j][i] or tg.wwalk[j][i])
+    r_eq = lambda n: math.sqrt(n / math.pi) * step       # noqa: E731 - equivalent-disc radius in metres
+    return rs.areas[0].radius_m, r_eq(dry), r_eq(nondeep)
+
+
+class TestIslandShore:
+    """Island shores on a flooded base, measured 2026-09-25 on the vertex height field saved with every editor
+    generation (171 isolated islands of 15 water-initialized maps, P2T2 + P6T2). Measured relative to mapsim's
+    tile-budget disc (where the engine's own tile set ends is not visible in the save): a coherence-1.0 island's
+    shores end 3-7 m inside the disc, an incoherent one ends up larger (empirical fit, no known mechanism).
+    Measured edges (walkable <= 1.5 m, dry) relative to the claim edge:
+    Kurils 'player N' (ZP Kuril Islands, 6 m) -5.2 / -7.0 m, Melanesia (5 m) -4.7 / -6.6 m,
+    Mediterranean (ZP Anno 1404, 3 m) -3.0 / -5.6 m. Mediterranean 6p 'player island N' (coherence 0.5, budget r 92.5 m)
+    +6.4..+8.2 / +3.3..+5.5 m."""
+
+    @pytest.mark.parametrize("sea, walk, dry", [
+        ("ZP Kuril Islands", -5.2, -7.0),
+        ("ZP Melanesia", -4.7, -6.6),
+        ("ZP Anno 1404", -3.0, -5.6),
+    ])
+    def test_coherent_island_edges_match_the_measurement(self, sea, walk, dry):
+        from types import SimpleNamespace
+        from scripts.mapsim.field import shore_offsets
+        a = SimpleNamespace(base_height=2.0, smooth_distance=20.0, coherence=1.0, radius_m=33.9)
+        d_walk, d_dry = shore_offsets(a, 1.0, depth_of(sea))
+        assert d_walk == pytest.approx(walk, abs=0.5)
+        assert d_dry == pytest.approx(dry, abs=0.5)
+
+    def test_coherent_island_is_smaller_than_its_budget(self, tmp_path):
+        r, r_dry, r_nondeep = _island(tmp_path, "ZP Kuril Islands", 0.0226, 1.0)
+        assert r == pytest.approx(33.9, abs=0.5)
+        assert r_dry == pytest.approx(r - 7.0, abs=1.5)
+        assert r_nondeep == pytest.approx(r - 5.2, abs=1.5)
+        assert r_nondeep > r_dry                          # a walkable shallow ring rims the dry land
+
+    def test_incoherent_island_grows_past_its_budget(self, tmp_path):
+        r, r_dry, r_nondeep = _island(tmp_path, "ZP Anno 1404", 0.168, 0.5)
+        assert r == pytest.approx(92.5, abs=1.0)
+        assert r_dry == pytest.approx(r + 4.4, abs=2.0)
+        assert r_nondeep == pytest.approx(r + 7.3, abs=2.0)
+
+    def test_height_blend_two_keeps_the_budget_shape(self):
+        # Unmeasured by the fit; Independence War's blend-2 islands have a walkable shelf OUTSIDE the claim.
+        from types import SimpleNamespace
+        from scripts.mapsim.field import shore_offsets
+        a = SimpleNamespace(base_height=3.0, smooth_distance=6.0, coherence=1.0, radius_m=155.6, height_blend=2.0)
+        assert shore_offsets(a, 1.0, depth_of("ZP New England Calm")) == (0.0, 0.0)
+
+    def test_land_base_keeps_the_plain_budget_edge(self, tmp_path):
+        """On a land base a water-typed lake keeps its budget disc: the shore model is for land built on a flooded
+        base only (every land map matched the saved terrain unchanged)."""
+        src = tmp_path / "lake.xs"
+        src.write_text(LAKE_ON_LAND, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        tg = terrain_grid(rs)
+        step = rs.grid.size_x_m / tg.nx
+        wet = sum(1 for j in range(tg.nz) for i in range(tg.nx) if tg.water[j][i])
+        assert math.sqrt(wet / math.pi) * step == pytest.approx(rs.areas[0].radius_m, abs=1.5)
+
+    def test_growth_respects_constraints_and_authored_water(self, tmp_path):
+        """Growth cells must pass the area's own constraints and never take authored water: an incoherent island
+        next to a water-typed lake and a class it avoids."""
+        src = tmp_path / "grow.xs"
+        src.write_text(GROW_NEXT_TO_LAKE, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        tg = terrain_grid(rs)
+        i, j = tg.cell_of_frac(0.71, 0.5)       # 84 m out: the island's growth band (78..90 m), inside the lake
+        assert tg.water[j][i]
+        i, j = tg.cell_of_frac(0.5, 0.335)      # 14 m from the rock centre: inside its 5 + 12 m keep-out
+        assert tg.water[j][i]
+
+    def test_shrink_never_floods_land_that_was_there_before(self, tmp_path):
+        """A coherent island built on top of an earlier, larger landmass: the shrink ring only turns back cells that
+        were open sea before this build."""
+        src = tmp_path / "overlay.xs"
+        src.write_text(ISLAND_ON_LAND, encoding="utf-8")
+        rs = extraction_to_resolved(extract(src, Scenario(2, 2)))
+        tg = terrain_grid(rs)
+        for x in (0.5, 0.5 + 30.0 / 400.0, 0.5 - 30.0 / 400.0):   # inside and at the small island's edge
+            i, j = tg.cell_of_frac(x, 0.5)
+            assert not tg.water[j][i], x
+
+
+LAKE_ON_LAND = r"""
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("grass");
+   int lake = rmCreateArea("lake");
+   rmSetAreaSize(lake, 0.05, 0.05);
+   rmSetAreaLocation(lake, 0.5, 0.5);
+   rmSetAreaWaterType(lake, "ZP Kuril Islands");
+   rmSetAreaCoherence(lake, 0.5);
+   rmSetAreaSmoothDistance(lake, 20);
+   rmBuildArea(lake);
+}
+"""
+
+GROW_NEXT_TO_LAKE = r"""
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmSetSeaType("ZP Anno 1404");
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("water");
+   int classRock = rmDefineClass("rock");
+   int rock = rmCreateArea("rock");
+   rmSetAreaSize(rock, rmAreaTilesToFraction(20), rmAreaTilesToFraction(20));
+   rmSetAreaLocation(rock, 0.5, 0.3);
+   rmSetAreaBaseHeight(rock, 2.0);
+   rmAddAreaToClass(rock, classRock);
+   rmBuildArea(rock);
+   int lake = rmCreateArea("lake");
+   rmSetAreaSize(lake, 0.004, 0.004);
+   rmSetAreaLocation(lake, 0.715, 0.5);
+   rmSetAreaWaterType(lake, "ZP Anno 1404");
+   rmBuildArea(lake);
+   int avoidRock = rmCreateClassDistanceConstraint("avoid rock", classRock, 12.0);
+   int island = rmCreateArea("island");
+   rmSetAreaSize(island, 0.12, 0.12);
+   rmSetAreaLocation(island, 0.5, 0.5);
+   rmSetAreaCoherence(island, 0.3);
+   rmSetAreaBaseHeight(island, 2.0);
+   rmSetAreaSmoothDistance(island, 20);
+   rmAddAreaConstraint(island, avoidRock);
+   rmBuildArea(island);
+}
+"""
+
+ISLAND_ON_LAND = r"""
+void main(void) {
+   rmSetMapSize(400, 400);
+   rmSetSeaType("ZP Kuril Islands");
+   rmSetSeaLevel(1.0);
+   rmTerrainInitialize("water");
+   int big = rmCreateArea("big");
+   rmSetAreaSize(big, 0.2, 0.2);
+   rmSetAreaLocation(big, 0.5, 0.5);
+   rmSetAreaBaseHeight(big, 2.0);
+   rmSetAreaCoherence(big, 1.0);
+   rmBuildArea(big);
+   int small = rmCreateArea("small");
+   rmSetAreaSize(small, rmAreaTilesToFraction(700), rmAreaTilesToFraction(700));
+   rmSetAreaLocation(small, 0.5, 0.5);
+   rmSetAreaBaseHeight(small, 3.0);
+   rmSetAreaCoherence(small, 1.0);
+   rmSetAreaSmoothDistance(small, 20);
+   rmBuildArea(small);
+}
+"""

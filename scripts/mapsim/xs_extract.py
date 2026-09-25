@@ -2137,7 +2137,8 @@ def diff_vs_scene(ex: Extraction, scene, sc: Scenario) -> List[str]:
                 issues.append(f"area {ca.name}: min radius {r_min:.3f} != {ca.radius_min_m:.3f}")
         for label, xv, cv in (("base_height", xa.base_height, ca.base_height),
                               ("coherence", xa.coherence, ca.coherence),
-                              ("smooth", xa.smooth, ca.smooth_distance)):
+                              ("smooth", xa.smooth, ca.smooth_distance),
+                              ("height_blend", xa.height_blend, ca.height_blend)):
             if cv is None and xv is None:
                 continue
             if (cv is None) != (xv is None) or (cv is not None and not _close(float(xv), float(cv))):

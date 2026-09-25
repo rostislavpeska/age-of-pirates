@@ -148,6 +148,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 6,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "constraints": [
     "greatLakesConstraint",
@@ -170,6 +171,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 6,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "constraints": [
     "greatLakesConstraint",
@@ -241,6 +243,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "cliff_type": null,
    "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
@@ -262,6 +265,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "cliff_type": null,
    "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
@@ -283,6 +287,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "cliff_type": null,
    "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
@@ -304,6 +309,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "cliff_type": null,
    "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
@@ -322,6 +328,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 6,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "constraints": [
     "avoidWater5",
@@ -343,6 +350,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 6,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "constraints": [
     "avoidWater5",
@@ -364,6 +372,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "notes": "runtime-located at the pirate controller; literal anchor curated"
   },
@@ -381,6 +390,7 @@
    "creates_land": true,
    "coherence": 1.0,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "obey_world_circle": false,
    "notes": "runtime-located at the pirate controller; literal anchor curated"
   },
@@ -398,6 +408,7 @@
    "creates_land": true,
    "coherence": 0.8,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "notes": "warnFailure false"
   },
   {
@@ -414,6 +425,7 @@
    "creates_land": true,
    "coherence": 0.8,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "notes": "warnFailure false"
   },
   {
@@ -430,6 +442,7 @@
    "creates_land": true,
    "coherence": 0.8,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "notes": "warnFailure false"
   },
   {
@@ -446,6 +459,7 @@
    "creates_land": true,
    "coherence": 0.8,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "notes": "warnFailure false"
   },
   {
@@ -462,6 +476,7 @@
    "creates_land": true,
    "coherence": 0.8,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "notes": "warnFailure false"
   },
   {
@@ -478,6 +493,7 @@
    "creates_land": true,
    "coherence": 0.8,
    "smooth_distance": 15,
+   "height_blend": 2.0,
    "notes": "warnFailure false"
   },
   {
