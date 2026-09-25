@@ -367,6 +367,33 @@ class TestSectionSpacing:
         fr = sorted(round(frac(p), 3) for p in pos)
         assert fr == [0.2, 0.3, 0.4, 0.7, 0.8, 0.9]
 
+    def test_single_ring_section_by_width(self):
+        """One ring for everyone: a half-ring section at 2p is end to end (Mississippi 0.25-0.745: real 0.27 / 0.71),
+        a 0.7 section is two even slots (Philippines 0.15-0.85: real 0.13 / 0.50), a near-full one too (Atols
+        0.375-0.374: real 0.37 / 0.87), and the designers' 5/6 at 6p is end to end (Atols 0.125-0.959)."""
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+
+        def fracs(sec, n):
+            src = HEADER + 'rmSetPlacementSection(%s); rmPlacePlayersCircular(0.3, 0.3, 0); }' % sec
+            pos = ring_positions(run_src(src, Scenario(n, 2)).player_events, n, 2)
+            return sorted(round((math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0, 3) for p in pos)
+        assert fracs("0.25, 0.745", 2) == [0.25, 0.745]
+        assert fracs("0.15, 0.85", 2) == [0.15, 0.5]
+        assert fracs("0.375, 0.374", 2) == [0.375, 0.875]
+        assert fracs("0.125, 0.959", 6) == pytest.approx([0.125 + k * 0.834 / 5 for k in range(6)], abs=0.002)
+
+    def test_wide_team_section_stays_end_to_end(self):
+        """Malta 6p: team sections 0.05-0.71 and 0.206-0.883 (0.677 > 2/3) put each team end to end (real team 2 at
+        0.2 / 0.547 / 0.875)."""
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('rmSetPlacementTeam(0); rmSetPlacementSection(0.05, 0.71); rmPlacePlayersCircular(0.3, 0.3, 0);\n'
+                        'rmSetPlacementTeam(1); rmSetPlacementSection(0.206, 0.883); rmPlacePlayersCircular(0.3, 0.3, 0); }')
+        pos = ring_positions(run_src(src, Scenario(6, 2)).player_events, 6, 2)
+        fr = [(math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0 for p in pos[3:]]
+        assert fr == pytest.approx([0.206, 0.5445, 0.883], abs=0.001)
+
     def test_full_ring_stays_even(self):
         import math
         from scripts.mapsim.xs_extract import ring_positions

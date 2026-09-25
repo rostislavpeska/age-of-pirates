@@ -746,19 +746,25 @@ def ring_positions(player_events, players: int, teams: int):
             s1 += 1.0
         return s0, s1
 
-    def _pos(ev, idx, count):
+    def _pos(ev, idx, count, whole_ring=False):
         if ev.get("call") == "rmPlacePlayersCircular":
             r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
             s0, s1 = _sec(ev)
-            if s1 - s0 >= 1.0 - 1e-9 or count <= 1:
-                f = idx / max(1, count)          # a full ring: evenly spaced, no double end point
-            else:
-                # A SECTION holds its players from end to end (2026-09-25, census of the live editor saves, 6
-                # players / 2 teams): Dead Sea's 0.2-wide team sections put teammates ~35 deg apart (width /
-                # (n - 1) = 36; width / n = 24), Eyre Basin's 0.25 sections 43-44 deg (45 vs 30), Black Sea's
-                # 0.182 sections 33-36 deg (32.8 vs 21.8). One player keeps the section start (2-player cases
-                # match within 1-22 m).
+            w = s1 - s0
+            # A section holds its players from END TO END; a full ring gives n even slots from the start, no doubled
+            # end point. When ONE ring holds every player (whole_ring), a section wider than (n - 1) / n also gets n
+            # slots: its wrap gap would be narrower than the spacing. Fitted on the census of the live editor saves
+            # (2026-09-25), 2 and 6 players. Team sections end to end: Dead Sea 0.2 (teammates ~35 deg apart:
+            # width / (n - 1) = 36, width / n = 24), Eyre Basin 0.25, Black Sea 0.182, Malta 0.66 and 0.677 (3
+            # players at 0.2 / 0.547 / 0.875). One ring: end to end at 2p for widths 0.3-0.5 (Mississippi, Wild
+            # West, Malta, Treasure Island), at 6p for 0.56-0.834 (Eldorado, Philippines, Balearic, Atols, King of
+            # Bohemia); n slots at 2p for 0.7-0.999 (Philippines, Eldorado, Kurils), at 6p for 0.999 (Kurils,
+            # Mediterranean). The 0.002 keeps the designers' 5/6 written as 0.834 (Atols 0.125-0.959) end to end.
+            # One player keeps the section start.
+            if count > 1 and w < 1.0 - 1e-9 and (not whole_ring or w <= (count - 1.0) / count + 0.002):
                 f = idx / (count - 1)
+            else:
+                f = idx / max(1, count)
             th = 2.0 * math.pi * (s0 + (s1 - s0) * f)
             return (0.5 + r * math.sin(th), 0.5 + r * math.cos(th))
         x1, z1 = _n(ev.get("x1")), _n(ev.get("z1"))
@@ -784,16 +790,8 @@ def ring_positions(player_events, players: int, teams: int):
             out.append(_pos(ev, mem.index(k), len(mem)))
         return out
     ev = evs[0]
-    if ev.get("call") == "rmPlacePlayersCircular":
-        # full/sectioned single ring: n equal slots, no endpoint doubling
-        r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
-        s0, s1 = _sec(ev)
-        for k in range(n):
-            th = 2.0 * math.pi * (s0 + (s1 - s0) * k / n)
-            out.append((0.5 + r * math.sin(th), 0.5 + r * math.cos(th)))
-        return out
     for k in range(n):
-        out.append(_pos(ev, k, n))
+        out.append(_pos(ev, k, n, whole_ring=True))
     return out
 
 
