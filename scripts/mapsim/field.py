@@ -532,6 +532,140 @@ def _chamfer_dist_m(nx: int, nz: int, step_m: float,
     return dist
 
 
+# ---------------------------------------------------------------------------
+# Island shores on a flooded base (measured 2026-09-25). Ground truth: the
+# vertex HEIGHT FIELD and water level saved in every editor generation
+# (.age3Yscn: right after the per-tile 'WT' block come (tx+1)*(tz+1) float32
+# heights, x-major, then as many float32 water-surface heights = the sea
+# level on a flooded map; the open-sea depth W - H equals waterdata's depth
+# on all 80 water-map captures). 171 isolated islands of 15 water-initialized
+# maps (P2T2 + P6T2 editor captures), each compared with its own mapsim claim
+# (equivalent-disc radius of the real non-deep / dry component minus that of
+# the claim):
+#   WHAT IS MEASURED: shore positions relative to MAPSIM'S budget disc. The
+#   engine's own tile set is not visible in the save (the tile paint includes
+#   beaches), so where the engine's edge lies is NOT decided: rm-areas
+#   SKILL.md:52 says rmSetAreaSmoothDistance blends n tiles OUTSIDE the area
+#   edge; the data only say the shores sit where the rule below puts them.
+#   * the ramp: seen from the budget disc, the ground climbs from the sea
+#     floor to the base height over w = 1.79 * sqrt(smooth distance in tiles)
+#     metres INSIDE the disc edge (8.0 m at smooth 20; the sqrt form and the
+#     constant are FITTED at smooth 15-20 only - all 6 islands at smooth
+#     30/50 miss by > 2 m, the Cold War bonus islands at smooth 30 now end
+#     3 m too small). A linear ramp puts the dry edge w*d/(d+h) and the
+#     walkable (<= 1.5 m) edge w*(d-1.5)/(d+h) inside the claim edge, with
+#     d the sea type's carved depth and h the base height above sea level.
+#     Coherence-1.0 'player N' islands, d = 6 / 5 / 3 m (Kurils / Melanesia
+#     / Mediterranean): walkable edge -5.2 / -4.7 / -3.0 m, dry edge -7.0 /
+#     -6.6 / -5.7 m. On all 32 coherence-1.0 islands (those + Atols port
+#     sites, smooth 15) the rule leaves |residual| <= 0.6 m.
+#   * the growth: an incoherent area ends up LARGER than its tile budget:
+#     edges g = sqrt(1 - coherence) * (1.5 + 0.16 * r) metres further out (r
+#     the budget radius). Walkable edge predicted / measured: Atols 'native
+#     island' (coherence 0.8, r 32) -2.2 / -2.0..-3.0 m; Mediterranean 6p
+#     'player island' (0.5, r 92.5) +8.5 / +6.4..+8.2 m; Kurils 6p 'corsair
+#     island' (0.45, r 105) +8.4 / +10.5..+10.9 m. Known misses: Philippines
+#     'player N' (0.5, r 81-90) +5.1..+6.1 / -1.9..+4.8, Tasmania (0.7,
+#     smooth 50) +14 / +22, Cold War 'bonus island' (0.7, smooth 30) -3.0 /
+#     +0.3 m. The growth law is an EMPIRICAL 2-constant fit with no known
+#     mechanism, and it carries the whole net gain (ramp alone scores below
+#     the plain disc). Out of sample (41 cases of 17 maps not in the fit) it
+#     still helps (+0.7 points on the saved terrain) but overshoots coherence
+#     0.9 continents: Eldorado 2p/6p -0.96 / -1.13 points, Australia 6p -0.82
+#     (its coasts go from 3-4 m too small to 4-7 m too large), Labrador Coast
+#     6p -0.49 on the minimap; Philippines 'player N' end 5-7 m too large.
+# Net: coherent small islands (port sites, player areas) are 3-5 m SMALLER
+# than the budget disc, incoherent large ones (corsair / player islands at
+# 6 players) 5-10 m larger. Unset coherence: no growth term (unmeasured).
+# Over the 171 islands the walkable edge error falls from 3.4 m mean (budget
+# disc) to 1.25 m (rms 5.2 -> 2.1 m), the dry edge from 3.5 to 1.4 m.
+#   * NOT for rmSetAreaHeightBlend >= 2 (the fit had none): the measured
+#     blend-2 coasts disagree with the rule - Independence War's player islands
+#     (smooth 6, coherence 1) keep their dry edge near the claim edge (+1 / -2
+#     m) with a walkable shelf 6-9 m OUTSIDE it, Cook Islands' bonus islands
+#     end -1 / -4 m. Those claims keep the plain budget shape (unmeasured).
+SHORE_RAMP_K = 1.79
+SHORE_GROWTH_A_M = 1.5
+SHORE_GROWTH_B = 0.16
+
+
+def shore_offsets(area: ResolvedArea, sea_level: float, sea_depth: float) -> Tuple[float, float]:
+    """(walkable edge, dry edge) of a land area built on the flooded base, in metres relative to its claim edge
+    (positive = outside the claim). The measured rule above; (0, 0) without a base height."""
+    if area.base_height is None or float(getattr(area, "height_blend", 0.0) or 0.0) >= 2.0:
+        return 0.0, 0.0
+    from scripts.mapsim.waterdata import SHALLOW_BUILD_DEPTH_M
+    h = max(0.1, float(area.base_height) - sea_level)
+    d = max(0.0, sea_depth)
+    w = SHORE_RAMP_K * math.sqrt(max(0.0, float(area.smooth_distance or 0.0)))
+    ramp_walk = w * max(0.0, d - SHALLOW_BUILD_DEPTH_M) / (d + h)
+    ramp_dry = w * d / (d + h)
+    g = 0.0
+    if area.coherence is not None and float(area.coherence) < 1.0:
+        u = 1.0 - max(0.0, float(area.coherence))
+        g = math.sqrt(u) * (SHORE_GROWTH_A_M + SHORE_GROWTH_B * area.radius_m)
+    return g - ramp_walk, g - ramp_dry
+
+
+def _apply_shore(nx: int, nz: int, step: float, cells: List[Tuple[int, int]],
+                 was_sea: Dict[Tuple[int, int], Tuple[float, bool]], d_walk: float, d_dry: float, code: int,
+                 allowed, land, water, wdepth, wwalk, marker) -> None:
+    """Move a land claim's shore to the measured edges: walkable (<= 1.5 m) at d_walk, dry at d_dry metres from the
+    claim edge (negative = inside). A cell's signed distance is taken at its centre (the claim edge lies half a cell
+    beyond the outermost claimed centre). Only open sea changes: claimed cells that were sea before this build fall
+    back to sea / walkable shallows, and unmarked sea cells outside the claim that the area's own constraints allow
+    become shallows / land (the growth term). Claimed cells that were already land, authored water (rivers, water
+    areas, submerged ground) and other land stay as they are."""
+    from scripts.mapsim.waterdata import SHALLOW_BUILD_DEPTH_M
+    if not cells or (abs(d_walk) < 1e-9 and abs(d_dry) < 1e-9):
+        return
+    pad = int(math.ceil((max(abs(d_walk), abs(d_dry)) + step) / step)) + 1
+    i0 = max(0, min(i for i, _j in cells) - pad)
+    i1 = min(nx - 1, max(i for i, _j in cells) + pad)
+    j0 = max(0, min(j for _i, j in cells) - pad)
+    j1 = min(nz - 1, max(j for _i, j in cells) + pad)
+    wx, wz = i1 - i0 + 1, j1 - j0 + 1
+    claim = set(cells)
+    sea = [(i - i0, j - j0) for j in range(j0, j1 + 1) for i in range(i0, i1 + 1)
+           if water[j][i] and (i, j) not in claim]
+    if not sea:
+        return                                  # a landlocked claim has no shore
+    half = step / 2.0
+    ring_depth = min(1.0, SHALLOW_BUILD_DEPTH_M)   # a representative walkable depth for the shore ring
+    if d_walk < 0.0 or d_dry < 0.0:
+        d_sea = _chamfer_dist_m(wx, wz, step, sea)
+        for (i, j), (prev_depth, prev_walk) in was_sea.items():
+            s = d_sea[j - j0][i - i0] - half     # how far inside the claim edge the centre lies
+            if s < -d_walk:
+                land[j][i] = 0
+                water[j][i] = True
+                wdepth[j][i] = prev_depth
+                wwalk[j][i] = prev_walk
+            elif s < -d_dry:
+                land[j][i] = 0
+                water[j][i] = True
+                wdepth[j][i] = min(prev_depth, ring_depth)
+                wwalk[j][i] = True
+    if d_walk > 0.0:
+        d_claim = _chamfer_dist_m(wx, wz, step, [(i - i0, j - j0) for i, j in cells])
+        for jj in range(wz):
+            for ii in range(wx):
+                i, j = ii + i0, jj + j0
+                if (i, j) in claim or not water[j][i] or marker[j][i]:
+                    continue
+                out = d_claim[jj][ii] - half         # how far outside the claim edge the centre lies
+                if out > d_walk or not allowed(i, j):
+                    continue
+                if out <= d_dry:
+                    land[j][i] = code
+                    water[j][i] = False
+                    wdepth[j][i] = 0.0
+                    wwalk[j][i] = False
+                else:
+                    wdepth[j][i] = min(wdepth[j][i], ring_depth)
+                    wwalk[j][i] = True
+
+
 def _raster_cells(nx: int, nz: int, step_m: float, x1: float, z1: float,
                   x2: float, z2: float) -> List[Tuple[int, int]]:
     """Cells along a segment (meters), sampled at half-cell intervals."""
@@ -962,6 +1096,9 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
             step_cat = "land"
             land_order.append(area.name)
             code = len(land_order)
+            # Claimed cells that were open sea before this build (the shore model moves only those).
+            was_sea = ({(i, j): (wdepth[j][i], wwalk[j][i]) for i, j in cells if water[j][i] and not marker[j][i]}
+                       if base_water else {})
             for i, j in cells:
                 land[j][i] = code
                 water[j][i] = False
@@ -975,6 +1112,10 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                 # reproduce for spawn checks to be truthful. Water builds
                 # (river/water-area/mask branches) still clear the band:
                 # flooded ground blocks as WATER, not as cliff.
+            if was_sea:
+                d_walk, d_dry = shore_offsets(area, rs.sea_level, base_depth)
+                _apply_shore(nx, nz, step, cells, was_sea, d_walk, d_dry, code, allowed_fn,
+                             land, water, wdepth, wwalk, marker)
         elif area.base_height is not None:
             # Submerged ground: explicit base height at/below sea level
             # (Cook Islands -0.25 shoals and -5.0 cliff rings, Civil War
