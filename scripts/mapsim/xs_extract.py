@@ -822,7 +822,7 @@ class Extractor:
                 self.exec_stmt(item)
         if main_def is None:
             raise ExtractError("no main() found")
-        self.scopes.append({})
+        self.scopes.append(_hoisted(main_def[4]))
         try:
             for stmt in main_def[4]:
                 self.exec_stmt(stmt)
@@ -1106,7 +1106,7 @@ class Extractor:
 
         if name in self.funcs:
             fdef = self.funcs[name]
-            local: Dict[str, Any] = {}
+            local: Dict[str, Any] = _hoisted(fdef[4])
             for idx, (pname, default) in enumerate(fdef[3]):
                 local[pname] = args[idx] if idx < len(args) else (
                     self.eval(default) if default is not None else 0)
@@ -1931,8 +1931,35 @@ class Extractor:
 
 
 def _default(_type: str) -> Any:
+    if _type == "vector":
+        return ("vec", 0.0, 0.0, 0.0)
     return {"int": 0, "float": 0.0, "string": "", "bool": False}.get(_type, Tainted("uninit"))
 
+
+def _hoisted(stmts) -> Dict[str, Any]:
+    """Every variable declared anywhere in a function body, at its type's zero value. XS has no block scope: a
+    variable declared inside an if or loop exists in the whole function, with value zero when its declaring branch
+    did not run (skills rm-objects-herds - 'Vectors declared inside an if block still exist afterwards ... with
+    value zero ... units land at the map corner' - and rm-skeleton). Maps rely on it: zpeyrebasin.xs declares
+    ControllerLoc2 inside `if (cNumberNonGaiaPlayers >= 4)` and builds pirate_site2 at it unconditionally."""
+    out: Dict[str, Any] = {}
+
+    def walk(block):
+        for st in block or ():
+            if not isinstance(st, tuple) or not st:
+                continue
+            op = st[0]
+            if op == "decl":
+                out.setdefault(st[2], _default(st[1]))
+            elif op == "block":
+                walk(st[1])
+            elif op == "if":
+                walk(st[2])
+                walk(st[3])
+            elif op == "for":
+                walk(st[5])
+    walk(stmts)
+    return out
 
 
 def _to_str(v: Any) -> str:
