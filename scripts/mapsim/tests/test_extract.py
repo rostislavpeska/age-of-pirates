@@ -257,3 +257,26 @@ class TestKnownEngineCalls:
         assert sorted((p.x, p.z) for p in ex.placements) == [(0.2, 0.2), (0.9, 0.1)]
         assert [(p.x, p.z) for p in run_src(src, Scenario(4, 2)).placements] == [(0.2, 0.2)]
 
+class TestNoBlockScope:
+    """XS has no block scope (skills rm-objects-herds, rm-skeleton): a variable declared in a branch that did not
+    run still exists, at zero. zpeyrebasin.xs declares ControllerLoc2 only for 4+ players and builds pirate_site2 at
+    it for every player count; the extractor warned 'unknown variable' and lost the area's location."""
+
+    SRC = HEADER + ('if (cNumberNonGaiaPlayers >= 4) {\n'
+                    '   vector loc2 = xsVectorSet(200.0, 0.0, 100.0);\n'
+                    '   int flag2 = 7;\n'
+                    '}\n'
+                    'int site = rmCreateArea("site2"); rmSetAreaSize(site, 0.01, 0.01);\n'
+                    'rmSetAreaLocation(site, rmXMetersToFraction(xsVectorGetX(loc2)), '
+                    'rmZMetersToFraction(xsVectorGetZ(loc2))); rmBuildArea(site); }')
+
+    def test_undeclared_branch_variable_is_zero(self):
+        ex = run_src(self.SRC, Scenario(2, 2))
+        assert ex.warnings == []
+        a = next(a for a in ex.areas.values() if a.name == "site2")
+        assert (a.x, a.z) == (0.0, 0.0)
+
+    def test_declared_branch_variable_keeps_its_value(self):
+        ex = run_src(self.SRC, Scenario(4, 2))
+        a = next(a for a in ex.areas.values() if a.name == "site2")
+        assert (a.x, a.z) == (0.5, 0.25)
