@@ -48,6 +48,16 @@ position, or as "the only proto index that appears exactly N times" (N = how man
 (`nugget-targeting`, fix B). Adding N units to anything placed earlier shifts every later index by N:
 re-census after any such change.
 
+**Trigger ids vs census ids (measured 2026-09-25, Istanbul):** in `trigtemp.xs` a QUOTED id
+(`trCountUnitsInArea("16", ...)`, `trNuggetCollectable("344")`, `trSocketBuild(1, "16", ...)`) is the census id; a
+BARE effect select `trUnitSelectByID(14)` is the census id MINUS 2. So a trigger whose condition counts at 16 and
+whose `Unit Action Suspend` selects 14 targets ONE unit: it is not a desync. Checked on the four gun-socket locks and
+the four trade harbours (conditions on socket / nugget = census id, every suspend / convert select = census - 2). A
+test that expects the same number on both sides is wrong (`test_gunsocket_lock.py::TestTrigtempOracle` did, and
+failed 4x on both devices). Resolve them with `census.py <save> --trigtemp <trigtemp.xs> [--rule REGEX]` on a save and
+trigtemp from the SAME generation. The 2 is the map's `instanceIdShift` today and has drifted before: confirm it on
+one known unit first (`--effect-shift N` otherwise).
+
 **Positions (fixed 2026-09-24):** each record's own position is the fixed header BEFORE its `UN` tag:
 x/y/z at tag-49 (build 25040513+; tag-48 on older saves), followed by a 3x3 orientation whose rows are
 orthonormal - that is the validity test. `scripts/mapview/census_reader.py` owns the decoding;

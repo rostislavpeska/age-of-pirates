@@ -2,6 +2,15 @@
 and report every placed unit — proto name, position — for spawn testing.
 
 Usage: python sandbox/census/census.py <file.age3Yscn> [--full]
+       python sandbox/census/census.py <file.age3Yscn> --trigtemp <trigtemp.xs> [--rule REGEX] [--effect-shift N]
+
+--trigtemp resolves every unit id the compiled triggers use against THIS save (the save and trigtemp.xs must come
+from the SAME generation - every generation rewrites both). Measured 2026-09-25 on Istanbul (gun-socket locks and
+trade harbours, 16 ids, all consistent): a QUOTED id - trCountUnitsInArea("16", ...), trNuggetCollectable("344"),
+trSocketBuild(1, "16", ...) - is the census id itself; a BARE effect select trUnitSelectByID(14) is the census id
+MINUS 2 (the unit is census id 16). So "Units in Area" 16 + "Unit Action Suspend" 14 in one trigger are the SAME unit,
+not a desync. The 2 is the map's instanceIdShift today and has drifted before: confirm it on one known unit (a
+harbour socket, a gun socket) before trusting the column, and pass --effect-shift if it differs.
 """
 import re
 import struct
@@ -80,6 +89,24 @@ def census(path: Path):
     return units
 
 
+def trigtemp_ids(units, trig: Path, rule_re: str = "", shift: int = 2):
+    """Every unit id in trigtemp.xs, resolved to the census unit it means (see the module doc: quoted = census id,
+    trUnitSelectByID = census id - shift)."""
+    by_id = {int(u["id"]): u for u in units}
+    text = trig.read_text(encoding="utf-8", errors="replace")
+    for m in re.finditer(r"^rule (_\w+)(.*?)^\}", text, re.S | re.M):
+        name, body = m.group(1), m.group(2)
+        if rule_re and not re.search(rule_re, name):
+            continue
+        refs = [("select", int(i), int(i) + shift) for i in re.findall(r"trUnitSelectByID\((\d+)\)", body)]
+        refs += [("quoted", int(i), int(i)) for i in re.findall(r'\btr\w+\([^;]*?"(\d+)"', body)]
+        for kind, raw, cid in refs:
+            u = by_id.get(cid)
+            where = f"{u['proto']:32} ({u['x']:7.1f}, {u['z']:7.1f})" if u else "NO UNIT with that census id"
+            print(f"{name:40} {kind:6} {raw:>6} -> census {cid:>6}  {where}")
+    return 0
+
+
 def main(argv):
     if not argv:
         print(__doc__)
@@ -87,6 +114,10 @@ def main(argv):
     path = Path(argv[0])
     full = "--full" in argv
     units = census(path)          # runtime index -> name, as the importable entry point does (2026-09-24)
+    if "--trigtemp" in argv:
+        return trigtemp_ids(units, Path(argv[argv.index("--trigtemp") + 1]),
+                            argv[argv.index("--rule") + 1] if "--rule" in argv else "",
+                            int(argv[argv.index("--effect-shift") + 1]) if "--effect-shift" in argv else 2)
     print(f"{path.name}: {len(units)} units")
     xs = [u["x"] for u in units]
     zs = [u["z"] for u in units]
