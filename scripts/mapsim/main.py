@@ -27,7 +27,13 @@ sys.path.insert(0, str(_project_root))
 from scripts.mapsim import sim  # noqa: E402
 
 
-def main() -> int:
+def main(cli_args=None) -> int:
+    """With command-line arguments this is sim.py (they are forwarded, --help included); without any, the USER
+    SETTINGS above apply. (Before 2026-09-25 the arguments were ignored: `python -m scripts.mapsim.main --help`
+    ran the default Independence War matrix.)"""
+    cli_args = sys.argv[1:] if cli_args is None else list(cli_args)
+    if cli_args:
+        return sim.main(cli_args)
     argv = []
     if SCENE is not None:
         argv += ["--scene", str(SCENE)]
