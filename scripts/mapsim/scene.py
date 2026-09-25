@@ -247,6 +247,8 @@ class ResolvedScene:
     player_placement: Dict[str, Any]
     constraints: Dict[str, Any]
     trade_routes: List[List[Tuple[float, float]]] = field(default_factory=list)
+    # The rmBuildTradeRoute line of each trade_routes entry (xs pipeline); None or missing = always present.
+    trade_route_lines: List[Optional[int]] = field(default_factory=list)
     rivers: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, waypoints, water_type}
     connections: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, base_height, x1..z2}
     # Base terrain from rmTerrainInitialize: a flooded base ("water" or a

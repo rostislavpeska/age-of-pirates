@@ -115,6 +115,9 @@ class FieldContext:
         self.routes_m: List[List[Tuple[float, float]]] = [
             [g.frac_to_m(x, z) for x, z in route] for route in rs.all_routes()
         ]
+        # Build line per route (None = always present), aligned with routes_m.
+        lines = list(getattr(rs, "trade_route_lines", []) or [])
+        self.route_lines: List[Optional[int]] = (lines + [None] * len(self.routes_m))[:len(self.routes_m)]
         self.route_m: List[Tuple[float, float]] = (
             self.routes_m[0] if self.routes_m else [])   # back-compat: first route
         self.land: List[Disc] = [
@@ -296,9 +299,13 @@ def point_allowed(ctx: FieldContext, p_m: Tuple[float, float], spec: Dict[str, A
         # The route ROAD occupies 16 m blocks around the waypoint polyline
         # (the tool's established blocksize); the constraint keeps distance
         # from the road, so half a block is added to the authored margin.
+        # A route counts only once built (2026-09-25): zpcoldwar.xs builds its west/east islands (20 m 'trade
+        # route' constraint) at line 530 and the two routes at 641 and later; the live minimap has land right
+        # across both routes, where mapsim carved a channel along each.
         d_eff = float(spec["distance_m"]) + ROUTE_HALF_WIDTH_M
         return all(dist_point_to_polyline(p_m, route) >= d_eff
-                   for route in ctx.routes_m)
+                   for route, ln in zip(ctx.routes_m, ctx.route_lines)
+                   if before_line is None or ln is None or ln <= before_line)
     if kind == "pie":
         g = ctx.grid
         center = (g.x_frac_to_m(spec["center"][0]), g.z_frac_to_m(spec["center"][1]))

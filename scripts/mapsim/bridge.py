@@ -226,11 +226,13 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         ))
 
     trade_routes = []
+    trade_route_lines = []
     for handle in sorted(ex.route_waypoints):
         wps = [(float(x), float(z)) for x, z in ex.route_waypoints[handle]
                if not isinstance(x, Tainted) and not isinstance(z, Tainted)]
         if len(wps) >= 2:
             trade_routes.append(wps)
+            trade_route_lines.append(ex.route_build_lines.get(handle))
     waypoints = trade_routes[0] if trade_routes else []
 
     connections = []
@@ -316,6 +318,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         player_placement={"branches": branches},
         constraints=constraints,
         trade_routes=trade_routes,
+        trade_route_lines=trade_route_lines,
         rivers=rivers,
         connections=connections,
         base_is_water=base_is_water,
