@@ -298,15 +298,9 @@ minInterval 1
       }
       gClaimTradeMissionInterval = 4 * 60 * 1000;
 
-      // ON - the pirate natives. The two shore camps place
-      // zpNativeHousePirateNoDecal, a DIFFERENT proto from zpNativeHousePirate
-      // and tagged only BuildingClass/AbstractCityManisonB, so the generic
-      // pirate-native gate further down never counts them. The one grouping
-      // that does carry the real proto is the pirate city block, and that is
-      // a single entry in gCityBlocks which may not be drawn at all - so on
-      // most Istanbul games these two rules were simply never switched on.
-      xsEnableRule("MaintainPirateShips");
-      xsEnableRule("PirateTechMonitor");
+      // The pirate natives need no switch of their own here: the generic gate
+      // further down keys on the pirate SOCKET, which every Istanbul pirate camp
+      // carries (zpSocketPirates - owner 2026-09-25).
 
       // DOCKS ARE STOCK. Istanbul used to carry seven rules that fought or
       // diagnosed the engine's dock logic - its own first-dock build order, two
@@ -414,7 +408,10 @@ minInterval 1
       xsEnableRule("underwaterOperations");
       xsEnableRule("zpDiverTechMonitor");
    }
-   if ((getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0) || (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0))
+   // the pirate natives: keyed on the SOCKET (owner 2026-09-25: 'should be dependent on presence of pirate socket or
+   // pirate city state socket'), not on a house proto - the camps use several house protos (zpNativeHousePirateNoDecal
+   // on Istanbul, zpNativeHousePirateSmallFlat / zpNativeHousePirateCity on London) that a house gate never counted
+   if ((getGaiaUnitCount(cUnitTypezpSocketPirates) > 0) || (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0))
    {
       xsEnableRule("MaintainPirateShips");
       xsEnableRule("PirateTechMonitor");
