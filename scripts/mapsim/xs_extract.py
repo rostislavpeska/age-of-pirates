@@ -596,7 +596,7 @@ NOOP_FUNCS = {
     "rmSetSubCiv", "rmAddMerc", "chooseMercs",
     "rmDisableDefaultMercs", "rmDisableCivTypeMercRestriction",
     "rmEnableMerc", "rmDisableMerc", "rmSetBaseTerrainMix",
-    "ypKingsHillPlacer", "rmBuildAllAreas", "rmSetPlacementArea",
+    "rmBuildAllAreas", "rmSetPlacementArea",
     "rmRiverAddShallows", "rmRiverSetBankPercent", "rmRiverSetConnections",
     "rmRiverBuild", "rmRiverReveal", "rmRiverSetFoundationTerrain",
     "rmSetTeamSpacing",
@@ -1043,6 +1043,56 @@ class Extractor:
 
     # -- engine dispatch ------------------------------------------------------
 
+    def _kings_hill_placer(self, args: List[Any], line: int) -> int:
+        """Vanilla ypKOTHInclude.xs ypKingsHillPlacer(xLoc, yLoc, walkDistance, extraConstraint), replayed as its
+        builtin calls: eight constraints, object def 'KingsHill' with item ypKingsHill, min distance 0, max distance
+        rmXFractionToMeters(walkDistance), the extra constraint when > 0, rmPlaceObjectDefAtLoc(def, 0, x, y, 1).
+        (Previously a no-op: the hill was never drawn or checked, feedback 2026-09-25 item 2.)"""
+        x, y, walk, extra = (list(args) + [0.0, 0.0, 0.0, 0])[:4]
+        c = self.call
+        cons = [
+            c("rmCreateTerrainDistanceConstraint", ["kings hill avoids impassable land", "Land", False, 4.0], line),
+            c("rmCreateTypeDistanceConstraint", ["kings hill avoids all", "all", 4.0], line),
+            c("rmCreateTypeDistanceConstraint", ["kings hill avoids trade route socket", "socketTradeRoute", 4.0],
+              line),
+            c("rmCreatePieConstraint", ["kings hill edge of map", 0.5, 0.5, c("rmXFractionToMeters", [0.0], line),
+                                        c("rmXFractionToMeters", [0.48], line), c("rmDegreesToRadians", [0], line),
+                                        c("rmDegreesToRadians", [360], line)], line),
+            c("rmCreateTypeDistanceConstraint", ["kings hill avoids TCs", "Towncenter", 45.0], line),
+            c("rmCreateTypeDistanceConstraint", ["kings hill avoids CWs", "CoveredWagon", 45.0], line),
+            c("rmCreateTradeRouteDistanceConstraint", ["kings hill avoids trade route", 6.0], line),
+            c("rmCreateTypeDistanceConstraint", ["avoid flag", "HomeCityWaterSpawnFlag", 4.0], line),
+        ]
+        d = c("rmCreateObjectDef", ["KingsHill"], line)
+        c("rmAddObjectDefItem", [d, "ypKingsHill", 1, 0], line)
+        c("rmSetObjectDefMinDistance", [d, 0.0], line)
+        c("rmSetObjectDefMaxDistance", [d, c("rmXFractionToMeters", [walk], line)], line)
+        for h in cons:
+            c("rmAddObjectDefConstraint", [d, h], line)
+        if not isinstance(extra, Tainted) and extra and extra > 0:
+            c("rmAddObjectDefConstraint", [d, extra], line)
+        c("rmPlaceObjectDefAtLoc", [d, 0, x, y, 1], line)
+        return 0
+
+    def _kings_hill_landfill(self, args: List[Any], line: int) -> int:
+        """Vanilla ypKingsHillLandfill(xLoc, yLoc, fillSize, fillHeight, fillMix, extraConstraint), replayed: area
+        'hill placer' at (x, y), mix, size fillSize, coherence 0.9, base height fillHeight, smooth distance 5, the
+        extra constraint when > 0, warn-failure off, built. (Was an unknown function: zpburma_b.xs 633.)"""
+        x, y, size, height, mix, extra = (list(args) + [0.0, 0.0, 0.0, 0.0, "", 0])[:6]
+        c = self.call
+        a = c("rmCreateArea", ["hill placer"], line)
+        c("rmSetAreaLocation", [a, x, y], line)
+        c("rmSetAreaMix", [a, mix], line)
+        c("rmSetAreaSize", [a, size, size], line)
+        c("rmSetAreaCoherence", [a, 0.9], line)
+        c("rmSetAreaBaseHeight", [a, height], line)
+        c("rmSetAreaSmoothDistance", [a, 5], line)
+        if not isinstance(extra, Tainted) and extra and extra > 0:
+            c("rmAddAreaConstraint", [a, extra], line)
+        c("rmSetAreaWarnFailure", [a, False], line)
+        c("rmBuildArea", [a], line)
+        return 0
+
     def call(self, name: str, args: List[Any], line: int) -> Any:
         res = self.res
         sc = self.sc
@@ -1067,6 +1117,10 @@ class Extractor:
             # `return;` keeps the old 0.
             return 0 if value is None else value
 
+        if name == "ypKingsHillPlacer":
+            return self._kings_hill_placer(args, line)
+        if name == "ypKingsHillLandfill":
+            return self._kings_hill_landfill(args, line)
         if name in OPAQUE_DEF_BUILDERS:
             return OpaqueDef(name)
         if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
