@@ -750,7 +750,16 @@ def ring_positions(player_events, players: int, teams: int):
         if ev.get("call") == "rmPlacePlayersCircular":
             r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
             s0, s1 = _sec(ev)
-            th = 2.0 * math.pi * (s0 + (s1 - s0) * idx / max(1, count))
+            if s1 - s0 >= 1.0 - 1e-9 or count <= 1:
+                f = idx / max(1, count)          # a full ring: evenly spaced, no double end point
+            else:
+                # A SECTION holds its players from end to end (2026-09-25, census of the live editor saves, 6
+                # players / 2 teams): Dead Sea's 0.2-wide team sections put teammates ~35 deg apart (width /
+                # (n - 1) = 36; width / n = 24), Eyre Basin's 0.25 sections 43-44 deg (45 vs 30), Black Sea's
+                # 0.182 sections 33-36 deg (32.8 vs 21.8). One player keeps the section start (2-player cases
+                # match within 1-22 m).
+                f = idx / (count - 1)
+            th = 2.0 * math.pi * (s0 + (s1 - s0) * f)
             return (0.5 + r * math.sin(th), 0.5 + r * math.cos(th))
         x1, z1 = _n(ev.get("x1")), _n(ev.get("z1"))
         x2, z2 = _n(ev.get("x2")), _n(ev.get("z2"))

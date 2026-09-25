@@ -348,3 +348,29 @@ class TestArrayWrittenAtRuntimeIndex:
                         'if (xsArrayGetBool(s, 0) == false) rmPlaceObjectDefAtLoc(d, 0, 0.1, 0.1, 1); }')
         ex = run_src(src)
         assert [p.nominal for p in ex.placements] == [True] and ex.placements[0].variant != ""
+
+
+class TestSectionSpacing:
+    """rmPlacePlayersCircular inside a placement SECTION spaces the players from end to end. Measured against the
+    census of live editor saves (6 players, 2 teams): Dead Sea (0.2-wide team sections) ~35 deg between teammates,
+    Eyre Basin (0.25) 43-44 deg, Black Sea (0.182) 33-36 deg; mapsim spaced them width / n (24, 30, 22 deg)."""
+
+    def test_team_section_endpoints_included(self):
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+        src = HEADER + ('rmSetPlacementTeam(0); rmSetPlacementSection(0.7, 0.9); rmPlacePlayersCircular(0.37, 0.37, 0);\n'
+                        'rmSetPlacementTeam(1); rmSetPlacementSection(0.2, 0.4); rmPlacePlayersCircular(0.37, 0.37, 0); }')
+        ex = run_src(src, Scenario(6, 2))
+        pos = ring_positions(ex.player_events, 6, 2)
+        def frac(p):
+            return (math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0
+        fr = sorted(round(frac(p), 3) for p in pos)
+        assert fr == [0.2, 0.3, 0.4, 0.7, 0.8, 0.9]
+
+    def test_full_ring_stays_even(self):
+        import math
+        from scripts.mapsim.xs_extract import ring_positions
+        ex = run_src(HEADER + 'rmPlacePlayersCircular(0.37, 0.37, 0); }', Scenario(4, 2))
+        pos = ring_positions(ex.player_events, 4, 2)
+        fr = sorted(round((math.atan2(p[0] - 0.5, p[1] - 0.5) / (2 * math.pi)) % 1.0, 3) for p in pos)
+        assert fr == [0.0, 0.25, 0.5, 0.75]
