@@ -909,7 +909,13 @@ class Extractor:
                 # other arm and let a non-nominal arm's return win. No
                 # corpus map hit that path at 2/4 players (probe 2026-09-24).
                 unwind: Optional[Exception] = None
+                # The NOMINAL arm runs LAST (2026-09-25): its state writes win, so area state and the recorded
+                # nominal placements describe one world. zpzealand.xs set the bonus island's location in both arms
+                # of `if (bonusVariation == 1)`; the else arm's location won while the then arm's KotH hill was the
+                # nominal placement - the hill stood in open sea.
                 arms = [(then, True), (els, False)]
+                if nom_then:
+                    arms.reverse()
                 for arm, is_then in arms:
                     if not is_then and not els:
                         continue

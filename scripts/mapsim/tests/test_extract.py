@@ -303,6 +303,28 @@ class TestHalfKnownAnchors:
         run_checks(rs)                      # no TypeError
 
 
+class TestNominalArmStateWins:
+    """zpzealand.xs 479-511: bonusVariation = rmRandInt(1,2); the bonus island's location is set in both arms of
+    `if (bonusVariation == 1)` and the KotH hill likewise. The extractor ran both arms with LAST write winning for
+    state (the else arm's island at (0.6, 0.0)) but recorded the NOMINAL (then) arm's placements (hill at (0.4,
+    0.9)): the hill stood in open sea, KOTH_NO_LAND / CONSTRAINT_UNSAT. The live KotH capture (6p) shows the hill on
+    a 2 321-tile island. State now follows the nominal arm too."""
+
+    SRC = HEADER + ('int v = rmRandInt(1, 2);\n'
+                    'int isle = rmCreateArea("bonus island"); rmSetAreaSize(isle, 0.02, 0.02);\n'
+                    'if (v == 1) rmSetAreaLocation(isle, 0.4, 1.0); else rmSetAreaLocation(isle, 0.6, 0.0);\n'
+                    'rmBuildArea(isle);\n'
+                    'int d = rmCreateObjectDef("hill"); rmAddObjectDefItem(d, "ypKingsHill", 1, 0);\n'
+                    'if (v == 1) rmPlaceObjectDefAtLoc(d, 0, 0.4, 0.9, 1); else rmPlaceObjectDefAtLoc(d, 0, 0.6, 0.1, 1); }')
+
+    def test_area_state_follows_the_nominal_arm(self):
+        from scripts.mapsim.bridge import extraction_to_resolved
+        rs = extraction_to_resolved(run_src(self.SRC))
+        isle = next(a for a in rs.areas if a.name == "bonus island")
+        hill = next(p for p in rs.placements if p.name == "hill")
+        assert (isle.x, isle.z) == (0.4, 1.0) and (hill.x, hill.z) == (0.4, 0.9)
+
+
 class TestContinue:
     """`continue` was read as a bare name and ignored; zplondon.xs filler() (`if (taken) continue;`) then placed the
     Academy on the first cell of each range whether taken or not (twin on the live London save: 11 groupings
