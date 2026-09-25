@@ -107,7 +107,7 @@ TOKEN_RE = re.compile(r'''
 ''', re.X)
 
 KEYWORDS = {"int", "float", "string", "bool", "vector", "void", "if", "else",
-            "for", "break", "return", "include", "true", "false", "rule",
+            "for", "break", "continue", "return", "include", "true", "false", "rule",
             "while", "switch"}
 
 
@@ -232,6 +232,11 @@ class Parser:
             if self.at(";"):
                 self.next()
             return ("break", line)
+        if val == "continue":
+            self.next()
+            if self.at(";"):
+                self.next()
+            return ("continue", line)
         if val == "return":
             self.next()
             expr = None
@@ -536,6 +541,12 @@ RIVER_HALF_WIDTH_CAP_M = 32.0
 
 class _Break(Exception):
     pass
+
+
+class _Continue(Exception):
+    """`continue;` - skips to the next for-loop iteration. Before 2026-09-25 the parser read `continue` as a bare
+    name (which, starting with 'c', passed as an engine constant) and the loop body ran on: zplondon.xs filler()'s
+    `if (taken) continue;` placed the Academy and treasure blocks on the first cell of every range."""
 
 
 class _Return(Exception):
@@ -898,9 +909,10 @@ class Extractor:
                 # other arm and let a non-nominal arm's return win. No
                 # corpus map hit that path at 2/4 players (probe 2026-09-24).
                 unwind: Optional[Exception] = None
-                for arm, is_then in ((then, True), (els, False)):
+                arms = [(then, True), (els, False)]
+                for arm, is_then in arms:
                     if not is_then and not els:
-                        break
+                        continue
                     nominal_arm = is_then == nom_then
                     self.variant_stack.append(
                         f"{value.expr}@{line}:{'true' if is_then else 'false'}")
@@ -909,7 +921,7 @@ class Extractor:
                     try:
                         for s in arm:
                             self.exec_stmt(s)
-                    except (_Return, _Break) as u:
+                    except (_Return, _Break, _Continue) as u:
                         if nominal_arm:
                             unwind = u
                     finally:
@@ -944,6 +956,8 @@ class Extractor:
                 try:
                     for s in body:
                         self.exec_stmt(s)
+                except _Continue:
+                    pass
                 except _Break:
                     break
                 i += step
@@ -952,6 +966,8 @@ class Extractor:
                 if iterations > 5000:
                     raise ExtractError(f"line {line}: runaway loop")
             return
+        if op == "continue":
+            raise _Continue()
         if op == "break":
             raise _Break()
         if op == "return":
