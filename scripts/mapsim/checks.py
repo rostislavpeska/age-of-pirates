@@ -356,7 +356,13 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
             if field_ctx is None:
                 field_ctx = FieldContext(rs)
                 gf = grown_fields(rs)
-            radii = {p.min_dist_m, (p.min_dist_m + p.max_dist_m) / 2.0, p.max_dist_m}
+            # The whole search disc, densely (2026-09-25): rings every <= 5 m, about one direction per 4 m of ring.
+            # Three rings of 16 directions missed real spots - Treasure Island 6p 'Controler 1' ('ferry v. water',
+            # 18 m) was reported UNSAT with a qualifying point 16 m from water inside its 30 m disc, where the live
+            # save has it.
+            span = p.max_dist_m - p.min_dist_m
+            n_r = max(2, int(math.ceil(span / 5.0)))
+            radii = {p.min_dist_m + span * i / n_r for i in range(n_r + 1)}
             drift = float(getattr(p, "drift_m", 0.0) or 0.0)
             if drift > 0.0:             # a read-back anchor may be this far off: search further out too
                 radii |= {p.max_dist_m + drift / 4.0, p.max_dist_m + drift / 2.0,
@@ -371,8 +377,9 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
                     if spec_allowed(field_ctx, anchor_m, spec, p.line, gf, exclude_self=me) is not False:
                         satisfied = True
                     continue
-                for k in range(16):
-                    theta = 2.0 * math.pi * k / 16.0
+                n_dir = min(128, max(16, int(math.ceil(2.0 * math.pi * r / 4.0))))
+                for k in range(n_dir):
+                    theta = 2.0 * math.pi * k / n_dir
                     sample = (anchor_m[0] + r * math.cos(theta),
                               anchor_m[1] + r * math.sin(theta))
                     if spec_allowed(field_ctx, sample, spec, p.line, gf, exclude_self=me) is not False:
