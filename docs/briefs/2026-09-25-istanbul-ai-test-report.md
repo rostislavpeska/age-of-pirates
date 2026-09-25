@@ -90,5 +90,5 @@ below 2 hulls idles (p2 above), and a civ with no pirate ship or monitor never a
 ('rather no merge ... the custom landing and custom dock builder never worked properly') - the fallback belongs to
 the stripped custom-landing design; do not re-add it as a 'regression fix'.
 
-**Open AI item (owner's word needed):** `pirateForwardBasePoint`'s distance rule (with one
+**Deferred (owner 2026-09-25: another iteration, it needs an overnight test session):** `pirateForwardBasePoint`'s distance rule (with one
 enemy-beach marker per player the map already decides the side).
