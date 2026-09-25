@@ -334,3 +334,41 @@ class TestTeamAreaCoversItsMembers:
             assert not tg.water[j][i], (round(x, 3), round(z, 3))
         chains = [a.influence_segments for a in rs.areas if a.name.startswith("team ")]
         assert [len(c) for c in chains] == [2, 2]
+
+
+TRIANGLE_ISLAND = r"""
+void main(void) {
+   rmSetMapSize(760, 760);
+   rmSetSeaLevel(2.0);
+   rmTerrainInitialize("water");
+   int south = rmCreateArea("south island");
+   rmSetAreaSize(south, 0.15, 0.15);
+   rmSetAreaLocation(south, 0.0, 0.3);
+   rmSetAreaBaseHeight(south, 3.5);
+   rmAddAreaInfluenceSegment(south, 0.2, 0.1, 0.4, 0.55);
+   rmAddAreaInfluenceSegment(south, 0.4, 0.55, 0.0, 0.5);
+   rmAddAreaInfluenceSegment(south, 0.0, 0.5, 0.2, 0.1);
+   rmBuildArea(south);
+}
+"""
+
+
+class TestClosedSegmentLoopFills:
+    """zptorresstrait.xs draws each big island as a triangle of influence segments: the live minimaps show solid
+    triangles, where the flood's segment band left the inside sea (2p 77.4 -> 82.1 % minimap agreement with the
+    fill)."""
+
+    def test_triangle_inside_is_land(self, tmp_path):
+        src = tmp_path / "triangle.xs"
+        src.write_text(TRIANGLE_ISLAND, encoding="utf-8")
+        tg = terrain_grid(extraction_to_resolved(extract(src, Scenario(2, 2))))
+        i, j = tg.cell_of_frac(0.2, 0.38)          # the centroid, ~90 m from every segment
+        assert not tg.water[j][i]
+
+    def test_open_chain_is_not_filled(self, tmp_path):
+        src = tmp_path / "chain.xs"
+        src.write_text(TRIANGLE_ISLAND.replace("rmAddAreaInfluenceSegment(south, 0.0, 0.5, 0.2, 0.1);\n", ""),
+                       encoding="utf-8")
+        tg = terrain_grid(extraction_to_resolved(extract(src, Scenario(2, 2))))
+        i, j = tg.cell_of_frac(0.2, 0.38)
+        assert tg.water[j][i]
