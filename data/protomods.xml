@@ -76124,6 +76124,7 @@
     <flag>Invulnerable</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
   </unit>
   <unit id="21198" name="zpUnderbrushGreekColumns">
     <dbid>21198</dbid>

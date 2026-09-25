@@ -1,6 +1,9 @@
 # Istanbul forward base: test instructions (2026-09-25)
 
-> **Superseded for testing (2026-09-25 afternoon):** run `2026-09-25-istanbul-fleet-split-restore.md` instead. It repeats this brief's forward-base criteria, and the build echo is now r13. Test 1 of this brief passed on the main device (run 13).
+> **FAILED and superseded (2026-09-25):** in the owner's test the AIs built the forward base on their OWN island.
+> The markers stood on both beaches for every player and only in the repo map; the editor copy `000_istanbul.xs` had
+> none. The map now places one marker per player on the ENEMY beach only, and the marker proto has `PlaceAnywhere`.
+> Continue with `2026-09-25-istanbul-handover.md`.
 
 For the agent that tests the AI on the other device. The change is on `Pirate-rework`; the AI was not run in game
 before it was pushed.

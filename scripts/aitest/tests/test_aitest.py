@@ -303,13 +303,18 @@ class TestLondonOnlyPlacement:
     def test_build_echo_is_round_thirteen(self):
         assert "build r13 2026-09-25" in core("aipiraterules.xs")
 
-    def test_istanbul_places_the_construction_markers_on_both_landing_beaches(self):
-        # owner 2026-09-25: the forward base next to the Fisherman's guild - after every placement, before UNIT IDS
+    def test_istanbul_places_the_construction_marker_only_on_the_enemy_beach(self):
+        # owner 2026-09-25: the forward base next to the Fisherman's guild, 'ONLY AT ENEMY BEACH' - after every
+        # placement, before UNIT IDS; the north beach is the north team's shore, so a north-team player's marker goes
+        # to the SOUTH beach and a south-team player's to the NORTH beach (both beaches for everyone put own-shore
+        # markers on the map - the owner's test: forward bases on the own island)
         s = open(os.path.join(ROOT, "randmaps", "zpistanbulb.xs"), "rb").read().decode("utf-8")
         i = s.index('rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker"')
         assert i < s.index("//  UNIT IDS - every id a trigger targets")
-        assert "rmPlaceObjectDefAtLoc(constrMark, cm, beachDockNX, beachDockNZ);" in s
-        assert "rmPlaceObjectDefAtLoc(constrMark, cm, beachDockSX, beachDockSZ);" in s
+        block = re.sub(r"//[^\n]*", "", s[i:s.index("//  UNIT IDS - every id a trigger targets")])
+        places = re.findall(r"rmGetPlayerTeam\(cm\) == (\w+)\)\s*\{\s*rmPlaceObjectDefAtLoc\(constrMark, cm, (\w+), (\w+)\);", block)
+        assert places == [("northTeam", "beachDockSX", "beachDockSZ"), ("southTeam", "beachDockNX", "beachDockNZ")], places
+        assert block.count("rmPlaceObjectDefAtLoc(constrMark") == 2
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):

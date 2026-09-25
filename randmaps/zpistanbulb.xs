@@ -4177,21 +4177,34 @@ void main(void)
 		if (southCount >= 7) placeWaterFlagInZone(seventhAttacker, flagZoneN);
 	}
 
-	// ---- AI CONSTRUCTION MARKERS (owner 2026-09-25: the forward base 'next to the Fisherman's guild') -------
-	// zpAILondonConstrMarker (editor-only, Tracked, owned by the player so the AI's own query sees it) on both landing
-	// beaches - the land the two Fisherman's Guild islands sit off (beachDockN / beachDockS, the SAME anchors the guilds
-	// and the beaches use). One per player per beach: the AI's forward base / landing goes to the beach on the enemy
-	// side (aipiraterules.xs pirateForwardBasePoint). Placed after every placement and before the UNIT IDS block: the
-	// ids below come from rmGetUnitPlaced and a fixed shift, so nothing moves.
+	// ---- AI CONSTRUCTION MARKERS (owner 2026-09-25: the forward base 'next to the Fisherman's guild', ONLY at the
+	// ENEMY beach) --------------------------------------------------------------------------------------------------
+	// zpAILondonConstrMarker (editor-only block, Tracked, owned by the player so the AI's own query sees it) on the
+	// landing beach of the ENEMY shore - the land that shore's Fisherman's Guild island sits off (beachDockN /
+	// beachDockS, the same anchors the guilds and the beaches use). The north beach lies on the north team's shore
+	// (beachBoxNE, above the strait), the south beach on the south team's (beachBoxSW, below it); which lobby team is
+	// north is the sideRoll coin flip. So a north-team player gets ONE marker, on the SOUTH beach, and a south-team
+	// player ONE, on the NORTH beach. 2-team lobbies only, like the player placement. Placed after every placement and
+	// before the UNIT IDS block: the ids below come from rmGetUnitPlaced and a fixed shift, so nothing moves.
+	// The Game-root editor copy 000_istanbul.xs is kept byte-identical to this file.
 	int constrMark = rmCreateObjectDef("ai construction marker");
 	rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker", 1, 0.0);
 	rmSetObjectDefAllowOverlap(constrMark, true);
 	rmSetObjectDefMinDistance(constrMark, 0.0);
 	rmSetObjectDefMaxDistance(constrMark, 0.0);
-	for (cm = 1; <= cNumberNonGaiaPlayers)
+	if (cNumberTeams == 2)
 	{
-		rmPlaceObjectDefAtLoc(constrMark, cm, beachDockNX, beachDockNZ);
-		rmPlaceObjectDefAtLoc(constrMark, cm, beachDockSX, beachDockSZ);
+		for (cm = 1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(cm) == northTeam)
+			{
+				rmPlaceObjectDefAtLoc(constrMark, cm, beachDockSX, beachDockSZ);   // the south shore = the enemy's
+			}
+			if (rmGetPlayerTeam(cm) == southTeam)
+			{
+				rmPlaceObjectDefAtLoc(constrMark, cm, beachDockNX, beachDockNZ);   // the north shore = the enemy's
+			}
+		}
 	}
 
 	// ========================================================================

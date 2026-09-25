@@ -1,5 +1,8 @@
 # Istanbul fleet split restored: test instructions (2026-09-25)
 
+> **Read `2026-09-25-istanbul-handover.md` first:** it gates this test and replaces criterion T7 below. The run-14
+> forward-base line in the last table was an unverified inference and is corrected there.
+
 For the agent that tests the AI on the dedicated test device (2880x1800). **Never test on the owner's main device**
 (owner 2026-09-25: testing there is "ENORMOUSLY EXPENSIVE"). Run **one** 30-minute test, report, stop. The owner
 evaluates before anything else runs.
@@ -107,7 +110,7 @@ Convert each record once:
 | T4 | the other ships still guard the forts | the fort rules keep running | `GUARD p<N>` / `HOLD p<N>` / `GARRISON p<N>` lines as in run 14 (13-37 GUARD, 28-70 HOLD per AI) |
 | T5 | no pirate hull parked at a fort | on the end snapshots of both Naval Forts | visual: pirate-flagged ships at a fort = FAIL |
 | T6 | docks | report, do not judge | every `AIDOCKFAIL` line and the `AIDIAG ... docks D dockfails F ... navy N` line at 29:00, against run 14 (docks 0/3/1, navy 0/3/3) |
-| T7 | forward base (from the earlier brief) | report | `PIRATEPLACE p<N> forward base next to the bridge at X/Z` (the enemy beach: north ~398/396, south ~203/187) and `PIRATEFB p<N> state S at X/Z military buildings there M` with M > 0 |
+| T7 | forward base: REPLACED, see the handover brief | - | `PIRATEPLACE p<N> forward base next to the bridge at X/Z` (the enemy beach: north ~398/396, south ~203/187) and `PIRATEFB p<N> state S at X/Z military buildings there M` with M > 0 |
 | T8 | no regression | the full 30 minutes run without a crash; every AI reaches Age 3 by 29:00 (run 14: ages 3/4/4) | `AIDIAG p<N> age A` |
 
 ## If something fails
@@ -135,4 +138,4 @@ proposal only.
 | Run | What | Result |
 |---|---|---|
 | 13 | test 1 of the forward-base brief, 2 min, hand-driven while the driver was adapted to 2560x1080 | **pass**: no dialog, `MAP CODE 'zpistanbulb/4/...'`, `PIRATEFB p2/p3/p4 build r12 2026-09-25 - 2 construction markers` at 00:00:01 |
-| 14 | test 2, 30 min | the driver aborted mid-cap (top-left corner: the owner was using the desktop); the owner quit at game time 29:38. The forward base aimed at the right beach (p2 and p4 at 203/187; the stock plans re-pointed there), but `military buildings there 0` at 20:10; p3 `no construction block on the enemy side`. Navy and docks as above. |
+| 14 | test 2, 30 min | the driver aborted mid-cap (top-left corner: the owner was using the desktop); the owner quit at game time 29:38. Forward base: p2 and p4 targeted 203/187 and the stock plans were re-pointed there, `military buildings there 0` at 20:10; p3 `no construction block on the enemy side`. Whether 203/187 was the ENEMY shore for p2/p4 was NOT verified (it was inferred from the distance rule); the owner's own test: forward bases on the OWN island. Navy and docks as above. |
