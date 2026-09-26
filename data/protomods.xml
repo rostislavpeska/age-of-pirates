@@ -29030,7 +29030,6 @@
     <displaynameid>501397</displaynameid>
     <editornameid>501383</editornameid>
     <populationcount>0</populationcount>
-    <subciv>Jewish</subciv>
     <buildlimit>8</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -29356,7 +29355,6 @@
     <dbid>20329</dbid>
     <displaynameid>501396</displaynameid>
     <editornameid>501392</editornameid>
-    <subciv>Jewish</subciv>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -76207,7 +76205,7 @@
     <icon>resources\art\units\natives\europeans\lowlander_foot_icon.png</icon>
     <portraiticon>resources\art\units\natives\europeans\lowlander_foot_portrait.png</portraiticon>
     <rollovertextid>503573</rollovertextid>
-    <shortrollovertextid>62962</shortrollovertextid>
+    <shortrollovertextid>503607</shortrollovertextid>
     <initialhitpoints>170.0000</initialhitpoints>
     <maxhitpoints>170.0000</maxhitpoints>
     <los>16.0000</los>
@@ -76334,6 +76332,12 @@
       <minrange>2.500000</minrange>
       <rof>3.000000</rof>
       <damagebonus type="AbstractLightCavalry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
     </protoaction>
   </unit>
   <unit id="21201" name="zpNatRedcoat">
@@ -76476,6 +76480,12 @@
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
     </protoaction>
   </unit>
   <unit id="21202" name="zpNatPrinceRupert">

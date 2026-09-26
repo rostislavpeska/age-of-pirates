@@ -38162,6 +38162,18 @@
       <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
         <target type="ProtoUnit">zpNatWelshLongbowman</target>
       </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatParliamentEasternAssociation" type="Normal">
@@ -38930,6 +38942,21 @@
       </effect>
       <effect type="CommandAdd" proto="zpNatWhitecoat" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
       </effect>
     </effects>
   </tech>

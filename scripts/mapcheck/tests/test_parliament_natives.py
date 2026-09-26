@@ -867,6 +867,35 @@ class TestCoats:
         leg = t["ImpLegendaryNativesShadow"]
         assert 'proto="zpNatWhitecoat" culture="none" newname="503576">' in leg and 'proto="zpNatRedcoat" culture="none" newname="503581">' in leg
 
+    def test_native_coats_build_barricades_and_whitecoats_build_camps(self):
+        u = _units()
+        for n in ("zpNatWhitecoat", "zpNatRedcoat"):
+            assert re.search(r"<name>Build</name>\s*<maxrange>1\.0</maxrange>\s*<active>1</active>", u[n]), n
+        for f in ("whitecoat.xml", "redcoat.xml"):
+            art = (REPO / "art/units/stuart" / f).read_text(encoding="utf-8") if f == "whitecoat.xml" else (REPO / "art/units/parliament" / f).read_text(encoding="utf-8")
+            for a in ("Build", "BuildLifting", "BuildSaw", "BuildStaking"):
+                assert "<anim>%s<" % a in art, f
+            assert 'a="hammer"' in art, f
+        stuart = _techs()["zpStuartExpansionSPC"]
+        for proto in ("WallConnector", "WallStraight2", "WallStraight5", "zpMilitaryCamp"):
+            assert re.search(r'proto="%s"[^>]*>\s*<target type="ProtoUnit">zpNatWhitecoat<' % proto, stuart), proto
+        assert re.search(r'action="Build"[^>]*>\s*<target type="ProtoUnit">zpNatWhitecoat<', stuart)
+        lines = _techs()["zpNatParliamentLines"]
+        for proto in ("WallConnector", "WallStraight2", "WallStraight5"):
+            assert re.search(r'proto="%s"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<' % proto, lines), proto
+        assert re.search(r'action="Build"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<', lines)
+        assert "zpNatRedcoat" not in stuart and "zpNatWhitecoat" not in lines
+
+    def test_coat_rollovers_mention_barricade_building(self):
+        st = _read("data/strings/english/stringmods.xml")
+        white = re.search(r'<string _locid="503573">([^<]*)</string>', st).group(1)
+        assert "barricades" in white and "Military Camps" in white
+        short = re.search(r'<string _locid="503607">([^<]*)</string>', st).group(1)
+        assert "barricades" in short and "Military Camps" in short
+        assert _c(_units()["zpNatWhitecoat"], "shortrollovertextid") == "503607"
+        lines = re.search(r'<string _locid="503475">([^<]*)</string>', st).group(1)
+        assert "Redcoats" in lines and "barricades" in lines and "Parliamentarian" in lines
+
 
 # ------------------------------------------------------------------- Prince Rupert of the Rhine (2026-09-24)
 class TestPrinceRupert:

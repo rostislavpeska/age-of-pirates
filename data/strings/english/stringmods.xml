@@ -3475,7 +3475,7 @@
       <string _locid="503472">Trained Bands</string>
       <string _locid="503473">The London Trained Bands drill every Sunday. All settlers gain 40% more hitpoints and attack.</string>
       <string _locid="503474">Lines of Communication</string>
-      <string _locid="503475">The earthwork ring around London. Your barricades have 50% more hitpoints and Parliamentarian units can build them.</string>
+      <string _locid="503475">The earthwork ring around London. Your barricades have 50% more hitpoints. Redcoats and other Parliamentarian native units can build them.</string>
       <string _locid="503476">Eastern Association</string>
       <string _locid="503477">Cromwell's regional army. Lords project a command aura: all nearby units gain 15% attack and 10% hitpoints. Auras of several Lords do not stack.</string>
       <string _locid="503478">The Grand Remonstrance</string>
@@ -3571,7 +3571,7 @@
       <string _locid="503570">ZP Underbrush Greek Columns</string>
       <string _locid="503571">ZP NAT British Guards</string>
       <string _locid="503572">ZP NAT Whitecoat</string>
-      <string _locid="503573">Royalist foot of the Marquess of Newcastle's regiment, in coats of undyed white wool. Tougher and better armed than the Lowlander it replaces, with a pike-length reach at close quarters.</string>
+      <string _locid="503573">Royalist foot of the Marquess of Newcastle's regiment, in coats of undyed white wool. Tougher and better armed than the Lowlander it replaces, with a pike-length reach at close quarters. Once the extended House of Stuart is unlocked, Whitecoats can construct barricades and Military Camps.</string>
       <string _locid="503574">Veteran Whitecoat</string>
       <string _locid="503575">Guard Whitecoat</string>
       <string _locid="503576">Imperial Whitecoat</string>
@@ -3607,6 +3607,7 @@
       <string _locid="503604">Chinese Town Center - Destruction Control</string>
       <string _locid="503605">ZP TEST Chinese Town Center - Destruction Control</string>
       <string _locid="503606">Experimental Havok destruction test. Compare progressive damage and final collapse with the Chinese donor.</string>
+      <string _locid="503607">Royalist musketeer. Builds barricades and Military Camps after the Stuart expansion is unlocked.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

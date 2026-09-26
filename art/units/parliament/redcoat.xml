@@ -11,6 +11,13 @@
   </attachment>
   <attachment>torch<include>effects\projectiles\torch.xml</include>
   </attachment>
+  <attachment>hammer<component>hammer<assetreference type="GrannyModel">
+        <file>units\attachments\hammer_villager</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>hammer</component>
+    </anim>
+  </attachment>
   <component>ModelComp<assetreference type="GrannyModel">
       <file>units\infantry_ranged\musketeer\redcoats_age2</file>
     </assetreference>
@@ -369,5 +376,61 @@
     </assetreference>
     <component>ModelComp</component>
     <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Build<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_build1</file>
+      <weight>90</weight>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.36</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.65</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">1.00</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="hammer" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0" />
+  </anim>
+  <anim>BuildLifting<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_build1</file>
+      <weight>90</weight>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.36</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.65</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">1.00</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="hammer" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0" />
+  </anim>
+  <anim>BuildSaw<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_build1</file>
+      <weight>90</weight>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.36</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.65</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">1.00</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="hammer" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0" />
+  </anim>
+  <anim>BuildStaking<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_build1</file>
+      <weight>90</weight>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.36</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.65</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">1.00</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="hammer" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0" />
   </anim>
 </animfile>
