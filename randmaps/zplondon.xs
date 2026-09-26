@@ -1409,7 +1409,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZd6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZd6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
-			rmPlaceGroupingAtLoc(blockParliament2, 0, locXParl2In, locZdParl2In);   // the second Parliament post, inside the prop block's hole, offset by the knobs
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locXParl2In, locZdParl2In);   // one per side: a house block in the prop hole, not Parlam_02 (native _02 from two up)
 		}
 		if (defenderCount == 2)
 		{
@@ -1480,7 +1480,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZa6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
-			rmPlaceGroupingAtLoc(blockStuart2, 0, locXStuart2In, locZaStuart2In);   // the second Stuart post, inside the prop block's hole, offset by the knobs
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locXStuart2In, locZaStuart2In);   // one per side: a house block in the prop hole, not Stuart_02 (native _02 from two up)
 		}
 		if (attackerCount == 2)
 		{

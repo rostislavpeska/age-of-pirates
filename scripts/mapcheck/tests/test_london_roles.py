@@ -177,6 +177,12 @@ class TestSeats:
             return [("rmPlaceGroupingAtLoc", "blockStuart2, 0, " + at)]
         return [("rmPlaceGroupingAtLoc", "blockParliament2, 0, " + at.replace("locXStuart2In, locZaStuart2In", "locXParl2In, locZdParl2In").replace("locZaOut", "locZdOut"))]
 
+    def _prop_hole_at_one(self, side):
+        """one per side: EU_House_Block_01 in the prop filler hole instead of the native _02 settlement"""
+        if side == "attacker":
+            return [("rmPlaceGroupingAtLoc", "blockHouse1, 0, locXStuart2In, locZaStuart2In")]
+        return [("rmPlaceGroupingAtLoc", "blockHouse1, 0, locXParl2In, locZdParl2In")]
+
     def test_second_stuart_post_is_pinned_with_offset_knobs(self):
         s = self._sec()
         assert "rmSetGroupingMaxDistance(blockStuart2, 0.00);" in s and "float stuart2OffXM = " in s and "float stuart2OffZM = " in s
@@ -211,7 +217,7 @@ class TestSeats:
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX3, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX4, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),            # rows 1-2 x cols 4-6
-            ] + self._stuart2(side, "locXStuart2In, locZaStuart2In"), side
+            ] + self._prop_hole_at_one(side), side
 
     def test_two_per_side(self):
         for side, o, S, z5, z7, z67 in self.SIDES:
@@ -234,7 +240,11 @@ class TestSeats:
         s = self._sec()
         assert 'int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");' in s and "int stuart2OutTiles = wallOutTiles + 30;" in s
         assert "float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s and "locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
-        for k in (1, 2, 3):          # inside the prop block's hole, right after the prop block
+        for k in (1,):               # one per side: house block in the prop hole, not native _02
+            b = self._block("attacker", k)
+            assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locXStuart2In, locZaStuart2In")], k
+            assert self._block("defender", k)[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZdSeat"), ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locXParl2In, locZdParl2In")], k
+        for k in (2, 3):             # inside the prop block's hole, right after the prop block
             b = self._block("attacker", k)
             assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, locXStuart2In, locZaStuart2In")], k
             assert self._block("defender", k)[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZdSeat"), ("rmPlaceGroupingAtLoc", "blockParliament2, 0, locXParl2In, locZdParl2In")], k
