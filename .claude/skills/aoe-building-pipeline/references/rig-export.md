@@ -14,6 +14,12 @@ The joined landmark was reported at roughly 227k exported vertices / 103k triang
 
 `Layered geometry data in mesh ... is not supported` refers to serialized FBX layer data, not necessarily overlapping physical faces. Compare Layer/LayerElement records, mapping/reference modes and connections with the working Basilica. Extra UV/color/material layers were suspects, not a proven universal cause. Preserve authoring/AO layers in the source and simplify only the export duplicate.
 
+**Home City model vanished, 2026-09-26 (root cause proven).** An attach bone `bone_prop` added as a second
+root bone made the whole converter-built model invisible in the Home City and the main menu, with no warning
+from the converter or the game log. A six-variant bone bench showed the second root alone causes it (no
+attachment needed). The rule and the table are in [unit-bones](../../unit-bones/SKILL.md): add the attach bone
+as a child of the one root with its absolute transform. `converter.py` now refuses a multi-root GXO.
+
 ## Local converter
 
 The existing configurable wrapper is `scripts/havok/converter.py`; machine settings belong in ignored `scripts/havok/converter.local.json`. The skill-local PowerShell wrapper is now maintained only in `.claude/skills/aoe3de-building-export/scripts/convert_fbx_to_gr2.ps1` and accepts an explicit executable path. It uses the observed `--format=gr2 --bang` interface. Neither wrapper proves game compatibility from a header or exit code. Inspect a stalled converter dialog before another attempt.

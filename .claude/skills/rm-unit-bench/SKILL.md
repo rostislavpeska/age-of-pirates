@@ -1,6 +1,6 @@
 ---
 name: rm-unit-bench
-description: Visual test of ONE unit (a new building, ship, prop, native unit) on the most basic map that cannot crash - frozen spine template, offline pre-flight of the proto's animfile/model/material/textures/CRLF, a vanilla control unit beside the subject, editor generation with the crash oracle, then census = spawned, screenshot = renders. Use when a new model must be seen in game, when "the unit does not appear", when a minimal test map crashed before, or before any play test of new art. Triggers on "unit bench", "test the model in game", "single unit map", "does it render", "minimal map with one unit", "visual test".
+description: Visual test of ONE unit (a new building, ship, prop, native unit) - or a VARIANT GRID of several candidate fixes in one generation instead of one restart each - on the most basic map that cannot crash - frozen spine template, offline pre-flight of the proto's animfile/model/material/textures/CRLF, a vanilla control unit beside the subject, editor generation with the crash oracle, then census = spawned, screenshot = renders. Use when a new model must be seen in game, when "the unit does not appear", when a minimal test map crashed before, or before any play test of new art. Triggers on "unit bench", "test the model in game", "single unit map", "does it render", "minimal map with one unit", "visual test", "variant grid", "which version renders", "test several fixes at once".
 ---
 
 # rm-unit-bench: see one unit in game without a crash
@@ -62,9 +62,40 @@ are sane, which the 2026-09-17 saves were not.
 | 000_unitbench_unit | zpNatInuitHarpooner, owner 1 | PASS: harpooner 1, House 1, TC 2 | small figure renders |
 | 000_unitbench_gaia | basilica, `--owner 0` | FAIL_SPINE: neither House nor basilica placed | only the two TCs |
 
-Rule from the last row: `--owner 0` places NO civ building on this bench (census and screenshot
+2026-09-26, variant grid `000_bonebench` (six St Paul's bone variants + House, 4 players; the owner
+generated and saved `bonebench`, census from the save): all six subjects spawned once. The owner saw four
+render and two invisible, which gave the attach-bone rule in **unit-bones**.
+
+Rule from the gaia row: `--owner 0` places NO civ building on this bench (census and screenshot
 agree); bench buildings with owner 1. Gaia is fine for units the maps already place for player 0
 (nuggets, herds, props, fishing holes).
+
+## Variant grid: several candidate fixes in ONE generation
+
+When several fixes of one model compete, bench them side by side instead of one game restart each:
+
+```bash
+python scripts/tools/unitbench.py --proto zzBenchA,zzBenchB,zzBenchC --stem 000_bonebench
+python sandbox/census/bench_run.py --proto zzBenchA,zzBenchB,zzBenchC --stem 000_bonebench --nav <down>,<row>
+```
+
+Rows of `--cols` (3) subjects `--spacing` (36) m apart, rows `--rowgap` (44) m apart along the camera's
+depth axis (a 26 m tall building does not hide the row behind it), centred on the map centre where the
+editor camera opens. Subject 1 = front row, left; the control stands in front, centred; the players sit on
+a 0.42 ring. P1 warns when the spacing is below 2 x obstruction radius + 4 m. The census verdict
+(`judge_grid`) wants every subject exactly once by name. Visibility comes from the screenshot or the
+owner's eyes BY POSITION: variants usually share one display name, so hand the owner a position table.
+
+Temporary test content (owner rule: define it, run once, strip it):
+- one variable per variant: same meshes and materials, only the lines under test differ. Build the variants
+  with a script and diff each against the model last seen working.
+- protos right under `<!--TEST AND TEMPORARY CONTENT-->` in protomods.xml (ids 301xx, names `zz...`), art
+  in one throwaway folder `art/zbench_*` (CRLF animfiles, materials that reference existing textures),
+  twin rebuilt. Keep install and strip in one script that holds the exact proto block.
+- strip = remove that exact block, delete the art folder and both map copies (Steam RandMaps and
+  `scripts/maps`), then `git checkout` protomods.xml.xmb once the XML is back to HEAD. The committed twin
+  came from another encoder (636,978 vs 673,698 bytes for the same tree), so a rebuild is not
+  byte-identical. `git status` of the touched paths must come back empty.
 
 ## Rules
 

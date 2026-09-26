@@ -78,10 +78,23 @@ def run_manual(cfg, opts, f, out):
 BACKENDS = {'wine-wsl': run_wine_wsl, 'native': run_native, 'command': run_command}
 
 
+def gxo_roots(path):
+    """Names of the root bones (parent 0) of a GXO; bone lines precede the first mesh, so the scan stops there."""
+    roots = []
+    with open(path, encoding='utf-8', errors='replace') as fh:
+        for line in fh:
+            if line.startswith('m '): break
+            t = line.split()
+            if len(t) > 2 and t[0] == 'b' and t[2] == '0': roots.append(t[1].strip('"'))
+    return roots
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--format', choices=['gr2', 'gxo', 'fbx']); ap.add_argument('--bang', action='store_true')
     ap.add_argument('--modify-gr2', metavar='OPS'); ap.add_argument('--check', action='store_true'); ap.add_argument('files', nargs='*')
+    ap.add_argument('--allow-multi-root', action='store_true',
+                    help='convert a GXO with 2+ root bones anyway (the converter output then renders nothing in game)')
     a = ap.parse_args(); cfg = load_config(); backend = cfg.get('backend', 'manual')
     if a.check:
         print('backend:', backend, '| config:', 'env AOE3_CONVERTER' if os.environ.get('AOE3_CONVERTER') else (LOCAL if os.path.exists(LOCAL) else f'none (copy {os.path.basename(EXAMPLE)} to converter.local.json)'))
@@ -101,6 +114,14 @@ def main():
         out = os.path.join(os.path.dirname(f), os.path.splitext(os.path.basename(f))[0] + '.' + a.format) if a.format else f
         if a.format and os.path.splitext(f)[1].lower() == '.' + a.format:
             print(f'SKIPPED {os.path.basename(f)}: already a .{a.format} (converting a file onto its own format overwrites it)'); rc_all = 1; continue
+        if a.format == 'gr2' and f.lower().endswith('.gxo') and not a.allow_multi_root:
+            roots = gxo_roots(f)
+            if len(roots) > 1:
+                # bone bench 2026-09-26: the same St Paul's model with a 2nd root bone was not drawn at all, with or
+                # without an attachment on it; the attach bone as a CHILD of the one root rendered (unit-bones skill)
+                print(f'REFUSED {os.path.basename(f)}: {len(roots)} root bones {roots} - a converter-built gr2 with 2+ roots '
+                      'renders NOTHING in game. Make the extra bones children of the first root (parent = its 1-based bone number), '
+                      'keeping their absolute transform; --allow-multi-root overrides.'); rc_all = 1; continue
         if backend == 'manual': rc, msg = run_manual(cfg, opts, f, out)
         else: rc, msg = BACKENDS[backend](cfg, opts, f)
         ok = rc == 0 and os.path.exists(out) and os.path.getsize(out) > 0

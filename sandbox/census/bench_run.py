@@ -5,6 +5,8 @@ census the save and judge spawn / not spawn with explicit criteria.
     python sandbox/census/bench_run.py --proto zpSPCLondonBasilica --nav 8,3 --players 2
     python sandbox/census/bench_run.py --proto zpSPCLondonBasilica --nav 8,3 --seed 4242 --json out.json
     python sandbox/census/bench_run.py --proto zpSPCLondonBasilica --nav 8,3 --dry-run   # print, never touch
+    python sandbox/census/bench_run.py --proto zzA,zzB,zzC --stem 000_bonebench --nav 8,4   # variant grid: census
+                                            # checks each subject once by name; the screenshot shows them all
 
 Preconditions (the runner checks what it can and stops otherwise):
   - the game is running and the Scenario Editor is open (File menu visible); this runner never
@@ -144,6 +146,28 @@ def judge(units, proto, control, players, dist, tol=3.0):
     return verdict, counts, notes, geo
 
 
+def judge_grid(units, protos, control, players):
+    """Variant grid (unitbench.py with several --proto names): every subject must be in the census exactly once.
+    SPAWN is judged here by names; RENDER is the screenshot's job (subject 1 = front row, left)."""
+    counts = {}
+    for u in units:
+        counts[u["proto"]] = counts.get(u["proto"], 0) + 1
+    notes = []
+    if counts.get("TownCenter", 0) != players:
+        notes.append(f"TownCenters {counts.get('TownCenter', 0)} != players {players}")
+    where = {p: [(round(u["x"], 1), round(u["z"], 1)) for u in units if u["proto"] == p] for p in protos}
+    if counts.get(control, 0) == 0:
+        return "FAIL_SPINE", counts, notes + [f"control {control!r} absent"], where
+    missing = [p for p in protos if counts.get(p, 0) == 0]
+    extra = [p for p in protos if counts.get(p, 0) > 1]
+    if extra:
+        notes.append(f"placed more than once: {extra}")
+    if missing:
+        unk = [n for n in counts if n.startswith("unknown(")]
+        return "FAIL_SUBJECT", counts, notes + [f"absent: {missing}" + (f"; unresolved ids {unk}" if unk else "")], where
+    return "PASS", counts, notes, where
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--proto")
@@ -218,6 +242,19 @@ def main(argv=None) -> int:
     dst = OUT / src.name
     shutil.copy(src, dst)
     units = census(dst)
+    protos = [p.strip() for p in a.proto.split(",") if p.strip()]
+    if len(protos) > 1:
+        verdict, counts, notes, where = judge_grid(units, protos, a.control, a.players)
+        result.update(verdict=verdict, units=len(units), counts=counts, notes=notes, where=where,
+                      screenshot=str(shot), save=str(dst))
+        print(f"VERDICT {verdict}  units={len(units)}  control={counts.get(a.control, 0)}  TC={counts.get('TownCenter', 0)}")
+        for i, p in enumerate(protos, 1):
+            print(f"  subject {i} {p}: {counts.get(p, 0)} at {where.get(p)}")
+        for n in notes:
+            print("  note:", n)
+        print(f"  screenshot: {shot}")
+        _write(a.json, result)
+        return 0 if verdict == "PASS" else 1
     verdict, counts, notes, geo = judge(units, a.proto, a.control, a.players, a.dist)
     result.update(verdict=verdict, units=len(units), counts=counts, notes=notes, geo=geo,
                   screenshot=str(shot), save=str(dst))

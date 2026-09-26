@@ -1,6 +1,6 @@
 ---
 name: unit-bones
-description: Add bones to a vanilla Age of Empires III DE model without re-exporting it - garrison flag, civ flag / banner points, cannon muzzles (bone_muzzleL/R##), projectile impact points (boneimpact##), attachment bones - into the intact model AND its damaged/destruction model, so the mod's animfile, .dmg damage templates and attachments find them. Uses the Granny-level appender (scripts/havok/gr2_addbones.py) with a bone table from a Blender rig (rig_table.py), from a GXO dump of a model that has the bones, or written by hand. Triggers on "add a bone", "garrison flag bone", "muzzle bones", "impact points", "attachment bone", "the damaged model is missing bones", "cannons fire from the wrong place".
+description: Add bones to a vanilla Age of Empires III DE model without re-exporting it - garrison flag, civ flag / banner points, cannon muzzles (bone_muzzleL/R##), projectile impact points (boneimpact##), attachment bones - into the intact model AND its damaged/destruction model, so the mod's animfile, .dmg damage templates and attachments find them. Uses the Granny-level appender (scripts/havok/gr2_addbones.py) with a bone table from a Blender rig (rig_table.py), from a GXO dump of a model that has the bones, or written by hand. Also the rule for an attach bone in a converter-built (GXO -> gr2) model: a child of the one root, never a second root (that model is not drawn at all). Triggers on "add a bone", "garrison flag bone", "muzzle bones", "impact points", "attachment bone", "bone_prop", "the model vanished after adding a bone", "the damaged model is missing bones", "cannons fire from the wrong place".
 ---
 
 # Adding bones to vanilla models
@@ -54,6 +54,34 @@ or from converter-made models are already in engine units.
 - **Animations override the rest pose**: a Blender-baked anim carries a constant track for every bone; moving a
   bone in the model does nothing while such an anim plays. Filter tracks (`anim_tracks.py`) or re-export.
 - `LODError` 1304.65 for added bones (vanilla value); InverseWorld = inverse(world).T; verified on 151 bones.
+
+## Converter-built models (GXO -> gr2): the attach bone goes UNDER the one root
+
+Bone bench 2026-09-26: the St Paul's Home City model in six variants that differ only in their `b` lines,
+one editor generation, the bunting attached with `<attach frombone="ATTACHPOINT" tobone="bone_prop">`:
+
+| Variant | Skeleton | In game |
+|---|---|---|
+| A | `bone_prop` root (identity), old root `Bone` its child | renders, bunting in place |
+| B | `Bone` root + `bone_prop` second root, bunting attached | **model not drawn** |
+| B2 | the same two roots, nothing attached | **model not drawn** |
+| C | `bone_prop` child of `Bone` (parent 1), identity | renders, bunting in place, right scale |
+| D | `bone_prop` child of `Bone`, transform = inverse of Bone's matrix | renders, bunting gone |
+| E | `Bone` only | renders |
+
+- **Never a second root in a converter-built model.** B2 shows the root itself hides the model, not the
+  attachment; the same model vanished from the Home City and the main menu. `converter.py --format gr2`
+  refuses such a GXO (`--allow-multi-root` overrides). Vanilla files do ship with 2+ roots (16 of 10,084
+  skeletons, e.g. `homecity\inca\inca_harbour`) and render - the ban is for converter output.
+- **Add the bone as a child of the existing root (C)** and write its ABSOLUTE model-space transform, as
+  every `b` line is: identity = the model origin in the mesh frame, where an attachment modelled in that
+  frame belongs. The old root keeps the converter's axis/scale matrix; rig and animation tracks stay intact.
+  Re-parenting the root (A) also renders but changes the hierarchy of an animated model.
+- **Never pre-compensate the parent (D).** The converter derives the local transform itself; an
+  inverse-of-parent line shrank and turned the attachment out of sight.
+- Before any game test, diff the bone lines against the last model seen working
+  (`grep '^b "' known_good.gxo candidate.gxo`). Several candidate fixes go into ONE variant grid
+  (**rm-unit-bench**), not one game restart each.
 
 ## Where the bones must be declared
 
