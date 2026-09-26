@@ -10,6 +10,9 @@
 		<unit name="dePort">
 			<placementfile>dock_city.xml</placementfile>
 		</unit>
+		<unit name="zpDryDock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
 		<unit name="Church">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
