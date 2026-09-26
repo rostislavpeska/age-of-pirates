@@ -37351,18 +37351,19 @@
     <dbid>20482</dbid>
     <displaynameid>501842</displaynameid>
     <editornameid>501841</editornameid>
-    <obstructionradiusx>7.0000</obstructionradiusx>
-    <obstructionradiusz>3.5000</obstructionradiusz>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\woku\forester.xml</animfile>
+    <animfile>buildings\half_timbered\timberjacks\timber_mill.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildingsmall.xml</placementfile>
-    <icon>resources\art\buildings\spc\forester.png</icon>
-    <portraiticon>resources\art\buildings\spc\forester.png</portraiticon>
+    <icon>resources\art\buildings\spc\spc_warehouse.png</icon>
+    <portraiticon>resources\art\buildings\spc\spc_warehouse.png</portraiticon>
     <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>501882</rollovertextid>
     <shortrollovertextid>501879</shortrollovertextid>
@@ -37426,7 +37427,7 @@
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Wood">2.000000</rate>
+      <rate type="Wood">1.800000</rate>
     </protoaction>
   </unit>
   <unit id="20483" name="zpSPCDemolisher">
