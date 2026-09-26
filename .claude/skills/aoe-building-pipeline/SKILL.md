@@ -9,6 +9,10 @@ Read [aoe3de-building-export](../aoe3de-building-export/SKILL.md) for the shared
 
 For authoring, use [blender-architecture](../blender-architecture/SKILL.md) and [blender-architecture-texturing](../blender-architecture-texturing/SKILL.md) in this repository.
 
+For new destructible architecture, use
+[aoe3de-destructible-building](../aoe3de-destructible-building/SKILL.md) for the
+upfront modeling constraints and intact/fractured handoff.
+
 For destructible buildings, use [havok-destruction](../havok-destruction/SKILL.md)
 alongside the intact-model workflow. The Korean Town Center donor adaptation is
 user-confirmed in game (2026-09-25): preserve the donor body graph, replace the

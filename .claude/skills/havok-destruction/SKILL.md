@@ -29,6 +29,11 @@ destructed progressively). Creating a new body graph from scratch remains unprov
 Preserving a donor graph while replacing building geometry and refitting its collision hulls
 worked for the Korean Town Center: user-confirmed in game on 2026-09-25.
 
+For a new architectural building with independently authored geometry, use
+[aoe3de-destructible-building](../aoe3de-destructible-building/SKILL.md). It owns
+the upfront modeling and intact/fractured handoff; this skill remains the shared
+runtime contract and existing-asset adaptation reference.
+
 ## Building architecture donors
 
 For building architecture swaps, a similar footprint is only a donor-selection
