@@ -1179,7 +1179,7 @@ void main(void)
 	int menagerieNInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZnMenagerie, 0);
 	rmPlaceGroupingAtLoc(blockJewish, 0, locX6, locZs3);
 	rmPlaceGroupingAtLoc(blockJewish, 0, locX6, locZn3);
-	rmSetNuggetDifficulty(299, 299);
+	rmSetNuggetDifficulty(612, 612);   // nuggetmods zpNuggetFactoryLondon (was Paris 299 / zpNuggetFactory)
 	int factorySInst = rmPlaceGroupingInstanceAtLoc(blockFactory, locX0, locZs2, 0);
 	int factoryNInst = rmPlaceGroupingInstanceAtLoc(blockFactory, locX0, locZn2, 0);
 
@@ -1220,8 +1220,8 @@ void main(void)
 	shuffle(gCityLocs, N_CENTER_START, N_CENTER_END);
 	shuffle(gCityLocs, N_SUBURBS_START, N_SUBURBS_END);
 
-	// ---- 10.4 the resource buildings (Paris's nugget latch 195): one list per zone (centre, suburbs), placed on both banks
-	rmSetNuggetDifficulty(195, 195);
+	// ---- 10.4 the resource buildings: centre list includes the embassy (nuggetmods zpEmbassyLondon 611)
+	rmSetNuggetDifficulty(611, 611);
 	int centerGroupings = xsArrayCreateInt(3, -1, "List of groupings for the city centre.");
 	xsArraySetInt(centerGroupings, 0, blockMarket);
 	xsArraySetInt(centerGroupings, 1, blockBank);
@@ -1269,7 +1269,7 @@ void main(void)
 	// ---- 10.7 THE RESERVED COLUMNS' FIXED BLOCKS (user 2026-09-20), placed after every id-sensitive placement of
 	// section 10 (ids are positional - header law): the big park EU_SPC_Park_big (the user's export, 32 x 32 tiles =
 	// a 2 x 2 block) on rows 00-0 x cols 4-5 at the +x end of each bank; behind it, in column 6, one house block on
-	// row 00 and the Food4 mill (berry bushes, user 2026-09-21) on row 0 under Paris's resource latch 195. Every other
+	// row 00 and the Food4 mill (berry bushes, user 2026-09-21) on row 0 (no baked nugget in that block). Every other
 	// cell of cols 4-6 stays empty.
 	int blockParkBig = cityBlock("park big", "EU_SPC_Park_big");
 	int blockMillFood4 = cityBlock("Mill Food4", "EU_Resource_Block_Food4");
@@ -1287,7 +1287,6 @@ void main(void)
 	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZn45);
 	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZs6);
 	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZn6);
-	rmSetNuggetDifficulty(195, 195);
 	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZs6);
 	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZn6);
 
@@ -1399,7 +1398,7 @@ void main(void)
 			// ONE per side (the Figma of 2026-09-21): the seat at the far end, the turned park beside it on the outer
 			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
 			rmPlacePlayer(firstDefender, locX78, locZdSeat);
-			rmSetNuggetDifficulty(295, 295);                              // the turned park's treasure: the abandoned tower (nuggetmods zpFrenchTowerCapturable - a capturable tower, four Revolutionaries - as on Paris; user 2026-09-21)
+			rmSetNuggetDifficulty(295, 295);                              // the turned park's treasure: zpFrenchTowerCapturable (four musketeers)
 			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZd56);
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd4);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd4);
@@ -1470,7 +1469,7 @@ void main(void)
 			// ONE per side (the Figma of 2026-09-21): the seat at the far end, the turned park beside it on the outer
 			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
 			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
-			rmSetNuggetDifficulty(295, 295);                              // the turned park's treasure: the abandoned tower (nuggetmods zpFrenchTowerCapturable - a capturable tower, four Revolutionaries - as on Paris; user 2026-09-21)
+			rmSetNuggetDifficulty(295, 295);                              // the turned park's treasure: zpFrenchTowerCapturable (four musketeers)
 			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZa56);
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa4);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa4);

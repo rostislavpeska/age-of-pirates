@@ -2421,10 +2421,10 @@
       <unittype>deSPCTowerCapturable</unittype>
       <amount>1</amount>
       <difficulty>295</difficulty>
-      <guardian>zpGuardianRevolutionary</guardian>
-      <guardian>zpGuardianRevolutionary</guardian>
-      <guardian>zpGuardianRevolutionary</guardian>
-      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
       <maptype>piratehistoricalmap</maptype>
     </nugget>
     <nugget>
@@ -5233,6 +5233,55 @@
         <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <difficulty>610</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpEmbassyLondon</name>
+      <rolloverstringid>124120</rolloverstringid>
+      <applystringid>124121</applystringid>
+      <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
+      <type>ConvertUnit</type>
+      <amount>1</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <convertunit>
+        <unit>zpNativeEmbassyParisReward</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianBritishDragoon</guardian>
+      <guardian>deGuardianBritishDragoon</guardian>
+      <guardian>deGuardianBritishDragoon</guardian>
+      <difficulty>611</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetFactoryLondon</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianBritishDragoon</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHighlander</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHighlander</unit>
+      </guardianunit>
+      <difficulty>612</difficulty>
     </nugget>
   </nuggets>
 </nuggetmods>

@@ -200,7 +200,7 @@ class TestSeats:
         for side, o, S, z5, z7, z67 in self.SIDES:
             assert self._block(side, 1) == [
                 ("rmPlacePlayer", "first%s, locX78, %s" % (o, S)),
-                ("rmSetNuggetDifficulty", "295, 295"),                                    # the turned park's abandoned tower (zpFrenchTowerCapturable, as on Paris)
+                ("rmSetNuggetDifficulty", "295, 295"),                                    # the turned park's capturable tower (zpFrenchTowerCapturable)
                 ("rmPlaceGroupingAtLoc", "blockParkBig02, 0, locX56, %s" % z67),           # rows 5-6 x cols 5-6
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z5),                # rows 5-6 x col 4
                 ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX6, %s" % z5),
