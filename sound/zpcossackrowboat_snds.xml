@@ -2,7 +2,7 @@
 <protounitsounddef>
   <protounit name="zpCossackRowboat">
     <soundtype name="Select">
-      <soundset name="RussianCaravelSelect">
+      <soundset name="SlavonicMilitarySelect">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -14,7 +14,7 @@
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
-      <soundset name="RussianCaravelAcknowledge">
+      <soundset name="SlavonicWarshipAcknowledge">
       </soundset>
     </soundtype>
     <soundtype name="Exists">
