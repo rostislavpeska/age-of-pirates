@@ -341,24 +341,6 @@
                 <Image x:Name="Flags2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Height="190" Width="1250" Source="pack://siteoforigin:,,,/resources/images/mods/lny2022/lny22_deco_flags2.png" />
             </Grid>
 
-            <Grid Grid.Column="2" x:Name="flagGrid" Height="290" Width="512" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,0,0,0">
-                <Image x:Name="Flag" Height="290" Width="512" Source="pack://siteoforigin:,,,/resources/images/mods/lny2022/lny22_deco_flag.png" />
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="202,20,0,0" Width="260" >
-                    <TextBlock Style="{StaticResource lny22_MainMenuHeaders}" FontSize="36" Width="240" TextWrapping="Wrap" TextAlignment="Center" Height="40">
-                        Age of
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource lny22_MainMenuHeaders}" FontSize="48" Width="240" TextWrapping="Wrap" TextAlignment="Center">
-                        Pirates
-                    </TextBlock>
-                    <Grid Width="200" Height="25" Background="{StaticResource lny22_ComboBoxStrokeGradient}">
-                        <TextBlock Style="{StaticResource lny22_MainMenuHeaders}" Foreground="#58130f" FontSize="18" Width="240" TextWrapping="Wrap" TextAlignment="Center" Margin="0,4,0,0">
-                        Naval Mod
-                        </TextBlock>
-                    </Grid>
-                    
-                </StackPanel>
-            </Grid>
-
             <Grid Grid.Column="0" x:Name="menuStrip">
                 <Rectangle Fill="{StaticResource main_menu_bg}" />
 
@@ -366,7 +348,7 @@
 
                 <Frame Name="ButtonFrame" HorizontalAlignment="Left" Width="250" Grid.Column="0" Focusable="False" NavigationUIVisibility="Hidden" Source="/pages/uipregamenew/MainMenuOptions.xaml" />
 
-                <Image x:Name="Mainmenu_Logo" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,20,0,0" Height="285" Width="230" Source="pack://siteoforigin:,,,/resources/aoe3_de_logo.png" />
+                <Image x:Name="Mainmenu_Logo" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,20,0,0" Height="285" Width="230" Source="pack://siteoforigin:,,,/resources/images/mods/aop/aop_logo_menu.png" />
 
                 <TextBlock x:Name="VersionText" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="10" FontFamily="Trajan Pro" FontSize="20" Foreground="#888">Version Number</TextBlock>
             </Grid>
