@@ -74,7 +74,6 @@
   </action>
 <action>
     <name stringid="38123">BroadsideAttack</name>
-    <active>0</active>
     <type>BroadsideAttack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>

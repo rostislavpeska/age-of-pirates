@@ -72,11 +72,15 @@ A unit attack lives in three places, and an ability in a fourth:
 | the same tactics, every `<tactic>` stance | which actions the stance uses |
 | `data/abilities/abilitymods.xml` (+ vanilla `abilities.xml`) | ability buttons; each power in `powers.xml` / `powermods.xml` fires the action named in its `<unitaction>` (PowerBroadside -> BroadsideAttack, PowerLongRange -> LongRangeAttack) |
 
-Removing an action means removing it from all four; switching one off (`active 0`) keeps the ability working - the
-power turns it on for its active time (vanilla deGunboat: PowerLongRange + an inactive plain `Attack`). A tech turns
-an action on permanently with `subtype="ActionEnable" action="..."` (DEHCPortugueseBattleshipCard: Heal).
-`xmlcheck.py` fails an ability whose action the unit's tactics no longer define (Treasure Ship 2026-09-27:
-broadside stripped from the tactics while PowerBroadside stayed in abilitymods).
+Removing an action means removing it from all four. Switching one off (`active 0`) depends on the power:
+**PowerLongRange** fires an inactive `LongRangeAttack` (vanilla gunboat: `LongRangeAttack` active 0). **PowerBroadside
+does NOT**: every vanilla PowerBroadside ship (frigate, fuchuan, war junk) keeps `BroadsideAttack` active, low stance
+priority (1 against RangedAttack 100) so it only fires through the ability. The battleship's inactive broadside is
+switched on by techs, not by a power. A tech turns an action on permanently with `subtype="ActionEnable"
+action="..."` (DEHCPortugueseBattleshipCard: Heal). `xmlcheck.py` fails an ability whose action the unit's tactics no
+longer define (Treasure Ship 2026-09-27: broadside stripped from the tactics while PowerBroadside stayed in
+abilitymods) and a PowerBroadside whose `BroadsideAttack`-type action is `active 0` (Treasure Ship 2026-09-27: the
+button did nothing in game).
 
 ## Verification ladder (do all of it before a game test)
 

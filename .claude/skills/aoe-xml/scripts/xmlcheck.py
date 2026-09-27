@@ -214,7 +214,8 @@ def check_abilities(arc):
         if not tf or (k not in touched and tf.lower() not in mod_tactics): continue
         if tf not in cache:
             r = _xml_root(f'data/tactics/{tf}', f'Data/tactics/{tf}', arc)
-            cache[tf] = None if r is None else {(a.findtext('name') or '').strip() for a in r.findall('action')}
+            cache[tf] = None if r is None else {(a.findtext('name') or '').strip(): ((a.findtext('type') or '').strip(), (a.findtext('active') or '1').strip())
+                                                for a in r.findall('action')}
         acts = cache[tf]
         if acts is None: continue
         for n in lst:
@@ -222,6 +223,13 @@ def check_abilities(arc):
             if act and act not in acts:
                 err(f'data/abilities/abilitymods.xml {k}: ability {n} fires action {act}, which tactics {tf} does not define '
                     '- a dead ability button (strip the ability too, or restore the action)')
+            # a power cannot switch on an inactive BroadsideAttack-type action (vanilla: every PowerBroadside ship - frigate,
+            # fuchuan, war junk - has it active; the battleship's inactive one is switched on by techs, ActionEnable).
+            # PowerLongRange CAN fire an inactive LongRangeAttack (vanilla gunboat). Treasure Ship 2026-09-27: active 0 on
+            # its BroadsideAttack made the Broadside button do nothing.
+            elif act and acts[act][0] == 'BroadsideAttack' and acts[act][1] == '0':
+                err(f'data/tactics/{tf}: {k} ability {n} fires {act}, but the action is <active>0</active> - a power does not '
+                    'switch a broadside on (vanilla PowerBroadside ships keep it active); remove the <active>0</active>')
 
 
 def check_snds(path, soundsets):
