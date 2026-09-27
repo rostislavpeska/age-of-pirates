@@ -54,6 +54,52 @@ face coverage, gutters, source-image binding and unintended reflections. Holes
 and openings must correspond to geometry. Preserve unrelated charts and map
 channels when repairing a local fault. A page-bounds check is insufficient.
 
+## Regional comparison and effort gate
+
+Use this gate when researching or iterating on scattered architectural charts.
+Freeze the best available checkpoint and identify the specific visible defect to
+improve. Protect its coherent visible patches by face membership and existing UV
+adjacency; a candidate must not silently split them to improve a global score.
+If a protected chart has a real foldover, isolate and report that fault. Repair
+the affected fold while retaining the usable remainder; do not automatically
+reinitialize the whole chart as individual projected faces.
+
+Reasoning may assign different policies to named regions: permitted joins,
+protected seams, fold and distortion limits, hidden-face treatment and search
+effort. Record the rationale and expected visible benefit. Deterministic code
+must enforce every advertised control; unsupported settings must fail explicitly.
+An agent's interpretation does not waive geometry, overlap or baking constraints.
+
+Start with the difficult patch that failed on the real model, not only a simple
+specimen. Expand only after that patch shows a useful gain without degrading its
+protected neighbors. Compare the same face set, visibility classification, camera
+and display mode. Report visible-chart fragmentation separately from hidden-face
+allocation: reducing hidden islands while fragmenting the visible roof is a
+regression, even when the total island count falls substantially.
+
+Before operator review, inspect matched views of the top, underside and adjoining
+corners, plus the checker. Verify actual Blender UV connectivity independently of
+color labels and virtual edge matches. Preserve stable colors for unchanged charts
+and separate island colors from material/hidden classification. Position and normal
+tolerances alone cannot validate visible chart continuity. Mark failed candidates
+as rejected and keep the best checkpoint available; do not advertise a numerical
+improvement as an accepted result. State any visual check that remains unavailable.
+
+Keep each experiment bounded by a concrete hypothesis, patch and stop condition.
+Use an existing user budget when given; otherwise choose a small comparison batch
+and reassess its marginal benefit before expanding. If the batch regresses, yields
+only cosmetic gains, or repeats the same unresolved defect, end that experiment
+and report the best result and remaining limitation. Do not start another broad
+search, build more review tooling or request another user inspection without new
+evidence that the next step can address the defect. Continue other authorized work
+that is independent of the failed experiment.
+
+Include reported human review cost, token/tool cost and review rounds in the local
+effort record. Label estimates and subjective improvement ratings as such; do not
+invent elapsed human time or treat a percentage as a measured quality score.
+Judge the result by useful visible improvement and likely cleanup time saved,
+including the user's evaluation burden, rather than the quantity of experiments.
+
 ## Camera and hidden allocation
 
 Record the camera envelope and intact/damaged state. For normal n and direction v

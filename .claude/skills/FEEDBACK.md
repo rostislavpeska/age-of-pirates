@@ -112,3 +112,29 @@ The accepted candidate is not a blanket certificate for remaining curved joints.
 Next user-authorized checkpoint: provisional geometry-only UV sharing, no AO or
 packing, explicit same-material hidden atlas cells, and unusually complete model
 and UV photo documentation for remote inspection. Preserve visible chart scale.
+
+# Regional roof scattering: insufficient value and visible regression - 2026-09-27
+
+- **Task / skill:** Reduce scattered faces on the Korean TC, especially roof
+  undersides, using region-specific reasoning and deterministic construction;
+  `blender-clean-uv` owns the chart construction and Blender review.
+- **Expected / actual:** Join neighboring areas while preserving usable visible
+  roofs. The regional experiment reduced all-face lower-roof islands from 220 to
+  72, but islands touching originally visible faces increased from 50 to 68.
+  Automatic reinitialization of faulty seed charts fragmented visible patches.
+  The user rejected the roof result; position and normal checks had not established
+  acceptable chart continuity. This is not an accepted improvement checkpoint.
+- **User-reported value and cost:** Approximately 20% improvement overall for about
+  USD 50 of the user's time and USD 10 in tokens. These are the user's assessment
+  and approximate costs, not measured quality, elapsed time or billing telemetry.
+  The user judged the workflow close to no longer being worthwhile.
+- **Smallest correction:** Protect existing visible charts, repair only the faulty
+  fold, compare identical visibility populations, and prove the difficult local
+  patch before expanding. Reject regressions before operator review. Bound each
+  experiment and stop low-value repetition rather than adding tools or variants.
+- **Ownership:** The user requires Codex Blender windows/files to identify
+  **GPT Astra**, distinguishing them from Claude's work. Existing Astra windows
+  were labeled; the regional candidate was marked rejected / under investigation.
+- **Validation scope:** This update changes instructions and records feedback.
+  It does not repair the candidate, certify the proposed method, or authorize
+  another model experiment or public skill export.

@@ -24,6 +24,11 @@ overlap discovery and economical packing after this checkpoint.
 - Use one persistent chart ID and face-membership record per logical patch.
   Keep material semantics independent of atlas membership: wood, plaster, stone,
   roof tile, paper, glass and so on must remain identifiable after consolidation.
+- Protect coherent visible charts when repairing neighboring surfaces. Fewer total
+  islands cannot compensate for breaking an already usable roof or facade.
+- When several agents have Blender open, identify the producer and revision in the
+  review file/window before handoff. Honor the user's naming convention and verify
+  the intended process; do not rename or operate another agent's session.
 
 ## Workflow
 
@@ -31,6 +36,8 @@ overlap discovery and economical packing after this checkpoint.
    Build roofs, gables, facade panels and trim strips from adjacency and measured
    surface shape. A checker with consistent squares does not excuse fragmented
    per-face islands. Repair a representative patch before repeating the operation.
+   For scattering experiments, follow the [regional comparison and effort gate](references/chart-construction.md#regional-comparison-and-effort-gate)
+   before expanding the search or asking for another operator review.
 2. Classify visible, retained hidden and destruction-exposed surfaces using the
    camera/state contract. Allocate hidden opaque backs to a named low-density
    shared material only where justified; do not discount visible soffits.
