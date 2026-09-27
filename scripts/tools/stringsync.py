@@ -189,12 +189,27 @@ def run(build, check_vanilla):
     if build:
         print('\nall %d languages written or current. Commit every .xml.xmb.' % len(languages()))
         print('XMBs load once at process start: restart the game to see the change.')
+        text_lint()
         return 0
     if stale:
         print('\n%d language(s) out of date. Run with --build, then commit the twins.' % stale)
         return 1
     print('\nall %d languages current.' % len(languages()))
     return 0
+
+
+def text_lint():
+    """The aoe-game-text lint on what this build ships: English strings changed since HEAD (vanilla voice, colours,
+    numbers under the advanced rollover), nugget format strings (a wrong placeholder crashes the game) and team tech
+    names. Reports only - the twins are already written; fix a FAIL before release."""
+    tool = os.path.join(REPO, '.claude', 'skills', 'aoe-game-text', 'scripts', 'textlint.py')
+    if not os.path.isfile(tool):
+        return
+    print('\ntext lint (aoe-game-text skill):')
+    r = subprocess.run([sys.executable, tool, '--hook'], cwd=REPO, capture_output=True, text=True,
+                       encoding='utf-8', errors='replace', env=dict(os.environ, PYTHONIOENCODING='utf-8'))
+    for line in (r.stdout + r.stderr).strip().splitlines():
+        print('   ' + line)
 
 
 def report_vanilla(parts):

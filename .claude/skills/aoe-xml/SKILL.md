@@ -61,6 +61,23 @@ listed in the record (`<maptype>piratehistoricalmap</maptype>` for the pirate hi
 nugget's unit in the script by the record's `<nuggetunit>`, never by the authored placeholder proto (Istanbul's
 law). New records: `data/nuggetmods.xml` only loads at game start - XMB rebuild plus a restart before a test.
 
+## Unit actions, stances and abilities move together
+
+A unit attack lives in three places, and an ability in a fourth:
+
+| Where | What |
+|---|---|
+| `data/protomods.xml` `<protoaction>` | the numbers: damage, range, rof, bonuses |
+| `data/tactics/<unit>.tactics` `<action>` | how it fires: `type` (`Attack` fires in place; `BroadsideAttack` turns the ship side-on), `anim` (must exist in the animfile and carry a `<tag type="Attack">`), `<active>0</active>` = off until a tech or power switches it on |
+| the same tactics, every `<tactic>` stance | which actions the stance uses |
+| `data/abilities/abilitymods.xml` (+ vanilla `abilities.xml`) | ability buttons; each power in `powers.xml` / `powermods.xml` fires the action named in its `<unitaction>` (PowerBroadside -> BroadsideAttack, PowerLongRange -> LongRangeAttack) |
+
+Removing an action means removing it from all four; switching one off (`active 0`) keeps the ability working - the
+power turns it on for its active time (vanilla deGunboat: PowerLongRange + an inactive plain `Attack`). A tech turns
+an action on permanently with `subtype="ActionEnable" action="..."` (DEHCPortugueseBattleshipCard: Heal).
+`xmlcheck.py` fails an ability whose action the unit's tactics no longer define (Treasure Ship 2026-09-27:
+broadside stripped from the tactics while PowerBroadside stayed in abilitymods).
+
 ## Verification ladder (do all of it before a game test)
 
 ```
@@ -69,7 +86,8 @@ python .claude/skills/aoe-xml/scripts/xmlcheck.py [paths...]     # the one comma
 It checks: well-formed XML; CRLF on the runtime family; twin freshness (source newer than `.xmb`); every reference
 resolves - animfile, tactics, icons, gr2/textures/decals/pkfx (mod folder or archive index), string ids (mod or
 vanilla range), `_snds` present for every mod proto and every soundset it names defined (mod or vanilla soundsets);
-proto/string ids unique and above the vanilla range; `stringsync` audit. Exit 1 on any ERROR.
+proto/string ids unique and above the vanilla range; every ability's action exists in the unit's tactics;
+`stringsync` audit. Exit 1 on any ERROR.
 Then: `xmbc.py build` for the twins you touched, `stringsync.py --build` if strings changed, full game restart,
 and the **`rm-unit-bench`** skill for a new unit/building (offline pre-flight + one-unit map + census + screenshot).
 

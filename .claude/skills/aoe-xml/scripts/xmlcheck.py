@@ -13,6 +13,8 @@ Checks (ERROR = exit 1, WARN = informational):
   animfile references ...... GrannyModel/GrannyAnim files, decal textures, popcornFx/ParticleSystem
   material references ...... every texture override resolves (mod .ddt or archive .ddt); submaterial names vs the gr2 (WARN)
   ids ...................... proto ids unique and not in the vanilla range unless mergeMode=replace; string ids unique
+  abilities ................ every ability's power <unitaction> is an action in the unit's tactics (else a dead
+                             button): abilitymods units + vanilla units whose tactics file the mod overrides
   string sync .............. stringsync.py audit (stale languages)
 Resolution: mod folder first, then the archive index (bartool). Archive-referenced assets are the RULE, not a warning.
 """
@@ -157,6 +159,71 @@ def check_protomods(path, arc, strings, soundsets, only=None):
             if not resolve('snds', name.lower(), arc): warn(f'{tag}: no sound/{name.lower()}_snds.xml (mod or archive) - unit will be silent')
 
 
+def _xml_root(mod_path, arc_path, arc):
+    """Parsed XML from the mod file, else the archive copy, else None."""
+    try:
+        if os.path.isfile(mod_path): return ET.parse(mod_path).getroot()
+        data = arc.cat(arc_path) if arc.ok else None
+        if data is None: return None
+        return ET.fromstring(data.decode('utf-8', 'replace') if isinstance(data, bytes) else data)
+    except ET.ParseError:
+        return None
+
+
+def check_abilities(arc):
+    """Every ability a unit has must fire an action its tactics file defines: a power of type UnitAction names the
+    action in <unitaction>; if the unit's tactics lack it (an action stripped from the tactics while the ability stayed
+    in abilitymods), the button is dead. Treasure Ship 2026-09-27: broadside stripped from the tactics, PowerBroadside
+    still listed. Units checked: every abilitymods entry, plus vanilla units whose tactics file the mod overrides."""
+    powers = {}
+    for root in (_xml_root('', 'Data/abilities/powers.xml', arc), _xml_root('data/abilities/powermods.xml', '', arc)):
+        for p in (root.iter('power') if root is not None else []):
+            if p.get('name') and p.findtext('unitaction'):
+                powers[p.get('name').lower()] = p.findtext('unitaction').strip()
+    van = _xml_root('', 'Data/abilities/abilities.xml', arc)
+    mod = _xml_root('data/abilities/abilitymods.xml', '', arc)
+    if mod is None: return
+    def ab(el):
+        return [((a.text or '').strip(), (a.get('mergeMode') or a.get('mergemode') or '').lower()) for a in el.findall('ability')]
+    units = {}
+    for u in (van if van is not None else []):
+        units[u.tag.lower()] = [n for n, _ in ab(u)]
+    touched = set()
+    for u in mod:
+        k = u.tag.lower(); touched.add(k); lst = units.setdefault(k, [])
+        for n, mode in ab(u):
+            if mode == 'remove': lst[:] = [x for x in lst if x.lower() != n.lower()]
+            elif n.lower() not in [x.lower() for x in lst]: lst.append(n)
+    # tactics file per unit: protomods first, then vanilla protoy
+    tac = {}
+    pm = ET.parse('data/protomods.xml').getroot()
+    for u in pm.iter('unit'):
+        if u.get('name') and u.findtext('tactics'): tac[u.get('name').lower()] = u.findtext('tactics').strip()
+    need_van = [k for k in units if k not in tac]
+    if need_van and arc.ok:
+        pv = arc.cat('Data/protoy.xml')
+        if pv is not None:
+            txt = pv.decode('utf-8', 'replace') if isinstance(pv, bytes) else pv
+            for m in re.finditer(r'<unit\b[^>]*name="([^"]+)"[^>]*>(.*?)</unit>', txt, re.S):
+                t = re.search(r'<tactics>([^<]+)</tactics>', m.group(2))
+                if t and m.group(1).lower() not in tac: tac[m.group(1).lower()] = t.group(1).strip()
+    mod_tactics = {os.path.basename(p).lower() for p in glob.glob('data/tactics/*.tactics')}
+    cache = {}
+    for k, lst in sorted(units.items()):
+        tf = tac.get(k)
+        if not tf or (k not in touched and tf.lower() not in mod_tactics): continue
+        if tf not in cache:
+            r = _xml_root(f'data/tactics/{tf}', f'Data/tactics/{tf}', arc)
+            cache[tf] = None if r is None else {(a.findtext('name') or '').strip() for a in r.findall('action')}
+        acts = cache[tf]
+        if acts is None: continue
+        for n in lst:
+            act = powers.get(n.lower())
+            if act and act not in acts:
+                err(f'data/abilities/abilitymods.xml {k}: ability {n} fires action {act}, which tactics {tf} does not define '
+                    '- a dead ability button (strip the ability too, or restore the action)')
+
+
 def check_snds(path, soundsets):
     if not wellformed(path): return
     root = ET.parse(path).getroot()
@@ -239,6 +306,9 @@ def main():
         if low.startswith('art/') and low.endswith('.xml'): check_animfile(f, arc); continue
         if low == 'data/protomods.xml': wellformed(f) and check_protomods(f, arc, strings, soundsets); continue
         if low.endswith(('.xml', '.tactics')): wellformed(f)
+    if not args or any(f.lower() in ('data/abilities/abilitymods.xml', 'data/abilities/powermods.xml', 'data/protomods.xml')
+                       or f.lower().startswith('data/tactics/') for f in files):
+        check_abilities(arc)
     if not args or any('strings' in a for a in args):
         try:
             out = subprocess.run([sys.executable, 'scripts/tools/stringsync.py'], capture_output=True, text=True, timeout=300).stdout
