@@ -38969,7 +38969,6 @@
     <effects>
       <!-- the attackers (team 0, the Stuart side): London's shared setup first (it carries the House of Stuart extension), then the other side's big button
            stripped (its DisableShadow) and its fake lit (its offShadow) -->
-      <effect type="TechStatus" status="active">zpLondonSetup</effect>
       <effect type="TechStatus" status="active">zpNatParliamentBigbuttonDisableShadow</effect>
       <effect type="TechStatus" status="active">zpNatParliamentoffShadow</effect>
     </effects>
@@ -38981,7 +38980,6 @@
     <effects>
       <!-- the defenders (team 1, Parliament): London's shared setup first (it carries the House of Stuart extension), then the other side's big button
            stripped (its DisableShadow) and its fake lit (its offShadow) -->
-      <effect type="TechStatus" status="active">zpLondonSetup</effect>
       <effect type="TechStatus" status="active">zpNatStuartBigbuttonDisableShadow</effect>
       <effect type="TechStatus" status="active">zpNatStuartoffShadow</effect>
     </effects>

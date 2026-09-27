@@ -2916,13 +2916,24 @@ void main(void)
 
 	// ---- 14. Parliamentarians (Orthodox pattern): starting techs, the leader choice, the AI roll ----------------
 	// 14.1 starting techs - Paris's Starting Techs (zpparis.xs 1984-2047), by team (Paris 2003-2022): each player gets ONE tech -
-	// the attackers (team 0, the Stuart side) zpLondonAttackerSetup, the defenders (team 1, Parliament) zpLondonDefenderSetup. Both
-	// activate zpLondonSetup (techtreemods: the Military Camp, PopulationCap 250 and no houses, the cathedral / bank / tower techs,
-	// no standard revolutions, zpExtendedStuartLondon - the House of Stuart extension with the London big button - and the
-	// trade-route plan) and then strip the other side's big button (its DisableShadow) and light its fake (its offShadow).
-	// user 2026-09-24: 'the system is dirty and has duplicities' - the shared effects live once, in zpLondonSetup. Then players
-	// 0..N (Paris 2024-2033, gaia included): the Toll Station name and icon on the port socket, the European embassy design.
+	// the attackers (team 0, the Stuart side) zpLondonAttackerSetup, the defenders (team 1, Parliament) zpLondonDefenderSetup: ONLY
+	// the side's own effects - strip the other side's big button (its DisableShadow) and light its fake (its offShadow).
+	// user 2026-09-24: 'the system is dirty and has duplicities' - the shared effects live once, in the GENERIC zpLondonSetup
+	// (techtreemods: the Military Camp, PopulationCap 250 and no houses, the cathedral / bank / tower techs, no standard
+	// revolutions, zpExtendedStuartLondon, the trade-route plan, the Whiskey Distillery name). The generic setup is fired HERE,
+	// directly, for players 0..N - gaia included, as Civil War fires zpCivilWarGeneralStup (zpcivilwar.xs 1471-1476) - never from
+	// the side setups (owner 2026-09-27: that chain did not activate, and gaia's Distillery read Cognac). The same loop gives
+	// every player and gaia the Toll Station name and icon on the port socket and the European embassy design (Paris 2024-2033).
 	rmCreateTrigger("LondonStartingTechs");
+	// the GENERIC setup FIRST, for players 0..N (gaia included): it adds the Stuart extension's big buttons
+	// (zpExtendedStuartLondon), which the side setups below then strip for the other side - the order matters
+	for (i = 0; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParam("TechID", "cTechzpLondonSetup");
+		rmSetTriggerEffectParamInt("Status", 2);
+	}
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{
 		if (rmGetPlayerTeam(k) == 0)
