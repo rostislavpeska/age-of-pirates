@@ -2,13 +2,26 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
-    "references/matching-and-budget.md"
+    "references/matching-and-budget.md",
+    "references/geometry-only-handoff.md",
+    "scripts/geometry_share.py",
+    "scripts/test_geometry_share.py"
   ],
   "skills": [
     "blender-clean-uv",
     "blender-architecture-texturing"
   ],
   "external": [
+    {
+      "id": "python", "kind": "executable", "requiredFor": ["geometry-sharing"],
+      "optional": false, "commands": ["python", "python3"],
+      "note": "Runs correspondence measurements and unit tests without Blender mutation."
+    },
+    {
+      "id": "numpy", "kind": "python-package", "requiredFor": ["geometry-sharing"],
+      "optional": false, "distribution": "numpy", "modules": ["numpy"],
+      "note": "SVD rigid fits, UV orientation and vector residual measurements."
+    },
     {
       "id": "blender",
       "kind": "application",

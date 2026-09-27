@@ -61,6 +61,13 @@ accepted for later refinement; approval does not make them resolved.
 
 ## Existing tools and limits
 
+- [Whole-chart geometry sharing](scripts/geometry_share.py): a provisional
+  correspondence solver for compatible existing parameterizations. It checks
+  material patterns, polygon boundary connectivity, rigid/reflected 3D fits,
+  normal direction and pixel-space UV residuals; it never fits a scale or packs.
+  See [the geometry-only handoff](references/geometry-only-handoff.md) and run
+  `python -m unittest discover -s scripts -p 'test_*.py'` from this package.
+
 - [Geometry/context helper](../blender-architecture-texturing/scripts/blender_hybrid_uv.py):
   conservative matching, not a complete correspondence or AO-equivalence solver.
   Its context mismatches have false negatives; they do not prove uniqueness.
@@ -72,8 +79,9 @@ accepted for later refinement; approval does not make them resolved.
 - [UV metrics](../blender-architecture-texturing/scripts/uv_metrics.py): density
   and rectangle packing; neither establishes architectural chart quality.
 
-The matching specification is a reusable process, not a claim that the complete
-automatic solver has been implemented or passed on the full building. Store new
+The complete AO/channel/packing solver is not implemented or approved. Geometry
+sharing has a bounded helper and measured building candidate, not a guarantee
+of finding every valid match. Store new
 matching code as reusable helpers with tolerances and reproducible reports; test
 one equal module, one false shape match, one AO-conflicting match and one mirrored
 normal/alpha case before applying that implementation to a whole set.
