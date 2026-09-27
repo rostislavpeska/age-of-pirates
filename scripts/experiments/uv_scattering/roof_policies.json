@@ -1,0 +1,13 @@
+{
+  "status": "Reasoning-authored experimental policies; not production acceptance",
+  "source": "S12 frozen checkpoint",
+  "default": {"action": "preserve_previous_sewn_candidate"},
+  "regions": {
+    "N8_N1_K22_Tower_LowerEave": {"max_fold_degrees": 145, "max_faces": 160, "cross_material": true, "include_originally_hidden": true, "allow_uv_reflection": true, "reason": "Lower eave needs independent corner checks and roof-to-lip continuity; permit allocation-boundary crossing in this diagnostic."},
+    "N8_N1_K22_Tower_UpperPaljakRoof": {"max_fold_degrees": 175, "max_faces": 220, "cross_material": true, "include_originally_hidden": true, "allow_uv_reflection": true, "reason": "Upper roof is a more regular shell; search folded underside joins broadly while rejecting overlap."},
+    "N8_N1_K22_RearHall_PaljakRoof": {"max_fold_degrees": 160, "max_faces": 200, "cross_material": true, "include_originally_hidden": true, "allow_uv_reflection": true, "reason": "Keep roof slopes and contiguous perimeter folds coherent; preserve separate geometric components."},
+    "N8_N1_K22_WestHall_PaljakRoof": {"max_fold_degrees": 160, "max_faces": 200, "cross_material": true, "include_originally_hidden": true, "allow_uv_reflection": true, "reason": "Asymmetric repaired hip requires explicit collision checks; do not assume opposite-side correspondence."}
+  },
+  "invariants": {"endpoint_tolerance_world": 0.00002, "new_uv_overlap": false, "bridge_disconnected_geometry": false, "authored_triangulation": false, "normal_changes_for_joining": false},
+  "deferred": ["tangent normal baking", "production atlas allocation", "hidden visibility reclassification", "destruction visibility", "texture rebaking"]
+}
