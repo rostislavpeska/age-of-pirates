@@ -468,6 +468,7 @@ void main(void)
 	int avoidWallObjXL = rmCreateTypeDistanceConstraint("avoid wall object xl", "AbstractWall", 20.0);
 	int avoidWallObjTree = rmCreateTypeDistanceConstraint("avoid wall object trees", "AbstractWall", 10.0);
 	int avoidTradeRouteRes = rmCreateTradeRouteDistanceConstraint("resources off the routes", 8.0);
+	int avoidAll = rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);                                           // Crownlands 267: the countryside forests off every placed unit (12.7)
 	int mineVsMine = rmCreateTypeDistanceConstraint("mine v mine", "MineTin", 60.0);
 	int deerVsDeer = rmCreateTypeDistanceConstraint("herd v herd", "Deer", 40.0);
 	int berryVsBerry = rmCreateTypeDistanceConstraint("berries v berries", "BerryBush", 40.0);
@@ -1719,6 +1720,17 @@ void main(void)
 	float rimRadiusM = sqrt(rimHalfX * rimHalfX + rimHalfZ * rimHalfZ) - rimCornerM;   // 339 / 357 / 393 m on 645 / 685 / 765
 	int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5, 0.0, rimRadiusM, rmDegreesToRadians(0), rmDegreesToRadians(360));
 	int insideFrame = rmCreateBoxConstraint("inside the frame", rmXMetersToFraction(8.0), rmZMetersToFraction(8.0), 1.0 - rmXMetersToFraction(8.0), 1.0 - rmZMetersToFraction(8.0), 0.01);
+	// the resources' looser fences (user 2026-09-27): the 1v1 band beyond the wall is 62 m deep and the saves placed 0 of
+	// 4 tin mines there (2v2 3 of 6, 3v3 7 of 8), so tin, deer and berries take 4 m off the map edge instead of 8, 10 m
+	// off the walls (the forests' avoidWallObjTree) instead of 20 and 4 m off the plateaus (avoidPlateauShort) instead
+	// of 8; the treasures keep the strict set
+	int insideFrameRes = rmCreateBoxConstraint("inside the frame, resources", rmXMetersToFraction(4.0), rmZMetersToFraction(4.0), 1.0 - rmXMetersToFraction(4.0), 1.0 - rmZMetersToFraction(4.0), 0.01);
+	// the treasures (owner 2026-09-27: a treasure camp stood on a tin mine at the map edge): a constraint tests the
+	// Nugget's CENTRE only, and a camp with its guards is over 10 m across - Paris's 10-tile (20 m) edge box
+	// (zpparis.xs 183 playerEdgeConstraint), Texas's 12 m off coin (texas.xs 330, "gold" = every mine) and avoidAll
+	// (Colorado 785, Paris 1810) keep it on open ground; placed after the mines, they avoid the mines, not the reverse
+	int insideFrameTreasure = rmCreateBoxConstraint("inside the frame, treasures", rmXMetersToFraction(20.0), rmZMetersToFraction(20.0), 1.0 - rmXMetersToFraction(20.0), 1.0 - rmZMetersToFraction(20.0), 0.01);
+	int nugVsCoin = rmCreateTypeDistanceConstraint("treasure v coin", "gold", 12.0);
 	int resScale = cNumberNonGaiaPlayers / 4;
 	int seatsBankD = defenderCount;
 	int seatsBankA = attackerCount;
@@ -1736,49 +1748,53 @@ void main(void)
 		countryD = countryN;
 		countryA = countryS;
 	}
-	// tin mines: one per player on the bank plus one, 60 m apart
+	// ONE count for both banks from the whole lobby (user 2026-09-27, docs/briefs/2026-09-27-london-countryside-resources-plan.md):
+	// (players + 1) / 2 per bank - 1v1 1, 2v2 and 2v1 2, 3v3 and 3v2 3, 4v4 and 4v3 4 - so a bigger team gets less
+	// per player; the city already gives a 1v1 player 20500 coin, one tin mine is the top-up
+	int countryK = (cNumberNonGaiaPlayers + 1) / 2;
+	// tin mines: countryK per bank, 60 m apart
 	int countryMine = rmCreateObjectDef("countryside tin");
 	rmAddObjectDefItem(countryMine, "MineTin", 1, 0.0);
 	rmAddObjectDefConstraint(countryMine, mineVsMine);
 	rmAddObjectDefConstraint(countryMine, avoidBlocks8);
-	rmAddObjectDefConstraint(countryMine, avoidPlateau8);
-	rmAddObjectDefConstraint(countryMine, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryMine, avoidPlateauShort);
+	rmAddObjectDefConstraint(countryMine, avoidWallObjTree);
 	rmAddObjectDefConstraint(countryMine, avoidCliff5);
 	rmAddObjectDefConstraint(countryMine, belowCliffs);
 	rmAddObjectDefConstraint(countryMine, avoidTradeRouteRes);
 	rmAddObjectDefConstraint(countryMine, insideWorld);
-	rmAddObjectDefConstraint(countryMine, insideFrame);
-	rmPlaceObjectDefInArea(countryMine, 0, countryD, seatsBankD + 1);
-	rmPlaceObjectDefInArea(countryMine, 0, countryA, seatsBankA + 1);
-	// deer herds: one per player on the bank plus one, 40 m apart
+	rmAddObjectDefConstraint(countryMine, insideFrameRes);
+	rmPlaceObjectDefInArea(countryMine, 0, countryD, countryK);
+	rmPlaceObjectDefInArea(countryMine, 0, countryA, countryK);
+	// deer herds: countryK per bank, 40 m apart
 	int countryDeer = rmCreateObjectDef("countryside deer");
 	rmAddObjectDefItem(countryDeer, "Deer", rmRandInt(6, 8), 6.0);
 	rmSetObjectDefCreateHerd(countryDeer, true);
 	rmAddObjectDefConstraint(countryDeer, deerVsDeer);
 	rmAddObjectDefConstraint(countryDeer, avoidBlocks8);
-	rmAddObjectDefConstraint(countryDeer, avoidPlateau8);
-	rmAddObjectDefConstraint(countryDeer, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryDeer, avoidPlateauShort);
+	rmAddObjectDefConstraint(countryDeer, avoidWallObjTree);
 	rmAddObjectDefConstraint(countryDeer, avoidCliff5);
 	rmAddObjectDefConstraint(countryDeer, belowCliffs);
 	rmAddObjectDefConstraint(countryDeer, avoidTradeRouteRes);
 	rmAddObjectDefConstraint(countryDeer, insideWorld);
-	rmAddObjectDefConstraint(countryDeer, insideFrame);
-	rmPlaceObjectDefInArea(countryDeer, 0, countryD, seatsBankD + 1);
-	rmPlaceObjectDefInArea(countryDeer, 0, countryA, seatsBankA + 1);
-	// berry clusters: one per player on the bank
+	rmAddObjectDefConstraint(countryDeer, insideFrameRes);
+	rmPlaceObjectDefInArea(countryDeer, 0, countryD, countryK);
+	rmPlaceObjectDefInArea(countryDeer, 0, countryA, countryK);
+	// berry clusters: countryK per bank, 40 m apart
 	int countryBerry = rmCreateObjectDef("countryside berries");
 	rmAddObjectDefItem(countryBerry, "BerryBush", 5, 4.0);
 	rmAddObjectDefConstraint(countryBerry, berryVsBerry);
 	rmAddObjectDefConstraint(countryBerry, avoidBlocks8);
-	rmAddObjectDefConstraint(countryBerry, avoidPlateau8);
-	rmAddObjectDefConstraint(countryBerry, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryBerry, avoidPlateauShort);
+	rmAddObjectDefConstraint(countryBerry, avoidWallObjTree);
 	rmAddObjectDefConstraint(countryBerry, avoidCliff5);
 	rmAddObjectDefConstraint(countryBerry, belowCliffs);
 	rmAddObjectDefConstraint(countryBerry, avoidTradeRouteRes);
 	rmAddObjectDefConstraint(countryBerry, insideWorld);
-	rmAddObjectDefConstraint(countryBerry, insideFrame);
-	rmPlaceObjectDefInArea(countryBerry, 0, countryD, seatsBankD);
-	rmPlaceObjectDefInArea(countryBerry, 0, countryA, seatsBankA);
+	rmAddObjectDefConstraint(countryBerry, insideFrameRes);
+	rmPlaceObjectDefInArea(countryBerry, 0, countryD, countryK);
+	rmPlaceObjectDefInArea(countryBerry, 0, countryA, countryK);
 	// default treasures: two of difficulty 3 and one of difficulty 4 per bank, one more of each per resScale step (4 and 8 players)
 	int countryNugget = rmCreateObjectDef("countryside treasure");
 	rmAddObjectDefItem(countryNugget, "Nugget", 1, 0.0);
@@ -1789,8 +1805,10 @@ void main(void)
 	rmAddObjectDefConstraint(countryNugget, avoidCliff5);
 	rmAddObjectDefConstraint(countryNugget, belowCliffs);
 	rmAddObjectDefConstraint(countryNugget, avoidTradeRouteRes);
+	rmAddObjectDefConstraint(countryNugget, avoidAll);
+	rmAddObjectDefConstraint(countryNugget, nugVsCoin);
 	rmAddObjectDefConstraint(countryNugget, insideWorld);
-	rmAddObjectDefConstraint(countryNugget, insideFrame);
+	rmAddObjectDefConstraint(countryNugget, insideFrameTreasure);
 	rmSetNuggetDifficulty(3, 3);
 	rmPlaceObjectDefInArea(countryNugget, 0, countryD, 2 + resScale);
 	rmPlaceObjectDefInArea(countryNugget, 0, countryA, 2 + resScale);
@@ -1840,6 +1858,7 @@ void main(void)
 		rmAddAreaConstraint(forestD, stripBoxD);
 		rmAddAreaConstraint(forestD, forestVsForest);
 		rmAddAreaConstraint(forestD, avoidBlocks8);
+		rmAddAreaConstraint(forestD, avoidAll);        // Crownlands 958 (owner 2026-09-27): without it these forest areas wiped the tin, deer and berries placed above
 		rmAddAreaConstraint(forestD, avoidWallObjTree);
 		rmAddAreaConstraint(forestD, avoidCliff5);
 		rmAddAreaConstraint(forestD, avoidTradeRouteRes);
@@ -1864,6 +1883,7 @@ void main(void)
 		rmAddAreaConstraint(forestA, stripBoxA);
 		rmAddAreaConstraint(forestA, forestVsForest);
 		rmAddAreaConstraint(forestA, avoidBlocks8);
+		rmAddAreaConstraint(forestA, avoidAll);
 		rmAddAreaConstraint(forestA, avoidWallObjTree);
 		rmAddAreaConstraint(forestA, avoidCliff5);
 		rmAddAreaConstraint(forestA, avoidTradeRouteRes);
@@ -1871,7 +1891,7 @@ void main(void)
 		rmSetAreaObeyWorldCircleConstraint(forestA, false);
 		rmBuildArea(forestA);
 	}
-	rmEchoInfo("LONDON countryside: bank seats " + seatsBankD + " / " + seatsBankA + ", resScale " + resScale + " - tin " + (seatsBankD + 1) + "+" + (seatsBankA + 1) + ", deer herds the same, berries " + seatsBankD + "+" + seatsBankA + ", treasures " + (3 + 2 * resScale) + " per bank, tree clumps " + (3 + 2 * resScale) + " per bank");
+	rmEchoInfo("LONDON countryside: bank seats " + seatsBankD + " / " + seatsBankA + ", resScale " + resScale + " - tin, deer herds and berries " + countryK + " per bank (placed tin " + rmGetNumberUnitsPlaced(countryMine) + " of " + (2 * countryK) + "), treasures " + (3 + 2 * resScale) + " per bank, tree clumps " + (3 + 2 * resScale) + " per bank");
 	rmEchoInfo("countryside rim: pie radius " + rimRadiusM + " m (corner chamfer " + rimCornerM + " m), frame box 8 m");
 
 	// ============================================================================================
@@ -1967,6 +1987,29 @@ void main(void)
 		rmPlaceObjectDefAtLoc(constrMark, i, locX0, locZn1);
 	}
 	rmEchoInfo("LONDON construction markers at x " + rmXFractionToMeters(locX0) + " z " + rmZFractionToMeters(locZs1) + " / " + rmZFractionToMeters(locZn1) + " m, 2 per player");
+
+	// ---- 12.10 THE COUNTRYSIDE SOCKETS (owner 2026-09-27): on the big frame (six and more players) ONE more LAND-route
+	// socket per side behind the wall, ON the built route's own positions - King of Bohemia's block (zpkingofbohemia.xs
+	// 267-272, 745: one socket def tied to the route, overlap allowed, min 2 / max 8 m, rmPlaceObjectDefAtPoint at
+	// rmGetTradeRouteWayPoint). A free map point with rmPlaceObjectDefAtLoc spawned nothing (owner's 3v3 of 22:54).
+	// The road runs straight from the south edge (fraction 0) to the north edge (fraction 1), so a route fraction is
+	// the map's z fraction: halfway from each city wall line (wallZS / wallZN) to the map edge, mirrored about the
+	// river (765 m frame: ~66 m beyond the wall). The naval route keeps its harbour posts.
+	// Placed after every other unit, as the markers above: no index moves.
+	if (cNumberNonGaiaPlayers >= 6)
+	{
+		int countrySocketID = rmCreateObjectDef("sockets to dock Trade Posts countryside");
+		rmSetObjectDefTradeRouteID(countrySocketID, tradeRouteID);
+		rmAddObjectDefItem(countrySocketID, "SocketTradeRoute", 1, 0.0);
+		rmSetObjectDefAllowOverlap(countrySocketID, true);
+		rmSetObjectDefMinDistance(countrySocketID, 2.0);
+		rmSetObjectDefMaxDistance(countrySocketID, 8.0);
+		vector countrySocketLoc = rmGetTradeRouteWayPoint(tradeRouteID, wallZS * 0.5);
+		rmPlaceObjectDefAtPoint(countrySocketID, 0, countrySocketLoc);
+		countrySocketLoc = rmGetTradeRouteWayPoint(tradeRouteID, wallZN + (1.0 - wallZN) * 0.5);
+		rmPlaceObjectDefAtPoint(countrySocketID, 0, countrySocketLoc);
+		rmEchoInfo("LONDON countryside sockets: " + rmGetNumberUnitsPlaced(countrySocketID) + " of 2 on the land route");
+	}
 
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its

@@ -557,13 +557,20 @@ class TestCountryside:
             i = s.index('rmCreateObjectDef("countryside %s")' % name); j = s.index("rmCreateObjectDef(", i + 10) if s.find("rmCreateObjectDef(", i + 10) > 0 else s.index("rmEchoInfo", i)
             return s[i:j]
         rim = {"insideWorld", "insideFrame"}        # the world-circle pie and the 8 m frame box (user 2026-09-22)
-        fences = {"tin": {"mineVsMine", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
-                  "deer": {"deerVsDeer", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
-                  "berries": {"berryVsBerry", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
-                  "treasure": {"nugVsNug", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim}
+        # the resources' looser set (user 2026-09-27): 4 m frame, 10 m off the walls, 4 m off the plateaus; the treasures keep the strict one
+        loose = {"avoidBlocks8", "avoidPlateauShort", "avoidWallObjTree", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes", "insideWorld", "insideFrameRes"}
+        fences = {"tin": {"mineVsMine"} | loose,
+                  "deer": {"deerVsDeer"} | loose,
+                  "berries": {"berryVsBerry"} | loose,
+                  # treasures (owner 2026-09-27, a camp on a tin mine at the edge): avoidAll, 12 m off coin, Paris's 20 m edge box + the circle
+                  "treasure": {"nugVsNug", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes",
+                               "avoidAll", "nugVsCoin", "insideWorld", "insideFrameTreasure"}}
         items = {"tin": ['"MineTin", 1, 0.0'], "deer": ['"Deer", rmRandInt(6, 8), 6.0'], "berries": ['"BerryBush", 5, 4.0'], "treasure": ['"Nugget", 1, 0.0']}
-        counts = {"tin": ["seatsBankD + 1", "seatsBankA + 1"], "deer": ["seatsBankD + 1", "seatsBankA + 1"], "berries": ["seatsBankD", "seatsBankA"],
+        # one count for both banks from the whole lobby, (players + 1) / 2 (user 2026-09-27)
+        counts = {"tin": ["countryK", "countryK"], "deer": ["countryK", "countryK"], "berries": ["countryK", "countryK"],
                   "treasure": ["2 + resScale", "2 + resScale", "1 + resScale", "1 + resScale"]}
+        assert "int countryK = (cNumberNonGaiaPlayers + 1) / 2;" in s
+        assert 'int insideFrameRes = rmCreateBoxConstraint("inside the frame, resources", rmXMetersToFraction(4.0), rmZMetersToFraction(4.0), 1.0 - rmXMetersToFraction(4.0), 1.0 - rmZMetersToFraction(4.0), 0.01);' in s
         for name in ("tin", "deer", "berries", "treasure"):
             b = block(name)
             assert set(re.findall(r"rmAddObjectDefConstraint\(\w+, (\w+)\);", b)) == fences[name], name
@@ -608,9 +615,12 @@ class TestCountryside:
             # avoidPlateau8 is DELIBERATELY absent (mapcheck bisect 2026-09-22: on its own it leaves 0 feasible
             # tiles - classPlateau holds the quays, oversized areas clipped by their box). classCliff holds the
             # wall hills alone, so avoidCliff5 fences them, and the strip box keeps the forests off the quays.
-            assert got == {box, "forestVsForest", "avoidBlocks8", "avoidWallObjTree", "avoidCliff5",
+            # avoidAll (Crownlands 958; owner 2026-09-27): without it the forest areas wiped the tin, deer and berries
+            # placed before them - 1v1 0 of 4 tin mines until the forests were switched off
+            assert got == {box, "forestVsForest", "avoidBlocks8", "avoidAll", "avoidWallObjTree", "avoidCliff5",
                            "avoidTradeRouteRes", "belowCliffs"}, (area, got)
             assert "avoidPlateau8" not in got, area
+        assert 'int avoidAll = rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);' in _text(LONDON)
 
     def test_the_treasure_pool_and_the_map_types(self):
         t = _text(LONDON)
