@@ -43,6 +43,14 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    in the test or skip when the capture is absent. Never add a one-off ignore line for a new image folder - the
    rule already covers it.
 
+9. **Deleting from a PRODUCTION record needs the owner's approval.** Removing a production tech, proto, trigger
+   or other record, removing an effect or line from it, or moving it (which deletes it from its place): name the
+   exact deletion and get a yes first. Exempt: TEST records (made only to prove something) and records created
+   in the same session, when the intent is clearly to wipe out that mess. An approved deletion is made exactly
+   and alone; a suspected further fix is proposed, never bundled in. Read the tests that pin the record first:
+   they encode its dependencies (2026-09-27: the London side setup techs were moved unasked, and their order
+   dependency on the generic setup was missed).
+
 ## Where things are
 
 - Skills: `.claude/skills/` - `bar-extract` (vanilla files, XML<->XMB), `aoe-building-pipeline` (buildings,

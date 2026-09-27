@@ -23,7 +23,7 @@ registers a new copy, `--check` lists stale ones. Never copy a `.mods.xml` into 
 | 4 | Players and starts | rm-players | mapcheck G-checks | - |
 | 5 | Objects: resources, herds, holes, nuggets | rm-objects-herds, rm-resource-balance (counts per side / player) | mapcheck | census of a saved generation (rm-census; `resource_count.py census` for parity) |
 | 6 | Groupings and natives | rm-groupings-deploy, native-politician, extended-native | unit-count diff across the three copies; trigger tests | census after a game restart |
-| 7 | Triggers | map-politician-triggers, nugget-targeting | offline trigger tests (`scripts/mapcheck/tests` harness pattern) | one play test |
+| 7 | Triggers | rm-triggers (hub), then map-politician-triggers, nugget-targeting | offline trigger tests (`scripts/mapcheck/tests` harness pattern) | one play test |
 | 8 | Ship | mod-deploy-check | zip audit, `xmb_idcheck`, `check_art_eol` | - |
 
 "It does not work" at any phase -> rm-diagnose before any theory. New art on the map -> rm-unit-bench
@@ -60,6 +60,8 @@ python sandbox/census/census_run.py <recipe> --seeds 3             # generate ->
   frequent and very expensive bug. When resources are missing or uneven, check the forests FIRST:
   `grep -n "rmSetAreaForestType" <map>.xs` and confirm each forest area has `avoidAll` or is built before the
   objects. Copying a forest block means copying its `avoidAll` line too.
+- **Triggers and map setup:** start every trigger or starting-tech change at `rm-triggers` (the hub: laws, the
+  setup-tech convention, routing to the specialised trigger skills).
 - **Map-edge constraints:** a square map needs one circle; a rectangular map needs a box AND a circle sized from
   the corner. Treasures need a 20 m edge box plus `avoidAll` and 12 m off coin. The recipe is in `rm-objects-herds`,
   "Map-edge constraints".
