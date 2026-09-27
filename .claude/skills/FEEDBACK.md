@@ -138,3 +138,18 @@ and UV photo documentation for remote inspection. Preserve visible chart scale.
 - **Validation scope:** This update changes instructions and records feedback.
   It does not repair the candidate, certify the proposed method, or authorize
   another model experiment or public skill export.
+
+# UV conjoinment: frames ate the page, then density drift - 2026-09-28
+
+- **Task / skill:** Clean scattered charts on the Korean TC, then conjoin (T3) at the
+  original UV size; `blender-uv-conjoin` (new) owns the merge, split and space gate.
+- **Expected / actual:** (1) After cleaning, whole timber facade frames stayed as single
+  hollow unique charts: about 2/3 of the owner area (measured 68%), page 4360 texels.
+  The owner caught it by eye. (2) The result was rescaled to fill 0-1 and every chart
+  normalised to 256 texels/unit - density rose although the owner asked for original size.
+- **User-reported cost:** about USD 600 for this incident (owner's estimate, not billing
+  telemetry); the owner judged repeat failures fatal to the model-creation economy.
+- **Smallest correction:** split hollow charts into straight members by default; audit
+  the packed page (hollow/unshared share, packing efficiency, runtime texels/unit) and
+  exit non-zero on FAIL; output at the original page scale, never normalise density.
+  Regression tests cover both. Accepted deliverable: S16 (page A in 34% x 34%, rest empty).

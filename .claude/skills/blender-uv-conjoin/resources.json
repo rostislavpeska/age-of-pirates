@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/lessons.md",
+    "scripts/conjoin.py",
+    "scripts/audit.py",
+    "scripts/pack_rects.py",
+    "scripts/labeled_fit.py",
+    "scripts/blender_export_faces.py",
+    "scripts/blender_apply_conjoin.py",
+    "scripts/render_review.py",
+    "scripts/draw_uv_sheet.py",
+    "scripts/test_conjoin.py"
+  ],
+  "skills": [
+    "blender-clean-uv",
+    "blender-uv-reuse"
+  ],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "uv-edit"
+      ],
+      "optional": false,
+      "note": "Export/apply scripts run inside Blender; render_review.py runs in a background Blender process.",
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
+    },
+    {
+      "id": "python-geometry",
+      "kind": "python",
+      "requiredFor": [
+        "conjoin"
+      ],
+      "optional": false,
+      "note": "Host Python with numpy, shapely 2.x and Pillow.",
+      "modules": [
+        "numpy",
+        "shapely",
+        "PIL"
+      ]
+    }
+  ]
+}
