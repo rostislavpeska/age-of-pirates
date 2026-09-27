@@ -62,9 +62,12 @@ accepted for later refinement; approval does not make them resolved.
 ## Existing tools and limits
 
 - [Whole-chart geometry sharing](scripts/geometry_share.py): a provisional
-  correspondence solver for compatible existing parameterizations. It checks
-  material patterns, polygon boundary connectivity, rigid/reflected 3D fits,
-  normal direction and pixel-space UV residuals; it never fits a scale or packs.
+  geometry-first correspondence solver. Material/valence counts and measured 3D
+  invariants shortlist; polygon boundary correspondence, rigid/reflected fits and
+  normals decide. Existing UV signatures never veto geometry discovery. Transferring
+  owner coordinates must preserve per-face texel density within the declared
+  tolerance. UV residual/reflection is reported for later channel review. It never
+  fits a geometric scale or packs. Different mesh topologies still stay unique.
   See [the geometry-only handoff](references/geometry-only-handoff.md) and run
   `python -m unittest discover -s scripts -p 'test_*.py'` from this package.
 

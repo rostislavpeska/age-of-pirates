@@ -18,13 +18,15 @@ The helper `geometry_share.py` expects each chart to contain faces with stable I
 world `points`, pixel-space `uv`, unit geometric `normal` and a physical `material`
 label. A chart can contain multiple materials; their spatial pattern must match.
 
-1. Try eight 2D orientation transforms (axis swap and sign combinations), remove
-   translation, and form a coarse UV/material/boundary signature. This only
-   shortlists shapes with compatible existing parameterization and pixel size.
-2. Match face/corner correspondence including polygon edge connectivity. Equal
-   vertex sets with different boundaries are not equal patches. Ambiguous identical
-   coincident UV faces are rejected rather than arbitrarily paired.
-3. Solve the orthogonal 3D fit by SVD for proper and reflected transforms. Require
+1. Shortlist by whole-chart material/face-valence counts and vertex count, then
+   measure sorted radii about the geometric centroid. Never require equality of
+   rounded floating-point UV signatures, edge lengths or geometric hashes.
+2. Test compatible anchor polygons under cyclic corner shifts and both windings.
+   Their rigid/reflected fits propose full-chart vertex correspondence. Require a
+   bijection, corresponding material regions and identical polygon boundary cycles.
+   Equal point sets with different edges are not equal patches. Ambiguous identical
+   coincident geometry faces are reported rather than arbitrarily paired.
+3. Refine the orthogonal 3D fit by SVD over all corresponding vertices. Require
    `max ||R*p+t-q|| <= absolute + relative*characteristic_length`, with no scale
    factor, and a bounded transformed-normal angle. Measure UV error separately.
 4. Test every member against its chosen owner, not transitive similarity chains.
@@ -32,13 +34,34 @@ label. A chart can contain multiple materials; their spatial pattern must match.
    for the later channel gate.
 5. Assign corresponding owner coordinates in the new UV layer. Existing detailed
    owner positions and chart pixel size stay fixed; freed addresses remain empty.
+   Before transfer, compare corresponding face UV areas: their square-root ratio
+   measures texel-density change under the verified geometric isometry. Require
+   the declared density tolerance; do not use old UV shape equality as a veto.
    Re-read Blender's stored floats to measure actual error, density and collisions.
 
-Example tolerances from the Korean TC: 0.01-pixel shortlist quantization,
-0.025-pixel UV fit allowance, position limit `2e-5 + 2e-5*L` in scene units,
-normal allowance 0.5 degrees. These are explicit case parameters, not universal
-precision guarantees. Different topology or UV parameterization may produce a
-false negative despite congruent surfaces; keep unique and record this limitation.
+Example tolerances from the Korean TC: position limit `2e-5 + 2e-5*L` in scene
+units, where L is twice the maximum vertex distance from the centroid; normal
+allowance 0.5 degrees; per-face density difference 0.1%, plus the helper's explicit
+small numerical allowance. A 0.025-pixel UV residual now flags layout difference
+for the report, rather than vetoing valid geometry. These are case parameters, not universal
+precision guarantees. Different topology may still produce a false negative despite
+congruent surfaces; keep unique and record this limitation.
+
+### Regression: UV quantization hid opposite roof slopes
+
+The S8 implementation hashed UV coordinates rounded to 0.01 pixels before testing
+geometry. Rear-hall and west-hall opposite slopes differed by about 0.017 and
+0.010 UV pixels, below the intended 0.025-pixel allowance, yet their hashes differed.
+The geometry solver never saw those candidates. Exact equality of quantized floats
+is not a tolerance test: nearby values can straddle a bin edge.
+
+The geometry-first rerun recovers both entire roof patches and preserves all
+previous sharing groups. On this source it produces 358 groups, 1,491 shared
+instances, 223 unique charts and 1,133 freed addresses (24 more than S8). Fifteen
+tests now include rounding-boundary noise, arbitrary UV rotation, equal-density
+reparameterization, mirrored curved quad roofs and complete face/material mapping.
+Geometry validation remains bounded to matching topology; AO/channel acceptance
+and visual approval of the new candidate remain separate gates.
 
 ## Hidden atlas and stale allocation correction
 
@@ -83,7 +106,7 @@ that vertex increase and keep the original component model.
   useful UV Editing. Keep the source intact. Verify actual mesh UVs, group membership,
   image bindings and controls. State any failed native screenshot capture.
 
-## Measured candidate, acceptance pending
+## Historical S8 candidate, superseded by the geometry-first rerun above
 
 On the S7 Korean TC source, 1,714 visible inherited charts produced 344 geometry
 sharing groups, 1,453 shared instances, and 261 remaining unique charts. This frees
