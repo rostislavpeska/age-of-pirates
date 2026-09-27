@@ -24,10 +24,11 @@
   </action>
   <action>
     <name stringid="38122">LongRangeAttack</name>
-    <type>BroadsideAttack</type>
+    <active>0</active>
+    <type>Attack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
-    <anim>Idle</anim>
+    <anim>RangedAttack</anim>
     <idleanim>Idle</idleanim>
     <projectile>MortarShell</projectile>
     <numberprojectiles>1</numberprojectiles>
@@ -73,6 +74,7 @@
   </action>
 <action>
     <name stringid="38123">BroadsideAttack</name>
+    <active>0</active>
     <type>BroadsideAttack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>

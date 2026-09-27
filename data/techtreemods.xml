@@ -39440,6 +39440,27 @@
       </effect>
     </effects>
   </tech>
+  <!-- Chinese Imperial Navy (Industrial card) -> one Treasure Ship + the vanilla Fire Junk (was Fuchuan + Fire Junk)
+       (owner 2026-09-27). A merge record: dbid 3977, cost, flags and status stay vanilla; arrives in 60 like the battleship card (vanilla 40); name, text and icon
+       are replaced; the vanilla Fuchuan effect is removed, the Fire Junk stays: the Home City file's badge says 2
+       (removal form as in DEHCAncienRegime). -->
+  <tech name="YPHCChineseImperialNavy" type="Normal">
+    <dbid>3977</dbid>
+    <researchpoints>60.0000</researchpoints>
+    <displaynameid>503608</displaynameid>
+    <icon>resources\images\icons\techs\chinese_hc\chinese_treasure_ship.png</icon>
+    <rollovertextid>503609</rollovertextid>
+    <effects>
+      <effect mergemode="remove" type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="ypFuchuan" relativity="Absolute">
+        <target type="Player" />
+      </effect>
+      <effect mergemode="remove" type="TextOutput">69069</effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCTreasureShip" relativity="Absolute">
+        <target type="Player" />
+      </effect>
+      <effect mergemode="add" type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
 <!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">

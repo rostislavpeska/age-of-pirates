@@ -12,9 +12,10 @@
   <submaterial name="matb">
     <materialdef name="default_doublesided" />
     <parameters>
-      <texture name="BaseColor" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_basecolor" />
+      <texture name="BaseColor" override="units\naval\treasureship\textures\zptreasureship_sails_basecolor" />
       <texture name="Normals" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_normals" />
       <texture name="Masks" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_masks" />
+      <texture name="Details" override="units\naval\treasureship\textures\zptreasureship_sails_details" />
     </parameters>
   </submaterial>
   <submaterial name="matc">

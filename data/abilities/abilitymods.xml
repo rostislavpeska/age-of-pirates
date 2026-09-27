@@ -28,7 +28,7 @@
   </zpspcfixedgun>
   <zpspctreasureship>
     <ability>PowerLongRange<rof>60</rof></ability>
-    <ability>PowerBroadside<rof>60</rof></ability>
+    <ability>PowerBroadside<tech>zpNatTreasureFleet</tech><rof>60</rof></ability>
   </zpspctreasureship>
   <zpwokousteamer>
     <ability>PowerLongRange<rof>60</rof></ability>

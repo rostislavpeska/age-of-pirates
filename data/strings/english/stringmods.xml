@@ -218,7 +218,7 @@
       <string _locid="500210">Bloodthirsty Wokou Archer</string>
       <string _locid="500211">Notorious Wokou Archer</string>
       <string _locid="500212">The Big Theft</string>
-      <string _locid="500213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
+      <string _locid="500213">Ships a Treasure Ship stolen by your Wokou allies with Sao Feng himself on board. Enables the Treasure Ship's Broadside.</string>
       <string _locid="500214">Friendly Shipyard</string>
       <string _locid="500215">ZP SHP Destroyer</string>
       <string _locid="500216">Wang Zhi</string>
@@ -251,7 +251,7 @@
       <string _locid="500243">Madame Ching</string>
       <string _locid="500244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship. Wokou Pirate build limit increased.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nWokou Emissary</string>
       <string _locid="500245">Wokou Flagship with powerful broadside attack.</string>
-      <string _locid="500246">The Emperess</string>
+      <string _locid="500246">The Empress</string>
       <string _locid="500247">Choose a Wokou Pirate leader and get new special units and technologies.</string>
       <string _locid="500248">ZP Native Wokou</string>
       <string _locid="500249">Native Building</string>
@@ -3608,6 +3608,13 @@
       <string _locid="503605">ZP TEST Chinese Town Center - Destruction Control</string>
       <string _locid="503606">Experimental Havok destruction test. Compare progressive damage and final collapse with the Chinese donor.</string>
       <string _locid="503607">Royalist musketeer. Builds barricades and Military Camps after the Stuart expansion is unlocked.</string>
+      <string _locid="503608">Captain Huang's Treasure Ship</string>
+      <string _locid="503609">Ships a Treasure Ship and a Fire Junk.</string>
+      <string _locid="503610">Qing He</string>
+      <string _locid="503611">Hui Kang</string>
+      <string _locid="503612">Chang Ning</string>
+      <string _locid="503613">An Ji</string>
+      <string _locid="503614">Qing Yuan</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
