@@ -46,6 +46,12 @@ regenerate the .xmb, restart the game (data loads at process start).
   inert (Cold War: the islands cover the corridor, which is the design).
 - Sockets: `rmGetTradeRouteWayPoint(r, fraction)` returns engine metres; place with
   `rmPlaceObjectDefAtPoint`. Count sockets in the census (`SocketTradeRoute`) to prove the route built.
+  Always use a ROUTE POSITION, never a free map coordinate. `rmPlaceObjectDefAtLoc(socket, 0, x, z)` at a point
+  on the road's line spawned nothing (London countryside sockets, 2026-09-27). The block that works is King of
+  Bohemia's (`zpkingofbohemia.xs` 267-272, 745): one def with `rmSetObjectDefTradeRouteID`, `SocketTradeRoute`,
+  `rmSetObjectDefAllowOverlap(true)`, min 2 / max 8 m, then `rmPlaceObjectDefAtPoint(def, 0,
+  rmGetTradeRouteWayPoint(route, fraction))`. On a straight route the fraction runs along the waypoints, so a
+  map position converts to a fraction directly.
 - Nautical routes need water waypoints; a land chain over water is a causeway design, not an error.
 
 ## Diagnosis order

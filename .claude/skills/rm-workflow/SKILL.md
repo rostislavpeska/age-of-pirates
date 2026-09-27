@@ -21,7 +21,7 @@ registers a new copy, `--check` lists stale ones. Never copy a `.mods.xml` into 
 | 2 | Terrain: areas, water, cliffs, mixes, overlays | rm-areas, rm-water-rivers, rm-coordinates | `mapcheck --live` (SIM) | minimap screenshot (map-minimap / rm-unit-bench runner) |
 | 3 | Routes and sockets | rm-trade-routes | mapcheck route-type check | minimap |
 | 4 | Players and starts | rm-players | mapcheck G-checks | - |
-| 5 | Objects: resources, herds, holes, nuggets | rm-objects-herds | mapcheck | census of a saved generation (rm-census) |
+| 5 | Objects: resources, herds, holes, nuggets | rm-objects-herds, rm-resource-balance (counts per side / player) | mapcheck | census of a saved generation (rm-census; `resource_count.py census` for parity) |
 | 6 | Groupings and natives | rm-groupings-deploy, native-politician, extended-native | unit-count diff across the three copies; trigger tests | census after a game restart |
 | 7 | Triggers | map-politician-triggers, nugget-targeting | offline trigger tests (`scripts/mapcheck/tests` harness pattern) | one play test |
 | 8 | Ship | mod-deploy-check | zip audit, `xmb_idcheck`, `check_art_eol` | - |
@@ -51,6 +51,18 @@ python sandbox/census/census_run.py <recipe> --seeds 3             # generate ->
   sequence (new-content-placement memory).
 - One decisive test per open question; state the expected outcome before running it.
 - The RM dump proves compilation only; the census proves placement; the screenshot proves rendering.
+- **Every forest AREA carries `avoidAll`** (`int avoidAll = rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);`
+  then `rmAddAreaConstraint(forest, avoidAll);` - `zpcrownlands.xs:958`, `zpkingofbohemia.xs:979`,
+  `zpflorence.xs:1571`). A forest area (`rmSetAreaForestType`) built without it AFTER objects were placed
+  silently DELETES every mine, herd and bush it grows over - no error, and counts come out short and uneven
+  between sides. London 2026-09-27: countryside tin 1v1 0 of 4. Removing every resource constraint changed
+  nothing; turning the forests off gave 2 mines per bank at once; `avoidAll` on the forests is the fix. This is a
+  frequent and very expensive bug. When resources are missing or uneven, check the forests FIRST:
+  `grep -n "rmSetAreaForestType" <map>.xs` and confirm each forest area has `avoidAll` or is built before the
+  objects. Copying a forest block means copying its `avoidAll` line too.
+- **Map-edge constraints:** a square map needs one circle; a rectangular map needs a box AND a circle sized from
+  the corner. Treasures need a 20 m edge box plus `avoidAll` and 12 m off coin. The recipe is in `rm-objects-herds`,
+  "Map-edge constraints".
 
 ## What "verified" means in a report
 
