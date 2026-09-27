@@ -5,6 +5,16 @@ description: Builds and repairs architectural Blender models with approved block
 # Architecture modeling
 Read [construction and review](references/construction.md) for geometry work. Before removing hidden faces or classifying low-detail backs, read [surface visibility and destruction](references/surface-visibility.md). Use the sibling `blender-architecture-texturing` skill for UV/material planning.
 
+For material-only classification of difficult undersides and interior faces, use
+[hybrid hidden surfaces](../blender-hidden-surfaces/SKILL.md). It proposes shared
+backing regions from combined visibility evidence; it does not authorize deletion.
+
+For duplicated or intersecting construction shapes, use
+[overlap prevention and cleanup](../blender-overlap-cleanup/SKILL.md): Gate 1
+establishes joint ownership before replication/UVs; Gate 2 repairs the actual
+geometry and activates the repaired model for manual inspection. A clean
+coplanar-face count alone does not rule out penetrating solids.
+
 ## Local prerequisites
 
 Follow the [local-tool readiness guidance](../skill-library-audit/references/local-tools.md).

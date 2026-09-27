@@ -1,10 +1,20 @@
 ---
 name: blender-architecture-texturing
-description: Plans and validates architectural texture regions, texel density, researched decorative atlases, seamless materials and AO while preserving unrelated UVs and maps. Use for architectural UV, material, baking and texture-source work in Blender.
+description: Coordinates architectural materials, decorative atlases, texture sources and AO while preserving unrelated maps. Routes clean unwraps to blender-clean-uv and economical overlap/packing to blender-uv-reuse; use for material and texture-source work in Blender.
 ---
 # Architecture texturing
-Architectural chart design precedes density normalization and packing. The tested
-diagnostic helpers are not an automatic production unwrap solver.
+This is the material and texture-source entry point. UV work has two separate
+owners; load the one needed for the current checkpoint:
+
+- [Clean UV authoring](../blender-clean-uv/SKILL.md): coherent charts, density,
+  hidden-surface allocation and real editable maps in Blender with operator controls.
+- [UV reuse and space optimization](../blender-uv-reuse/SKILL.md): geometry
+  candidates, AO/channel compatibility, deliberate overlap and final atlas budgets.
+- [Hybrid hidden surfaces](../blender-hidden-surfaces/SKILL.md): material-only
+  interior/underside classification before UV allocation, with editable visual review.
+
+Clean-editor acceptance does not establish production capacity or final texture
+quality. Existing diagnostic helpers are not an automatic production unwrap solver.
 
 ## Local prerequisites
 
@@ -23,7 +33,7 @@ validator uses Python's standard library. These offline checks do not establish
 that Blender, Photoshop or Painter is connected. Missing optional Painter support
 does not block Blender-only work; use it only for the selected workflow.
 
-1. Read [regions and density](references/regions-density.md) and [chart joining, reuse and AO](references/chart-joining.md) before unwrapping. Plan coherent facade/roof charts and reusable trim families before packing. A density-correct atlas of thousands of tiny construction faces is not an accepted architectural layout. AO variation within one chart is valid; incompatible values at the same reused texel are the actual conflict.
+1. For unwrapping, follow the clean-UV skill above and read [regions and density](references/regions-density.md). For sharing or atlas compression, follow the UV-reuse skill. A density-correct atlas of tiny construction faces is not an accepted architectural layout. Detailed texturing follows the agreed UV/reuse checkpoint; source studies and existing baked previews are not final texture acceptance.
 2. Read [sources and seamless textures](references/sources-seamless.md) when acquiring/generating materials. ALWAYS research real ornament. Preserve rich detail through texture/normal relief where silhouettes do not need geometry.
 3. Read [UV repair and AO](references/uv-ao.md) before atlas edits, baking and postproduction. Identify exact faces; preserve unrelated geometry, UVs, materials, normals and pixels. Do not repack an atlas to repair one window.
    For modeled high-poly relief projected onto a low mesh, use the companion

@@ -11,6 +11,11 @@ surface; a centerline above the roof can leave an unintended floating gap.
 Align course heights and the FULL ledge profile around corners, including short returns. Derive repeated windows/columns from shared dimensions and projection depths; do not guess each extrusion independently. Consistent depth also makes reusable UVs and AO practical.
 
 ## Overlap
+Use the sibling [two-gate overlap workflow](../../blender-overlap-cleanup/SKILL.md)
+before classifying backs or investing in UV/AO/bakes. Assign one corner-post owner
+and shared joint coordinates before repeating facades; independent closed boxes
+for every rail/post/panel can carry overlapping volumes through all later stages.
+
 Small concealed intersections at construction joints can be reasonable; document which part covers which. Do not leave two visible faces on the same plane or use backing panels to fake an opening. Audit across objects and within objects, including slanted faces. Classify duplicates, intentional covers, open edges, reveals, detached caps, shading and UV faults before editing.
 Delete genuinely redundant geometry, then check loose vertices/edges. Do not delete all nonmanifold/interior surfaces indiscriminately. For intentional layers, offset the documented geometry layer along the correct direction and verify the junction remains closed. UV movement does not separate surfaces. Convert through root/object transforms and scene units: 0.001 coordinate units is not automatically 1 mm. Check every overlapping pair ends on different planes. Never blanket-offset individual triangles without checking continuity.
 

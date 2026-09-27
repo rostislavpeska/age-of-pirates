@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/matching-and-budget.md"
+  ],
+  "skills": [
+    "blender-clean-uv",
+    "blender-architecture-texturing"
+  ],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "uv-edit"
+      ],
+      "optional": false,
+      "note": "Verify the intended live scene, editable UV layer and authorized connection; static audit does not prove these.",
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
+    }
+  ]
+}

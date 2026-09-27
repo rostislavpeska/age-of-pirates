@@ -1,0 +1,60 @@
+{
+  "status": "user_preferred_experimental_baseline",
+  "primary_camera_elevations": [
+    30,
+    45,
+    60,
+    75
+  ],
+  "primary_azimuths": 24,
+  "stress_elevations": [
+    10,
+    20,
+    85
+  ],
+  "holdout_elevations": [
+    33,
+    52,
+    71
+  ],
+  "holdout_azimuths": 17,
+  "camera_contract": "provisional experimental envelope; report sensitivity, not an engine guarantee",
+  "image_resolution": 640,
+  "holdout_image_resolution": 960,
+  "image_hidden_max_pixels": 1,
+  "image_hidden_max_exposure_fraction": 0.015,
+  "ray_hidden_max_exposure_fraction": 0.02,
+  "ray_samples_per_triangle": 7,
+  "pair_max_distance_world": 0.6,
+  "pair_min_sample_coverage": 0.9,
+  "pair_max_normal_z": -0.35,
+  "voxel_pitches_world": [
+    0.12,
+    0.06
+  ],
+  "graph_lambda": 0.35,
+  "graph_unary_weights": {
+    "images": 1.5,
+    "rays": 1.5,
+    "paired_backing": 1.0,
+    "voxel": 0.4
+  },
+  "alpha_policy": "protect receivers, omit them as occluders (transparent extreme)",
+  "scope": "shared backing material candidates, never geometry deletion",
+  "benchmark_labels": "analytical synthetic roles; assistant-curated roof underside ROI from user annotation; protected exterior controls. Neither is final user face-by-face acceptance.",
+  "voxel_max_cells": 8000000,
+  "image_score_pixels": 4.0,
+  "image_score_fraction": 0.08,
+  "ray_score_fraction": 0.1,
+  "pair_normal_offset": 0.05,
+  "pair_normal_span": 0.3,
+  "protect_pixels": 4,
+  "protect_fraction": 0.1,
+  "normal_dot_min": 0.82,
+  "normal_power": 8,
+  "edge_weight_max": 4.0,
+  "capacity_scale": 100000,
+  "voxel_unstable_tolerance": 0.2,
+  "voxel_shift": 0.37,
+  "world_up": "Z"
+}

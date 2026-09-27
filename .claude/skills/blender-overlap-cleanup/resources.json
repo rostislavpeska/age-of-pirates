@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "files": ["SKILL.md", "references/repair-methods.md", "scripts/overlap_geometry.py", "scripts/test_overlap_geometry.py"],
+  "skills": ["blender-architecture"],
+  "external": [
+    {"id":"python","kind":"executable","requiredFor":["overlap-audit"],"optional":false,"commands":["python","python3"],"note":"Runs read-only geometry planners and regression tests."},
+    {"id":"numpy","kind":"python-package","requiredFor":["overlap-audit"],"optional":false,"distribution":"numpy","modules":["numpy"],"note":"World-space vector and plane calculations; arrays remain separate from authored topology."},
+    {"id":"shapely","kind":"python-package","requiredFor":["overlap-audit"],"optional":false,"distribution":"shapely","modules":["shapely"],"note":"Requires Shapely 2 or later. Tested with 2.1.2."},
+    {"id":"blender","kind":"application","requiredFor":["geometry-repair","live-handoff"],"optional":false,"commands":["blender"],"modules":["bpy"],"note":"Verify the intended live session through the established MCP/API route."}
+  ]
+}

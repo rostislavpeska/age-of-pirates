@@ -19,7 +19,7 @@ alone. Preserve shared AO constraints and alpha silhouette resolution.
 For a square map, density = resolution * sqrt(UV triangle area / surface area in square meters). Include object/root transforms and scene unit scale. Record intended density, material, region polygon/bounds, orientation, exposure class, padding and shared-AO policy. Export consolidation must retain these semantics.
 
 For two-axis distortion, use the Jacobian singular values in
-[chart joining](chart-joining.md); equal area does not establish equal sharpness in
+[clean chart construction](../../blender-clean-uv/references/chart-construction.md); equal area does not establish equal sharpness in
 both directions. Chart coherence, density, allowed overlap and AO feasibility are
 separate gates. A late unique repack is not a substitute for facade/trim design.
 

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/baseline-config.json",
+    "references/execution.md",
+    "references/interior-pass-research.md",
+    "references/proxy-aftercheck.md",
+    "references/method.md",
+    "references/validation.md",
+    "scripts/evidence_kernels.py",
+    "scripts/hybrid_visibility.py",
+    "scripts/measure_evidence.py",
+    "scripts/measure_rays_blender.py",
+    "scripts/sampling.py",
+    "scripts/snapshot_blender.py",
+    "scripts/test_hybrid_visibility.py"
+  ],
+  "skills": [
+    "blender-architecture",
+    "blender-architecture-texturing"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "classification",
+        "measure-evidence"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "note": "Use the configured standalone interpreter."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "classification",
+        "measure-evidence",
+        "snapshot",
+        "measure-rays"
+      ],
+      "optional": false,
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "note": "Needed by all numerical helpers."
+    },
+    {
+      "id": "scipy",
+      "kind": "python-package",
+      "requiredFor": [
+        "classification",
+        "measure-evidence"
+      ],
+      "optional": false,
+      "distribution": "scipy",
+      "modules": [
+        "scipy"
+      ],
+      "note": "Graph cut and exterior-air flood fill."
+    },
+    {
+      "id": "numba",
+      "kind": "python-package",
+      "requiredFor": [
+        "measure-evidence"
+      ],
+      "optional": false,
+      "distribution": "numba",
+      "modules": [
+        "numba"
+      ],
+      "note": "Compiles raster/SAT kernels. Use external cache directory."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "snapshot",
+        "measure-rays",
+        "live-review"
+      ],
+      "optional": false,
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy",
+        "mathutils"
+      ],
+      "note": "Verify live scene for review; run expensive ray measurement on an isolated background worker. Blender 5.1.2 tested."
+    }
+  ]
+}

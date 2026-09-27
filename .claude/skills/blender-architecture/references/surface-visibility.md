@@ -5,6 +5,11 @@ class. It is a conservative classification procedure, not a universal decimator.
 The helper is [surface_visibility.py](../scripts/surface_visibility.py); run
 [its regression tests](../scripts/test_surface_visibility.py) with unittest.
 
+For finite-evidence **material allocation proposals**, use the separate
+[hybrid hidden-surface skill](../../blender-hidden-surfaces/SKILL.md). It retains
+geometry and presents uncertain candidates for review. Its preferred Korean TC
+result does not supersede the removal certificates or state constraints below.
+
 ## Define the contract before classifying
 
 Record world up, all permitted camera azimuths/elevations/zoom, building rotations,

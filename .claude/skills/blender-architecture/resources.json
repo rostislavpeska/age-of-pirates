@@ -10,24 +10,35 @@
   ],
   "skills": [
     "blender-architecture-texturing",
-    "skill-library-audit"
+    "skill-library-audit",
+    "blender-hidden-surfaces",
+    "blender-overlap-cleanup"
   ],
   "external": [
     {
       "id": "python",
       "kind": "executable",
-      "requiredFor": ["surface-audit"],
+      "requiredFor": [
+        "surface-audit"
+      ],
       "optional": false,
-      "commands": ["python", "python3"],
+      "commands": [
+        "python",
+        "python3"
+      ],
       "note": "Runs standalone visibility primitives and regression tests."
     },
     {
       "id": "numpy",
       "kind": "python-package",
-      "requiredFor": ["surface-audit"],
+      "requiredFor": [
+        "surface-audit"
+      ],
       "optional": false,
       "distribution": "numpy",
-      "modules": ["numpy"],
+      "modules": [
+        "numpy"
+      ],
       "note": "Required for deterministic camera-cone and convex-render-shell audits."
     },
     {

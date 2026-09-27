@@ -78,3 +78,37 @@ Proposal: make the first sentence of each description say the role. Policy skill
 ## 5. A catalog fact that belongs in `rm-name-catalogs`
 
 `scripts/source/groupings_index.txt` was listed from the Steam `Game/RandMaps/groupings/` folder in August 2026 while that folder held 85 mod copies. It therefore lists mod files as vanilla (`Verseilles_Fixed_Gun_L`, `_R`) and lacks the 2026-09-10 DLC additions (34 files: Malta, Port, Volcano, hm09/hm11 capture points, `native inuit village 1-5`, `native sami village 1-5`, `european/native eu stuart village 1-5`) and the whole `european/` subfolder. The root was stripped to stock files on 2026-09-22. The refresh recipe should say: list top-level plus `european/`, only from the stripped root, and exclude any name that exists in `game/randmaps/groupings/`.
+# UV editor acceptance and skill split — 2026-09-27
+
+The Korean Town Center UV handoff previously showed source-bank/checker previews
+instead of useful actual editable UVs, and disabled selection/vertex overlays
+prevented inspection. The user repeated the editor requirement and required a
+correction. N9 restored controls and exposed real packed UVs; the user accepted
+that as step 1 and requested two distinct skills.
+
+The canonical procedures now live in `blender-clean-uv` and `blender-uv-reuse`.
+The first records the demonstrated editor handoff; the second specifies the next
+geometry-candidate, AO/channel and atlas-economy work. The full automatic matching
+workflow is not yet validated. N9's oversized working atlas, remaining small-part
+fragmentation and runtime capacity are not production approvals. External project
+evidence and the human-effort ledger retain the detailed measurements and costs;
+no additional Blender visit or game test was requested for this documentation edit.
+
+# Interior allocation and physical overlap repair — 2026-09-27
+
+The user accepted the repaired Korean TC exterior and approximately correct inside
+as good enough to continue. Interior false positives and missed faces are still
+debt. The hidden-surface skill now records room-proxy proposals followed by exterior
+exposure protection and bounded coherent panel cores, with parameters and limits.
+
+"Overlap" in the geometry repair request meant intersecting/layered 3D shapes.
+The earlier coplanar-only diagnostic did not repair those. The new overlap skill
+uses two gates: shared construction ownership before replication/UVs, then
+coplanar, transverse and volume/containment checks plus bounded repair and actual
+live handoff. Repeated complete facade posts/rails were inherited from construction;
+later classification subdivisions exposed them rather than introducing new pairs.
+The accepted candidate is not a blanket certificate for remaining curved joints.
+
+Next user-authorized checkpoint: provisional geometry-only UV sharing, no AO or
+packing, explicit same-material hidden atlas cells, and unusually complete model
+and UV photo documentation for remote inspection. Preserve visible chart scale.

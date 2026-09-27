@@ -18,7 +18,10 @@
   ],
   "skills": [
     "skill-library-audit",
-    "blender-high-low-baking"
+    "blender-high-low-baking",
+    "blender-clean-uv",
+    "blender-uv-reuse",
+    "blender-hidden-surfaces"
   ],
   "external": [
     {
