@@ -38707,6 +38707,8 @@
       <effect type="TechStatus" status="obtainable">zpIstanbulFerrySystem</effect>
       <effect type="SetName" tech="zpIstanbulFerrySystem" newname="503598">
       </effect>
+      <effect type="SetName" proto="zpSPCDestilery" newname="502561">
+      </effect>
     </effects>
   </tech>
   <tech name="zpStuartAbilityBig" type="Normal">
