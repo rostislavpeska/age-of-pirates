@@ -1,11 +1,16 @@
-# Runtime XML the engine parses straight from the mod folder MUST be CRLF: an LF-only animfile / .material / _snds
-# is silently ignored (unit places, model never renders). Index stays LF, every checkout gets CRLF.
+# Every text file is stored LF in git, whatever the device's core.autocrlf (a GitHub download is therefore LF).
+* text=auto
+
+# Files the game reads are CRLF on disk. An LF-only animfile / .material / _snds is silently ignored (unit places,
+# model never renders); LF map scripts load, but one rule keeps copies byte-comparable. Index stays LF, every
+# checkout gets CRLF. Compare copies by content: git hash-object --path=<repo path> <copy> == git rev-parse HEAD:<path>
 *.xml       text eol=crlf
 *.material  text eol=crlf
 *.lgt       text eol=crlf
 *.tactics   text eol=crlf
 *.xs        text eol=crlf
 *.xaml      text eol=crlf
+*.set       text eol=crlf
 
 # binaries - never touch line endings
 *.gr2   binary

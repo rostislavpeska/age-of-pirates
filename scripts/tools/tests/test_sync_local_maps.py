@@ -46,6 +46,15 @@ def test_the_repo_wins_over_a_stale_copy(tmp_path):
     assert (rm / "00000_zplondon.xml").read_bytes() == b"<mapinfo/>\r\n"
 
 
+def test_a_line_ending_difference_is_eol_not_stale_and_sync_restores_crlf(tmp_path):
+    repo, rm = _repo(tmp_path)
+    S.sync([ENTRY], rm, repo)
+    (rm / "00000_zplondon.xs").write_bytes(b"void main() {}\n")          # same text, LF (a GitHub download)
+    assert [r["state"] for r in S.status([ENTRY], rm, repo)] == ["EOL", "OK"]
+    assert [r["state"] for r in S.sync([ENTRY], rm, repo)] == ["SYNCED", "OK"]
+    assert (rm / "00000_zplondon.xs").read_bytes() == b"void main() {}\r\n"
+
+
 def test_hook_syncs_only_the_edited_map(tmp_path):
     repo, rm = _repo(tmp_path)
     (repo / "randmaps" / "zpparis.xs").write_bytes(b"paris\r\n")

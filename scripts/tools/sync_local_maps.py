@@ -11,7 +11,8 @@ config/local-maps.example.json on first use):
 Each entry covers <repo>.xs and <repo>.xml -> <RandMaps>/<local>.xs and .xml. A .mods.xml is never copied into the
 game root. The repo copy always wins: --sync overwrites a local copy that differs.
 
-    python scripts/tools/sync_local_maps.py [--check]        every copy: OK / STALE / MISSING (exit 1 unless all OK)
+    python scripts/tools/sync_local_maps.py [--check]        every copy: OK / EOL / STALE / MISSING (exit 1 unless all OK)
+                                                              EOL = same content, only the line endings differ
     python scripts/tools/sync_local_maps.py --sync           copy the repo file over every stale or missing copy
     python scripts/tools/sync_local_maps.py --add randmaps/zpparis 00000_zpparis     register one, then sync it
     python scripts/tools/sync_local_maps.py --hook           Claude Code PostToolUse: sync the entry of an edited map
@@ -66,8 +67,12 @@ def load_registry(path: Path = LOCAL, example: Path = EXAMPLE) -> Dict:
     return data
 
 
-def _sha(p: Path) -> Optional[str]:
-    return hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None
+def _sha(p: Path, eol_blind: bool = False) -> Optional[str]:
+    """sha256 of the bytes; eol_blind hashes the content with CRLF read as LF (a GitHub download is LF)."""
+    if not p.is_file():
+        return None
+    b = p.read_bytes()
+    return hashlib.sha256(b.replace(b"\r\n", b"\n") if eol_blind else b).hexdigest()
 
 
 def pairs(entry: Dict, rm: Path, repo: Path = REPO) -> List[tuple]:
@@ -88,7 +93,12 @@ def status(entries: List[Dict], rm: Path, repo: Path = REPO) -> List[Dict]:
             rows.append({"entry": e, "src": None, "dst": None, "state": "NO REPO FILE"})
         for src, dst in ps:
             d = _sha(dst)
-            state = "MISSING" if d is None else ("OK" if d == _sha(src) else "STALE")
+            if d is None:
+                state = "MISSING"
+            elif d == _sha(src):
+                state = "OK"
+            else:                                # same text, other line endings is not a content change
+                state = "EOL" if _sha(dst, True) == _sha(src, True) else "STALE"
             rows.append({"entry": e, "src": src, "dst": dst, "state": state})
     return rows
 
@@ -96,7 +106,7 @@ def status(entries: List[Dict], rm: Path, repo: Path = REPO) -> List[Dict]:
 def sync(entries: List[Dict], rm: Path, repo: Path = REPO, quiet: bool = False) -> List[Dict]:
     rows = status(entries, rm, repo)
     for r in rows:
-        if r["state"] in ("STALE", "MISSING"):
+        if r["state"] in ("STALE", "MISSING", "EOL"):   # EOL too: the copy takes the repo's CRLF bytes
             shutil.copyfile(r["src"], r["dst"])
             print(f"[local maps] {r['dst'].name} <- {r['src'].relative_to(repo).as_posix()} ({r['state'].lower()})")
             r["state"] = "SYNCED"

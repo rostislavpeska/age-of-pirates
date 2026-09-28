@@ -1,6 +1,9 @@
-"""Line-ending audit for the XML the engine reads at runtime: every *.xml / *.material / *.lgt / *.tactics under
-art/ and sound/ (and data/ for consistency) must be CRLF. An LF-only art XML is silently ignored by the game - the unit
-places, the decal draws, the model never renders (Tower of London, 2026-09-17: ten restarts before this was found).
+"""Line-ending audit for every file the game reads from the mod folder: *.xml / *.material / *.lgt / *.tactics / *.xs /
+*.set / *.xaml under art/, sound/, data/, game/ and randmaps/ must be CRLF. An LF-only art XML is silently ignored by
+the game - the unit places, the decal draws, the model never renders (Tower of London, 2026-09-17: ten restarts before
+this was found). LF map scripts and map-info XML do load (vanilla ships 199 LF/mixed .xs), but one rule for every game
+file keeps copies byte-comparable. Compare copies by content, not bytes:
+    git hash-object --path=<repo path> <copy>   ==  git rev-parse HEAD:<repo path>   (any line endings)
 
     python scripts/tools/check_art_eol.py            # report (exit 1 if any offender)
     python scripts/tools/check_art_eol.py --fix      # convert offenders to CRLF in place (bytes only, text unchanged)
@@ -8,8 +11,8 @@ places, the decal draws, the model never renders (Tower of London, 2026-09-17: t
 """
 import os, sys
 
-EXT = ('.xml', '.material', '.lgt', '.tactics', '.xs')
-ROOTS = ('art', 'sound', 'data')
+EXT = ('.xml', '.material', '.lgt', '.tactics', '.xs', '.set', '.xaml')
+ROOTS = ('art', 'sound', 'data', 'game', 'randmaps')
 
 
 def files(paths):
