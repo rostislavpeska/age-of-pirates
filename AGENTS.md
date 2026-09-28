@@ -12,7 +12,10 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    (2026-09-17, ten game restarts lost). The Write tool writes LF. After writing any such file run
    `python scripts/tools/check_art_eol.py` (`--fix` converts); the PostToolUse hook in `.claude/settings.json`
    converts automatically, `.gitattributes` keeps checkouts CRLF. When a model "does not appear" in game,
-   check line endings **first**.
+   check line endings **first**. One rule for every file the game reads (`art`, `data`, `game`, `randmaps`,
+   `sound`): CRLF on disk, LF in git. Compare copies by content, never by bytes: `git hash-object
+   --path=<repo path> <copy>` equals `git rev-parse HEAD:<repo path>` whatever the copy's line endings (a GitHub
+   download is LF). An LF-only difference is not a content change: LF map scripts load (vanilla ships 199 of them).
 2. **Never duplicate game assets.** Textures, models, decals, particles, sounds the game already ships are
    referenced by their archive path (`homecity\british\british_tol\textures\british_tol_matA_BaseColor` in a
    `.material`, `buildings\fort\west_fort_decal` in an animfile) - never copied under `art/` or `sound/`, not
@@ -50,6 +53,10 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    and alone; a suspected further fix is proposed, never bundled in. Read the tests that pin the record first:
    they encode its dependencies (2026-09-27: the London side setup techs were moved unasked, and their order
    dependency on the generic setup was missed).
+
+10. **The image harness is Claude-only.** GPT, Codex, Astra and Gemini agents generate images natively and
+   must never call `.claude/skills/image-harness` or its n8n webhook: every call is billed to the owner's API
+   accounts. Claude Code uses it (the client refuses outside Claude Code).
 
 ## Where things are
 
