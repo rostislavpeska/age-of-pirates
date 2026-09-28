@@ -3,11 +3,13 @@
     <materialdef name="default_emissive_advanced">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mata_basecolor">
+      <texture name="BaseColor" override="units\naval\vasa_galleon\textures\vasa_play_mata_basecolor">
       </texture>
       <texture name="Normals" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mata_normals">
       </texture>
       <texture name="Masks" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mata_masks">
+      </texture>
+       <texture name="Details" override="units\naval\vasa_galleon\textures\vasa_play_mata_Details">
       </texture>
       <texture name="Emissive" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mata_emissive">
       </texture>
@@ -62,14 +64,16 @@
     </parameters>
   </submaterial>
   <submaterial name="matf">
-    <materialdef name="default_doublesided">
+    <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\vasa_galleon\textures\vasa_matf_basecolor">
+      <texture name="BaseColor" override="units\naval\vasa_galleon\textures\vasa_play_matf_basecolor">
       </texture>
-      <texture name="Normals" override="units\naval\vasa_galleon\textures\vasa_matf_normals">
+      <texture name="Normals" override="homecity\swedish\swedish_vasa_ship\textures\vasa_matf_normals">
       </texture>
-      <texture name="Masks" override="units\naval\vasa_galleon\textures\vasa_matf_masks">
+      <texture name="Masks" override="homecity\swedish\swedish_vasa_ship\textures\vasa_matf_masks">
+      </texture>
+      <texture name="Details" override="units\naval\vasa_galleon\textures\vasa_play_matf_Details">
       </texture>
     </parameters>
   </submaterial>
