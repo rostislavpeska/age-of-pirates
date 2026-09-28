@@ -100,6 +100,25 @@ invent elapsed human time or treat a percentage as a measured quality score.
 Judge the result by useful visible improvement and likely cleanup time saved,
 including the user's evaluation burden, rather than the quantity of experiments.
 
+## Organic and lathed shapes
+
+Pots, jars, rounded caps and other lathed or organic surfaces follow a different route
+from architecture. Measured on three onggi pots (Korean TC, 2026-09-28):
+
+| Unwrap | Islands per pot | Stretch median / max | Density variation (CV) |
+| --- | --- | --- | --- |
+| **profile bands** (one cone-sector strip per profile band, one meridian seam each) | 4-8 | 1.00 / 1.00 | 0% |
+| ABF, one meridian seam, one island | 1 | 1.09 / 1.50 | 36-40% |
+| conformal (LSCM), same seam | 1 | 1.10 / 1.46 | 32-40% |
+| Smart UV Project 66 deg | 5 | 1.15 / 2.31 | 9-10% |
+
+Use profile bands for lathed shapes: a single-island unwrap compresses rim and base
+against the belly. Mark such charts organic/curved: do not strip-join them across
+architecture rules, never split them as "hollow frames" (their pieces turn continuously;
+frames use at most about four directions), and conjoin them only with near-identical
+instances. Truly free-form organic assets (units, animals, cloth) use Blender's
+auto-unwrap plus a plain pack and no conjoinment.
+
 ## Camera and hidden allocation
 
 Record the camera envelope and intact/damaged state. For normal n and direction v

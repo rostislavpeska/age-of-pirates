@@ -59,6 +59,14 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
 - Tools: `scripts/tools/check_art_eol.py`, `scripts/havok/ddt_dxt1.py` (DXT1 .ddt with mips),
   `scripts/havok/gr2_editmesh.py` (in-place vanilla model edits - the converter route loses large faces in game).
 
+## Self-improvement journal (3D work)
+
+During any 3D work (modeling, UV, conjoinment, AO, atlas, baking, texturing, export - Blender or Photoshop)
+every agent records lessons in the shared `.claude/skills/JOURNAL.jsonl` **at the moment they happen**: an owner
+correction, a failure, a confirmed method, a measurement that settles a question. Use the `workflow-journal`
+skill (`python .claude/skills/workflow-journal/scripts/journal.py add ...`). Skills are improved later by
+distilling open records (`journal.py digest`), on the owner's request; agent-private memory is not shared.
+
 ## Universal skill source
 
 When maintaining the skill system, read [its architecture](docs/skill-system-architecture.md).

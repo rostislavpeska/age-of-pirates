@@ -93,6 +93,15 @@ marked `protect: true` so they stay unique, or are shared only by exact containm
 - Mirrored merges (flips) assume the engine handles mirrored tangent space; for
   normal-mapped detail verify before relying on it.
 
+## Next step: AO separation
+
+Before baking AO onto shared texels, run [blender-uv-ao-separation](../blender-uv-ao-separation/SKILL.md):
+it re-runs `families()` with a point-to-point AO test (`compat` hook) so faces whose AO
+differs (windows, dots, beam ends, contact corners) keep or find compatible texels.
+Then split families onto runtime pages with [aoe-uv-atlas-export](../aoe-uv-atlas-export/SKILL.md).
+Curved charts (pot bands, rings) are never split as frames: a chart whose pieces use more
+than four directions is treated as curved.
+
 ## Tools
 
 - `scripts/conjoin.py` - merge + repack library/CLI, presets T1/T2/T3.

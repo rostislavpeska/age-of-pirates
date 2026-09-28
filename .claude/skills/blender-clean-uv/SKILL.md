@@ -38,6 +38,8 @@ overlap discovery and economical packing after this checkpoint.
    per-face islands. Repair a representative patch before repeating the operation.
    For scattering experiments, follow the [regional comparison and effort gate](references/chart-construction.md#regional-comparison-and-effort-gate)
    before expanding the search or asking for another operator review.
+   Lathed/organic parts (pots, jars) use profile bands, not architectural strips; see
+   [organic and lathed shapes](references/chart-construction.md#organic-and-lathed-shapes).
 2. Classify visible, retained hidden and destruction-exposed surfaces using the
    camera/state contract. Allocate hidden opaque backs to a named low-density
    shared material only where justified; do not discount visible soffits.
@@ -57,6 +59,12 @@ Provide three switchable views of the same geometry and UV revision:
 
 1. **Density checker:** orientation-marked squares with pixels per verified world
    unit and named exceptions. DPI metadata alone is not a density measurement.
+   **Standard density checker (all models, owner decision 2026-09-28):** Blender's generated
+   Color Grid (`generated_type='COLOR_GRID'`, the "Orientation checker" GPT Astra and
+   `blender_ao_review.py` use), generated at EACH texture's own resolution (2048 map -> 2048 grid,
+   1024 -> 1024, 512 -> 512, 4096 -> 4096), mapped straight through that map's UV layer with
+   Closest interpolation. One checker pixel is one real texel, so density is read on the model,
+   not guessed; equal pixel steps across maps mean equal density.
 2. **Solid material classes:** flat semantic colors, with retained hidden backing
    surfaces black for this review. This is a classification view, not lighting.
 3. **Current baked textures:** preserve existing roof/window relief and opacity;

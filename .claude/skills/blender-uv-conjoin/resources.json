@@ -15,7 +15,9 @@
   ],
   "skills": [
     "blender-clean-uv",
-    "blender-uv-reuse"
+    "blender-uv-reuse",
+    "blender-uv-ao-separation",
+    "aoe-uv-atlas-export"
   ],
   "external": [
     {
@@ -34,16 +36,41 @@
       ]
     },
     {
-      "id": "python-geometry",
-      "kind": "python",
+      "id": "numpy",
+      "kind": "python-package",
       "requiredFor": [
         "conjoin"
       ],
       "optional": false,
-      "note": "Host Python with numpy, shapely 2.x and Pillow.",
+      "note": "Host Python package for conjoin. Host Python with numpy, shapely 2.x and Pillow.",
+      "distribution": "numpy",
       "modules": [
-        "numpy",
-        "shapely",
+        "numpy"
+      ]
+    },
+    {
+      "id": "shapely",
+      "kind": "python-package",
+      "requiredFor": [
+        "conjoin"
+      ],
+      "optional": false,
+      "note": "Host Python package for conjoin. Host Python with numpy, shapely 2.x and Pillow.",
+      "distribution": "shapely",
+      "modules": [
+        "shapely"
+      ]
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "conjoin"
+      ],
+      "optional": false,
+      "note": "Host Python package for conjoin. Host Python with numpy, shapely 2.x and Pillow.",
+      "distribution": "Pillow",
+      "modules": [
         "PIL"
       ]
     }

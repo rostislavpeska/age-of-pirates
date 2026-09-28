@@ -50,6 +50,11 @@ def split_hollow(faces, fill=.6, min_faces=3):
         if fill_ratio(unary_union([_poly(f['uv']) for f in fs])) >= fill:
             continue
         info = {f['id']: _frame(f['uv']) for f in fs}
+        # curved charts (lathe bands of pots, rings, organic strips) are not frames: their
+        # pieces turn continuously. Frames use at most ~4 directions (posts, beams, braces).
+        dirs = {int(round(math.degrees(a) / 10.)) % 18 for a, L, W in info.values() if L / max(W, 1e-9) >= 1.3}
+        if len(dirs) > 4:
+            continue
         key = lambda p: (round(p[0], 2), round(p[1], 2))
         edges = collections.defaultdict(list)
         for f in fs:
@@ -98,21 +103,23 @@ def audit(charts, owners, fam_size, side, gutter, target_density=256., runtime_p
         c = charts[j]
         rect = (c['L'] + gutter) * (c['W'] + gutter)
         rows.append(dict(chart=c['id'], material=c['mat'], rect=rect, filled=c['area'],
-                         fill=c['area'] / max(c['L'] * c['W'], 1e-9), family_size=fam_size.get(j, 1)))
+                         fill=c['area'] / max(c['L'] * c['W'], 1e-9), family_size=fam_size.get(j, 1),
+                         ao_rejected=bool(c.get('ao_rejected'))))
     total = sum(r['rect'] for r in rows) or 1.
     hollow = sum(r['rect'] for r in rows if r['fill'] < fill) / total
-    unique = sum(r['rect'] for r in rows if r['family_size'] <= 1) / total
+    unique = sum(r['rect'] for r in rows if r['family_size'] <= 1 and not r['ao_rejected']) / total
+    ao_unique = sum(r['rect'] for r in rows if r['family_size'] <= 1 and r['ao_rejected']) / total
     biggest = max(r['rect'] for r in rows) / (side * side) if rows else 0.
     eff = sum(r['filled'] for r in rows) / (side * side)
     runtime_density = target_density * runtime_page / side
     res = dict(page_side_texels=side, runtime_page=runtime_page, runtime_texels_per_unit=runtime_density,
-               hollow_share=hollow, unique_share=unique, packing_efficiency=eff, single_owner_share=biggest,
+               hollow_share=hollow, unique_share=unique, ao_separated_share=ao_unique, packing_efficiency=eff, single_owner_share=biggest,
                top_consumers=sorted(rows, key=lambda r: -r['rect'])[:10])
     fails = []
     if hollow > g['max_hollow_share']:
         fails.append(f"hollow charts use {hollow:.0%} of owner rectangles (max {g['max_hollow_share']:.0%}): split frames/rings")
     if unique > g['max_unique_share']:
-        fails.append(f"unshared charts use {unique:.0%} of owner rectangles (max {g['max_unique_share']:.0%}): conjoinment ineffective")
+        fails.append(f"unshared charts (no geometric match, not AO-separated) use {unique:.0%} of owner rectangles (max {g['max_unique_share']:.0%}): conjoinment ineffective")
     if len(rows) >= 10 and eff < g['min_packing_efficiency']:   # tiny pages are dominated by one long strip
         fails.append(f"packing efficiency {eff:.0%} (min {g['min_packing_efficiency']:.0%}): empty space dominates")
     if biggest > g['max_single_owner_share']:

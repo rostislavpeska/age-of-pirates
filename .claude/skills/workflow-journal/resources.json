@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/journal.py",
+    "scripts/test_journal.py"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "commands": ["python", "python3"],
+      "requiredFor": ["add", "digest"],
+      "optional": false,
+      "note": "Standard-library Python 3; writes only .claude/skills/JOURNAL.jsonl."
+    }
+  ]
+}

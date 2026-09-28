@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/pages.py",
+    "scripts/test_pages.py"
+  ],
+  "skills": [
+    "blender-uv-conjoin",
+    "blender-uv-ao-separation",
+    "aoe3de-building-export"
+  ],
+  "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "pages"
+      ],
+      "optional": false,
+      "note": "Host Python package for pages. Host Python with numpy; uses blender-uv-conjoin's pack_rects.py.",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ]
+    }
+  ]
+}

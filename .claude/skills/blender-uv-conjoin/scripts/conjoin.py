@@ -129,6 +129,7 @@ def merge(charts, tol, iou_min, strips=0., trim=(), trim_width_ratio=2., compat=
                     iou = inter / (g.area + target.area - inter)
                     if iou >= iou_min and (best is None or iou > best[0]):
                         if compat is not None and not compat(m, o, M):
+                            m['ao_rejected'] = True      # geometry matched, AO did not
                             continue
                         best = (iou, j, M, sx, sy)
         if best:
@@ -154,6 +155,18 @@ def pack(charts, owners, gutter):
     return side, place
 
 
+def families(faces, tol=.40, iou=.60, strips=0., split_hollow_charts=True, fill=.6, trim=(),
+             trim_width_ratio=2., compat=None):
+    """Merge only (no packing): charts, owner indices, member assignments, split chart ids.
+    Faces are copied first (callers' faces stay untouched)."""
+    import copy
+    faces = copy.deepcopy(faces)
+    split = split_hollow(faces, fill) if split_hollow_charts else []
+    charts = prepare(faces)
+    owners, assign = merge(charts, tol, iou, strips, set(trim), trim_width_ratio, compat)
+    return charts, owners, assign, split
+
+
 def conjoin(faces, tol=.40, iou=.60, gutter=16., strips=0., split_hollow_charts=True, fill=.6,
             target_density=256., runtime_page=2048., gates=None, trim=(), trim_width_ratio=2., page_texels=None,
             compat=None):
@@ -161,9 +174,8 @@ def conjoin(faces, tol=.40, iou=.60, gutter=16., strips=0., split_hollow_charts=
     (split_hollow_charts); the packed page is audited (stats['audit'], verdict PASS/FAIL)."""
     import copy
     faces = copy.deepcopy(faces)
-    split = split_hollow(faces, fill) if split_hollow_charts else []
-    charts = prepare(faces)
-    owners, assign = merge(charts, tol, iou, strips, set(trim), trim_width_ratio, compat)
+    charts, owners, assign, split = families(faces, tol, iou, strips, split_hollow_charts, fill, trim,
+                                             trim_width_ratio, compat)
     side, place = pack(charts, owners, gutter)
     if page_texels and side > page_texels:
         raise ValueError(f'packed side {side:.0f} exceeds the original page {page_texels:.0f}')
@@ -194,6 +206,7 @@ def conjoin(faces, tol=.40, iou=.60, gutter=16., strips=0., split_hollow_charts=
                  member_density_change_mean=float(sc.mean()), member_density_change_max=float(sc.max()),
                  tol=tol, iou=iou, gutter=gutter, strips=strips, hollow_charts_split=len(split), trim=sorted(trim))
     stats['audit'] = audit(charts, owners, fam_size, side, gutter, target_density, runtime_page, fill, gates)
+    stats['ao_rejected_charts'] = sum(1 for j in owners if charts[j].get('ao_rejected'))
     return out, stats
 
 

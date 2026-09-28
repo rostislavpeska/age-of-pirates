@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/results.md",
+    "scripts/ao_sample.py",
+    "scripts/attach_ao.py",
+    "scripts/ao_compat.py",
+    "scripts/bake_owner_ao.py"
+  ],
+  "skills": [
+    "blender-uv-conjoin",
+    "aoe-uv-atlas-export"
+  ],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "ao-sample",
+        "bake"
+      ],
+      "optional": false,
+      "note": "ao_sample.py and bake_owner_ao.py run in (background) Blender with Cycles.",
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "compat"
+      ],
+      "optional": false,
+      "note": "Host Python package for compat. Host Python with numpy (and blender-uv-conjoin's shapely dependency).",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ]
+    }
+  ]
+}
