@@ -117,8 +117,10 @@
         </assetreference>
       </p1>
       <p99>
+        <!--2026-09-28 owner: the intact stage shows the latest textured model (Texturing_11 Export_CP1 S18f r2,
+            buildings\korean_tc). p1 / DEAD / simskeleton stay on the v20 destruction model until it gets UV_Final.-->
         <assetreference type="GrannyModel" shape="china_tc_age4">
-          <file>buildings\korean_tc_experiment\korean_tc_pilot</file>
+          <file>buildings\korean_tc\korean_tc</file>
         </assetreference>
       </p99>
     </logic>

@@ -1,0 +1,44 @@
+<animfile>
+  <!--Korean Town Center, intact textured model (clean export draft). No destruction: the damaged model, HKT and
+      simskeleton belong to the separate destruction work.-->
+  <definebone>bone_garrisonflag</definebone>
+  <definebone>bone_flag_civ</definebone>
+  <attachment>collapse_smoke<component>collapse_smoke<assetreference type="popcornFx">
+        <file>smoke\collapse_smoke_5x5.pkfx</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>collapse_smoke</component>
+    </anim>
+  </attachment>
+  <component>LIVE<assetreference type="GrannyModel" shape="china_tc_age4">
+      <file>buildings\korean_tc\korean_tc</file>
+    </assetreference>
+    <decal>
+      <effecttype>bump</effecttype>
+      <texture>buildings\asian_civs\town_center\china\china_footprint</texture>
+      <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+      <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+      <width>12.00</width>
+      <height>12.00</height>
+    </decal>
+  </component>
+  <anim>Idle<component>LIVE</component>
+  </anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim">
+      <file>animation_library\building\ranged_attack</file>
+      <tag type="Attack">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.45</tag>
+    </assetreference>
+    <component>LIVE</component>
+  </anim>
+  <anim>RangedAttackShip<assetreference type="GrannyAnim">
+      <file>animation_library\building\ranged_attack</file>
+      <tag type="Attack">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+    </assetreference>
+    <component>LIVE</component>
+  </anim>
+  <anim>Death<component>LIVE</component>
+    <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0" />
+  </anim>
+</animfile>
