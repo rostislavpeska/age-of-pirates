@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/generate.py",
+    "scripts/make_seamless.py",
+    "scripts/test_no_secrets.py"
+  ],
+  "skills": ["blender-architecture-texturing"],
+  "external": [
+    {
+      "id": "n8n-image-harness",
+      "kind": "capability",
+      "requiredFor": ["generate"],
+      "optional": false,
+      "note": "Owner's n8n workflow 'Claude Image Harness (Webhook)'. URL and key: IMAGE_HARNESS_URL / IMAGE_HARNESS_KEY from the environment or the gitignored config/image-harness.local.env (template config/image-harness.example.env). Never in a tracked file: the repo is public."
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["generate"],
+      "optional": false,
+      "note": "Host Python 3 standard library only (make_seamless.py additionally needs numpy and Pillow).",
+      "commands": ["python", "python3"]
+    }
+  ]
+}

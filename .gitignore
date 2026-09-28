@@ -53,6 +53,12 @@ config/local-maps.local.json
 # schema: .claude/skills/skill-library-audit/assets/tool-paths.example.json
 config/tool-paths.local.json
 
+# SECRETS - the repo is public. Image harness URL + API key (image-harness skill; example tracked:
+# config/image-harness.example.env). Any .env / *.local.env anywhere is ignored as a safety net.
+config/image-harness.local.env
+*.local.env
+.env
+
 # unit-bench screenshots are evidence, not repo content (8 MB each); saves + verdict JSON are tracked
 sandbox/census/samples/bench/*.png
 
