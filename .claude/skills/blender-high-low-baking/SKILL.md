@@ -40,12 +40,23 @@ It separates documented practice, project decisions and measured specimen result
    For vertical eaves, check the shell cross-section, hard-normal/UV break and
    corner terminations before repeating the bake. Raised hip and ridge covers
    remain geometry where they affect the silhouette or conceal roof joints.
-7. Apply the verified procedure to a new candidate-model checkpoint. Keep unrelated
+7. Production bakes run only on **frozen** final UVs (owner sign-off, recorded
+   fingerprint) - see the [pipeline order](../blender-architecture-texturing/references/pipeline-order.md).
+   The pilot's lasting output is a recipe config for `scripts/bake_owner_maps.py`;
+   a bake made before the final pages exist is a pilot, whatever its quality.
+   Apply the verified procedure to a new candidate-model checkpoint. Keep unrelated
    UVs/materials/normals unchanged. Count actual low geometry separately from high
    sources and projection proxies. Reinspect every repeated application.
 8. Destination-engine tangent conventions, channel packing, compression, material
    bindings and destruction remain separate validation. Do not call Blender proof
    an in-game result or assume OpenGL/DirectX labels establish a game's convention.
+
+## Bake master: UV edits become derives
+
+Bake once per LOW geometry version onto a unique-texel `UV_Master` at >= 2x density (object-space NORMAL, AO,
+hit-mask OPACITY, EMIT/IDs), then derive any runtime layout in seconds with `derive_maps.py` - same recipe,
+no HIGH loaded; rebake only when the LOW contract or a HIGH changes. Tools, guards, filters and acceptance:
+[bake master](references/bake-master.md) (`master_unwrap.py`, `master_bake.py`, `derive_maps.py`, `compare_maps.py`).
 
 ## Tested helpers
 
@@ -58,9 +69,51 @@ It separates documented practice, project decisions and measured specimen result
   local-AO bake. Requires a scene marked `bake_scratch`, exact cage topology and a
   unique-UV receiver. It leaves bake setup changes in that owned scene and retains
   target nodes. It does not silently alter/export the original authoring model.
+- `scripts/bake_owner_maps.py`: **the one-command production bake** on shared UVs.
+  `blender -b file.blend --python bake_owner_maps.py -- recipe.json` bakes NORMAL, local AO
+  and OPACITY from high sources (in the file or appended from another .blend) into the owner
+  faces of each page; members are never targets. No cage object: `extrusion` +
+  `max_ray_distance`. Read [the recipe contract and migration](references/bake-contract.md):
+  declare exact intended regions and their allowed HIGHs. Missing/unexpected faces stop before
+  HIGH loading; receivers preserve and verify original corner normals and triangles. Production
+  requires both the UV `freeze` and the separate LOW `input_contract`. Expanding a pilot means
+  declaring and validating its new scope; deleting `only` does not prove production coverage.
+  `preflight_only` writes cheap scope/receiver evidence without loading HIGHs or baking.
+- **Texturing QA (every iteration, before the owner sees it):** [texturing-qa.md](references/texturing-qa.md) -
+  shot list, pass criteria, normal-stacking and material-consistency rules; `scripts/qa_textures.py`
+  (numeric: empty texels, flat islands, class colour targets), `scripts/qa_detectors.py` (second rhythm in a
+  normal, stacked normals, misregistered/mirrored/stretched UV members, masks off their edges or channels,
+  colour rhythms < 16 texels; specimen-proven by `test_qa_detectors.py`) and `scripts/qa_shots.py` (fixed
+  cameras -> contact sheet).
+- **Normal maps (every job that touches Normal):** [normal-maps.md](references/normal-maps.md) - source decision table (bake / own masks / texture / tiled / Photoshop / Substance), RNM combine rules and amplitudes, the whole-model normal audit spec.
+- `scripts/review_scene.py`: **the standard review deliverable** (owner, 2026-09-28): builds a live
+  scene in the owner's open Blender from the bake recipes - LP with the new maps, the reference variant
+  and the HP source side by side, grey clay, labels, grazing sun, Material Preview, framed on the
+  recipe's `only` faces. Run through the MCP: `exec(..., {'__name__': 'review', 'CONFIG': cfg})`. Never
+  hand over only an image. Its optional `snapshot` is the agent's own check of the framed view (the MCP
+  viewport screenshot can return a stale frame while Blender is not focused; the OpenGL render does not).
+- `scripts/uv_fingerprint.py`: `record` the frozen layer at the owner's sign-off, `check`
+  (exit 3) that the layer and every listed bake report still match it before assembly or export.
+- `scripts/bake_contract.py`: companion LOW geometry/transform/normal/triangle fingerprint,
+  explicit scope/pair validation and receiver extraction. It does not replace the UV freeze
+  or infer semantic coverage from successful ray hits.
+- `scripts/test_bake_contract.py <blender.exe>`: missing/unexpected scope, incorrect pairs,
+  partial-pilot controls, stale geometry/normals and source-preserving receiver extraction.
+- `scripts/test_bake_owner_maps.py <blender.exe>`: fixture test of both (owners only, tilted vs
+  flat normals, opacity hit/miss, freeze pass then fail after a moved UV). Passed 2026-09-28
+  on Blender 5.0.
 - `scripts/audit_unique_uv.py`: positive-area triangle intersection check for small
   unique 0..1 receivers. Running it executes four known-good/bad fixtures. It does
   not validate tiling/UDIMs, density, semantic regions, padding or cage crossings.
+- Bake master ([bake master](references/bake-master.md)): `scripts/master_unwrap.py` (unique `UV_Master`,
+  2x density, immutable per LOW contract), `scripts/master_bake.py` (`recipes` on the host, then `bake`: the
+  unchanged `bake_owner_maps.py` with OBJECT normals, margin 0, hit fractions and HIGH hashes in `master.json`),
+  `scripts/derive_maps.py` (the ordinary recipe + `"master"`: owners only, the baker's own MikkTSpace frame, drop-in
+  maps and `derive_report.json`), `scripts/compare_maps.py` (`compare` acceptance vs a direct bake, `render`).
+  `scripts/test_master_derive.py` (pytest; Blender fixture with `QA_BLENDER`, `BLENDER_GATE`). Korean TC R2
+  proof (2026-09-29, Blender 5.0.1, EAVE_CUTOUT `class_factor` 1.5): after the margin fix (IMB_filter_extend's
+  4-neighbour gate, replayed per receiver; an 8-neighbour fill had failed the S18c eave pair) roof, S18c eave,
+  eavefix and a moved TEST layout all pass, and the replayed margin reproduces a direct bake's to 2e-7.
 
 The operator must inspect render outputs and record defects. Source hashes,
 settings, exact scope and skipped checks belong with the external work artifacts.

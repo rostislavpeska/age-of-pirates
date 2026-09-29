@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/research.md",
+    "scripts/mcp_log.py",
+    "scripts/open_review.py",
+    "scripts/test_open_review.py"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": ["restart", "open-review"],
+      "optional": false,
+      "note": "Blender with the Blender MCP add-on (port 9876). mcp_log.py and open_review.py launch it only after a crash or for a review, as the owner authorized on 2026-09-28.",
+      "commands": ["blender"]
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["log", "restart", "open-review"],
+      "optional": false,
+      "note": "Host Python 3 standard library only.",
+      "commands": ["python", "python3"]
+    }
+  ]
+}

@@ -15,6 +15,10 @@ beam-end faces. See [results and lessons](references/results.md).
 
 ## Workflow
 
+The AO sampled in steps 1-3 is a measurement for deciding families, not a deliverable.
+Re-grouping moves charts: existing bakes on the previous layout become invalid - list them
+for the owner first ([pipeline order](../blender-architecture-texturing/references/pipeline-order.md)).
+
 1. **Sample AO** (Blender, background): `scripts/ao_sample.py config.json`.
    Grid samples every 12 texels of the conjoined UV layer plus a barycentric lattice on
    every triangle (small faces always get ~10 points), 256 cosine-weighted rays, radius

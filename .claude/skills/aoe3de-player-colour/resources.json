@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/engine-and-vanilla.md",
+    "references/details_export.md",
+    "references/mask-sources.md",
+    "references/review-preview.md",
+    "references/aop-korean-tc-evidence.md",
+    "scripts/pc_common.py",
+    "scripts/details_mask.py",
+    "scripts/lighten_under_mask.py",
+    "scripts/check_state.py",
+    "scripts/details_review.py",
+    "scripts/test_player_colour.py"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["mask", "lighten", "check"],
+      "optional": false,
+      "note": "details_mask, lighten_under_mask and check_state need NumPy and Pillow (OpenCV optional for 16-bit map compares; pytest for the tests).",
+      "commands": ["python", "python3"],
+      "modules": ["numpy", "PIL"]
+    },
+    {
+      "id": "opencv",
+      "kind": "python-package",
+      "requiredFor": ["check"],
+      "optional": true,
+      "note": "check_state.py decodes 16-bit maps with OpenCV when present and falls back to Pillow.",
+      "distribution": "opencv-python",
+      "modules": ["cv2"]
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": ["tests"],
+      "optional": true,
+      "note": "Runs the synthetic-specimen tests in scripts/test_player_colour.py.",
+      "distribution": "pytest",
+      "modules": ["pytest"]
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": ["preview"],
+      "optional": true,
+      "note": "details_review.py runs inside Blender (bpy, 4.x node-group interface API). A live scene is driven through the consuming project's MCP safety procedure; verification runs in background on a copy.",
+      "commands": ["blender"],
+      "modules": ["bpy"]
+    },
+    {
+      "id": "ddt-writer",
+      "kind": "application",
+      "requiredFor": ["export"],
+      "optional": true,
+      "note": "Any writer of the vanilla DXT1 DDT profile (RTS3 fmt 4, full mips). Age of Pirates uses scripts/havok/ddt_dxt1.py in the mod repository, which is not part of this package.",
+      "commands": []
+    }
+  ]
+}

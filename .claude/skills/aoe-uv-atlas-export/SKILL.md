@@ -9,6 +9,14 @@ Pipeline: [blender-clean-uv](../blender-clean-uv/SKILL.md) -> [blender-uv-conjoi
 -> [blender-uv-ao-separation](../blender-uv-ao-separation/SKILL.md) -> **this skill** ->
 [aoe3de-building-export](../aoe3de-building-export/SKILL.md) (GR2, materials, DDT).
 
+## Budget first, freeze last
+
+Estimate the page budget (step 0 of the [pipeline order](../blender-architecture-texturing/references/pipeline-order.md))
+before UV or bake work starts, not when this skill runs: the Korean TC found its reserved area at
+122% of the pages only after roof and window bakes existed, and those bakes were lost. The
+`UV_Final` this skill writes is the layer the owner freezes; production bakes come after the
+freeze (`uv_fingerprint.py record`), never before.
+
 ## Rules (owner decisions, 2026-09-28)
 
 - Split **families**, never faces: owner and members share texels, so they share a page.

@@ -1,0 +1,95 @@
+{"time": "2026-09-28T13:53:58", "event": "before", "action": "Review_Pilot: third rebuild (remove scene + recreate + append HIGH) and render.opengl in one call", "risk": "R1", "file": "research/Texturing_11/Korean_TC_T01_Texturing.blend", "agent": "claude"}
+{"time": "2026-09-28T13:53:58", "event": "crash", "note": "2026-09-28 owner: 'and Blender crashed' after the Review_Pilot rebuild; file had been saved inside the call before the render", "suspect": {"time": "2026-09-28T13:53:58", "event": "before", "action": "Review_Pilot: third rebuild (remove scene + recreate + append HIGH) and render.opengl in one call", "risk": "R1", "file": "research/Texturing_11/Korean_TC_T01_Texturing.blend", "agent": "claude"}}
+{"time": "2026-09-28T14:03:19", "event": "before", "action": "read-only execute_blender_code: list scenes/objects/uv reads in Astra Materials WIP", "risk": "none", "file": "Astra_CP1/GPT Astra - Korean TC Materials WIP.blend", "agent": "claude"}
+{"time": "2026-09-28T14:03:19", "event": "after", "ok": false, "error": "Connection to Blender lost (WinError 10054); Blender PID 47304 still running, MCP port 9876 closed - the add-on server stopped, not a crash"}
+{"time": "2026-09-28T14:19:05", "event": "open_review", "action": "launching review instance", "file": "C:\\Users\\rosti\\Documents\\WORKSPACE\\korean-buildings-blender\\research\\Texturing_11\\Claude_CP2\\Korean_TC_CP1_Review.blend", "exe": "C:\\Program Files\\Blender Foundation\\Blender 5.0\\blender.exe", "port": 9876, "forced": false}
+{"time": "2026-09-28T14:19:10", "event": "open_review", "action": "wait_for_port result", "file": "C:\\Users\\rosti\\Documents\\WORKSPACE\\korean-buildings-blender\\research\\Texturing_11\\Claude_CP2\\Korean_TC_CP1_Review.blend", "port": 9876, "mcp_port_open": true, "seconds": 5.0}
+{"time": "2026-09-28T14:28:54", "event": "before", "action": "reload final/*.png images in Korean_TC_CP1_Review (image.reload only)", "risk": "none", "file": "Claude_CP2/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T14:29:14", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T14:35:51", "event": "before", "action": "reload final/*.png in Korean_TC_CP1_Review (gable projection + window colours)", "risk": "none", "file": "Claude_CP2/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T14:56:50", "event": "before", "action": "reload final/*.png in Korean_TC_CP1_Review (timber scheme, grain fix, windows)", "risk": "none", "file": "Claude_CP2/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T14:57:07", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T15:44:20", "event": "before", "action": "reload images from disk in live review (im.reload on file images only)", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T15:44:55", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T15:50:47", "event": "before", "action": "reload images (roof_v2 compose)", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T15:50:52", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T16:01:33", "event": "before", "action": "reload images (ridges wood/tile)", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T16:01:35", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T16:16:44", "event": "before", "action": "read-only: is_dirty + filepath of the live review", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T16:17:25", "event": "before", "action": "patch UV_Final of 56 tower-eave faces (S18f) on the live Pages_B mesh; guard: current == S18c, else abort; then reload images", "risk": "medium", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T16:17:27", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T16:18:53", "event": "before", "action": "reload images (stone v2, QA pass)", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T16:18:58", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T21:46:21", "event": "before", "action": "reload images (side ridges v2 in final)", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T21:46:25", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T21:48:37", "event": "before", "action": "read-only: 3D viewport view matrix / lens of the owner's current view", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T21:48:42", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T23:05:43", "event": "before", "action": "read-only: bpy.data.filepath + image datablocks (name, filepath, size) for the decorated preview load", "risk": "none (read-only)", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:05:57", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T23:06:56", "event": "before", "action": "PREVIEW: point the 19 final/ images to uplift_out/_PREVIEW_owner_merge (same file names), keep the original path in im['aop_final_path'], reload; no save", "risk": "low (R1: one light op; 19 image reloads)", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:07:03", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T23:19:58", "event": "before", "action": "patch UV_Final of the 12 west-hall south eave faces (S18i conjoin) on every live mesh with Pages_B topology; guard: current == S18f within 1e-5, else abort; no save", "risk": "medium (UV edit on the live mesh, one light op)", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:20:56", "event": "after", "ok": false, "error": "not run: permission denied by the auto-mode classifier (modify shared resource: live mesh UVs); owner decides"}
+{"time": "2026-09-28T23:23:34", "event": "before", "action": "read-only: materials on Claude_S18_Pages_A/B board objects - is the Opacity image linked to alpha, blend/shadow method", "risk": "none (read-only)", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:24:23", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T23:24:23", "event": "before", "action": "reload the 19 preview images (door sticker removed)", "risk": "low", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:46:25", "event": "after", "ok": false, "error": "Communication error: No data received; afterwards port 9876 not listening (netstat), Blender PID 58372 alive and responding, file unsaved (dirty). Reload may or may not have run. Not restarted: owner's unsaved live session"}
+{"time": "2026-09-28T23:54:53", "event": "before", "action": "read-only health check after the connection drop: filepath, dirty, preview image paths", "risk": "none (read-only)", "file": "Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:56:56", "event": "after", "ok": false, "error": "Not connected to Blender (MCP client); port flapped UP 23:54:25 -> DOWN 23:56:32"}
+{"time": "2026-09-28T23:57:43", "event": "before", "action": "read-only health check of the restarted Blender (PID 42284): filepath, dirty, objects count", "risk": "none (read-only)", "file": "(restarted, unknown)", "agent": "claude"}
+{"time": "2026-09-28T23:58:26", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-28T23:58:27", "event": "crash", "note": "not a crash: connection lost at 23:24 during a single MCP call reloading 19 images (1-2k maps, ~2.5 GB free RAM) -> 'No data received', port 9876 gone, later flapping; owner saved as OneDrive/Plocha/Korean_TC_CP1_Review.blend and restarted Blender 23:56; add-on auto-started the server, reconnected 23:57", "suspect": {"time": "2026-09-28T23:57:43", "event": "before", "action": "read-only health check of the restarted Blender (PID 42284): filepath, dirty, objects count", "risk": "none (read-only)", "file": "(restarted, unknown)", "agent": "claude"}}
+{"time": "2026-09-28T23:59:30", "event": "before", "action": "save a COPY of the live file to OneDrive snapshots/2026-09-29-review-live (wm.save_as_mainfile copy=True; live file path unchanged)", "risk": "low (single save)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-28T23:59:47", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T00:20:44", "event": "before", "action": "read-only: 3D view shading type, visible board collections, image paths of the Final board", "risk": "none (read-only)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T00:21:07", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T00:21:07", "event": "before", "action": "PREVIEW: point P1024_Opacity (1 image) at uplift_out/_ALPHA_probe/P1024_Opacity.png and reload (R9: 1 image)", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T00:21:18", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T00:23:30", "event": "before", "action": "OWNER-APPROVED ('explicit yes', 00:22): patch UV_Final of the 12 West Hall south eave faces to S18i on the live Pages_B mesh(es); guard: current == S18f within 1e-5 else abort; no save", "risk": "medium (UV edit, one light op)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T00:23:49", "event": "after", "ok": false, "error": "not run: denied again by the auto-mode classifier despite the owner's explicit yes (00:22); owner must allow it in the permission settings"}
+{"time": "2026-09-29T00:26:08", "event": "before", "action": "OWNER-APPROVED + permission added: S18i UV patch, 12 faces on live Pages_B; guard S18f", "risk": "medium (UV edit, one light op)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T00:26:20", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T00:27:45", "event": "before", "action": "read-only: material + opacity samples under the 12 S18i faces in the live scene", "risk": "none (read-only; one 1024 image pixel read)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T00:30:20", "event": "before", "action": "read-only: what lies behind the WH south eave cut - raycast from the eave front outward-in, materials of Pages_H", "risk": "none (read-only)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T01:13:22", "event": "before", "action": "clear bugfix (owner standing go): P1024_Opacity -> _ALPHA_probe/P1024_Opacity_v2.png (gate PASS), reload 1 image", "risk": "low (R9: 1 image)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T01:13:29", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T04:56:32", "event": "before", "action": "install aop_review_live watcher (records snapshot 'owner session at install', changes nothing; reloads only from its timer, <=4 images per step)", "risk": "low (tested 61/61 on a copy of this file)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T04:56:41", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T09:30:09", "event": "before", "action": "owner asked 'load such one to Blender': watcher start_preview('all_decor_r1') - snapshot first, reloads queued 4 per timer step (R9)", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T09:30:19", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T10:43:54", "event": "before", "action": "owner: 'apply changes to my Blender' -> watcher start_preview('current_all_v2_band_windows')", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T10:44:11", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T10:59:05", "event": "before", "action": "owner: red door irritates + 'otherwise apply' -> watcher start_preview('current_all_red_nodoor')", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T10:59:26", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T11:20:29", "event": "before", "action": "owner asked to apply matc textures: run uplift_out/MATC/apply_matc_live.py (backup material + 3 images of 512 px, no ops/save/render; undo via MATC_MODE='undo')", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T11:20:42", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T11:26:32", "event": "before", "action": "save a COPY of the owner's live scene as the HEAD scene for all agents (copy=True; live file untouched): OneDrive snapshots/2026-09-29-head/Korean_TC_HEAD_1130.blend", "risk": "low (single save copy)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T11:26:46", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T11:47:47", "event": "before", "action": "watcher start_preview('windows_relief_on_head') = HEAD + 51,572 window Normal texels (only P2048_Normal differs)", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T11:48:00", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T11:52:04", "event": "before", "action": "CRITICAL BUG (owner): S18j live patch - face S12_Groups_A:1357 (tower west sill) UV onto plain sill owner A:79; guard current==S18i", "risk": "medium (1-face UV edit)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T11:52:35", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T11:53:29", "event": "before", "action": "details_review.install(details_dir=head_1150_player_colour): adds the player-colour tint nodes (one Details image), no other image re-pointed, no save", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T11:54:07", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T11:56:17", "event": "before", "action": "watcher start_preview('head_gables_light_partial') - only P2048 BaseColor gable cells differ from the current view", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T11:56:45", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:01:16", "event": "before", "action": "watcher start_preview('current_with_jars') = current view (lighter gables + player colour) + decorated jars (52,976 jar texels)", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T12:01:32", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:02:46", "event": "before", "action": "BUG FIX (owner): S18k live patch - 12 tower east-face timber frames onto wood owners (+1357 already applied); guard current==S18i or already==to", "risk": "medium (13-face UV edit)", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T12:03:04", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:03:05", "event": "before", "action": "save a COPY of the live scene as HEAD scene 1203 (S18k UVs + current textures + matc + player colour), live file untouched", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T12:03:20", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:04:56", "event": "before", "action": "watcher start_preview('current_plainwalls') = HEAD + plain lower walls (3-way merge)", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T12:05:09", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:10:27", "event": "before", "action": "read-only: which files every image in the live scene points to (export must equal what the owner sees)", "risk": "none", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T12:10:42", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:10:54", "event": "before", "action": "save a COPY of the live scene as HEAD scene 1211 (adds the plain walls), live file untouched", "risk": "low", "file": "OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude"}
+{"time": "2026-09-29T12:11:07", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T12:56:02", "event": "before", "action": "repoint P2048_Normal image to current_relief_fix (bugfix a314d116, verified), 1 image reload", "risk": "low", "file": "C:/Users/rosti/OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude-coordinator"}
+{"time": "2026-09-29T12:56:35", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T13:07:54", "event": "before", "action": "repoint P2048_BaseColor image(s) to current_panes_dark (bugfix a24e70a9, verified), <=2 image reloads", "risk": "low", "file": "C:/Users/rosti/OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude-coordinator"}
+{"time": "2026-09-29T13:08:07", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T13:10:23", "event": "before", "action": "watcher start_preview('current_panes_dark') - queued reloads, 4 per step, so the panel + Back know the fixes", "risk": "low", "file": "C:/Users/rosti/OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude-coordinator"}
+{"time": "2026-09-29T13:11:23", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T13:20:44", "event": "before", "action": "watcher start_preview('mock_walls_on_head') - queued reloads 4 per step", "risk": "low", "file": "C:/Users/rosti/OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude-coordinator"}
+{"time": "2026-09-29T13:21:00", "event": "after", "ok": true, "error": null}

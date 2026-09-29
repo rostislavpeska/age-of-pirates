@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/sp_remote.py",
+    "scripts/smoke_test.py"
+  ],
+  "skills": ["blender-architecture-texturing", "blender-high-low-baking"],
+  "external": [
+    {
+      "id": "substance-painter",
+      "kind": "application",
+      "requiredFor": ["connect", "project", "mesh-maps", "export", "smoke-test"],
+      "optional": false,
+      "note": "Adobe Substance 3D Painter 9.1.2 started with --enable-remote-scripting (port 60041). The --check probe verifies the running session; installation alone does not."
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["connect", "project", "mesh-maps", "export", "smoke-test"],
+      "optional": false,
+      "note": "Host Python 3 standard library only.",
+      "commands": ["python", "python3"]
+    }
+  ]
+}

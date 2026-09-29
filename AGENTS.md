@@ -58,6 +58,30 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    must never call `.claude/skills/image-harness` or its n8n webhook: every call is billed to the owner's API
    accounts. Claude Code uses it (the client refuses outside Claude Code).
 
+11. **Screen control is announced first.** Before any agent or subagent takes the screen - mouse or keyboard
+   automation, driving the game or any GUI app, desktop screenshots or screen recording, computer-use / browser
+   control tools, a GUI (non-background) Blender - it warns the owner in chat: what it will control, why and for
+   how long, and waits for his go when he may be at the machine. Background work (`blender -b`, file tools,
+   COM/API calls without UI) is not screen control. Owner, 2026-09-28: "always warn when activating screen control".
+   A coordinator passes this rule into every subagent prompt that could touch the screen.
+
+12. **Observable or it did not happen.** Owner, 2026-09-29: "No observability = 99% chance of failure". Long work
+   (workflows, background agents, bakes, renders) follows these rules:
+   - **Start:** say what runs, why, and a rough finish time; say it again when the time slips.
+   - **Every finished step:** a short status (done / running / waiting, with the time of each agent's last
+     action) plus the pictures that step made, sent to the owner as it lands. Nothing waits for the end, and there
+     is at least one status every 30 min.
+   - **"Done" means visible:** in the owner's Blender through the publish step, or pictures in chat. Files on
+     disk alone are not a result.
+   - **No silent waits or stalls:** an agent that waits (memory gate, render, lock) logs why. The coordinator
+     reports any agent idle for more than 15 min and any gate that holds with nothing running.
+   - **Live links are watched:** while the owner's Blender is driven, a watchdog checks the MCP port and a drop is
+     reported at once. Live changes stay small (register R9 in `blender-mcp-safety`).
+   - **Paid or external calls are counted:** image harness generations and similar calls keep their provenance
+     JSON, and every report counts them (n8n stores no successful harness runs).
+   - **Stops are announced:** stopping or relaunching a workflow, a denied permission, a crash or a blocked step
+     is reported with its reason and the decision needed. Nothing is dropped silently.
+
 ## Where things are
 
 - Skills: `.claude/skills/` - `bar-extract` (vanilla files, XML<->XMB), `aoe-building-pipeline` (buildings,
@@ -65,6 +89,15 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
   (pre-zip audit), `game-startup` (never kill the game; launch only on instruction).
 - Tools: `scripts/tools/check_art_eol.py`, `scripts/havok/ddt_dxt1.py` (DXT1 .ddt with mips),
   `scripts/havok/gr2_editmesh.py` (in-place vanilla model edits - the converter route loses large faces in game).
+
+## 3D phase handoff and QA (every agent)
+
+Every 3D phase (geometry, material split, UV, bake, sources, composite, review, Painter, export) ends with a
+`HANDOFF.json` per `.claude/skills/blender-architecture-texturing/references/handoff-contract.md`: the next agent
+consumes the canonical outputs of the latest accepted phase and never re-derives them (e.g. the material split and
+its palette). Texturing iterations pass `.claude/skills/blender-high-low-baking/references/texturing-qa.md`
+(numeric QA, fixed shot sheet, normal-stacking and material-consistency rules) before the owner sees them. Live
+Blender work through the MCP follows `.claude/skills/blender-mcp-safety` (log first, one heavy op per call).
 
 ## Self-improvement journal (3D work)
 

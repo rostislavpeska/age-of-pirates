@@ -37,6 +37,11 @@ marked `protect: true` so they stay unique, or are shared only by exact containm
 
 ## Workflow
 
+0. **Bakes on the old layout die here.** Conjoinment moves, rotates and flips charts.
+   Before running it, list every existing bake (normal, AO, opacity, ID, colour) on the
+   layout being replaced and tell the owner they become invalid; go on only with a yes.
+   See the [pipeline order](../blender-architecture-texturing/references/pipeline-order.md).
+   When a bake master exists for this geometry version and the HIGHs are unchanged, those bakes are re-derived on the new layout with `derive_maps.py` instead of rebaked ([bake master](../blender-high-low-baking/references/bake-master.md)).
 1. **Clean charts first.** Run [blender-clean-uv](../blender-clean-uv/SKILL.md):
    coherent charts, no scattered single faces on visible surfaces. Conjoinment
    merges whole charts; it cannot repair fragmentation.
@@ -92,6 +97,48 @@ marked `protect: true` so they stay unique, or are shared only by exact containm
   a reason to protect, not to un-merge everything.
 - Mirrored merges (flips) assume the engine handles mirrored tangent space; for
   normal-mapped detail verify before relying on it.
+- **Role registration gate (2026-09-28, Korean TC tower eaves).** A member must land on the owner texels of
+  its OWN role, not just inside the owner chart: an eave strip has an end-tile FRONT row and a cut-out UNDER
+  band; a T3 merge put 4 tower-eave charts onto the rear-hall strip upside down and 1.5x wide, so the tower's
+  end-tile faces read the cut-out band (22-82 % on the wrong role). Every checker, density and overlap test
+  passed; only the renders showed it, after texturing. Before accepting a conjoin, rasterise every member's
+  quad into the owner's texels and require >= 90 % on the same role (FRONT / UNDER / TOP / SIDE by the face
+  normal relative to the family frame) and the same handedness for directional content (tiles, grain,
+  lettering). Fix a failing member by unsharing it (own chart from its own unwrap, baked from its own high),
+  not by stretching it onto the owner strip. Evidence: `ridge_member_audit.py`, S18f fix (56 faces).
+- **Never share a patterned strip across elements with a different rhythm.** An eave end-tile strip shared between
+  two roofs gives the member the owner roof's tile pitch and phase: its end tiles drift against its own rolls even at
+  83-89 % registration (Korean TC west hall south eave, owner escalation 2026-09-28). Fixed in S18i by re-conjoining
+  the 12 faces corner for corner onto a strip with the same pitch and phase (the Tower upper eave): the unshare did not
+  fit the page. Conjoin patterned strips (eaves, ridges, tile rows) only between runs with the same measured pitch and phase.
+
+## Quick reposition (a texture does not sit)
+
+When a face shows the wrong texture - a wooden frame renders white like plaster, a sill turns band green, an eave
+strip reads another roof's rhythm - the quickest fix is often to move only its UV island onto texels that ALREADY
+hold the right content: it becomes a MEMBER of a congruent owner of the right class and role (corner for corner, or an
+exact 1:1 window inside a larger owner), or moves onto free texels of that class. No new texels, no bake, no recompose.
+
+1. **Find every such face, not just the one in the screenshot.** `qa_detectors.py` `class_mismatch_check` measures,
+   through the active plan, each face's class against the ClassID texels it samples. The plan material agrees with
+   the texels it baked, so pass an independent per-face truth as `expected` (e.g. the authored material); the Korean TC
+   S18k frames were plan PLASTER, authored wood: 12 faces of one facade, while the screenshot showed one.
+2. **Reposition** with `scripts/reposition_island.py` (one command, config JSON; `--help` and its docstring):
+   `python reposition_island.py run --config cfg.json --faces KEY,KEY --version S18k --out DIR [--target-class WOOD]
+   [--target-family F | --target-owner K] [--accept-ao] [--allow-free]`
+   (stages `plan`, `apply`, `low`, `verify`, `handoff`; `plan` alone is a dry run that lists the candidates).
+3. **Guards it enforces**: proper rotations only (normal onto normal, up onto up, never mirrored), density per axis
+   1 +- 3 %, same UV handedness, owner texels of the class (ClassID) and **plain** in every decorated map the owner can
+   see (a member inherits all its owner's paint: the sharing collateral), the S14 AO point test (a miss only with
+   `--accept-ao`, reported for the owner's decision), role registration (`uv_registration_check`: no new or changed
+   flag anywhere, every moved face >= 90 % on its owner), `class_mismatch` clean for the moved faces and nothing new,
+   no new cross-family overlap, UVs changed on the moved faces only (byte identity of both saved blends). A moved owner
+   whose texels other members still read hands the ownership to the member covering its footprint.
+4. **One batched UV switch per checkpoint.** Build the next version on the last unswitched one (S18k on S18j), never
+   next to it; chain its live patch (`live_patch_chain`) so `from` is what the owner's scene still has.
+5. **Deliver** by live patch: `live_patch_<ver>.json` `{object_hint, uv_layer, faces {i: {from, to}}}` for the
+   coordinator to apply to the owner's scene; the tool never touches the active UV version, final maps or the live
+   Blender. Render before/after from the owner's current scene state with the patch applied in memory.
 
 ## Next step: AO separation
 
@@ -107,6 +154,8 @@ than four directions is treated as curved.
 - `scripts/conjoin.py` - merge + repack library/CLI, presets T1/T2/T3.
 - `scripts/audit.py` - hollow-chart split and the space gate (PASS/FAIL, runtime texels/unit).
 - `scripts/pack_rects.py` - validated packer and page-side measurement (self-test: run it).
+- `scripts/reposition_island.py` - quick reposition of a few faces onto the right texels (above);
+  specimen proof `test_reposition_island.py` (pytest).
 - `scripts/labeled_fit.py` - exact directed-Hausdorff containment (fallback #2): certified
   rigid fits, labels for material, grain/up direction and semantic tags.
 - `scripts/blender_export_faces.py`, `scripts/blender_apply_conjoin.py`,

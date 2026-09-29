@@ -11,13 +11,16 @@
     "scripts/blender_apply_conjoin.py",
     "scripts/render_review.py",
     "scripts/draw_uv_sheet.py",
-    "scripts/test_conjoin.py"
+    "scripts/test_conjoin.py",
+    "scripts/reposition_island.py",
+    "scripts/test_reposition_island.py"
   ],
   "skills": [
     "blender-clean-uv",
     "blender-uv-reuse",
     "blender-uv-ao-separation",
-    "aoe-uv-atlas-export"
+    "aoe-uv-atlas-export",
+    "blender-high-low-baking"
   ],
   "external": [
     {
@@ -72,6 +75,32 @@
       "distribution": "Pillow",
       "modules": [
         "PIL"
+      ]
+    },
+    {
+      "id": "opencv",
+      "kind": "python-package",
+      "requiredFor": [
+        "reposition"
+      ],
+      "optional": true,
+      "note": "reposition_island.py --allow-free (free-texel search); host Python.",
+      "distribution": "opencv-python",
+      "modules": [
+        "cv2"
+      ]
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "reposition"
+      ],
+      "optional": true,
+      "note": "test_reposition_island.py specimen proof.",
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
       ]
     }
   ]

@@ -121,3 +121,11 @@ workflow's verified flags, preserve previous custom outputs and compare generate
 versus installed hashes. Texture edits alone do not justify re-exporting geometry.
 Refresh only the intended live scene's images. Show the operator the result in
 their working document/scene and let them give the next visual correction.
+
+## Third-party JPGs raise a modal dialog (2026-09-28)
+
+Poly Haven JPGs (and other downloaded JPGs) can carry Photoshop resource data that CC 2018 reports as
+"probably corrupted" in a MODAL dialog on every `app.open`. The script blocks until the operator clicks.
+Re-encode the file to PNG outside Photoshop first (PIL `Image.open(src).convert('RGB').save(png)` is
+pixel-identical and carries no Photoshop data) and open the PNG. Do not rely on `displayDialogs` to hide it
+(see the CC 2018 note above).

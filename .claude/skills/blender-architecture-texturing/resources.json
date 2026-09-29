@@ -9,6 +9,9 @@
     "scripts/check_tile.py",
     "scripts/validate_uv.py",
     "references/chart-joining.md",
+    "references/pipeline-order.md",
+    "references/handoff-contract.md",
+    "scripts/handoff.py",
     "scripts/uv_metrics.py",
     "scripts/test_uv_metrics.py",
     "scripts/blender_uv_layout.py",
@@ -21,7 +24,10 @@
     "blender-high-low-baking",
     "blender-clean-uv",
     "blender-uv-reuse",
-    "blender-hidden-surfaces"
+    "blender-hidden-surfaces",
+    "blender-uv-conjoin",
+    "blender-uv-ao-separation",
+    "aoe-uv-atlas-export"
   ],
   "external": [
     {

@@ -5,6 +5,7 @@
       <texture name="BaseColor" override="buildings\korean_tc\textures\korean_tc_mata_BaseColor" />
       <texture name="Normals" override="buildings\korean_tc\textures\korean_tc_mata_Normals" />
       <texture name="Masks" override="buildings\korean_tc\textures\korean_tc_mata_Masks" />
+      <texture name="Details" override="buildings\korean_tc\textures\korean_tc_mata_Details" />
     </parameters>
   </submaterial>
   <submaterial name="matb">

@@ -3,8 +3,28 @@ name: blender-architecture-texturing
 description: Coordinates architectural materials, decorative atlases, texture sources and AO while preserving unrelated maps. Routes clean unwraps to blender-clean-uv and economical overlap/packing to blender-uv-reuse; use for material and texture-source work in Blender.
 ---
 # Architecture texturing
-This is the material and texture-source entry point. UV work has two separate
-owners; load the one needed for the current checkpoint:
+This is the material and texture-source entry point. **Read the
+[pipeline order](references/pipeline-order.md) before any bake**: texture budget first,
+high poly built but not baked, one pilot bake that leaves a recipe, final bake only on
+frozen UVs. A later UV change invalidates every bake made on the old layout.
+
+Every phase hands off through a standard `HANDOFF.json` ([handoff contract](references/handoff-contract.md),
+`scripts/handoff.py`): consume the upstream phase's canonical outputs, never reinvent them.
+
+**Patterned linear elements come from geometry, not formulas.** Ridge cap-tile rows, tile courses and similar
+repeated structure on long elements are modelled as a high (continuous along the element's arc length) and
+baked onto the existing UVs; a compositor may only colour them from the baked IDs. Analytic patterns in
+per-segment frames jumped at every joint and read as pinstripes on round ridge tubes (Korean TC side ridges,
+owner escalation 2026-09-28; fix `ridge_v2`). Before the owner sees a roof, run the cross-face checks in
+[texturing QA](../blender-high-low-baking/references/texturing-qa.md) (run continuity, seam phase) and render
+the owner's exact camera.
+
+The final-atlas chain after clean charts is
+[conjoinment](../blender-uv-conjoin/SKILL.md) ->
+[AO separation](../blender-uv-ao-separation/SKILL.md) ->
+[pages at one density](../aoe-uv-atlas-export/SKILL.md); each of those steps moves charts.
+
+UV work has two separate owners; load the one needed for the current checkpoint:
 
 - [Clean UV authoring](../blender-clean-uv/SKILL.md): coherent charts, density,
   hidden-surface allocation and real editable maps in Blender with operator controls.
