@@ -1,0 +1,122 @@
+{
+ "_doc": [
+  "Profiles for scripts/havok/gr2_lint.py. 'references' = numbers MEASURED on vanilla models (python scripts/havok/gr2_lint.py --measure-reference <vanilla.gr2>, files extracted to a scratchpad, never into the repo); never on a pilot or on the model under test.",
+  "'profiles' = one building each: its files, the reference it must match, and its own design facts (platform height, props on the fixed base bone) with the reason for each tolerance.",
+  "Frames: 'raw' = the gr2 file's own coordinates (y up). 'display' = (-x_raw, -z_raw, y_raw): +X right, +Y back, +Z up, as rotate_gr2.py documents. Quadrants are display-frame, relative to the footprint (bbox) centre."
+ ],
+ "tools": {
+  "gr2_to_raw_dir": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Export_CP1/tools",
+  "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). Override: env GR2_LINT_TOOLS or config/tool-paths.local.json tools.gr2_to_raw_dir. Missing -> the dll_read check is SKIP, never PASS."
+ },
+ "references": {
+  "china_tc_age2": {
+   "source": "vanilla china_towncenter_age2.gr2 + china_towncenter_age2_damaged.gr2/.hkt, measured 2026-09-29",
+   "mast_quadrant": "+X+Y",
+   "courtyard_quadrant": "-X-Y",
+   "layout_words": "tower (flag mast) back-right, open courtyard front-left",
+   "mast_display_xy": [2.0771, 2.3513],
+   "roof_area_share": {"+X+Y": 0.4623, "-X+Y": 0.2841, "-X-Y": 0.0098, "+X-Y": 0.2437},
+   "tip_m": 13.4386,
+   "uv_handedness_positive": {"intact": 0.867, "damaged": 0.7731},
+   "bone_flag_civ": [-2.2189, 12.0598, -2.1127],
+   "flag_off_axis_m": 0.0121,
+   "flag_below_tip_m": 1.3788,
+   "garrison_below_flag_m": 1.106,
+   "BONE_HITPOINTBAR": [2.3284, 11.6993, -0.3933],
+   "damaged": {
+    "bones": 272,
+    "base_bone": "base",
+    "base_tris": 1838,
+    "base_max_height_m": 2.123,
+    "mast_axis_offset_vs_intact_m": 0.146,
+    "bbox_equals_intact": true,
+    "hkt_bodies": 221,
+    "hkt_axis_map": [2, 1, 0],
+    "hkt_scale": 1.0222,
+    "hkt_median_err_m": 0.0107,
+    "hkt_p95_err_m": 0.0186,
+    "mixed_bone_tris": 0
+   }
+  },
+  "japan_tc_age1": {
+   "source": "vanilla japan_towncenter_age1.gr2 + _damaged.gr2, measured 2026-09-29 (second opinion on the conventions)",
+   "mast_quadrant": "+X+Y",
+   "courtyard_quadrant": "-X-Y",
+   "uv_handedness_positive": {"intact": 0.9478, "damaged": 0.7006},
+   "flag_off_axis_m": 0.0181,
+   "flag_below_tip_m": 1.1722,
+   "garrison_below_flag_m": 1.5625,
+   "BONE_HITPOINTBAR": [2.3284, 11.6993, -0.3933],
+   "damaged": {"bones": 247, "base_max_height_m": 2.189, "mast_axis_offset_vs_intact_m": 0.058}
+  }
+ },
+ "profiles": {
+  "korean_tc": {
+   "reference": "china_tc_age2",
+   "_doc": "Korean Town Center (donor graph: the China TC age 2 damaged model). Specimens: tests/test_gr2_lint.py.",
+   "files": {
+    "intact": "korean_tc.gr2",
+    "damaged": "korean_tc_damaged.gr2",
+    "hkt": "korean_tc_damaged.hkt",
+    "intact_material": "korean_tc.material",
+    "damaged_material": "korean_tc_damaged.material",
+    "animfile": "korean_tc.xml"
+   },
+   "limits": {
+    "max_vertices": 65535,
+    "max_index": 65535,
+    "_doc": "damaged meshes are drawn with 16-bit indices (2026-09-29: one 102,527-vertex mesh wrapped into building-high sheets)"
+   },
+   "orientation": {
+    "mast_quadrant": "+X+Y",
+    "courtyard_quadrant": "-X-Y",
+    "roof_height_m": 2.5,
+    "min_mast_offset_m": 1.0,
+    "_doc": "from china_tc_age2 (Japan TC age 1 agrees). Courtyard = the quadrant with the least up-facing area above roof_height_m. A 90-degree turn or an x/z mirror moves the mast to another quadrant."
+   },
+   "handedness": {
+    "expect_sign": 1,
+    "min_fraction": 0.6,
+    "name_board": null,
+    "_doc": "area share of UV charts with the expected handedness; vanilla 0.70-0.95, a mirrored model ~0.05-0.30. It catches the diagonal mirror the quadrants cannot see. name_board (optional): {\"stage\": \"intact\", \"mesh\": \"<mesh name>\", \"triangles\": [ids], \"expect_sign\": 1} - fill the ids once the owner confirms the board reads correctly in game."
+   },
+   "attach": {
+    "bones": ["bone_flag_civ", "BONE_GARRISONFLAG", "BONE_HITPOINTBAR"],
+    "flag_axis_tol_m": 0.02,
+    "flag_below_tip_m": 1.3788,
+    "garrison_below_flag_m": 1.106,
+    "height_tol_m": 0.02,
+    "hitpointbar": [2.3284, 11.6993, -0.3933],
+    "hitpointbar_tol_m": 0.01,
+    "_doc": "vanilla China TC convention (the donor): civ flag on the mast axis (vanilla 1.2 cm off), 1.3788 m below the tip, garrison flag 1.106 m below it; hitpoint bar at the fixed vanilla point (China and Japan identical). The pilot flag hung 15.5 cm beside its pole."
+   },
+   "intact_bones": ["BONE_MAIN", "bone_flag_civ", "BONE_GARRISONFLAG", "BONE_HITPOINTBAR"],
+   "damaged": {
+    "bbox_tol_m": 0.01,
+    "tip_tol_m": 0.005,
+    "mast_axis_tol_m": 0.15,
+    "attach_tol_m": 0.001,
+    "_frame_doc": "the damaged model sits in the intact's frame: vanilla China bbox and tip identical, attach bones identical, the damaged pole measures 0.146 m (Japan 0.058) from the intact pole - a turn or mirror moves it by > 3 m.",
+    "base_bone": "base",
+    "base_max_height_m": 0.6,
+    "base_allowed_boxes": {
+     "_doc": "raw-frame [min, max] boxes of the props the design keeps on the fixed base bone (Destruction_S18k HANDOFF: 'notice board + jar cluster on the fixed base bone'). Everything else on the base above the platform is a defect (window panels left behind when the pieces fall).",
+     "notice_board": [[1.25, -0.05, 2.5], [1.8, 1.5, 3.7]],
+     "notice_board_foot": [[0.2, -0.05, 2.55], [0.7, 0.6, 3.75]],
+     "jar_cluster": [[-3.7, -0.05, 3.8], [-1.6, 1.05, 4.7]]
+    },
+    "_base_doc": "platform = the Korean stone platform, top 0.55 m in the design (vanilla China's platform reaches 2.12 m). The notice-board foot box is below the platform height anyway; kept for clarity.",
+    "hkt": {
+     "axis_map": [2, 1, 0],
+     "scale": 1.0222,
+     "scale_tol": 0.002,
+     "median_err_max_m": 0.02,
+     "containment_tol_m": 0.05,
+     "containment_max_share": 0.005,
+     "containment_max_out_m": 0.1,
+     "_doc": "vanilla China: Havok body translation = 1.0222 x (z, y, x) of the GR2 bone world position, median 1.07 cm, every body paired. Render vertices vs their own piece's convex hull: vanilla China farthest 0.066 m outside, 0.05% of 45,915 vertices beyond 5 cm; a piece bound to the wrong bone or frame sits metres away."
+    }
+   }
+  }
+ }
+}

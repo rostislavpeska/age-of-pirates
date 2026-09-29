@@ -70,6 +70,8 @@ sandbox/census/samples/regen/
 
 # Claude skills are tracked source; only device settings stay local
 /.claude/settings.local.json
+# Launch gate owner switch (.claude/hooks/launch_gate.py): its presence turns the gate off on this device only
+/.claude/hooks/LAUNCH_GATE_OFF
 
 # minimap twin output when --out points into the repo (twin.py defaults to a fresh temporary folder)
 scripts/mapview/out/

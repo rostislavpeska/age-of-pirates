@@ -82,6 +82,25 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    - **Stops are announced:** stopping or relaunching a workflow, a denied permission, a crash or a blocked step
      is reported with its reason and the decision needed. Nothing is dropped silently.
 
+13. **Late instructions go through the inbox; launches are capped and P0 first.** Owner, 2026-09-29: "prevent firing
+   too many agents", "ABSOLUTE priorities for CRITICAL tasks". (`tasks.py` = the task engine, `$AOP_TASKS_DIR`.)
+   - **Inbox:** a late detail is `tasks.py note <TASK> "text"`, never a restart or a prompt edit. Every agent reads
+     only its unread notes at each step start (Claude: they arrive with the next tool result; others run
+     `tasks.py inbox <TASK> --unread --reader <name>`), never re-reads old ones, and its final report says
+     `NOTES APPLIED: <numbers>` or `none`. A coordinator runs `tasks.py bind-run <TASK> <run-id>` right after a launch
+     and `--unbind` when the run ends (bindings expire 24 h after the last bind-run).
+   - **Launches:** at most 2 jobs at once, counted over every session of this project: workflows, background AND
+     foreground agents, launches just allowed; Codex and other agents take a slot with `python
+     .claude/hooks/launch_gate.py --claim "<job>" --by <agent> [--task <ID>]` and `--release <id>` it. While an open
+     P0 bug exists a launch declares `task: <P0 id>` (a mention does not count). Resume (`resumeFromRunId`), never
+     relaunch or rename; a real fresh start says `fresh-run: <reason>` and is reported. Only the owner turns it off.
+   - **Enforcement is live only once the owner registered the hooks** (`.claude/hooks/settings_entries.json` into
+     `.claude/settings.json`); `python .claude/hooks/harness_status.py` says whether it is. Until then every agent
+     follows this rule by hand.
+   - **Exports:** no model reaches the owner's game test before `python scripts/havok/gr2_lint.py --profile <building>
+     <folder>` exits 0 (a SKIP exits 2: never `--no-dll` or `--allow-skip` for this gate); a defect found in game
+     first becomes a lint check.
+
 ## Where things are
 
 - Skills: `.claude/skills/` - `bar-extract` (vanilla files, XML<->XMB), `aoe-building-pipeline` (buildings,

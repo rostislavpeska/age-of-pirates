@@ -46,7 +46,7 @@ def wsl_path(p):
 def run_wine_wsl(cfg, opts, f):
     d = wsl_path(os.path.dirname(f)); name = os.path.basename(f)
     distro = cfg.get('distro', 'Ubuntu'); prefix = cfg.get('wineprefix', '$HOME/.wine_gxo'); exe = cfg.get('exe', '$HOME/gxo/GXOConverterAge3DE.exe')
-    cmd = ("export WINEARCH=win32 WINEPREFIX=%s WINEDEBUG=-all; cd %s && timeout %d wine %s %s %s >/tmp/conv_$$.log 2>&1; rc=$?; "
+    cmd = ("unset DISPLAY WAYLAND_DISPLAY; export WINEDLLOVERRIDES=winedbg.exe=d WINEARCH=win32 WINEPREFIX=%s WINEDEBUG=-all; cd %s && timeout %d wine %s %s %s >/tmp/conv_$$.log 2>&1; rc=$?; "
            "grep -v '^fixme' /tmp/conv_$$.log | grep -E 'Backtrace|Unhandled|granny2_age3de\\+' | head -3; wineserver -k 2>/dev/null; exit $rc"
            % (prefix, shlex.quote(d), int(cfg.get('timeout', 900)), exe, ' '.join(shlex.quote(o) for o in opts), shlex.quote(name)))
     r = subprocess.run(['wsl.exe', '-d', distro, '--exec', 'bash', '-c', cmd], capture_output=True, text=True)
