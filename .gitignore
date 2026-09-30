@@ -72,6 +72,8 @@ sandbox/census/samples/regen/
 /.claude/settings.local.json
 # Launch gate owner switch (.claude/hooks/launch_gate.py): its presence turns the gate off on this device only
 /.claude/hooks/LAUNCH_GATE_OFF
+# Agent lesson journal: owner quotes, local paths and session details, possibly personal data - never pushed (public repo)
+/.claude/skills/JOURNAL.jsonl
 
 # minimap twin output when --out points into the repo (twin.py defaults to a fresh temporary folder)
 scripts/mapview/out/
