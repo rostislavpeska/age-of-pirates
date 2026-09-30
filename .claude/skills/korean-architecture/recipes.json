@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "scope": "Korean architectural feature recipes; dated exemplar, not a replacement for latest accepted project HANDOFF",
+  "date": "2026-09-30",
+  "status": "scoped offline validation; owner requested paired game export; no new in-game acceptance",
+  "roots": {
+    "korean_repo": "Korean source repository",
+    "assets": "external Korean Buildings Blender asset library"
+  },
+  "files": [
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/window_wanja/r2_prepare.py",
+      "role": "recipe r2_prepare.py",
+      "sha256": "e55388286c28f29afa8aa556a0d7ada460de71e34ef8895e10933edcf4d9ef27"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/window_wanja/r2_bake.py",
+      "role": "recipe r2_bake.py",
+      "sha256": "40c0ad87070afc9e6707146d0bcb0fc52c73af9c0da7e95cd41e9fe7e8b957f5"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/window_wanja/r2_compose.py",
+      "role": "recipe r2_compose.py",
+      "sha256": "df71573d6dc77432c2899a48075be2624f7a93c4c6ca004465116ec225d54b02"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/window_wanja/r2_model.py",
+      "role": "recipe r2_model.py",
+      "sha256": "4f6137ee94525aa871430f4ab484fb4e074c7bdec0e45bc05a3aef08fa4885c0"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/window_wanja/r2_roof_finish.py",
+      "role": "recipe r2_roof_finish.py",
+      "sha256": "6385a2e23f11e3da2c9d5d4b171dfc0c641f09ff5ab83a108d85a8ff4a67efbf"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/roof_v2.py",
+      "role": "structural roof source roof_v2.py",
+      "sha256": "548fe39231242be9f5a83fc98f04c8c22cd376af91c22c03ec62e544cbdde5b8"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/roof_tile_ids.py",
+      "role": "structural roof source roof_tile_ids.py",
+      "sha256": "f05307b18ce96a40c60a4b1f626f2dbaa0a15065afde8b3c5c931d2c01b5504e"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/ridge_eave_v2.py",
+      "role": "structural roof source ridge_eave_v2.py",
+      "sha256": "101c18be47a2e582aaeb8eddb17423bf8502101cf5dc9cf86ad40f92a9cbd466"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2/HANDOFF.json",
+      "role": "window evidence HANDOFF.json",
+      "sha256": "0875ab337aff403924a65f519677d14604c837042d4e99f411a2f3c369022de2"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2/DENSITY_FLOOR_QA.json",
+      "role": "window evidence DENSITY_FLOOR_QA.json",
+      "sha256": "cc5476b15421a550c2a298b78024b463c0e021dff65175c9c8768c84ec15a820"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2/FACE_MAP.json",
+      "role": "window evidence FACE_MAP.json",
+      "sha256": "705bc2a954c614b19bdbada19fe9b601d9d76e294c3eaea48057cb23b4c01fd5"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2/GEOMETRY_QA.json",
+      "role": "window evidence GEOMETRY_QA.json",
+      "sha256": "184a7a938460857511a6330b610a70da3eab94d17b7241189b76025535922397"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2/MATERIAL_REPAIR.json",
+      "role": "window evidence MATERIAL_REPAIR.json",
+      "sha256": "1ba7f044e7141e55da3271713f2b79f741b00a1a4a5e5bcd9b546174c285bfc9"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2-roof/ROOF_COLOR_QA.json",
+      "role": "roof evidence ROOF_COLOR_QA.json",
+      "sha256": "0b1510b49d3cb3c844961c9b39cb6d57b3c3da9231dd6cc1566b8f408cb8a959"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-window-wanja-r2-roof/maps/HANDOFF.json",
+      "role": "roof evidence maps/HANDOFF.json",
+      "sha256": "632abf9d51d65dd654260ad17856e5b004b649557367555798d3033f3bb800d4"
+    },
+    {
+      "root": "assets",
+      "path": "references/window-lattice/INDEX.json",
+      "role": "original user design references",
+      "sha256": "9c37ace4b7706fad694a6bbfbd9a58fd27b8c5b2916fe6a285f519e9d3a294de"
+    }
+  ]
+}

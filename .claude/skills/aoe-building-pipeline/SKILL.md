@@ -8,6 +8,7 @@ description: AoP entry point for building export, materials and deployment. Star
 Read [aoe3de-building-export](../aoe3de-building-export/SKILL.md) for the shared rig, export, conversion and texture procedure and [aoe-xml](../aoe-xml/SKILL.md) for this mod's XML rules. Those are the maintained implementations; this skill adds only AoP configuration and worked examples.
 
 For authoring, use [blender-architecture](../blender-architecture/SKILL.md) and [blender-architecture-texturing](../blender-architecture-texturing/SKILL.md) in this repository.
+For the Korean set's lattice, hanji, roof coloring and age-specific finish recipes, use [korean-architecture](../korean-architecture/SKILL.md).
 Follow its [pipeline order](../blender-architecture-texturing/references/pipeline-order.md) on
 every building: texture budget first, final bakes only on owner-frozen UVs. Korean TC,
 2026-09-25..28: the v15 roof and v19 window bakes were made first, then a budget overflow

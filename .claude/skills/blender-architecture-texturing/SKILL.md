@@ -63,6 +63,12 @@ does not block Blender-only work; use it only for the selected workflow.
 6. For Painter read [MCP feasibility](references/painter-mcp.md). A project existing online is not proof of local compatibility. Do not install/upgrade it as a side effect of texturing.
 7. Keep layered sources, adjustment masks and an output manifest. Save a new texture version, apply to the confirmed Blender instance, verify packed/external paths, save and inspect. Never claim live updates when only a background copy changed. Use the destination engine skill for export.
 
+## Final texel-density floor (owner, 2026-09-30)
+
+Every new or rebuilt component must meet a **measured comparable vanilla asset floor** at the final runtime page size, on both UV axes and at the same model scale. Record the reference, units, per-component minimum, and source-supported detail density before baking. Missing measurements block a quality-pass claim. A high-resolution bake later shrunk into a small island, an upscaled bitmap, or fewer owners does not raise final detail density. Reclaimed area must actually support the required allocation.
+
+For the current Korean TC window repair the owner explicitly requires **at least 2x linear density relative to the rejected 115 texels/unit version** (at least 230 on both axes, four times the texel area), as well as the vanilla floor. This is a window-specific requirement, not a universal numeric floor for every asset. The r2 allocation targets 256; unrelated roofs/UVs are not repacked to meet it. Show the actual editable UVs and every review model using the same mesh/map revision. Design praise does not mean the owner accepted density or the complete asset.
+
 ## Editable sources and operator feedback
 When legacy texture sources are unreliable, use the current approved texture as a clean base and retain a hidden, toggleable UV-island checking overlay. Do not reconstruct speculative layers or add unnecessary groups. Preserve unsaved work before changing the source.
 

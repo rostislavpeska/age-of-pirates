@@ -93,3 +93,153 @@
 {"time": "2026-09-29T13:11:23", "event": "after", "ok": true, "error": null}
 {"time": "2026-09-29T13:20:44", "event": "before", "action": "watcher start_preview('mock_walls_on_head') - queued reloads 4 per step", "risk": "low", "file": "C:/Users/rosti/OneDrive/Plocha/Korean_TC_CP1_Review.blend", "agent": "claude-coordinator"}
 {"time": "2026-09-29T13:21:00", "event": "after", "ok": true, "error": null}
+{"time": "2026-09-29T23:16:59", "event": "before", "action": "Read-only active Blender state, mesh counts, texture paths and review module identity", "risk": "none", "agent": "astra"}
+{"time": "2026-09-29T23:16:59", "event": "after", "ok": true, "action": "Read-only live inspection", "agent": "astra"}
+{"time": "2026-09-29T23:18:41", "event": "before", "action": "Read-only UV fingerprint and existing watcher state", "risk": "none", "agent": "astra"}
+{"time": "2026-09-29T23:18:41", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-29T23:42:51", "event": "before", "action": "Astra window repair: inspect_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-29T23:42:51", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-29T23:49:42", "event": "before", "action": "Astra window repair: snapshot_low.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-29T23:49:42", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:03:01", "event": "before", "action": "Astra window repair: preview_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:03:01", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:03:15", "event": "before", "action": "Astra window repair: verify_preview.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:03:15", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:13:38", "event": "before", "action": "Astra window repair: inspect_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:13:38", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:15:06", "event": "before", "action": "Astra window repair: inspect_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:15:06", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:20:44", "event": "before", "action": "Astra window repair: inspect_shader.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:20:44", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:21:49", "event": "before", "action": "Astra window repair: checkpoint_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:21:49", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:22:00", "event": "before", "action": "Astra window repair: preview_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:22:00", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:22:35", "event": "before", "action": "Astra window repair: verify_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:22:36", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:29:12", "event": "before", "action": "Astra window repair: preview_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:29:13", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:29:28", "event": "before", "action": "Astra window repair: preview_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:29:28", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:30:22", "event": "before", "action": "Astra window repair: verify_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:30:22", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T00:35:16", "event": "before", "action": "Astra window repair: live_checkpoint.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T00:35:16", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:05:43", "event": "before", "action": "Astra window repair: live_inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:05:43", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:06:04", "event": "before", "action": "Astra window repair: watcher_inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:06:04", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:08:25", "event": "before", "action": "Astra window repair: append_review_a.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:08:26", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:08:39", "event": "before", "action": "Astra window repair: append_review_b.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:08:39", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:08:59", "event": "before", "action": "Astra window repair: show_review_b.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:08:59", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:20:22", "event": "before", "action": "Astra window repair: live_inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:20:22", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:32:38", "event": "before", "action": "Astra window repair: inspect_texture_usage.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:32:38", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:44:46", "event": "before", "action": "Astra window repair: live_inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:44:46", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:46:11", "event": "before", "action": "Astra window repair: inspect_review_context.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:46:11", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:48:03", "event": "before", "action": "Astra window repair: checkpoint_ai_review.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:48:04", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:51:07", "event": "before", "action": "Astra window repair: create_ai_comparisons.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:51:08", "event": "after", "ok": false, "agent": "astra"}
+{"time": "2026-09-30T01:55:36", "event": "before", "action": "Astra window repair: inspect_live_uv.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:55:36", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:56:02", "event": "before", "action": "Astra window repair: create_ai_comparisons.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:56:02", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:56:21", "event": "before", "action": "Astra window repair: apply_ai_color.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:56:22", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:56:39", "event": "before", "action": "Astra window repair: show_ai_comparisons.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T01:56:39", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:05:41", "event": "before", "action": "Astra window repair: apply_ai_technical.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:05:42", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:06:14", "event": "before", "action": "Astra window repair: revert_ai_now.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:06:14", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:06:42", "event": "before", "action": "Astra window repair: verify_rollback.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:06:42", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:18:39", "event": "before", "action": "Astra window repair: freeze_window_original.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:18:40", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:29:30", "event": "before", "action": "Astra window repair: preflight_wanja_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:29:30", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:30:21", "event": "before", "action": "Astra window repair: prepare_wanja_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:30:21", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:31:00", "event": "before", "action": "Astra window repair: apply_wanja_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:31:00", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:31:01", "event": "before", "action": "Astra window repair: show_wanja_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:31:01", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:32:32", "event": "before", "action": "Astra window repair: verify_wanja_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:32:32", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T02:33:21", "event": "before", "action": "Astra window repair: checkpoint_wanja_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T02:33:21", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T10:51:50", "event": "before", "action": "Astra window repair: inspect_all_models.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T10:51:50", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:00:34", "event": "before", "action": "Astra window repair: inspect_all_models.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:00:34", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:05:44", "event": "before", "action": "Astra window repair: preflight_r2.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:05:44", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:16:58", "event": "before", "action": "Astra window repair: inspect_shading.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:16:58", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:20:58", "event": "before", "action": "Astra window repair: backup_r2_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:20:58", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:22:44", "event": "before", "action": "Astra window repair: apply_r2_board.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:22:44", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:24:02", "event": "before", "action": "Astra window repair: high_r2_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:24:03", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:24:03", "event": "before", "action": "Astra window repair: show_r2_board.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:24:04", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:33:53", "event": "before", "action": "Astra window repair: inspect_watcher_methods.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:33:53", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:33:54", "event": "before", "action": "Astra window repair: check_r2_floor.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:33:54", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:35:12", "event": "before", "action": "Astra window repair: fix_r2_material_indices.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:35:12", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:39:23", "event": "before", "action": "Astra window repair: apply_r2_roof_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:39:23", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:40:44", "event": "before", "action": "Astra window repair: verify_r2_board.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:40:46", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T11:42:06", "event": "before", "action": "Astra window repair: finalize_r2_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T11:42:07", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T12:11:13", "event": "before", "action": "Astra window repair: astra_korean_export_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:11:13", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T12:21:53", "event": "before", "action": "Astra window repair: astra_korean_export_verify_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:21:54", "event": "after", "ok": false, "agent": "astra"}
+{"time": "2026-09-30T12:22:58", "event": "before", "action": "Astra window repair: astra_korean_export_verify_live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:22:59", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T12:36:47", "event": "before", "action": "Astra window repair: publish_hangul_blender.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:36:47", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T12:42:42", "event": "before", "action": "Astra window repair: verify_hangul_low.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:42:42", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T12:43:05", "event": "before", "action": "Astra window repair: save_hangul_checkpoint.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:43:05", "event": "after", "ok": false, "agent": "astra"}
+{"time": "2026-09-30T12:43:06", "event": "before", "action": "Astra window repair: save_hangul_low.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:43:06", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T12:43:33", "event": "before", "action": "Astra window repair: save_hangul_checkpoint.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T12:43:33", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:36:51", "event": "before", "action": "Astra window repair: astra-live-walls-inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:36:54", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:37:54", "event": "before", "action": "Astra window repair: astra-live-walls-save.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:37:54", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:37:56", "event": "before", "action": "Astra window repair: astra-live-walls-low.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:37:56", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:44:10", "event": "before", "action": "Astra window repair: astra-walls-watcher-inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:44:10", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:51:03", "event": "before", "action": "Astra window repair: astra-walls-watcher-state.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:51:03", "event": "after", "ok": false, "agent": "astra"}
+{"time": "2026-09-30T13:51:49", "event": "before", "action": "Astra window repair: astra-walls-watcher-state.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:51:49", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:52:18", "event": "before", "action": "Astra window repair: astra-walls-track-inspect.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:52:18", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:52:49", "event": "before", "action": "Astra window repair: astra-walls-watch-properties.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:52:50", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:54:53", "event": "before", "action": "Astra window repair: astra-walls-publish.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:54:53", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:55:45", "event": "before", "action": "Astra window repair: astra-walls-verify-live.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:55:47", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:56:26", "event": "before", "action": "Astra window repair: astra-walls-save-after.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:56:26", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T13:56:27", "event": "before", "action": "Astra window repair: astra-walls-capture-after.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-09-30T13:56:30", "event": "after", "ok": true, "agent": "astra"}
