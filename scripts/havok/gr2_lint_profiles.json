@@ -469,6 +469,25 @@
     "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
    }
   },
+  "west_townhall_v2": {
+   "_doc": "zpSPROPWestTownHallV2: west_townhall (owner's Let's Enhance base lifted to vanilla albedo, gamma 1.25; PATINA normal) plus matc (default_doublesided_cutout: balustrades + ridge cresting). Same vanilla UVs as west_townhall; the owner's class and density answers (2026-09-30, session ef9a49b4, question dialog) were given for that port.",
+   "names": ["West townhall", "West town hall", "West TC", "West Town Hall", "West townhall v2", "v2"],
+   "files": {
+    "intact": "west_townhall_v2.gr2",
+    "intact_material": "west_townhall_v2.material",
+    "animfile": "west_townhall_v2.xml"
+   },
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_status_doc": "owner answered 2026-09-30 in session ef9a49b4 (question dialog, owner_quote); not in the message store yet (INC-051)",
+    "owner_quote": "1024 is fine. It's heavy compressed atlas and only prop building",
+    "models": ["west_townhall_v2"]
+   },
+   "waivers": [
+    {"id": "W-west_townhall_v2-density-1", "check": "density_floor", "model": "west_townhall_v2", "owner_quote": "No RE-.UV!!! Keep it simple. The West TC is only port from legacy with higher res texture - keep simple", "msg": "answer given for west_townhall (same vanilla UVs)", "at": "2026-09-30", "recorded_by": "claude session ef9a49b4"}
+   ]
+  },
   "wonders": {
    "texture_budget": {
     "class": "large",

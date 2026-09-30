@@ -1,0 +1,27 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\west_townhall_v2\textures\west_townhall_v2_BaseColor" />
+      <texture name="Normals" override="buildings\west_townhall_v2\textures\west_townhall_v2_Normals" />
+      <texture name="Masks" override="buildings\west_townhall_v2\textures\west_townhall_v2_Masks" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\west_townhall_v2\textures\west_townhall_v2_BaseColor" />
+      <texture name="Normals" override="buildings\west_townhall_v2\textures\west_townhall_v2_Normals" />
+      <texture name="Masks" override="buildings\west_townhall_v2\textures\west_townhall_v2_Masks" />
+      <texture name="Details" override="buildings\west_townhall_v2\textures\west_townhall_v2_Details" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\west_townhall_v2\textures\west_townhall_v2_BaseColor" />
+      <texture name="Normals" override="buildings\west_townhall_v2\textures\west_townhall_v2_Normals" />
+      <texture name="Masks" override="buildings\west_townhall_v2\textures\west_townhall_v2_Masks" />
+    </parameters>
+  </submaterial>
+</material>

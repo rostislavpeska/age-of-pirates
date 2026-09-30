@@ -77227,6 +77227,59 @@
       <rate type="Gold">0.2400000</rate>
     </protoaction>
   </unit>
+  <unit id="21209" name="zpSPROPWestTownHallV2">
+    <dbid>21209</dbid>
+    <displaynameid>22839</displaynameid>
+    <editornameid>503615</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\west_townhall_v2\west_townhall_v2.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>villagebuildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\house\house_icon.png</icon>
+    <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\italian</civflagoverride>
+    <rollovertextid>41971</rollovertextid>
+    <shortrollovertextid>41970</shortrollovertextid>
+    <initialhitpoints>1200.0000</initialhitpoints>
+    <maxhitpoints>1200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <buildingworkrate>0.5000</buildingworkrate>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ForceToGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>StartOnNoUpdate</flag>
+  </unit>
 
 
 <!--TEST AND TEMPORARY CONTENT-->

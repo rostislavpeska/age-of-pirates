@@ -1,0 +1,20 @@
+<animfile>
+	<component>
+		ModelComp
+			<assetreference type="GrannyModel">
+				<file>buildings\west_townhall_v2\west_townhall_v2</file>
+			</assetreference>
+			<decal>
+				<effecttype>bump</effecttype>
+				<texture>buildings\town_center\west_tc_ground_age3</texture>
+				<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+				<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+				<width>12.00</width>
+				<height>12.00</height>
+			</decal>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>
