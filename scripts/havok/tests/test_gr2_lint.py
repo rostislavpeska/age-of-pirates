@@ -84,12 +84,16 @@ def installed_intact():
 
 # ------------------------------------------------------------------------------------------------ the specimens
 TEXTURE_GATES = ("texture_budget", "texel_density")        # KTC-165: the shipped model FAILS these (tests further down)
+KNOWN_TANGENT_DEFECT = ("tangents",)                       # 2026-09-30: S18k ships 5277 zero tangents (pages A, H)
 
 
 def test_installed_intact_passes_the_geometry_checks():
     res = run(damaged=None, hkt=None, animfile=str(KTC / "korean_tc.xml"))
-    bad = {k: v["summary"] for k, v in res.items() if v["status"] == "FAIL" and k[1] not in TEXTURE_GATES}
+    bad = {k: v["summary"] for k, v in res.items()
+           if v["status"] == "FAIL" and k[1] not in TEXTURE_GATES + KNOWN_TANGENT_DEFECT}
     assert not bad, bad
+    assert status(res, "intact", "tangents") == "FAIL"          # the known defect stays visible until the model is fixed
+    assert sum(m["zero_tangent"] for m in res[("intact", "tangents")]["data"]["meshes"]) > 0
     for c in ("vertex_limit", "wrap16", "orientation", "handedness", "attach_bones", "hitpointbar", "flag_on_mast",
               "bone_set", "materials"):
         assert status(res, "intact", c) == "PASS", c
@@ -211,6 +215,22 @@ def test_vertex_limit_counts_a_mesh_over_65535():
     assert lim["status"] == "FAIL" and wrap["status"] == "FAIL" and wrap["data"]["changed_tris"] == 1
 
 
+def test_zero_tangents_fail_and_fade_bits_are_only_reported():
+    """west_towncenter_3age (legacy DE conversion) ships every tangent (0,0,0): materialdefault normalises it -> NaN
+    lighting, the building rendered 'very dark' in game with any texture (2026-09-30). Converter models carry fade bits
+    other than 127 and render fine: reported, never failed."""
+    tris = np.array([[0, 1, 2]], np.int64)
+    def mesh(tan, w):
+        return dict(name="m", mats=["mata"], nv=3, index_width=4, tris=tris,
+                    tan=np.array(tan, float), tanw=np.array(w, float).reshape(-1, 1))
+    zero = L.check_tangents("intact", dict(render=[mesh([[0, 0, 0]] * 3, [0, 0, 0])]))
+    good = L.check_tangents("intact", dict(render=[mesh([[1, 0, 0]] * 3, [127, 255, 127])]))
+    other_fade = L.check_tangents("intact", dict(render=[mesh([[0, 1, 0]] * 3, [0, 128, 0])]))
+    assert zero["status"] == "FAIL" and zero["data"]["meshes"][0]["zero_tangent"] == 3
+    assert good["status"] == "PASS" and good["data"]["meshes"][0]["fade_not_127"] == 0
+    assert other_fade["status"] == "PASS" and other_fade["data"]["meshes"][0]["fade_not_127"] == 3
+
+
 def test_material_mismatch_fails(tmp_path, installed_intact):
     mat = tmp_path / "x.material"
     mat.write_text('<material>\r\n  <submaterial name="mata" />\r\n  <submaterial name="matb" />\r\n</material>\r\n')
@@ -277,9 +297,11 @@ def test_a_failing_uv_gate_fails_the_lint(tmp_path, monkeypatch, capsys):
 
 @pytest.fixture
 def passing_texture_gates(monkeypatch):
-    """the CLI tests of the other checks: the texture ceiling and the density floor pass (their own tests below)"""
+    """the CLI tests of the other checks: the texture ceiling, the density floor and the tangents pass (their own
+    tests elsewhere; the S18k specimen fails all three)"""
     monkeypatch.setattr(L, "check_texture_budget", lambda stage, *a, **k: L.R(stage, "texture_budget", True, "stub"))
     monkeypatch.setattr(L, "check_density", lambda stage, *a, **k: L.R(stage, "texel_density", True, "stub"))
+    monkeypatch.setattr(L, "check_tangents", lambda stage, *a, **k: L.R(stage, "tangents", True, "stub"))
 
 
 def test_cli_exit_codes(passing_uv_gate, passing_texture_gates):

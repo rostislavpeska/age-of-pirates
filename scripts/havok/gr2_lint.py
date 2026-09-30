@@ -33,6 +33,9 @@ Why each check exists (every one is a defect that reached the game first):
   crc / dll_read          header CRC valid; the game's Granny DLL reads the file (headless gr2_to_raw.py route:
                           rc 0 and a non-empty output). The DLL route also decodes Oodle-compressed files.
   animfile_crlf           the animfile the engine parses has CRLF endings (AGENTS.md rule 1).
+  tangents                every used vertex has a non-zero tangent: materialdefault normalises it, a zero tangent is
+                          NaN lighting (legacy DE conversions ship all zeros; west_townhall rendered 'very dark' with
+                          any texture, 2026-09-30). The byte's low 7 bits (VS fade, vanilla 127) are reported only.
   uv_lineage              (profiles with a "uv_gate", the Korean TC) the UV lineage gate (Claude_CP2 gates/uv_gate.py,
                           run()) must be ok: the approved roof UV was dropped and S18k shipped (INC-002); a gate that
                           cannot be found is SKIP (not proven), one that cannot read its registry is FAIL.
@@ -126,6 +129,7 @@ def _mesh(name, loc, nv, comps, tris, groups, mats, bone_names, iw, layout):
         bone = np.zeros(nv, np.int64)                     # rigid mesh: every vertex on binding 0
     return dict(name=name, loc=loc, nv=int(nv), pos=comps.get('Position', np.zeros((nv, 3))),
                 nrm=comps.get('Normal'), uv=comps.get('TextureCoordinates0'), bone=bone, bone_names=list(bone_names),
+                tan=comps.get('Tangent'), tanw=comps.get('BasicStaticPackedData1'),
                 tris=np.asarray(tris, np.int64).reshape(-1, 3), groups=[tuple(int(x) for x in gr) for gr in groups],
                 mats=list(mats), index_width=iw, layout=layout)
 
@@ -450,6 +454,30 @@ def check_limits(stage, info, prof):
     b = R(stage, 'wrap16', changed == 0 and bool(rows), f"16-bit index wrap changes {changed} triangle(s)",
           changed_tris=changed)
     return [a, b]
+
+
+def check_tangents(stage, info):
+    """materialdefault normalises the vertex tangent (PS: rsq(dot(T, T))): a zero tangent is NaN lighting, the model
+    renders nearly unlit. Legacy DE conversions ship ALL tangents zero (west_towncenter_3age, 2026-09-30: 'very dark'
+    in game with any texture). The tangent byte's low 7 bits are the VS fade value (vanilla 127); converter models
+    carry other values and render fine, so they are reported, not failed."""
+    rows, bad = [], []
+    for m in info['render']:
+        if m.get('tan') is None or not len(m['tris']):
+            continue
+        used = np.unique(m['tris'])
+        zero = int((np.linalg.norm(m['tan'][used], axis=1) < 0.5).sum())
+        fade = int(((m['tanw'][used, 0].astype(np.int64) & 127) != 127).sum()) if m.get('tanw') is not None else None
+        row = dict(mesh=m['name'], vertices=int(len(used)), zero_tangent=zero, fade_not_127=fade)
+        rows.append(row)
+        if zero:
+            bad.append(row)
+    if not rows:
+        return R(stage, 'tangents', None, 'no packed tangent data in the bound meshes')
+    return R(stage, 'tangents', not bad,
+             f"{sum(r['zero_tangent'] for r in rows)} zero-length tangent(s) in {sum(r['vertices'] for r in rows)} used vertices"
+             + (f"; ZERO in {[(r['mesh'], r['zero_tangent']) for r in bad]} (unlit in game: compute tangents from UV0)" if bad else '')
+             + f" | fade bits != 127 on {sum(r['fade_not_127'] or 0 for r in rows)} (info)", meshes=rows)
 
 
 def check_orientation(stage, info, prof):
@@ -1266,6 +1294,7 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             infos[stage] = info
             results += [check_crc(stage, info), check_dll(stage, dll)]
             results += check_limits(stage, info, prof)
+            results.append(check_tangents(stage, info))
             if 'orientation' in prof:                         # building-specific facts: a generic profile has none
                 results.append(check_orientation(stage, info, prof))
             if 'handedness' in prof:
