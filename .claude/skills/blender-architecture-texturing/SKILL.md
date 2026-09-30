@@ -65,6 +65,14 @@ does not block Blender-only work; use it only for the selected workflow.
 
 ## Final texel-density floor (owner, 2026-09-30)
 
+**Hard universal floor:** every model passes the [universal UV density floor](references/uv-density-floor.md). For AoE3DE:
+
+- a median of at least 100 t/u;
+- at most 2 % of the area below 60 t/u, per model and per page;
+- at most 3 % of the area on collapsed UVs.
+
+Measure it with `scripts/density_floor.py`. Hidden pages count. A FAIL blocks the UV freeze (the 03_uv handoff, [contract](references/handoff-contract.md) rule 7) and the export. Only the owner's recorded waiver (his whole message) exempts a model.
+
 Every new or rebuilt component must meet a **measured comparable vanilla asset floor** at the final runtime page size, on both UV axes and at the same model scale. Record the reference, units, per-component minimum, and source-supported detail density before baking. Missing measurements block a quality-pass claim. A high-resolution bake later shrunk into a small island, an upscaled bitmap, or fewer owners does not raise final detail density. Reclaimed area must actually support the required allocation.
 
 For the current Korean TC window repair the owner explicitly requires **at least 2x linear density relative to the rejected 115 texels/unit version** (at least 230 on both axes, four times the texel area), as well as the vanilla floor. This is a window-specific requirement, not a universal numeric floor for every asset. The r2 allocation targets 256; unrelated roofs/UVs are not repacked to meet it. Show the actual editable UVs and every review model using the same mesh/map revision. Design praise does not mean the owner accepted density or the complete asset.

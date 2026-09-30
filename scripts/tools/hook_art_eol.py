@@ -12,6 +12,7 @@ ROOTS = ('art', 'sound', 'data', 'game', 'randmaps')
 def main():
     try: payload = json.load(sys.stdin)
     except Exception: return 0
+    if not isinstance(payload, dict): return 0
     ti = payload.get('tool_input') or {}
     paths = [ti.get('file_path')] if ti.get('file_path') else []
     for e in ti.get('edits') or []:
@@ -19,7 +20,8 @@ def main():
     root = os.path.abspath(payload.get('cwd') or os.getcwd())
     for p in paths:
         if not p or not p.lower().endswith(EXT) or not os.path.isfile(p): continue
-        rel = os.path.relpath(os.path.abspath(p), root).replace('\\', '/')
+        try: rel = os.path.relpath(os.path.abspath(p), root).replace('\\', '/')
+        except ValueError: continue          # on another drive than the project (Windows): not a mod file
         if not rel.split('/')[0].lower() in ROOTS: continue
         b = open(p, 'rb').read()
         lone = b.count(b'\n') - b.count(b'\r\n')

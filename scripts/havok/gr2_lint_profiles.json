@@ -6,7 +6,20 @@
  ],
  "tools": {
   "gr2_to_raw_dir": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Export_CP1/tools",
-  "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). Override: env GR2_LINT_TOOLS or config/tool-paths.local.json tools.gr2_to_raw_dir. Missing -> the dll_read check is SKIP, never PASS."
+  "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). Override: env GR2_LINT_TOOLS or config/tool-paths.local.json tools.gr2_to_raw_dir. Missing -> the dll_read check is SKIP, never PASS.",
+  "owner_messages": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/tasks/tasks.json",
+  "_owner_messages_doc": "the owner's message store: a waiver in a profile's \"waivers\" counts only when its owner_quote is one of his WHOLE messages there (as the UV lineage gate). Override: config/tool-paths.local.json tools.owner_messages. Missing -> no waiver counts."
+ },
+ "texture_budget": {
+  "_doc": "AoP texture CEILINGS (this project only; owner 2026-09-30 m334, classes m335/m336; KTC-165). gr2_lint check texture_budget counts a model's own texture SETS (one per BaseColor; the sizes from the DDT headers) against its class. The class is set PER MODEL with the owner: a profile's texture_budget {class, confirmed_by: owner message id, models: [the model stems it covers]}; per_model entries (keyed by the model stem) override it. A class without confirmed_by is PROPOSED and FAILS the export: 'class not confirmed by the owner'. INC-033: confirmed_by must resolve to his message in the store (tools.owner_messages) that names the class and the model (the entry's or profile's \"names\"); a confirmed folder class covers only its \"models\" (the market folder also holds a house and a port); every own texture file of every stage and variant counts, and the animfile's replacetexture targets. The universal UV density floor is not here: .claude/skills/blender-architecture-texturing/references/uv-density-floor.md.",
+  "owner_quote": "Model like Town center: 1x2048 + 1x1024 as complementary with transparent objects MAX! Smaller buildings like Barracks: 1x2048 Large buildings (cathedral, Basilica, some bigger woonder): 2x2048 These are ceilings for this project!!!!!!!!!!!!!! (m334)",
+  "classes": {
+   "small": {"ceiling": [2048], "_doc": "1x2048: barracks-size and smaller (the house is small, m336)"},
+   "medium": {"ceiling": [2048, 1024], "_doc": "1x2048 + one 1024 complement for the transparent / cutout objects: Town Center, Market, possibly others per model (m335). Only medium has the complement"},
+   "large": {"ceiling": [2048, 2048], "_doc": "2x2048: cathedral, basilica, the bigger wonders"}
+  },
+  "count_shared_vanilla": false,
+  "_count_doc": "PROPOSED (gates/BUDGET_INVENTORY.md, 2026-09-30), owner to confirm: shared vanilla atlases a model borrows (generic props, the destruction sheet) are listed by the check but not counted - vanilla's own West TC age 3 loads three sets that way. Also to confirm: '1x2048' is counted as sets with a size cap (implemented), not as a pixel sum."
  },
  "references": {
   "china_tc_age2": {
@@ -54,6 +67,11 @@
   "korean_tc": {
    "reference": "china_tc_age2",
    "_doc": "Korean Town Center (donor graph: the China TC age 2 damaged model). Specimens: tests/test_gr2_lint.py.",
+   "names": ["Korean TC", "KTC", "TC", "Town Center", "Town centre"],
+   "_names_doc": "the owner's words for this building: his class confirmation (m335 says TC) and a density waiver must name it (INC-033, INC-036)",
+   "texture_budget": {"class": "medium", "confirmed_by": "m335", "models": ["korean_tc"], "_doc": "owner m335: TC and Market are medium (2048 + 1024 complement). The shipped S18k carries a third set (matc 512, the hidden faces): FAIL."},
+   "waivers": [],
+   "_waivers_doc": "owner exceptions to the UV density floor only: {id, check: density_floor, model, pages?: [BaseColor names], owner_quote: his WHOLE message, msg, at, recorded_by}. None recorded: the matc hidden-face exemption is the owner's call.",
    "files": {
     "intact": "korean_tc.gr2",
     "damaged": "korean_tc_damaged.gr2",
@@ -61,6 +79,10 @@
     "intact_material": "korean_tc.material",
     "damaged_material": "korean_tc_damaged.material",
     "animfile": "korean_tc.xml"
+   },
+   "uv_gate": {
+    "path": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/gates/uv_gate.py",
+    "_doc": "INC-002 (2026-09-30): the owner-approved roof UV was dropped and S18k shipped. The lint runs the UV lineage gate (check uv_lineage): not ok = FAIL, gate missing = SKIP (exit 2, not cleared). Override the path on another device: config/tool-paths.local.json tools.uv_gate."
    },
    "limits": {
     "max_vertices": 65535,
@@ -116,6 +138,341 @@
      "containment_max_out_m": 0.1,
      "_doc": "vanilla China: Havok body translation = 1.0222 x (z, y, x) of the GR2 bone world position, median 1.07 cm, every body paired. Render vertices vs their own piece's convex hull: vanilla China farthest 0.066 m outside, 0.05% of 45,915 vertices beyond 5 cm; a piece bound to the wrong bone or frame sits metres away."
     }
+   }
+  },
+  "1death_anim": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "HC_buildings": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "IH": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "Woku": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "african_civs": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "architekture": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "arsenal": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "asian_civs": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "castle_zen": {"class": "large", "status": "proposed, owner to confirm"},
+     "castle_zen_construction": {"class": "large", "status": "proposed, owner to confirm"},
+     "castle_zen_damaged": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "basilica": {
+   "texture_budget": {
+    "class": "large",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "bridge": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "cabin": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "church": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "jesuitcathedral": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "constructions": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "dock": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "fixed_gun": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "fort": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "general_store": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "gold_mine": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "grape_vine": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "gunstore": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "half_timbered": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "hanseatic": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "house": {
+   "names": ["House"],
+   "texture_budget": {
+    "class": "small",
+    "confirmed_by": "m336",
+    "models": ["west_house_SPCa", "west_house_SPCb", "west_house_SPCc"]
+   }
+  },
+  "inuit_ice_fishing_hole": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "inuit_igloo": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "jesuit_chichimeca_mission": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "korean_tc_experiment": {
+   "texture_budget": {
+    "class": "medium",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "london_basilica": {
+   "texture_budget": {
+    "class": "large",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "maori": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "market": {
+   "names": ["Market"],
+   "texture_budget": {
+    "class": "medium",
+    "confirmed_by": "m335",
+    "models": ["oriental_market_Model", "west market standin", "west market standin invisible"],
+    "_doc": "m335 confirms the markets only (INC-033): the folder also holds a house and a port",
+    "per_model": {
+     "oriental_house": {"class": "small", "status": "proposed, owner to confirm", "names": ["House"], "_doc": "a house; m336 says houses are small, the owner confirms this model"},
+     "trading_port2_Model": {"class": "small", "status": "proposed, owner to confirm", "_doc": "a port (west port B.xml), not a market"}
+    }
+   }
+  },
+  "mill": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "mining_camp": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "napoleonic_era": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "nassau": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "native_settlement": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "ottoman_mosque": {"class": "large", "status": "proposed, owner to confirm"},
+     "synagogue_berlin": {"class": "large", "status": "proposed, owner to confirm"},
+     "orthodox_cathedral_01": {"class": "large", "status": "proposed, owner to confirm"},
+     "orthodox_cathedral_02": {"class": "large", "status": "proposed, owner to confirm"},
+     "bourbon_palace_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "bourbon_palace_con_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "bourbon_palace_garden_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "imperial_palace_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "spcblue_mosque2": {"class": "large", "status": "proposed, owner to confirm"},
+     "venice_rialto2_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "venice_rialto_Model": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "ports": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "props": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "props_colony": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "sheriff": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "spc": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "montezuma_palace2_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "montezuma_palace_Damaged": {"class": "large", "status": "proposed, owner to confirm"},
+     "montezuma_palace_Deathmodel": {"class": "large", "status": "proposed, owner to confirm"},
+     "montezuma_palace_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "tower_of_london": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "stables": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "tavern": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "test": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "tortuga": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "town_center": {
+   "texture_budget": {
+    "class": "medium",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "trading_post": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "wall": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "wonders": {
+   "texture_budget": {
+    "class": "large",
+    "status": "proposed, owner to confirm"
    }
   }
  }

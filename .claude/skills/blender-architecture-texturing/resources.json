@@ -17,7 +17,11 @@
     "scripts/blender_uv_layout.py",
     "scripts/blender_hybrid_uv.py",
     "scripts/blender_ao_review.py",
-    "scripts/ao_chart_constraints.py"
+    "scripts/ao_chart_constraints.py",
+    "references/uv-density-floor.md",
+    "references/uv-density-floor.json",
+    "scripts/density_floor.py",
+    "scripts/test_density_floor.py"
   ],
   "skills": [
     "skill-library-audit",

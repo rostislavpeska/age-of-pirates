@@ -4,7 +4,9 @@
     "Owner applies them: python .claude/hooks/harness_status.py --write-proposed <file>, check, copy over .claude/settings.json.",
     "Commands run in Git Bash. A missing script exits 0 (fail open, e.g. a fresh clone where .claude/hooks is not checked out).",
     "The inbox command reads runs.json with bash builtins only: while nothing is bound Python never starts (cost = the bash start).",
-    "launch_gate always exits 0 (it denies through JSON); inbox_hook's exit 2 on SubagentStop is deliberate and passes through exec."
+    "launch_gate always exits 0 (it denies through JSON); inbox_hook's exit 2 on SubagentStop is deliberate and passes through exec.",
+    "tool_guard (R1 raw image repoint in Blender MCP code, R2 blender_gate.py piped, R3 endless loop in a background Bash / PowerShell or Monitor command, or in a foreground command that detaches: INC-027, INC-037): Python starts only when the input names blender_gate, the Blender tool, run_in_background true, the Monitor tool, nohup / disown / setsid / Start-Job / Start-Process, or (a Bash call) a lone `&`. The input is read with the `read` builtin (no fork, INC-038: `b=$(cat)` cost ~200 ms per call), so a foreground call costs the bash start alone; deny through JSON, exit 0.",
+    "turn_end_guard (Stop, INC-027): blocks a turn end once per item while a watch.py watch outlived its job or a process of the session runs an endless loop outside watch.py; always exit 0, fails open."
   ],
   "hooks": {
     "PreToolUse": [
@@ -15,6 +17,16 @@
             "type": "command",
             "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/launch_gate.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" || true",
             "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell|Monitor|mcp__blender__execute_blender_code",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/tool_guard.py\"; [ -f \"$f\" ] || exit 0; b=; IFS= read -r -d '' b; case \"$b\" in *blender_gate*|*execute_blender_code*|*'\"run_in_background\":true'*|*'\"run_in_background\": true'*|*'\"tool_name\":\"Monitor\"'*|*'\"tool_name\": \"Monitor\"'*|*nohup*|*disown*|*setsid*|*Start-Job*|*Start-ThreadJob*|*Start-Process*) printf '%s' \"$b\" | python \"$f\" || true;; *'\"tool_name\":\"Bash\"'*|*'\"tool_name\": \"Bash\"'*) case \"$b\" in *[!\\&\\<\\>\\|]\\&[!\\&\\>]*) printf '%s' \"$b\" | python \"$f\" || true;; esac;; esac; exit 0",
+            "timeout": 10
           }
         ]
       }
@@ -37,6 +49,17 @@
             "type": "command",
             "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/inbox_hook.py\"; r=\"${AOP_TASKS_DIR:-$HOME/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/tasks}/inbox/runs.json\"; b=; [ -f \"$f\" ] && [ -f \"$r\" ] && IFS= read -r -d '' b < \"$r\"; case \"$b\" in *'\"'*) exec python \"$f\";; esac; exit 0",
             "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/turn_end_guard.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" || true",
+            "timeout": 20
           }
         ]
       }

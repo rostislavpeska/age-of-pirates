@@ -13,6 +13,8 @@ every bake a one-command recipe.
    which materials go where) and the target density against the reference game.
    Estimate: visible 3D area x density^2 / expected fill (about 0.75) must fit the page
    pixels. If it does not fit, plan texel sharing now, before anything is baked.
+   The pages stay within the ceiling of the class the owner confirmed for the model. The
+   density stays at or above the [universal UV density floor](uv-density-floor.md); both are hard gates.
 1. **Geometry.** Final low mesh. The high poly is built in place (same world
    transform as the low), and is **not baked yet**.
 2. **Bake plan.** List the regions that receive baked detail (normal, local AO,
@@ -25,7 +27,8 @@ every bake a one-command recipe.
 4. **UV chain.** Clean charts -> conjoin -> AO separation -> pages. Keep the high poly
    next to the low (same file or linked, same transforms). AO sampled to decide
    families is a measurement, not a deliverable.
-5. **UV freeze.** The owner signs off the final layer. Record its fingerprint:
+5. **UV freeze.** The 03_uv handoff records the measured density and the page budget, and both
+   must pass ([handoff contract](handoff-contract.md) rule 7). The owner signs off the final layer. Record its fingerprint:
    `blender -b file.blend --python ../../blender-high-low-baking/scripts/uv_fingerprint.py -- record config.json`.
 6. **Final bake** with the recipe (`bake_owner_maps.py` for normal / local AO /
    opacity, `bake_owner_ao.py` for assembly AO) onto the owners of the frozen layer.

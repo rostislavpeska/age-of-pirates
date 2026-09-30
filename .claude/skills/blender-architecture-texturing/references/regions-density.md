@@ -9,6 +9,8 @@ the material memory budget. Do not assume a universal 512 px/m minimum or conver
 raw imported coordinates to metres without checking scale. Name detail exceptions
 and hidden-surface classes explicitly. Do not silently lower density to squeeze
 packing; first fix chart composition and intentional reuse.
+The measured hard lower bound for every model, in texels per model unit, is the
+[universal UV density floor](uv-density-floor.md).
 Bottom-facing does not automatically mean invisible: visible soffits/reveals need visible-surface density. A 2x linear density costs about 4x pixel area; 0.5x costs one quarter. Use labeled square checkers and test both directions; area-average density hides one-axis stretching.
 Use the geometry audit's per-face exposure manifest, including its camera/state
 contract and proof status. A face missed by point samples gets no automatic density

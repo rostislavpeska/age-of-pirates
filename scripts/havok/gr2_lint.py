@@ -6,6 +6,7 @@ iteration and is never used for that gate.
 
     python scripts/havok/gr2_lint.py --profile korean_tc art/buildings/korean_tc/
     python scripts/havok/gr2_lint.py --profile korean_tc --intact X.gr2 --damaged Y.gr2 [--hkt Z.hkt] [--json OUT]
+    python scripts/havok/gr2_lint.py --profile market art/buildings/market/ --intact art/buildings/market/M.gr2
     python scripts/havok/gr2_lint.py --measure-reference china_towncenter_age2.gr2   # numbers for a new profile
 
 Why each check exists (every one is a defect that reached the game first):
@@ -32,13 +33,34 @@ Why each check exists (every one is a defect that reached the game first):
   crc / dll_read          header CRC valid; the game's Granny DLL reads the file (headless gr2_to_raw.py route:
                           rc 0 and a non-empty output). The DLL route also decodes Oodle-compressed files.
   animfile_crlf           the animfile the engine parses has CRLF endings (AGENTS.md rule 1).
+  uv_lineage              (profiles with a "uv_gate", the Korean TC) the UV lineage gate (Claude_CP2 gates/uv_gate.py,
+                          run()) must be ok: the approved roof UV was dropped and S18k shipped (INC-002); a gate that
+                          cannot be found is SKIP (not proven), one that cannot read its registry is FAIL.
+  texture_budget          (every model; owner 2026-09-30, KTC-165) the AoP texture CEILING of the model's class:
+                          small 1x2048 / medium 2048 + 1024 complement / large 2x2048. Counted (INC-033): every
+                          DISTINCT own texture file of the model - every map of every submaterial and parameter
+                          variant, the Normals / Masks / Details under a vanilla BaseColor included, the animfile's
+                          <replacetexture> targets - over ALL its stages (intact, damaged, construction: the sibling
+                          .material files and the models its animfile loads). Pages = per map channel, the n-th
+                          largest file of each channel shares slot n. The class is agreed per model with the owner:
+                          confirmed_by must resolve to his message in the store that names the class and the model
+                          (profile "names"); a confirmed folder class covers only its "models". An unconfirmed or
+                          unverifiable class does not clear the model. The shipped Korean TC carried a third set (matc
+                          512, the hidden faces).
+  texel_density           (every model) the UNIVERSAL UV density floor (blender-architecture-texturing
+                          references/uv-density-floor.md): median >= 100 t/u, <= 2 % of the area below 60 t/u per model
+                          and per page, <= 3 % on collapsed UVs. "Scattered UV map is a nightmare" (owner). Hard; only
+                          the owner's recorded waiver (profile "waivers", his whole message) exempts.
 
 Profiles: scripts/havok/gr2_lint_profiles.json ("references" = numbers measured on vanilla files; "profiles" = the
-building's own design facts and tolerances). External tools (the DLL route) are found through the profile file's
-"tools" entry or the GR2_LINT_TOOLS environment variable; when they are missing the DLL check is SKIP, never PASS.
-Reads only; writes nothing next to the model (DLL outputs go to a temp folder).
+building's own design facts and tolerances; every art/buildings folder has one, at least its texture class - a profile
+without orientation / attach / damaged facts runs the generic checks only). External tools (the DLL route) are found
+through the profile file's "tools" entry or the GR2_LINT_TOOLS environment variable; when they are missing the DLL
+check is SKIP, never PASS. Reads only; writes nothing next to the model (DLL outputs go to a temp folder); vanilla
+texture sizes are read from the archive headers in memory, nothing is extracted.
 """
 import argparse
+import importlib.util
 import json
 import os
 import re
@@ -685,14 +707,467 @@ def check_crlf(path):
     return R('folder', 'animfile_crlf', lone == 0, f"{Path(path).name}: {lone} LF-only line(s)", lf_only=lone)
 
 
+# ------------------------------------------------------------------------ texture budget + UV density floor (KTC-165)
+REPO = HERE.parents[1]
+DENSITY_FLOOR = REPO / '.claude' / 'skills' / 'blender-architecture-texturing' / 'scripts' / 'density_floor.py'
+BARTOOL_DIR = REPO / '.claude' / 'skills' / 'aoe3de-bar-archives' / 'scripts'
+TEX_EXT = ('.ddt', '.tga', '.png', '.dds')
+_VANILLA = {}
+
+
+def image_size(path):
+    """(W, H) from the file header: DDT (RTS3), TGA, PNG, DDS; None when unknown"""
+    b = Path(path).read_bytes()[:32]
+    if b[:4] == b'RTS3':
+        return struct.unpack_from('<II', b, 8)
+    if b[:8] == b'\x89PNG\r\n\x1a\n':
+        return struct.unpack_from('>II', b, 16)
+    if b[:4] == b'DDS ':
+        h, w = struct.unpack_from('<II', b, 12)
+        return w, h
+    if Path(path).suffix.lower() == '.tga' and len(b) >= 16:
+        return struct.unpack_from('<HH', b, 12)
+    return None
+
+
+def _lz4_head(src, want):
+    """bartool's pure-python LZ4 block decoder, stopping after `want` output bytes (budget_inventory.py, KTC-165)"""
+    out = bytearray()
+    i, n = 0, len(src)
+    while i < n and len(out) < want:
+        token = src[i]; i += 1
+        lit = token >> 4
+        if lit == 15:
+            while True:
+                b = src[i]; i += 1; lit += b
+                if b != 255:
+                    break
+        out += src[i:i + lit]; i += lit
+        if i >= n or len(out) >= want:
+            break
+        offset = src[i] | (src[i + 1] << 8); i += 2
+        mlen = token & 0x0F
+        if mlen == 15:
+            while True:
+                b = src[i]; i += 1; mlen += b
+                if b != 255:
+                    break
+        mlen += 4
+        start = len(out) - offset
+        for j in range(mlen):
+            out.append(out[start + j])
+    return bytes(out[:want])
+
+
+def _bartool():
+    if 'bartool' not in _VANILLA:
+        try:
+            sys.path.insert(0, str(BARTOOL_DIR))
+            import bartool
+            _VANILLA['bartool'] = bartool
+            _VANILLA['index'] = bartool.build_index(bartool.find_game_dir())
+        except Exception as e:                                # no game install / no bartool: vanilla sizes unknown
+            _VANILLA['bartool'], _VANILLA['index'], _VANILLA['why'] = None, {}, f'{type(e).__name__}: {e}'
+        finally:
+            if str(BARTOOL_DIR) in sys.path:
+                sys.path.remove(str(BARTOOL_DIR))
+    return _VANILLA['bartool'], _VANILLA['index']
+
+
+def vanilla_texture(rel):
+    """a texture the game ships: its size from the archive header, read in memory (nothing is extracted, AGENTS.md
+    rule 3) -> dict(src='vanilla', file, W, H) or None"""
+    _, index = _bartool()
+    for e in TEX_EXT[:3]:
+        entry = index.get('art/' + rel.lower() + e)
+        if entry is None:
+            continue
+        size = None
+        if e == '.ddt':
+            with open(entry.bar, 'rb') as f:
+                f.seek(entry.offset)
+                data = f.read(min(entry.size_stored, 8192))
+            if data[:4] == b'alz4':
+                data = _lz4_head(data[16:], 32)
+            if data[:4] == b'RTS3':
+                size = struct.unpack_from('<II', data, 8)
+        return dict(src='vanilla', file=entry.name, W=size[0] if size else None, H=size[1] if size else None)
+    return None
+
+
+def resolve_texture(tex, art_root):
+    """a .material texture path -> dict(src mod | vanilla | missing, file, W, H): the mod's own file under art/ first
+    (its header), else the game's archive (header in memory)"""
+    rel = str(tex).replace(chr(92), '/').strip('/')
+    if art_root is not None:
+        base = Path(art_root) / rel
+        for e in TEX_EXT:
+            p = base.with_name(base.name + e)
+            if p.is_file():
+                s = image_size(p)
+                return dict(src='mod', file=str(p), W=s[0] if s else None, H=s[1] if s else None)
+    return vanilla_texture(rel) or dict(src='missing', file=rel, W=None, H=None)
+
+
+def read_material(path):
+    """the submaterials of a .material (plain XML, or XMB through bartool) -> [{name, shader, textures {map: path},
+    all_textures [(map, path, variant)]}]: `textures` is the default variant (the page a face samples), `all_textures`
+    every parameter block, variants included (the engine loads them for that variant: INC-033)"""
+    import xml.etree.ElementTree as ET
+    raw = Path(path).read_bytes()
+    if raw[:4] == b'alz4' or raw[:2] == b'X1':               # compiled: .material.XMB
+        bt = _bartool()[0]
+        if bt is None:
+            raise ValueError(f"{Path(path).name} is XMB and bartool is unavailable ({_VANILLA.get('why')})")
+        raw = bt.unwrap_alz4(raw)
+        txt = bt.xmb_to_xml(raw) if bt.is_xmb(raw) else raw.decode('utf-8-sig', 'replace')
+    else:
+        txt = raw.decode('utf-8-sig', 'replace')
+    subs = []
+    for sm in ET.fromstring(txt).iter('submaterial'):
+        md = sm.find('materialdef')
+        tex, every = {}, []
+        for params in sm.findall('parameters'):
+            var = params.get('variant') or '0'
+            pairs = [(t.get('name'), t.get('override') or t.get('value') or '') for t in params.findall('texture')]
+            every += [(k, v, var) for k, v in pairs if v]
+            if var == '0':
+                tex.update(dict(pairs))
+        subs.append(dict(name=sm.get('name'), shader=(md.get('name') if md is not None else '') or '',
+                         textures={k: v for k, v in tex.items() if v}, all_textures=every))
+    return subs
+
+
+def texture_sets(subs, art_root):
+    """one texture SET per BaseColor (a submaterial's group of maps; two submaterials on one BaseColor are one set):
+    [{key, basecolor, src, size (max side over its resolved maps), maps, subs, shaders, missing}]"""
+    sets = {}
+    for s in subs:
+        if not s['textures']:
+            continue
+        bc = s['textures'].get('BaseColor') or sorted(s['textures'].values())[0]
+        key = bc.replace(chr(92), '/').lower()
+        st = sets.setdefault(key, dict(key=key, basecolor=bc, subs=[], shaders=[], maps={}, missing=[]))
+        st['subs'].append(s['name'])
+        if s['shader'] not in st['shaders']:
+            st['shaders'].append(s['shader'])
+        for m, t in s['textures'].items():
+            r = resolve_texture(t, art_root)
+            st['maps'][m] = r
+            if r['src'] == 'missing':
+                st['missing'].append(t)
+    for st in sets.values():
+        bc = st['maps'].get('BaseColor') or next(iter(st['maps'].values()))
+        st['src'] = bc['src']
+        sides = [max(r['W'], r['H']) for r in st['maps'].values() if r['src'] == st['src'] and r.get('W')]
+        st['size'] = max(sides) if sides else None
+    return list(sets.values())
+
+
+STAGE_RX = re.compile(r'_(?:damaged|con|construction)$', re.I)
+STAGE_SUFFIXES = ('', '_damaged', '_con', '_construction')
+_GRANNY = re.compile(r'<assetreference[^>]*type\s*=\s*"GrannyModel"[^>]*>(.*?)</assetreference>', re.S | re.I)
+_FILE = re.compile(r'<file>\s*([^<]+?)\s*</file>', re.I)
+_REPLACE = re.compile(r'<replacetexture>\s*<from>\s*([^<]*?)\s*</from>\s*<to>\s*([^<]*?)\s*</to>\s*</replacetexture>',
+                      re.I)
+_MAP_OF = re.compile(r'_(basecolor|normals?|masks|details|opacity|emissive)$', re.I)
+
+
+def model_of(stem):
+    """the model a stage file belongs to: korean_tc_damaged -> korean_tc, castle_zen_construction -> castle_zen"""
+    return STAGE_RX.sub('', str(stem))
+
+
+def model_class(prof, model):
+    """the texture class the owner agreed for this model: its per_model entry, else the profile's class when that
+    covers the model. A CONFIRMED folder class covers only the models it names ("models"): the market's medium (m335)
+    covered oriental_house, a house (INC-033); any other model needs its own per_model class"""
+    tb = prof.get('texture_budget') or {}
+    pm = tb.get('per_model') or {}
+    if model in pm:
+        return pm[model]
+    if tb.get('confirmed_by'):
+        covers = tb.get('models')
+        if not covers:
+            return dict(tb, confirmed_by=None, why=f"the folder class {tb.get('class')} (owner {tb['confirmed_by']}) "
+                                                    'names no models it covers: record "models" or a per_model class')
+        if model not in covers:
+            return {'class': None, 'why': f"the folder class {tb.get('class')} (owner {tb['confirmed_by']}) covers "
+                                          f"{', '.join(covers)} only: record a per_model class for {model}"}
+    return tb
+
+
+def _ci_files(folder, names):
+    """the files of `folder` whose name matches one of `names`, ignoring case (a Windows folder)"""
+    want = {n.lower() for n in names}
+    try:
+        return [f for f in Path(folder).iterdir() if f.is_file() and f.name.lower() in want]
+    except OSError:
+        return []
+
+
+def model_sources(mat_path, model, art_root, materials=(), animfiles=()):
+    """(materials, animfiles, replacements) that make up one model's textures over ALL its stages (INC-033): the given
+    materials, the sibling <model>[_damaged|_con|_construction].material next to them, the animfiles given or found
+    next to them that load the model, the mod .material of every model those animfiles load, and their
+    <replacetexture> (from, to) pairs"""
+    mats = [Path(m) for m in [mat_path, *materials] if m]
+    folders = list(dict.fromkeys(m.parent for m in mats))
+    for f in folders:
+        mats += _ci_files(f, [f'{model}{sfx}.material' for sfx in STAGE_SUFFIXES])
+    anims = [Path(a) for a in animfiles or () if a]
+    for f in folders:
+        for x in sorted(f.glob('*.xml')):
+            try:
+                txt = x.read_text(encoding='utf-8-sig', errors='replace')
+            except OSError:
+                continue
+            refs = [model_of(Path(r.replace(chr(92), '/')).name).lower() for blk in _GRANNY.findall(txt)
+                    for r in _FILE.findall(blk)]
+            if model.lower() in refs:
+                anims.append(x)
+    anims = list(dict.fromkeys(anims))
+    repl = []
+    for a in anims:
+        try:
+            txt = a.read_text(encoding='utf-8-sig', errors='replace')
+        except OSError:
+            continue
+        repl += [(fr, to, a.name) for fr, to in _REPLACE.findall(txt) if to]
+        if art_root is not None:
+            for blk in _GRANNY.findall(txt):
+                for r in _FILE.findall(blk):
+                    m = Path(art_root) / (r.replace(chr(92), '/') + '.material')
+                    if m.is_file():
+                        mats.append(m)
+    seen, out = set(), []
+    for m in mats:
+        k = str(m.resolve()).lower() if m.exists() else str(m).lower()
+        if k not in seen:
+            seen.add(k)
+            out.append(m)
+    return out, anims, repl
+
+
+def _channel(name):
+    """a map name as one channel: Normals / Normal -> normal, BaseColor -> basecolor"""
+    c = str(name or '').lower()
+    return 'normal' if c in ('normal', 'normals') else c
+
+
+def own_pages(subs, repl, art_root, shared=False):
+    """every DISTINCT own texture file (INC-033) -> (pages [(size, label)], files {channel: {key: (size, name)}},
+    unknown [names]): a channel is the map name (BaseColor, Normals ...); page slot n holds the n-th largest file of
+    each channel, labelled by its BaseColor file when that is the largest. Shared vanilla files count only when
+    `shared`"""
+    files, unknown = defaultdict(dict), []
+    items = [(ch, t) for sub in subs for ch, t, _v in sub.get('all_textures') or ()]
+    for _fr, to, _src in repl:
+        m = _MAP_OF.search(Path(to.replace(chr(92), '/')).name)
+        items.append(((m.group(1) if m else 'BaseColor'), to))
+    for ch, t in items:
+        r = resolve_texture(t, art_root)
+        if r['src'] != 'mod' and not (shared and r['src'] == 'vanilla'):
+            continue
+        name = Path(str(t).replace(chr(92), '/')).name
+        size = max(r['W'], r['H']) if r.get('W') and r.get('H') else None
+        if size is None and name not in unknown:
+            unknown.append(name)
+        files[_channel(ch)][str(r['file']).lower()] = (size, name)
+    ranked = {ch: sorted(v.values(), key=lambda x: (-(x[0] or 10 ** 9), x[1].lower())) for ch, v in files.items()}
+    pages = []
+    for i in range(max((len(v) for v in ranked.values()), default=0)):
+        slot = {ch: v[i] for ch, v in ranked.items() if i < len(v)}
+        size = None if any(x[0] is None for x in slot.values()) else max(x[0] for x in slot.values())
+        bc = slot.get('basecolor')
+        label = bc[1] if bc and bc[0] == size else max(slot.values(), key=lambda x: (x[0] or 10 ** 9, x[1]))[1]
+        pages.append((size, label))
+    return pages, files, unknown
+
+
+def _names_in(text, names):
+    t = ' '.join(str(text or '').lower().split())
+    return any(n and re.search(r'(?<![\w-])' + re.escape(' '.join(str(n).lower().split())) + r'(?![\w-])', t)
+               for n in names)
+
+
+def class_confirmation(entry, cls, prof, model, store=None):
+    """(True, None) when confirmed_by resolves to the owner's message in his store and that message names the class
+    and the model (the entry's or profile's "names", or the model name); (False, why) when it does not; (None, why)
+    when there is no store to check it against (not proven: SKIP) - INC-033"""
+    who = entry.get('confirmed_by')
+    store = owner_message_store(prof) if store is None else store
+    if store is None or not Path(store).is_file():
+        return None, f"owner message store {store} missing: confirmed_by {who} cannot be verified"
+    try:
+        st = _density_module().verifier(store)
+    except (OSError, ValueError) as e:
+        return None, f'owner message store {store} unreadable ({type(e).__name__}): confirmed_by {who} not verified'
+    text = st.text(who)
+    if text is None:
+        return False, f'confirmed_by {who} is not an owner message in {Path(store).name}'
+    if not _names_in(text, [cls]):
+        return False, f'owner message {who} does not name the class {cls}: "{str(text)[:80]}"'
+    names = list(entry.get('names') or prof.get('names') or []) + [model, str(model).replace('_', ' ')]
+    if not _names_in(text, names):
+        return False, f'owner message {who} does not name {model} ({", ".join(map(str, names[:-2])) or "no names"})'
+    return True, None
+
+
+def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), animfiles=()):
+    """AoP texture-budget CEILING (owner 2026-09-30, m334-m336): the model's own texture files over all its stages
+    (INC-033) against its class (small 1x2048, medium 2048 + a 1024 complement, large 2x2048). The class is set per
+    model with the owner and verified against his message store; shared vanilla atlases are reported, counted only
+    when texture_budget.count_shared_vanilla says so."""
+    cfg = prof.get('_texture_budget') or {}
+    classes = cfg.get('classes') or {}
+    entry = model_class(prof, model)
+    if not mat_path or not Path(mat_path).exists():
+        return R(stage, 'texture_budget', False, f"material {mat_path} missing: the texture sets cannot be counted")
+    mats, anims, repl = model_sources(mat_path, model, art_root, materials, animfiles)
+    subs = []
+    for m in mats:
+        if not Path(m).exists():
+            continue
+        try:
+            subs += read_material(m)
+        except Exception as e:                                # an unreadable material is never a pass
+            return R(stage, 'texture_budget', False, f'{Path(m).name} cannot be read ({type(e).__name__}: {e})')
+    sets = texture_sets(subs, art_root)
+    shared = bool(cfg.get('count_shared_vanilla'))
+    pages, files, unknown = own_pages(subs, repl, art_root, shared)
+    other = [s for s in sets if s['src'] == 'vanilla' and not shared]
+    missing = [t for s in sets for t in s['missing']]
+    cls, who = entry.get('class'), entry.get('confirmed_by')
+    ceiling = sorted((classes.get(cls) or {}).get('ceiling') or [], reverse=True)
+    over = []
+    if len(pages) > len(ceiling):
+        over.append(f'{len(pages)} sets > {len(ceiling)}')
+    over += [f"{label} {size} > {c}" for (size, label), c in zip(pages, ceiling) if size is None or size > c]
+    txt = lambda s: f"{Path(s['basecolor'].replace(chr(92), '/')).name} {s['size']} ({'/'.join(s['shaders'])})"  # noqa: E731
+    own_sets = sorted((s for s in sets if s['src'] == 'mod' or (shared and s['src'] == 'vanilla')),
+                      key=lambda s: -(s['size'] or 10 ** 9))
+    n_files = sum(len(v) for v in files.values())
+    head = (f"{model}: class {cls or '-'} ({f'owner {who}' if who else entry.get('status') or 'no class'}), ceiling "
+            f"{' + '.join(map(str, ceiling)) or '-'}; {len(pages)} page(s) {[p[0] for p in pages]} from {n_files} own "
+            f"file(s) in {', '.join(Path(m).name for m in mats if Path(m).exists())}"
+            + (f" + {', '.join(a.name for a in anims)}" if anims else '')
+            + f"; own set(s): {', '.join(map(txt, own_sets)) or 'none'}")
+    if other:
+        head += '; shared vanilla, not counted: ' + ', '.join(map(txt, other))
+    why, verified = [], True
+    if not cls or cls not in classes:
+        why.append(entry.get('why') or f"no texture class recorded for {model} (the owner sets it per model)")
+    elif not who:
+        why.append(entry.get('why') or f"class {cls} not confirmed by the owner "
+                                        f"({entry.get('status') or 'proposed, owner to confirm'})")
+    else:
+        verified, reason = class_confirmation(entry, cls, prof, model)
+        if verified is False:
+            why.append(f'class {cls} not confirmed: {reason}')
+        elif verified is None:
+            head += f' | {reason} (not proven: SKIP)'
+    if over:
+        why.append('over the ceiling: ' + ', '.join(over))
+    if missing:
+        why.append('textures that resolve nowhere: ' + ', '.join(missing))
+    if unknown:
+        why.append('own textures of unknown size: ' + ', '.join(unknown))
+    status = False if why else (None if verified is None else True)
+    return R(stage, 'texture_budget', status, head + (' | ' + '; '.join(why) if why else ''), model=model, cls=cls,
+             confirmed_by=who, confirmed=verified, ceiling=ceiling,
+             sets=[dict(basecolor=s['basecolor'], src=s['src'], size=s['size'], shaders=s['shaders'], subs=s['subs'])
+                   for s in sets], counted=len(pages), pages=[p[0] for p in pages], own_files=n_files,
+             sources=[str(m) for m in mats] + [str(a) for a in anims])
+
+
+def density_groups(info, mat_path, art_root):
+    """the render triangles grouped by the page they sample (the BaseColor of their submaterial) for density_floor.py:
+    [{page, W, H, P, UV, why}]; W/H None when the page size cannot be read (a FAIL: INCOMPLETE)"""
+    try:                                                      # names match case-insensitively (vanilla med_tc_age2:
+        subs = ({str(s['name']).lower(): s for s in read_material(mat_path)}   # GR2 'mata', .material 'matA')
+                if mat_path and Path(mat_path).exists() else {})
+    except Exception:
+        subs = {}
+    cache, groups = {}, []
+    for m in info['render']:
+        for mi, first, count in m['groups']:
+            name = m['mats'][mi] if 0 <= mi < len(m['mats']) else None
+            t = m['tris'][first:first + count]
+            if not len(t):
+                continue
+            bc = ((subs.get(str(name).lower()) or {}).get('textures') or {}).get('BaseColor')
+            if bc is None:
+                page, W, H, why = f'{name} (no BaseColor)', None, None, f'no BaseColor for material {name}'
+            else:
+                if bc not in cache:
+                    cache[bc] = resolve_texture(bc, art_root)
+                r = cache[bc]
+                page, W, H = Path(bc.replace(chr(92), '/')).name, r.get('W'), r.get('H')
+                why = None if W else f"{r['src']} texture, size unknown"
+            uv = m['uv'][t][:, :, :2] if m['uv'] is not None else None
+            groups.append(dict(page=page, W=W, H=H, P=m['pos'][t], UV=uv, why=why))
+    return groups
+
+
+def _density_module():
+    if 'density' not in _VANILLA:
+        spec = importlib.util.spec_from_file_location('density_floor', str(DENSITY_FLOOR))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        _VANILLA['density'] = mod
+    return _VANILLA['density']
+
+
+def owner_message_store(prof):
+    """the owner's message store the waiver quotes are checked against (config/tool-paths.local.json
+    tools.owner_messages, else the profile file's tools.owner_messages); None = waivers cannot count"""
+    local = HERE.parents[1] / 'config' / 'tool-paths.local.json'
+    try:
+        t = json.loads(local.read_text(encoding='utf-8')).get('tools', {}).get('owner_messages')
+        if t:
+            return Path(os.path.expanduser(t))
+    except (OSError, ValueError, AttributeError):
+        pass
+    t = (prof.get('_tools') or {}).get('owner_messages')
+    return Path(os.path.expanduser(t)) if t else None
+
+
+def check_density(stage, info, mat_path, art_root, prof, model):
+    """the UNIVERSAL UV density floor (blender-architecture-texturing/references/uv-density-floor.md): hard, no
+    tolerance; the only exception is the owner's waiver in the profile's "waivers" (his whole message)."""
+    try:
+        DF = _density_module()
+        floor = DF.load_floor('aoe3de')
+    except Exception as e:                                    # the floor cannot be proven: never a pass
+        return R(stage, 'texel_density', False, f'density floor unavailable ({type(e).__name__}: {e})')
+    groups = density_groups(info, mat_path, art_root)
+    store = owner_message_store(prof)
+    verify = DF.verifier(store) if store is not None and store.is_file() else None
+    m = DF.measure(groups, floor)
+    res = DF.evaluate(m, floor, prof.get('waivers') or [], verify, model,
+                      lambda pages: DF.measure(groups, floor, exempt=pages), aliases=prof.get('names') or ())
+    fails = '' if res['status'] != 'FAIL' else ' | FAIL ' + ' | '.join(f['text'] for f in res['findings'])
+    return R(stage, 'texel_density', res['status'] != 'FAIL', f"{res['status']} {res['summary']}{fails}"
+             + (f" ({'; '.join(res['notes'])})" if res['notes'] else ''), verdict=res['status'], metrics=res['metrics'],
+             findings=res['findings'], waived_by=res['waived_by'],
+             **({'metrics_with_exempt_pages': res['metrics_with_exempt_pages']}
+                if 'metrics_with_exempt_pages' in res else {}))
+
+
 # -------------------------------------------------------------------------------------------------------- driving
 def load_profiles(path=PROFILES):
     return json.loads(Path(path).read_text(encoding='utf-8'))
 
 
 def resolve_profile(profiles, name):
+    if name not in profiles.get('profiles', {}):
+        raise KeyError(f"no lint profile {name!r} in gr2_lint_profiles.json (every building folder has one; a model "
+                       "without a profile is not cleared)")
     p = dict(profiles['profiles'][name])
     p['name'] = name
+    p['_texture_budget'] = profiles.get('texture_budget') or {}       # the owner's classes and counting rule
+    p['_tools'] = profiles.get('tools') or {}
     return p
 
 
@@ -711,6 +1186,43 @@ def find_tools(profiles):
         pass
     t = profiles.get('tools', {}).get('gr2_to_raw_dir')
     return Path(os.path.expanduser(t)) if t else None
+
+
+def uv_gate_path(profiles, prof):
+    """the profile's UV lineage gate (INC-002, AGENTS.md rule 13): config/tool-paths.local.json tools.uv_gate (this
+    device, ignored), else the profile's home-relative uv_gate.path. None = the profile has no UV gate."""
+    g = prof.get('uv_gate')
+    if not g:
+        return None
+    local = HERE.parents[1] / 'config' / 'tool-paths.local.json'
+    try:
+        t = json.loads(local.read_text(encoding='utf-8')).get('tools', {}).get('uv_gate')
+        if t:
+            return Path(os.path.expanduser(t))
+    except (OSError, ValueError, AttributeError):
+        pass
+    return Path(os.path.expanduser(g['path'])) if g.get('path') else Path('(no uv_gate.path in the profile)')
+
+
+def check_uv_gate(path):
+    """the UV lineage gate as one lint check: its run() on its own default registry (never $KTC_UV_LINEAGE). Missing =
+    SKIP (exit 2: not cleared); unreadable registry / tracker = FAIL; not ok = FAIL with the gate's FAIL lines"""
+    if path is None or not Path(path).is_file():
+        return R('folder', 'uv_lineage', None, f'UV lineage gate {path} not found: the UV is not proven (a SKIP is not a '
+                                               'pass)', gate=str(path))
+    try:
+        spec = importlib.util.spec_from_file_location('ktc_uv_gate', str(path))
+        ug = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(ug)
+        rep = ug.run(ug.DEFAULT_LINEAGE)
+    except Exception as e:                                    # uv_gate.py exit 2: never a pass
+        return R('folder', 'uv_lineage', False, f'{path}: cannot read the registry or the tracker ({type(e).__name__}: '
+                                                f'{str(e)[:300]})', gate=str(path))
+    fails = [c['text'] for c in rep['checks'] if c['status'] == 'FAIL']
+    head = f"in_use {rep['in_use']}, approved target {rep['approved_target']} ({rep['head_status']})"
+    return R('folder', 'uv_lineage', bool(rep['ok']),
+             head + (': every check PASS or WAIVED' if rep['ok'] else ' | ' + ' | '.join(f[:400] for f in fails)),
+             gate=str(path), checks={c['id']: c['status'] for c in rep['checks']})
 
 
 def art_root_of(folder):
@@ -733,35 +1245,50 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
         for stage, path in (('intact', intact), ('damaged', damaged)):
             if not path:
                 continue
+            # every model, every profile (KTC-165): the AoP texture ceiling of its class and the universal UV floor
+            mat = intact_material if stage == 'intact' else damaged_material
+            model = prof.get('model') or model_of(Path(intact or path).stem)
+            union = dict(materials=[x for x in (intact_material, damaged_material) if x],
+                         animfiles=[animfile] if animfile else ())             # one budget over all stages (INC-033)
             h = header(path)
             if not h.get('gr2'):
-                results.append(R(stage, 'read', False, f'{path}: not a gr2 file'))
+                results += [R(stage, 'read', False, f'{path}: not a gr2 file'),
+                            check_texture_budget(stage, mat, art_root, prof, model, **union)]   # the .material alone
                 continue
             dll = dll_read(path, tools, workdir) if use_dll else dict(status='SKIP', why='--no-dll')
             try:
                 info = load(path, dll)
             except Exception as e:                            # unreadable: report it, never crash the lint
                 results += [R(stage, 'crc', h['crc_ok'], f"crc {'ok' if h['crc_ok'] else 'BAD'}"), check_dll(stage, dll),
-                            R(stage, 'read', False, f'{type(e).__name__}: {e}')]
+                            R(stage, 'read', False, f'{type(e).__name__}: {e}'),
+                            check_texture_budget(stage, mat, art_root, prof, model, **union)]
                 continue
             infos[stage] = info
             results += [check_crc(stage, info), check_dll(stage, dll)]
             results += check_limits(stage, info, prof)
-            results.append(check_orientation(stage, info, prof))
-            results.append(check_handedness(stage, info, prof))
-            results += check_attach(stage, info, prof)
+            if 'orientation' in prof:                         # building-specific facts: a generic profile has none
+                results.append(check_orientation(stage, info, prof))
+            if 'handedness' in prof:
+                results.append(check_handedness(stage, info, prof))
+            if 'attach' in prof:
+                results += check_attach(stage, info, prof)
             if stage == 'intact':
-                results.append(check_flag(stage, info, prof))
+                if 'attach' in prof:
+                    results.append(check_flag(stage, info, prof))
                 if prof.get('intact_bones'):
                     results.append(check_bone_set(stage, info, prof['intact_bones']))
                 results.append(check_materials(stage, info, intact_material, art_root))
             else:
                 results.append(check_bindings(stage, info))
-                results.append(check_frame(stage, info, infos['intact'], prof) if 'intact' in infos
-                               else R(stage, 'damaged_frame', None, 'no intact model given'))
-                results.append(check_base(stage, info, prof))
-                results.append(check_hkt(stage, info, hkt, prof) if hkt else R(stage, 'hkt_pairing', None, 'no .hkt given'))
+                if 'damaged' in prof:
+                    results.append(check_frame(stage, info, infos['intact'], prof) if 'intact' in infos
+                                   else R(stage, 'damaged_frame', None, 'no intact model given'))
+                    results.append(check_base(stage, info, prof))
+                    results.append(check_hkt(stage, info, hkt, prof) if hkt
+                                   else R(stage, 'hkt_pairing', None, 'no .hkt given'))
                 results.append(check_materials(stage, info, damaged_material, art_root))
+            results.append(check_texture_budget(stage, mat, art_root, prof, model, **union))
+            results.append(check_density(stage, info, mat, art_root, prof, model))
         if animfile is not None:
             results.append(check_crlf(animfile))
     finally:
@@ -827,7 +1354,10 @@ def main(argv=None):
     if not a.profile:
         ap.error('--profile is required')
     profiles = load_profiles(a.profiles)
-    prof = resolve_profile(profiles, a.profile)
+    try:
+        prof = resolve_profile(profiles, a.profile)
+    except KeyError as e:
+        ap.error(str(e))
     f = prof.get('files', {})
     folder = Path(a.folder) if a.folder else None
 
@@ -841,8 +1371,13 @@ def main(argv=None):
     for key in ('intact_material', 'damaged_material', 'animfile'):
         if folder and f.get(key) and not files[key]:
             files[key] = str(folder / f[key])                    # named by the profile: its check reports it MISSING
+    for key, stage in (('intact_material', 'intact'), ('damaged_material', 'damaged')):
+        if not files[key] and files[stage]:                       # a generic profile: the .material next to the model
+            files[key] = str(Path(files[stage]).with_suffix('.material'))
     res = lint(prof, **files, tools=find_tools(profiles), use_dll=not a.no_dll,
                art_root=art_root_of(folder) if folder else None)
+    if prof.get('uv_gate'):                                  # the Korean TC: the UV lineage gate clears it too (INC-002)
+        res.append(check_uv_gate(uv_gate_path(profiles, prof)))
     if a.only:
         res = [r for r in res if r['stage'] in (a.only, 'folder')]
     print(table(res, files))

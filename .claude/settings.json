@@ -6,11 +6,43 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python scripts/tools/hook_art_eol.py"
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-.}\" && python scripts/tools/hook_art_eol.py"
           },
           {
             "type": "command",
-            "command": "python scripts/tools/sync_local_maps.py --hook"
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-.}\" && python scripts/tools/sync_local_maps.py --hook"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/inbox_hook.py\"; r=\"${AOP_TASKS_DIR:-$HOME/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/tasks}/inbox/runs.json\"; b=; [ -f \"$f\" ] && [ -f \"$r\" ] && IFS= read -r -d '' b < \"$r\"; case \"$b\" in *'\"'*) exec python \"$f\";; esac; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Workflow|Agent|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/launch_gate.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" || true",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/inbox_hook.py\"; r=\"${AOP_TASKS_DIR:-$HOME/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/tasks}/inbox/runs.json\"; b=; [ -f \"$f\" ] && [ -f \"$r\" ] && IFS= read -r -d '' b < \"$r\"; case \"$b\" in *'\"'*) exec python \"$f\";; esac; exit 0",
+            "timeout": 10
           }
         ]
       }

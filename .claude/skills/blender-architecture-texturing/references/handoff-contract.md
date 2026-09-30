@@ -10,7 +10,7 @@ Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and va
 | --- | --- |
 | `01_geometry` | LOW file + object names; HIGH files + object names (in place, same transforms) |
 | `02_material_split` | per-face class (attribute name on the LOW + manifest), class palette (ID colours), change log |
-| `03_uv` | `UV_Final` layer, per-face plan (page, owner, family, class), freeze fingerprint |
+| `03_uv` | `UV_Final` layer, per-face plan (page, owner, family, class), freeze fingerprint, `density` (measured block) and `page_budget` (rule 7) |
 | `04_bake` | bake recipes, NORMAL / AO / OPACITY / EMIT (IDs) per page, coverage, bake reports |
 | `05_sources` | texture sources with licence and provenance (CC0 / Substance / GPT-generated + seamless edit) |
 | `06_surface` | per-page surface masks and projected sources on the frozen UVs |
@@ -50,3 +50,19 @@ Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and va
    is not, and the exact command to continue.
 6. Pictures and QA per [texturing QA](../../blender-high-low-baking/references/texturing-qa.md) belong in
    the handoff of every texturing phase.
+7. **A UV phase passes the density floor and the page budget before the UV freeze.**
+   - **`density`:** a 03_uv handoff in `review` or `accepted` records the metrics block of
+     `scripts/density_floor.py`, measured on the final runtime pages. It must pass the universal
+     [UV density floor](uv-density-floor.md).
+   - **`page_budget`:** the same handoff records `pages: [{name, size}]`, exactly the pages the density block measured.
+     Nothing else is self-declared (INC-034): the class, the owner's confirmation and the ceiling come from the
+     project's model profiles (Age of Pirates: `scripts/havok/gr2_lint_profiles.json`, `--profiles`), and the
+     confirmation must resolve to his message about this class and model in his store (`--owner-messages`).
+   - **The density block is bound to the UV:** its `source.sha256` is the hash of one of this handoff's canonical
+     files (`density_floor.py faces|gr2` records it), and it is in the game's unit (else INCOMPLETE).
+   - **`handoff.py write` refuses** the handoff when either record is missing or fails.
+   - **The owner's waiver** of the floor (`density_waivers`, his whole message about this floor and this model, or a
+     decision he answered) counts only with `--owner-messages <his message store>`.
+   - **A `wip` handoff** may stop before the measurement.
+   - **The project's export gate re-checks both** against its own ceilings. Age of Pirates:
+     `scripts/havok/gr2_lint.py`.

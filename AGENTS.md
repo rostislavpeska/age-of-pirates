@@ -99,7 +99,19 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
      follows this rule by hand.
    - **Exports:** no model reaches the owner's game test before `python scripts/havok/gr2_lint.py --profile <building>
      <folder>` exits 0 (a SKIP exits 2: never `--no-dll` or `--allow-skip` for this gate); a defect found in game
-     first becomes a lint check.
+     first becomes a lint check. The lint holds two hard floors on every model:
+     - the universal UV density floor (`texel_density`,
+       `.claude/skills/blender-architecture-texturing/references/uv-density-floor.md`);
+     - the AoP texture ceiling of the model's owner-confirmed class (`texture_budget`: small 1x2048, medium
+       2048 + 1024, large 2x2048; `gr2_lint_profiles.json`).
+     Korean TC: `python C:/Users/rosti/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/gates/uv_gate.py`
+     exits 0 first (exit 1 = stop and report; the `--profile korean_tc` lint runs it as check `uv_lineage`).
+
+14. **Report harness/process defects, never work around them silently.** Owner, 2026-09-30: "it MUST NEVER happen
+   again". A lost version, a misfiring gate or tool, a rule you cannot keep: `tasks.py report --by <you> --kind
+   harness|bug|regression|process|data-loss --severity S0..S3 --title "..." --what "..." [--evidence <absolute paths,
+   ids>]` (no repo: `POST /api/incidents`, tasks README "Reporting an incident"). It prints the INC id; S0/S1 open a
+   P0 task. The coordinator investigates; the reporter continues its task.
 
 ## Where things are
 

@@ -228,6 +228,27 @@ def test_status_reports_not_live_until_registered_and_seen(tmp_path, monkeypatch
     assert hs.status(sp)['live'] is True
 
 
+def test_status_counts_idle_approved_work(tmp_path, monkeypatch):
+    """INC-002 G3 (KTC-160): approved work that never started is counted from the task store's board
+    (meta.board.approved_waiting, written by every tasks.py command): only the entries past their due time"""
+    hs = load_status()
+    monkeypatch.setenv('AOP_TASKS_DIR', str(tmp_path / 'tasks'))
+    monkeypatch.setenv('AOP_HARNESS_LOG', str(tmp_path / 'log.jsonl'))
+    assert hs.approved_idle() is None
+    (tmp_path / 'tasks').mkdir()
+    (tmp_path / 'tasks' / 'tasks.json').write_text(json.dumps({'meta': {'board': {'approved_waiting': [
+        {'id': 'KTC-057', 'by': 'D-001 = B', 'since': '2026-09-29T20:11:41Z', 'due': '2026-09-29T21:11:41Z'},
+        {'id': 'KTC-200', 'by': 'owner go', 'since': '2099-01-01T00:00:00Z', 'due': '2099-01-01T01:00:00Z'}]}}}),
+        encoding='utf-8')
+    ai = hs.approved_idle()
+    assert ai['count'] == 1 and ai['ids'] == ['KTC-057'] and ai['waiting'] == 2
+    sp = tmp_path / 'settings.json'
+    sp.write_text(json.dumps({'hooks': {}}), encoding='utf-8')
+    st = hs.status(sp)
+    assert st['approved_idle']['ids'] == ['KTC-057']
+    assert 'approved work idle > 60 min: 1 - KTC-057 (2 approved and waiting' in hs.text(st)
+
+
 def test_write_proposed_cli(tmp_path):
     out = tmp_path / 'proposed.json'
     p = subprocess.run([sys.executable, str(HOOKS / 'harness_status.py'), '--write-proposed', str(out)],

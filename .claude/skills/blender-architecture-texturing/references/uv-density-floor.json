@@ -1,0 +1,36 @@
+{
+ "schema": 1,
+ "_doc": [
+  "Numbers of the universal UV texel-density floor (references/uv-density-floor.md); scripts/density_floor.py reads this file.",
+  "The RULE is the same for every game and every model. A game overrides the NUMBERS only, measured on that game's own shipped assets, by adding an entry under 'games'. Never edit a number to let a model pass."
+ ],
+ "owner_request": "2026-09-30 10:58: \"Plus we need hard DPI floor!!!!!!!!!! Scattered UV map is a nightmare!!!!!! ... But UV map DPI floor should be universal\"",
+ "default_game": "aoe3de",
+ "games": {
+  "aoe3de": {
+   "unit": "texels per GR2 model unit (t/u): density(face) = sqrt(UV area in texels^2 / 3D area in model units^2), the page = the BaseColor the face samples",
+   "model_median_min": 100.0,
+   "face_floor": 60.0,
+   "face_max_share_below": 0.02,
+   "collapsed_max_share": 0.03,
+   "face_max_share_below_owned": 0.03,
+   "untextured_max_share": 0.035,
+   "untextured_max_share_owned": 0.08,
+   "measured": "2026-09-30 on 17 vanilla AoE3DE buildings (5 town centres, 3 barracks-class, 3 houses, 3 churches, 3 wonders), read-only; numbers and method: Claude_CP2/gates/density_baseline.json and DENSITY_BASELINE.md (KTC-164 / KTC-165)",
+   "basis": {
+    "model_median_min": "the lowest vanilla model median outside the two large religious buildings is 100.4 (Med TC age 2): all 15 pass; cathedral_age4 (73) and basilica_age2 (60) do not. Vanilla median of medians 137, town centres 119",
+    "face_floor": "60 t/u: the vanilla non-large area-weighted p10 is 69.6 at least (China TC age 2), median 123",
+    "face_max_share_below": "at most 2 % of the textured 3D area below face_floor (= area-weighted p2 >= 60), per model and per page: the vanilla non-large worst case is 1.4 % (West TC age 2), median 0 %. A p10 rule would let 9.9 % of the area sit at any density",
+    "collapsed_max_share": "faces parked on no texels (zero UV area, or below 1 t/u) hold at most 3 % of the 3D area: vanilla maximum 2.7 % (China war academy age 2, 358 faces), every other sampled model 0.3 % or less",
+    "untextured_max_share": "INC-035: the area below face_floor and the collapsed area TOGETHER (b and c allowed 4.8 % between them): vanilla non-large maximum 3.18 % (China war academy age 2: 0.45 % + 2.74 %)",
+    "face_max_share_below_owned": "INC-035 (dilution): b again, over the TEXEL-OWNING area - each stack of faces on the same texels counted once (its largest face), faces below the floor and collapsed faces in full - so hidden faces stacked on used texels cannot dilute it. Vanilla non-large maximum 2.38 % per model, 2.51 % per page (West TC age 2; vanilla stacks 33-89 % of its area); the S18k Korean TC 18.1 %, and 18.2 % after the verifier's dilution (raw 1.55 %)",
+    "untextured_max_share_owned": "the same over the texel-owning area (dilution-proof): vanilla non-large maximum 7.71 % (China war academy age 2, 61 % of its area stacked)"
+   },
+   "fragmentation_proposed": {
+    "islands_per_100u2_max": 200,
+    "status": "proposed, owner to confirm",
+    "basis": "INC-035, the owner's 'Scattered UV map is a nightmare': vanilla non-large maximum 178.3 islands per 100 u2 (West house age 2a), West TC 149.4, median 61; the S18k Korean TC 372 (278 without matc), the verifier's scatter 4444. Reported as a note only: a FAIL needs the owner's confirmation (status confirmed + confirmed_by)"
+   }
+  }
+ }
+}

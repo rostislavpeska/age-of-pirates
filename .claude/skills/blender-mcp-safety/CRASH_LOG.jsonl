@@ -137,6 +137,8 @@
 {"time": "2026-09-30T01:08:59", "event": "after", "ok": true, "agent": "astra"}
 {"time": "2026-09-30T01:20:22", "event": "before", "action": "Astra window repair: live_inspect.py", "risk": "small API call", "agent": "astra"}
 {"time": "2026-09-30T01:20:22", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-09-30T01:24:35", "event": "before", "action": "read-only scene inspection: scenes, collections, objects, materials, images, UV layers, viewport overlays (no writes, no image reload)", "risk": "none (read-only)", "file": "live", "agent": "claude"}
+{"time": "2026-09-30T01:25:05", "event": "after", "ok": true, "error": null}
 {"time": "2026-09-30T01:32:38", "event": "before", "action": "Astra window repair: inspect_texture_usage.py", "risk": "small API call", "agent": "astra"}
 {"time": "2026-09-30T01:32:38", "event": "after", "ok": true, "agent": "astra"}
 {"time": "2026-09-30T01:44:46", "event": "before", "action": "Astra window repair: live_inspect.py", "risk": "small API call", "agent": "astra"}

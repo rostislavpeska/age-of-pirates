@@ -124,6 +124,42 @@ def reader_of(p):
     return None
 
 
+def run_of_agent(root, text):
+    """The workflow run of a subagent whose hook input carries only its agent_id and the SESSION transcript_path
+    (PostToolUse inside a workflow agent - measured live 2026-09-29 23:20: only SubagentStop carries the agent's own
+    transcript path). Looks for <session>/subagents/workflows/<run>/agent-<id>.jsonl once and caches the answer
+    (also a negative one) in inbox/agents.cache, so later tool calls cost one small file read."""
+    import json
+    try:
+        p = json.loads(text or '{}')
+    except ValueError:
+        return None
+    aid = str(p.get('agent_id') or '').strip()
+    tp = str(p.get('transcript_path') or '')
+    if not aid or not tp:
+        return None
+    cache = os.path.join(root, 'agents.cache')
+    try:
+        with open(cache, encoding='utf-8') as f:
+            for line in f:
+                a, _, r = line.strip().partition(' ')
+                if a == aid:
+                    return r or None
+    except OSError:
+        pass
+    import glob
+    sess = tp[:-6] if tp.endswith('.jsonl') else tp
+    hits = glob.glob(os.path.join(sess, 'subagents', 'workflows', '*', f'agent-{aid}.jsonl'))
+    run = os.path.basename(os.path.dirname(hits[0])) if hits else ''
+    if hits or os.path.isdir(sess):             # cache a miss only when the session folder exists (not a bad path)
+        try:
+            with open(cache, 'a', encoding='utf-8') as f:
+                f.write(f'{aid} {run}\n')
+        except OSError:
+            pass
+    return run or None
+
+
 def post_tool(ib, root, task, reader, td, why=None):
     d = ib.task_dir(root, task)
     if not d.is_dir():
@@ -209,10 +245,14 @@ def main():
         if not pairs:
             return 0                            # nothing bound anywhere: the common case
         text = raw.decode('utf-8-sig', errors='replace')
+        run = None
         if not any(k and k in text for k, _t in pairs):
-            expire_stale(td, root)
-            return 0                            # this agent's run / id is not bound (decided before any import)
-        if nothing_new(root, text, pairs):
+            run = run_of_agent(root, text) if '"agent_id"' in text else None
+            if not run or not any(k == run for k, _t in pairs):
+                expire_stale(td, root)
+                return 0                        # this agent's run / id is not bound
+        check = text + ' "' + run + '"' if run else text   # the run key appears for the fast checks only
+        if nothing_new(root, check, pairs):
             return 0                            # bound, inbox unchanged since this agent read it
         import json
         p = json.loads(text or '{}')
@@ -221,7 +261,7 @@ def main():
             return 0
         sys.path.insert(0, td)
         import inbox as ib                      # noqa: E402  (the store lives with the task engine)
-        task, key = ib.resolve(root, keys_of(p))
+        task, key = ib.resolve(root, keys_of(p) + ([run] if run else []))
         if not task:
             return 0
         reader = reader_of(p)
@@ -229,7 +269,8 @@ def main():
             return 0
         reader = ib.check_id('reader', reader)
         why = {'key': key, 'agent_id_in_input': bool(p.get('agent_id')),     # the live proof (AGENTS.md rule 13)
-               'via': 'transcript_path' if key != p.get('agent_id') else 'agent_id'}
+               'via': 'agent_run_lookup' if run and key == run else
+                      ('transcript_path' if key != p.get('agent_id') else 'agent_id')}
         if ev == 'PostToolUse':
             return post_tool(ib, root, task, reader, td, why)
         rc, why = subagent_stop(ib, root, task, reader, td, why)

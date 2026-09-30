@@ -13,6 +13,29 @@ Follow its [pipeline order](../blender-architecture-texturing/references/pipelin
 every building: texture budget first, final bakes only on owner-frozen UVs. Korean TC,
 2026-09-25..28: the v15 roof and v19 window bakes were made first, then a budget overflow
 (122%) forced the conjoin/repack that invalidated them (journal `2026-09-28-claude-15`).
+
+**Texture ceilings (this project; owner 2026-09-30, m334-m336).** Before UV planning, the owner agrees a
+class for each model:
+
+- **small**: 1x2048. Barracks-size and smaller; the house is small (m336).
+- **medium**: 1x2048 plus one 1024 complement for the transparent / cutout objects. Town Center and Market
+  (m335). Only medium has the complement.
+- **large**: 2x2048. Cathedral, basilica, the bigger wonders.
+
+The class is stored per model in `scripts/havok/gr2_lint_profiles.json`, as `texture_budget {class,
+confirmed_by}`. A class without `confirmed_by` is only proposed, and it FAILS the export with "class not
+confirmed by the owner".
+
+`gr2_lint.py` enforces two gates:
+
+- **`texture_budget`:** counts the model's own texture sets, one per BaseColor, from the `.material` and the
+  DDT headers. Shared vanilla atlases are listed, not counted; that counting rule is proposed, for the owner
+  to confirm.
+- **`texel_density`:** the universal
+  [UV density floor](../blender-architecture-texturing/references/uv-density-floor.md).
+
+The shipped Korean TC fails both gates. It has a third set (matc 512, the hidden faces), and that page puts
+9.6 % of the model's area below 60 t/u.
 For Painter work use [substance-painter-remote](../substance-painter-remote/SKILL.md).
 For player colour (Details map, lighter BaseColor under the mask) use [aoe3de-player-colour](../aoe3de-player-colour/SKILL.md).
 
