@@ -110,8 +110,8 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
 14. **Report harness/process defects, never work around them silently.** Owner, 2026-09-30: "it MUST NEVER happen
    again". A lost version, a misfiring gate or tool, a rule you cannot keep: `tasks.py report --by <you> --kind
    harness|bug|regression|process|data-loss --severity S0..S3 --title "..." --what "..." [--evidence <absolute paths,
-   ids>]` (no repo: `POST /api/incidents`, tasks README "Reporting an incident"). It prints the INC id; S0/S1 open a
-   P0 task. The coordinator investigates; the reporter continues its task.
+   ids>]` (the CLI is the way; `POST /api/incidents` only when the optional task app runs, tasks README "Reporting an
+   incident"). It prints the INC id; S0/S1 open a P0 task. The coordinator investigates; the reporter continues its task.
 
 ## Where things are
 
