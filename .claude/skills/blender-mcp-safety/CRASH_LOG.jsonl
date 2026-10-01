@@ -245,3 +245,29 @@
 {"time": "2026-09-30T13:56:26", "event": "after", "ok": true, "agent": "astra"}
 {"time": "2026-09-30T13:56:27", "event": "before", "action": "Astra window repair: astra-walls-capture-after.py", "risk": "small API call", "agent": "astra"}
 {"time": "2026-09-30T13:56:30", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-02T01:13:38", "event": "open_review", "action": "launching review instance", "file": "C:\\work\\korean-military-176\\GPT_Astra_Colonial_Military_REVIEW_r02.blend", "exe": "C:/Program Files/Blender Foundation/Blender 5.0/blender.exe", "port": 9876, "forced": false}
+{"time": "2026-10-02T01:13:43", "event": "open_review", "action": "wait_for_port result", "file": "C:\\work\\korean-military-176\\GPT_Astra_Colonial_Military_REVIEW_r02.blend", "port": 9876, "mcp_port_open": true, "seconds": 5.0}
+{"time": "2026-10-02T01:23:17", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:23:17", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T01:45:39", "event": "before", "action": "live_publish.py", "risk": "R9", "agent": "astra"}
+{"time": "2026-10-02T01:45:39", "event": "after", "ok": true, "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-02T01:46:43", "event": "before", "action": "live_uv_editor.py", "risk": "R9", "agent": "astra"}
+{"time": "2026-10-02T01:46:43", "event": "after", "ok": true, "action": "live_uv_editor.py", "agent": "astra"}
+{"time": "2026-10-02T01:46:44", "event": "before", "action": "live_capture_editor.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:46:44", "event": "after", "ok": true, "action": "live_capture_editor.py", "agent": "astra"}
+{"time": "2026-10-02T01:46:59", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:46:59", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T01:48:02", "event": "before", "action": "live_frame_uv.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:48:12", "event": "before", "action": "live_capture_framed.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:48:23", "event": "before", "action": "live_stable_uv.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:48:32", "event": "after", "ok": false, "error": "timed out", "action": "live_frame_uv.py", "agent": "astra"}
+{"time": "2026-10-02T01:48:33", "event": "before", "action": "live_frame_uv.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:48:42", "event": "after", "ok": false, "error": "timed out", "action": "live_capture_framed.py", "agent": "astra"}
+{"time": "2026-10-02T01:48:43", "event": "before", "action": "live_capture_framed.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:48:53", "event": "after", "ok": false, "error": "timed out", "action": "live_stable_uv.py", "agent": "astra"}
+{"time": "2026-10-02T01:49:03", "event": "after", "ok": false, "error": "timed out", "action": "live_frame_uv.py", "agent": "astra"}
+{"time": "2026-10-02T01:49:13", "event": "after", "ok": false, "error": "timed out", "action": "live_capture_framed.py", "agent": "astra"}
+{"time": "2026-10-02T01:51:12", "event": "open_review", "action": "launching review instance", "file": "C:\\work\\korean-military-176\\final\\GPT_Astra_Colonial_Military_REVIEW_uv_r03.blend", "exe": "C:/Program Files/Blender Foundation/Blender 5.0/blender.exe", "port": 9876, "forced": false}
+{"time": "2026-10-02T01:51:17", "event": "open_review", "action": "wait_for_port result", "file": "C:\\work\\korean-military-176\\final\\GPT_Astra_Colonial_Military_REVIEW_uv_r03.blend", "port": 9876, "mcp_port_open": true, "seconds": 5.0}
+{"time": "2026-10-02T01:51:37", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T01:51:37", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
