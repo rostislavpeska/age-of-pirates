@@ -111,6 +111,17 @@ void main(void)
 
 	chooseMercs();
 
+	// ____________________ LOCAL MERCENARIES ____________________
+	// owner 2026-10-06: the War of Independence (1775-1783); Paris / Venice pattern, outlaws by rmEnableOutlaw
+	rmDisableDefaultMercs(true);
+	rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("MercJaeger", -1);              // Hessian Jaeger: Britain hired about 30,000 German troops
+	rmEnableMerc("MercHighlander", -1);          // the Highland regiments (Fraser's 71st, the Black Watch)
+	rmEnableMerc("deMercBrigadier", -1);         // Irish Brigadier: Dillon's Irish regiment, Savannah 1779 (French side)
+	rmEnableMerc("MercFusilier", -1);            // Rochambeau's French regulars (1780-81)
+	rmEnableOutlaw("deSaloonOwlhoot");           // American outlaws (owner: 'more American ... like Owlhoot, maybe Desperado')
+	rmEnableOutlaw("deSaloonDesperado");
+
 	rmSetOceanReveal(true);
 
 	// Corner constraint.
