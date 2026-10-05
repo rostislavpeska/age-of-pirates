@@ -2287,8 +2287,24 @@ void main(void)
 		}
 		rmCreateTrigger("TowerSUnlock");
 		rmSwitchToTrigger(rmTriggerID("TowerSUnlock"));
-		rmAddTriggerCondition("Nugget Is Collectable");
-		rmSetTriggerConditionParam("NuggetObject", "" + towerSNugUnit);
+		// the guards hold the Keep while they stand at its gate (owner 2026-10-06: 'Nugget Collectable - that doesn't
+		// work reliably for non guardian guardian units ... check Paris ... units in area'): zpparis.xs 2221-2228 -
+		// no gaia Redcoat AND no gaia Whitecoat within 25 m of the flag (1 m from the gate treasure in both exports).
+		// Both types, so either coin side works (605 Redcoats / 610 Whitecoats); player-trained ones are not gaia.
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + towerSFlagUnit);
+		rmSetTriggerConditionParamInt("Player", 0);
+		rmSetTriggerConditionParam("UnitType", "zpNatRedcoat");
+		rmSetTriggerConditionParamInt("Dist", 25);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + towerSFlagUnit);
+		rmSetTriggerConditionParamInt("Player", 0);
+		rmSetTriggerConditionParam("UnitType", "zpNatWhitecoat");
+		rmSetTriggerConditionParamInt("Dist", 25);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
 		rmAddTriggerEffect("Unit Action Suspend");
 		rmSetTriggerEffectParam("SrcObject", "" + towerSFlagUnit, false);
 		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -2448,8 +2464,24 @@ void main(void)
 		}
 		rmCreateTrigger("TowerNUnlock");
 		rmSwitchToTrigger(rmTriggerID("TowerNUnlock"));
-		rmAddTriggerCondition("Nugget Is Collectable");
-		rmSetTriggerConditionParam("NuggetObject", "" + towerNNugUnit);
+		// the guards hold the Keep while they stand at its gate (owner 2026-10-06: 'Nugget Collectable - that doesn't
+		// work reliably for non guardian guardian units ... check Paris ... units in area'): zpparis.xs 2221-2228 -
+		// no gaia Redcoat AND no gaia Whitecoat within 25 m of the flag (1 m from the gate treasure in both exports).
+		// Both types, so either coin side works (605 Redcoats / 610 Whitecoats); player-trained ones are not gaia.
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + towerNFlagUnit);
+		rmSetTriggerConditionParamInt("Player", 0);
+		rmSetTriggerConditionParam("UnitType", "zpNatRedcoat");
+		rmSetTriggerConditionParamInt("Dist", 25);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + towerNFlagUnit);
+		rmSetTriggerConditionParamInt("Player", 0);
+		rmSetTriggerConditionParam("UnitType", "zpNatWhitecoat");
+		rmSetTriggerConditionParamInt("Dist", 25);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
 		rmAddTriggerEffect("Unit Action Suspend");
 		rmSetTriggerEffectParam("SrcObject", "" + towerNFlagUnit, false);
 		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
