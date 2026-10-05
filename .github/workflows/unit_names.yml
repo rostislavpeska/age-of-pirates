@@ -1,15 +1,16 @@
 name: Unit Name Validation
 run-name: Validating unit names in a push by ${{ github.actor }}
 
-# Every unit name in the per-map .mods.xml files and every cUnitTypezp... constant in the AI must exist exactly
-# (spelling and case). 2026-10-05: 'zpDryDock' in zpistanbulb.mods.xml killed every AI on Istanbul.
+# Unit and tech names must exist exactly (spelling and case): the protomods / techtreemods rewrites of vanilla entries,
+# every unit and tech in the per-map .mods.xml files, every cUnitTypezp... / cTechzp... constant in the AI.
+# 2026-10-05: 'zpDryDock' in zpistanbulb.mods.xml killed every AI on Istanbul.
 # No game install here: vanilla names are checked against scripts/source/protoy.xml (case mismatches still fail).
 
 on: push
 
 jobs:
   unit-names:
-    name: Exact unit names (per-map mods files, AI constants)
+    name: Exact unit and tech names (rewrites, per-map mods files, AI constants)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

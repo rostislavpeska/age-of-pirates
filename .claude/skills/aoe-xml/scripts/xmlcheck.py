@@ -16,8 +16,9 @@ Checks (ERROR = exit 1, WARN = informational):
   abilities ................ every ability's power <unitaction> is an action in the unit's tactics (else a dead
                              button): abilitymods units + vanilla units whose tactics file the mod overrides
   string sync .............. stringsync.py audit (stale languages)
-  unit names ............... every <unit name> in randmaps/*.mods.xml and every cUnitTypezp... in game/ai/core exists
-                             EXACTLY, case included (scripts/tools/check_unit_names.py; 2026-10-05 'zpDryDock')
+  unit / tech names ........ exact, case included (scripts/tools/check_unit_names.py; 2026-10-05 'zpDryDock'): the
+                             protomods / techtreemods rewrites, every unit and tech in randmaps/*.mods.xml, every
+                             cUnitTypezp... / cTechzp... in game/ai/core
 Resolution: mod folder first, then the archive index (bartool). Archive-referenced assets are the RULE, not a warning.
 """
 import glob, io, os, re, subprocess, sys
@@ -327,7 +328,7 @@ def main():
         except Exception as e: warn(f'stringsync audit skipped: {e}')
     # unit names exact, case included (2026-10-05: 'zpDryDock' in a per-map mods file killed every AI on Istanbul)
     if not args or any(a.replace(BS, '/').lower().endswith('.mods.xml') or a.replace(BS, '/').lower().startswith(('randmaps', 'game/'))
-                       or a.replace(BS, '/').lower() == 'data/protomods.xml' for a in args):
+                       or a.replace(BS, '/').lower() in ('data/protomods.xml', 'data/techtreemods.xml') for a in args):
         try:
             import importlib.util
             spec = importlib.util.spec_from_file_location('check_unit_names', os.path.join(REPO, 'scripts', 'tools', 'check_unit_names.py'))
