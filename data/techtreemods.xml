@@ -38697,6 +38697,11 @@
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
+      <!-- owner 2026-10-06 (option A): the barricades stay barricades - the three wall upgrades never come; settlers,
+           Redcoats and Whitecoats keep building them (zpDisableWalls would also take the settlers' build buttons) -->
+      <effect type="TechStatus" status="unobtainable">Bastion</effect>
+      <effect type="TechStatus" status="unobtainable">DERedoubts</effect>
+      <effect type="TechStatus" status="unobtainable">DECityFortifications</effect>
       <effect type="TechStatus" status="active">zpExtendedStuartLondon</effect>
       <effect type="TechStatus" status="active">zpLockShipCapture</effect>
       <effect type="TechStatus" status="active">zpDisableAllTradeRouteUpgrades</effect>
