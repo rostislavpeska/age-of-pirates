@@ -745,6 +745,18 @@ void main(void)
 	// Full reveal from the start (zp_z_zparis.xs 122).
 	rmSetAllMapReveal(true);
 
+	// ____________________ LOCAL MERCENARIES ____________________
+	// owner 2026-10-05: Istanbul 1512 (Selim against Ahmed); Paris / Venice pattern, outlaws by rmEnableOutlaw
+	rmDisableDefaultMercs(true);
+	rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("deMercBosniak", -1);             // Bosnian cavalry (Ottoman since 1463)
+	rmEnableMerc("MercStradiot", -1);              // the Balkan light horse
+	rmEnableMerc("MercMameluke", -1);              // the Mamluk rival, conquered by Selim in 1517
+	rmEnableMerc("deMercZenata", -1);              // the Maghreb's Berber horsemen: Algiers Ottoman from 1519, the Zenata kingdom of Tlemcen from 1554
+	rmEnableMerc("MercGreatCannon", -1);           // the Ottoman great bombards
+	rmEnableOutlaw("deSaloonHajduk");              // the Balkan brigands of the Ottoman frontier
+	rmEnableOutlaw("deAllegianceBarbaryMarksman"); // the corsair sharpshooter
+
 	rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________

@@ -430,6 +430,19 @@ void main(void)
 	rmSetMapType("piratehistoricalmap");
 	rmSetMapType("euroTradeRouteCapture");   // user 2026-09-24 "use same maptype for London" (Istanbul): forces deTradeRouteCaptureableEuropean, the capture tech that turns the ferries to resources as well as XP; the upgrade-all type upgraded both routes from any post
 	chooseMercs();
+
+	// ____________________ LOCAL MERCENARIES ____________________
+	// owner 2026-10-05: the Civil Wars and the Restoration (1642-1660); Paris / Venice pattern, outlaws by rmEnableOutlaw
+	rmDisableDefaultMercs(true);
+	rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("deMercHarquebusier", -1);        // the cavalry of both Civil War armies
+	rmEnableMerc("deMercPistoleer", -1);           // the cuirassiers (Haselrig's "Lobsters", 1643)
+	rmEnableMerc("MercHighlander", -1);            // the Covenanters, Montrose's Highland campaign 1644-45
+	rmEnableMerc("MercSwissPikeman", -1);          // pike and shot
+	rmEnableMerc("MercGreatCannon", -1);           // a siege gun for a walled city
+	rmEnableOutlaw("deSaloonHighwaymanRider");     // highway robbery after the Restoration (Claude Duval, Tyburn 1670)
+	rmEnableOutlaw("deSaloonSailor");              // London's unpaid seamen (the pay riots after the 1665-67 Dutch war)
+
 	rmSetWorldCircleConstraint(true);
 
 	// Paris's class list (looked up by name where used)
