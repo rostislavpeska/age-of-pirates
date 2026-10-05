@@ -2,6 +2,11 @@
 mods files, checked against mod-local files AND the full archive index.
 Written as a FILE because the bash heredoc collapses backslashes (see the
 ids/heredoc memory) - which invalidated two earlier runs of this check.
+
+    python scripts/tools/check_file_refs.py <archive_index.txt>
+
+archive_index.txt = every archive entry path, one per line (the bar-extract skill's listing, written into the session
+scratchpad - never the repo).
 """
 import glob
 import io
@@ -11,16 +16,15 @@ import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-SCRATCH = ("C:/Users/rosti/AppData/Local/Temp/claude/c--Users-rosti-Games-Age-of-"
-           "Empires-3-DE-76561199512878537-mods-local-age-of-pirates/"
-           "5b7fdc7a-c3d1-456d-b754-6770378f3405/scratchpad")
-REPO = ("c:/Users/rosti/Games/Age of Empires 3 DE/76561199512878537/mods/local/"
-        "age-of-pirates")
+if len(sys.argv) != 2:
+    sys.exit(__doc__)
+INDEX = sys.argv[1]
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace("\\", "/")
 
 SEP = "\\"
 
 archive = set()
-for line in open(SCRATCH + "/archive_index.txt", encoding="utf-8", errors="replace"):
+for line in open(INDEX, encoding="utf-8", errors="replace"):
     archive.add(line.strip().lower().replace("/", SEP))
 
 modfiles = set()

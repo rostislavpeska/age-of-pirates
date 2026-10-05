@@ -32,7 +32,7 @@ One falsifiable hypothesis per generation. After rung 5 STOP and report; do not 
 | Saved scenario | `<profile>\Scenario\<name>.age3Yscn`, read by `sandbox/census/census.py <save> --full` | every placed unit with proto and position in INDEX order: ground truth for indices and spawns | render; mod proto NAMES are unreliable (match by position and count) |
 | Screenshot | `sandbox/census/samples/...` | RENDER only (a unit can be placed and never render: LF-only animfile) | spawn, triggers |
 
-`<profile>` = `C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238`; the repo sits at
+`<profile>` = the folder three levels above this repo, on every device: the repo sits at
 `<profile>\mods\local\age-of-pirates`.
 
 ## 3. The compiled rule shape (read it, do not guess it)

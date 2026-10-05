@@ -2,8 +2,9 @@
 
     python -m pytest scripts/havok/tests/test_gr2_lint.py -q
 
-Specimens outside the repo (session scratchpad backups, never committed) are skipped when absent; set
-GR2_LINT_SPECIMENS to their folder on another device. The installed model in art/buildings/korean_tc is always there.
+Specimens outside the repo (session scratchpad backups, never committed) are skipped when absent; their folder is
+GR2_LINT_SPECIMENS of this device's local environment (the environment, else config/aop.local.env;
+scripts/tools/local_env.py). The installed model in art/buildings/korean_tc is always there.
 The DLL test needs WSL + Wine + gr2_to_raw.py (skipped otherwise).
 """
 from __future__ import annotations
@@ -47,9 +48,9 @@ def s18k(name):
     return out
 
 
-SPEC = Path(os.environ.get("GR2_LINT_SPECIMENS", Path.home() / "AppData/Local/Temp/claude/"
-            "C--Users-rosti-Games-Age-of-Empires-3-DE-76561199512878537-mods-local-age-of-pirates/"
-            "606bcdfd-b93c-4bed-807e-4732d03a4805/scratchpad"))
+sys.path.append(str(REPO / "scripts" / "tools"))
+import local_env  # noqa: E402
+SPEC = Path(local_env.value("GR2_LINT_SPECIMENS") or REPO / "no-specimens")     # not set on this device: skipped
 OLD_DAMAGED = SPEC / "p0_damaged/backup/korean_tc_damaged.gr2.1939"       # one 102,527-vertex mesh, unrotated
 F_2050 = SPEC / "p0_damaged/split/F.gr2"                                   # per-material split, windows on 'base'
 PRE_ROT_RAW = SPEC / "install_rot_split/backup_195802/korean_tc.gr2"        # intact before the 90-degree turn

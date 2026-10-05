@@ -20,7 +20,7 @@ model -> `variation = its index there`. Models without a twin in any target stay
 ## Procedure
 
 ```bash
-S=.claude/skills/grouping-model-swap/scripts; U="C:/Users/TIGO/Games/Age of Empires 3 DE/76561198347905238/RandMaps/groupings"
+S=.claude/skills/grouping-model-swap/scripts; U="$(cd ../../.. && pwd)/RandMaps/groupings"   # <profile>/RandMaps/groupings
 python $S/model_swap.py table    --from zpNativeHouseVenetianB --to zpNativeHouseVenetianE,zpNativeHouseVenetianG,zpNativeHouseVenetianD
 python $S/model_swap.py validate --from zpNativeHouseVenetianB --to zpNativeHouseVenetianE,zpNativeHouseVenetianG --out "$U"
 python $S/model_swap.py game/randmaps/groupings --from zpNativeHouseVenetianB --to zpNativeHouseVenetianE,zpNativeHouseVenetianG --prefix IS_            # dry run

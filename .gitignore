@@ -53,6 +53,10 @@ config/local-maps.local.json
 # schema: .claude/skills/skill-library-audit/assets/tool-paths.example.json
 config/tool-paths.local.json
 
+# This device's AoP folders: Korean repo, task engine, assets, aitest harness (scripts/tools/local_env.py;
+# example tracked: config/aop.example.env)
+config/aop.local.env
+
 # SECRETS - the repo is public. Image harness URL + API key (image-harness skill; example tracked:
 # config/image-harness.example.env). Any .env / *.local.env anywhere is ignored as a safety net.
 config/image-harness.local.env

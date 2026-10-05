@@ -83,7 +83,8 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
      is reported with its reason and the decision needed. Nothing is dropped silently.
 
 13. **Late instructions go through the inbox; launches are capped and P0 first.** Owner, 2026-09-29: "prevent firing
-   too many agents", "ABSOLUTE priorities for CRITICAL tasks". (`tasks.py` = the task engine, `$AOP_TASKS_DIR`.)
+   too many agents", "ABSOLUTE priorities for CRITICAL tasks". (`tasks.py` = the task engine in `$AOP_TASKS_DIR`:
+   `python scripts/tools/local_env.py get AOP_TASKS_DIR`.)
    - **Inbox:** a late detail is `tasks.py note <TASK> "text"`, never a restart or a prompt edit. Every agent reads
      only its unread notes at each step start (Claude: they arrive with the next tool result; others run
      `tasks.py inbox <TASK> --unread --reader <name>`), never re-reads old ones, and its final report says
@@ -104,8 +105,9 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
        `.claude/skills/blender-architecture-texturing/references/uv-density-floor.md`);
      - the AoP texture ceiling of the model's owner-confirmed class (`texture_budget`: small 1x2048, medium
        2048 + 1024, large 2x2048; `gr2_lint_profiles.json`).
-     Korean TC: `python C:/Users/rosti/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/gates/uv_gate.py`
-     exits 0 first (exit 1 = stop and report; the `--profile korean_tc` lint runs it as check `uv_lineage`).
+     Korean TC: `python "$AOP_KOREAN_REPO/research/Texturing_11/Claude_CP2/gates/uv_gate.py"` exits 0 first
+     (`python scripts/tools/local_env.py get AOP_KOREAN_REPO`; exit 1 = stop and report; the `--profile korean_tc`
+     lint runs it as check `uv_lineage`).
 
 14. **Report harness/process defects, never work around them silently.** Owner, 2026-09-30: "it MUST NEVER happen
    again". A lost version, a misfiring gate or tool, a rule you cannot keep: `tasks.py report --by <you> --kind
@@ -120,6 +122,17 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
   (pre-zip audit), `game-startup` (never kill the game; launch only on instruction).
 - Tools: `scripts/tools/check_art_eol.py`, `scripts/havok/ddt_dxt1.py` (DXT1 .ddt with mips),
   `scripts/havok/gr2_editmesh.py` (in-place vanilla model edits - the converter route loses large faces in game).
+
+## Local environment (every agent, every device)
+
+Device-specific paths live only in ignored local files. Tracked code, docs and skills hold examples and paths relative
+to the repo or to a local variable (`$AOP_KOREAN_REPO/research/...`); the AoE3 profile is never configured, the repo
+sits at `<profile>/mods/local/age-of-pirates`. On a fresh clone, a new worktree or a new device, before other work:
+`python scripts/tools/local_env.py --init` (creates each missing local file from the main checkout or its example,
+never overwrites), fill in every value you can find on THIS device, and run `python scripts/tools/local_env.py` until
+it exits 0. Never copy another device's paths and never guess; what the device lacks stays empty and the tools that
+need it skip. `config/image-harness.local.env` holds secrets: the owner fills it. A new device path goes into a local
+file and its tracked example, never into tracked files (`scripts/tools/tests/test_local_env.py` fails on one).
 
 ## 3D phase handoff and QA (every agent)
 
@@ -171,7 +184,7 @@ For live Photoshop documents, layered edits or texture exports, read
 `.claude/skills/photoshop-live-edit/SKILL.md`. It includes the tested Windows COM/JSX
 connection used in this project; absence of Photoshop MCP does not rule out that route.
 When the user asks to start Photoshop, run its `start_photoshop.ps1` with `-LocalConfig config/tool-paths.local.json`
-(ignored, this device's application paths; initialize from the skill-library-audit `tool-paths.example.json`).
+(ignored, this device's application paths; `local_env.py --init` creates it from the skill-library-audit example).
 Archive/XMB work starts with `.claude/skills/bar-extract/SKILL.md`, then its referenced
 `aoe3de-bar-archives` tools. The reusable packages are implementations, not competing
 AoP entry points. Keep AoP-specific routing out of their public instructions.

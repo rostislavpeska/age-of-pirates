@@ -127,7 +127,7 @@ but it is the mechanism by which *any* future risky call (including one that cal
 
 ### `bootstrap.py` (Astra_CP1's own script, not part of the add-on)
 
-`C:\Users\rosti\Documents\WORKSPACE\korean-buildings-blender\research\Texturing_11\Astra_CP1\bootstrap.py`
+`$AOP_KOREAN_REPO/research/Texturing_11/Astra_CP1/bootstrap.py`
 does **not** touch the MCP add-on, the port, or `bpy.types.blendermcp_server` at all. It:
 - clears the default scene and appends a fixed object set from a source .blend (lines 12-20),
 - verifies a UV fingerprint against a frozen `uv_freeze.json` (line 21-22),

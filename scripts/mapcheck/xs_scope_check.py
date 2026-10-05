@@ -11,7 +11,7 @@ Exit 1 when any file has findings.
 import re, sys, glob, os
 from pathlib import Path
 
-PROFILE = Path(r"C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238")
+PROFILE = Path(__file__).resolve().parents[2].parents[2]     # <profile>/mods/local/age-of-pirates/scripts/mapcheck
 KEYWORDS = {"if", "else", "for", "while", "return", "break", "continue", "true", "false", "int", "float", "string", "bool",
             "vector", "void", "const", "static", "extern", "include", "rule", "active", "inactive", "minInterval",
             "maxInterval", "highFrequency", "runImmediately", "group", "priority", "label", "goto", "switch", "case",

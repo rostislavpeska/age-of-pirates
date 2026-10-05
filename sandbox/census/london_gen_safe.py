@@ -12,7 +12,8 @@ from census_run import C
 from editor_regen import is_editor, bar_fill
 
 S = os.path.join(os.path.dirname(os.path.abspath(__file__)), "samples", "regen")
-PROFILE = r"C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238"
+PROFILE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__)))))))                  # <profile>/mods/local/age-of-pirates/sandbox/census/<this file>
 TRIG = os.path.join(PROFILE, "Trigger", "trigtemp.xs")
 DUMP = os.path.join(PROFILE, "RandMaps", "Age3DERM00000_zplondon.dmp.txt")
 N = gw.normalise_sheet(C)                          # census_run.py:41-49, 2560x1080 client pixels -> 0..1

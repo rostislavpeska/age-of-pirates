@@ -1,7 +1,8 @@
 # Age of Pirates evidence: Korean Town Center (2026-09-29)
 
-This is a worked example, not a portable prerequisite. The paths are on the AoP owner's machine.
-Workspace: `C:/Users/rosti/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2` (CP2).
+This is a worked example, not a portable prerequisite. The paths are in the AoP owner's Korean repo clone.
+Workspace: `$AOP_KOREAN_REPO/research/Texturing_11/Claude_CP2` (CP2; `AOP_KOREAN_REPO` = that clone on the device,
+`config/aop.local.env`).
 
 ## Owner decisions, in order
 

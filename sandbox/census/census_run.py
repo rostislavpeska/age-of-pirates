@@ -28,8 +28,7 @@ import game_driver as gd            # noqa: E402
 from census import census          # noqa: E402
 import census_judge                # noqa: E402
 
-SCEN_DIR = Path(r"C:\Users\TIGO\Games\Age of Empires 3 DE"
-                r"\76561198347905238\Scenario")
+SCEN_DIR = HERE.resolve().parents[1].parents[2] / "Scenario"   # <profile>/mods/local/age-of-pirates/sandbox/census
 SAMPLES = HERE / "samples"
 # Deployed map scripts the editor actually generates from — the census
 # reflects THESE, not the repo source (a repo/deploy skew otherwise makes

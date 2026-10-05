@@ -5,10 +5,10 @@
   "Frames: 'raw' = the gr2 file's own coordinates (y up). 'display' = (-x_raw, -z_raw, y_raw): +X right, +Y back, +Z up, as rotate_gr2.py documents. Quadrants are display-frame, relative to the footprint (bbox) centre."
  ],
  "tools": {
-  "gr2_to_raw_dir": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Export_CP1/tools",
-  "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). Override: env GR2_LINT_TOOLS or config/tool-paths.local.json tools.gr2_to_raw_dir. Missing -> the dll_read check is SKIP, never PASS.",
-  "owner_messages": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/tasks/tasks.json",
-  "_owner_messages_doc": "the owner's message store: a waiver in a profile's \"waivers\" counts only when its owner_quote is one of his WHOLE messages there (as the UV lineage gate). Override: config/tool-paths.local.json tools.owner_messages. Missing -> no waiver counts."
+  "gr2_to_raw_dir": "$AOP_KOREAN_REPO/research/Texturing_11/Export_CP1/tools",
+  "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). $VARIABLES = this device's local environment (scripts/tools/local_env.py: the environment, else config/aop.local.env); override: env GR2_LINT_TOOLS. Missing -> the dll_read check is SKIP, never PASS.",
+  "owner_messages": "$AOP_TASKS_DIR/tasks.json",
+  "_owner_messages_doc": "the owner's message store: a waiver in a profile's \"waivers\" counts only when its owner_quote is one of his WHOLE messages there (as the UV lineage gate). AOP_TASKS_DIR not set on this device or the file missing -> no waiver counts."
  },
  "texture_budget": {
   "_doc": "AoP texture CEILINGS (this project only; owner 2026-09-30 m334, classes m335/m336; KTC-165). gr2_lint check texture_budget counts a model's own texture SETS (one per BaseColor; the sizes from the DDT headers) against its class. The class is set PER MODEL with the owner: a profile's texture_budget {class, confirmed_by: owner message id, models: [the model stems it covers]}; per_model entries (keyed by the model stem) override it. A class without confirmed_by is PROPOSED and FAILS the export: 'class not confirmed by the owner'. INC-033: confirmed_by must resolve to his message in the store (tools.owner_messages) that names the class and the model (the entry's or profile's \"names\"); a confirmed folder class covers only its \"models\" (the market folder also holds a house and a port); every own texture file of every stage and variant counts, and the animfile's replacetexture targets. The universal UV density floor is not here: .claude/skills/blender-architecture-texturing/references/uv-density-floor.md.",
@@ -81,8 +81,8 @@
     "animfile": "korean_tc.xml"
    },
    "uv_gate": {
-    "path": "~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/gates/uv_gate.py",
-    "_doc": "INC-002 (2026-09-30): the owner-approved roof UV was dropped and S18k shipped. The lint runs the UV lineage gate (check uv_lineage): not ok = FAIL, gate missing = SKIP (exit 2, not cleared). Override the path on another device: config/tool-paths.local.json tools.uv_gate."
+    "path": "$AOP_KOREAN_REPO/research/Texturing_11/Claude_CP2/gates/uv_gate.py",
+    "_doc": "INC-002 (2026-09-30): the owner-approved roof UV was dropped and S18k shipped. The lint runs the UV lineage gate (check uv_lineage): not ok = FAIL, gate missing = SKIP (exit 2, not cleared). AOP_KOREAN_REPO comes from this device's local environment (scripts/tools/local_env.py); not set = SKIP."
    },
    "limits": {
     "max_vertices": 65535,

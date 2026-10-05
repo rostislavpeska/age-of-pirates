@@ -30,11 +30,14 @@ from pathlib import Path
 HOOK_DIR = Path(__file__).resolve().parent
 REPO = HOOK_DIR.parent.parent
 ENTRIES = HOOK_DIR / 'settings_entries.json'
-_TASKS = ('Documents', 'WORKSPACE', 'korean-buildings-blender', 'research', 'Texturing_11', 'Claude_CP2', 'tasks')
+_TOOLS = str(REPO / 'scripts' / 'tools')
 
 
 def tasks_dir():
-    return Path(os.environ.get('AOP_TASKS_DIR') or Path.home().joinpath(*_TASKS))
+    if _TOOLS not in sys.path:
+        sys.path.append(_TOOLS)
+    import local_env
+    return Path(local_env.tasks_dir())
 
 
 def log_path():

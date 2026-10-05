@@ -29,8 +29,7 @@ import re
 import sys
 from pathlib import Path
 
-PROFILE = Path(r"C:/Users/rosti/Games/Age of Empires 3 DE/76561199512878537"
-               r"/RandMaps/groupings")
+PROFILE = Path(__file__).resolve().parents[2].parents[2] / "RandMaps" / "groupings"   # <profile>/mods/local/<repo>
 REPO = Path(__file__).resolve().parents[2] / "game" / "randmaps" / "groupings"
 
 DONOR = "Trade Grouping PathBlocks"

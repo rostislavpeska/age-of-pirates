@@ -42,7 +42,7 @@ from pathlib import Path
 BLENDER_TOOL = 'mcp__blender__execute_blender_code'
 MONITOR_TOOL = 'Monitor'
 SHELL_TOOLS = ('Bash', 'PowerShell')
-_TASKS = ('Documents', 'WORKSPACE', 'korean-buildings-blender', 'research', 'Texturing_11', 'Claude_CP2', 'tasks')
+_TOOLS = str(Path(__file__).resolve().parents[2] / 'scripts' / 'tools')
 
 # R1: an image context on the line (an image datablock, a node's .image, or a variable named like one) + a repoint
 IMAGE_CTX = re.compile(r'images\s*[\[.]|\.image\b|\bimg\w*\b|\bimage\w*\b|\bim\b', re.I)
@@ -124,8 +124,12 @@ def utc_iso():
 
 
 def log_path():
-    tasks = Path(os.environ.get('AOP_TASKS_DIR') or Path.home().joinpath(*_TASKS))
-    return Path(os.environ.get('AOP_HARNESS_LOG') or (tasks / 'harness_log.jsonl'))
+    if os.environ.get('AOP_HARNESS_LOG'):
+        return Path(os.environ['AOP_HARNESS_LOG'])
+    if _TOOLS not in sys.path:
+        sys.path.append(_TOOLS)
+    import local_env
+    return Path(local_env.tasks_dir()) / 'harness_log.jsonl'
 
 
 def log(entry):

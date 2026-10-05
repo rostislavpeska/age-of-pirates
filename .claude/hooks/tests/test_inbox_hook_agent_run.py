@@ -12,8 +12,9 @@ from pathlib import Path
 import pytest
 
 HOOK = Path(__file__).resolve().parents[1] / 'inbox_hook.py'
-ENGINE = Path(os.environ.get('AOP_TASKS_DIR_SRC',
-                             Path.home() / 'Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/Claude_CP2/tasks'))
+sys.path.append(str(HOOK.parents[2] / 'scripts' / 'tools'))
+import local_env  # noqa: E402
+ENGINE = Path(os.environ.get('AOP_TASKS_DIR_SRC') or local_env.value('AOP_TASKS_DIR') or HOOK.parents[2] / 'no-engine')
 
 
 @pytest.fixture()
