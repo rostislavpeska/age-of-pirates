@@ -616,6 +616,13 @@ OWNER_FEATURES = {
         "rules": ["pirateForwardBaseWatch"],
         "functions": ["pirateForwardBasePoint"],
     },
+    "istanbul first dock from the starting dock builder": {
+        "quote": "'are we able to set up the rule so the dock builder builds the dock as the game started with NO "
+                 "guaranteed impact on anything else - later dock build in the game?!' + 'and also do the Istanbul AI "
+                 "change' (owner 2026-10-05)",
+        "rules": ["istanbulFirstDockBuilder"],
+        "functions": [],
+    },
 }
 
 

@@ -111,6 +111,17 @@ void main(void)
 
 	chooseMercs();
 
+	// ____________________ LOCAL MERCENARIES ____________________
+	// owner 2026-10-06: the War of Independence (1775-1783); Paris / Venice pattern, outlaws by rmEnableOutlaw
+	rmDisableDefaultMercs(true);
+	rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("MercJaeger", -1);              // Hessian Jaeger: Britain hired about 30,000 German troops
+	rmEnableMerc("MercHighlander", -1);          // the Highland regiments (Fraser's 71st, the Black Watch)
+	rmEnableMerc("deMercBrigadier", -1);         // Irish Brigadier: Dillon's Irish regiment, Savannah 1779 (French side)
+	rmEnableMerc("MercFusilier", -1);            // Rochambeau's French regulars (1780-81)
+	rmEnableOutlaw("deSaloonOwlhoot");           // American outlaws (owner: 'more American ... like Owlhoot, maybe Desperado')
+	rmEnableOutlaw("deSaloonDesperado");
+
 	rmSetOceanReveal(true);
 
 	// Corner constraint.
@@ -302,25 +313,33 @@ void main(void)
 	rmSetObjectDefMinDistance(loneSocketID4, 0.0);
 	rmSetObjectDefMaxDistance(loneSocketID4, 0.5);
 
+	// the harbour guard nuggets stay on walkable land (owner 2026-10-05: 'The nugget guarding the harbour is spawning
+	// sometimes directly in the water and such harbour can then NOT be captured'): 2 m off water and cliffs, and the ring
+	// reaches 12 m so a land spot always exists - a nugget that fails to place leaves its harbour uncapturable too
+	int harbourNuggetAvoidWater = rmCreateTerrainDistanceConstraint("harbour nugget avoid water", "Land", false, 2.0);
 	int loneNuggetID1=rmCreateObjectDef("nuggets to dock Trade Posts1");
 	rmAddObjectDefItem(loneNuggetID1, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(loneNuggetID1, 4.0);
-	rmSetObjectDefMaxDistance(loneNuggetID1, 6.0);
+	rmSetObjectDefMaxDistance(loneNuggetID1, 12.0);
+	rmAddObjectDefConstraint(loneNuggetID1, harbourNuggetAvoidWater);
 
 	int loneNuggetID2=rmCreateObjectDef("nuggets to dock Trade Posts2");
 	rmAddObjectDefItem(loneNuggetID2, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(loneNuggetID2, 4.0);
-	rmSetObjectDefMaxDistance(loneNuggetID2, 6.0);
+	rmSetObjectDefMaxDistance(loneNuggetID2, 12.0);
+	rmAddObjectDefConstraint(loneNuggetID2, harbourNuggetAvoidWater);
 
 	int loneNuggetID3=rmCreateObjectDef("nuggets to dock Trade Posts3");
 	rmAddObjectDefItem(loneNuggetID3, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(loneNuggetID3, 4.0);
-	rmSetObjectDefMaxDistance(loneNuggetID3, 6.0);
+	rmSetObjectDefMaxDistance(loneNuggetID3, 12.0);
+	rmAddObjectDefConstraint(loneNuggetID3, harbourNuggetAvoidWater);
 
 	int loneNuggetID4=rmCreateObjectDef("nuggets to dock Trade Posts4");
 	rmAddObjectDefItem(loneNuggetID4, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(loneNuggetID4, 4.0);
-	rmSetObjectDefMaxDistance(loneNuggetID4, 6.0);
+	rmSetObjectDefMaxDistance(loneNuggetID4, 12.0);
+	rmAddObjectDefConstraint(loneNuggetID4, harbourNuggetAvoidWater);
 
 	// River trade route - Elbe's route, flipped 180 degrees. It comes down the
 	// channel, runs a circuit around the gulf and goes back up the channel.

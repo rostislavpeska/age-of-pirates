@@ -54,7 +54,7 @@ C:\Users\[YourUsername]\Games\Age of Empires 3 DE\[YourSteamID]\mods\local\age-o
 **How to Find:**
 1. Open File Explorer
 2. Navigate to: `%USERPROFILE%\Games\Age of Empires 3 DE`
-3. Look for your Steam ID folder (numbers like `76561198347905238`)
+3. Look for your Steam ID folder (a 17-digit number starting `7656119`)
 4. Go to: `mods\local\age-of-pirates`
 5. Copy the full path
 
@@ -129,7 +129,7 @@ C:\Users\[YourUsername]\Games\Age of Empires 3 DE\[YourSteamID]\randmaps\groupin
 C:\Users\[YourUsername]\[path-to-repos]
 ```
 
-**Example:** `C:\Users\TIGO\source\repos` or `C:\Users\TIGO\GitHub`
+**Example:** `C:\Users\[YourUsername]\source\repos` or `C:\Users\[YourUsername]\GitHub`
 
 ---
 
@@ -140,13 +140,13 @@ C:\Users\[YourUsername]\[path-to-repos]
 | Variable | Example Path | Purpose |
 |----------|-------------|---------|
 | `<BASE_GAME_PATH>` | `C:\Program Files (x86)\Steam\steamapps\common\AoE3DE` | Base game installation |
-| `<MOD_WORKSPACE>` | `C:\Users\TIGO\Games\...\age-of-pirates` | Your mod workspace |
-| `<EXTRACTED_DATA_PATH>` | `C:\Users\TIGO\Desktop\data` | Fallback reference (data) |
-| `<EXTRACTED_ART_PATH>` | `C:\Users\TIGO\Desktop\art` | Fallback reference (art) |
-| `<EXTRACTED_SOUNDS_PATH>` | `C:\Users\TIGO\Desktop\sound` | Fallback reference (sounds) |
-| `<MODS_DIRECTORY>` | `C:\Users\TIGO\Games\...\mods` | All mods (for comparison) |
-| `<LOCAL_GROUPINGS_PATH>` | `C:\Users\TIGO\Games\...\randmaps\groupings` | Local groupings (reference only) |
-| `<SOURCE_REPOS_PATH>` | `C:\Users\TIGO\GitHub` | Cloned repositories |
+| `<MOD_WORKSPACE>` | `C:\Users\[YourUsername]\Games\...\age-of-pirates` | Your mod workspace |
+| `<EXTRACTED_DATA_PATH>` | `C:\Users\[YourUsername]\Desktop\data` | Fallback reference (data) |
+| `<EXTRACTED_ART_PATH>` | `C:\Users\[YourUsername]\Desktop\art` | Fallback reference (art) |
+| `<EXTRACTED_SOUNDS_PATH>` | `C:\Users\[YourUsername]\Desktop\sound` | Fallback reference (sounds) |
+| `<MODS_DIRECTORY>` | `C:\Users\[YourUsername]\Games\...\mods` | All mods (for comparison) |
+| `<LOCAL_GROUPINGS_PATH>` | `C:\Users\[YourUsername]\Games\...\randmaps\groupings` | Local groupings (reference only) |
+| `<SOURCE_REPOS_PATH>` | `C:\Users\[YourUsername]\GitHub` | Cloned repositories |
 
 ---
 
@@ -161,7 +161,7 @@ When you see paths like this in the guide:
 Replace with your actual paths:
 ```
 C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\scripts\source\waterbodies.xml
-C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238\mods\local\age-of-pirates\data\waterbodies2.xml
+C:\Users\[YourUsername]\Games\Age of Empires 3 DE\[YourSteamID]\mods\local\age-of-pirates\data\waterbodies2.xml
 ```
 
 ---

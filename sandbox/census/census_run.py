@@ -29,17 +29,12 @@ from census import census          # noqa: E402
 import census_judge                # noqa: E402
 
 def _scenario_dir() -> Path:
-    """The game profile's Scenario folder on THIS device: $AOE3DE_PROFILE, else the one profile under
-    ~/Games/Age of Empires 3 DE, else the original device's path (2026-10-01: the hard-coded TIGO path made every
-    save on another PC look missing)."""
+    """Explicit profile override, otherwise the profile containing this live mod."""
     import os
     env = os.environ.get("AOE3DE_PROFILE")
     if env:
         return Path(env) / "Scenario"
-    found = sorted(Path.home().glob("Games/Age of Empires 3 DE/[0-9]*/Scenario"))
-    if len(found) == 1:
-        return found[0]
-    return Path(r"C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238\Scenario")
+    return HERE.resolve().parents[1].parents[2] / "Scenario"
 
 
 SCEN_DIR = _scenario_dir()

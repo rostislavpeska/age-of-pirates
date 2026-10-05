@@ -1210,18 +1210,23 @@ def _density_module():
     return _VANILLA['density']
 
 
+def local_path(text):
+    """a profile path whose $VARIABLES come from this device's local environment (scripts/tools/local_env.py: the
+    environment, else config/aop.local.env) -> (Path, []) or (None, [the variables not set on this device])"""
+    if not text:
+        return None, []
+    tools = str(HERE.parent / 'tools')
+    if tools not in sys.path:
+        sys.path.append(tools)
+    import local_env
+    s, missing = local_env.expand(text)
+    return (None, missing) if missing else (Path(s), [])
+
+
 def owner_message_store(prof):
-    """the owner's message store the waiver quotes are checked against (config/tool-paths.local.json
-    tools.owner_messages, else the profile file's tools.owner_messages); None = waivers cannot count"""
-    local = HERE.parents[1] / 'config' / 'tool-paths.local.json'
-    try:
-        t = json.loads(local.read_text(encoding='utf-8')).get('tools', {}).get('owner_messages')
-        if t:
-            return Path(os.path.expanduser(t))
-    except (OSError, ValueError, AttributeError):
-        pass
-    t = (prof.get('_tools') or {}).get('owner_messages')
-    return Path(os.path.expanduser(t)) if t else None
+    """the owner's message store the waiver quotes are checked against: the profile file's tools.owner_messages
+    ($AOP_TASKS_DIR/tasks.json); None = waivers cannot count"""
+    return local_path((prof.get('_tools') or {}).get('owner_messages'))[0]
 
 
 def check_density(stage, info, mat_path, art_root, prof, model):
@@ -1263,36 +1268,24 @@ def resolve_profile(profiles, name):
 
 
 def find_tools(profiles):
-    """gr2_to_raw.py's folder: GR2_LINT_TOOLS, else config/tool-paths.local.json tools.gr2_to_raw_dir (this device,
-    ignored), else the profile file's home-relative default."""
+    """gr2_to_raw.py's folder: GR2_LINT_TOOLS, else the profile file's tools.gr2_to_raw_dir ($AOP_KOREAN_REPO/...);
+    None = not on this device (the dll_read check is SKIP)."""
     env = os.environ.get('GR2_LINT_TOOLS')
     if env:
         return Path(env)
-    local = HERE.parents[1] / 'config' / 'tool-paths.local.json'
-    try:
-        t = json.loads(local.read_text(encoding='utf-8')).get('tools', {}).get('gr2_to_raw_dir')
-        if t:
-            return Path(os.path.expanduser(t))
-    except (OSError, ValueError, AttributeError):
-        pass
-    t = profiles.get('tools', {}).get('gr2_to_raw_dir')
-    return Path(os.path.expanduser(t)) if t else None
+    return local_path(profiles.get('tools', {}).get('gr2_to_raw_dir'))[0]
 
 
 def uv_gate_path(profiles, prof):
-    """the profile's UV lineage gate (INC-002, AGENTS.md rule 13): config/tool-paths.local.json tools.uv_gate (this
-    device, ignored), else the profile's home-relative uv_gate.path. None = the profile has no UV gate."""
+    """the profile's UV lineage gate (INC-002, AGENTS.md rule 13): its uv_gate.path ($AOP_KOREAN_REPO/...). A variable
+    not set on this device gives a path that names it (check_uv_gate: SKIP). None = the profile has no UV gate."""
     g = prof.get('uv_gate')
     if not g:
         return None
-    local = HERE.parents[1] / 'config' / 'tool-paths.local.json'
-    try:
-        t = json.loads(local.read_text(encoding='utf-8')).get('tools', {}).get('uv_gate')
-        if t:
-            return Path(os.path.expanduser(t))
-    except (OSError, ValueError, AttributeError):
-        pass
-    return Path(os.path.expanduser(g['path'])) if g.get('path') else Path('(no uv_gate.path in the profile)')
+    if not g.get('path'):
+        return Path('(no uv_gate.path in the profile)')
+    p, missing = local_path(g['path'])
+    return p or Path('(%s not set on this device: python scripts/tools/local_env.py)' % ', '.join(missing))
 
 
 def check_uv_gate(path):

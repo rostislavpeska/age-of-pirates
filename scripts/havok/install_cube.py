@@ -1,8 +1,11 @@
-"""Install the test cube into the mod: art files, animfile, proto (zpTestCube cloned from zpSheriffOffice)."""
-import os, re, shutil
-MOD = r'C:\Users\rosti\Games\Age of Empires 3 DE\76561199512878537\mods\local\age-of-pirates'
-SRC = r'C:\Users\rosti\Downloads\Havok2018\cube'
-art = os.path.join(MOD, 'art', 'buildings', 'test_cube'); os.makedirs(art, exist_ok=True)
+"""Install the test cube into the mod: art files, animfile, proto (zpTestCube cloned from zpSheriffOffice).
+    python scripts/havok/install_cube.py <cube export folder>   (test_cube_damaged.gr2 + .hkt from the Havok export)"""
+import os, re, shutil, sys
+MOD = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if len(sys.argv) != 2:
+    sys.exit(__doc__)
+SRC = sys.argv[1]
+art =os.path.join(MOD, 'art', 'buildings', 'test_cube'); os.makedirs(art, exist_ok=True)
 
 # 1. models + physics + materials (material cloned from a prop that renders in-game)
 shutil.copyfile(os.path.join(SRC, 'test_cube_damaged.gr2'), os.path.join(art, 'test_cube_damaged.gr2'))

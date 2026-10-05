@@ -92,8 +92,13 @@ def projects_dir():
 
 
 def _tasks_dir():
-    return (Path.home() / 'Documents' / 'WORKSPACE' / 'korean-buildings-blender' / 'research' / 'Texturing_11'
-            / 'Claude_CP2' / 'tasks')
+    """scripts/tools/local_env.py: AOP_TASKS_DIR from the environment or config/aop.local.env; not set up on this
+    device -> <Claude config dir>/aop-tasks (ledger and log only: no tasks.json, so rule B has no P0 list)"""
+    tools = str(HOOK_DIR.parents[1] / 'scripts' / 'tools')
+    if tools not in sys.path:
+        sys.path.append(tools)
+    import local_env
+    return Path(local_env.tasks_dir())
 
 
 def tasks_path():

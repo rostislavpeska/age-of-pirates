@@ -30,8 +30,8 @@ as a Monitor command or a background Bash task, each line is one event.
 The check command runs every --every seconds (one argument = a Git Bash command line, several = an argv), bounded by
 a timeout; its state is ok / fail rc=N / timeout. The R9 port watchdog needs no command: --until-port-down 9876.
 
-Registry: <tasks>/watch/<id>.json ($AOP_TASKS_DIR, default ~/Documents/WORKSPACE/korean-buildings-blender/research/
-Texturing_11/Claude_CP2/tasks) = {id, task, run, pid, created, started, ttl_s, every_s, until, cmd, parent, session,
+Registry: <tasks>/watch/<id>.json (<tasks> = scripts/tools/local_env.py tasks_dir(): AOP_TASKS_DIR from the environment
+or config/aop.local.env) = {id, task, run, pid, created, started, ttl_s, every_s, until, cmd, parent, session,
 lease_job, last_tick, state}; written at start, removed on exit. A hard kill leaves it behind: readers see the dead pid
 (list: DEAD; stop --stale and turn_end_guard.py remove it). Readers judge an entry with stale_reason(): the same end
 conditions plus a dead pid. Refusals exit 2 (no --task, unknown or ended task, unbound run, ttl > 12h, nothing to
@@ -51,7 +51,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-_TASKS = ('Documents', 'WORKSPACE', 'korean-buildings-blender', 'research', 'Texturing_11', 'Claude_CP2', 'tasks')
+_TOOLS = str(Path(__file__).resolve().parents[2] / 'scripts' / 'tools')
 TTL_DEFAULT_S = 3 * 3600
 TTL_MAX_S = 12 * 3600
 EVERY_DEFAULT_S = 20.0
@@ -76,7 +76,10 @@ class Refused(Exception):
 
 # ------------------------------------------------------------------------------------------ paths, log, time
 def tasks_dir():
-    return Path(os.environ.get('AOP_TASKS_DIR') or Path.home().joinpath(*_TASKS))
+    if _TOOLS not in sys.path:
+        sys.path.append(_TOOLS)
+    import local_env
+    return Path(local_env.tasks_dir())
 
 
 def watch_dir():

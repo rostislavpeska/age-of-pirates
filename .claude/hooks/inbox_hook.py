@@ -12,8 +12,8 @@ Registered for PostToolUse (every tool) and SubagentStop. The store and the CLI 
 The agent -> task link: tasks/inbox/runs.json {workflow run id | agent id: task}; the workflow run id is a folder of
 the hook input's transcript_path (.../subagents/workflows/wf_XXXX/agent-*.jsonl). The reader is the agent id.
 Fails open: any internal error is logged to tasks/harness_log.jsonl and the action goes on. Prints nothing else.
-Task engine folder: $AOP_TASKS_DIR, default ~/Documents/WORKSPACE/korean-buildings-blender/research/Texturing_11/
-Claude_CP2/tasks (a missing folder = the hook does nothing). Unbound agents exit before json or the store is
+Task engine folder: AOP_TASKS_DIR from the environment or config/aop.local.env (scripts/tools/local_env.py; not set up
+on this device or a missing folder = the hook does nothing). Unbound agents exit before json or the store is
 imported: the cost is the Python start alone. The registered command skips Python entirely while runs.json binds
 nothing (a Git Bash check, see .claude/hooks/settings_entries.json); a runs.json not written for 24 h is emptied
 here (inbox.expire_bindings) so a forgotten binding cannot keep every call on the slow path.
@@ -23,11 +23,14 @@ import sys
 import time
 
 MAX_BLOCKS = 2          # SubagentStop blocks per reader; the next stop is let through as TECH_BLOCKED
-_DEFAULT = ('Documents', 'WORKSPACE', 'korean-buildings-blender', 'research', 'Texturing_11', 'Claude_CP2', 'tasks')
+_TOOLS = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'scripts', 'tools')
 
 
 def tasks_dir():
-    return os.environ.get('AOP_TASKS_DIR') or os.path.join(os.path.expanduser('~'), *_DEFAULT)
+    if _TOOLS not in sys.path:
+        sys.path.append(_TOOLS)
+    import local_env
+    return local_env.tasks_dir()
 
 
 def log(td, rec):

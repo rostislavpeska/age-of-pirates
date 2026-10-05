@@ -973,7 +973,7 @@ C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\scripts\source\waterbodies.
 ## My Local Paths
 
 - **BASE_GAME_PATH:** C:\Program Files (x86)\Steam\steamapps\common\AoE3DE
-- **MOD_WORKSPACE:** C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238\mods\local\age-of-pirates
+- **MOD_WORKSPACE:** C:\Users\<you>\Games\Age of Empires 3 DE\<steam id>\mods\local\age-of-pirates
 ```
 
 **For AI Assistants:**

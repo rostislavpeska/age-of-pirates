@@ -35,7 +35,7 @@ REPO = Path(__file__).resolve().parents[3]
 MAP = REPO / "randmaps" / "zpistanbulb.xs"
 ROOT_MAP = Path(r"C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/RandMaps/000_istanbul.xs")
 TRIGGERDATA = REPO / "data" / "trigger" / "triggerdata.xml"
-TRIGTEMP = Path(r"C:/Users/TIGO/Games/Age of Empires 3 DE/76561198347905238/Trigger/trigtemp.xs")
+TRIGTEMP = REPO.parents[2] / "Trigger" / "trigtemp.xs"             # <profile>/mods/local/age-of-pirates
 
 BEGIN = "// >>> GUN SOCKET CONVERSION LOCK BEGIN"
 END = "// <<< GUN SOCKET CONVERSION LOCK END"

@@ -335,6 +335,8 @@ minInterval 1
       // (istanbulLanding) and its gate (istanbulAmphibiousGate, 'a fixed gun must die first') were deleted by 570d65a2:
       // the stock landing runs ungated (run 14, 2026-09-25: stage 0 landings from 08:47).
       xsEnableRule("istanbulAreaRecalc");   // one-shot KB rebuild at ~90s
+      // the first dock from the starting Dock Builder (owner 2026-10-05); stands down by itself, docks 2+ stay stock
+      xsEnableRule("istanbulFirstDockBuilder");
    }
 
    // London %%%%%%%%%%%%%%%%%%%%%%%
@@ -8201,6 +8203,216 @@ minInterval 90
    kbAreaCalculate();
    aiEcho("AREARECALC p" + cMyID + " kbAreaCalculate re-run complete");
    xsDisableSelf();
+}
+
+//==============================================================================
+// istanbulFirstDockBuilder - the FIRST dock comes from the starting Dock Builder
+//
+// Owner 2026-10-05: 'are we able to set up the rule so the dock builder builds the dock as the game started with NO
+// guaranteed impact on anything else - later dock build in the game?!' + 'and also do the Istanbul AI change';
+// 2026-10-06: 'How can we make the dock build rule more reliable?'
+// The map floats one zpDockBuilder near every player's own water flag (zpistanbulb.xs placeWaterFlagInZone). The stock
+// siting aims a dock between the main base and the navy point (aibuildings.xs 1374), which fails on this coast
+// (AIDOCKFAIL, run 14: 12-15 failures per AI, one AI never got a dock). This rule makes the first dock plan itself, with
+// the boat as its builder: the stock wagon idiom (aibuildings.xs wagonMonitor) with the two dock points the
+// archipelago code sets (aiarchibelagoeconomy.xs 2684).
+// The aim (2026-10-06 game, 00:14): a plan aimed 25-36 m from the boat built its dock in 13-19 s; aimed 53-141 m
+// away (one ray toward the town) it vanished within 2 s. So: 16 rays from the boat, the NEAREST shore whose land
+// connects to the town (kbAreAreaGroupsPassableByLand, as at 1618), the water point 10 m off that shore; a vanished
+// plan is followed by the next-nearest shore, up to 5 tries.
+// No impact on anything else:
+//  - it stands down for good when a dock already exists, the stock already has a dock plan, or the boat is gone;
+//  - it never touches a stock rule or priority and never builds docks 2+ - those stay entirely stock;
+//  - 180 s after its first try it destroys its plan and stops, so the stock dock logic is never blocked (the stock
+//    placement-failure handler ignores docks, aibuildings.xs 123).
+//==============================================================================
+int gIstanbulFirstDockPlan = -1;
+int gIstanbulFirstDockTime = -1;
+int gIstanbulFirstDockTries = 0;
+float gIstanbulFirstDockLastDist = -1.0;
+
+// the 16 compass directions, 22.5 degrees apart - literal unit vectors, no trigonometry
+vector istanbulFirstDockDir(int i = 0)
+{
+   if (i == 1) { return (xsVectorSet(0.924, 0.0, 0.383)); }
+   if (i == 2) { return (xsVectorSet(0.707, 0.0, 0.707)); }
+   if (i == 3) { return (xsVectorSet(0.383, 0.0, 0.924)); }
+   if (i == 4) { return (xsVectorSet(0.0, 0.0, 1.0)); }
+   if (i == 5) { return (xsVectorSet(-0.383, 0.0, 0.924)); }
+   if (i == 6) { return (xsVectorSet(-0.707, 0.0, 0.707)); }
+   if (i == 7) { return (xsVectorSet(-0.924, 0.0, 0.383)); }
+   if (i == 8) { return (xsVectorSet(-1.0, 0.0, 0.0)); }
+   if (i == 9) { return (xsVectorSet(-0.924, 0.0, -0.383)); }
+   if (i == 10) { return (xsVectorSet(-0.707, 0.0, -0.707)); }
+   if (i == 11) { return (xsVectorSet(-0.383, 0.0, -0.924)); }
+   if (i == 12) { return (xsVectorSet(0.0, 0.0, -1.0)); }
+   if (i == 13) { return (xsVectorSet(0.383, 0.0, -0.924)); }
+   if (i == 14) { return (xsVectorSet(0.707, 0.0, -0.707)); }
+   if (i == 15) { return (xsVectorSet(0.924, 0.0, -0.383)); }
+   return (xsVectorSet(1.0, 0.0, 0.0));
+}
+
+rule istanbulFirstDockBuilder
+inactive
+minInterval 2
+{
+   int fdDocks = kbUnitCount(cMyID, gDockUnit, cUnitStateABQ);
+   int fdAge = 0;
+   int fdAnyPlan = -1;
+   int fdBoat = -1;
+   int fdTownGroup = -1;
+   int fdShoreGroup = -1;
+   int fdPlan = -1;
+   float fdLen = -1.0;
+   float fdBest = 9999.0;
+   vector fdBoatPos = cInvalidVector;
+   vector fdTown = cInvalidVector;
+   vector fdDir = cInvalidVector;
+   vector fdPos = cInvalidVector;
+   vector fdBestShore = cInvalidVector;
+   vector fdBestDir = cInvalidVector;
+   vector fdWater = cInvalidVector;
+
+   if (fdDocks > 0)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " dock stands after " + gIstanbulFirstDockTries + " tries - done");
+      xsDisableSelf();
+      return;
+   }
+
+   // a plan of ours is out: wait for it (180 s cap from the first try), or note that it vanished
+   if (gIstanbulFirstDockPlan >= 0)
+   {
+      if (aiPlanGetState(gIstanbulFirstDockPlan) != -1)
+      {
+         fdAge = xsGetTime() - gIstanbulFirstDockTime;
+         if (fdAge > 180000)
+         {
+            aiEcho("FIRSTDOCKB p" + cMyID + " no dock after 180 s - plan " + gIstanbulFirstDockPlan
+                   + " destroyed, the stock docks take over");
+            aiPlanDestroy(gIstanbulFirstDockPlan);
+            xsDisableSelf();
+         }
+         return;
+      }
+      aiEcho("FIRSTDOCKB p" + cMyID + " try " + gIstanbulFirstDockTries + " plan " + gIstanbulFirstDockPlan
+             + " gone without a dock");
+      gIstanbulFirstDockPlan = -1;
+   }
+
+   // stand down for good: the stock already plans a dock, the tries or the time are used up, the boat is gone
+   fdAnyPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+   if (fdAnyPlan >= 0)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " the stock plans a dock - stands down");
+      xsDisableSelf();
+      return;
+   }
+   if (gIstanbulFirstDockTries >= 5)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " 5 tries without a dock - the stock docks take over");
+      xsDisableSelf();
+      return;
+   }
+   if (gIstanbulFirstDockTime >= 0)
+   {
+      fdAge = xsGetTime() - gIstanbulFirstDockTime;
+      if (fdAge > 180000)
+      {
+         aiEcho("FIRSTDOCKB p" + cMyID + " 180 s used up - the stock docks take over");
+         xsDisableSelf();
+         return;
+      }
+   }
+   fdBoat = getUnit(cUnitTypezpDockBuilder, cMyID, cUnitStateAlive);
+   if (fdBoat < 0)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " no Dock Builder - stands down");
+      xsDisableSelf();
+      return;
+   }
+   fdBoatPos = kbUnitGetPosition(fdBoat);
+   fdTown = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (fdTown == cInvalidVector)
+   {
+      fdTown = kbGetPlayerStartingPosition(cMyID);
+   }
+   if (fdBoatPos == cInvalidVector || fdTown == cInvalidVector)
+   {
+      return;   // the base is not set up yet - next pass
+   }
+   fdTownGroup = kbAreaGroupGetIDByPosition(fdTown);
+
+   // 16 rays from the boat: the first point that is not water, up to 90 m; keep the nearest whose land connects to
+   // the town and that lies farther than the shore the last try used
+   for (fdRay = 0; < 16)
+   {
+      fdDir = istanbulFirstDockDir(fdRay);
+      fdPos = fdBoatPos;
+      fdLen = -1.0;
+      for (fdStep = 1; <= 90)
+      {
+         fdPos = fdPos + fdDir;
+         if (kbAreaGetType(kbAreaGetIDByPosition(fdPos)) != cAreaTypeWater)
+         {
+            fdLen = fdStep;
+            break;
+         }
+      }
+      if (fdLen < 0.0)
+      {
+         continue;   // open water this way
+      }
+      if (fdLen <= gIstanbulFirstDockLastDist)
+      {
+         continue;   // an earlier try used this distance
+      }
+      fdShoreGroup = kbAreaGroupGetIDByPosition(fdPos);
+      if (kbAreAreaGroupsPassableByLand(fdShoreGroup, fdTownGroup) == false)
+      {
+         continue;   // not our land: another island, the far bank, a cliff
+      }
+      if (fdLen < fdBest)
+      {
+         fdBest = fdLen;
+         fdBestShore = fdPos;
+         fdBestDir = fdDir;
+      }
+   }
+   if (fdBestShore == cInvalidVector)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " no shore of our land within 90 m of the boat after " + gIstanbulFirstDockTries
+             + " tries - the stock docks take over");
+      xsDisableSelf();
+      return;
+   }
+
+   // the water point 10 m off that shore, back along the ray (the boat itself when the shore is that close)
+   fdWater = fdBoatPos;
+   if (fdBest > 12.0)
+   {
+      fdWater = fdBestShore - fdBestDir * 10.0;
+   }
+
+   fdPlan = createSimpleBuildPlan(gDockUnit, 1, 75, true, -1, kbBaseGetMainID(cMyID), 0, -1, true);
+   if (fdPlan < 0)
+   {
+      return;   // building is off for now (cvOkToBuild) - next pass
+   }
+   aiPlanAddUnitType(fdPlan, cUnitTypezpDockBuilder, 1, 1, 1);
+   aiPlanAddUnit(fdPlan, fdBoat);
+   aiPlanSetVariableVector(fdPlan, cBuildPlanDockPlacementPoint, 0, fdBestShore);
+   aiPlanSetVariableVector(fdPlan, cBuildPlanDockPlacementPoint, 1, fdWater);
+   gIstanbulFirstDockPlan = fdPlan;
+   gIstanbulFirstDockTries = gIstanbulFirstDockTries + 1;
+   gIstanbulFirstDockLastDist = fdBest;
+   if (gIstanbulFirstDockTime < 0)
+   {
+      gIstanbulFirstDockTime = xsGetTime();
+   }
+   aiEcho("FIRSTDOCKB p" + cMyID + " try " + gIstanbulFirstDockTries + " plan " + fdPlan
+          + " boat " + xsVectorGetX(fdBoatPos) + "/" + xsVectorGetZ(fdBoatPos)
+          + " shore " + xsVectorGetX(fdBestShore) + "/" + xsVectorGetZ(fdBestShore) + " at " + fdBest + " m");
 }
 
 //==============================================================================

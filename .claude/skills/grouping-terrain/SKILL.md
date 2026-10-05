@@ -36,7 +36,7 @@ tiles on it and give you labels back. Regenerate after every edit so they can co
 ## 2. Edit by tile / metre, byte-preserving
 
 ```bash
-S=.claude/skills/grouping-terrain/scripts; U="C:/Users/TIGO/Games/Age of Empires 3 DE/76561198347905238/RandMaps/groupings"
+S=.claude/skills/grouping-terrain/scripts; U="$(cd ../../.. && pwd)/RandMaps/groupings"   # <profile>/RandMaps/groupings
 python $S/grouping_edit.py <file> list
 python $S/grouping_edit.py <file> cliff --from "ZP City" --to "ZP Bridge" --row z=-4 --x -13..-9 --also "$U"
 python $S/grouping_edit.py <file> cliff --from "ZP City" --to "ZP Bridge" --tiles "-11,-4 12,-4" --also "$U"

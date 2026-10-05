@@ -340,6 +340,7 @@ void placeWaterFlag(int p = -1, float x = 0.0, float z = 0.0)
 // one exact coordinate. maxDistance is 30 m, not 1 m: with a 1 m search
 // and no constraints a flag had to land on its literal spot or vanish.
 int gFlagOffLand = -1;
+int gFlagApart = -1;
 void placeWaterFlagInZone(int p = -1, int zone = -1)
 {
 	gFlagIdx = gFlagIdx + 1;
@@ -353,7 +354,24 @@ void placeWaterFlagInZone(int p = -1, int zone = -1)
 	// Only the land check - the zone already guarantees water and fort
 	// clearance for every cell inside it.
 	rmAddObjectDefConstraint(flag, gFlagOffLand);
+	rmAddObjectDefConstraint(flag, gFlagApart);   // owner 2026-10-06: the player flags 'avoid each other a bit'
 	rmPlaceObjectDefInArea(flag, p, zone, 1);
+
+	// the player's starting Dock Builder (owner 2026-10-05: 'on Istanbul we originally got Dock Builder unit as
+	// starting naval unit. I liked that'): its own def, 4-12 m off the flag and off land, placed AT the flag's
+	// read-back position - as a second item of the flag def placed in the zone it was dropped (2026-10-06 local
+	// test). The flags come after every trigger-referenced unit (UNIT IDS block), so no trigger id moves.
+	int flagUnit = rmGetUnitPlacedOfPlayer(flag, p);
+	if (flagUnit >= 0)
+	{
+		vector flagPos = rmGetUnitPosition(flagUnit);
+		int boat = rmCreateObjectDef("dock builder " + gFlagIdx);
+		rmAddObjectDefItem(boat, "zpDockBuilder", 1, 0.0);
+		rmSetObjectDefMinDistance(boat, 4.0);
+		rmSetObjectDefMaxDistance(boat, 12.0);
+		rmAddObjectDefConstraint(boat, gFlagOffLand);
+		rmPlaceObjectDefAtLoc(boat, p, rmXMetersToFraction(xsVectorGetX(flagPos)), rmZMetersToFraction(xsVectorGetZ(flagPos)));
+	}
 }
 
 void main(void)
@@ -744,6 +762,18 @@ void main(void)
 
 	// Full reveal from the start (zp_z_zparis.xs 122).
 	rmSetAllMapReveal(true);
+
+	// ____________________ LOCAL MERCENARIES ____________________
+	// owner 2026-10-05: Istanbul 1512 (Selim against Ahmed); Paris / Venice pattern, outlaws by rmEnableOutlaw
+	rmDisableDefaultMercs(true);
+	rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("deMercBosniak", -1);             // Bosnian cavalry (Ottoman since 1463)
+	rmEnableMerc("MercStradiot", -1);              // the Balkan light horse
+	rmEnableMerc("MercMameluke", -1);              // the Mamluk rival, conquered by Selim in 1517
+	rmEnableMerc("deMercZenata", -1);              // the Maghreb's Berber horsemen: Algiers Ottoman from 1519, the Zenata kingdom of Tlemcen from 1554
+	rmEnableMerc("MercGreatCannon", -1);           // the Ottoman great bombards
+	rmEnableOutlaw("deSaloonHajduk");              // the Balkan brigands of the Ottoman frontier
+	rmEnableOutlaw("deAllegianceBarbaryMarksman"); // the corsair sharpshooter
 
 	rmForbidTradeMonopoly(true);
 
@@ -4121,6 +4151,7 @@ void main(void)
 	//  flags that spawn inside them.
 	// ====================================================================
 	gFlagOffLand = rmCreateTerrainDistanceConstraint("flags off land", "land", true, 4.0);
+	gFlagApart = rmCreateTypeDistanceConstraint("water flags apart", "HomeCityWaterSpawnFlag", 15.0);
 	int zoneOffLand = rmCreateTerrainDistanceConstraint("flag zone off land", "land", true, 1.0);
 	int zoneOffFort = rmCreateClassDistanceConstraint("flag zone off naval forts",
 		rmClassID("classNavalFort"), 40.0);
@@ -4382,7 +4413,9 @@ void main(void)
 	// Phanar is always on this map - flipRoy (1763) only picks which island.
 	// Trigger name carries no spaces, per the law at 2864.
 	int ep = 0;
-	for (ep = 1; <= cNumberNonGaiaPlayers)
+	// players 0..N - gaia included (owner 2026-10-05 'Phanar Academy - yes!'): the SetName on deSocketPhanar shows
+	// only in its owner's data, and the Houses of Phanar socket is gaia's (London's setup loop, zplondon.xs 2943)
+	for (ep = 0; <= cNumberNonGaiaPlayers)
 	{
 		rmCreateTrigger("ExtendedPhanar"+ep);
 		rmSwitchToTrigger(rmTriggerID("ExtendedPhanar"+ep));

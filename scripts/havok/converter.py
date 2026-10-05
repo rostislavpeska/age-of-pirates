@@ -11,8 +11,8 @@ The output always lands next to the input with the target extension.
 
 Backend = scripts/havok/converter.local.json (gitignored; copy converter.example.json) or the env var AOE3_CONVERTER
 (same JSON). Backends:
-    wine-wsl  : the exe under Wine inside a WSL distro (this PC: Smart App Control blocks the exe on the host;
-                setup guide = the gitignored gxo-convert skill, master copy in OneDrive "DE Converter\claude-skills")
+    wine-wsl  : the exe under Wine inside a WSL distro (a PC where Smart App Control blocks the exe on the host;
+                setup guide = the gitignored gxo-convert skill, master copy in OneDrive "DE Converter/claude-skills")
     native    : run the exe directly (a PC where it is allowed to run)
     command   : any shell template with {exe} {opts} {file} {dir} placeholders (other tool, wrapper, remote)
     manual    : print what to convert and wait for the output file (GUI drag-and-drop, 3ds Max / Blender plugin, web tool)

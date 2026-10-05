@@ -21,8 +21,9 @@ HOOKS = Path(__file__).resolve().parents[1]
 REPO = HOOKS.parent.parent
 ENTRIES = json.loads((HOOKS / 'settings_entries.json').read_text(encoding='utf-8'))
 CODEX = json.loads((REPO / '.codex' / 'hooks.json').read_text(encoding='utf-8'))
-ENGINE = Path.home() / 'Documents' / 'WORKSPACE' / 'korean-buildings-blender' / 'research' / 'Texturing_11' / \
-    'Claude_CP2' / 'tasks'
+sys.path.append(str(REPO / 'scripts' / 'tools'))
+import local_env  # noqa: E402
+ENGINE = Path(local_env.value('AOP_TASKS_DIR') or REPO / 'no-task-engine')     # this device's real store: read only
 RUN, TASK = 'wf_cmdtest0-001', 'T-1'
 
 
@@ -119,6 +120,23 @@ def test_inbox_command_starts_python_only_when_something_is_bound(tmp_path):
     assert bash_run(cmd('PostToolUse'), payload(), env).returncode == 0 and not marker.exists()      # nothing bound
     (td / 'inbox' / 'runs.json').write_text('{"%s": "%s"}\n' % (RUN, TASK), encoding='utf-8')
     assert bash_run(cmd('PostToolUse'), payload(), env).returncode == 0 and marker.exists()          # bound: Python
+
+
+def test_inbox_command_finds_the_store_in_the_local_env_file(tmp_path):
+    """no AOP_TASKS_DIR in the environment: the store comes from <project>/config/aop.local.env (bash builtins, CRLF
+    tolerated, other keys and comments skipped); the environment variable still wins over the file"""
+    proj, marker = stub_project(tmp_path)
+    td = tmp_path / 'tasks'
+    (td / 'inbox').mkdir(parents=True)
+    (td / 'inbox' / 'runs.json').write_text('{"%s": "%s"}\n' % (RUN, TASK), encoding='utf-8')
+    env = {'CLAUDE_PROJECT_DIR': str(proj), 'AOP_TASKS_DIR': ''}
+    assert bash_run(cmd('PostToolUse'), payload(), env).returncode == 0 and not marker.exists()      # no env file
+    (proj / 'config').mkdir()
+    (proj / 'config' / 'aop.local.env').write_bytes(
+        ('# comment\r\nAOP_KOREAN_REPO=%s\r\n\r\nAOP_TASKS_DIR=%s' % (tmp_path.as_posix(), td.as_posix())).encode())
+    other = {**env, 'AOP_TASKS_DIR': str(tmp_path / 'elsewhere')}
+    assert bash_run(cmd('PostToolUse'), payload(), other).returncode == 0 and not marker.exists()    # env wins
+    assert bash_run(cmd('PostToolUse'), payload(), env).returncode == 0 and marker.exists()          # file: Python
 
 
 def test_unbound_path_costs_the_bash_start_only(tmp_path):

@@ -5,9 +5,10 @@ description: Generate a random map in the live Scenario Editor and photograph it
 
 # map-minimap: see the terrain before testing it
 
-> **Device note (2026-09-17):** `load_map.py`, `gamectl.py` and `pw.py` below live in
-> `C:\Users\rosti\aop_harness\aitest` on the OTHER machine and are not in this repo. On the TIGO
-> machine (2560x1080 sheet) the same generate -> screenshot -> save loop is
+> **Device note:** `load_map.py`, `gamectl.py` and `pw.py` below live in the aitest harness, which
+> is not in this repo and only some devices have: `AOP_AITEST_DIR` of the device's local environment
+> (`python scripts/tools/local_env.py get AOP_AITEST_DIR`). Where it is absent (2560x1080 sheet), the
+> same generate -> screenshot -> save loop is
 > `sandbox/census/census_run.py` (recipes) and `sandbox/census/bench_run.py` (one map, `--peek`
 > for the dropdown row); both use `sandbox/census/game_driver.py`'s calibrated client coordinates.
 > Skills: rm-unit-bench, rm-census.
@@ -17,7 +18,7 @@ the one check a simulator cannot do. Run it before spending an hour of play
 test on a map edit.
 
 ```bash
-cd C:/Users/rosti/aop_harness/aitest
+cd "$(python scripts/tools/local_env.py get AOP_AITEST_DIR)"
 python -u load_map.py --row 8 --seed 4242
 ```
 

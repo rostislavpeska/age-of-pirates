@@ -17,7 +17,8 @@ session, never as a default step. Everything a driver would do can be printed fi
 | Saved scenario | every placed unit with proto and position in INDEX order: ground truth for spawns and for the indices triggers name | `<profile>\Scenario\<name>.age3Yscn` (editor Save As); drivers copy it under `sandbox/census/samples/` | `python sandbox/census/census.py <save> [--full]` |
 | Screenshot | RENDER only: a unit can be placed and never render (LF-only animfile, missing texture, wrong variation) | `sandbox/census/samples/bench/` or `samples/regen/` | the Read tool |
 
-`<profile>` = `C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238`.
+`<profile>` = the folder three levels above this repo, on every device: the repo sits at
+`<profile>\mods\local\age-of-pirates`.
 
 ```bash
 python sandbox/census/census.py "<profile>\Scenario\<save>.age3Yscn"          # per-proto counts

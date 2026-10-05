@@ -18,7 +18,5 @@ line here says where it went. Newest first.
 - `data/mapspecifictechmods.xml` has the `caribbeanwater` block twice (also noted in `docs/trade_routes_guide.md`).
 - `scripts/tools/unitbench.py` pre-flight P3 exempts only `.pkfx` particles, so a vanilla `.particle` reference
   (the Mortar's `smoke_puff.particle`) fails as a missing `.gr2`.
-- `scripts/mapcheck/xs_scope_check.py` hardcodes another device's profile (`C:\Users\TIGO\...`) for its engine dump;
-  on this PC it needs `--dump`.
 - `scripts/source/techtreey.xml` and `protoy.xml` are older than the current patch (no `deMapArctic`,
   `DENativeInuit`, whaler on the Dock); refresh them with `bartool extract ... --in-repo`.

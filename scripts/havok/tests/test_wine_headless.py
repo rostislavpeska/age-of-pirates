@@ -9,20 +9,23 @@ before it in the same file, both
     WINEDLLOVERRIDES=winedbg.exe=d     no winedbg crash dialog
 An intentional GUI launch carries `wine-headless: exempt - <reason>` on the line or the one above (gxo_wine.sh gui).
 Scanned: this repo's scripts/ and .claude/skills/, and the workspace tool folders (Export_CP1, Destruction_S18k/tools;
-$KBB_RESEARCH or the owner's default path). A finding in a Codex-owned folder is reported to Codex as a task, never
-fixed from here.
+$KBB_RESEARCH or $AOP_KOREAN_REPO/research of this device's local environment). A finding in a Codex-owned folder is
+reported to Codex as a task, never fixed from here.
 """
 from __future__ import annotations
 
 import os
 import re
+import sys
 from pathlib import Path
 
 import pytest
 
 REPO = Path(__file__).resolve().parents[3]
-RESEARCH = Path(os.environ.get("KBB_RESEARCH") or
-                Path.home() / "Documents" / "WORKSPACE" / "korean-buildings-blender" / "research")
+sys.path.append(str(REPO / "scripts" / "tools"))
+import local_env  # noqa: E402
+_KOREAN = local_env.value("AOP_KOREAN_REPO")
+RESEARCH = Path(os.environ.get("KBB_RESEARCH") or (Path(_KOREAN) / "research" if _KOREAN else REPO / "no-korean-repo"))
 EXTS = {".py", ".sh", ".bat", ".cmd", ".ps1"}
 WINDOW = 15
 SKIP_DIRS = {"__pycache__", ".venv", "node_modules", ".git"}
@@ -153,7 +156,11 @@ def test_deployed_converter_scripts_match_the_template():
     .claude/skills/gxo-convert/templates by `gxo.py --deploy`. A copy that differs from the (scanned) template is
     unscanned code: redeploy when no conversion is running."""
     import importlib.util
-    spec = importlib.util.spec_from_file_location("gxo_cli", REPO / ".claude/skills/gxo-convert/scripts/gxo.py")
+    cli = REPO / ".claude/skills/gxo-convert/scripts/gxo.py"
+    if not cli.is_file():
+        pytest.skip("the gxo-convert skill is not installed on this device (owner's devices: python "
+                    "scripts/tools/local_env.py)")
+    spec = importlib.util.spec_from_file_location("gxo_cli", cli)
     g = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(g)
     live = Path(os.environ.get("GXO_CONVERTER_DIR") or g.CONVERTER_DIR) / "wine"

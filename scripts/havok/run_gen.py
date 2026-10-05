@@ -1,11 +1,17 @@
-"""Launch the game (harness), open the Scenario Editor, generate 000_hkt_test, capture."""
+"""Launch the game (harness), open the Scenario Editor, generate 000_hkt_test, capture.
+Needs the aitest harness: AOP_AITEST_DIR of this device's local environment (scripts/tools/local_env.py)."""
 import os, sys, time, subprocess
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, r'C:\Users\rosti\aop_harness\aitest')
-os.chdir(r'C:\Users\rosti\aop_harness\aitest')
+sys.path.append(os.path.join(os.path.dirname(HERE), 'tools'))
+import local_env
+AITEST = local_env.value('AOP_AITEST_DIR')
+if not AITEST:
+    sys.exit('the aitest harness is not on this device (AOP_AITEST_DIR in config/aop.local.env)')
+sys.path.insert(0, AITEST)
+os.chdir(AITEST)
 import gamectl, pw
-S = r'C:\Users\rosti\aop_harness\aitest\editor_shots'
+S = os.path.join(AITEST, 'editor_shots')
 
 def alive():
     return 'AoE3DE_s.exe' in subprocess.run(['tasklist', '/FI', 'IMAGENAME eq AoE3DE_s.exe'], capture_output=True, text=True).stdout
