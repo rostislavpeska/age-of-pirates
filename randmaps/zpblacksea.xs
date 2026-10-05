@@ -748,23 +748,30 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourID3, 0.0);
   	rmSetObjectDefMaxDistance(harbourID3, 0.5);
 
+	// the harbour guard nuggets stay on walkable land (owner 2026-10-05: 'The nugget guarding the harbour is spawning
+	// sometimes directly in the water and such harbour can then NOT be captured'): 2 m off water and cliffs, and the ring
+	// reaches 12 m so a land spot always exists - a nugget that fails to place leaves its harbour uncapturable too
+	int harbourNuggetAvoidWater = rmCreateTerrainDistanceConstraint("harbour nugget avoid water", "Land", false, 2.0);
 	int nuggetID1=rmCreateObjectDef("nuggets to dock Trade Posts1");
 	rmSetObjectDefTradeRouteID(nuggetID1, tradeRouteID);
 	rmAddObjectDefItem(nuggetID1, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nuggetID1, 4.0);
-  	rmSetObjectDefMaxDistance(nuggetID1, 6.0);
+  	rmSetObjectDefMaxDistance(nuggetID1, 12.0);
+	rmAddObjectDefConstraint(nuggetID1, harbourNuggetAvoidWater);
 
 	int nuggetID2=rmCreateObjectDef("nuggets to dock Trade Posts2");
 	rmSetObjectDefTradeRouteID(nuggetID2, tradeRouteID);
 	rmAddObjectDefItem(nuggetID2, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nuggetID2, 4.0);
-  	rmSetObjectDefMaxDistance(nuggetID2, 6.0);
+  	rmSetObjectDefMaxDistance(nuggetID2, 12.0);
+	rmAddObjectDefConstraint(nuggetID2, harbourNuggetAvoidWater);
 
 	int nuggetID3=rmCreateObjectDef("nuggets to dock Trade Posts3");
 	rmSetObjectDefTradeRouteID(nuggetID3, tradeRouteID);
 	rmAddObjectDefItem(nuggetID3, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nuggetID3, 4.0);
-  	rmSetObjectDefMaxDistance(nuggetID3, 6.0);
+  	rmSetObjectDefMaxDistance(nuggetID3, 12.0);
+	rmAddObjectDefConstraint(nuggetID3, harbourNuggetAvoidWater);
 
 	rmSetNuggetDifficulty(511, 511);
 
