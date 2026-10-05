@@ -555,6 +555,63 @@ def check_flag(stage, info, prof):
              tip=round(ms['tip'], 4))
 
 
+def check_rest_bounds(stage, info, intact, prof):
+    """INC-071: reject pre-displaced fracture geometry, before Havok runs."""
+    p, q = render_positions(info), render_positions(intact)
+    if not len(p) or not len(q):
+        return R(stage, 'assembled_rest_bounds', False, 'missing render geometry')
+    delta = float(np.abs(np.array([p.min(0), p.max(0)]) - np.array([q.min(0), q.max(0)])).max())
+    tol = prof['rest_contract'].get('bounds_tolerance_m', 0.02)
+    return R(stage, 'assembled_rest_bounds', delta <= tol,
+             f'intact/damaged maximum bound difference {delta:.6f} m; limit {tol}', delta_m=delta)
+
+
+def check_ground_supports(stage, info, prof):
+    """Probe declared structural feet; a fence touching zero cannot prove grounding."""
+    p = render_positions(info)
+    rows = []
+    for support in prof['rest_contract'].get('ground_supports', []):
+        lo, hi = np.array(support['xz_min']), np.array(support['xz_max'])
+        within = np.all((p[:, [0, 2]] >= lo - 1e-5) & (p[:, [0, 2]] <= hi + 1e-5), axis=1)
+        cloud = p[within]
+        y = float(cloud[:, 1].min()) if len(cloud) else None
+        target = support.get('ground_y', 0.0)
+        ok = y is not None and abs(y - target) <= support.get('tolerance_m', 0.01)
+        rows.append(dict(name=support['name'], min_y=y, target_y=target, ok=ok))
+    return [R(stage, 'structural_ground_contact', all(x['ok'] for x in rows),
+              f"{sum(x['ok'] for x in rows)}/{len(rows)} structural feet grounded", supports=rows)] if rows else []
+
+
+def check_physical_mounts(stage, info, prof):
+    """Explicit donor-specific supports; no universal TC mast/garrison assumption."""
+    wp = world_pos(info)
+    results = []
+    for mount in prof['physical_mounts']:
+        name = mount['bone']
+        point = np.asarray(mount['position'], float)
+        clouds = []
+        for mesh in info['render']:
+            pos = mesh['pos']
+            if stage == 'damaged':
+                ids = [i for i, n in enumerate(mesh['bone_names']) if n == mount['body']]
+                pos = pos[np.isin(mesh['bone'], ids)]
+            clouds.extend(pos)
+        points = np.asarray(clouds, float).reshape(-1, 3)
+        axis = np.linalg.norm(points[:, [0, 2]] - point[[0, 2]], axis=1)
+        # Require actual mesh rings at BOTH ends of a continuous-height mast scope.
+        near = points[axis <= mount.get('radius_m', .09)]
+        bottom, top = mount['bottom_y'], mount['top_y']
+        rings = bool(len(near) and np.any(abs(near[:, 1] - bottom) < .02)
+                     and np.any(abs(near[:, 1] - top) < .02))
+        bone_ok = name in wp and np.max(abs(wp[name] - point)) < .01
+        body_ok = stage != 'damaged' or bool(len(points) and axis.max() < mount.get('assembly_radius_m', .65))
+        ok = bone_ok and rings and body_ok and bottom < point[1] < top
+        results.append(R(stage, 'physical_mount', ok,
+                         f'{name}: bone={bone_ok}, support-end-rings={rings}, reserved-body={body_ok}',
+                         bone=name, mounting_position=point.tolist(), points=len(points)))
+    return results
+
+
 def check_bone_set(stage, info, allowed):
     names = [b['name'] for b in info['bones']]
     extra = [n for n in names if n not in allowed]
@@ -1034,7 +1091,13 @@ def class_confirmation(entry, cls, prof, model, store=None):
     text = st.text(who)
     if text is None:
         return False, f'confirmed_by {who} is not an owner message in {Path(store).name}'
-    if not _names_in(text, [cls]):
+    # INC-066: the owner can specify the exact single-page ceiling instead of
+    # the class label. Keep this equivalence narrow; model relevance below and
+    # the measured texture ceiling/density checks still apply independently.
+    single_2048 = (cls == 'small' and
+                   re.search(r'\beach (?:one|model|building)\s+(?:1\s*[xX]\s*)?2048\b', str(text), re.I) and
+                   not re.search(r'\b(?:4096|8192)\b|2048\s*\+|\b(?:two|2)\s+(?:maps|pages|atlases)\b|\?', str(text), re.I))
+    if not _names_in(text, [cls]) and not single_2048:
         return False, f'owner message {who} does not name the class {cls}: "{str(text)[:80]}"'
     names = list(entry.get('names') or prof.get('names') or []) + [model, str(model).replace('_', ' ')]
     if not _names_in(text, names):
@@ -1295,6 +1358,13 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             results += [check_crc(stage, info), check_dll(stage, dll)]
             results += check_limits(stage, info, prof)
             results.append(check_tangents(stage, info))
+            if prof.get('rest_contract'):
+                results += check_ground_supports(stage, info, prof)
+                if stage == 'damaged':
+                    results.append(check_rest_bounds(stage, info, infos['intact'], prof) if 'intact' in infos
+                                   else R(stage, 'assembled_rest_bounds', None, 'no intact model given'))
+            if prof.get('physical_mounts'):
+                results += check_physical_mounts(stage, info, prof)
             if 'orientation' in prof:                         # building-specific facts: a generic profile has none
                 results.append(check_orientation(stage, info, prof))
             if 'handedness' in prof:

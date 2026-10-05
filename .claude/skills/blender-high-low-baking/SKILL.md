@@ -4,6 +4,12 @@ description: Authors and validates high-poly to low-poly architectural normal/AO
 ---
 # Architectural high/low baking
 
+Use the workflow's [bake dependency table](../blender-uv-workflow/references/bakes-and-recovery.md)
+to distinguish measurement AO, pilots, reusable masters and runtime bakes. Masters
+may precede final packing after the relevant geometry/detail contract is stable;
+their finite source density, coverage and derive error must pass existing tests.
+Do not rebake every region when only one region's dependencies changed.
+
 Use the installed Blender through the verified connection. Read the sibling
 `blender-architecture` and `blender-architecture-texturing` prerequisites; preserve
 the current document and manual edits. Keep source meshes and baked images outside

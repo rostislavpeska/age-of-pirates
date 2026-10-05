@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/asian-building-research.md",
+    "references/asian-roof-normal-evidence.md",
+    "references/asian-surface-visibility-evidence.md",
+    "references/asian-uv-atlas-evidence.md",
+    "references/rig-export.md",
+    "references/textures-xml.md"
+  ],
+  "skills": [
+    "aoe-xml",
+    "aoe3de-building-export",
+    "aoe3de-destructible-building",
+    "aoe3de-player-colour",
+    "aoe3de-reference",
+    "blender-architecture",
+    "blender-architecture-texturing",
+    "blender-high-low-baking",
+    "blender-uv-workflow",
+    "game-startup",
+    "havok-destruction",
+    "korean-architecture",
+    "mod-deploy-check",
+    "substance-painter-remote",
+    "unit-bones"
+  ],
+  "external": [
+    {
+      "id": "aop-project-tools",
+      "kind": "capability",
+      "requiredFor": [
+        "export",
+        "lint",
+        "runtime-xml"
+      ],
+      "optional": false,
+      "note": "The AoP consumer repository supplies scripts/havok (lint profiles, GR2 reader, DDT writer and configured converter) and scripts/tools/check_art_eol.py. Converter paths stay in ignored consumer configuration. Run from that repository; these are not bundled generic skill helpers."
+    }
+  ]
+}

@@ -5,6 +5,18 @@ description: FOUNDATION (in progress) - turn conjoined, AO-separated UV families
 
 # Final UV atlas: pages at one density (foundation)
 
+Enter only after the shared workflow's [sharing and AO checkpoints](../blender-uv-workflow/SKILL.md).
+Declare the runtime ceiling early; do not enforce atlas fit on the clean worksheet.
+The material-priority recipes below describe the tested TC profile. The
+`pages.military_2048` adapter supplies one fixed 2048 page, explicit runtime gutter,
+and a bounded scale search that refuses to go below `min_scale`. Derive that minimum
+from measured working densities, not a nominal target. Fixture-tested packing
+support is not proof that the real Military models fit; their emitted meshes must
+still pass density, overlap, source-detail and mip checks. No implicit extra page
+or density reduction. Four texels is not a universal low-mip padding guarantee:
+inspect compressed mip levels for the target profile. Save the checker once and
+load identical pixels for comparisons. Packing cannot certify source detail.
+
 Pipeline: [blender-clean-uv](../blender-clean-uv/SKILL.md) -> [blender-uv-conjoin](../blender-uv-conjoin/SKILL.md)
 -> [blender-uv-ao-separation](../blender-uv-ao-separation/SKILL.md) -> **this skill** ->
 [aoe3de-building-export](../aoe3de-building-export/SKILL.md) (GR2, materials, DDT).
@@ -66,8 +78,8 @@ of the visible area sat at 15 texels/unit - always measure the p10, not only the
 - Export handoff: GR2 conversion and AoE3DE `.material` files per page, DDT formats
   (DXT5 for the alpha page, DXT1 otherwise), mip settings - via aoe3de-building-export.
 - Exact-shape packing (nesting into concavities) to raise fill above ~75%.
-- Normal/colour texture authoring on the pages; page sizes other than 2048 + 1024.
+- Normal/colour texture authoring on the pages; real-model validation of the one-page Military profile.
 
 ## Tools
 
-`scripts/pages.py` - `assign_pages`, `best_split` (bisection on s), `emit`.
+`scripts/pages.py` - `assign_pages`, `best_split` (bisection on s), `emit`, `military_2048`.

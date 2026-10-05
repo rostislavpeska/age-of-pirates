@@ -67,6 +67,6 @@ UV freeze while the floor fails. Measure after the final pack, on the runtime pa
 
 The same rule runs in more places:
 
-- **At export:** the consuming engine's gate. In Age of Pirates this is `scripts/havok/gr2_lint.py`, check
+- **At export:** the consuming engine's gate. In Age of Pirates this is `<consumer-root>/scripts/havok/gr2_lint.py`, check
   `texel_density`, on the intact and the damaged model.
 - **In a version registry:** for example, the UV lineage gate's check e.

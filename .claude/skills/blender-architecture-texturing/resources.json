@@ -2,36 +2,37 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
+    "references/chart-joining.md",
+    "references/handoff-contract.md",
     "references/painter-mcp.md",
+    "references/pipeline-order.md",
     "references/regions-density.md",
     "references/sources-seamless.md",
     "references/uv-ao.md",
-    "scripts/check_tile.py",
-    "scripts/validate_uv.py",
-    "references/chart-joining.md",
-    "references/pipeline-order.md",
-    "references/handoff-contract.md",
-    "scripts/handoff.py",
-    "scripts/uv_metrics.py",
-    "scripts/test_uv_metrics.py",
-    "scripts/blender_uv_layout.py",
-    "scripts/blender_hybrid_uv.py",
-    "scripts/blender_ao_review.py",
-    "scripts/ao_chart_constraints.py",
-    "references/uv-density-floor.md",
     "references/uv-density-floor.json",
+    "references/uv-density-floor.md",
+    "scripts/ao_chart_constraints.py",
+    "scripts/blender_ao_review.py",
+    "scripts/blender_hybrid_uv.py",
+    "scripts/blender_uv_layout.py",
+    "scripts/check_tile.py",
     "scripts/density_floor.py",
-    "scripts/test_density_floor.py"
+    "scripts/handoff.py",
+    "scripts/test_density_floor.py",
+    "scripts/test_uv_metrics.py",
+    "scripts/uv_metrics.py",
+    "scripts/validate_uv.py"
   ],
   "skills": [
-    "skill-library-audit",
-    "blender-high-low-baking",
+    "aoe-uv-atlas-export",
     "blender-clean-uv",
-    "blender-uv-reuse",
     "blender-hidden-surfaces",
-    "blender-uv-conjoin",
+    "blender-high-low-baking",
     "blender-uv-ao-separation",
-    "aoe-uv-atlas-export"
+    "blender-uv-conjoin",
+    "blender-uv-reuse",
+    "blender-uv-workflow",
+    "skill-library-audit"
   ],
   "external": [
     {
@@ -111,6 +112,19 @@
       ],
       "optional": false,
       "note": "Only for the selected Painter workflow; inspect project, texture sets and integration capabilities."
+    },
+    {
+      "id": "project-lint-adapter",
+      "kind": "capability",
+      "modules": [
+        "gr2_lint"
+      ],
+      "requiredFor": [
+        "final-uv-handoff",
+        "gr2-density"
+      ],
+      "optional": false,
+      "note": "The consuming project supplies its model lint, owner-message store and profile ceilings. For AoP these live under scripts/havok beside gr2_lint.py. UV-faces measurements do not need this adapter; final AoP handoff does."
     }
   ]
 }

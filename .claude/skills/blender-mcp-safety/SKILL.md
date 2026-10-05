@@ -55,3 +55,19 @@ agent that drives it through the MCP keeps one shared log: `CRASH_LOG.jsonl` in 
 - See `references/research.md` for the full investigation behind R7/R8: the add-on's
   server code read line-by-line, the upstream GitHub issues it matches, and the proposed
   (not applied) watchdog-timer and env-var-gated-autostart fixes.
+
+## Lost replies and operation identity
+
+Before each live mutation use `mcp_log.py before --operation <unique-id> ...`.
+Finish with `after --operation <id> --ok --evidence <readback>` or
+`--error <reason>`. A timeout uses `--unknown <reason>`; inspect
+`status --operation <id>` and durable output before repeating anything. IDs
+separate interleaved agent logs. This is a command journal, not an execution lock
+or proof that a caller's success claim is true. The publication/readback validator
+must establish the result. Legacy uncorrelated after-events are labeled as such.
+
+An open MCP port is not command health. Never repeat append, save or bake merely
+because a reply was lost. Saved-file verification does not certify an unsaved live
+scene or its loaded images. Keep the existing source and accepted revision intact.
+Set `AOP_BLENDER_LOG` to a session log location when appropriate; CRASH_LOG.jsonl
+is private runtime history and must not be included in public skill exports.

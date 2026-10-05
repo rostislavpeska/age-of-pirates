@@ -43,6 +43,26 @@ is the first thing to read.
    panel re-reads compiled data (fresh .xmb needed - Resource Manager);
    art/xml changes need this full process restart, AI .xs never does.
 
+## Requested Scenario Editor playtest (verified 2026-10-05)
+
+After the owner requests a game test, generate/load the test map in the editor,
+then use **Scenario -> Playtest Scenario**. Choose the intended human player and
+difficulty in the dialog and confirm. The first Scenario menu item is Player Data;
+Playtest Scenario was the fifth item on the verified build. Read the current menu
+rather than reusing screen coordinates. The engine's menu action is
+`uiStartScenarioTest`; it is distinct from editor generation.
+
+To return to the editor: **Escape -> Quit -> Yes**. This ends the playtest and
+reloads the original editor scenario. Verified return to intact units on KTC-176.
+To close the process normally for new art/data: from the editor use
+**File -> Exit to Windows -> Yes**. No forced termination.
+
+Playtest creates `Scenario/~testing.age3Yscn`; preserve a task-specific copy with
+the fresh `Trigger/trigtemp.xs` before another generation overwrites them. A valid
+compiled script proves serialization only. For automatic combat, issue no manual
+attack orders and verify actual HP loss/projectiles followed by the intended
+destruction states. Label any manual intervention; it invalidates automation proof.
+
 ## In the driver
 
 `python scripts/aitest/driver.py --runs N --cap-min M [--record] [--allow-restart]`

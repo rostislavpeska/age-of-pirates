@@ -1,0 +1,11 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="zbench_korean_military\textures\physics_BaseColor" />
+      <texture name="Normals" override="zbench_korean_military\textures\physics_Normals" />
+      <texture name="Masks" override="zbench_korean_military\textures\physics_Masks" />
+      <texture name="Details" override="zbench_korean_military\textures\physics_Details" />
+    </parameters>
+  </submaterial>
+</material>

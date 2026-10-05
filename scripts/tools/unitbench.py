@@ -285,6 +285,10 @@ def preflight(protos, control, dist, xs_path, spacing=None):
             continue
         files = sorted(set(f.strip() for f in re.findall(r"<file>([^<]+)</file>", text)))
         for f in files:
+            if f.lower().endswith('.particle'):
+                particle = assets.exists_any(["art" + BS + f, "Art" + BS + f])
+                add("P3", "OK" if particle else "FAIL", f"{tag} particle {f} " + ("found" if particle else "MISSING (mod art/ and archives)"))
+                continue
             if ".pkfx" in f.lower():
                 add("P3", "NOTE", f"{tag} particle effect {f} (PopcornFX, not a model; not checked)")
                 continue

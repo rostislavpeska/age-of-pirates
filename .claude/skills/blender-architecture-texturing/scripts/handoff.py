@@ -152,6 +152,34 @@ def density_source_errors(spec):
     return []
 
 
+def checkpoint_errors(spec, base):
+    """New final UV handoffs must consume the stage-validated freeze receipt.
+    Early accepted substeps may be attached to WIP without final capacity claims."""
+    final = spec.get('phase') == '03_uv' and spec.get('status') in ('review', 'accepted')
+    ref = spec.get('workflow_checkpoint')
+    if not ref:
+        return ['03_uv: missing workflow_checkpoint for the final freeze'] if final else []
+    try:
+        sys.path.insert(0, str(HERE.parents[1] / 'blender-uv-workflow' / 'scripts'))
+        import checkpoint as CP
+        p = resolve(base, ref['path'])
+        if not ref.get('sha256') or sha(p) != ref['sha256']:
+            return ['workflow_checkpoint: missing or changed receipt hash']
+        cp, result = CP.load_validate(p, receipt=True)
+        errors = ['workflow_checkpoint: ' + text for text in result['errors'] + result['incomplete']]
+        if cp.get('asset') != spec.get('model'):
+            errors.append('workflow_checkpoint: wrong asset')
+        if final and cp.get('stage') != 'freeze':
+            errors.append('workflow_checkpoint: final 03_uv requires freeze, not early chart acceptance')
+        expected = {c['sha256'] for c in spec.get('canonical', {}).values() if c.get('sha256')}
+        measured = {c['sha256'] for c in cp.get('inputs', {}).values() if c.get('sha256')}
+        if not expected or not expected <= measured:
+            errors.append('workflow_checkpoint: canonical files differ from the checkpoint inputs')
+        return errors
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
+        return [f'workflow_checkpoint: {e}']
+
+
 def write(spec_path, out, owner_messages=None, profiles=None):
     spec = json.loads(Path(spec_path).read_text()); out = Path(out) if out else Path(spec_path).with_name('HANDOFF.json')
     base = out.parent; errors = []
@@ -171,6 +199,7 @@ def write(spec_path, out, owner_messages=None, profiles=None):
     if spec.get('phase') == '03_uv' and spec.get('status') in ('review', 'accepted'):     # before the UV freeze
         budget, prof = page_budget_errors(spec, owner_messages, profiles)
         errors += budget + density_source_errors(spec) + density_errors(spec, owner_messages, prof)
+    errors += checkpoint_errors(spec, base)
     for inp in spec.get('inputs', []):
         h = resolve(base, inp['handoff'])
         if not h.exists():
@@ -185,7 +214,7 @@ def write(spec_path, out, owner_messages=None, profiles=None):
     out.write_text(json.dumps(spec, indent=2)); print('HANDOFF WRITTEN', out); return 0
 
 
-def check(path):
+def check(path, owner_messages=None, profiles=None):
     path = Path(path); h = json.loads(path.read_text()); drift = []
     for role, c in h.get('canonical', {}).items():
         p = resolve(path.parent, c['path'])
@@ -193,6 +222,14 @@ def check(path):
             drift.append(f'{role}: missing')
         elif c.get('sha256') and p.is_file() and sha(p) != c['sha256']:
             drift.append(f'{role}: changed since the handoff')
+    drift += checkpoint_errors(h, path.parent)
+    if h.get('phase') == '03_uv' and h.get('status') in ('review', 'accepted'):
+        budget, prof = page_budget_errors(h, owner_messages, profiles)
+        drift += budget + density_source_errors(h) + density_errors(h, owner_messages, prof)
+    for inp in h.get('inputs', []):
+        p = resolve(path.parent, inp['handoff'])
+        if not p.is_file() or not inp.get('sha256') or sha(p) != inp['sha256']:
+            drift.append(f'input handoff missing or changed: {p}')
     print('HANDOFF', h.get('phase'), h.get('status'), 'OK' if not drift else 'DRIFT', *drift, sep='\n  ' if drift else ' ')
     return 3 if drift else 0
 
@@ -211,7 +248,8 @@ if __name__ == '__main__':
     w = sub.add_parser('write'); w.add_argument('spec'); w.add_argument('--out'); w.add_argument('--owner-messages')
     w.add_argument('--profiles', help='the project model profiles with the owner-confirmed texture classes')
     c = sub.add_parser('check'); c.add_argument('handoff')
+    c.add_argument('--owner-messages'); c.add_argument('--profiles')
     ch = sub.add_parser('chain'); ch.add_argument('root')
     a = ap.parse_args()
-    sys.exit(write(a.spec, a.out, a.owner_messages, a.profiles) if a.cmd == 'write' else check(a.handoff)
+    sys.exit(write(a.spec, a.out, a.owner_messages, a.profiles) if a.cmd == 'write' else check(a.handoff, a.owner_messages, a.profiles)
              if a.cmd == 'check' else chain(a.root))

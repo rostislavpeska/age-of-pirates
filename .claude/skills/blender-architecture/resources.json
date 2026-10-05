@@ -3,16 +3,16 @@
   "files": [
     "SKILL.md",
     "references/construction.md",
-    "scripts/audit_mesh.py",
     "references/surface-visibility.md",
+    "scripts/audit_mesh.py",
     "scripts/surface_visibility.py",
     "scripts/test_surface_visibility.py"
   ],
   "skills": [
     "blender-architecture-texturing",
-    "skill-library-audit",
     "blender-hidden-surfaces",
-    "blender-overlap-cleanup"
+    "blender-overlap-cleanup",
+    "skill-library-audit"
   ],
   "external": [
     {

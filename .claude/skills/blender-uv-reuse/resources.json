@@ -2,24 +2,53 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
-    "references/matching-and-budget.md",
     "references/geometry-only-handoff.md",
+    "references/matching-and-budget.md",
+    "references/reuse-relations.md",
+    "references/three-method-evaluation.md",
     "scripts/geometry_share.py",
-    "scripts/test_geometry_share.py"
+    "scripts/partial_surface_share.py",
+    "scripts/planar_share.py",
+    "scripts/scaled_rectangle_share.py",
+    "scripts/semantic_regions.py",
+    "scripts/test_geometry_share.py",
+    "scripts/test_partial_surface_share.py",
+    "scripts/test_planar_share.py",
+    "scripts/test_scaled_rectangle_share.py",
+    "scripts/test_semantic_regions.py",
+    "scripts/test_texel_floor.py",
+    "scripts/texel_floor.py"
   ],
   "skills": [
+    "blender-architecture-texturing",
     "blender-clean-uv",
-    "blender-architecture-texturing"
+    "blender-uv-workflow"
   ],
   "external": [
     {
-      "id": "python", "kind": "executable", "requiredFor": ["geometry-sharing"],
-      "optional": false, "commands": ["python", "python3"],
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "geometry-sharing"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
       "note": "Runs correspondence measurements and unit tests without Blender mutation."
     },
     {
-      "id": "numpy", "kind": "python-package", "requiredFor": ["geometry-sharing"],
-      "optional": false, "distribution": "numpy", "modules": ["numpy"],
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "geometry-sharing"
+      ],
+      "optional": false,
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
       "note": "SVD rigid fits, UV orientation and vector residual measurements."
     },
     {

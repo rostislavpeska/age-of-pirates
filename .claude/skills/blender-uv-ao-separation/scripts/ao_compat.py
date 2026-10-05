@@ -18,6 +18,7 @@ Approaches (return True = compatible, keep/merge):
               <= t_pts95 AND every point <= t_ptsmax. Catches small local features that
               bins average away: dots, contact corners, tiny windows, beam-end shadows.
 """
+import hashlib
 import math
 import numpy as np
 
@@ -74,12 +75,13 @@ def _points(chart):
 
 
 def _grid(chart, cell):
-    if 'ao_grid' in chart:
+    if 'ao_grid' in chart and chart.get('ao_grid_cell') == cell:
         return chart['ao_grid']
     g = {}
     for x, y, a in _points(chart):
         g.setdefault((int(x // cell), int(y // cell)), []).append((x, y, a))
     chart['ao_grid'] = g
+    chart['ao_grid_cell'] = cell
     return g
 
 
@@ -113,15 +115,41 @@ def _ssim(a, b):
     return ((2 * ma * mb + c1) * (2 * cov + c2)) / ((ma * ma + mb * mb + c1) * (va + vb + c2))
 
 
-def compatible(m, o, M, method='p95', p=None):
+def compatible(m, o, M, method='points', p=None):
     p = dict(DEFAULTS, **(p or {}))
+    if not all(math.isfinite(v) and v >= 0 for v in p.values()) or p['cell'] <= 0 or p['reach'] <= 0:
+        raise ValueError('AO thresholds and sampling radius must be finite; cell/reach positive')
+    for chart in (m, o):
+        if not chart.get('faces') or any(not f.get('ao') for f in chart['faces']):
+            return False  # one sampled face cannot certify unsampled faces in its chart
+        # Caches are derived evidence. A changed sample set or chart frame must
+        # invalidate them even when the caller reuses the same chart dictionary.
+        key = hashlib.sha256(np.asarray(chart['N'], dtype=np.float64).tobytes())
+        key.update(np.asarray([chart['L'], chart['W']], dtype=np.float64).tobytes())
+        for f in chart['faces']:
+            samples = np.asarray(f['ao'], dtype=np.float64)
+            if samples.ndim != 2 or samples.shape[1] != 3 or not np.isfinite(samples).all():
+                return False
+            key.update(str(samples.shape).encode()); key.update(samples.tobytes())
+        identity = key.hexdigest()
+        if chart.get('ao_cache_identity') != identity:
+            for name in ('ao_pts', 'ao_grid', 'ao_grid_cell', 'ao_fp', 'ao_all'):
+                chart.pop(name, None)
+            chart['ao_cache_identity'] = identity
+        pts = _points(chart)
+        if not len(pts) or not np.isfinite(pts).all() or np.any((pts[:, 2] < 0) | (pts[:, 2] > 1)):
+            return False  # absent/bad evidence cannot authorize sharing
+    if not np.isfinite(M).all():
+        return False
+    if method == 'points':
+        d = point_diffs(m, o, M, p['cell'], p['reach'])
+        # A partial sample match used to silently ignore uncovered member texels.
+        if len(d) != len(_points(m)) or not len(d):
+            return False
+        return float(np.percentile(d, 95)) <= p['t_pts95'] and float(d.max()) <= p['t_ptsmax']
     pr = mapped_pairs(m, o, M)
-    if len(pr) == 0:   # no overlapping evidence: fall back to whole-chart means
-        fingerprint(m); fingerprint(o)
-        am, ao = np.nanmean(m['ao_all']), np.nanmean(o['ao_all'])
-        if np.isnan(am) or np.isnan(ao):
-            return True
-        return abs(am - ao) <= p['t_mean']
+    if len(pr) == 0:
+        return False
     a, b = pr[:, 0], pr[:, 1]
     if method == 'mean':
         return abs(a.mean() - b.mean()) <= p['t_mean']
@@ -133,11 +161,6 @@ def compatible(m, o, M, method='p95', p=None):
         if len(a) < 4 or max(a.std(), b.std()) <= p['s_min']:
             return True
         return _ssim(a, b) >= p['t_ssim']
-    if method == 'points':
-        d = point_diffs(m, o, M, p['cell'], p['reach'])
-        if len(d) == 0:
-            return compatible(m, o, M, 'mean', p)
-        return float(np.percentile(d, 95)) <= p['t_pts95'] and float(d.max()) <= p['t_ptsmax']
     if method == 'combined':   # research: keep only if darkness, local and shape tests all pass
         return all(compatible(m, o, M, k, p) for k in ('mean', 'p95', 'ssim'))
     if method == 'class':

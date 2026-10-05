@@ -5,6 +5,12 @@ description: Author coherent architectural UV charts and deliver actual editable
 
 # Clean architectural UVs
 
+For multi-step work, start with [the shared UV workflow](../blender-uv-workflow/SKILL.md).
+This is checkpoint 2a: show chart colors, a saved checker and readable worksheets.
+Then show a separate material-class review (2b) before sharing. Chart cleanliness
+does not require final 0–1 packing or a sharing quota. Preserve the full source
+census; classify every object as authored, protected dependency or reference.
+
 This skill owns **chart construction and the editable UV handoff**. It does not
 establish that the layout fits the final atlas budget. Use
 [UV reuse and space optimization](../blender-uv-reuse/SKILL.md) for geometry-based

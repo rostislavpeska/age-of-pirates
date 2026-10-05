@@ -3,10 +3,11 @@ name: blender-architecture-texturing
 description: Coordinates architectural materials, decorative atlases, texture sources and AO while preserving unrelated maps. Routes clean unwraps to blender-clean-uv and economical overlap/packing to blender-uv-reuse; use for material and texture-source work in Blender.
 ---
 # Architecture texturing
-This is the material and texture-source entry point. **Read the
-[pipeline order](references/pipeline-order.md) before any bake**: texture budget first,
-high poly built but not baked, one pilot bake that leaves a recipe, final bake only on
-frozen UVs. A later UV change invalidates every bake made on the old layout.
+This is the material and texture-source entry point. UV tasks enter through
+[blender-uv-workflow](../blender-uv-workflow/SKILL.md): clean charts, material review,
+sharing, AO variants, then packing/freeze. Declare the runtime budget upfront;
+apply its fit gate at freeze. Read [pipeline order](references/pipeline-order.md)
+for pilot/master/runtime bake dependencies and observable delivery.
 
 Every phase hands off through a standard `HANDOFF.json` ([handoff contract](references/handoff-contract.md),
 `scripts/handoff.py`): consume the upstream phase's canonical outputs, never reinvent them.
@@ -24,7 +25,7 @@ The final-atlas chain after clean charts is
 [AO separation](../blender-uv-ao-separation/SKILL.md) ->
 [pages at one density](../aoe-uv-atlas-export/SKILL.md); each of those steps moves charts.
 
-UV work has two separate owners; load the one needed for the current checkpoint:
+The workflow selects the specialist needed for the current checkpoint:
 
 - [Clean UV authoring](../blender-clean-uv/SKILL.md): coherent charts, density,
   hidden-surface allocation and real editable maps in Blender with operator controls.

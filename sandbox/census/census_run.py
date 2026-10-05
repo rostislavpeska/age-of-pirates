@@ -28,8 +28,21 @@ import game_driver as gd            # noqa: E402
 from census import census          # noqa: E402
 import census_judge                # noqa: E402
 
-SCEN_DIR = Path(r"C:\Users\TIGO\Games\Age of Empires 3 DE"
-                r"\76561198347905238\Scenario")
+def _scenario_dir() -> Path:
+    """The game profile's Scenario folder on THIS device: $AOE3DE_PROFILE, else the one profile under
+    ~/Games/Age of Empires 3 DE, else the original device's path (2026-10-01: the hard-coded TIGO path made every
+    save on another PC look missing)."""
+    import os
+    env = os.environ.get("AOE3DE_PROFILE")
+    if env:
+        return Path(env) / "Scenario"
+    found = sorted(Path.home().glob("Games/Age of Empires 3 DE/[0-9]*/Scenario"))
+    if len(found) == 1:
+        return found[0]
+    return Path(r"C:\Users\TIGO\Games\Age of Empires 3 DE\76561198347905238\Scenario")
+
+
+SCEN_DIR = _scenario_dir()
 SAMPLES = HERE / "samples"
 # Deployed map scripts the editor actually generates from — the census
 # reflects THESE, not the repo source (a repo/deploy skew otherwise makes

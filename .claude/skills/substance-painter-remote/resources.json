@@ -2,25 +2,64 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
+    "references/connector-9.1.2.md",
+    "references/connector-logging.md",
+    "scripts/legacy_runtime.py",
+    "scripts/painter_audit.py",
+    "scripts/painter_connector.py",
+    "scripts/smoke_test.py",
     "scripts/sp_remote.py",
-    "scripts/smoke_test.py"
+    "scripts/test_legacy_runtime_audit.py",
+    "scripts/test_painter_audit.py"
   ],
-  "skills": ["blender-architecture-texturing", "blender-high-low-baking"],
+  "skills": [
+    "blender-architecture-texturing",
+    "blender-high-low-baking"
+  ],
   "external": [
     {
       "id": "substance-painter",
       "kind": "application",
-      "requiredFor": ["connect", "project", "mesh-maps", "export", "smoke-test"],
+      "requiredFor": [
+        "connect",
+        "project",
+        "mesh-maps",
+        "export",
+        "smoke-test"
+      ],
       "optional": false,
       "note": "Adobe Substance 3D Painter 9.1.2 started with --enable-remote-scripting (port 60041). The --check probe verifies the running session; installation alone does not."
     },
     {
       "id": "python",
       "kind": "executable",
-      "requiredFor": ["connect", "project", "mesh-maps", "export", "smoke-test"],
+      "requiredFor": [
+        "connect",
+        "project",
+        "mesh-maps",
+        "export",
+        "smoke-test"
+      ],
       "optional": false,
       "note": "Host Python 3 standard library only.",
-      "commands": ["python", "python3"]
+      "commands": [
+        "python",
+        "python3"
+      ]
+    },
+    {
+      "id": "painter-embedded-python",
+      "kind": "capability",
+      "modules": [
+        "PySide2",
+        "shiboken2",
+        "substance_painter"
+      ],
+      "requiredFor": [
+        "legacy-runtime"
+      ],
+      "optional": false,
+      "note": "Provided by the tested Painter 9.1.2 embedded Python runtime; these are not host-Python pip requirements. Probe the version and connector before invoking its legacy UI bridge."
     }
   ]
 }

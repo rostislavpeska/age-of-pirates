@@ -271,3 +271,124 @@
 {"time": "2026-10-02T01:51:17", "event": "open_review", "action": "wait_for_port result", "file": "C:\\work\\korean-military-176\\final\\GPT_Astra_Colonial_Military_REVIEW_uv_r03.blend", "port": 9876, "mcp_port_open": true, "seconds": 5.0}
 {"time": "2026-10-02T01:51:37", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
 {"time": "2026-10-02T01:51:37", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T10:32:50", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T10:32:50", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T10:37:52", "event": "before", "action": "live_save_comparison.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T10:37:52", "event": "after", "ok": true, "action": "live_save_comparison.py", "agent": "astra"}
+{"time": "2026-10-02T10:38:04", "event": "before", "action": "live_append_barracks.py", "risk": "append small reference", "agent": "astra"}
+{"time": "2026-10-02T10:38:04", "event": "after", "ok": true, "action": "live_append_barracks.py", "agent": "astra"}
+{"time": "2026-10-02T10:38:16", "event": "before", "action": "live_append_stable.py", "risk": "append small reference", "agent": "astra"}
+{"time": "2026-10-02T10:38:17", "event": "after", "ok": true, "action": "live_append_stable.py", "agent": "astra"}
+{"time": "2026-10-02T10:38:28", "event": "before", "action": "live_frame_compare.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T10:38:28", "event": "after", "ok": true, "action": "live_frame_compare.py", "agent": "astra"}
+{"time": "2026-10-02T10:38:38", "event": "before", "action": "live_save.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T10:38:38", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-02T10:39:22", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T10:39:23", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T10:48:10", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T10:48:10", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T11:10:42", "event": "before", "action": "live_backup.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T11:10:42", "event": "after", "ok": true, "action": "live_backup.py", "agent": "astra"}
+{"time": "2026-10-02T11:14:18", "event": "before", "action": "live_append.py", "risk": "R1 separate append only", "agent": "astra"}
+{"time": "2026-10-02T11:14:19", "event": "after", "ok": true, "action": "live_append.py", "agent": "astra"}
+{"time": "2026-10-02T11:14:58", "event": "before", "action": "live_frame_save.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T11:14:58", "event": "after", "ok": true, "action": "live_frame_save.py", "agent": "astra"}
+{"time": "2026-10-02T12:09:27", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-02T12:09:27", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T12:25:10", "event": "before", "action": "live_probe.py", "risk": "read-only identity before append", "agent": "astra"}
+{"time": "2026-10-02T12:25:10", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T12:25:23", "event": "before", "action": "live_publish.py", "risk": "R1 bypass: append lightweight review scenes only, no render or delete", "agent": "astra"}
+{"time": "2026-10-02T12:25:27", "event": "after", "ok": true, "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-02T12:25:45", "event": "before", "action": "live_save.py", "risk": "save new checkpoint only", "agent": "astra"}
+{"time": "2026-10-02T12:25:45", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-02T12:37:36", "event": "before", "action": "live_probe.py", "risk": "read-only target identity", "agent": "astra"}
+{"time": "2026-10-02T12:37:36", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T12:39:05", "event": "before", "action": "live_backup.py", "risk": "checkpoint copy preserving live changes", "agent": "astra"}
+{"time": "2026-10-02T12:39:05", "event": "after", "ok": true, "action": "live_backup.py", "agent": "astra"}
+{"time": "2026-10-02T12:44:14", "event": "before", "action": "live_publish.py", "risk": "R1 bypass: append small new scenes, no render/delete", "agent": "astra"}
+{"time": "2026-10-02T12:44:15", "event": "after", "ok": true, "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-02T12:45:55", "event": "before", "action": "live_save.py", "risk": "save new complete checkpoint", "agent": "astra"}
+{"time": "2026-10-02T12:45:55", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-02T13:04:05", "event": "before", "action": "live_probe.py", "risk": "read-only Blender identity", "agent": "astra"}
+{"time": "2026-10-02T13:04:05", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-02T13:13:35", "event": "before", "action": "live_backup.py", "risk": "R9 save copy only", "agent": "astra"}
+{"time": "2026-10-02T13:13:35", "event": "after", "ok": true, "action": "live_backup.py", "agent": "astra"}
+{"time": "2026-10-02T13:23:28", "event": "before", "action": "live_publish.py", "risk": "R9 small append of three low-poly review scenes", "agent": "astra"}
+{"time": "2026-10-02T13:23:32", "event": "after", "ok": true, "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-02T13:23:32", "event": "before", "action": "live_save.py", "risk": "R9 save only", "agent": "astra"}
+{"time": "2026-10-02T13:23:33", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-05T17:28:56", "event": "open_review", "action": "launching review instance", "file": "C:\\work\\korean-military-176\\roofs_r08\\GPT_Astra_LIVE_Military_r08.blend", "exe": "C:/Program Files/Blender Foundation/Blender 5.0/blender.exe", "port": 9876, "forced": false}
+{"time": "2026-10-05T17:29:06", "event": "open_review", "action": "wait_for_port result", "file": "C:\\work\\korean-military-176\\roofs_r08\\GPT_Astra_LIVE_Military_r08.blend", "port": 9876, "mcp_port_open": true, "seconds": 9.1}
+{"time": "2026-10-05T17:30:09", "event": "before", "action": "live_probe.py", "risk": "read-only identify review instance", "agent": "astra"}
+{"time": "2026-10-05T17:30:09", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-05T17:30:46", "event": "before", "action": "open_shape_review.py", "risk": "view settings only, UV hash before and after", "agent": "astra"}
+{"time": "2026-10-05T17:30:46", "event": "after", "ok": true, "action": "open_shape_review.py", "agent": "astra"}
+{"time": "2026-10-05T17:47:59", "event": "before", "action": "readback_only.py", "risk": "read-only final scene and UV identity; no operators or mutation", "agent": "astra"}
+{"time": "2026-10-05T17:47:59", "event": "after", "ok": true, "action": "readback_only.py", "agent": "astra"}
+{"time": "2026-10-05T17:59:56", "event": "before", "action": "live_probe.py", "risk": "read-only verify active r08 owner scene before scoped geometry edits", "agent": "astra"}
+{"time": "2026-10-05T17:59:56", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-05T18:01:54", "event": "before", "action": "save_before.py", "risk": "save standalone recovery copy only", "agent": "astra"}
+{"time": "2026-10-05T18:01:54", "event": "after", "ok": true, "action": "save_before.py", "agent": "astra"}
+{"time": "2026-10-05T18:10:29", "event": "before", "action": "live_publish.py", "risk": "append three small r09 review scenes; preserve all existing scenes; no images reloaded", "agent": "astra"}
+{"time": "2026-10-05T18:10:36", "event": "after", "ok": true, "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-05T18:10:37", "event": "before", "action": "live_save.py", "risk": "save separate r09 live review after verified append", "agent": "astra"}
+{"time": "2026-10-05T18:10:38", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-05T18:23:37", "event": "before", "action": "save_before.py", "risk": "small save copy", "agent": "astra"}
+{"time": "2026-10-05T18:23:38", "event": "after", "ok": true, "action": "save_before.py", "agent": "astra"}
+{"time": "2026-10-05T18:29:59", "event": "before", "action": "live_publish.py", "risk": "small versioned scene append", "agent": "astra"}
+{"time": "2026-10-05T18:30:08", "event": "after", "ok": true, "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-05T18:30:08", "event": "before", "action": "live_save.py", "risk": "small save", "agent": "astra"}
+{"time": "2026-10-05T18:30:09", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-05T18:47:51", "event": "before", "action": "live_publish.py", "risk": "small review append 28k vertices", "agent": "astra"}
+{"time": "2026-10-05T18:48:21", "event": "after", "ok": false, "error": "timed out", "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-05T18:48:21", "event": "before", "action": "live_save.py", "risk": "separate save", "agent": "astra"}
+{"time": "2026-10-05T18:48:33", "event": "after", "ok": true, "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-05T18:50:52", "event": "before", "action": "fix_pair_binding.py", "risk": "restore copied parent inverses", "agent": "astra"}
+{"time": "2026-10-05T18:50:52", "event": "after", "ok": true, "action": "fix_pair_binding.py", "agent": "astra"}
+{"time": "2026-10-05T18:50:52", "event": "before", "action": "save_pair_correction.py", "risk": "separate save", "agent": "astra"}
+{"time": "2026-10-05T18:50:54", "event": "after", "ok": true, "action": "save_pair_correction.py", "agent": "astra"}
+{"time": "2026-10-05T19:03:28", "event": "before", "action": "live_probe.py", "risk": "none", "agent": "astra"}
+{"time": "2026-10-05T19:03:28", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-05T20:22:06", "event": "before", "action": "live_probe.py", "risk": "read-only", "agent": "astra"}
+{"time": "2026-10-05T20:22:06", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-05T20:22:36", "event": "before", "action": "live_publish.py", "risk": "R9-small-publish", "agent": "astra"}
+{"time": "2026-10-05T20:23:06", "event": "after", "ok": false, "error": "timed out", "action": "live_publish.py", "agent": "astra"}
+{"time": "2026-10-05T20:23:06", "event": "before", "action": "live_save.py", "risk": "R9-save", "agent": "astra"}
+{"time": "2026-10-05T20:23:36", "event": "after", "ok": false, "error": "timed out", "action": "live_save.py", "agent": "astra"}
+{"time": "2026-10-05T20:26:14", "event": "before", "action": "live_probe.py", "risk": "read-only", "agent": "astra"}
+{"time": "2026-10-05T20:26:14", "event": "after", "ok": true, "action": "live_probe.py", "agent": "astra"}
+{"time": "2026-10-05T20:36:29", "event": "verified_after_timeout", "action": "attachments_r11 publish/save", "agent": "astra", "ok": true, "evidence": "MCP readback: live r11 path, BOTH MODELS scene, dirty=false; existing r01 scenes retained."}
+{"time": "2026-10-05T21:04:37", "event": "before", "action": "Astra window repair: live_probe_r03.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T21:04:37", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T21:05:09", "event": "before", "action": "Astra window repair: publish_r12.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T21:05:22", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T21:12:34", "event": "before", "action": "Astra window repair: save_live_r12.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T21:12:36", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T21:29:21", "event": "before", "action": "Astra window repair: live_probe_r03.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T21:29:21", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T21:30:14", "event": "before", "action": "Astra window repair: save_pre_uv.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T21:30:15", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T22:33:48", "event": "before", "action": "Astra window repair: live_identity.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T22:33:48", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T22:34:33", "event": "before", "action": "Astra window repair: live_roof_state.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T22:34:33", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T22:37:36", "event": "before", "action": "Astra window repair: live_identity.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T22:37:36", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T23:29:30", "event": "before", "action": "Astra window repair: save_live_recovery.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:29:31", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T23:37:16", "event": "before", "action": "Astra window repair: live_inspect_r16.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:37:16", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T23:38:04", "event": "before", "action": "Astra window repair: live_preserve_r16.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:38:05", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T23:38:24", "event": "before", "action": "Astra window repair: live_append_r16.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:38:41", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T23:39:16", "event": "before", "action": "Astra window repair: live_show_r16.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:39:16", "event": "after", "ok": true, "agent": "astra"}
+{"time": "2026-10-05T23:39:36", "event": "before", "action": "Astra window repair: publish_fingerprints.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:39:56", "event": "after", "ok": false, "error": "timed out", "agent": "astra"}
+{"time": "2026-10-05T23:41:03", "event": "before", "action": "Astra window repair: live_binding_probe.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:41:23", "event": "after", "ok": false, "error": "timed out", "agent": "astra"}
+{"time": "2026-10-05T23:43:32", "event": "before", "action": "Astra window repair: live_health_r16.py", "risk": "small API call", "agent": "astra"}
+{"time": "2026-10-05T23:43:52", "event": "after", "ok": false, "error": "timed out", "agent": "astra"}
+{"time": "2026-10-06T01:10:52", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r18-live-readback-001", "action": "Read live Blender identity, scenes, selection; no mutation", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T01:11:00", "event": "after", "operation_id": "military-r18-live-readback-001", "status": "UNKNOWN", "evidence": "timed out"}

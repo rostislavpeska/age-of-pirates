@@ -6,9 +6,12 @@
     "scripts/test_pages.py"
   ],
   "skills": [
-    "blender-uv-conjoin",
+    "aoe3de-building-export",
+    "blender-architecture-texturing",
+    "blender-clean-uv",
     "blender-uv-ao-separation",
-    "aoe3de-building-export"
+    "blender-uv-conjoin",
+    "blender-uv-workflow"
   ],
   "external": [
     {

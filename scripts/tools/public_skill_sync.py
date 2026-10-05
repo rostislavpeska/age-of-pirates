@@ -25,7 +25,7 @@ MANIFEST_PATH = ROOT / "scripts" / "skill-sync-manifest.json"
 CONFIG_PATH = ROOT / "config" / "skill-sync.local.json"
 STATE_PATH = ROOT / "scripts" / "skill-sync-state.json"
 
-IGNORED_NAMES = {"__pycache__", ".DS_Store"}
+IGNORED_NAMES = {"__pycache__", ".DS_Store", "CRASH_LOG.jsonl"}
 IGNORED_SUFFIXES = {".pyc"}
 FORBIDDEN_SUFFIXES = {
     ".exe", ".dll", ".pdb", ".blend", ".blend1", ".fbx", ".psd", ".spp",
@@ -149,7 +149,7 @@ def replace_tree(source: Path, destination: Path) -> None:
     for transient in (incoming, backup):
         if os.path.lexists(transient):
             raise ValueError(f"Previous staging path exists; review before retrying: {transient}")
-    shutil.copytree(source, incoming, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    shutil.copytree(source, incoming, ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "CRASH_LOG.jsonl"))
     validate_skill(incoming, destination.name)
     safety_scan(incoming)
     if destination.exists():
@@ -242,7 +242,7 @@ def audit_release(source, names):
     with tempfile.TemporaryDirectory(prefix='skill-release-audit-') as tmp:
         staged = Path(tmp)
         for name in names:
-            shutil.copytree(source / name, staged / name, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+            shutil.copytree(source / name, staged / name, ignore=shutil.ignore_patterns('__pycache__', '*.pyc', 'CRASH_LOG.jsonl'))
         report = audit(staged, names)
         if report['exitCode']:
             raise ValueError('Release resource audit failed: ' + json.dumps(report['errors'] + report['incomplete']))

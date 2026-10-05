@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/bakes-and-recovery.md",
+    "references/checkpoints.md",
+    "scripts/checkpoint.py",
+    "tests/test_checkpoint.py",
+    "tests/uv_checkpoint_fixture.py"
+  ],
+  "skills": [
+    "aoe-uv-atlas-export",
+    "blender-clean-uv",
+    "blender-high-low-baking",
+    "blender-uv-ao-separation",
+    "blender-uv-conjoin",
+    "blender-uv-reuse"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "requiredFor": [
+        "checkpoint"
+      ],
+      "optional": false,
+      "note": "Runs stage and evidence validation."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ],
+      "requiredFor": [
+        "checkpoint"
+      ],
+      "optional": false,
+      "note": "Decodes evidence images to reject corrupt files and text renamed as pictures."
+    }
+  ]
+}

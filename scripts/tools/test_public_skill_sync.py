@@ -111,6 +111,18 @@ class PublicSkillSyncTests(unittest.TestCase):
             sync.replace_tree(source, destination)
             self.assertEqual((destination / "SKILL.md").read_text(encoding="utf-8"), header + "new\n")
 
+    def test_private_runtime_log_is_never_copied(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source, dest = root / 'src/demo', root / 'dst/demo'
+            source.mkdir(parents=True)
+            (source / 'SKILL.md').write_text('---\nname: demo\ndescription: Example\n---\n')
+            (source / 'CRASH_LOG.jsonl').write_text('{"private_history": true}\n')
+            (source / 'guide.md').write_text('Required guide.')
+            sync.replace_tree(source, dest)
+            self.assertFalse((dest / 'CRASH_LOG.jsonl').exists())
+            self.assertTrue((dest / 'guide.md').is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "recipes.json",
+    "references/lattice-hanji.md",
+    "references/palette-ages.md",
+    "references/roof-color.md",
+    "references/town-center.md",
+    "scripts/check_recipes.py"
+  ],
+  "skills": [
+    "aoe-building-pipeline",
+    "aoe3de-player-colour",
+    "blender-architecture-texturing",
+    "blender-high-low-baking",
+    "blender-uv-workflow"
+  ],
+  "external": []
+}

@@ -3,14 +3,18 @@
   "files": [
     "SKILL.md",
     "references/results.md",
+    "scripts/ao_compat.py",
     "scripts/ao_sample.py",
     "scripts/attach_ao.py",
-    "scripts/ao_compat.py",
-    "scripts/bake_owner_ao.py"
+    "scripts/bake_owner_ao.py",
+    "scripts/test_ao_evidence.py"
   ],
   "skills": [
+    "aoe-uv-atlas-export",
+    "blender-architecture-texturing",
+    "blender-clean-uv",
     "blender-uv-conjoin",
-    "aoe-uv-atlas-export"
+    "blender-uv-workflow"
   ],
   "external": [
     {

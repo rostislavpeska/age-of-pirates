@@ -6,8 +6,9 @@
 
 Charts are UV islands: faces joined across an edge whose two loops carry identical
 UV coordinates (or, if chart_attribute names an INT face attribute, faces sharing
-that value). Each chart's UVs are rescaled to target_density texels per world unit
-(its own area density), so charts authored at different densities compare fairly.
+that value). By default original chart sizes are preserved. Explicit normalize=True
+rescales each chart to target_density texels per world unit (its own area density).
+Record that policy; do not treat a nominal target as measured output density.
 Material = slot material name without the numeric .### suffix.
 Face ids are "<object>:<polygon index>".
 """

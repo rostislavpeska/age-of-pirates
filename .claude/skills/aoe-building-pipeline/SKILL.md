@@ -7,10 +7,12 @@ description: AoP entry point for building export, materials and deployment. Star
 
 Read [aoe3de-building-export](../aoe3de-building-export/SKILL.md) for the shared rig, export, conversion and texture procedure and [aoe-xml](../aoe-xml/SKILL.md) for this mod's XML rules. Those are the maintained implementations; this skill adds only AoP configuration and worked examples.
 
+For staged UV acceptance use [blender-uv-workflow](../blender-uv-workflow/SKILL.md).
 For authoring, use [blender-architecture](../blender-architecture/SKILL.md) and [blender-architecture-texturing](../blender-architecture-texturing/SKILL.md) in this repository.
 For the Korean set's lattice, hanji, roof coloring and age-specific finish recipes, use [korean-architecture](../korean-architecture/SKILL.md).
 Follow its [pipeline order](../blender-architecture-texturing/references/pipeline-order.md) on
-every building: texture budget first, final bakes only on owner-frozen UVs. Korean TC,
+every building: declare the texture budget early, accept clean/material charts before sharing,
+then AO variants and final packing. Runtime bakes use owner-frozen UVs. Korean TC,
 2026-09-25..28: the v15 roof and v19 window bakes were made first, then a budget overflow
 (122%) forced the conjoin/repack that invalidated them (journal `2026-09-28-claude-15`).
 
@@ -22,7 +24,7 @@ class for each model:
   (m335). Only medium has the complement.
 - **large**: 2x2048. Cathedral, basilica, the bigger wonders.
 
-The class is stored per model in `scripts/havok/gr2_lint_profiles.json`, as `texture_budget {class,
+The class is stored per model in `<consumer-root>/scripts/havok/gr2_lint_profiles.json`, as `texture_budget {class,
 confirmed_by}`. A class without `confirmed_by` is only proposed, and it FAILS the export with "class not
 confirmed by the owner".
 
@@ -53,7 +55,7 @@ while final architecture textures and UVs remain deferred.
 
 Apply the shared skill's local-prerequisite checks before application work. AoP's
 installed converter configuration does not travel with exported skills. For GR2
-structural evidence in this repository, use `scripts/havok/gr2_dump.py` with its
+structural evidence in this repository, use `<consumer-root>/scripts/havok/gr2_dump.py` with its
 reader dependencies under the `gr2-granny-edit` skill; do not count the converter
 wrapper's header check as structural validation. A consumer of the public building
 skill must supply an equivalent inspection capability.

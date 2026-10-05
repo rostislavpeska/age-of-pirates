@@ -1,3 +1,4 @@
+"""INC-078: emitted-page density and invalid numeric packing inputs."""
 import unittest
 from conjoin import conjoin, PRESETS
 from pack_rects import measure
@@ -54,8 +55,10 @@ class ConjoinTests(unittest.TestCase):
         for k in range(6):
             faces += ring(f'frame{k}', k * 1000.)
         _, bad = conjoin(faces, *PRESETS['T3'], split_hollow_charts=False)
-        self.assertEqual(bad['audit']['verdict'], 'FAIL')
-        _, good = conjoin(faces, *PRESETS['T3'])
+        self.assertEqual(bad['audit']['verdict'], 'PASS')
+        self.assertTrue(bad['audit']['advisories'])
+        self.assertEqual(bad['hollow_charts_split'], 0)
+        _, good = conjoin(faces, *PRESETS['T3'], split_hollow_charts=True)
         self.assertGreater(good['hollow_charts_split'], 0)
         self.assertGreater(bad['audit']['hollow_share'], .5)
         self.assertEqual(good['audit']['hollow_share'], 0.)
@@ -65,6 +68,55 @@ class ConjoinTests(unittest.TestCase):
         plan, st = conjoin(f, *PRESETS['T3'], page_texels=8192.)
         q = plan['a:0']['uv']
         self.assertAlmostEqual((q[1][0] - q[0][0]) * 8192., 300., places=3)
+
+    def test_unique_sign_is_advice_not_failure(self):
+        _, st = conjoin(rect('sign', 400, 300, protect=True))
+        self.assertEqual(st['audit']['verdict'], 'PASS')
+        self.assertTrue(st['audit']['advisories'])
+
+    def test_density_requirement_still_fails(self):
+        _, st = conjoin(rect('a', 300, 100), gates={'min_runtime_density': 99999})
+        self.assertEqual(st['audit']['verdict'], 'FAIL')
+
+    def test_duplicate_ids_and_mixed_materials_fail_before_merge(self):
+        with self.assertRaises(ValueError):
+            conjoin(rect('a', 300, 100) * 2)
+        faces = rect('a', 300, 100, nx=2)
+        faces[1]['material'] = 'STONE'
+        with self.assertRaises(ValueError):
+            conjoin(faces)
+
+    def test_bad_face_cannot_silently_disappear(self):
+        faces = rect('a', 100, 100)
+        faces[0]['uv'] = [[0, 0], [0, 0], [0, 0]]
+        with self.assertRaises(ValueError):
+            conjoin(faces)
+
+    def test_trim_route_obeys_ao_compatibility(self):
+        faces = rect('a', 300, 100) + rect('b', 300, 100, x0=900)
+        _, st = conjoin(faces, trim=['WOOD'], compat=lambda m, o, M: False)
+        self.assertEqual(st['owners'], 2)
+        self.assertEqual(st['ao_rejected_charts'], 1)
+
+    def test_no_transitive_family_compatibility(self):
+        faces = rect('a', 300, 100) + rect('b', 300, 100, x0=900) + rect('c', 300, 100, x0=1800)
+        def adjacent(m, o, M):
+            return abs(ord(m['id']) - ord(o['id'])) <= 1
+        plan, st = conjoin(faces, compat=adjacent)
+        self.assertEqual(st['owners'], 2)
+        self.assertNotEqual(plan['a:0']['family'], plan['c:0']['family'])
+
+    def test_original_page_density_uses_emitted_uv_scale(self):
+        _, st = conjoin(rect('a', 300, 100), page_texels=8192, target_density=256,
+                        runtime_page=2048, gates={'min_runtime_density': 100})
+        self.assertEqual(st['audit']['runtime_texels_per_unit'], 64)
+        self.assertEqual(st['audit']['verdict'], 'FAIL')
+
+    def test_invalid_options_rejected_before_packing(self):
+        for kw in ({'gutter': float('nan')}, {'gutter': -1}, {'target_density': float('nan')},
+                   {'runtime_page': 0}, {'gates': {'min_runtime_density': float('nan')}}, {'iou': float('inf')}):
+            with self.subTest(kw=kw), self.assertRaises(ValueError):
+                conjoin(rect('a', 300, 100), **kw)
 
 
 if __name__ == '__main__':

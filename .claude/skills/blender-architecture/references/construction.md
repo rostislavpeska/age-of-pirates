@@ -38,6 +38,18 @@ deliberate translations. Preserve hard wall corners and smooth curved surfaces.
 Do not reset every face to flat or average all normals to hide a local defect.
 
 ## Inspection
+
+After cloning/reparenting a scene, verify evaluated world positions against a
+snapshot captured **before** the operation, then save, reopen and repeat. Include
+parent inverse matrices, root translations and reference attachment orientation
+and scale. Comparing copied mesh-local coordinates or two objects after both
+have changed can miss a whole-scene regression. Test ground contact per named
+structural support, never just the model minimum (a fence or prop can mask a
+floating building). Verify these same facts in the live published scene.
+INC-071, 2026-10-05: r11 military scene copies lost parent inverses, a -0.38
+ground offset and the horse placement transforms. Source-region and serialized
+rest/ground checks reject the failed files; the repaired reopen and live readback
+pass. Physics acceptance remains a separate game test.
 Locate the exact face with selection or a ray query; inspect coordinates, material and UVs against neighbors. Do not limit searches to axis-aligned planes: persistent stripes and wedges often originate on slanted triangles. Check each repeated module separately. Verify the preview mode in which the issue appears, not merely another renderer.
 Compare geometry, UVs, materials, weights and normals with the checkpoint, allowing only intended differences. Save before edits, preserve unrelated data and inspect same-view before/after images. Do not claim a targeted check covers the whole model.
 

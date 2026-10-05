@@ -5,6 +5,12 @@ description: Find geometry-based UV sharing candidates, validate AO and texture-
 
 # UV reuse and space optimization
 
+Use [the shared UV workflow](../blender-uv-workflow/SKILL.md) for stage order,
+evidence and bounded recovery. Candidate discovery can be planned early, but apply
+sharing after clean-chart/material review. Preserve persistent parent/member IDs;
+any semantic chart subdivision requires renewed continuity evidence. Show the
+sharing checkpoint separately from AO and final packing.
+
 This skill owns **geometry candidate discovery, compatibility decisions and atlas
 economics**. Begin with the inspectable baseline from
 [clean UV authoring](../blender-clean-uv/SKILL.md). Do not hide broken charts or

@@ -20,6 +20,8 @@ sys.path.insert(0, str(HERE))
 sys.dont_write_bytecode = True
 import density_floor as DF  # noqa: E402
 import handoff as HO  # noqa: E402
+sys.path.insert(0, str(HERE.parents[1] / 'blender-uv-workflow' / 'tests'))
+from uv_checkpoint_fixture import freeze_fixture
 
 FLOOR = DF.load_floor('aoe3de')
 OWNER = [{'id': 'm7', 'text': 'Keep the hidden ktc page as it is below the density floor, nobody sees it.'}]
@@ -268,6 +270,8 @@ def uv_spec(tmp_path, **kw):
             'canonical': {'plan': {'path': 'plan.json'}, 'uv_faces': {'path': 'faces.npz'}},
             'density': block(tmp_path), 'page_budget': {'pages': [{'name': 'P2048', 'size': 2048}]}}
     spec.update(kw)
+    spec['workflow_checkpoint'] = freeze_fixture(tmp_path / 'workflow', spec['model'],
+        {role: tmp_path / entry['path'] for role, entry in spec['canonical'].items()})
     p = tmp_path / 'HANDOFF.spec.json'
     p.write_text(json.dumps(spec), encoding='utf-8')
     return p
@@ -281,6 +285,21 @@ def write(tmp_path, capsys, owner=True, profiles=None, **kw):
 def test_a_uv_handoff_records_density_and_budget_and_passes(tmp_path, capsys):
     rc, out = write(tmp_path, capsys)
     assert rc == 0 and 'HANDOFF WRITTEN' in out, out
+
+
+def test_final_handoff_requires_freeze_not_clean_acceptance(tmp_path, capsys):
+    p = uv_spec(tmp_path)
+    spec = json.loads(p.read_text()); spec.pop('workflow_checkpoint')
+    p.write_text(json.dumps(spec))
+    assert HO.write(p, None, store(tmp_path)) == 3
+    assert 'workflow_checkpoint' in capsys.readouterr().out
+    spec['workflow_checkpoint'] = freeze_fixture(tmp_path / 'early', spec['model'],
+        {role: tmp_path / entry['path'] for role, entry in spec['canonical'].items()}, through='clean')
+    spec['status'] = 'wip'; p.write_text(json.dumps(spec))
+    assert HO.write(p, None, store(tmp_path)) == 0
+    spec['status'] = 'accepted'; p.write_text(json.dumps(spec))
+    assert HO.write(p, None, store(tmp_path)) == 3
+    assert 'requires freeze' in capsys.readouterr().out
 
 
 @pytest.mark.parametrize('kw,words', [

@@ -1,9 +1,10 @@
-"""Space gate for conjoinment: split hollow charts first, audit the packed page after.
+"""Conjoinment measurements: optional hollow refinement, then packed-page audit.
 
 Incident 2026-09-28 (Korean TC): whole timber facade frames stayed as single hollow,
 unique charts. Their bounding rectangles took about 2/3 of the page; the owner had to
 catch it by eye (estimated cost about USD 600). Splitting them into posts and beams
-cut the page from 4360 to 2782 texels. These checks exist so that never ships again.
+cut the page from 4360 to 2782 texels. That asset-specific result is advice, not
+permission to fragment an approved chart. Runtime density remains a hard floor.
 
 split_hollow(faces, fill)   charts whose area / min-area-rectangle < fill are regrouped
                             into straight members (end-to-end, same direction, same width).
@@ -95,7 +96,8 @@ def split_hollow(faces, fill=.6, min_faces=3):
     return split
 
 
-def audit(charts, owners, fam_size, side, gutter, target_density=256., runtime_page=2048., fill=.6, gates=None):
+def audit(charts, owners, fam_size, side, gutter, target_density=256., runtime_page=2048., fill=.6, gates=None,
+          uv_page_texels=None):
     """Where does the page go? charts: prepared charts (area, L, W, shape, mat, id)."""
     g = dict(GATES, **(gates or {}))
     rows = []
@@ -111,21 +113,26 @@ def audit(charts, owners, fam_size, side, gutter, target_density=256., runtime_p
     ao_unique = sum(r['rect'] for r in rows if r['family_size'] <= 1 and r['ao_rejected']) / total
     biggest = max(r['rect'] for r in rows) / (side * side) if rows else 0.
     eff = sum(r['filled'] for r in rows) / (side * side)
-    runtime_density = target_density * runtime_page / side
+    # Emitted UVs use the retained original page when requested, not the compact
+    # packing footprint. Using side here overstated actual runtime density.
+    uv_page = uv_page_texels or side
+    runtime_density = target_density * runtime_page / uv_page
     res = dict(page_side_texels=side, runtime_page=runtime_page, runtime_texels_per_unit=runtime_density,
                hollow_share=hollow, unique_share=unique, ao_separated_share=ao_unique, packing_efficiency=eff, single_owner_share=biggest,
                top_consumers=sorted(rows, key=lambda r: -r['rect'])[:10])
-    fails = []
+    res['uv_page_texels'] = uv_page
+    fails, advisories = [], []
     if hollow > g['max_hollow_share']:
-        fails.append(f"hollow charts use {hollow:.0%} of owner rectangles (max {g['max_hollow_share']:.0%}): split frames/rings")
+        advisories.append(f"hollow charts use {hollow:.0%} of owner rectangles (reference {g['max_hollow_share']:.0%}): review coherent member alternatives")
     if unique > g['max_unique_share']:
-        fails.append(f"unshared charts (no geometric match, not AO-separated) use {unique:.0%} of owner rectangles (max {g['max_unique_share']:.0%}): conjoinment ineffective")
+        advisories.append(f"unshared charts use {unique:.0%} of owner rectangles (reference {g['max_unique_share']:.0%}): explain legitimate unique surfaces and missed candidates")
     if len(rows) >= 10 and eff < g['min_packing_efficiency']:   # tiny pages are dominated by one long strip
-        fails.append(f"packing efficiency {eff:.0%} (min {g['min_packing_efficiency']:.0%}): empty space dominates")
+        advisories.append(f"packing efficiency {eff:.0%} (reference {g['min_packing_efficiency']:.0%}): inspect empty space")
     if biggest > g['max_single_owner_share']:
-        fails.append(f"one chart takes {biggest:.0%} of the page (max {g['max_single_owner_share']:.0%})")
+        advisories.append(f"one chart takes {biggest:.0%} of the page (reference {g['max_single_owner_share']:.0%})")
     if g['min_runtime_density'] and runtime_density < g['min_runtime_density']:
         fails.append(f"runtime density {runtime_density:.0f} texels/unit < {g['min_runtime_density']:.0f}: texture will be blurry")
     res['fails'] = fails
+    res['advisories'] = advisories
     res['verdict'] = 'FAIL' if fails else 'PASS'
     return res

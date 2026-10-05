@@ -8,7 +8,7 @@ For agent setup and compatibility, see [Shared agent setup](agent-skills.md).
 
 **Edit skills in AoP `.claude/skills/<name>/SKILL.md`.** This is the physical,
 tracked library for Claude, Codex and the other supported agents. It includes all
-44 current skills, their references, scripts and resources. Claude is the primary
+current skills, their references, scripts and resources. Claude is the primary
 authoring agent; Codex uses the same files for 3D work and other tasks.
 
 Claude Code discovers that directory directly. `.agents/skills` is a single ignored
@@ -445,3 +445,14 @@ line endings; LF-normalized hashes enable portable integrity checks.
 Changes are local and uncommitted; no public GitHub push was performed. Before
 publishing copied reference texts, resolve the provenance/redistribution notes.
 Application binaries, local tool paths and private AoP wrappers were not exported.
+
+## Staged architectural UV workflow (2026-10-06)
+
+`blender-uv-workflow` owns checkpoint order and evidence contracts; the existing
+geometry, clean UV, reuse, conjoinment, AO, baking and atlas skills own operations.
+The six owner checkpoints are geometry, clean UV/material review, shared/AO-split
+UV plus freeze, base textures, detailed textures, and game implementation. The
+UV checkpoint has explicit substeps. Final density and page ceilings still apply.
+Checkpoint receipts supplement existing HANDOFF and asset revisions; no second
+version database or agent-specific skill mirror is introduced. Public skill
+publication remains a separate allowlisted operation.

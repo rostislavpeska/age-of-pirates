@@ -3,24 +3,25 @@
   "files": [
     "SKILL.md",
     "references/lessons.md",
-    "scripts/conjoin.py",
     "scripts/audit.py",
-    "scripts/pack_rects.py",
-    "scripts/labeled_fit.py",
-    "scripts/blender_export_faces.py",
     "scripts/blender_apply_conjoin.py",
-    "scripts/render_review.py",
+    "scripts/blender_export_faces.py",
+    "scripts/conjoin.py",
     "scripts/draw_uv_sheet.py",
-    "scripts/test_conjoin.py",
+    "scripts/labeled_fit.py",
+    "scripts/pack_rects.py",
+    "scripts/render_review.py",
     "scripts/reposition_island.py",
+    "scripts/test_conjoin.py",
     "scripts/test_reposition_island.py"
   ],
   "skills": [
-    "blender-clean-uv",
-    "blender-uv-reuse",
-    "blender-uv-ao-separation",
     "aoe-uv-atlas-export",
-    "blender-high-low-baking"
+    "blender-clean-uv",
+    "blender-high-low-baking",
+    "blender-uv-ao-separation",
+    "blender-uv-reuse",
+    "blender-uv-workflow"
   ],
   "external": [
     {

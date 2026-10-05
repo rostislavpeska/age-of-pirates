@@ -3,7 +3,7 @@ name: rm-trigger-testing
 description: Test a random map's trigger system offline first, then read the game's compiled trigger script after ONE user-requested generation. Covers the workflow ladder (S6, pytest pins, the trigger simulator, trigtemp.xs, census), the compiled rule shape, the unit INDEX law, the engine's trigger dynamics (Fire Event, ping-pong, Socket Build on water, process-stale data) and the trigtemp_check.py checker. Triggers on "trigger does not fire", "only the last one works", "persistent flare", "socket build places nothing", "read trigtemp", "test triggers offline", "ping-pong", "trigger loops". The in-game generation is done ONLY when the user asks for it.
 ---
 
-# rm-trigger-testing: triggers are proven offline and by one read of trigtemp.xs
+# rm-trigger-testing: separate compilation, targeting and runtime effects
 
 The game is generated ONLY when the user asks for it. Everything else here is offline.
 
@@ -21,13 +21,16 @@ Never launch, kill, click into or automate the game or the Scenario Editor on yo
 | 5. Read trigtemp | `python .claude/skills/rm-trigger-testing/scripts/trigtemp_check.py` then `--rule <Name>` for the rules in question | every unit parameter resolved, every event wired, no every-frame cycle |
 | 6. Census | `python sandbox/census/census.py "<profile>\Scenario\<save>.age3Yscn" --full` | the indices the triggers name hold the units you meant (section 4) |
 
-One falsifiable hypothesis per generation. After rung 5 STOP and report; do not reach for a match.
+One falsifiable hypothesis per generation, or a clearly labelled variant grid in
+one generation. Without a requested playtest, stop and report compilation/targeting
+only. When the owner requests a runtime test, continue through Scenario -> Playtest
+Scenario and observe the actual effect; see `game-startup`.
 
 ## 2. The artifacts (what each one proves)
 
 | Artifact | Where | Proves | Never proves |
 |---|---|---|---|
-| `trigtemp.xs` | `<profile>\Trigger\trigtemp.xs`, rewritten on every generation, editor and skirmish | the trigger script the game compiled from the map's `rm*Trigger*` calls, one XS rule per trigger: the whole trigger diagnosis after ONE generation and BEFORE any play | render, spawn |
+| `trigtemp.xs` | `<profile>\Trigger\trigtemp.xs`, rewritten on every generation, editor and skirmish | the commands and unit parameters serialized by the engine | runtime execution, attack/pathfinding success, render, spawn |
 | RM dump | `<profile>\RandMaps\Age3DERM<mapfile>.dmp.txt` | the map script compiled (XS symbol table; values are 0, written before the run) | anything about triggers or placement |
 | Saved scenario | `<profile>\Scenario\<name>.age3Yscn`, read by `sandbox/census/census.py <save> --full` | every placed unit with proto and position in INDEX order: ground truth for indices and spawns | render; mod proto NAMES are unreliable (match by position and count) |
 | Screenshot | `sandbox/census/samples/...` | RENDER only (a unit can be placed and never render: LF-only animfile) | spawn, triggers |
@@ -190,6 +193,12 @@ snapshots of the parsed, unrolled trigger list for the verified families, a stat
 check on the DSL side, and London's vocabulary in the parser.
 
 ## 8. Not evidence
+
+- Visible damage after a human attack order is not evidence that automatic cannon
+  triggers worked. KTC-176, 2026-10-05: the compiled commands were valid, but the
+  owner had to order the attack. Record order-issued, actual HP loss and destruction
+  separately, with a bounded no-hit timeout. A message in the order trigger proves
+  only that the order was issued. Do not use Damage Unit to make a cannon test pass.
 
 - The RM dump, for anything about triggers.
 - A screenshot, for a spawn (and the minimap, for units).

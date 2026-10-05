@@ -56,3 +56,10 @@ tool versions, licenses, sessions, output fidelity or game behavior.
 Do not confuse this resource contract with the export allowlist. A declaration
 does not authorize redistribution or export. Record source provenance separately
 for third-party references and retain the normal publication review.
+
+`CRASH_LOG.jsonl` is reserved private runtime history, excluded from the bundled
+resource census and public skill copies. Do not put required instructions or
+fixtures in that file. Consumer-owned paths are written explicitly as
+`<consumer-root>/scripts/...`, and their adapter/module capability is declared in
+`external`; do not copy a mod's lint, game data or private configuration into a
+portable package to silence the resource checker.

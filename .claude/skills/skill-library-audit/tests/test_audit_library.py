@@ -86,6 +86,14 @@ class ResourceAuditTests(unittest.TestCase):
         self.assertEqual(result['packageIntegrity'], 'incomplete')
         self.assertEqual(result['exitCode'], 2)
 
+    def test_declared_legacy_companion_is_incomplete_not_undeclared(self):
+        self.package(body='[Legacy](../legacy/SKILL.md)', skills=['legacy'])
+        folder = self.package('legacy')
+        (folder / 'resources.json').unlink()
+        result = audit_module.audit(self.root, ['demo'])
+        self.assertEqual(result['errors'], [])
+        self.assertEqual(result['exitCode'], 2)
+
     def test_invalid_declaration_fails(self):
         folder = self.package()
         (folder / 'resources.json').write_text('{"schemaVersion": 99}', encoding='utf-8')
@@ -107,6 +115,13 @@ class ResourceAuditTests(unittest.TestCase):
         folder = self.package()
         (folder / 'new.py').write_text('pass\n', encoding='utf-8')
         self.assertTrue(any('undeclared bundled file' in e for e in audit_module.audit(self.root)['errors']))
+
+    def test_private_runtime_log_is_not_a_resource(self):
+        folder = self.package()
+        (folder / 'CRASH_LOG.jsonl').write_text('{"private": true}\n', encoding='utf-8')
+        self.assertEqual(audit_module.audit(self.root)['exitCode'], 0)
+        (folder / 'unlisted_rules.md').write_text('Still must be declared.', encoding='utf-8')
+        self.assertEqual(audit_module.audit(self.root)['exitCode'], 1)
 
     def test_required_app_missing_is_machine_limit_not_package_error(self):
         self.package(external=[self.tool()])

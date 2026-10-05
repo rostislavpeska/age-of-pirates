@@ -1,29 +1,31 @@
-# Pipeline order: bake once, on frozen UVs
+# Pipeline order: reusable sources, frozen runtime UVs
 
 A baked image belongs to the UV layout it was baked on. Moving, rotating, flipping,
 scaling, merging or repacking charts afterwards puts every pixel in the wrong place,
 and tangent-space normals also change with the chart's orientation. The image can
 only be rebaked, or transferred to the new layout with one resampling loss. Either
-costs a session when the bake was set up by hand. So bake late, bake once, and make
-every bake a one-command recipe.
+costs a session when the bake was set up by hand. Final runtime bakes use frozen
+UVs. Pilots and reusable masters have separate contracts below; save every bake
+as a one-command recipe with explicit inputs.
 
 ## Order
 
-0. **Budget first.** Before any UV or bake work, fix the target pages (count, sizes,
-   which materials go where) and the target density against the reference game.
-   Estimate: visible 3D area x density^2 / expected fill (about 0.75) must fit the page
-   pixels. If it does not fit, plan texel sharing now, before anything is baked.
-   The pages stay within the ceiling of the class the owner confirmed for the model. The
-   density stays at or above the [universal UV density floor](uv-density-floor.md); both are hard gates.
+0. **Declare budget and quality references.** Record owner-confirmed runtime pages
+   and vanilla density floors. Area estimates guide planning but do not reject a
+   deliberately unpacked clean-chart worksheet. Use the [shared UV workflow](../../blender-uv-workflow/SKILL.md):
+   clean charts -> visible material split -> sharing review -> AO variants -> pack.
+   Density and page budget are hard gates at final freeze/export. Never shrink
+   clean charts or force merging to satisfy an early area estimate.
 1. **Geometry.** Final low mesh. The high poly is built in place (same world
-   transform as the low), and is **not baked yet**.
+   transform as the low), with an explicit region/detail contract.
 2. **Bake plan.** List the regions that receive baked detail (normal, local AO,
    opacity, ID) and the high source of each. Faces whose high detail differs must not
    share texels: pass that list to conjoinment as `protect` or as a compat reject.
 3. **Pilot bake.** One representative bay and one roof slope, on a throwaway layout,
    labelled `pilot`. The deliverable is the **recipe** (config JSON + one command:
    targets, ray distance or cage, margin, samples), not the images. Pilot images are
-   never assembled into pages.
+   never treated as final page acceptance. A reusable bake master is a separate
+   allowed product after local geometry/detail freeze; see the [dependency table](../../blender-uv-workflow/references/bakes-and-recovery.md).
 4. **UV chain.** Clean charts -> conjoin -> AO separation -> pages. Keep the high poly
    next to the low (same file or linked, same transforms). AO sampled to decide
    families is a measurement, not a deliverable.
@@ -66,13 +68,17 @@ from the bake recipes (one config JSON per review, one call through the Blender 
 - identical grey clay with normal and AO (assembly x local), eave alpha, labels, one grazing sun;
 - Material Preview with scene lights, framed on the tested area from the side it faces; file saved.
 
-Images are only the agent's own check (an OpenGL snapshot of that view) or a supplement. The scene is
-rebuilt in place (same name), removing only its own objects. Report its name and what to compare.
+Publish a revision-scoped candidate with readback, preserving dirty live work.
+Do not delete/rebuild the live scene as part of a combined call. Report file-verified
+and live-verified states separately; if live verification fails, show background
+evidence and name the pending live check. Desktop capture/control requires the
+owner's explicit permission. Report the revision, scene and views to compare.
 
 ## After the freeze
 
 Any UV change (a repack, a conjoinment rerun, a chart fix) first lists the bakes it
-invalidates and asks the owner. Then the recipes run again; nothing is re-set up by hand.
+invalidates and confirms that this change is within existing authorization. Ask only
+if that scope has not already been authorized. Then the affected recipes run again; nothing is re-set up by hand.
 A bake master ([bake master](../../blender-high-low-baking/references/bake-master.md)) turns such a UV change into a derive (`derive_maps.py`, seconds to minutes, no HIGH loaded) instead of a rebake, as long as the LOW geometry contract and the HIGHs are unchanged.
 
 **UV version switch checklist** (Korean TC S18f, 2026-09-28): a new version gets its own plan, freeze and

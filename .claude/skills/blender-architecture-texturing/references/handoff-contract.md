@@ -56,7 +56,7 @@ Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and va
      [UV density floor](uv-density-floor.md).
    - **`page_budget`:** the same handoff records `pages: [{name, size}]`, exactly the pages the density block measured.
      Nothing else is self-declared (INC-034): the class, the owner's confirmation and the ceiling come from the
-     project's model profiles (Age of Pirates: `scripts/havok/gr2_lint_profiles.json`, `--profiles`), and the
+     project's model profiles (Age of Pirates: `<consumer-root>/scripts/havok/gr2_lint_profiles.json`, `--profiles`), and the
      confirmation must resolve to his message about this class and model in his store (`--owner-messages`).
    - **The density block is bound to the UV:** its `source.sha256` is the hash of one of this handoff's canonical
      files (`density_floor.py faces|gr2` records it), and it is in the game's unit (else INCOMPLETE).
@@ -65,4 +65,21 @@ Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and va
      decision he answered) counts only with `--owner-messages <his message store>`.
    - **A `wip` handoff** may stop before the measurement.
    - **The project's export gate re-checks both** against its own ceilings. Age of Pirates:
-     `scripts/havok/gr2_lint.py`.
+     `<consumer-root>/scripts/havok/gr2_lint.py`.
+
+## Observable subcheckpoints (2026-10-06)
+
+The [shared UV workflow](../../blender-uv-workflow/SKILL.md) owns the staged sequence.
+Use `workflow_checkpoint: {path, sha256}` to attach its validated receipt to a
+handoff. The receipt's asset must match `model`, and its input hashes must include
+all canonical file hashes. Final `03_uv` review/accepted writes require a `freeze`
+receipt, in addition to the existing measured density and project-budget checks.
+A WIP handoff may carry accepted `clean`, `materials`, `share` or `ao` evidence;
+this does not promote final UV status. Do not rename clean-chart acceptance to
+freeze or invent missing historical reports. Existing assets remain recoverable.
+
+`handoff.py check` now revalidates checkpoint ancestry and evidence, input handoff
+hashes, and final UV density/budget. Pass the same `--profiles` and
+`--owner-messages` used at write when these are not the project defaults.
+Legacy final handoffs without the new evidence remain historical records; they
+do not acquire a new workflow verification claim automatically.

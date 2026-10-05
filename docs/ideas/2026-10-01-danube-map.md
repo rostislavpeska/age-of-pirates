@@ -102,8 +102,9 @@ The route is the master shape and the water follows it. The route cannot be bent
 16 m block grid (see the investigation below).
 
 1. **One list of waypoints** is the only source of the path (the "one owner per coordinate" rule). The Danube Bend
-   is 6-8 waypoints, chosen **on the route's 16 m grid, with every leg at 0, 45 or 90 degrees** (pending the probe
-   below). Then the built route equals the authored polyline. The legs that carry bridges are axis-aligned.
+   is 6-8 waypoints, each **at a 16 m cell centre (16i + 8 m on both axes)**: the probe showed that a waypoint snaps
+   to the centre of its cell and that every leg is one straight segment at any angle (trade routes guide 5.8). Then
+   the built route equals the authored polyline. The legs that carry bridges are axis-aligned.
 2. **Route first**, with a `zpSPCWaterSpawnPoint` stopper at fraction 0.5. That's London law 1, "a route built
    after water poisons every later water placement", owner-enforced 2026-09-18, plus the guide's
    "stopper first" rule. `rmBuildTradeRoute(id, "river_trail")`: a river route (`river="true"`, so the trading
@@ -146,6 +147,12 @@ The route is the master shape and the water follows it. The route cannot be bent
   `grouping-terrain` before use. Keep each bridge site's river segment straight for the bridge's whole length.
 - Docking: take the river centre at the bridge from the route (`rmGetTradeRouteWayPoint`, then a stopper object,
   then `rmGetUnitPosition`, as on Florence), and place the grouping exactly there with min/max distance 0.
+- **Docking, PROVEN in probe generation 6:** water base, the route, the bridges into open water ("a very large river
+  with the bridges as islands", owner 2026-10-01), the shores (route constraint 18 -> banks 26-34 m out, a river
+  55-65 m wide), then the Elbe's bridge docks at both ends of every bridge (300 tiles, coherence 1, land height,
+  centred 36 m from the route for `Bridge_Universal_03`, 44 m from the centre for `Bridge_universal_long`). All three
+  decks meet land flush. Recipe and measurements: trade routes guide 5.8. Gens 2-5 failed: land before the bridge
+  makes a "pedestal" (the grouping's water ring), and without docks a 40 m bridge stays an island in a broad river.
 - **Heights must meet the deck.** Read the deck height from the grouping XML (`grouping-terrain`) and set the bank
   or bridge-site areas to it. King of Bohemia's height ladder (comment at line 306): land 2.983, standard bridges
   3.088-3.150, EU bridges 5.136. Riverina raises the bridge sites to 8.0.
@@ -217,10 +224,11 @@ LIKELY = strong indication; OPEN = untested.
 | # | Risk | Evidence | Impact | Mitigation and check |
 |---|---|---|---|---|
 | B1 | A bridge fails to spawn, so the inner shore is unreachable | groupings at an exact spot (min/max 0) fail silently when the spot is invalid (PROVEN, many maps) | **critical** | Build the bridge sites first and place each bridge on a route point of a straight axis-aligned leg. Check the placement result in the script; if a bridge is missing, build a fallback land causeway (a narrow land area across the corridor) at that point. Census the bridge count, and require `mapcheck` connectivity: inner shore reachable |
-| B2 | A bridge placed **over the built route** is refused | "nothing may be placed on a built route": a park and a gate on a land road failed (PROVEN, `096ded9b`, `ed80e037`); London Bridge over its water lane works (PROVEN) | high | Probe P4 settles it for a river route. If refused, split the route at the bridges (Florence) |
+| B2 | A bridge placed **over the built route** is refused | **CLOSED (probe gen 2):** all three bridge groupings placed on the built river route, 30 of 30 `zpBridgeFace` | - | - |
 | B3 | Wrong orientation | groupings cannot be rotated (PROVEN, never-rotate-a-cliffgroup); `Bridge_Universal_E/_N` never used | high | Bridges only on axis-aligned legs; map `_E/_N` with `grouping-terrain` before using them |
-| B4 | Deck ends float or are buried, ramps unpathable | bridge groupings carry baked heights; King of Bohemia's height ladder (line 306); Riverina raises the sites to 8.0 (PROVEN) | high | Read the deck height from the grouping XML, set the site areas to it, and walk a unit across in the unit bench |
-| B5 | River width at the crossing does not match the bridge span | Florence: radius 15 for a 26-tile bridge (PROVEN) | high | Set R (method A) from the span; no bridges on 45-degree legs |
+| B4 | Deck ends float or are buried, ramps unpathable | **SOLVED visually (probe gen 6):** bridges into open water, shores, then Elbe docks; decks flush at both ends | high | Walk a unit across (play test) |
+| B5 | River width at the crossing does not match the bridge span | gens 3-5: a broad river leaves the bridge an island | high | **SOLVED by the Elbe docks** (gen 6); no bridges on 45-degree legs |
+| B10 | The bridges cut the river: warships cannot pass them, so the river becomes three separate waters | a bridge block is terrain (gen 6 minimap) | high | **Owner decision:** accept (Florence does the same), or route boats only; a play test shows whether route boats pass through the deck (B7) |
 | B6 | Bridge facade pieces overhang city cliff tiles (seams) | `grouping-terrain` skill: `zpBridgeFace` pieces ~9 m, the ZP Bridge vs ZP City cliff mix-up (PROVEN) | low | `grouping-terrain` review of the chosen groupings |
 | B7 | Trade boats pass through the bridge decks | trade units ride the route curve (`BUnitRailroadAction ... mCurveParam` in the exe) and ignore obstruction (LIKELY); Florence keeps its river routes off its bridge, whose land route crosses on top | medium | Probe P4: watch a river trader pass. If it looks wrong, split the route |
 | B8 | The AI does not path through the bridges or contest the inner shore | the AI contests sockets, natives and bridges; AGENTS.md rule 7 | medium | Owner decision before any AI work; an AI test only on request |
@@ -230,8 +238,8 @@ LIKELY = strong indication; OPEN = untested.
 
 | # | Risk | Evidence | Impact | Mitigation and check |
 |---|---|---|---|---|
-| T1 | Waypoints snap to the 16 m block grid, so the built route is not the authored line | trade routes guide, API row 347: "about 4 tiles off the asked point on Istanbul" (PROVEN); every water/river def has `blocksize="16.0"` | high | Method A (water follows the built route). Read every later position back from the built route; author the waypoints on the grid (probe P1) |
-| T2 | Unknown path between snapped waypoints: the 9 piece types (`straight`, `straight45`, `corner90`, `corner45a/b`, `fillcorner`, `end`, `end45`, `corner90diagonal`) point to an 8-direction block lattice. A leg at another angle becomes a staircase or a dog-leg | piece names in `data/traderoutedefs.xml` (PROVEN); the algorithm itself is not in the exe strings (OPEN) | high | Legs at 0 / 45 / 90 degrees only; probe P2 measures the rule |
+| T1 | Waypoints snap to the 16 m block grid, so the built route is not the authored line | **MEASURED (probe gen 1):** a waypoint snaps to the centre of its 16 m cell, grid origin at the map corner | high | Author every waypoint at 16i + 8 m; read later positions back from the built route |
+| T2 | Unknown path between snapped waypoints | **CLOSED (probe gen 1):** every leg is one straight segment at any angle, corners sharp within about 2 m | - | - |
 | T3 | River and route diverge at bends (method B) | river defs are most likely splines: `riverline` with `minSplineDistance` / `maxSplineDistance` in the exe (LIKELY) | high | Method A; B only if the probe shows they coincide |
 | T4 | Route-versus-water build order | London law 1 "a route built after water poisons every later water placement" (owner-enforced 2026-09-18) versus the 2026-09-17 memory "nautical route after islands": guide O35 (OPEN) | high | Route first (London). Probe P3 checks fish and sockets placed after it |
 | T5 | A river built over stoppers or controllers deletes them | London's lane stopper and controllers vanished (LIKELY, guide O36) | medium | Method A has no `rmRiverCreate`; with B, place them after the river |
@@ -271,12 +279,18 @@ method (`rm-census`: save the generation, decode the `.age3Yscn`, read positions
 
 | Test | Question | Set-up | Result used for |
 |---|---|---|---|
-| P1 | Where is the grid, and how do waypoints snap? | 8 short straight routes with waypoints offset 0, 2, 4 ... 14 m; a marker unit at `rmGetTradeRouteWayPoint` every 1 % | the grid origin and spacing, the snap rule: Danube waypoints placed exactly on nodes |
-| P2 | What does a leg at an arbitrary angle become? | legs at 0, 15, 30, 45, 60 and 90 degrees, 160 m long, same markers | whether non-45 legs are staircases or one bend: confirms the 0/45/90 rule |
+| P1 (done) | Where is the grid, and how do waypoints snap? | 8 short straight routes with waypoints offset 0, 2, 4 ... 14 m; a marker unit at `rmGetTradeRouteWayPoint` every 1 % | the grid origin and spacing, the snap rule: Danube waypoints placed exactly on nodes |
+| P2 (done) | What does a leg at an arbitrary angle become? | legs at 0, 15, 30, 45, 60 and 90 degrees, 160 m long, same markers | whether non-45 legs are staircases or one bend: confirms the 0/45/90 rule |
 | P3 | Does the Danube Bend corridor work? | the planned waypoints, method A with 2-3 values of R | a continuous corridor, a locked inner shore (`mapcheck` connectivity), fish and sockets after the route (T4) |
 | P4 | Bridges | the planned bridge groupings at the planned fractions on P3 | placed or refused (B1/B2); deck heights (B4); a unit walks across (unit bench); a river trader passes under (play test, owner) |
 | P5 | Sockets | river sockets at the planned fractions | count, position on the bank, river upgrade buttons (T7/T9) |
 
+- **Status 2026-10-01 (late):** P1 and P2 answered (generation 1). P3-P5 answered by generations 2-6 on the Danube
+  Bend: a continuous corridor, a locked inner shore, four players on the outer arc, 3 of 3 bridges docked flush (gen
+  6), 4 of 4 sockets on the banks. Open: a unit walking across, a route boat passing a bridge (B7/B10). The
+  generators live in the scratchpad of session ef9a49b4 (`trprobe_gen.py` ... `trprobe6_gen.py`,
+  `trprobe_analyze.py`, `bank_measure.py`); the saved generations are `trprobe1`, `trprobe2` and `trprobe6` in the
+  profile's Scenario folder. Remove the deployed `Game/RandMaps/000000_trprobe.xs/.xml` when the probe ends.
 - **Order:** offline first (`mapcheck`, `mapsim`, `minimap-twin`). The editor generations of P1-P5 take the screen,
   so they need the owner's go (AGENTS.md rule 11), as do the `rm-census` drivers.
 - **Exe disassembly** only if P1/P2 stay ambiguous: there are no symbols, and the strings carry no algorithm.

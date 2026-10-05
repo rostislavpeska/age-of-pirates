@@ -6,7 +6,7 @@ description: AO-aware UV conjoinment - measure ambient occlusion per face at the
 # AO separation for conjoined UVs
 
 Pipeline position: **clean charts** ([blender-clean-uv](../blender-clean-uv/SKILL.md)) ->
-**conjoin** ([blender-uv-conjoin](../blender-uv-conjoin/SKILL.md), T3) -> **this skill** ->
+**conjoin** ([blender-uv-conjoin](../blender-uv-conjoin/SKILL.md), explicit region policy) -> **this skill** ->
 **pages and export** ([aoe-uv-atlas-export](../aoe-uv-atlas-export/SKILL.md)).
 
 Why: one baked texel serves every face stacked on it. Plain T3 on the Korean TC put wrong
@@ -28,8 +28,12 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
 3. **Re-conjoin with the AO test**: `conjoin.families(..., compat=lambda m, o, M:
    ao_compat.compatible(m, o, M, 'points'))`. A chart joins a family only if, at every
    corresponding point under the exact map M, its AO matches the owner's:
-   95th percentile of |dAO| <= 0.08 AND every point <= 0.20. Split charts automatically
-   join other families whose AO matches (greedy, largest owner first).
+   95th percentile of |dAO| <= 0.08 AND every point <= 0.20 in the existing recipe.
+   These are calibrated recipe values, not universal units-independent thresholds.
+   Missing evidence on any face or unmatched member samples rejects sharing; no
+   fallback to means can authorize it. Keep whole charts as AO variants. Explicit
+   subregions require lineage and renewed chart-continuity checks. Compare every
+   member to its actual owner; do not infer transitive compatibility.
 4. **Bake once per owner** (Blender): `scripts/bake_owner_ao.py config.json` - owner faces
    are bake targets, every other face exists once as occluder.
 5. **Verify before showing anyone**: white model textured with the bake vs a unique-texel
@@ -38,6 +42,12 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
    p95 mismatch: green <= .08, yellow <= .15, red above).
 
 ## Rules
+
+- Consume and produce [workflow checkpoints](../blender-uv-workflow/SKILL.md):
+  family colors before AO, then mismatch heatmaps and resulting variants.
+- Record LOW revision, correspondence, occluder list/transforms, opacity policy,
+  radius/units, sample count and seed. Common baker name matching and AO secondary
+  ray matching are separate controls. Assembly changes invalidate assembly AO.
 
 - Compare at points, never per-chart averages or coarse bins. A 6x6 fingerprint passed
   wall bands with ghost dots and beam ends with foreign shadows; the mean test passed

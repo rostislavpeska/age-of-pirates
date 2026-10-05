@@ -22,7 +22,7 @@ as a child of the one root with its absolute transform. `converter.py` now refus
 
 ## Local converter
 
-The existing configurable wrapper is `scripts/havok/converter.py`; machine settings belong in ignored `scripts/havok/converter.local.json`. The skill-local PowerShell wrapper is now maintained only in `.claude/skills/aoe3de-building-export/scripts/convert_fbx_to_gr2.ps1` and accepts an explicit executable path. It uses the observed `--format=gr2 --bang` interface. Neither wrapper proves game compatibility from a header or exit code. Inspect a stalled converter dialog before another attempt.
+The existing configurable wrapper is `<consumer-root>/scripts/havok/converter.py`; machine settings belong in ignored `<consumer-root>/scripts/havok/converter.local.json`. The skill-local PowerShell wrapper is now maintained only in `.claude/skills/aoe3de-building-export/scripts/convert_fbx_to_gr2.ps1` and accepts an explicit executable path. It uses the observed `--format=gr2 --bang` interface. Neither wrapper proves game compatibility from a header or exit code. Inspect a stalled converter dialog before another attempt.
 
 ## British Elector castles: shading and missing floors, 2026-09-24
 

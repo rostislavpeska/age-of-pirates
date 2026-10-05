@@ -2,21 +2,21 @@
 
 Input  (faces JSON, from blender_export_faces.py or any tool): a list of faces
     {"id": int, "chart": str, "material": str, "uv": [[u, v], ...]}   uv in texels
-    at ONE target density (texels per model unit; the exporter normalises per chart).
+    at measured working densities; explicit exporter normalize=True makes them uniform.
     Optional per face: "protect": true  -> its chart never merges (fallback areas).
 Output (plan JSON): per face new UV in [0,1] of the packed page, family id,
     owner flag, and per-member axis scale factors; plus stats.
 
 Rule (greedy, largest chart first). A chart joins an existing owner when
-  1. same dominant material (area-weighted; "material key"),
+  1. same single material (mixed-material charts are rejected),
   2. minimum-area-rectangle length and width each within +/- tol of the owner's,
   3. outline IoU >= iou after mapping the member rectangle onto the owner's
-     rectangle (4 flips tried: identity, flip-x, flip-y, rotate 180).
+     rectangle (identity or rotate 180; reflections require a channel-safe method).
 Members take the owner's texels through that rect-to-rect affine map, so their
 texel density changes by the axis scale factors (reported). Owners are packed with
 the validated MaxRects packer (pack_rects.py) at fixed density with a gutter.
 
-Presets: T3 tol .40 iou .60 (default; AoE-like), T2 .25/.75 (fallback),
+Presets: T3 tol .40 iou .60 (explicit approximation), T2 .25/.75,
 T1 .10/.85 (conservative). Exact containment for sensitive areas: labeled_fit.py.
 
 CLI:  python conjoin.py faces.json plan.json --preset T3 [--gutter 16]
@@ -33,7 +33,7 @@ from pack_rects import maxrects, min_side
 from audit import split_hollow, audit, GATES
 
 PRESETS = {'T1': (.10, .85), 'T2': (.25, .75), 'T3': (.40, .60)}
-FLIPS = [np.diag([1., 1.]), np.diag([-1., 1.]), np.diag([1., -1.]), np.diag([-1., -1.])]
+FLIPS = [np.diag([1., 1.]), np.diag([-1., -1.])]  # proper rotations; reflection needs a separate channel-safe method
 
 
 def _poly(q):
@@ -44,13 +44,24 @@ def _poly(q):
 def prepare(faces):
     """Group faces into charts; normalise each chart to its min-area rectangle frame."""
     by = collections.defaultdict(list)
+    ids = [str(f['id']) for f in faces]
+    if not faces or len(set(ids)) != len(ids):
+        raise ValueError('faces must be nonempty with globally unique face IDs (namespace by part)')
     for f in faces:
+        q = np.asarray(f['uv'], float)
+        if q.ndim != 2 or q.shape[1] != 2 or len(q) < 3 or not np.isfinite(q).all():
+            raise ValueError(f"invalid UV coordinates: {f['id']}")
+        raw = Polygon(q)
+        if not raw.is_valid or raw.area <= 1e-12:
+            raise ValueError(f"degenerate/self-intersecting UV face: {f['id']}")
         by[f['chart']].append(f)
     charts = []
     for cid, fs in by.items():
+        if len({f['material'] for f in fs}) != 1:
+            raise ValueError(f'mixed-material chart: {cid}')
         shp = unary_union([_poly(f['uv']) for f in fs])
         if shp.is_empty or shp.area <= 0:
-            continue
+            raise ValueError(f'empty chart: {cid}')
         wmat = collections.Counter()
         for f in fs:
             wmat[f['material']] += _poly(f['uv']).area
@@ -101,6 +112,10 @@ def merge(charts, tol, iou_min, strips=0., trim=(), trim_width_ratio=2., compat=
             if not strip:
                 sx, sy = o['L'] / m['L'], o['W'] / m['W']
             M = np.eye(3); M[:2, :2] = np.diag([sx, sy])
+            if compat is not None and not compat(m, o, M):
+                m['ao_rejected'] = True
+                owners[m['mat']].append(i)
+                continue
             assign[i] = (1., j, M, sx, sy)
             continue
         if not m['protect']:
@@ -155,11 +170,15 @@ def pack(charts, owners, gutter):
     return side, place
 
 
-def families(faces, tol=.40, iou=.60, strips=0., split_hollow_charts=True, fill=.6, trim=(),
+def families(faces, tol=.10, iou=.85, strips=0., split_hollow_charts=False, fill=.6, trim=(),
              trim_width_ratio=2., compat=None):
     """Merge only (no packing): charts, owner indices, member assignments, split chart ids.
     Faces are copied first (callers' faces stay untouched)."""
     import copy
+    for name, value, low, high in [('tol', tol, 0, 1), ('iou', iou, 0, 1), ('fill', fill, 0, 1),
+                                  ('strips', strips, 0, float('inf')), ('trim_width_ratio', trim_width_ratio, 1.000001, float('inf'))]:
+        if not math.isfinite(value) or not low <= value <= high:
+            raise ValueError(f'invalid {name}: {value}')
     faces = copy.deepcopy(faces)
     split = split_hollow(faces, fill) if split_hollow_charts else []
     charts = prepare(faces)
@@ -167,12 +186,21 @@ def families(faces, tol=.40, iou=.60, strips=0., split_hollow_charts=True, fill=
     return charts, owners, assign, split
 
 
-def conjoin(faces, tol=.40, iou=.60, gutter=16., strips=0., split_hollow_charts=True, fill=.6,
+def conjoin(faces, tol=.10, iou=.85, gutter=16., strips=0., split_hollow_charts=False, fill=.6,
             target_density=256., runtime_page=2048., gates=None, trim=(), trim_width_ratio=2., page_texels=None,
             compat=None):
     """Merge + pack. Hollow charts (frames) are split into straight members first
     (split_hollow_charts); the packed page is audited (stats['audit'], verdict PASS/FAIL)."""
     import copy
+    for name, value, allow_zero in [('gutter', gutter, True), ('target_density', target_density, False),
+                                     ('runtime_page', runtime_page, False), ('page_texels', page_texels, False)]:
+        if value is None and name == 'page_texels':
+            continue
+        if not math.isfinite(value) or value < 0 or (not allow_zero and value == 0):
+            raise ValueError(f'invalid {name}: {value}')
+    for name, value in (gates or {}).items():
+        if name not in GATES or not math.isfinite(value) or value < 0:
+            raise ValueError(f'invalid audit threshold {name}: {value}')
     faces = copy.deepcopy(faces)
     charts, owners, assign, split = families(faces, tol, iou, strips, split_hollow_charts, fill, trim,
                                              trim_width_ratio, compat)
@@ -205,7 +233,8 @@ def conjoin(faces, tol=.40, iou=.60, gutter=16., strips=0., split_hollow_charts=
                  all_chart_texels=float(sum(c['area'] for c in charts)),
                  member_density_change_mean=float(sc.mean()), member_density_change_max=float(sc.max()),
                  tol=tol, iou=iou, gutter=gutter, strips=strips, hollow_charts_split=len(split), trim=sorted(trim))
-    stats['audit'] = audit(charts, owners, fam_size, side, gutter, target_density, runtime_page, fill, gates)
+    stats['audit'] = audit(charts, owners, fam_size, side, gutter, target_density, runtime_page, fill, gates,
+                           uv_page_texels=page_texels)
     stats['ao_rejected_charts'] = sum(1 for j in owners if charts[j].get('ao_rejected'))
     return out, stats
 
@@ -213,11 +242,13 @@ def conjoin(faces, tol=.40, iou=.60, gutter=16., strips=0., split_hollow_charts=
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('faces'); ap.add_argument('plan')
-    ap.add_argument('--preset', default='T3', choices=list(PRESETS))
+    ap.add_argument('--preset', required=True, choices=list(PRESETS), help='explicit region policy; no asset-wide automatic preset')
     ap.add_argument('--tol', type=float); ap.add_argument('--iou', type=float)
     ap.add_argument('--gutter', type=float, default=16.)
     ap.add_argument('--strips', type=float, default=2.5, help='strip cropping for charts with aspect >= this (0 = off)')
-    ap.add_argument('--no-split-hollow', action='store_true', help='keep hollow charts (frames) whole - NOT recommended')
+    split = ap.add_mutually_exclusive_group()
+    split.add_argument('--split-hollow', action='store_true', help='explicit chart refinement; revalidate lineage/continuity before applying')
+    split.add_argument('--no-split-hollow', action='store_true', help='legacy spelling of the default: preserve charts')
     ap.add_argument('--trim', default='', help='comma list of materials that share a trim sheet (e.g. WOOD)')
     ap.add_argument('--page', type=float, default=0., help='ORIGINAL page size in texels: UVs keep their original scale, freed space stays empty (recommended)')
     ap.add_argument('--runtime-page', type=float, default=2048.)
@@ -228,7 +259,7 @@ def main():
     tol = a.tol if a.tol is not None else tol
     iou = a.iou if a.iou is not None else iou
     faces = json.loads(Path(a.faces).read_text())
-    plan, stats = conjoin(faces, tol, iou, a.gutter, a.strips, not a.no_split_hollow,
+    plan, stats = conjoin(faces, tol, iou, a.gutter, a.strips, a.split_hollow,
                           target_density=a.target_density, runtime_page=a.runtime_page,
                           gates=dict(min_runtime_density=a.min_runtime_density),
                           trim=[t for t in a.trim.split(',') if t], page_texels=a.page or None)
@@ -240,6 +271,8 @@ def main():
           f"packing {au['packing_efficiency']:.0%}")
     for f in au['fails']:
         print('  FAIL:', f)
+    for note in au['advisories']:
+        print('  ADVISORY:', note)
     if au['fails']:
         sys.exit(2)
 

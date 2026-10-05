@@ -10,8 +10,14 @@
     {
       "id": "python",
       "kind": "executable",
-      "commands": ["python", "python3"],
-      "requiredFor": ["add", "digest"],
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "requiredFor": [
+        "add",
+        "digest"
+      ],
       "optional": false,
       "note": "Standard-library Python 3; writes only .claude/skills/JOURNAL.jsonl."
     }

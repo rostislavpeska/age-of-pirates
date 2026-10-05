@@ -77230,6 +77230,297 @@
 
 
 <!--TEST AND TEMPORARY CONTENT-->
+<!-- BEGIN KTC176 PHYSICS R01 -->
+<unit id="30160" name="zzKoreanBarracksPhysics">
+  <dbid>30160</dbid>
+  <displaynameid>60237</displaynameid>
+  <editornameid>62920</editornameid>
+  <obstructionradiusx>4.0000</obstructionradiusx>
+  <obstructionradiusz>4.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <movementtype>land</movementtype>
+  <animfile>zbench_korean_military\barracks\korean_barracks_physics.xml</animfile>
+  <deadreplacement>BuildingRubble4x4</deadreplacement>
+  <deadreplacementlifespan>15</deadreplacementlifespan>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>barracks</physicsinfo>
+  <placementfile>buildinglarge.xml</placementfile>
+  <icon>resources\art\buildings\asian_civs\barracks\japan_barracks_icon_64.png</icon>
+  <portraiticon>resources\art\buildings\asian_civs\barracks\japan_barracks_icon_portrait.png</portraiticon>
+  <rollovertextid>60236</rollovertextid>
+  <shortrollovertextid>60235</shortrollovertextid>
+  <initialhitpoints>2500.0000</initialhitpoints>
+  <maxhitpoints>2500.0000</maxhitpoints>
+  <los>12.0000</los>
+  <buildpoints>30.0000</buildpoints>
+  <bounty>40.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Wood">200.0000</cost>
+  <buildingworkrate>1.0000</buildingworkrate>
+  <allowedage>1</allowedage>
+  <armor type="Siege" value="0.0000" />
+  <builderlimit>8</builderlimit>
+  <unittype>LogicalTypeValidSabotage</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWalls</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeShipsAndBuildings</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractBarracks2</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>Building</unittype>
+  <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+  <unittype>MilitaryBuilding</unittype>
+  <unittype>ConstructableBuilding</unittype>
+  <unittype>BuildingClass</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>NoIdleActions</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>PaintTextureWhenPlacing</flag>
+  <flag>FlattenGround</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>InitialGarrisonOnly</flag>
+  <flag>Tracked</flag>
+  <command page="10" column="7">Delete</command>
+  <command page="10" column="3">SetGatherPointMilitary</command>
+  <command page="10" column="8">CancelAllQueued</command>
+  <tactics>barracks.tactics</tactics>
+</unit>
+<unit id="30161" name="zzJapaneseBarracksPhysics">
+  <dbid>30161</dbid>
+  <displaynameid>60237</displaynameid>
+  <editornameid>62920</editornameid>
+  <obstructionradiusx>4.0000</obstructionradiusx>
+  <obstructionradiusz>4.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <movementtype>land</movementtype>
+  <animfile>zbench_korean_military\controls\zzJapaneseBarracksPhysics.xml</animfile>
+  <deadreplacement>BuildingRubble4x4</deadreplacement>
+  <deadreplacementlifespan>15</deadreplacementlifespan>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>barracks</physicsinfo>
+  <placementfile>buildinglarge.xml</placementfile>
+  <icon>resources\art\buildings\asian_civs\barracks\japan_barracks_icon_64.png</icon>
+  <portraiticon>resources\art\buildings\asian_civs\barracks\japan_barracks_icon_portrait.png</portraiticon>
+  <rollovertextid>60236</rollovertextid>
+  <shortrollovertextid>60235</shortrollovertextid>
+  <initialhitpoints>2500.0000</initialhitpoints>
+  <maxhitpoints>2500.0000</maxhitpoints>
+  <los>12.0000</los>
+  <buildpoints>30.0000</buildpoints>
+  <bounty>40.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Wood">200.0000</cost>
+  <buildingworkrate>1.0000</buildingworkrate>
+  <allowedage>1</allowedage>
+  <armor type="Siege" value="0.0000" />
+  <builderlimit>8</builderlimit>
+  <unittype>LogicalTypeValidSabotage</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWalls</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeShipsAndBuildings</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractBarracks2</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>Building</unittype>
+  <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+  <unittype>MilitaryBuilding</unittype>
+  <unittype>ConstructableBuilding</unittype>
+  <unittype>BuildingClass</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>NoIdleActions</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>PaintTextureWhenPlacing</flag>
+  <flag>FlattenGround</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>InitialGarrisonOnly</flag>
+  <flag>Tracked</flag>
+  <command page="10" column="7">Delete</command>
+  <command page="10" column="3">SetGatherPointMilitary</command>
+  <command page="10" column="8">CancelAllQueued</command>
+  <tactics>barracks.tactics</tactics>
+</unit>
+<unit id="30162" name="zzKoreanStablePhysics">
+  <dbid>30162</dbid>
+  <displaynameid>60216</displaynameid>
+  <editornameid>60217</editornameid>
+  <obstructionradiusx>4.0000</obstructionradiusx>
+  <obstructionradiusz>5.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <maxrunvelocity>0.0000</maxrunvelocity>
+  <movementtype>land</movementtype>
+  <animfile>zbench_korean_military\stable\korean_stable_physics.xml</animfile>
+  <deadreplacement>BuildingRubble4x4</deadreplacement>
+  <deadreplacementlifespan>15</deadreplacementlifespan>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>blockhouse</physicsinfo>
+  <placementfile>buildingsmall.xml</placementfile>
+  <icon>resources\art\buildings\stables\stables_icon.png</icon>
+  <portraiticon>resources\art\buildings\stables\stables_portrait.png</portraiticon>
+  <rollovertextid>60215</rollovertextid>
+  <shortrollovertextid>60214</shortrollovertextid>
+  <initialhitpoints>2500.0000</initialhitpoints>
+  <maxhitpoints>2500.0000</maxhitpoints>
+  <los>14.0000</los>
+  <projectileprotounit>Arrow</projectileprotounit>
+  <unitaitype>RangedCombative</unitaitype>
+  <buildpoints>30.0000</buildpoints>
+  <bounty>40.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Wood">200.0000</cost>
+  <buildingworkrate>1.0000</buildingworkrate>
+  <allowedage>1</allowedage>
+  <armor type="Siege" value="0.0000" />
+  <builderlimit>8</builderlimit>
+  <unittype>LogicalTypeValidSabotage</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWalls</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeShipsAndBuildings</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractStables</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>Building</unittype>
+  <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+  <unittype>MilitaryBuilding</unittype>
+  <unittype>ConstructableBuilding</unittype>
+  <unittype>BuildingClass</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>PaintTextureWhenPlacing</flag>
+  <flag>FlattenGround</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>AllowAutoGarrison</flag>
+  <flag>Tracked</flag>
+  <notcontain>AbstractFishingBoat</notcontain>
+  <notcontain>AbstractMonk</notcontain>
+  <notcontain>ExcludeFromRansom</notcontain>
+  <contain>AbstractVillager</contain>
+  <contain>deHomesteadWagon</contain>
+  <contain>AbstractHealer</contain>
+  <contain>ypDaimyoRegicide</contain>
+  <command page="10" column="3">SetGatherPointMilitary</command>
+  <command page="10" column="7">Delete</command>
+  <command page="10" column="8">CancelAllQueued</command>
+</unit>
+<unit id="30163" name="zzJapaneseStablePhysics">
+  <dbid>30163</dbid>
+  <displaynameid>60216</displaynameid>
+  <editornameid>60217</editornameid>
+  <obstructionradiusx>4.0000</obstructionradiusx>
+  <obstructionradiusz>5.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <maxrunvelocity>0.0000</maxrunvelocity>
+  <movementtype>land</movementtype>
+  <animfile>zbench_korean_military\controls\zzJapaneseStablePhysics.xml</animfile>
+  <deadreplacement>BuildingRubble4x4</deadreplacement>
+  <deadreplacementlifespan>15</deadreplacementlifespan>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>blockhouse</physicsinfo>
+  <placementfile>buildingsmall.xml</placementfile>
+  <icon>resources\art\buildings\stables\stables_icon.png</icon>
+  <portraiticon>resources\art\buildings\stables\stables_portrait.png</portraiticon>
+  <rollovertextid>60215</rollovertextid>
+  <shortrollovertextid>60214</shortrollovertextid>
+  <initialhitpoints>2500.0000</initialhitpoints>
+  <maxhitpoints>2500.0000</maxhitpoints>
+  <los>14.0000</los>
+  <projectileprotounit>Arrow</projectileprotounit>
+  <unitaitype>RangedCombative</unitaitype>
+  <buildpoints>30.0000</buildpoints>
+  <bounty>40.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Wood">200.0000</cost>
+  <buildingworkrate>1.0000</buildingworkrate>
+  <allowedage>1</allowedage>
+  <armor type="Siege" value="0.0000" />
+  <builderlimit>8</builderlimit>
+  <unittype>LogicalTypeValidSabotage</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWalls</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeShipsAndBuildings</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractStables</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>Building</unittype>
+  <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+  <unittype>MilitaryBuilding</unittype>
+  <unittype>ConstructableBuilding</unittype>
+  <unittype>BuildingClass</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>PaintTextureWhenPlacing</flag>
+  <flag>FlattenGround</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>AllowAutoGarrison</flag>
+  <flag>Tracked</flag>
+  <notcontain>AbstractFishingBoat</notcontain>
+  <notcontain>AbstractMonk</notcontain>
+  <notcontain>ExcludeFromRansom</notcontain>
+  <contain>AbstractVillager</contain>
+  <contain>deHomesteadWagon</contain>
+  <contain>AbstractHealer</contain>
+  <contain>ypDaimyoRegicide</contain>
+  <command page="10" column="3">SetGatherPointMilitary</command>
+  <command page="10" column="7">Delete</command>
+  <command page="10" column="8">CancelAllQueued</command>
+</unit>
+<!-- END KTC176 PHYSICS R01 -->
+
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
     <dbid>2281</dbid>

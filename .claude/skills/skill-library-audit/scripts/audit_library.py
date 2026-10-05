@@ -16,7 +16,7 @@ NAME = re.compile(r"^[a-z0-9][a-z0-9-]{0,63}$")
 KINDS = {"executable", "application", "directory", "python-package", "capability"}
 EXTERNAL_KEYS = {"id", "kind", "commands", "environment", "distribution", "modules",
                  "requiredFor", "optional", "note"}
-IGNORED = {"__pycache__", ".DS_Store"}
+IGNORED = {"__pycache__", ".DS_Store", "CRASH_LOG.jsonl"}  # private runtime journal, never a bundled instruction/resource
 
 
 def inside(path, root):
@@ -186,13 +186,15 @@ def audit(skills_root, selected=None, machine=False, operation=None, config=None
         closure, queue = set(), [name]
         while queue:
             dep = queue.pop()
-            if dep in closure or dep not in declarations:
+            if dep in closure:
                 continue
             closure.add(dep)
-            queue.extend(declarations[dep]['skills'])
-        modules = {Path(p).stem for dep in closure for p in declarations[dep]['files'] if p.endswith('.py')}
-        modules.update(Path(p).parent.name for dep in closure for p in declarations[dep]['files'] if p.endswith('/__init__.py'))
-        modules.update(m for dep in closure for item in declarations[dep]['external'] for m in item.get('modules', []))
+            if dep in declarations:
+                queue.extend(declarations[dep]['skills'])
+        declared_closure = closure & declarations.keys()
+        modules = {Path(p).stem for dep in declared_closure for p in declarations[dep]['files'] if p.endswith('.py')}
+        modules.update(Path(p).parent.name for dep in declared_closure for p in declarations[dep]['files'] if p.endswith('/__init__.py'))
+        modules.update(m for dep in declared_closure for item in declarations[dep]['external'] for m in item.get('modules', []))
         modules.update(sys.stdlib_module_names)
         for path in sorted(declared):
             if not path.is_file():

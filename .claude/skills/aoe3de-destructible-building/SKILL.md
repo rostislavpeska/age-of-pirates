@@ -71,6 +71,18 @@ not proof that all vanilla render components must be watertight.
    exploded diagnostic pose. Compare intact and damaged exterior positions
    before motion. Simple existing materials may isolate physics validation from
    ongoing UV/art work; label this simplification in the manifest.
+   Verify this on a saved-and-reopened export copy: compare each named source
+   region's world-space bounds against its assembled fragments, not merely the
+   overall bounds or `frame_current == 1`. Keep immutable pre-copy transforms as
+   the reference. Scene copying can lose parent inverses and root transforms.
+   Probe each structural foot against its declared ground plane; a yard fence
+   at zero cannot certify the building. Preserve attachment rotation/scale too.
+   In AoP, new diagnostic profiles must include `rest_contract` (assembled bounds
+   and named ground-support probes) for `gr2_lint.py`; source-region comparison
+   precedes hull fitting. INC-071 (2026-10-05): r02 failed 256 barracks and 201
+   stable regions; stable feet floated 0.38 units; horses lost their rotation.
+   Regression checks reject the failed binaries and accept the repaired rest
+   state; five synthetic controls run in 0.21 s. This does not prove physics.
 4. **Build GR2 at donor layout.** Preserve skeleton and rigid bindings using the
    GR2 skill's section, relocation, marshalling and bone-local bounds rules.
    Preserve packed shading data where geometry is retained. A generic static

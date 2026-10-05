@@ -57,11 +57,19 @@ def maxrects(rects, W, H):
 
 
 def min_side(rects):
+    if not rects or any(not math.isfinite(v) or v <= 0 for r in rects for v in r):
+        raise ValueError('packing requires finite positive rectangle dimensions')
     lb = math.sqrt(sum(w * h for w, h in rects))
     lb = max(lb, max(max(r) for r in rects))
+    if not math.isfinite(lb):
+        raise ValueError('packing dimensions overflow')
     lo, hi = lb, lb
-    while maxrects(rects, hi, hi) is None:
+    for attempt in range(96):
+        if maxrects(rects, hi, hi) is not None:
+            break
         hi *= 1.1
+    else:
+        raise ValueError('packing search exceeded 96 growth trials')
     while hi - lo > 1:
         mid = (lo + hi) / 2
         if maxrects(rects, mid, mid) is None:
