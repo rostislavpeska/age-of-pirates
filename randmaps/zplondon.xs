@@ -438,7 +438,7 @@ void main(void)
 	rmEnableMerc("deMercHarquebusier", -1);        // the cavalry of both Civil War armies
 	rmEnableMerc("deMercPistoleer", -1);           // the cuirassiers (Haselrig's "Lobsters", 1643)
 	rmEnableMerc("MercHighlander", -1);            // the Covenanters, Montrose's Highland campaign 1644-45
-	rmEnableMerc("MercSwissPikeman", -1);          // pike and shot
+	rmEnableMerc("deMercGallowglass", -1);         // the Irish wars 1641-53 (owner 2026-10-06: Gallowglass for the Swiss Pikeman)
 	rmEnableMerc("MercGreatCannon", -1);           // a siege gun for a walled city
 	rmEnableOutlaw("deSaloonHighwaymanRider");     // highway robbery after the Restoration (Claude Duval, Tyburn 1670)
 	rmEnableOutlaw("deSaloonSailor");              // London's unpaid seamen (the pay riots after the 1665-67 Dutch war)
