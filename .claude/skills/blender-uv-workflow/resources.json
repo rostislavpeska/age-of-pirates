@@ -4,6 +4,7 @@
     "SKILL.md",
     "references/bakes-and-recovery.md",
     "references/checkpoints.md",
+    "references/review-packet.md",
     "scripts/checkpoint.py",
     "tests/test_checkpoint.py",
     "tests/uv_checkpoint_fixture.py"

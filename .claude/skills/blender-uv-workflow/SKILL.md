@@ -45,6 +45,12 @@ reports and scoped owner acceptance. A background result is FILE_VERIFIED, not
 LIVE_VERIFIED. Preserve unsaved live work; use connectors. No desktop fallback is
 authorized here. Color legends distinguish chart IDs, materials, sharing and AO.
 
+Deliver the owner's [standard review packet](references/review-packet.md): all
+model/resource UV sheets, measured resolution comparisons, space accounting,
+bounded improvement proposals, lessons/tracking and per-scope UV bindings. This
+human-facing report consumes the existing HANDOFF; it is not another version store
+or a substitute for final checks. Incomplete WIP evidence stays explicitly incomplete.
+
 Use `checkpoint.py validate SPEC.json`, then `write SPEC.json --out CHECKPOINT.json`.
 `check CHECKPOINT.json` revalidates hashes and upstream receipts. `summary` produces
 readable status from a receipt; do not maintain an independent version pointer.
