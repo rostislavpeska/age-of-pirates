@@ -432,3 +432,11 @@
 {"time": "2026-10-06T02:40:27", "event": "after", "operation_id": "military-r27-verify-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\local_ao_r27\\LIVE_VERIFY_CALL.json"}
 {"time": "2026-10-06T02:40:28", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r27-save-001", "action": "live_save_local_ao.py", "risk": "none", "file": null, "agent": "astra"}
 {"time": "2026-10-06T02:40:29", "event": "after", "operation_id": "military-r27-save-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\local_ao_r27\\LIVE_SAVE.json"}
+{"time": "2026-10-06T03:28:30", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r29-identity-001", "action": "live_identity.py", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T03:28:30", "event": "after", "operation_id": "military-r29-identity-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\roof_pilot_r29\\LIVE_IDENTITY.json"}
+{"time": "2026-10-06T03:30:09", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r29-append-001", "action": "live_append.py", "risk": "R5", "file": null, "agent": "astra"}
+{"time": "2026-10-06T03:30:10", "event": "after", "operation_id": "military-r29-append-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\roof_pilot_r29\\LIVE_APPEND.json"}
+{"time": "2026-10-06T03:30:22", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r29-verify-001", "action": "live_verify_show.py", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T03:30:22", "event": "after", "operation_id": "military-r29-verify-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\roof_pilot_r29\\LIVE_VERIFY_RECEIPT.json"}
+{"time": "2026-10-06T03:30:37", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r29-save-001", "action": "live_save.py", "risk": "R5", "file": null, "agent": "astra"}
+{"time": "2026-10-06T03:30:41", "event": "after", "operation_id": "military-r29-save-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\roof_pilot_r29\\LIVE_SAVE.json"}
