@@ -440,3 +440,13 @@
 {"time": "2026-10-06T03:30:22", "event": "after", "operation_id": "military-r29-verify-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\roof_pilot_r29\\LIVE_VERIFY_RECEIPT.json"}
 {"time": "2026-10-06T03:30:37", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r29-save-001", "action": "live_save.py", "risk": "R5", "file": null, "agent": "astra"}
 {"time": "2026-10-06T03:30:41", "event": "after", "operation_id": "military-r29-save-001", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\roof_pilot_r29\\LIVE_SAVE.json"}
+{"time": "2026-10-06T06:08:42", "event": "before", "status": "IN_PROGRESS", "operation_id": "astra-r32-identity-0408", "action": "live_identity.py", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T06:08:42", "event": "after", "operation_id": "astra-r32-identity-0408", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\morning_review_r32\\IDENTITY_CALL.json"}
+{"time": "2026-10-06T06:09:09", "event": "before", "status": "IN_PROGRESS", "operation_id": "astra-r32-inventory-0410", "action": "inspect_live.py", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T06:09:09", "event": "after", "operation_id": "astra-r32-inventory-0410", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\morning_review_r32\\INVENTORY_CALL.json"}
+{"time": "2026-10-06T06:10:09", "event": "before", "status": "IN_PROGRESS", "operation_id": "astra-r32-verify-0413", "action": "run_verify.py", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T06:10:10", "event": "after", "operation_id": "astra-r32-verify-0413", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\morning_review_r32\\VERIFY_CALL.json"}
+{"time": "2026-10-06T06:10:55", "event": "before", "status": "IN_PROGRESS", "operation_id": "astra-r32-show-0414", "action": "show_live.py", "risk": "none", "file": null, "agent": "astra"}
+{"time": "2026-10-06T06:10:55", "event": "after", "operation_id": "astra-r32-show-0414", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\morning_review_r32\\SHOW_CALL.json"}
+{"time": "2026-10-06T06:10:56", "event": "before", "status": "IN_PROGRESS", "operation_id": "astra-r32-save-0414", "action": "run_save.py", "risk": "R5", "file": null, "agent": "astra"}
+{"time": "2026-10-06T06:10:57", "event": "after", "operation_id": "astra-r32-save-0414", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\morning_review_r32\\SAVE_CALL.json"}
