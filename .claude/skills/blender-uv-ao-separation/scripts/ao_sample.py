@@ -21,8 +21,11 @@ verts, polys = [], []
 for n in cfg['occluders']:
     ob = bpy.data.objects[n]; mw = ob.matrix_world; base = len(verts)
     verts += [mw @ v.co for v in ob.data.vertices]
-    polys += [[base + i for i in p.vertices] for p in ob.data.polygons]
-bvh = BVHTree.FromPolygons(verts, polys, epsilon=0.0)
+    # A second implicit triangulation can put ray origins inside a warped quad
+    # (INC-091). Use the same explicit mesh tessellation as the receiver below.
+    ob.data.calc_loop_triangles()
+    polys += [[base + i for i in tri.vertices] for tri in ob.data.loop_triangles]
+bvh = BVHTree.FromPolygons(verts, polys, all_triangles=True, epsilon=0.0)
 k = int(math.sqrt(NR)); dirs = []
 for a in range(k):
     for b in range(NR // k):

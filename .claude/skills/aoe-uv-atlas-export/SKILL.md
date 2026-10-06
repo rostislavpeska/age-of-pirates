@@ -23,6 +23,27 @@ Pipeline: [blender-clean-uv](../blender-clean-uv/SKILL.md) -> [blender-uv-conjoi
 
 ## Budget first, freeze last
 
+When the owner grants a percentage reduction, record whether it is **linear
+texel density or texel area**, the unchanged baseline file/UV hash, and the minimum
+retained fraction. A 30% linear reduction means scale >=0.70 (area >=0.49), not
+30% again after each candidate. Verify both density axes against that baseline
+on the reopened mesh. This allowance is separate from the universal density floor.
+
+Try a bounded set of packing orders before sacrificing detail. The optional
+`scripts/bounded_pack.py` compares deterministic rectangle orders/scores with fixed
+runtime gaps and refuses a result below its explicit minimum. Its best trial is
+not a proof of globally optimal packing. Retain better tested candidates; a new
+heuristic search must not replace one with a worse result just because it ran last.
+Report occupancy, rectangle waste and gutter cost separately. If AO neutralization
+is authorized, compare its visual cost via the AO skill; do not silently loosen
+pointwise thresholds. No new texture page or hidden material per class.
+
+**Shared dependencies are part of completion.** Zero downward faces on the own
+page does not establish correct backing UVs. Before final freeze, the workflow's
+`shared_mapping` check must cover actual compatible cells, UV bounds, source image
+bindings and visible-backing dispositions. Pending resources may remain in a WIP
+capacity experiment, but never disappear from its report or become an export PASS.
+
 Estimate the page budget (step 0 of the [pipeline order](../blender-architecture-texturing/references/pipeline-order.md))
 before UV or bake work starts, not when this skill runs: the Korean TC found its reserved area at
 122% of the pages only after roof and window bakes existed, and those bakes were lost. The
@@ -83,3 +104,6 @@ of the visible area sat at 15 texels/unit - always measure the p10, not only the
 ## Tools
 
 `scripts/pages.py` - `assign_pages`, `best_split` (bisection on s), `emit`, `military_2048`.
+
+Bounded alternatives: `scripts/bounded_pack.py`; regression tests:
+`python -m unittest discover -s .claude/skills/aoe-uv-atlas-export/scripts -p "test_*.py"`.

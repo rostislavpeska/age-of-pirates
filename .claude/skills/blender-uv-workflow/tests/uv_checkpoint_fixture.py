@@ -19,8 +19,9 @@ def freeze_fixture(root, asset, canonical, through='freeze'):
         spec = dict(schema=1, asset=asset, revision=bind['revision'], stage=stage, inputs=inputs, checks=[], views=[])
         for name in checks.split():
             p = d / (name + '.json')
+            metrics = dict(shared_face_count=0,unmapped=0,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0) if name=='shared_mapping' else {'fixture_only':True}
             p.write_text(json.dumps(dict(bind, check=name, status='PASS',
-                metrics={'fixture_only': True}, validator={'name': 'synthetic-unit-test', 'version': '1'})))
+                metrics=metrics, validator={'name': 'synthetic-unit-test', 'version': '1'})))
             spec['checks'].append(ref(p))
         for kind in views.split():
             p = d / (kind + '.png'); Image.new('RGB', (8, 8), 'grey').save(p)

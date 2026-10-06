@@ -64,17 +64,26 @@ does not block Blender-only work; use it only for the selected workflow.
 6. For Painter read [MCP feasibility](references/painter-mcp.md). A project existing online is not proof of local compatibility. Do not install/upgrade it as a side effect of texturing.
 7. Keep layered sources, adjustment masks and an output manifest. Save a new texture version, apply to the confirmed Blender instance, verify packed/external paths, save and inspect. Never claim live updates when only a background copy changed. Use the destination engine skill for export.
 
-## Final texel-density floor (owner, 2026-09-30)
+## Final texel-density floor
 
 **Hard universal floor:** every model passes the [universal UV density floor](references/uv-density-floor.md). For AoE3DE:
 
-- a median of at least 100 t/u;
-- at most 2 % of the area below 60 t/u, per model and per page;
+- a median of at least 90 t/u;
+- at most 2 % of the area below 54 t/u, per model and per page;
 - at most 3 % of the area on collapsed UVs.
 
-Measure it with `scripts/density_floor.py`. Hidden pages count. A FAIL blocks the UV freeze (the 03_uv handoff, [contract](references/handoff-contract.md) rule 7) and the export. Only the owner's recorded waiver (his whole message) exempts a model.
+These are the 2026-10-06 policy values; the JSON in the linked reference is the
+numeric source of truth and includes the dilution/combined-area limits. Measure
+with `scripts/density_floor.py`. Hidden pages count. A FAIL blocks freeze/export.
+Below-floor exceptions require explicit owner GO bound to the measured candidate,
+model and exact texture pages through that tool's proposal/approval contract.
+The threshold is not a working target; lowering it does not resize saved UVs.
 
 Every new or rebuilt component must meet a **measured comparable vanilla asset floor** at the final runtime page size, on both UV axes and at the same model scale. Record the reference, units, per-component minimum, and source-supported detail density before baking. Missing measurements block a quality-pass claim. A high-resolution bake later shrunk into a small island, an upscaled bitmap, or fewer owners does not raise final detail density. Reclaimed area must actually support the required allocation.
+If the owner authorizes a modest target reduction, record the revised class targets
+and comparison instead of treating the historical reference as an immutable new
+veto. Preserve separately protected detail requirements. Targets below the revised
+universal floor still require the scoped GO above.
 
 For the current Korean TC window repair the owner explicitly requires **at least 2x linear density relative to the rejected 115 texels/unit version** (at least 230 on both axes, four times the texel area), as well as the vanilla floor. This is a window-specific requirement, not a universal numeric floor for every asset. The r2 allocation targets 256; unrelated roofs/UVs are not repacked to meet it. Show the actual editable UVs and every review model using the same mesh/map revision. Design praise does not mean the owner accepted density or the complete asset.
 

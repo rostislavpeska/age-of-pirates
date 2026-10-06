@@ -25,8 +25,11 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
    0.5 unit, the whole assembly (hidden parts too) as occluders. ~345k samples in ~1 min.
 2. **Attach** (host): `attach_ao.attach(faces, 'ao.json')` puts samples into each face's
    own development coordinates.
-3. **Re-conjoin with the AO test**: `conjoin.families(..., compat=lambda m, o, M:
-   ao_compat.compatible(m, o, M, 'points'))`. A chart joins a family only if, at every
+3. **Split the saved parent families with the AO test**. Consume the pre-AO sharing
+   plan; never restart global matching or use AO to retroactively veto phase one.
+   If calling `conjoin.families(..., compat=lambda m, o, M:
+   ao_compat.compatible(m, o, M, 'points'))`, run it within each parent family and
+   retain the exact geometric correspondence. A chart joins an AO variant only if, at every
    corresponding point under the exact map M, its AO matches the owner's:
    95th percentile of |dAO| <= 0.08 AND every point <= 0.20 in the existing recipe.
    These are calibrated recipe values, not universal units-independent thresholds.
@@ -43,19 +46,46 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
 
 ## Rules
 
+- **Authorized AO simplification is an explicit alternative, not a threshold
+  bypass.** First retain the strict measurement and exact geometric parents.
+  For a selected parent, form the UNION of conflicting regions in common owner
+  coordinates. Force AO to neutral (1) there on every stacked owner/member,
+  preserving measured compatible AO elsewhere. Record source hashes, correspondence,
+  mask, affected faces, actual area saving and visible loss of contact shadows.
+  Missing correspondence cannot be repaired by a neutral-mask claim.
+  Compare the least destructive candidate that fits the owner's density allowance;
+  additional AO removal is a separate visible trade-off.
+- Apply the mask **before** AO is multiplied into BaseColor or written to Masks.R.
+  An AO mask cannot remove shadows already baked into BaseColor, nor dirt/roughness
+  or tangent-space normal differences. Preserve those independent channels.
+  `scripts/neutralize_ao.py` validates equal image dimensions and normalized values.
+  A prepared mask is not an applied bake: final owner/reference and mip checks
+  remain required. Localize edge padding; do not bleed into neighboring banks.
+
 - Consume and produce [workflow checkpoints](../blender-uv-workflow/SKILL.md):
   family colors before AO, then mismatch heatmaps and resulting variants.
 - Record LOW revision, correspondence, occluder list/transforms, opacity policy,
   radius/units, sample count and seed. Common baker name matching and AO secondary
   ray matching are separate controls. Assembly changes invalidate assembly AO.
+- **One explicit triangulation:** receiver interpolation and occluder BVH must use
+  the same `mesh.loop_triangles` (including identical transforms). Never feed raw
+  nonplanar quads/ngons to a BVH while sampling Blender's different tessellation.
+  Run an isolated warped-quad outward-ray check before full AO. INC-091 produced
+  false full-dark roof samples through sub-millimetre self-hits; increasing the
+  ray offset hides the defect and is not its fix. Cache identity includes the
+  triangulation and recipe, not merely the original polygon list.
+- Deliver a pilot map/heatmap before whole-model separation; deliver each model's
+  resulting UV sheet before the next edit batch. Follow the workflow's partial
+  gates, and label samples versus final owner/reference bakes explicitly.
 
 - Compare at points, never per-chart averages or coarse bins. A 6x6 fingerprint passed
   wall bands with ghost dots and beam ends with foreign shadows; the mean test passed
   windows. Point-to-point = a virtual subdivision of every face without touching geometry.
 - The per-point limit (0.20) is about 7x the ray noise at 256 rays (sigma ~0.02-0.03);
   lower ray counts need looser limits or they split on noise.
-- AO separation costs page space honestly: expect several times more families. Judge it
-  with the export skill's uniform runtime density, not by family count.
+- AO separation can add islands and owned area. Measure the growth and gutters;
+  do not equate family count with cost or assume a fixed multiplier. Keep capacity
+  provisional until measured, per [the capacity protocol](../blender-uv-workflow/references/sharing-and-capacity.md).
 - The space gate (blender-uv-conjoin audit) counts AO-separated charts separately from
   charts that simply found no geometric match.
 
@@ -63,3 +93,7 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
 
 `scripts/ao_sample.py`, `scripts/attach_ao.py`, `scripts/ao_compat.py` (tests D1 mean,
 D2 p95 bins, D3 SSIM, D4 classes, D5 combined, **D6 points - default**), `scripts/bake_owner_ao.py`.
+
+Warped-quad regression: run background Blender with
+`--python scripts/check_triangulation_blender.py`. It reproduces implicit-BVH
+self-hits and requires zero outward self-hits with explicit receiver triangles.

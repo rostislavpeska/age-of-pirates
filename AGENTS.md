@@ -145,6 +145,15 @@ Blender work through the MCP follows `.claude/skills/blender-mcp-safety` (log fi
 
 ## Self-improvement journal (3D work)
 
+**Partial UV review gates:** every bounded UV editing batch (including mirrored
+sharing repairs and each model's AO separation) is saved and checked, then its
+actual UV maps are embedded in chat before the next dependent edit. Follow
+`.claude/skills/blender-uv-workflow/references/review-packet.md`. Account for every
+model and shared/protected resource; unchanged pictures may be reused with source
+identity. File-only delivery is insufficient. Record machine verification, chat
+delivery and owner acceptance separately. Authorized continued WIP work may proceed
+after delivery; silence does not grant final acceptance or a below-floor GO.
+
 During any 3D work (modeling, UV, conjoinment, AO, atlas, baking, texturing, export - Blender or Photoshop)
 every agent records lessons in the shared `.claude/skills/JOURNAL.jsonl` **at the moment they happen**: an owner
 correction, a failure, a confirmed method, a measurement that settles a question. Use the `workflow-journal`

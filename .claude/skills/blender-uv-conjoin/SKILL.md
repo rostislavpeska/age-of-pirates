@@ -28,8 +28,11 @@ Use [the shared UV workflow](../blender-uv-workflow/SKILL.md). Clean charts and
 material classification precede sharing. Choose T1/T2/T3 or exact correspondence
 per region, recording distortion and channel restrictions. T3 allows about 67%
 axis stretch and is an explicit approximation, never an architecture-wide default.
-Signs, unique ornament, contact shadows, grain/normal/alpha/player-color regions
-remain protected unless their correspondence is proven. The CLI requires a preset;
+Signs, unique ornament and grain/normal/alpha/player-color regions remain protected
+unless their correspondence is proven. Assembly/contact AO is deliberately pending
+in the first sharing phase; it must not veto geometry/material/role conjoinment.
+Follow [the two-phase contract](../blender-uv-workflow/references/sharing-and-capacity.md).
+The CLI requires a preset;
 the library's conservative default is T1. Reflection is not enabled by this helper.
 
 ## Workflow
@@ -67,6 +70,8 @@ the library's conservative default is T1. Reflection is not enabled by this help
   empty, and the owner decides later whether to shrink the page. Do not rescale the
   result to fill 0-1 and keep exporter `normalize=False` (the current default).
   Both were an owner-reported drift (2026-09-28): they silently raised texel density.
+  An explicitly authorized density revision is a separate, measured operation;
+  it does not change this helper's scale-preserving contract.
 
 - Same material only; never merge across material IDs (wood onto plaster, window onto wall).
 - Whole charts are the unit; do not cut charts into scraps to raise the merge count.
@@ -75,8 +80,9 @@ the library's conservative default is T1. Reflection is not enabled by this help
 - Owners are packed tightly; the packer (`pack_rects.py`, MaxRects best-short-side)
   hits known optima on its controls. Blender's pack_islands failed those controls
   (10% worse on 16 squares; exact-shape mode hung) - do not use it for measurement.
-- Geometry-only: AO bakes need one owner bake per family; unique contact shading is
-  a reason to protect, not to un-merge everything.
+- Geometry-only: no AO veto in this first phase. Subsequent AO variants need one
+  owner bake each; unique contact shading is a reason for a measured local split,
+  not to un-merge everything.
 - This helper uses proper rotations only. A separate reflected-sharing method must
   prove normal/tangent and directional-channel compatibility before use.
 - **Role registration gate (2026-09-28, Korean TC tower eaves).** A member must land on the owner texels of
@@ -125,8 +131,10 @@ exact 1:1 window inside a larger owner), or moves onto free texels of that class
 ## Next step: AO separation
 
 Before baking AO onto shared texels, run [blender-uv-ao-separation](../blender-uv-ao-separation/SKILL.md):
-it re-runs `families()` with a point-to-point AO test (`compat` hook) so faces whose AO
-differs (windows, dots, beam ends, contact corners) keep or find compatible texels.
+it consumes these parent families and splits incompatible AO members within each
+parent using corresponding-point tests. If using `families()` with a `compat`
+hook, partition by the saved parent first and preserve the exact correspondence;
+do not silently replace this sharing proposal with a global re-conjoin.
 Then split families onto runtime pages with [aoe-uv-atlas-export](../aoe-uv-atlas-export/SKILL.md).
 Curved charts (pot bands, rings) are never split as frames: a chart whose pieces use more
 than four directions is treated as curved.

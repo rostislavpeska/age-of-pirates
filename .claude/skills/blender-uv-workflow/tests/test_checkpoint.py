@@ -33,8 +33,9 @@ class CheckpointTests(unittest.TestCase):
         binding = {k: spec[k] for k in ('asset', 'revision', 'stage')}
         binding['inputs'] = {k: v['sha256'] for k, v in spec['inputs'].items()}
         for name in C.STAGES[stage][0].split():
+            metrics = dict(shared_face_count=0,unmapped=0,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0) if name=='shared_mapping' else {'measured':1}
             spec['checks'].append(self.ref(d, name + '.json', dict(binding, check=name,
-                status='PASS', validator={'name': 'fixture-measurement', 'version': '1'}, metrics={'measured': 1})))
+                status='PASS', validator={'name': 'fixture-measurement', 'version': '1'}, metrics=metrics)))
         for kind in C.STAGES[stage][1].split():
             image = io.BytesIO(); Image.new('RGB', (8, 8), 'grey').save(image, format='PNG')
             spec['views'].append(dict(self.ref(d, kind + '.png', image.getvalue()), kind=kind))
@@ -76,6 +77,15 @@ class CheckpointTests(unittest.TestCase):
         d, spec = self.clean(); spec['checks'].pop(0)
         self.assertEqual(C.validate(spec, d)['status'], 'INCOMPLETE')
 
+    def test_INC095_freeze_rejects_pending_shared_mapping_labeled_pass(self):
+        parent = None
+        for stage in ('geometry','clean','materials','share','ao'):
+            parent = self.receipt(stage,parent)
+        d,spec=self.candidate('freeze',parent)
+        index=C.STAGES['freeze'][0].split().index('shared_mapping')
+        self.change_report(spec,index,status='PASS',metrics=dict(shared_face_count=100,unmapped=1,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0))
+        self.assertEqual(C.validate(spec,d)['status'],'INCOMPLETE')
+
     def test_empty_metrics_never_passes(self):
         d, spec = self.clean(); self.change_report(spec, 0, metrics={})
         self.assertEqual(C.validate(spec, d)['status'], 'INCOMPLETE')
@@ -114,6 +124,15 @@ class CheckpointTests(unittest.TestCase):
     def test_no_promotion_without_observable_evidence(self):
         d, spec = self.clean(); spec['views'].pop()
         self.assertEqual(C.validate(spec, d)['status'], 'INCOMPLETE')
+
+    def test_INC_092_delivered_or_rejected_is_not_accepted(self):
+        """INC-092: a posted WIP or explicit rejection is not owner acceptance."""
+        d, spec = self.clean()
+        for content in ({'delivered_in_chat': True, 'owner_accepted': False},
+                        {'status': 'pending'}, {'status': 'rejected'}, {'status': 'wip'}):
+            with self.subTest(content=content):
+                spec['acceptance']['evidence'] = self.ref(d, 'delivery.json', content)
+                self.assertEqual(C.validate(spec, d)['status'], 'INCOMPLETE')
 
     def test_text_named_png_is_not_visual_evidence(self):
         d, spec = self.clean()

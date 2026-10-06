@@ -378,7 +378,8 @@ def test_the_shipped_korean_tc_density_exactly_as_measured(installed_intact):
     """gates/density_baseline.json: a median 107.0 PASSES; b 9.6 % of the area below 60 t/u FAILS, all of it on the
     matc page (the hidden faces: 28.6 % of that page below 60); without matc 0 % below, p2 105.6; 278 islands / 100 u2"""
     r = L.check_density("intact", installed_intact, KTC / "korean_tc.material", REPO / "art", PROF, "korean_tc")
-    m = r["data"]["metrics"]
+    # Keep the measured historical60 baseline intact while the runtime policy uses54.
+    m = DF.measure(ktc_groups(installed_intact), dict(FLOOR, model_median_min=100, face_floor=60))
     assert r["status"] == "FAIL" and r["data"]["verdict"] == "FAIL"
     assert abs(m["model"]["p50"] - 106.98) < 0.05 and abs(m["model"]["share_below_face_floor"] - 0.0961) < 5e-4
     assert abs(m["model"]["p2"] - 29.4) < 0.1 and abs(m["pages"][MATC]["share_below_face_floor"] - 0.2861) < 5e-4
@@ -409,10 +410,11 @@ def owner_store(tmp_path, text):
 def test_only_the_owners_whole_message_exempts_the_hidden_page(tmp_path, monkeypatch, installed_intact):
     """the matc exemption is the owner's call (KTC-164): a recorded waiver with his whole message exempts the page and
     the rest must still pass; a fragment, another model or no message store never does"""
-    text = "The Korean TC matc faces are hidden in game, leave the matc page out of the density floor."
+    proposal = DF.make_proposal(DF.measure(ktc_groups(installed_intact), FLOOR), FLOOR, "korean_tc", [MATC])
+    text = DF.proposal_go(proposal)
     monkeypatch.setattr(L, "owner_message_store", lambda prof: owner_store(tmp_path, text))
     prof = copy.deepcopy(PROF)
-    prof["waivers"] = [dict(id="W-D1", check="density_floor", model="korean_tc", pages=[MATC], owner_quote=text,
+    prof["waivers"] = [dict(id="W-D1", check="density_floor", model="korean_tc", pages=[MATC], proposal=proposal, owner_quote=text,
                             msg="m900", at="2026-09-30T11:00:00Z", recorded_by="test")]
     check = lambda p: L.check_density("intact", installed_intact, KTC / "korean_tc.material", REPO / "art", p,  # noqa
                                       "korean_tc")
@@ -574,11 +576,11 @@ def test_inc036_a_generic_owner_message_never_waives_the_korean_tc(tmp_path, mon
         prof["waivers"] = [dict(id="W-X", check="density_floor", model="korean_tc", owner_quote=text, msg=mid,
                                 at="2026-09-30T11:00:00Z", recorded_by="test", **({"pages": pages} if pages else {}))]
         r = check(prof)
-        assert r["status"] == "FAIL" and "does not name the density floor and the model" in r["summary"], mid
+        assert r["status"] == "FAIL" and "waiver W-X ignored" in r["summary"], mid
     prof["waivers"] = [dict(id="W-Y", check="density_floor", model="korean_tc", pages=[MATC], msg="m901",
                             owner_quote="Keep the KTC matc page out of the DPI floor, it is hidden.",
                             at="2026-09-30T11:00:00Z", recorded_by="test")]
-    assert check(prof)["data"]["verdict"] == "WAIVED"                  # KTC is one of the profile's names
+    assert check(prof)["data"]["verdict"] == "FAIL"                    # legacy keyword waiver is not scoped GO
 
 
 # -------------------------------------------------------------- INC-033: the texture ceiling cannot be escaped

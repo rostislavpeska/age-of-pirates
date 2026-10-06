@@ -3,7 +3,9 @@
   "files": [
     "SKILL.md",
     "scripts/pages.py",
-    "scripts/test_pages.py"
+    "scripts/test_pages.py",
+    "scripts/bounded_pack.py",
+    "scripts/test_bounded_pack.py"
   ],
   "skills": [
     "aoe3de-building-export",

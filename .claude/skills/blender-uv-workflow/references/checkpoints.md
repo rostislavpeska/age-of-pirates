@@ -10,10 +10,19 @@ and versions. A CHECKPOINT is evidence for a substep, not another asset database
 | materials | 2b | coverage, material_classes, protected_scope | model, materials, legend |
 | share | 3a | coverage, families, correspondence, channels, protected_scope | model, families, uv_sheet |
 | ao | 3b | coverage, ao_correspondence, ao_recipe, continuity | model, ao_heatmap, families |
-| freeze | 3c | coverage, overlap, density, page_budget, padding, source_detail | model, checker, uv_sheet |
+| freeze | 3c | coverage, overlap, density, page_budget, padding, source_detail, shared_mapping | model, checker, uv_sheet |
 | base | 4 | coverage, bindings, bake_contract, texture_qa | model, basecolor, normal, ao |
 | details | 5 | bindings, texture_qa, protected_scope | model, details, player_color |
 | game | 6 | source_binding, export_roundtrip, runtime_lint, installed_hashes, game_test | intact, destruction |
+
+The `shared_mapping` report at freeze records integer counts `shared_face_count`,
+`unmapped`, `incompatible`, `unbound`, `outside_cells`, `unreviewed_exposure` and
+`coverage_errors`. All defect counts must be zero, including when a caller labels
+the report PASS. A model with no shared resources supplies an actual empty census.
+Extract UVs, physical classes and shader/image bindings from the saved mesh; pass
+them to `scripts/shared_mapping.py`. A named matC slot or pointer in custom
+properties is not an image binding. Visible shared surfaces are allowed when their
+quality is reviewed; downward normals alone do not establish concealment.
 
 Order is linear above. A new checkpoint consumes a predecessor receipt. Same-stage
 iterations may consume the previous receipt of that stage. Geometry is the only

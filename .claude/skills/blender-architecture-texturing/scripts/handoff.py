@@ -206,7 +206,8 @@ def write(spec_path, out, owner_messages=None, profiles=None):
             errors.append(f'input handoff missing: {h}')
         else:
             up = json.loads(h.read_text()); inp['status'] = up.get('status'); inp['sha256'] = sha(h)
-            if up.get('status') not in ('review', 'accepted'):
+            allowed = ('wip', 'review', 'accepted') if spec.get('status') == 'wip' else ('review', 'accepted')
+            if up.get('status') not in allowed:
                 errors.append(f'input {h} has status {up.get("status")}')
     if errors:
         print('HANDOFF INVALID', *errors, sep='\n  '); return 3
@@ -230,6 +231,11 @@ def check(path, owner_messages=None, profiles=None):
         p = resolve(path.parent, inp['handoff'])
         if not p.is_file() or not inp.get('sha256') or sha(p) != inp['sha256']:
             drift.append(f'input handoff missing or changed: {p}')
+        else:
+            up = json.loads(p.read_text())
+            allowed = ('wip', 'review', 'accepted') if h.get('status') == 'wip' else ('review', 'accepted')
+            if up.get('status') not in allowed:
+                drift.append(f'input {p} has status {up.get("status")}')
     print('HANDOFF', h.get('phase'), h.get('status'), 'OK' if not drift else 'DRIFT', *drift, sep='\n  ' if drift else ' ')
     return 3 if drift else 0
 

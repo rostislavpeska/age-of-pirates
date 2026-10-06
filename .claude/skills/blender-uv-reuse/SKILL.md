@@ -41,6 +41,12 @@ per-face fragmentation. See [reuse relations](references/reuse-relations.md).
    Discover candidates from coherent geometry, including opposite roof sides and
    repeated modules. Cheap signatures shortlist; measured correspondence decides.
    Record mirrored candidates separately because tangent handedness matters.
+   Run the geometry matcher on current owners before declaring sharing complete;
+   a caller's UV rectangle or exact UV hash must not bypass it. For every large
+   unique region report a geometric mismatch, a named compatibility constraint
+   or an unresolved candidate. Use `transfer_corresponding_uv` for complete
+   face/corner transfer when original UV layouts differ. Choosing a larger-area
+   owner does not guarantee both density axes: check each after transfer.
 3. Deliver a candidate report before bulk stacking: same-color physical pieces
    and chart outlines, owner/member IDs, transform/correspondence, residuals,
    potential area saved, and specific rejection or unresolved reasons. Distinguish
@@ -48,10 +54,12 @@ per-face fragmentation. See [reuse relations](references/reuse-relations.md).
    hollow frames can keep the same large footprint after their panels share.
    Test complete frames as well as panels. A geometry
    match is a **candidate**, not a passed AO/material test.
-4. Validate all channels that share the UV set: AO, normals/tangents, color/grain,
-   opacity, masks and unique ornament. Keep differing contact contexts as variants
-   when errors exceed the declared limit. Test entire proposed groups, not just
-   transitive chains of similar pairs.
+4. Validate normals/tangents, color/grain, opacity, masks and unique ornament.
+   Apply the provisional geometry/material/role sharing checkpoint first, with AO
+   marked pending. Then test AO in those saved families and split differing contact
+   contexts into variants. AO must not veto the first phase. Test each member
+   against its actual owner, not transitive chains. Follow
+   [the two-phase contract](../blender-uv-workflow/references/sharing-and-capacity.md).
 5. Pack verified owners and unique variants, then assign member coordinates. Bake
    each owner/variant once with the intended occluders; never bake all overlapping
    members sequentially into the same image. Revalidate coordinates and final maps.

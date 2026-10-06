@@ -3,7 +3,9 @@
 Owner 2026-09-30: "Plus we need hard DPI floor!!!!!!!!!! Scattered UV map is a nightmare!!!!!! ... But UV map DPI floor
 should be universal". Synthetic models of unit quads: a coherent map passes; the SAME pages scattered into many small,
 shrunken islands fail the per-face floor although the median still passes; every rule fails without tolerance; a missing
-measurement is INCOMPLETE; only the owner's whole message waives. Real models: scripts/havok/tests/test_gr2_lint.py.
+measurement is INCOMPLETE. INC-089 regression coverage: verified candidate/page-bound GO only;
+refusal, HOLD, stale scope, incomplete evidence and collapsed UV coverage cannot be waived;
+unrounded metrics decide thresholds. Real models: scripts/havok/tests/test_gr2_lint.py.
 
     python -m pytest .claude/skills/blender-architecture-texturing/scripts/test_density_floor.py -q
 """
@@ -59,7 +61,7 @@ def rules_of(res):
 # ------------------------------------------------------------------------------------------------------ the rule
 def test_the_aoe3de_numbers_are_the_measured_vanilla_floor():
     assert (FLOOR['model_median_min'], FLOOR['face_floor'], FLOOR['face_max_share_below'],
-            FLOOR['collapsed_max_share']) == (100.0, 60.0, 0.02, 0.03)
+            FLOOR['collapsed_max_share']) == (90.0, 54.0, 0.02, 0.03)
     doc = json.loads(DF.CONFIG.read_text(encoding='utf-8'))
     assert set(doc['games']['aoe3de']['basis']) == set(DF.NUMBERS)          # every number carries its evidence
 
@@ -86,7 +88,7 @@ def test_the_same_pages_scattered_fail_the_per_face_floor():
 
 
 def test_a_low_median_fails():
-    res = verdict([quads(10, 95, 2048)])
+    res = verdict([quads(10, 85, 2048)])
     assert res['status'] == 'FAIL' and rules_of(res) == {('model_median', None)}
 
 
@@ -108,8 +110,8 @@ def test_collapsed_uvs_cannot_hide_a_scattered_map():
 
 
 def test_just_at_the_floor_passes_and_just_below_fails():
-    assert verdict([quads(10, 100.01, 2048)])['status'] == 'PASS'
-    assert verdict([quads(10, 99.99, 2048)])['status'] == 'FAIL'
+    assert verdict([quads(10, 90.01, 2048)])['status'] == 'PASS'
+    assert verdict([quads(10, 89.99, 2048)])['status'] == 'FAIL'
 
 
 def test_an_unknown_page_size_is_incomplete_and_never_waived():
@@ -130,30 +132,39 @@ def waiver(**kw):
     return [w]
 
 
+def approval(metrics, pages, model='ktc', **changes):
+    proposal = DF.make_proposal(metrics, FLOOR, model, pages)
+    text = DF.proposal_go(proposal)
+    w = dict(id='W-r36', check='density_floor', model=model, pages=pages, proposal=proposal,
+             owner_quote=text, msg='mGO', at='2026-10-06', recorded_by='test')
+    w.update(changes)
+    return [w], DF.OwnerStore([{'id': 'mGO', 'text': text}])
+
+
 def verify(q, m=None):
     return DF.find_quote(OWNER, q, m)
 
 
 def test_a_page_waiver_exempts_that_page_and_the_rest_must_still_pass():
-    low = [quads(10, 107, 2048), quads(6, 50, 512, page='matc')]          # the Korean TC shape: a low hidden page
-    assert verdict(low, model='ktc')['status'] == 'FAIL'
-    res = verdict(low, waivers=waiver(pages=['matc']), verify=verify, model='ktc')
-    assert res['status'] == 'WAIVED' and res['waived_by'][0]['id'] == 'W-1'
+    low = [quads(10, 107, 2048), quads(6, 40, 512, page='matc')]
+    w, owner = approval(DF.measure(low, FLOOR), ['matc'])
+    res = verdict(low, waivers=w, verify=owner, model='ktc')
+    assert res['status'] == 'WAIVED' and res['waived_by'][0]['id'] == 'W-r36'
     assert 'matc' in res['metrics_with_exempt_pages']['exempt']
-    worse = [quads(10, 107, 2048), quads(6, 50, 512, page='matc'), quads(4, 30, 1024, page='P1024')]
-    assert verdict(worse, waivers=waiver(pages=['matc']), verify=verify, model='ktc')['status'] == 'FAIL'
+    worse = low + [quads(4, 30, 1024, page='P1024')]
+    w, owner = approval(DF.measure(worse, FLOOR), ['matc'])
+    assert verdict(worse, waivers=w, verify=owner, model='ktc')['status'] == 'FAIL'
 
 
 def test_only_the_whole_owner_message_waives():
-    low = [quads(10, 95, 2048)]
-    assert verdict(low, waivers=waiver(), verify=verify, model='ktc')['status'] == 'WAIVED'
-    frag = verdict(low, waivers=waiver(owner_quote='nobody sees it'), verify=verify, model='ktc')
-    assert frag['status'] == 'FAIL' and 'a fragment never waives' in frag['notes'][0]
-    unverified = verdict(low, waivers=waiver(), verify=None, model='ktc')
-    assert unverified['status'] == 'FAIL' and 'no owner message store' in unverified['notes'][0]
-    assert verdict(low, waivers=waiver(model='other'), verify=verify, model='ktc')['status'] == 'FAIL'
-    assert verdict(low, waivers=waiver(check='no_regression'), verify=verify, model='ktc')['status'] == 'FAIL'
-    assert verdict(low, waivers=waiver(at=None), verify=verify, model='ktc')['status'] == 'FAIL'
+    low = [quads(10, 85, 2048)]
+    w, owner = approval(DF.measure(low, FLOOR), ['P2048'])
+    assert verdict(low, waivers=w, verify=owner, model='ktc')['status'] == 'WAIVED'
+    frag = verdict(low, waivers=[dict(w[0], owner_quote='GO')], verify=owner, model='ktc')
+    assert frag['status'] == 'FAIL' and 'fragment never waives' in ' '.join(frag['notes'])
+    assert verdict(low, waivers=w, verify=None, model='ktc')['status'] == 'FAIL'
+    for changes in ({'model': 'other'}, {'check': 'no_regression'}, {'at': None}, {'id': None}, {'recorded_by': None}):
+        assert verdict(low, waivers=[dict(w[0], **changes)], verify=owner, model='ktc')['status'] == 'FAIL'
 
 
 def test_find_quote_reads_a_tracker_store():
@@ -228,18 +239,21 @@ def test_cli_exit_codes(tmp_path):
     bad = npz(tmp_path, [quads(10, 107, 2048), quads(3, 45, 2048, scatter=True, origin=(20, 0))], 'bad.npz')
     assert cli('faces', good)[0] == 0
     rc, out = cli('faces', bad)
-    assert rc == 1 and 'FAIL' in out and 'below 60 t/u' in out
+    assert rc == 1 and 'FAIL' in out and 'below 54 t/u' in out
     rc, out = cli('faces', good, '--json')
     block = tmp_path / 'handoff.json'
     block.write_text(json.dumps({'density': json.loads(out)['metrics']}), encoding='utf-8')
     assert cli('block', block)[0] == 0
     assert cli('faces', tmp_path / 'missing.npz')[0] == 2
     assert cli('faces', good, '--game', 'nosuchgame')[0] == 2
-    (tmp_path / 'w.json').write_text(json.dumps(waiver()), encoding='utf-8')
-    (tmp_path / 'msgs.json').write_text(json.dumps(OWNER), encoding='utf-8')
+    metrics = json.loads(cli('faces', bad, '--json')[1])['metrics']
+    waivers, owner = approval(metrics, list(metrics['pages']))
+    (tmp_path / 'w.json').write_text(json.dumps(waivers), encoding='utf-8')
+    (tmp_path / 'msgs.json').write_text(json.dumps(owner.doc), encoding='utf-8')
     w = ('--model', 'ktc', '--waivers', tmp_path / 'w.json')
     assert cli('faces', bad, *w, '--owner-messages', tmp_path / 'msgs.json')[0] == 0
-    assert cli('faces', bad, *w)[0] == 1                                       # no store: the waiver cannot count
+    assert cli('faces', bad, *w)[0] == 1
+
 
 
 # ------------------------------------------------------------------------------------------ the 03_uv handoff
@@ -323,11 +337,12 @@ def test_a_uv_handoff_over_the_projects_ceiling_is_invalid(tmp_path, capsys):
 
 
 def test_a_uv_handoff_below_the_floor_is_invalid_unless_the_owner_waived_it(tmp_path, capsys):
-    low = block(tmp_path, [quads(10, 95, 2048)])
+    low = block(tmp_path, [quads(10, 85, 2048)])
     rc, out = write(tmp_path, capsys, density=low)
-    assert rc == 3 and 'density floor FAIL' in out and 'median 95.0' in out
-    rc, out = write(tmp_path, capsys, density=low, density_waivers=waiver(model='korean_tc'))
-    assert rc == 0, out                                    # m7 names the ktc (a profile name) and the density floor
+    assert rc == 3 and 'density floor FAIL' in out and 'median 85.0' in out
+    waivers, owner = approval(low, ['P2048'], model='korean_tc')
+    p = uv_spec(tmp_path, density=low, density_waivers=waivers)
+    assert HO.write(p, None, store(tmp_path, extra=owner.doc)) == 0
 
 
 def test_a_wip_uv_handoff_may_stop_before_the_measurement(tmp_path, capsys):
@@ -490,30 +505,170 @@ DECISIONS = {'decisions': {'D-9': {'question': 'ktc: leave the matc page out of 
              'messages': {'d': {'items': GENERIC}}}
 
 
-def test_inc036_a_generic_whole_message_never_waives():
-    """INC-036"""
-    low = [quads(10, 107, 2048), quads(6, 50, 512, page='matc')]
-    store = DF.OwnerStore(DECISIONS)
-    for mid, text in (('m278', 'approve'), ('m264', 'yes')):
-        for pages in (None, ['matc']):
-            res = verdict(low, waivers=waiver(owner_quote=text, msg=mid, **({'pages': pages} if pages else {})),
-                          verify=store, model='ktc')
-            assert res['status'] == 'FAIL' and 'does not name the density floor and the model' in ' '.join(res['notes'])
-    ok = verdict(low, waivers=waiver(owner_quote=GENERIC[2]['text'], msg='m8', pages=['matc']), verify=store, model='ktc')
-    assert ok['status'] == 'WAIVED'
-    other = verdict(low, waivers=waiver(owner_quote=GENERIC[2]['text'], msg='m8', model='mkt', pages=['matc']),
-                    verify=store, model='mkt')
-    assert other['status'] == 'FAIL'                                       # names another model
-    nomodel = [dict(w, model=None) for w in waiver(owner_quote=GENERIC[2]['text'], msg='m8', pages=['matc'])]
-    assert verdict(low, waivers=nomodel, verify=store, model='ktc')['status'] == 'FAIL'   # the waiver names its model
+@pytest.mark.parametrize('text', ['approve', 'yes', 'NO GO: do not waive the ktc matc density floor.',
+                                    'Should the ktc matc density floor be waived?',
+                                    'Waive the density floor for the ktc hidden matc page, nobody sees it.'])
+def test_inc036_a_generic_whole_message_never_waives(text):
+    """Keep the incident registry's selector; INC-089 extends it to refusal and ambiguous prose."""
+    low = [quads(10, 107, 2048), quads(6, 40, 512, page='matc')]
+    w, _ = approval(DF.measure(low, FLOOR), ['matc'])
+    w[0].update(owner_quote=text)
+    owner = DF.OwnerStore([{'id': 'mGO', 'text': text}])
+    result = verdict(low, waivers=w, verify=owner, model='ktc')
+    assert result['status'] == 'FAIL' and 'explicit GO' in ' '.join(result['notes'])
+
+
+def decision_approval(metrics, pages):
+    import hashlib
+    waivers, _ = approval(metrics, pages)
+    w = waivers[0]
+    question = DF.proposal_question(w['proposal'])
+    w.update(decision='D-r36', option='GO')
+    doc = {'messages': [{'id': 'mGO', 'text': 'GO'}], 'decisions': {'D-r36': {
+        'question': question, 'density_proposal': w['proposal'], 'options': [{'key': 'GO', 'label': 'GO'}],
+        'record': {'option': 'GO', 'answer': 'GO', 'msg': 'mGO', 'source': 'chat mGO', 'at': '2026-10-06',
+                   'question_sha256': hashlib.sha256(question.encode()).hexdigest()}}}}
+    return waivers, doc
 
 
 def test_inc036_an_answered_decision_about_this_floor_waives():
-    """INC-036"""
-    low = [quads(10, 107, 2048), quads(6, 50, 512, page='matc')]
-    store = DF.OwnerStore(DECISIONS)
-    w = [dict(id='W-2', check='density_floor', model='ktc', pages=['matc'], decision='D-9', option='B',
-              at='2026-09-30T12:00:00Z', recorded_by='test')]
-    assert verdict(low, waivers=w, verify=store, model='ktc')['status'] == 'WAIVED'
-    assert verdict(low, waivers=[dict(w[0], option='A')], verify=store, model='ktc')['status'] == 'FAIL'
-    assert verdict(low, waivers=[dict(w[0], decision='D-404')], verify=store, model='ktc')['status'] == 'FAIL'
+    """INC-089 tightens the existing incident selector to authenticated, candidate-bound GO."""
+    low = [quads(10, 107, 2048), quads(6, 40, 512, page='matc')]
+    waivers, doc = decision_approval(DF.measure(low, FLOOR), ['matc'])
+    assert verdict(low, waivers=waivers, verify=DF.OwnerStore(doc), model='ktc')['status'] == 'WAIVED'
+    import copy
+    mutations = [lambda d: d['decisions']['D-r36']['record'].update(option='HOLD'),
+                 lambda d: d['decisions']['D-r36']['record'].pop('msg'),
+                 lambda d: d['decisions']['D-r36']['record'].pop('question_sha256'),
+                 lambda d: d['decisions']['D-r36'].update(owner={'answer': 'HOLD'}),
+                 lambda d: d['decisions']['D-r36'].update(question='Allow ktc matc density?'),
+                 lambda d: d['messages'][0].update(text='NO GO'),
+                 lambda d: d['decisions']['D-r36']['options'][0].update(label='HOLD')]
+    for mutate in mutations:
+        bad = copy.deepcopy(doc); mutate(bad)
+        assert verdict(low, waivers=waivers, verify=DF.OwnerStore(bad), model='ktc')['status'] == 'FAIL'
+
+
+@pytest.mark.parametrize('pages', [None, [], ['removed'], ['matc', 'removed'], 'matc', ['matc', 'matc']])
+def test_inc089_blanket_unknown_and_malformed_page_scope_never_waives(pages):
+    low = [quads(10, 107, 2048), quads(6, 40, 512, page='matc')]
+    w, owner = approval(DF.measure(low, FLOOR), ['matc']); w[0]['pages'] = pages
+    assert verdict(low, waivers=w, verify=owner, model='ktc')['status'] == 'FAIL'
+
+
+def test_inc089_GO_cannot_be_reused_for_changed_candidate_dimensions_metrics_or_policy():
+    import copy
+    low = [quads(10, 107, 2048), quads(6, 40, 512, page='matc')]
+    metrics = DF.measure(low, FLOOR)
+    w, owner = approval(metrics, ['matc'])
+    changes = [lambda g: g[1].update(W=256, H=256),
+               lambda g: g[1].update(UV=g[1]['UV'] * .9),
+               lambda g: g[1].update(P=g[1]['P'] + [1, 0, 0])]
+    for change in changes:
+        other = copy.deepcopy(low); change(other)
+        assert verdict(other, waivers=w, verify=owner, model='ktc')['status'] == 'FAIL'
+    altered = copy.deepcopy(metrics); altered['pages']['matc']['p50'] = 39
+    assert DF.evaluate(altered, FLOOR, w, owner, 'ktc')['status'] == 'FAIL'
+    assert DF.evaluate(metrics, dict(FLOOR, model_median_min=91), w, owner, 'ktc')['status'] == 'FAIL'
+    w[0]['proposal']['model'] = 'other'
+    assert DF.evaluate(metrics, FLOOR, w, owner, 'ktc')['status'] == 'FAIL'
+
+
+@pytest.mark.parametrize('change', [lambda m: m.pop('pages'),
+    lambda m: m['pages']['P2048'].update(W=None), lambda m: m['pages']['P2048'].pop('H'),
+    lambda m: m['pages']['P2048'].update(measured_faces=0, share_below_face_floor=None, share_below_face_floor_owned=None),
+    lambda m: m.update(face_floor=60), lambda m: m.update(schema=1),
+    lambda m: m.update(unmeasured={'unknown': {'faces': 3, 'why': 'unknown size'}})])
+def test_inc089_incomplete_blocks_never_waive(change):
+    m = DF.measure([quads(10, 85, 2048)], FLOOR)
+    w, owner = approval(m, ['P2048']); change(m)
+    res = DF.evaluate(m, FLOOR, w, owner, 'ktc')
+    assert res['status'] == 'FAIL' and any(f['incomplete'] for f in res['findings'])
+
+
+def test_r36_authorized_reduction_does_not_lower_other_guards():
+    assert verdict([quads(10, 95, 2048)])['status'] == 'PASS'
+    assert verdict([quads(10, 90, 2048)])['status'] == 'PASS'
+    assert verdict([quads(10, 89.99, 2048)])['status'] == 'FAIL'
+    assert verdict([quads(10, 107, 2048), quads(1, 54, 512, page='small')])['status'] == 'PASS'
+    assert verdict([quads(10, 107, 2048), quads(1, 53.99, 512, page='small')])['status'] == 'FAIL'
+    assert tuple(FLOOR[k] for k in ('face_max_share_below', 'collapsed_max_share', 'face_max_share_below_owned',
+                                   'untextured_max_share', 'untextured_max_share_owned')) == (.02, .03, .03, .035, .08)
+
+
+def test_inc089_cli_prepares_evidence_without_granting_approval(tmp_path):
+    low = npz(tmp_path, [quads(10, 85, 2048)], 'below.npz')
+    rc, text = cli('faces', low, '--model', 'ktc', '--propose-pages', 'P2048', '--json')
+    result = json.loads(text)
+    assert rc == 1 and result['status'] == 'FAIL' and not result['waived_by']
+    assert result['owner_go_text'] == DF.proposal_go(result['proposal'])
+    assert result['decision_question'] == DF.proposal_question(result['proposal'])
+    assert cli('faces', low, '--model', 'ktc', '--propose-pages', 'removed')[0] == 2
+
+
+@pytest.mark.parametrize('pages', [['matc'], ['P2048', 'matc']])
+@pytest.mark.parametrize('raw', [True, False])
+def test_inc089_density_GO_never_waives_original_collapsed_coverage(pages, raw):
+    collapsed = quads(3, 110, 512, page='matc', origin=(30, 0))
+    collapsed['UV'][:] = .9
+    groups = [quads(10, 110, 2048), quads(3, 40, 512, page='matc', origin=(20, 0)), collapsed]
+    metrics = DF.measure(groups, FLOOR)
+    original = next(f for f in DF.rules(metrics, FLOOR) if f['rule'] == 'collapsed')
+    waivers, owner = approval(metrics, pages)
+    remeasure = (lambda omitted: DF.measure(groups, FLOOR, exempt=omitted)) if raw else None
+    result = DF.evaluate(metrics, FLOOR, waivers, owner, 'ktc', remeasure=remeasure)
+    assert result['status'] == 'FAIL' and original in result['findings']
+    assert not result['waived_by']
+
+
+def test_inc089_measurement_preserves_gate_precision_and_old_blocks_require_remeasurement():
+    near = DF.measure([quads(3, 89.999, 2048)], FLOOR)
+    assert 89.9989 < near['model']['p50'] < 90
+    assert DF.evaluate(near, FLOOR)['status'] == 'FAIL'
+    good = quads(1, 110, 2048)
+    ratio = .0200001
+    scale = np.sqrt(ratio / (1 - ratio))
+    low = quads(1, 40 * scale, 2048)
+    low['P'] *= scale
+    low['UV'] += .5
+    measured = DF.measure([good, low], FLOOR)
+    for where in (measured['model'], measured['pages']['P2048']):
+        assert where['share_below_face_floor'] == pytest.approx(ratio, abs=1e-14)
+        # Ownership is raster-estimated (including diagonal edge cells), not the raw area.
+        owned = where['share_below_face_floor_owned']
+        assert owned >= ratio and owned != round(owned, 6)
+    assert measured['untextured']['share'] == pytest.approx(ratio, abs=1e-14)
+    owned = measured['untextured']['share_owned']
+    assert owned >= ratio and owned != round(owned, 6)
+    collapsed = quads(1, 110, 2048)
+    ratio = .0300001
+    collapsed['P'] *= np.sqrt(ratio / (1 - ratio))
+    collapsed['UV'][:] = .9
+    measured = DF.measure([good, collapsed], FLOOR)
+    assert measured['collapsed']['share'] == pytest.approx(ratio, abs=1e-14)
+    assert any(f['rule'] == 'collapsed' for f in DF.rules(measured, FLOOR))
+    measured['schema'] = 2
+    result = DF.evaluate(measured, FLOOR)
+    assert result['status'] == 'FAIL' and any(f['incomplete'] for f in result['findings'])
+
+
+@pytest.mark.parametrize('path,limit_key,rule', [
+    (('model', 'p50'), 'model_median_min', 'model_median'),
+    (('model', 'share_below_face_floor'), 'face_max_share_below', 'face_floor'),
+    (('model', 'share_below_face_floor_owned'), 'face_max_share_below_owned', 'face_floor'),
+    (('pages', 'P2048', 'share_below_face_floor'), 'face_max_share_below', 'face_floor'),
+    (('pages', 'P2048', 'share_below_face_floor_owned'), 'face_max_share_below_owned', 'face_floor'),
+    (('collapsed', 'share'), 'collapsed_max_share', 'collapsed'),
+    (('untextured', 'share'), 'untextured_max_share', 'untextured'),
+    (('untextured', 'share_owned'), 'untextured_max_share_owned', 'untextured'),
+])
+def test_inc089_each_gate_compares_exact_boundary_and_adjacent_values(path, limit_key, rule):
+    metrics = DF.measure([quads(3, 110, 2048)], FLOOR)
+    target = metrics
+    for key in path[:-1]:
+        target = target[key]
+    limit = FLOOR[limit_key]
+    for value in (np.nextafter(limit, -np.inf), limit, np.nextafter(limit, np.inf)):
+        target[path[-1]] = float(value)
+        failed = any(f['rule'] == rule for f in DF.rules(metrics, FLOOR))
+        assert failed == (value < limit if rule == 'model_median' else value > limit)

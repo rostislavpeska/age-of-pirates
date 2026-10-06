@@ -48,6 +48,9 @@ Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and va
    producer's files; name the producer in the handoff.
 5. **Handoff anywhere:** if you stop mid-phase, write the handoff with `status: wip`, what is done, what
    is not, and the exact command to continue.
+   A WIP may consume the latest WIP handoff with its real source hash. It remains
+   WIP: review/accepted output cannot consume a WIP parent. Never substitute an
+   older accepted parent to satisfy the tool while working from a newer candidate.
 6. Pictures and QA per [texturing QA](../../blender-high-low-baking/references/texturing-qa.md) belong in
    the handoff of every texturing phase.
 7. **A UV phase passes the density floor and the page budget before the UV freeze.**
@@ -61,8 +64,10 @@ Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and va
    - **The density block is bound to the UV:** its `source.sha256` is the hash of one of this handoff's canonical
      files (`density_floor.py faces|gr2` records it), and it is in the game's unit (else INCOMPLETE).
    - **`handoff.py write` refuses** the handoff when either record is missing or fails.
-   - **The owner's waiver** of the floor (`density_waivers`, his whole message about this floor and this model, or a
-     decision he answered) counts only with `--owner-messages <his message store>`.
+   - **The owner's waiver** of the floor (`density_waivers`) requires verified
+     explicit GO for the exact model, texture pages and measured candidate. Use
+     the [density proposal contract](uv-density-floor.md) and
+     `--owner-messages <his message store>`; a blanket model waiver is insufficient.
    - **A `wip` handoff** may stop before the measurement.
    - **The project's export gate re-checks both** against its own ceilings. Age of Pirates:
      `<consumer-root>/scripts/havok/gr2_lint.py`.

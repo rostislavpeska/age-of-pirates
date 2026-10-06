@@ -7,7 +7,10 @@
     "scripts/ao_sample.py",
     "scripts/attach_ao.py",
     "scripts/bake_owner_ao.py",
-    "scripts/test_ao_evidence.py"
+    "scripts/test_ao_evidence.py",
+    "scripts/check_triangulation_blender.py",
+    "scripts/neutralize_ao.py",
+    "scripts/test_neutralize_ao.py"
   ],
   "skills": [
     "aoe-uv-atlas-export",

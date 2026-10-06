@@ -187,14 +187,18 @@ def geometry_correspondence(owner,member,absolute=2e-5,relative=2e-5,
     return None
 
 
-def group_charts(charts,precision=.01,**tolerances):
+def group_charts(charts,precision=.01,prefer_larger_uv_owner=False,**tolerances):
     """Every member is geometrically checked against its owner, never chained.
 
     precision is retained for historical callers but is no longer a UV hash gate.
     """
     cache={c['id']:_prepare(c) for c in charts};groups=[];buckets={};unmatched=[]
     comparisons=0
-    for chart in sorted(charts,key=lambda c:c['id']):
+    # A reflected chart with a slightly different unwrap must not lose density
+    # merely because its identifier sorts first. Equal geometry gives a useful
+    # area ordering; consumers still verify both density axes after transfer.
+    order=lambda c: (-sum(_area(f['uv']) for f in c['faces']),c['id']) if prefer_larger_uv_owner else (c['id'],)
+    for chart in sorted(charts,key=order):
         prepared=cache[chart['id']];key=prepared['key']
         if prepared['ambiguous']:
             unmatched.append(dict(chart=chart['id'],reason='ambiguous_coincident_geometry_faces'));continue
@@ -211,3 +215,27 @@ def group_charts(charts,precision=.01,**tolerances):
                 candidate_method='topology_material_then_measured_geometry',uv_hash_used=False,
                 density_relative_tolerance=tolerances.get('density_relative',.001),
                 ao_tested=False,packing_performed=False,scope='provisional_whole_chart_geometry_only')
+
+
+def transfer_corresponding_uv(owner, member, match):
+    """Return exact owner corner UVs, including reflected and non-rigid UV layouts.
+
+    Geometry is not edited. Reject incomplete, duplicate or alien loop mappings;
+    fitting a single 2D transform would reintroduce the UV-layout rejection bug.
+    Tangent-space maps must be regenerated after any UV reflection.
+    """
+    source={f['id']:f for f in owner['faces']}
+    target={f['id']:f for f in member['faces']}
+    expected={(f['id'],i) for f in member['faces'] for i in range(len(f['uv']))}
+    seen=set();used=set();out={k:[None]*len(f['uv']) for k,f in target.items()}
+    for row in match['loop_correspondence']:
+        a=(row['owner_face'],row['owner_corner']);b=(row['member_face'],row['member_corner'])
+        if b not in expected or b in seen or a in used:
+            raise ValueError('Incomplete or ambiguous UV corner correspondence')
+        if a[0] not in source or not 0<=a[1]<len(source[a[0]]['uv']):
+            raise ValueError('Unknown owner UV corner')
+        out[b[0]][b[1]]=list(source[a[0]]['uv'][a[1]])
+        seen.add(b);used.add(a)
+    if seen!=expected or len(used)!=sum(len(f['uv']) for f in owner['faces']):
+        raise ValueError('Incomplete UV corner correspondence')
+    return out

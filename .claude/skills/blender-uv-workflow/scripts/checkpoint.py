@@ -8,6 +8,8 @@ from pathlib import Path
 import sys
 import tempfile
 from PIL import Image
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from shared_mapping import metric_errors as shared_mapping_errors
 
 STAGES = {
     'geometry': ('coverage geometry attachments mesh_budget', 'model ground attachments'),
@@ -15,7 +17,7 @@ STAGES = {
     'materials': ('coverage material_classes protected_scope', 'model materials legend'),
     'share': ('coverage families correspondence channels protected_scope', 'model families uv_sheet'),
     'ao': ('coverage ao_correspondence ao_recipe continuity', 'model ao_heatmap families'),
-    'freeze': ('coverage overlap density page_budget padding source_detail', 'model checker uv_sheet'),
+    'freeze': ('coverage overlap density page_budget padding source_detail shared_mapping', 'model checker uv_sheet'),
     'base': ('coverage bindings bake_contract texture_qa', 'model basecolor normal ao'),
     'details': ('bindings texture_qa protected_scope', 'model details player_color'),
     'game': ('source_binding export_roundtrip runtime_lint installed_hashes game_test', 'intact destruction'),
@@ -136,6 +138,9 @@ def validate(spec, base, seen=None, receipt=False):
         if not validator.get('name') or not validator.get('version') or not isinstance(report.get('metrics'), dict) or not report['metrics']:
             incomplete.append('missing validator/metrics: ' + name)
         status = report.get('status')
+        if name == 'shared_mapping':
+            for problem in shared_mapping_errors(report.get('metrics') or {}):
+                incomplete.append('shared_mapping: ' + problem)
         if status not in ('PASS', 'FAIL', 'INCOMPLETE', 'REVIEW'):
             errors.append('invalid check status: ' + name)
         elif name.startswith('advisory:'):
@@ -172,7 +177,17 @@ def validate(spec, base, seen=None, receipt=False):
     acceptance = spec.get('acceptance') or {}
     if acceptance.get('scope') != stage:
         incomplete.append('owner acceptance not scoped to stage')
-    artifact(acceptance.get('evidence'), 'owner acceptance')
+    owner_evidence = artifact(acceptance.get('evidence'), 'owner acceptance')
+    # INC-092: a delivered WIP receipt is observable evidence, not acceptance.
+    # Evidence provenance is still a trusted/manual boundary; never override an
+    # explicit pending/negative decision merely because its file exists.
+    if owner_evidence and owner_evidence.suffix.lower() == '.json':
+        decision = read(owner_evidence)
+        if isinstance(decision, dict) and (
+            decision.get('owner_accepted') is False or
+            decision.get('status') in ('pending', 'rejected', 'denied', 'wip')
+        ):
+            incomplete.append('owner evidence explicitly lacks acceptance')
     pub = spec.get('publication') or {}
     p = artifact(pub.get('evidence'), 'publication readback')
     if pub.get('level') not in ('FILE_VERIFIED', 'LIVE_VERIFIED'):

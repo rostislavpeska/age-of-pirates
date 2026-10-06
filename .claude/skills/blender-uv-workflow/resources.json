@@ -5,9 +5,12 @@
     "references/bakes-and-recovery.md",
     "references/checkpoints.md",
     "references/review-packet.md",
+    "references/sharing-and-capacity.md",
     "scripts/checkpoint.py",
     "tests/test_checkpoint.py",
-    "tests/uv_checkpoint_fixture.py"
+    "tests/uv_checkpoint_fixture.py",
+    "scripts/shared_mapping.py",
+    "tests/test_shared_mapping.py"
   ],
   "skills": [
     "aoe-uv-atlas-export",

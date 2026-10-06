@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "scope": "Korean architectural feature recipes; dated exemplar, not a replacement for latest accepted project HANDOFF",
-  "date": "2026-09-30",
+  "date": "2026-10-06",
   "status": "scoped offline validation; owner requested paired game export; no new in-game acceptance",
   "roots": {
     "korean_repo": "Korean source repository",
@@ -103,6 +103,48 @@
       "path": "references/window-lattice/INDEX.json",
       "role": "original user design references",
       "sha256": "9c37ace4b7706fad694a6bbfbd9a58fd27b8c5b2916fe6a285f519e9d3a294de"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Baking_02/roof_system.py",
+      "role": "eave_original_high",
+      "sha256": "c02851afc487db9b68435c3e9dc1f50a4cbf6b1dea93326a5bdb99c523afad93"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/UV_Factory_10/Overnight/N3_prepare_roof_banks_mcp.py",
+      "role": "eave_roof_banks",
+      "sha256": "c4e4afae023b88eb74544ff0f93dae8f396602609e1d12db3d92229597caa4dc"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/uplift_out/_ALPHA_probe/tools/height_probe.py",
+      "role": "eave_height_probe",
+      "sha256": "dd22bdaca09d5ddf0958f33f0c65d53507834e6b379718c9814299b4517a4f02"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/uplift_out/_ALPHA_probe/tools/alpha_v2.py",
+      "role": "eave_alpha_generator",
+      "sha256": "76d49dd7c6a748250e6b7b1e5d2a807754a461786075854989a55e5b186b157d"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/hooks_accepted/eave_alpha_asset__71274b4e.py",
+      "role": "eave_alpha_binding",
+      "sha256": "71274b4eaf26b976251ebc498af7a8f184254d467bbe9f1d4991d9622a0e3024"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-live-walls-r3/maps/P1024_Opacity.png",
+      "role": "eave_accepted_opacity",
+      "sha256": "4b6c33c66e4a0551bba7c13d4cec8df74cb20008f6cc97e98a054372e4783053"
+    },
+    {
+      "root": "assets",
+      "path": "snapshots/2026-09-30-live-walls-r3/LIVE_SOURCE_AFTER.json",
+      "role": "eave_accepted_geometry",
+      "sha256": "702526511e755d425effd1c5d0a5aa8063d0870b07ec587ffda0c103cc4c4d18"
     }
   ]
 }

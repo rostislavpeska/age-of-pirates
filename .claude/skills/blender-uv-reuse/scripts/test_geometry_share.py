@@ -100,4 +100,17 @@ class SharingTests(unittest.TestCase):
         b['faces'].reverse();out=group_charts([a,b]);self.assertEqual(len(out['groups']),1)
         self.assertEqual(len(out['groups'][0]['members'][0]['loop_correspondence']),48)
 
+    def test_larger_owner_and_complete_corner_transfer(self):
+        from geometry_share import transfer_corresponding_uv
+        a=chart('a');b=chart('b',uv=[[0,0],[20.016,0],[20.016,10.008],[0,10.008]])
+        group=group_charts([a,b],prefer_larger_uv_owner=True)['groups'][0]
+        self.assertEqual(group['owner'],'b')
+        match=group['members'][0];out=transfer_corresponding_uv(b,a,match)
+        self.assertEqual(set(out),{f['id'] for f in a['faces']})
+        self.assertEqual(sorted(map(tuple,out[0])),sorted(map(tuple,b['faces'][0]['uv'])))
+        broken=dict(match,loop_correspondence=match['loop_correspondence'][:-1])
+        with self.assertRaises(ValueError):transfer_corresponding_uv(b,a,broken)
+        broken=dict(match,loop_correspondence=match['loop_correspondence']+[match['loop_correspondence'][0]])
+        with self.assertRaises(ValueError):transfer_corresponding_uv(b,a,broken)
+
 if __name__=='__main__':unittest.main()

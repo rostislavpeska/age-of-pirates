@@ -53,3 +53,34 @@ Useful small machine outputs: map/layer inventory, density CSV, allocation CSV,
 input hashes and issue tracker. Add validators only for demonstrated recurring
 failures; this document does not require another orchestration layer, more agents
 or an approval round for assembling a read-only WIP report.
+
+## Partial editing gates (owner correction, 2026-10-06)
+
+Use this sequence for **each bounded mutation batch**, including repairs inside
+a phase: save candidate -> verify actual saved UV/geometry/material bindings ->
+generate and inspect maps -> **embed those maps in chat** -> continue the next
+authorized batch. A disk path, tool-only image, prose summary or final collage
+does not substitute for the intermediate chat delivery. Batch by a meaningful
+region or operation (mirror completion, roof AO pilot, per-building AO splits),
+not by every vertex or tool call. Read-only sampling can run between gates.
+
+Each delivery names the revision and current layer, shows both full model maps
+and changed regions, and accounts for shared/protected resources. Reuse unchanged
+dependency pictures with explicit provenance instead of rerendering. Show measured
+area/density deltas and remaining limits. Link the exact editable candidate.
+Mark a measurement heatmap as such; it is not a finished AO bake.
+
+Keep **delivered**, **machine verified**, and **owner accepted** separate in the
+receipt. Never manufacture an owner approval from posting pictures or silence.
+When the owner has authorized continued work, intermediate WIP batches may proceed
+after delivery. Stop only at an applicable explicit approval boundary, such as
+below-floor density, geometry changes beyond scope or final quality acceptance.
+If delivery/verification fails, preserve the candidate and report the failure;
+do not start the dependent mutation or silently skip its picture.
+
+Before leaving sharing, inspect every large unique region. Run geometry-first
+matching on current owners, including improper/reflection transforms, without a
+UV bounding-box/hash veto. Record a match or a named mismatch/constraint; face
+coverage alone does not prove sharing completeness. Distinguish mirrored geometry
+from reversed UV handedness, retain grain/up direction and both density axes, and
+regenerate tangent-space content after UV reflection. AO remains the next phase.
