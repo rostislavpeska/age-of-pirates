@@ -12,7 +12,9 @@
     "scripts/lighten_under_mask.py",
     "scripts/check_state.py",
     "scripts/details_review.py",
-    "scripts/test_player_colour.py"
+    "scripts/test_player_colour.py",
+    "scripts/check_role_coverage.py",
+    "scripts/test_role_coverage.py"
   ],
   "skills": [],
   "external": [

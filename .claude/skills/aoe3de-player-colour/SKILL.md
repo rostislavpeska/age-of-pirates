@@ -65,6 +65,16 @@ brightness (`grey = target x (Y / mean Y)^0.6`, capped) and lift the field's mea
    leak check). It passes only if every other map is byte-identical, BaseColor changed only under Details.R > 0, and
    no unselected face carries mean R > 0.5. Render the before/after from the **owner's current (HEAD) scene or
    state**, never from an older final or a copy that lacks his latest elements.
+   Check **completeness separately from leakage**. For a repeated architectural role
+   (for example a band around all walls), enumerate required components from the
+   brief and whole model before selecting painted faces. Sample the intended
+   world-space role through each component's actual UV0 into Details.R, including
+   mirrored ends, short returns, courtyards and elevated walls. Record nonempty
+   samples and all-reader compatibility per component; a whole-model average can
+   hide a completely unpainted end. Validate the source-bound report with
+   `scripts/check_role_coverage.py report.json` and show matched front/back/corner
+   views. The validator checks report completeness, not the sampling implementation
+   or visual quality. Local cuts/reuse need a UV review packet; retain other charts.
 6. **Export**: build the DDT and add the material lines ([details_export.md](references/details_export.md)). Then run
    the consuming mod's own line-ending and deployment checks.
 
@@ -77,6 +87,8 @@ top), and UV (u, v) maps to (u*size, (1-v)*size).
 - `details_mask.py`: the faces and procedural sources to `<page>_Details.png` (R, 0, 0), plus a JSON report.
 - `lighten_under_mask.py`: verdict and the keep/partial/neutral base under the mask.
 - `check_state.py`: scope check (maps, BaseColor under the mask, texel-sharing leak).
+- `check_role_coverage.py`: per-component role coverage and source-identity evidence;
+  `test_role_coverage.py` tests missing, empty, stale and conflicting evidence.
 - `details_review.py`: the Blender preview node group, install/uninstall/set_player/selftest.
 - `test_player_colour.py`: `python -m pytest <skill>/scripts/test_player_colour.py -q`
 
