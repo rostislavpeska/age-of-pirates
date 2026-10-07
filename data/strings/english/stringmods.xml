@@ -3617,6 +3617,16 @@
       <string _locid="503614">Qing Yuan</string>
 
       <!-- ======================================== -->
+      <!-- Korean military: unique model and donor-reference identities (INC-133). -->
+      <string _locid="503619">Korean Barracks</string>
+      <string _locid="503620">Korean Barracks</string>
+      <string _locid="503621">Japanese Barracks (Reference)</string>
+      <string _locid="503622">Japanese Barracks (Reference)</string>
+      <string _locid="503623">Korean Stable</string>
+      <string _locid="503624">Korean Stable</string>
+      <string _locid="503625">Japanese Stable (Reference)</string>
+      <string _locid="503626">Japanese Stable (Reference)</string>
+
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->
       <string _locid="400001">Christmas Village</string>

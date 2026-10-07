@@ -77233,8 +77233,8 @@
 <!-- BEGIN KTC176 PHYSICS R01 -->
 <unit id="30160" name="zzKoreanBarracksPhysics">
   <dbid>30160</dbid>
-  <displaynameid>60237</displaynameid>
-  <editornameid>62920</editornameid>
+  <displaynameid>503619</displaynameid>
+  <editornameid>503620</editornameid>
   <obstructionradiusx>4.0000</obstructionradiusx>
   <obstructionradiusz>4.0000</obstructionradiusz>
   <maxvelocity>0.0000</maxvelocity>
@@ -77301,8 +77301,8 @@
 </unit>
 <unit id="30161" name="zzJapaneseBarracksPhysics">
   <dbid>30161</dbid>
-  <displaynameid>60237</displaynameid>
-  <editornameid>62920</editornameid>
+  <displaynameid>503621</displaynameid>
+  <editornameid>503622</editornameid>
   <obstructionradiusx>4.0000</obstructionradiusx>
   <obstructionradiusz>4.0000</obstructionradiusz>
   <maxvelocity>0.0000</maxvelocity>
@@ -77369,8 +77369,8 @@
 </unit>
 <unit id="30162" name="zzKoreanStablePhysics">
   <dbid>30162</dbid>
-  <displaynameid>60216</displaynameid>
-  <editornameid>60217</editornameid>
+  <displaynameid>503623</displaynameid>
+  <editornameid>503624</editornameid>
   <obstructionradiusx>4.0000</obstructionradiusx>
   <obstructionradiusz>5.0000</obstructionradiusz>
   <maxvelocity>0.0000</maxvelocity>
@@ -77445,8 +77445,8 @@
 </unit>
 <unit id="30163" name="zzJapaneseStablePhysics">
   <dbid>30163</dbid>
-  <displaynameid>60216</displaynameid>
-  <editornameid>60217</editornameid>
+  <displaynameid>503625</displaynameid>
+  <editornameid>503626</editornameid>
   <obstructionradiusx>4.0000</obstructionradiusx>
   <obstructionradiusz>5.0000</obstructionradiusz>
   <maxvelocity>0.0000</maxvelocity>
