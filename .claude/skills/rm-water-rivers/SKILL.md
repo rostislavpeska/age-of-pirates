@@ -65,9 +65,9 @@ landRouteID, "dirt")`, zpdanube.xs 682; Florence 477, London 743, Paris 350) -> 
   never claim the crossing and the grouping's own island stands in open water (placed into land it stands on a
   pedestal).
 - `Bridge_Universal_03` on the land route where it crosses the river, `rmPlaceGroupingAtLoc` with min / max distance 0
-  (zpdanube.xs 690-700; the deck lands at about 3.05 on land of 2.983).
+  (zpdanube.xs 690-700). Its block stands 4.15 m above the river bottom under it: 3.07..3.25 m on the Danube.
 - A dock at each end (Elbe, zpelbe.xs 523-549; zpdanube.xs 706): 300 tiles about 36 m from the deck centre, coherence 1,
-  base height of the land, the river's cliff type (`Italian Cliff River`), `rmSetAreaCliffEdge(id, 1, 1.0, 0.1, 1.0,
+  base height of the bridge's block, not the land (Danube 3.2; rm-eye-candy tip 2), the river's cliff type (`Italian Cliff River`), `rmSetAreaCliffEdge(id, 1, 1.0, 0.1, 1.0,
   0)`, `rmSetAreaCliffHeight(id, 0, 0.0, 1.0)` (height 0, all ramps: a stone edge you walk over).
 - The Danube's apex bridge at the bend was never approved and is gone (owner 2026-10-07): bridges only where the brief
   names them.

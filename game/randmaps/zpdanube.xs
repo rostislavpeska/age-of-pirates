@@ -249,7 +249,7 @@ void main(void)
 
 	// Nature avoidance
 	int fishVsFishShort=rmCreateTypeDistanceConstraint("fish v fish short", fish1, 10.0);
-	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
+	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 20.0);	// 25 m before the owner's "more vegetation" (2026-10-07)
 	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 50.0);
 	int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 40.0);
 	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 50.0);
@@ -714,7 +714,10 @@ void main(void)
 		if (b == 4)
 			rmSetAreaLocation(bridgeDockID, rmXMetersToFraction(bridgeX-1.0), rmZMetersToFraction(armSouthZ-36.0));
 		rmSetAreaCoherence(bridgeDockID, 1.0);
-		rmSetAreaBaseHeight(bridgeDockID, landHeight);
+		// level with the bridge (owner 2026-10-07: "a bit lower and it looks creepy"): Bridge_Universal_03 raises its
+		// block 4.15 m above the river bottom under it, 3.07..3.25 m in the v12 editor saves of 2-8 players (bottom
+		// -1.02..-0.90), while docks at the land height stood at 2.98
+		rmSetAreaBaseHeight(bridgeDockID, 3.2);
 		rmSetAreaMix(bridgeDockID, "italy_grass_lush");
 		rmSetAreaCliffType(bridgeDockID, "Italian Cliff River");
 		rmSetAreaCliffEdge(bridgeDockID, 1, 1.0, 0.1, 1.0, 0);
@@ -998,6 +1001,12 @@ void main(void)
 	int tcAvoidRoutes = rmCreateTradeRouteDistanceConstraint("forts keep off the routes", 30.0);
 	int fortAvoidWater = rmCreateTerrainDistanceConstraint("forts keep off the water", "Land", false, 26.0);
 	int fortAvoidSockets = rmCreateTypeDistanceConstraint("forts keep off the sockets", "SocketTradeRoute", 32.0);
+	// the whole fort inside the world circle (owner 2026-10-07, a 1v1 game: one start had no fort at all). The edge
+	// box above fences only the square's sides; a start in a world diagonal (the minimap's left, right, top or
+	// bottom) stands near the circle, where the box does not reach (rm-objects-herds, map-edge constraints). The world
+	// circle drops what lies beyond ~0.455 of the map (rm-coordinates), the fort's corners reach 19.4 m from its
+	// centre, and a grouping that does not fit places nothing
+	int fortInsideWorld = rmCreatePieConstraint("forts inside the world circle", 0.5, 0.5, 0.0, rmXFractionToMeters(0.455)-22.0, rmDegreesToRadians(0), rmDegreesToRadians(360));
 	int TCID = rmCreateObjectDef("player fort marker");
 	if (rmGetNomadStart())
 	{
@@ -1018,6 +1027,7 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, avoidNatives);
 	rmAddObjectDefConstraint(TCID, fortAvoidWater);
 	rmAddObjectDefConstraint(TCID, fortAvoidSockets);
+	rmAddObjectDefConstraint(TCID, fortInsideWorld);
 
 	// Starting units on their own (owner 2026-10-07: "starting units must be placed separately"), INSIDE the fort as on
 	// Malta ("explorer should spawn inside fort as on Malta"): Malta's own block, zpmalta_castles.xs 795-799 with its
@@ -1302,7 +1312,7 @@ void main(void)
 		if (failCount < 5) {				// five failures in a row: this family is full
 			int forest=rmCreateArea("forest "+i);
 			rmSetAreaWarnFailure(forest, false);
-			rmSetAreaSize(forest, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+			rmSetAreaSize(forest, rmAreaTilesToFraction(200), rmAreaTilesToFraction(200));	// 150 before "more vegetation"
 			if (i < numSouthForests) {
 				rmSetAreaForestType(forest, "z42 Italian Forest");
 				rmAddAreaConstraint(forest, southOuterBox);
@@ -1574,6 +1584,55 @@ void main(void)
 	// KotH: the hill sits on the locked inner shore
 	if (rmGetIsKOTH() == true)
 		ypKingsHillPlacer(rmXMetersToFraction(centreM+0.11*sizeM), 0.5, 0.00, 0);
+
+	// Village trees on the elector plateaus (zpelbe.xs 1192-1197: nine per plateau with avoidAll, so they take the free
+	// rim round the castle; owner 2026-10-07: "add few trees to the elector cliffs - look how Elbe is doing that").
+	// TreeNewEngland: the inner shore's z69 North New England forests, as Independence War's village trees
+	// (zpindependencewar.xs 1607-1612). Placed last, so no unit a trigger addresses moves
+	int villageTreeID=rmCreateObjectDef("village tree");
+	rmAddObjectDefItem(villageTreeID, "TreeNewEngland", 1, 0.0);
+	rmAddObjectDefConstraint(villageTreeID, avoidAll);
+	rmAddObjectDefConstraint(villageTreeID, insideWorldRes);
+	for (e=0; < numElectors)
+		rmPlaceObjectDefInArea(villageTreeID, 0, rmAreaID("elector plateau "+e), 9);
+
+	// Scattered trees over the open grass (owner 2026-10-07: "the map is just too grassy. I want more vegetation"):
+	// Caribbean Wars' random trees (zpcaribbeanwars.xs 918-926) in the forests' own species (data/forest2.xml) -
+	// z69 North New England everywhere but the south outer shore: TreeNewEngland, TreeSaguenay, TreeGreatLakes (16 per
+	// player); z42 Italian Forest there: ypTreeMongolianFir, ypTreeEucalyptus (6 per player)
+	for (t=0; < 5) {
+		int randomTreeID=rmCreateObjectDef("random tree "+t);
+		int randomTreeCount = 4*cNumberNonGaiaPlayers;
+		if (t == 0) {
+			rmAddObjectDefItem(randomTreeID, "TreeNewEngland", 1, 0.0);
+			randomTreeCount = 8*cNumberNonGaiaPlayers;
+		}
+		if (t == 1)
+			rmAddObjectDefItem(randomTreeID, "TreeSaguenay", 1, 0.0);
+		if (t == 2)
+			rmAddObjectDefItem(randomTreeID, "TreeGreatLakes", 1, 0.0);
+		if (t == 3)
+			rmAddObjectDefItem(randomTreeID, "ypTreeMongolianFir", 1, 0.0);
+		if (t == 4)
+			rmAddObjectDefItem(randomTreeID, "ypTreeEucalyptus", 1, 0.0);
+		if (t >= 3)
+			randomTreeCount = 3*cNumberNonGaiaPlayers;
+		rmSetObjectDefMinDistance(randomTreeID, 0.0);
+		rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.5));
+		rmAddObjectDefConstraint(randomTreeID, avoidImpassableLand);
+		rmAddObjectDefConstraint(randomTreeID, avoidAll);
+		rmAddObjectDefConstraint(randomTreeID, avoidTradeRoute);
+		rmAddObjectDefConstraint(randomTreeID, avoidTownCenterFar);
+		rmAddObjectDefConstraint(randomTreeID, avoidNativesShort);
+		rmAddObjectDefConstraint(randomTreeID, avoidBridge);
+		rmAddObjectDefConstraint(randomTreeID, avoidHarbour);
+		rmAddObjectDefConstraint(randomTreeID, insideWorldRes);
+		if (t < 3)
+			rmAddObjectDefConstraint(randomTreeID, notSouthOuterBox);
+		else
+			rmAddObjectDefConstraint(randomTreeID, southOuterBox);
+		rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, randomTreeCount);
+	}
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.90);

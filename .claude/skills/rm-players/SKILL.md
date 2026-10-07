@@ -72,6 +72,11 @@ and the KOTH helpers need the includes (rm-skeleton).
   4v3, 4v4). Build a flat site on the start marker right before the grouping: the Danube's is 650 tiles, coherence 1,
   smooth 5, `rmSetAreaElevationVariation(.., 0.0)`, at the land height, 2 m off the water. Its first pad (500 tiles,
   smooth 10) measured within 0.4 m of the land height out to 20 m in the editor saves, while the walls reach 19.4 m.
+- **The whole start grouping inside the world circle.** A box edge constraint fences only the square's sides; with
+  `rmSetWorldCircleConstraint(true)` a start in a world diagonal stands near the circle, which drops what lies beyond
+  ~0.455 of the map, and a grouping that does not fit places nothing (Danube 1v1, owner's game 2026-10-07: one start
+  had no fort). Give the marker a circle: `rmCreatePieConstraint(.., 0.5, 0.5, 0.0, rmXFractionToMeters(0.455) -
+  <grouping reach + 2.6>, 0, 2 pi)`; the fort reaches 19.4 m (`test_every_fort_fits_inside_the_world_circle`).
 - **Every start grouping first, then what the starts carry.** Two loops: (1) each player's marker, level site and
   fort / castle grouping; (2) each player's starting units, herd and treasure. In one loop a player's start herd
   (placed 28-40 m out) could stand inside the next player's grouping 68 m away at 4v4, and that grouping did not place

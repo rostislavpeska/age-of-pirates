@@ -49,6 +49,7 @@ the tracked recipe and the maps that use it:
 | Bridges with cliff docks across a river (Elbe, Florence, Danube) | rm-water-rivers |
 | The map under test on row 2 of the editor list (`--top`) | rm-workflow (above) |
 | The lobby minimap images (`<map>_mini.png` NEW / `_mini2.png`; gold border = normal maps, silver = historical) | lobby-minimap |
+| Optional premium-look touches: trees on plateaus, docks level with the bridge, more vegetation | rm-eye-candy |
 
 A new pattern found in the mod's maps goes into this table and its skill the moment it is used a second time.
 

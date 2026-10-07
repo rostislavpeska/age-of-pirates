@@ -129,6 +129,29 @@ def test_every_fort_stands_on_a_flat_site_built_before_it():
                      src)
 
 
+def test_every_fort_fits_inside_the_world_circle():
+    # owner 2026-10-07, a 1v1 game: one start had no fort at all. The marker's edge box fences only the square's sides;
+    # a start in a world diagonal stands near the circle, which drops what lies beyond ~0.455 of the map
+    # (rm-coordinates), and a grouping that does not fit places nothing. The marker's circle leaves room for the
+    # fort's farthest unit, and still lets the marker stand within its 20 m of the start ring on the smallest map
+    import re
+    src = DANUBE.read_text(encoding="utf-8").replace("\r\n", "\n")
+    assert "rmSetWorldCircleConstraint(true);" in src
+    circles = []
+    for name in re.findall(r"rmAddObjectDefConstraint\(TCID, (\w+)\);", src):
+        m = re.search(r"int %s\s*=\s*rmCreatePieConstraint\(\"[^\"]*\", 0\.5, 0\.5, 0\.0, rmXFractionToMeters\(([\d.]+)\)"
+                      r"-([\d.]+), rmDegreesToRadians\(0\), rmDegreesToRadians\(360\)\);" % name, src)
+        if m:
+            circles.append((float(m.group(1)) * 512.0 - float(m.group(2)), name))
+    assert circles, "the fort marker has no world-circle constraint"
+    allowed, name = min(circles)
+    fort = (REPO / "game" / "randmaps" / "groupings" / "malta_player_fort.xml").read_text(encoding="utf-8")
+    reach = max(math.hypot(float(x), float(z)) for x, z in re.findall(r'posx="([-\d.]+)" posz="([-\d.]+)"', fort))
+    assert allowed + reach + 2.0 <= 0.455 * 512.0, (name, allowed, reach)
+    ring = float(re.search(r"rmPlacePlayersCircular\(([\d.]+), ", src).group(1)) * 512.0
+    assert allowed >= ring - 10.0, (allowed, ring)
+
+
 @pytest.mark.parametrize("sc", list(_layouts()))
 def test_the_layout_keeps_its_spawn_rules(sc):
     ex = extract(DANUBE, sc)
