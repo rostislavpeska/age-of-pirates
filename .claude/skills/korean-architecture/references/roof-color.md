@@ -92,3 +92,22 @@ in another PNG channel format. Painter public-resource replacement/export was
 verified with exact roof-core pixels; source borders and padding remain authoritative.
 See military `uv_r51` and its external `ROOF_CONTACT_QA`, `COMPOSITE_QA`, Painter
 roundtrip and fixed-view review receipts. Owner and engine acceptance are separate.
+
+## Tile lap direction: military r60 / INC-135
+
+The tile-lap repair is separate from ridge overlap and eave projection. The TC
+source's course coordinate grows downhill. Military fields measured arc length
+`s` from eave to ridge, but reused the same signed phase: lips dropped uphill on
+all 16 owner regions. The source correction is `phase = (-s / course_pitch) % 1`, retaining
+tile IDs and course boundaries. Rebuild HIGH normals/local AO/TileData together,
+then reapply the established TC colour recipe using the corrected phase. Preserve
+ridge wood, rounded ends, alpha, LOW geometry and UVs.
+
+The owner still reported reversed-looking shadows after this correction. It is
+not an accepted appearance fix. Use [roof tile direction QA](../../roof-tile-direction-qa/SKILL.md)
+to isolate the remaining boundary before changing channels or rebaking. Independent
+sampled author normals and one actual HIGH cross-section preserve the intended
+direction; these bounded results do not settle color/AO cues or the engine shader.
+Audit every shared reader's downhill frame. A mirrored chart alone proves no
+direction, and the initial coordinate audit did not validate final tangent frames.
+Keep roof-end alpha and accepted timber ridge geometry outside this correction.

@@ -14,7 +14,8 @@
     "aoe3de-player-colour",
     "blender-architecture-texturing",
     "blender-high-low-baking",
-    "blender-uv-workflow"
+    "blender-uv-workflow",
+    "roof-tile-direction-qa"
   ],
   "external": []
 }

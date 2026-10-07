@@ -46,6 +46,16 @@ It separates documented practice, project decisions and measured specimen result
    For vertical eaves, check the shell cross-section, hard-normal/UV break and
    corner terminations before repeating the bake. Raised hip and ridge covers
    remain geometry where they affect the silhouette or conceal roof joints.
+   For overlapping tiles, declare the physical ridge-to-eave direction and check
+   the HIGH relief in that frame before replication. The exposed lip must drop
+   sharply downhill. Increasing local U/V or arc length is not necessarily downhill.
+   The `roof-tile-direction-qa` skill tests sampled relief with an uphill-lap negative
+   control. Inspect opposing-light low renders and target-engine output separately;
+   never fix physical HIGH reversal with a global normal-channel inversion.
+   Follow [roof tile direction QA](../roof-tile-direction-qa/SKILL.md):
+   actual HIGH sections, every final UV reader, validated tangent frames, decoded
+   runtime maps and separate normal/AO/color views must agree. Formula-only and
+   geometric-normal-only previews cannot certify final lap appearance.
 7. Production bakes run only on **frozen** final UVs (owner sign-off, recorded
    fingerprint) - see the [pipeline order](../blender-architecture-texturing/references/pipeline-order.md).
    The pilot's lasting output is a recipe config for `scripts/bake_owner_maps.py`;
@@ -65,6 +75,13 @@ no HIGH loaded; rebake only when the LOW contract or a HIGH changes. Tools, guar
 [bake master](references/bake-master.md) (`master_unwrap.py`, `master_bake.py`, `derive_maps.py`, `compare_maps.py`).
 
 ## Tested helpers
+
+Before reading transforms for a derived receiver/HIGH, activate the source scene,
+update its dependency graph and freeze the evaluated world transform. Assert
+receiver and HIGH use the same frame. A stale Stable transform caused an entire
+region to miss while its source updated to the accepted ground offset. Background
+Python runs use `--python-exit-code 1`: Blender can otherwise exit0 after a script
+exception. Require completion manifests and coverage, not process exit alone.
 
 - `scripts/build_specimen.py`: call `run(output_dir, version='01')` inside the live
   Blender session. Creates original curved-roof and asymmetric-panel specimens in

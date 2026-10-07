@@ -34,7 +34,8 @@
     "blender-architecture",
     "blender-architecture-texturing",
     "blender-uv-workflow",
-    "skill-library-audit"
+    "skill-library-audit",
+    "roof-tile-direction-qa"
   ],
   "external": [
     {

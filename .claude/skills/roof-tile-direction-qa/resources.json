@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/measurement-protocol.md",
+    "scripts/roof_lap_gate.py",
+    "scripts/test_roof_lap_gate.py",
+    "scripts/normal_frame_gate.py",
+    "scripts/test_normal_frame_gate.py"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "commands": ["python", "python3"],
+      "requiredFor": ["measure", "test"],
+      "optional": false,
+      "note": "Host Python for read-only measurements and synthetic checker tests. No application launches."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": ["numpy"],
+      "requiredFor": ["measure", "test"],
+      "optional": false,
+      "note": "Used by the tangent-frame validator; roof_lap_gate itself needs only the standard library."
+    }
+  ]
+}

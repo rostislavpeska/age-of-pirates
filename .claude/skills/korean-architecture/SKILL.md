@@ -50,6 +50,7 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 | Shared matc atlas, TC prop textures, decals and asset dependencies | Korean project `patterns/korean/shared_materials.md` and `shared_assets.json`; resolve the project root through `recipes.json`/the current handoff |
 | Window/door lattice, paper, reusable leaf patches | [Lattice and hanji](references/lattice-hanji.md) |
 | Roof tiles, color variation, moss, exposed clay | [Roof surface finish](references/roof-color.md) |
+| Tile laps or shadows appear to face uphill; verify the full bake/export chain | [Roof tile direction QA](../roof-tile-direction-qa/SKILL.md), then the Korean roof recipe |
 | Rounded eave discs, scalloped pan ends, alpha backing and curved hip caps | [Rounded roof ends](references/roof-ends.md), then project pattern `KR-EAVE-01` |
 | Granite foundations, vertical gable boards and wooden ridge grain | [Stone and timber direction](references/stone-and-grain.md), then project pattern `KR-MAT-DIRECTION-01` |
 | Painted trim, gable background, player color, age progression | [Palette and age variants](references/palette-ages.md) |
