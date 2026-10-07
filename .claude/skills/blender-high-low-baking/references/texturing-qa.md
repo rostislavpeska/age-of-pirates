@@ -6,12 +6,18 @@ not by the owner. Every iteration = the two scripts below + a look at the sheet,
 
 ## Every iteration
 
-1. `scripts/qa_textures.py config.json` - numeric: per class and per UV island of the final maps.
+1. `blender -b --factory-startup --python-exit-code 1 --python scripts/qa_textures.py -- config.json` - numeric: per class and per UV island of the final maps. This helper imports `bpy` even for PNG inputs; host Python is insufficient. The separate `scripts/qa_detectors.py config.json` runs in host Python for ordinary raster inputs.
    Fails on: empty texels inside owner islands; a FLAT island (luma std below the class floor - a plain
    fill where a material should show structure); class mean colour off its target by more than the
    tolerance; normal vectors not unit; opacity holes on classes that must be solid.
 2. `scripts/qa_shots.py config.json` - pictures: the same fixed cameras every time (Cycles, background,
    the review file) -> one contact sheet. Look at every tile of the sheet.
+   For a partial rerender, resolve the requested shot IDs before loading/rendering
+   and require the selected list to equal them. Missing filter keys or zero-match
+   script substitutions must fail, never default to the complete shot list.
+   Keep the completed manifest and verify retained frame hashes. Korean r49's
+   revision-specific filter mismatch repeated three views before intervention;
+   explicit selector/shot assertions prevented recurrence in the corrected run.
 3. For an unexplained defect, in this order:
    a. **Texel level first:** crop the final maps where the defect is (same window of BaseColor, Normal and a
       normal shaded with one light), upscale nearest x4, and overlay the low-poly UV edges from the plan.
@@ -99,6 +105,11 @@ as P1-20 in the Korean TC backlog; until they exist, do them by hand with the ow
   doubled internally: viewport 50 mm = camera 25 mm on a 36 mm sensor. On a review file with board copies hide every
   other board collection, or the camera ends up inside a neighbouring copy. ("The critical part is not visible on
   your images" = wrong camera.)
+  For an automatically framed face, calculate its normal from the whole polygon,
+  not the first three vertices: valid n-gons can begin with collinear points.
+  Reject zero directions, verify the intended side and target visibility, then
+  inspect the first crop before launching the full close-up batch (r48 windows,
+  2026-10-07). An invalid camera is failed evidence, not a failed material.
 - **UV checker vs texture.** If the checker looks continuous but the texture does not, the fault is how the
   material is mapped onto the UVs (recipe, frames, sharing), not the layout - fix the texture, do not re-lay UVs
   (owner, 2026-09-28: "don't do unintentional UV changes"). A UV change is only for faces that read the wrong
@@ -139,6 +150,42 @@ frame centre and not a speck, no wall filling the frame from under 1 m. Otherwis
 
 ## Pass criteria (all must hold)
 
+### Declared AO storage and application
+
+Keep an effect ledger distinguishing measured AO, its packed runtime channel,
+BaseColor composition and shader application. Storing AO is not applying it twice.
+Preserve the accepted reference/engine contract even when BaseColor already has
+contact shading. `scripts/check_ao_storage.py` compares an explicitly scoped,
+aligned measured field to the final packed channel; it rejects a cleared channel
+and even one lost contact witness (INC-120). Its synthetic regression tests are
+`scripts/test_ao_storage.py`. A passing channel check is not a visual AO pass:
+show AO-only geometry, BaseColor-only contact and final material against the
+reference. Shared-reader suppression and unbaked material roles remain explicit
+limitations. Open surfaces can correctly be white; avoid a global darkness quota.
+
+### Material-readability feedback loop
+
+A bound image and nonzero color variance do not prove the intended material reads.
+For each owner-priority material, provide a dedicated physical-scale close-up and
+an RTS view, with revision/shot stamps and map/mesh hashes. Use the same lighting
+and player tint for reference comparisons. Inspect paper fibers and lattice contact,
+paint substrate/weathering, masonry courses, timber grain and eave silhouettes
+separately. Record observed, inferred and unassessed findings distinctly.
+
+When the owner requests independent agent feedback, use one bounded read-only
+review after each candidate, following the project's job cap. The reviewer returns
+region-specific finding IDs and re-review conditions. Next loops inspect the
+changed regions plus fixed full views and report fixed/new/open IDs; do not repeat
+unbounded aesthetic exploration or treat the agent's opinion as owner acceptance.
+
+Korean military r47 (2026-10-07): paper luma std 0.0098 passed a 0.006 floor but
+looked nearly uniform. Player-color substrate averaged about 209/255 versus 118/255
+on the actual TC reference. Measure the substrate before changing mask weights or
+the global palette. Material-specific thresholds supplement this visual check;
+arbitrary extra noise is not proof of better paper. Local contact shading shared
+by multiple faces must be assessed on every reader; suppress incompatible AO
+under an authorized common-AO policy rather than silently adding unique islands.
+
 - **Coverage:** every visible face carries its class material; no empty, black or default-colour texel.
 - **Structure:** no flat fills - every class shows its source detail (grain, tiles, plaster, stone).
   Classes WITHOUT a high-poly source (e.g. ridges/caps excluded from the roof bake) need an explicit
@@ -153,6 +200,10 @@ frame centre and not a speck, no wall filling the frame from under 1 m. Otherwis
   source without distinctive marks.
 - **UV sanity:** the UV checker shows square cells without visible stretch on visible faces; members that
   stretch more than about 1.4x on a patterned material are listed for the owner (UV decision).
+- **Material direction:** grain and courses follow the architectural role on every shared reader, including
+  mirrored gables, short curved ridge segments and foundation corners. Follow the
+  [orientation checks](../../blender-architecture-texturing/references/material-orientation.md).
+  Check color and normal direction together; passing color variance is not an orientation test.
 - **Materials read at RTS distance:** roof, plaster, timber, stone and windows are distinguishable in
   the RTS shots; wear and dirt stay moderate and concentrated (foot, thresholds, roofline, edges).
 
@@ -170,6 +221,12 @@ roof tiles - NO. Violations read as "two normals printed over each other". qa ch
 copy on every class; a second pattern inside a baked structure fails.
 
 ## Material consistency rules (owner, 2026-09-28)
+
+- **Across a building set:** use the accepted reference building's versioned palette
+  and recipe controls, then test finished material equivalence with the
+  [set-consistency procedure](../../blender-architecture-texturing/references/building-set-consistency.md).
+  Passing this document's generic class-color tolerance is not evidence that a new
+  building matches the set. Compare the actual reference outputs and common scene.
 
 - **One tint family per material:** every wooden element shares ONE hue family (members, boards, lattice,
   gables, sign board); variation per member at most about +-3 %. Distinct roles differ by a deliberate

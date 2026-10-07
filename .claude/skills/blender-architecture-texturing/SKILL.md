@@ -12,6 +12,11 @@ for pilot/master/runtime bake dependencies and observable delivery.
 Every phase hands off through a standard `HANDOFF.json` ([handoff contract](references/handoff-contract.md),
 `scripts/handoff.py`): consume the upstream phase's canonical outputs, never reinvent them.
 
+When extending an accepted building set, first apply
+[reference-building material inheritance](references/building-set-consistency.md).
+Pin the accepted reference and shared material controls before tinting; compare the
+finished material and common scene against that reference at each texture handoff.
+
 **Patterned linear elements come from geometry, not formulas.** Ridge cap-tile rows, tile courses and similar
 repeated structure on long elements are modelled as a high (continuous along the element's arc length) and
 baked onto the existing UVs; a compositor may only colour them from the baked IDs. Analytic patterns in
@@ -59,10 +64,19 @@ does not block Blender-only work; use it only for the selected workflow.
 3. Read [UV repair and AO](references/uv-ao.md) before atlas edits, baking and postproduction. Identify exact faces; preserve unrelated geometry, UVs, materials, normals and pixels. Do not repack an atlas to repair one window.
    For modeled high-poly relief projected onto a low mesh, use the companion
    [blender-high-low-baking](../blender-high-low-baking/SKILL.md) workflow and specimen checks.
-4. Apply an orientation-marked UV checker before decorative maps. Check both axes for density/stretch and mirrored motifs. Repeated elements must share projection depths and density.
+4. Apply an orientation-marked UV checker before decorative maps. Check both axes for density/stretch and mirrored motifs. Repeated elements must share projection depths and density. For grain, boards, masonry courses and curved timber, follow [material direction](references/material-orientation.md): source-image axes, role frames, continuous run coordinates, and every shared reader's final direction. Correct UVs alone do not establish correct texture orientation.
 5. Inspect all angles after applying textures, especially under autonomous work: opposite towers, under ledges, sill floors, reveals, arch crowns and interiors. Compare unlit basecolor, AO-only, normal-disabled and final material views when diagnosing faults.
 6. For Painter read [MCP feasibility](references/painter-mcp.md). A project existing online is not proof of local compatibility. Do not install/upgrade it as a side effect of texturing.
 7. Keep layered sources, adjustment masks and an output manifest. Save a new texture version, apply to the confirmed Blender instance, verify packed/external paths, save and inspect. Never claim live updates when only a background copy changed. Use the destination engine skill for export.
+
+For a scoped editor roundtrip, composite only through the current edit mask and
+its explicitly allowed gutter. Never reuse an earlier whole-material scope for a
+smaller correction. Run `scripts/check_edit_scope.py config.json` against the
+immutable parent: every protected pixel must match exactly, and protected alpha
+must match even inside the edit. The helper preserves 16-bit precision and needs
+NumPy/OpenCV. Percentile error can remain zero while sparse protected pixels
+change (Korean r48 / INC-109); retain the failed candidate as evidence, repair
+before publication, and rerender only affected verification shots.
 
 ## Final texel-density floor
 

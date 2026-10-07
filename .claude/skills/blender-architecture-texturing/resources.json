@@ -2,8 +2,10 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
+    "references/building-set-consistency.md",
     "references/chart-joining.md",
     "references/handoff-contract.md",
+    "references/material-orientation.md",
     "references/painter-mcp.md",
     "references/pipeline-order.md",
     "references/regions-density.md",
@@ -16,13 +18,17 @@
     "scripts/blender_hybrid_uv.py",
     "scripts/blender_uv_layout.py",
     "scripts/check_tile.py",
+    "scripts/check_material_direction.py",
+    "scripts/test_material_direction.py",
     "scripts/density_floor.py",
     "scripts/handoff.py",
     "scripts/test_density_floor.py",
     "scripts/test_handoff_wip.py",
     "scripts/test_uv_metrics.py",
     "scripts/uv_metrics.py",
-    "scripts/validate_uv.py"
+    "scripts/validate_uv.py",
+    "scripts/check_edit_scope.py",
+    "scripts/test_edit_scope.py"
   ],
   "skills": [
     "aoe-uv-atlas-export",
@@ -58,7 +64,9 @@
         "ao-constraints",
         "tile-check",
         "uv-check",
-        "uv-density"
+        "uv-density",
+        "material-direction",
+        "edit-scope"
       ],
       "optional": false,
       "note": "Use the selected interpreter; presence does not establish runtime compatibility.",
@@ -87,7 +95,8 @@
         "ao-constraints",
         "tile-check",
         "uv-density",
-        "uv-edit"
+        "uv-edit",
+        "edit-scope"
       ],
       "optional": false,
       "note": "Used by density, AO feasibility, Blender layout/bake helpers and the standalone tiling checker.",
@@ -126,6 +135,19 @@
       ],
       "optional": false,
       "note": "The consuming project supplies its model lint, owner-message store and profile ceilings. For AoP these live under scripts/havok beside gr2_lint.py. UV-faces measurements do not need this adapter; final AoP handoff does."
+    },
+    {
+      "id": "opencv",
+      "kind": "python-package",
+      "requiredFor": [
+        "edit-scope"
+      ],
+      "optional": false,
+      "note": "Exact 8/16-bit PNG preservation checks.",
+      "distribution": "opencv-python",
+      "modules": [
+        "cv2"
+      ]
     }
   ]
 }
