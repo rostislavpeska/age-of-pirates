@@ -176,7 +176,10 @@ void main(void)
 	float eastX = sizeM - 8.0;					// both arms run out at the east edge: the inner shore stays locked
 	int bridgeCell = (centreM + 0.1*sizeM) / 16.0;
 	float bridgeX = 16.0*bridgeCell + 8.0;		// the arm bridges and the land route through them, on a 16 m cell line
-	float landHeight = 2.983;					// King of Bohemia's land; a Bridge_Universal_03 deck lands at about 3.05 here
+	// the land, level with the bridges (owner 2026-10-07: the docks at the bridge's height stood above the land, "shift
+	// all terrain height a bit up"): Bridge_Universal_03's block stands 4.15 m above the river bottom, 3.07..3.25 m in
+	// the v12 editor saves of 2-8 players. King of Bohemia's 2.983 before
+	float landHeight = 3.2;
 
 	rmSetMapElevationHeightBlend(1);
 	rmSetSeaLevel(0.0);
@@ -714,14 +717,17 @@ void main(void)
 		if (b == 4)
 			rmSetAreaLocation(bridgeDockID, rmXMetersToFraction(bridgeX-1.0), rmZMetersToFraction(armSouthZ-36.0));
 		rmSetAreaCoherence(bridgeDockID, 1.0);
-		// level with the bridge (owner 2026-10-07: "a bit lower and it looks creepy"): Bridge_Universal_03 raises its
-		// block 4.15 m above the river bottom under it, 3.07..3.25 m in the v12 editor saves of 2-8 players (bottom
-		// -1.02..-0.90), while docks at the land height stood at 2.98
-		rmSetAreaBaseHeight(bridgeDockID, 3.2);
+		// at the land height, which is the bridge's (landHeight above; owner 2026-10-07: docks below the bridge "look
+		// creepy")
+		rmSetAreaBaseHeight(bridgeDockID, landHeight);
 		rmSetAreaMix(bridgeDockID, "italy_grass_lush");
 		rmSetAreaCliffType(bridgeDockID, "Italian Cliff River");
 		rmSetAreaCliffEdge(bridgeDockID, 1, 1.0, 0.1, 1.0, 0);
 		rmSetAreaCliffHeight(bridgeDockID, 0, 0.0, 1.0);
+		// the top keeps the area's mix, the map's base mix (owner 2026-10-07: "cliffs on their own don't support terrain
+		// mix ... paint the area with the base mix, only the area on top of the cliff"): the cliff paints its sides,
+		// not its ground - the elector plateaus' painting (above)
+		rmSetAreaCliffPainting(bridgeDockID, false, true, true, 1.5, true);
 		rmAddAreaToClass(bridgeDockID, classLand);
 		rmAddAreaToClass(bridgeDockID, rmClassID("classBridge"));
 		rmSetAreaObeyWorldCircleConstraint(bridgeDockID, false);
@@ -732,8 +738,9 @@ void main(void)
 
 	// River sockets (owner 2026-10-06): each stands socketDist m from its own route's authored line, along the route's
 	// normal, on the bank the channel swings away from: on each arm one on the outer bank west of the bridge (that team's) and one on the inner bank east of it
-	// (contested), 16 m off the route on a harbour port site pushed out from the bank; one off the tip of the inner
-	// shore at the bend apex, on the mirror axis, 16 m off too. Each is linked to the route
+	// (contested), 18 m off the route on a harbour port site pushed out from the bank; one off the tip of the inner
+	// shore at the bend apex, on the mirror axis, 18 m off too (16 m before the owner's "harbours - 1 tile back from
+	// trade route always - including the land beneath them", 2026-10-07). Each is linked to the route
 	// it is measured from (classic SocketTradeRoute); a small invisible area round each (class harbour) keeps hills,
 	// patches, forests and fish off it.
 	int numSockets = 5;
@@ -741,7 +748,7 @@ void main(void)
 	int sockZ = xsArrayCreateFloat(5, 0.0, "socket spot z");
 	int sockRoute = xsArrayCreateInt(5, -1, "socket route");
 	int sockSide = xsArrayCreateFloat(5, 0.0, "socket side");			// +1 outward, -1 inward (the inner shore)
-	int sockDist = xsArrayCreateFloat(5, 16.0, "socket distance");
+	int sockDist = xsArrayCreateFloat(5, 18.0, "socket distance");
 	int sockNorth = xsArrayCreateFloat(5, 1.0, "outward = +z on this arm");		// -1 on the south arm
 	xsArraySetFloat(sockNorth, 1, -1.0);
 	xsArraySetFloat(sockNorth, 3, -1.0);
@@ -749,13 +756,13 @@ void main(void)
 	xsArraySetFloat(sockX, 1, centreM-0.03*sizeM);	xsArraySetFloat(sockZ, 1, armSouthZ);	xsArraySetInt(sockRoute, 1, tradeRoute2ID);	xsArraySetFloat(sockSide, 1, 1.0);
 	xsArraySetFloat(sockX, 2, centreM+0.20*sizeM);	xsArraySetFloat(sockZ, 2, armNorthZ);	xsArraySetInt(sockRoute, 2, tradeRouteID);	xsArraySetFloat(sockSide, 2, -1.0);
 	xsArraySetFloat(sockX, 3, centreM+0.20*sizeM);	xsArraySetFloat(sockZ, 3, armSouthZ);	xsArraySetInt(sockRoute, 3, tradeRoute3ID);	xsArraySetFloat(sockSide, 3, -1.0);
-	xsArraySetFloat(sockX, 4, apexX);	xsArraySetFloat(sockZ, 4, centreM);	xsArraySetInt(sockRoute, 4, tradeRoute2ID);	xsArraySetFloat(sockSide, 4, -1.0);	xsArraySetFloat(sockDist, 4, 16.0);
+	xsArraySetFloat(sockX, 4, apexX);	xsArraySetFloat(sockZ, 4, centreM);	xsArraySetInt(sockRoute, 4, tradeRoute2ID);	xsArraySetFloat(sockSide, 4, -1.0);	xsArraySetFloat(sockDist, 4, 18.0);
 
 	float socketXM = 0.0;
 	float socketZM = 0.0;
 	float harbourLandX = 0.0;
 	float harbourLandZ = 0.0;
-	int harbourIslandAvoidRoutes = rmCreateTradeRouteDistanceConstraint("harbour sites keep off the routes", 2.0);	// from the 16 m road's edge: 10 m off the line
+	int harbourIslandAvoidRoutes = rmCreateTradeRouteDistanceConstraint("harbour sites keep off the routes", 4.0);	// from the 16 m road's edge: 12 m off the line (10 m before the tile back)
 	for (sn=0; < numSockets) {
 		// on the straight arms and the west leg the route's normal is an axis: the spot is the route point plus
 		// socketDist along it (no read-back, the authored line)
@@ -772,12 +779,12 @@ void main(void)
 		// zptorresstrait.xs 237-300, zpBalearicIslands.xs 703-810): a 400-tile site of land under the harbour, set back
 		// from the route point, the harbour grouping between it and the route. Owner 2026-10-07 / 08: "on a tiny island
 		// beneath and closer to the trade route ... bigger islands connected with mainland ... simpler, no prolonged molo
-		// ... the sockets too far from the trade route". The site is a circle about 22.6 m round, centred 33.6 m off the
-		// route line, so it pushes out to 11 m off the line (route constraints count from the 16 m road's edge, 8 m out)
+		// ... the sockets too far from the trade route". The site is a circle about 22.6 m round, centred 35.6 m off the
+		// route line, so it pushes out to 13 m off the line (route constraints count from the 16 m road's edge, 8 m out)
 		// and joins the bank (28-31 m off at the arms, 34-36 m at the tip), built like the banks (no cliff, smooth 4);
 		// the harbour on it as ONE grouping with its socket (owner 2026-10-07: "why don't we simply have one grouping
 		// together with the socket - standard sockets work in groupings, only capturable ones don't"; Caribbean Wars'
-		// Harbour_Center_* carry theirs): the owner's "Harbour center - platform unit", the socket 16 m off the line as
+		// Harbour_Center_* carry theirs): the owner's "Harbour center - platform unit", the socket 18 m off the line as
 		// the grouping's origin, three platforms in front, turned to face the route (Harbour_River_<NW|SE|SW>: the harbour groupings' naming, the
 		// suffix the water side in SCREEN terms - NW faces world north, SE south, SW west, NE east)
 		harbourLandX = 0.0;
@@ -911,7 +918,7 @@ void main(void)
 		rmSetAreaLocation(electorPlateauID, rmXMetersToFraction(electorXM), rmZMetersToFraction(electorZM));
 		rmSetAreaCoherence(electorPlateauID, 0.8);
 		rmSetAreaSmoothDistance(electorPlateauID, 5);
-		rmSetAreaBaseHeight(electorPlateauID, 5.0);
+		rmSetAreaBaseHeight(electorPlateauID, landHeight+2.0);		// 5.0 on the land of 2.983 before
 		rmSetAreaCliffType(electorPlateauID, "Italian Cliff Grassy");
 		rmSetAreaCliffEdge(electorPlateauID, 2, 0.40, 0.0, 0.0, 2);
 		rmSetAreaCliffHeight(electorPlateauID, 2.0, 0.0, 0.5);
@@ -1096,7 +1103,9 @@ void main(void)
 			rmAddAreaConstraint(fortSiteID, avoidWater10);
 			rmSetAreaWarnFailure(fortSiteID, false);
 			rmBuildArea(fortSiteID);
-			int playerFortID = rmCreateGrouping("player fort "+i, "malta_player_fort");
+			// danube_player_fort = malta_player_fort with its six trees New England / Great Lakes oaks (owner
+			// 2026-10-07: "same for player starting trees"); test_danube_layouts pins the rest equal to Malta's
+			int playerFortID = rmCreateGrouping("player fort "+i, "danube_player_fort");
 			rmPlaceGroupingAtLoc(playerFortID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)), 1);
 		}
 	}
@@ -1587,35 +1596,43 @@ void main(void)
 
 	// Village trees on the elector plateaus (zpelbe.xs 1192-1197: nine per plateau with avoidAll, so they take the free
 	// rim round the castle; owner 2026-10-07: "add few trees to the elector cliffs - look how Elbe is doing that").
-	// TreeNewEngland: the inner shore's z69 North New England forests, as Independence War's village trees
-	// (zpindependencewar.xs 1607-1612). Placed last, so no unit a trigger addresses moves
+	// A mix of New England trees and Great Lakes oaks (owner 2026-10-07), both of the inner shore's z69 North New
+	// England forests (Independence War's village trees: zpindependencewar.xs 1607-1612). Placed last, so no unit a
+	// trigger addresses moves
 	int villageTreeID=rmCreateObjectDef("village tree");
 	rmAddObjectDefItem(villageTreeID, "TreeNewEngland", 1, 0.0);
 	rmAddObjectDefConstraint(villageTreeID, avoidAll);
 	rmAddObjectDefConstraint(villageTreeID, insideWorldRes);
-	for (e=0; < numElectors)
-		rmPlaceObjectDefInArea(villageTreeID, 0, rmAreaID("elector plateau "+e), 9);
+	int villageOakID=rmCreateObjectDef("village oak");
+	rmAddObjectDefItem(villageOakID, "TreeGreatLakes", 1, 0.0);
+	rmAddObjectDefConstraint(villageOakID, avoidAll);
+	rmAddObjectDefConstraint(villageOakID, insideWorldRes);
+	for (e=0; < numElectors) {
+		rmPlaceObjectDefInArea(villageTreeID, 0, rmAreaID("elector plateau "+e), 5);
+		rmPlaceObjectDefInArea(villageOakID, 0, rmAreaID("elector plateau "+e), 4);
+	}
 
 	// Scattered trees over the open grass (owner 2026-10-07: "the map is just too grassy. I want more vegetation"):
 	// Caribbean Wars' random trees (zpcaribbeanwars.xs 918-926) in the forests' own species (data/forest2.xml) -
-	// z69 North New England everywhere but the south outer shore: TreeNewEngland, TreeSaguenay, TreeGreatLakes (16 per
-	// player); z42 Italian Forest there: ypTreeMongolianFir, ypTreeEucalyptus (6 per player)
-	for (t=0; < 5) {
+	// everywhere but the south outer shore a mix of New England trees and Great Lakes oaks (owner 2026-10-07; both of
+	// z69 North New England, 16 per player); the south's z42 Italian Forest: ypTreeMongolianFir, ypTreeEucalyptus
+	// (6 per player)
+	for (t=0; < 4) {
 		int randomTreeID=rmCreateObjectDef("random tree "+t);
 		int randomTreeCount = 4*cNumberNonGaiaPlayers;
 		if (t == 0) {
 			rmAddObjectDefItem(randomTreeID, "TreeNewEngland", 1, 0.0);
 			randomTreeCount = 8*cNumberNonGaiaPlayers;
 		}
-		if (t == 1)
-			rmAddObjectDefItem(randomTreeID, "TreeSaguenay", 1, 0.0);
-		if (t == 2)
+		if (t == 1) {
 			rmAddObjectDefItem(randomTreeID, "TreeGreatLakes", 1, 0.0);
-		if (t == 3)
+			randomTreeCount = 8*cNumberNonGaiaPlayers;
+		}
+		if (t == 2)
 			rmAddObjectDefItem(randomTreeID, "ypTreeMongolianFir", 1, 0.0);
-		if (t == 4)
+		if (t == 3)
 			rmAddObjectDefItem(randomTreeID, "ypTreeEucalyptus", 1, 0.0);
-		if (t >= 3)
+		if (t >= 2)
 			randomTreeCount = 3*cNumberNonGaiaPlayers;
 		rmSetObjectDefMinDistance(randomTreeID, 0.0);
 		rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.5));
@@ -1627,7 +1644,7 @@ void main(void)
 		rmAddObjectDefConstraint(randomTreeID, avoidBridge);
 		rmAddObjectDefConstraint(randomTreeID, avoidHarbour);
 		rmAddObjectDefConstraint(randomTreeID, insideWorldRes);
-		if (t < 3)
+		if (t < 2)
 			rmAddObjectDefConstraint(randomTreeID, notSouthOuterBox);
 		else
 			rmAddObjectDefConstraint(randomTreeID, southOuterBox);

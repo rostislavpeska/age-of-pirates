@@ -78,6 +78,11 @@ site-radius behind the harbour so it joins the land; the harbour grouping 14-16 
 facing the water, its socket INSIDE it. Position everything from the route's authored line, never read-backs at
 route ends (mapcheck S9).
 
+**One tile back from the route, always, the land with it** (owner 2026-10-07, Danube: "harbours - 1 tile back from
+trade route always - including the land beneath them"): the Danube's sockets went from 16 to 18 m off the route
+line, the port site with them (its centre 17.6 m behind the socket) and its route margin from 10 to 12 m off the line.
+Move the site together with the harbour, never the grouping alone.
+
 **Sockets inside groupings (owner 2026-10-07, track this):** a STANDARD socket works inside a grouping -
 `SocketTradeRoute` (Australia's Harbour_Universal_*, the Danube's Harbour_River_*), the SPC port socket
 `zpSPCPortSocket` (Caribbean Wars' Harbour_Center_*). A CAPTURABLE socket inside a grouping does NOT work - an engine

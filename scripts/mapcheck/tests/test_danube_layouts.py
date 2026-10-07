@@ -72,7 +72,7 @@ def test_each_harbour_stands_on_a_port_site_joined_to_the_bank_close_to_the_rout
     assert len(sockets) == 5
     for s in sockets:
         d, q = nearest(s)
-        assert 14.0 <= d <= 18.0, round(d, 1)
+        assert 16.0 <= d <= 20.0, round(d, 1)      # 18 m: one tile back (owner 2026-10-07), 16 m before
         n = ((s[0] - q[0]) / d, (s[1] - q[1]) / d)                    # from the route towards the bank
         assert not water(*s), "the socket must stand on the port site"
         assert any(water(s[0] - n[0] * k, s[1] - n[1] * k) for k in range(2, 9)), "water in front, towards the route"
@@ -107,7 +107,7 @@ def test_hussite_and_orthodox_groupings_carry_the_area_flattener_at_their_centre
         t = (REPO / "game" / "randmaps" / "groupings" / f"{n}.xml").read_text(encoding="utf-8")
         first = t[t.index("<units>"):].split("</unit>")[0]
         assert 'posx="0" posz="0"' in first and first.rstrip().endswith("zpInvisibleGroundFlattener"), n
-    for n in ("malta_player_fort", "malta_player_fort2"):
+    for n in ("malta_player_fort", "malta_player_fort2", "danube_player_fort"):
         assert "zpInvisibleGroundFlattener" not in (REPO / "game" / "randmaps" / "groupings" / f"{n}.xml").read_text(
             encoding="utf-8"), n
 
@@ -122,7 +122,7 @@ def test_every_fort_stands_on_a_flat_site_built_before_it():
     for line in ("rmSetAreaSize(fortSiteID, rmAreaTilesToFraction(650.0), rmAreaTilesToFraction(650.0));",
                  "rmSetAreaBaseHeight(fortSiteID, landHeight);", "rmSetAreaSmoothDistance(fortSiteID, 5);",
                  "rmSetAreaElevationVariation(fortSiteID, 0.0);", "rmAddAreaConstraint(fortSiteID, avoidWater10);",
-                 "rmBuildArea(fortSiteID);", 'rmCreateGrouping("player fort "+i, "malta_player_fort");'):
+                 "rmBuildArea(fortSiteID);", 'rmCreateGrouping("player fort "+i, "danube_player_fort");'):
         assert line in block, line
     assert "rmSetAreaCliffType" not in block
     assert re.search(r'int avoidWater10 = rmCreateTerrainDistanceConstraint\("avoid water short", "Land", false, 2\.0\);',
@@ -145,11 +145,41 @@ def test_every_fort_fits_inside_the_world_circle():
             circles.append((float(m.group(1)) * 512.0 - float(m.group(2)), name))
     assert circles, "the fort marker has no world-circle constraint"
     allowed, name = min(circles)
-    fort = (REPO / "game" / "randmaps" / "groupings" / "malta_player_fort.xml").read_text(encoding="utf-8")
+    fort = (REPO / "game" / "randmaps" / "groupings" / "danube_player_fort.xml").read_text(encoding="utf-8")
     reach = max(math.hypot(float(x), float(z)) for x, z in re.findall(r'posx="([-\d.]+)" posz="([-\d.]+)"', fort))
     assert allowed + reach + 2.0 <= 0.455 * 512.0, (name, allowed, reach)
     ring = float(re.search(r"rmPlacePlayersCircular\(([\d.]+), ", src).group(1)) * 512.0
     assert allowed >= ring - 10.0, (allowed, ring)
+
+
+def test_the_danube_fort_is_maltas_fort_with_new_england_and_great_lakes_trees():
+    # owner 2026-10-07: "a mix of New England and Great Lakes oaks ... same for player starting trees". Malta keeps its
+    # own trees, so the Danube has a copy that differs from malta_player_fort in its six tree protos only
+    g = REPO / "game" / "randmaps" / "groupings"
+    malta = (g / "malta_player_fort.xml").read_bytes().split(b"\r\n")
+    danube = (g / "danube_player_fort.xml").read_bytes().split(b"\r\n")
+    assert len(malta) == len(danube)
+    trees = []
+    for a, b in zip(malta, danube):
+        if a != b:
+            assert a.endswith((b">TreeTexas</unit>", b">ypTreeEucalyptus</unit>")), a
+            assert a.rsplit(b">", 2)[0] == b.rsplit(b">", 2)[0], (a, b)       # position, angle and variation kept
+            trees.append(b.rsplit(b">", 2)[1].split(b"<")[0])
+    assert sorted(trees) == [b"TreeGreatLakes"] * 3 + [b"TreeNewEngland"] * 3, trees
+
+
+def test_the_land_is_level_with_the_bridges_and_the_docks_keep_the_base_mix():
+    # owner 2026-10-07: docks below the bridge "look creepy"; then the docks at the bridge's height stood above the land
+    # ("shift all terrain height a bit up"); and the cliff's own ground on the dock top: "paint the area with the base
+    # mix, only the area on top of the cliff". Bridge_Universal_03's block: 3.07..3.25 m in the v12 editor saves
+    src = DANUBE.read_text(encoding="utf-8").replace("\r\n", "\n")
+    assert "float landHeight = 3.2;" in src
+    dock = src[src.index('int bridgeDockID = rmCreateArea("bridge dock "+b);'):src.index("rmBuildArea(bridgeDockID);")]
+    for line in ("rmSetAreaBaseHeight(bridgeDockID, landHeight);", 'rmSetAreaMix(bridgeDockID, "italy_grass_lush");',
+                 "rmSetAreaCliffPainting(bridgeDockID, false, true, true, 1.5, true);"):
+        assert line in dock, line
+    assert 'rmSetBaseTerrainMix("italy_grass_lush");' in src
+    assert "rmSetAreaBaseHeight(electorPlateauID, landHeight+2.0);" in src
 
 
 @pytest.mark.parametrize("sc", list(_layouts()))

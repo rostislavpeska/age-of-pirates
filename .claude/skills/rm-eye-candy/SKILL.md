@@ -18,8 +18,12 @@ in the plateau area after everything else; `avoidAll` keeps them off the buildin
 
 - Recipe: `randmaps/zpelbe.xs` 1192-1197 (nine per plateau). Danube: the same, by area name in a loop
   (`rmPlaceObjectDefInArea(villageTreeID, 0, rmAreaID("elector plateau "+e), 9)`).
-- Species: the map's own forest tree for that ground (Elbe `TreeNorthwestTerritory`, Danube and Independence War
-  `TreeNewEngland`).
+- Species: the map's own forest tree for that ground (Elbe `TreeNorthwestTerritory`, Independence War
+  `TreeNewEngland`). The owner likes a MIX of New England trees and Great Lakes oaks (Danube 2026-10-07: five
+  `TreeNewEngland` + four `TreeGreatLakes` per plateau, one object def each).
+- The same mix for the player start trees: when the start grouping is shared with another map, give this map a
+  copy that differs in the tree protos only and pin that with a test (`danube_player_fort` = `malta_player_fort`
+  with its six trees swapped, positions and variations kept; `test_danube_layouts.py`).
 - Place them LAST (after fish and King of the Hill): no unit a trigger addresses moves (rm-triggers law 4).
 - Add the map's circle edge constraint (`insideWorldRes` on the Danube): `mapcheck` S7 fails a scattered object without one.
 
@@ -34,6 +38,13 @@ height.
 - Measure, don't guess: read the save's vertex heights (the float array right after the `WT` block, 4 bytes after its
   end; `(tx+1) x (tz+1)` float32, x-major) along the bridge axis.
 - Florence sets its shores level with the same bridge (`randmaps/zpflorence.xs` 518-560).
+- Raise the LAND to the bridge, not only the docks: docks at the bridge's height above lower land made a step at the
+  road (owner: "cliffs now too high compared to other terrain ... shift all terrain height a bit up"). The Danube's
+  `landHeight` went from 2.983 to 3.2; the docks use `landHeight`, the elector plateaus `landHeight+2.0`.
+- The dock top keeps the map's base mix: a cliff area paints its own ground over the top unless told not to.
+  `rmSetAreaCliffPainting(id, false, true, true, 1.5, true)` (paint the sides, not the ground) with the area's mix =
+  the base mix (owner: "cliffs on their own don't support terrain mix ... paint the area with the base mix, only the
+  area on top of the cliff"). The Danube's elector plateaus already did this.
 
 ### 3. More vegetation: forest size, spacing and scattered trees
 
