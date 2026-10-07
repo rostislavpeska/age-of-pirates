@@ -12,6 +12,9 @@
 *.xaml      text eol=crlf
 *.set       text eol=crlf
 
+# Export source/authorization contracts are SHA256-pinned and must be byte-stable on every device.
+config/gr2_uv_contracts/*.json text eol=lf
+
 # binaries - never touch line endings
 *.gr2   binary
 *.ddt   binary

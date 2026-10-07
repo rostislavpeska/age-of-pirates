@@ -66,7 +66,7 @@
             "authorization": {
               "kind": "recorded_owner_chat",
               "path": "config/gr2_uv_contracts/shared_matc_owner_evidence.json",
-              "sha256": "5c7f373ad917746dc044ce6639b20281c13277b242164b1574c606ea2a5ce517",
+              "sha256": "e30d2fcc2bcdc13df021360cb61cc078f19e08e6fbe5985851bd7e652f7244a7",
               "owner_quote": "The atlas (matc) is one shared with Town |Center and caN WORK FOER ALL Koprean buildings - should also be on the Korean specific rules (shared materials / textures / other assets)"
             },
             "files": [
@@ -97,7 +97,7 @@
             "authorization": {
               "kind": "recorded_owner_chat",
               "path": "config/gr2_uv_contracts/shared_props_owner_evidence.json",
-              "sha256": "003132ff8f0750837dfa3a42ec35a99cf97b294576217de174d027966230b373",
+              "sha256": "033f8236f1e23300ae2b2351c504c39d5c855206cb67ca33898c82cd10b32975",
               "owner_quote": "You can use the pots from Korean TC. Keep the material and UV tied to TC and only define material as matb with link to TC material then. That's fine."
             },
             "files": [
@@ -147,7 +147,7 @@
       },
       "uv_contract": {
         "path": "config/gr2_uv_contracts/korean_barracks_r59.json",
-        "sha256": "37a2e5d927a105e0aedd8b04aac772d54bfdf2ba8ca0c02f78971b28c3b18277"
+        "sha256": "1c244c7979fb274133e2823a38835f8281b801be4ec2e3e6047603645c5ba967"
       }
     },
     "korean_stable_physics": {
@@ -178,7 +178,7 @@
             "authorization": {
               "kind": "recorded_owner_chat",
               "path": "config/gr2_uv_contracts/shared_matc_owner_evidence.json",
-              "sha256": "5c7f373ad917746dc044ce6639b20281c13277b242164b1574c606ea2a5ce517",
+              "sha256": "e30d2fcc2bcdc13df021360cb61cc078f19e08e6fbe5985851bd7e652f7244a7",
               "owner_quote": "The atlas (matc) is one shared with Town |Center and caN WORK FOER ALL Koprean buildings - should also be on the Korean specific rules (shared materials / textures / other assets)"
             },
             "files": [
@@ -209,7 +209,7 @@
             "authorization": {
               "kind": "recorded_owner_chat",
               "path": "config/gr2_uv_contracts/shared_props_owner_evidence.json",
-              "sha256": "003132ff8f0750837dfa3a42ec35a99cf97b294576217de174d027966230b373",
+              "sha256": "033f8236f1e23300ae2b2351c504c39d5c855206cb67ca33898c82cd10b32975",
               "owner_quote": "You can use the pots from Korean TC. Keep the material and UV tied to TC and only define material as matb with link to TC material then. That's fine."
             },
             "files": [
@@ -468,7 +468,7 @@
       },
       "uv_contract": {
         "path": "config/gr2_uv_contracts/korean_stable_r59.json",
-        "sha256": "a154cd67d41cde4441a8fddb93139a7f4fb09ca6589ccd68e9f03867181d3b23"
+        "sha256": "c728a37673b2bf9aa4fa7e7d9c52e367c6dcadae6bd42cc3db78e0b23d6ad212"
       }
     }
   }
