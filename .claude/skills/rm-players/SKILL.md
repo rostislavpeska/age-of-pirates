@@ -48,6 +48,36 @@ and the KOTH helpers need the includes (rm-skeleton).
   2026-09-24. The 20 units shift every later unit index: check a map's literal trigger indices first (London's are
   all placed before its seats). Maps without the bug need none (Grinch, Winter Wonderland II). Pinned by
   `scripts/mapcheck/tests/test_grouping_lock.py`; Crown Lands and Aztec City still place player starts before theirs.
+- **A start grouping never carries the starting units (owner 2026-10-07).** Forts, castles, city blocks: the grouping
+  brings the Town Center (and its walls, mine, berries, trees); `rmCreateStartingUnitsObjectDef` is its own object
+  def, placed after the grouping. In a fort they spawn INSIDE, as on Malta ("explorer should spawn inside fort as on
+  Malta"). Copy Malta's block, `zpmalta_castles.xs` 795-799: 8-12 m from the fort's centre, avoid all 4 m, avoid
+  impassable land 5 m. With the map's own 6 m constraints on a 5-10 m ring nothing spawned, silently (Danube editor
+  save dn11d_p6: 0 Explorers at 6 Town Centers). No `zpInvisibleGroundFlattener` in a grouping that holds a Town
+  Center: the owner saw the Explorer spawn fail with it in the fort (v14) and had it removed. Count `Explorer` per TC
+  in the census.
+- **Two teams of any split, with a gap (owner 2026-10-07, Danube):** with the teams side by side the players at the
+  meeting point are "nothing but cannon fodder". Give each team its own section, every player the same slot width
+  (sections sized by the team counts, `rmGetNumberPlayersOnTeam`), and leave a gap between them; a lone player
+  stands at its section's START, so each section runs from its first slot centre to its last. A neutral settlement
+  in the gap's centre moves with the split (1v7 puts it beside the lone player). FFA and 3+ teams keep one
+  half-moon with even gaps. Test every split in mapsim: `Scenario(players, teams, team_sizes=(1, 7))`;
+  `scripts/mapcheck/tests/test_danube_layouts.py` is the pattern (natives off every start, enemies >= 250 m).
+- **A placement section needs a length.** `rmSetPlacementSection(c, c)` places NOBODY (Danube v12, 2026-10-07: the
+  lone players of 1v1 and 2v1 got no Town Center; mapsim had modelled it as a full ring). A lone player stands at his
+  section's START, so give his section any length after it: `(c, c + half a slot)`. mapcheck S10 fails a section of
+  no length for the scenario it runs, and `test_build_order.py` runs S10 on every repo map at 1v1, 2v1 and 1v7.
+- **A start grouping needs level ground: a flat area beneath it, never the area flattener unit.** On turbulent hills
+  (Danube: +-5 m) the fort grouping dropped its Town Center and most walls at one start in three of ten layouts (3v3,
+  4v3, 4v4). Build a flat site on the start marker right before the grouping: the Danube's is 650 tiles, coherence 1,
+  smooth 5, `rmSetAreaElevationVariation(.., 0.0)`, at the land height, 2 m off the water. Its first pad (500 tiles,
+  smooth 10) measured within 0.4 m of the land height out to 20 m in the editor saves, while the walls reach 19.4 m.
+- **Every start grouping first, then what the starts carry.** Two loops: (1) each player's marker, level site and
+  fort / castle grouping; (2) each player's starting units, herd and treasure. In one loop a player's start herd
+  (placed 28-40 m out) could stand inside the next player's grouping 68 m away at 4v4, and that grouping did not place
+  at all (Danube v12e: the same middle starts lost their forts in two of three editor generations; two loops, three
+  of three complete). `rmGetGroupingInstanceUnitByType(instance, "TownCenter")` returned no Town Center for forts that
+  had one, so it cannot check a fort's placement: a "fallback TC when missing" doubled every Town Center.
 - Starting resources and herds avoid the TC with type distance constraints in metres
   (`avoidTownCenter` 25-40 m in the shipped maps).
 

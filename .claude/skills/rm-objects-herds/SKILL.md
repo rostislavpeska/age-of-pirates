@@ -44,6 +44,15 @@ rmPlaceObjectDefAtLoc(holeID, 0, ..., rmZMetersToFraction(xsVectorGetZ(loc)) - r
 
 ## Map-edge constraints: square versus rectangular maps
 
+**Hard rule, checked by `mapcheck` S7 (FAIL) and `scripts/mapcheck/tests/test_edge_constraints.py`:** every object
+scattered by a search (placed in an area, or with a max distance of 40 m or more) carries the edge constraints below:
+mines, herds, berries, fish, treasures. `rmSetWorldCircleConstraint(true)` does NOT keep a searched object inside the
+circle, and a box on a square map leaves the four corners open. Owner 2026-10-06 ("system bug"): the Danube copied
+King of Bohemia's `playerEdgeConstraint` BOX for its mines and treasures, and they landed outside the playable circle.
+Never copy an edge constraint from another map without checking its shape against this section (on 2026-10-06, 52 of
+53 repo maps had S7 findings, listed in `scripts/mapcheck/s7_edge_baseline.json`: a listed map shows them as WARN up
+to its count, the test's ratchet lets a count only fall, and a map not listed - or one that got worse - FAILs).
+
 A constraint tests the object's CENTRE only. The edge distance is therefore the object's own radius plus a
 margin: 4-8 m for a mine, herd or bush, 20 m for a treasure (a camp with its guards is over 10 m across).
 

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/game.py",
+    "scripts/passive_ai.py",
+    "scripts/minimap_disc.py",
+    "scripts/compose_lobby_minimap.py",
+    "scripts/check_lobby_minimap.py",
+    "scripts/compose_loading_screen.py"
+  ],
+  "skills": [
+    "photoshop-live-edit",
+    "aoe3-cheats",
+    "game-startup",
+    "minimap-twin"
+  ],
+  "external": [
+    {
+      "id": "photoshop",
+      "kind": "application",
+      "requiredFor": [
+        "compose"
+      ],
+      "optional": false,
+      "note": "Desktop Photoshop with COM and ExtendScript (CC 2018 verified 2026-10-07), driven through photoshop-live-edit."
+    },
+    {
+      "id": "aoe3de",
+      "kind": "application",
+      "requiredFor": [
+        "capture"
+      ],
+      "optional": false,
+      "note": "Age of Empires III DE with this mod, in the owner's desktop session, screen awake (no screen saver). Screen control needs the owner's go."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "disc",
+        "check",
+        "loading"
+      ],
+      "optional": false,
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ],
+      "note": "Image I/O and the Lanczos resize of the disc."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "disc",
+        "check",
+        "loading"
+      ],
+      "optional": false,
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "note": "The capture merge, the circle fit and the checks."
+    },
+    {
+      "id": "aop-harness",
+      "kind": "directory",
+      "requiredFor": [
+        "capture",
+        "check"
+      ],
+      "optional": false,
+      "note": "This repository's scripts/aitest (driver.py select_map / end_match, probe.py, the coordinate sheet) and the finished lobby images under data/wpfg/resources/images/icons/random_map (the border references)."
+    },
+    {
+      "id": "minimap-template",
+      "kind": "capability",
+      "requiredFor": [
+        "compose"
+      ],
+      "optional": false,
+      "note": "The owner's minimap_template.psd (OneDrive, age_of_pirates_wip_files/icons); copied, never opened in place."
+    }
+  ]
+}

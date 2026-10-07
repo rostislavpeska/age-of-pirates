@@ -34,6 +34,20 @@ rmBuildArea(paint);
 Why needed: `rmSetAreaCliffType` painting overpaints the area's own mix (paintGround defaults true).
 The overlay repaints cliff faces too; add a 2 m "avoid impassable land" constraint to keep them.
 
+## Premium terrain patches: tiny, incoherent, part of the ground mix
+
+Owner 2026-10-07 (Danube): patches "way way smaller ... tiny, incoherent, looking like terrain mix". Big coherent blobs
+(150-450 tiles at coherence 0.4-0.5) read as stickers laid on the ground. The recipe is Iceland's paint patches
+(`zpIceland.xs` 1127-1153), as the Danube's "Terrain patches" block uses it:
+- `rmSetAreaSize` 30-40 tiles, `rmSetAreaCoherence(0.0)`, `rmSetAreaMinBlobs 1 / MaxBlobs 5`,
+  `rmSetAreaMinBlobDistance 8 / MaxBlobDistance 16`: ragged specks, never discs;
+- many of them: 10 + 8 per player per region, 8 m apart (a class distance constraint on the patch class);
+- two mixes per region, alternating with a toggle: one accent and a neutral grass (Danube north `italy_cliff_top` +
+  `italy_grass_medium`, south `italy_grass_dry` + `italy_grass_medium`);
+- paint only (no base height, no elevation, no cliff), the region by a box / pie constraint, 10 m off the water,
+  off the natives, harbours and Town Centres, built BEFORE the forests;
+- `rmSetAreaWarnFailure(false)`: a speck that finds no room is simply skipped.
+
 ## Cliffs
 
 - `rmSetAreaCliffHeight(area, height, variance, ramp)`: ramp = the fraction of the edge left as

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "aoe3de",
+      "kind": "application",
+      "requiredFor": [
+        "use"
+      ],
+      "optional": false,
+      "note": "Age of Empires III DE in a single-player match (or a lobby with Allow Cheats). The harness route uses this repository's scripts/aitest/probe.py."
+    }
+  ]
+}

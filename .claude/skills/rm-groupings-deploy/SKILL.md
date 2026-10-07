@@ -55,13 +55,52 @@ on 2026-09-22 after verifying a repo copy existed for each. A stale root copy sh
   </tiles>
 </grouping>
 ```
-- The flattener line above is the mod's exact idiom (ten groupings carry it as the first unit).
+- The flattener line above is the mod's exact idiom: the first unit, at 0 / 0 (the Stuart houses are the exception,
+  off-centre and not first).
+- Size, measured (2026-10-07): `obstructionradiusx/z` is a half-width in METRES, and FlattenGround levels the whole
+  box. The flattener's radius 20 levels a 40 x 40 m square: 21 x 21 height vertices, 20 x 20 tiles of 2 m. Positions
+  (`posx`/`posz`) are metres; `<width>`/`<height>` are tiles. Evidence from 16 flatteners in 14 Danube editor saves:
+  the share of vertices at the flattener's exact height is 95-97 % on the perimeters 16-18 m out, 81 % at 20 m, 11 %
+  at 22 m and 1 % at 24 m. The square can sit one vertex (2 m) off-centre, and later units with their own flattening
+  re-level patches inside it. The heights are `(tx+1)*(tz+1)` float32, x-major, right after the save's `WT` block
+  (`scripts/mapsim/field.py` 537); a unit's saved `y` is the level height.
+- Which groupings carry the flattener and which have copies without it: "Flatten / unflatten standard" below.
 - `subtype` is the terrain subtype string from `Art/terrain/terraintypes*.xml` (uiname "Rockies
   Ground Snow 3" -> `rockies\groundsnow3_roc`); read it with bartool, never guess.
 - `variation="N"` shows Variation entry N mod K of the proto's animfile (grouping-variation memory).
 - Editor re-exports shift units by (-1,-1) m against their own terrain; measure with fixed anchors.
+- Sockets in groupings (owner 2026-10-07): a STANDARD socket (`SocketTradeRoute`, `zpSPCPortSocket`) works inside a
+  grouping; a CAPTURABLE socket inside a grouping does not (engine bug) - place it by object def.
 - Trigger code that targets a grouping's unit by engine id needs the socket LAST in the XML and the
   per-map id shift verified in game (nugget-targeting skill).
+
+## Flatten / unflatten standard (owner 2026-10-07)
+
+The owner kept the 40 m flattener ("the settlements are big") and with it the copies: "keep the debt and define some
+standards for flatten / unflatten groupings". `scripts/mapcheck/tests/test_area_flattener.py` pins every rule.
+
+1. **Who carries it:** settlement groupings. `Hussite_Camp_01-05`, `Orthodox_Monastery01-06`, `Orthodox_South_01-03`
+   and `Jesuit_Cathedral_EU_Flat_01-03` carry the exact flattener line above: the first unit, at 0 / 0.
+2. **Who never does:** a grouping that holds a Town Center (forts, player starts). With the flattener in the Malta
+   forts the owner saw the Explorer spawn fail. Level a start with a flat area beneath it instead. The Danube's fort
+   site is 650 tiles, smooth 5, elevation variation 0, at the land height and 2 m off the water.
+3. **The copy without it:** `<Name>_noflatten.xml` is `<Name>.xml` minus the flattener line, nothing else. It is
+   derived, never edited. Edit the base, then run `python scripts/tools/noflatten_copies.py --write`; `--check`
+   reports drift, and `--add <Name>` creates a copy. Make a copy only for a map that uses it.
+4. **Naming:** the flattened grouping keeps the plain name and the copy appends `_noflatten`. The script appends it
+   after the drawn type: `"Hussite_Camp_0"+type+"_noflatten"`. The Jesuit names are the legacy opposite (`_Flat_` =
+   with the flattener). Do not extend that pattern.
+5. **When a map uses the copies:** when its real editor generations, made without the flattener, show a steep step
+   (>= 1.5 m between neighbouring vertices, 2 m apart) or water inside a settlement's 40 x 40 m square. Gentle slopes
+   are what the flattener is for. Measure saves, not mapsim: its cliff areas both over-call (Elbe) and under-call
+   (Black Sea). Read the heights as described above. Today: King of Bohemia, Dead Sea, Black Sea.
+6. **The map edge:** a flattened settlement's centre never comes closer than 22 m to the map edge (the 20 m
+   half-width plus one vertex). Owner: "obstruction can touch the map edge". The guarantee is its requested point
+   minus its max distance, or an edge box / world circle among its constraints. The Danube adds its 30 m
+   `playerEdgeConstraint` to its settlements. Balearic Islands and The Unknown are beyond mapsim and are checked in
+   real saves (88 m and 38 m).
+7. **A new map or a new settlement family** follows 1-6. A family that should flatten gets the line; copies come only
+   with a map that needs them.
 
 ## Placing
 

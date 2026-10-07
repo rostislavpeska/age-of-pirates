@@ -54,6 +54,50 @@ regenerate the .xmb, restart the game (data loads at process start).
   map position converts to a fraction directly.
 - Nautical routes need water waypoints; a land chain over water is a causeway design, not an error.
 
+## Harbour port sites: the tracked pattern (18 maps)
+
+A harbour on a coast or a river is a PORT SITE: a big round area of land under the harbour, set back from the route
+point, with the harbour grouping between it and the water. Owner 2026-10-08: "It's a known pattern from other maps -
+needs to be tracked"; the Danube re-derived it three times in one night (a pad joined to the bank 30 m off the route,
+then a tiny island, then this). Copy it, never derive.
+
+| Map | Site (tiles) | Smooth | Harbour grouping | Trade socket |
+|---|---|---|---|---|
+| zpaustralia, zpnewguinea | 400 | 15 | Harbour_Universal_<dir> | inside the grouping + a route-linked `zpSPCWaterSpawnPoint` at the route point |
+| zptorresstrait | 500-600 (+ class portSite) | 15 | Harbour_Universal_<dir> | as above |
+| zpkurils, zpzealand, zpmelanesia, zpmalta | 600 | 15-20 | harbour_universal_<dir> | as above |
+| zpatols, zpvenice, zptasmania | 400-650 | 15 | Platform_Universal / Harbour_Center_* | per map |
+| zpmississippi (river) | 450, base 0.5 | 20 | Harbour_Center_River_NE / _SW, 7 tiles toward the water | `zpSPCPortSocket` (an SPC port, not a trade post) |
+| zpmalta_castles, zppolynesia, zpmediterranean, zpcaribbeanwars | 600-630 | 15-20 | Harbour_Center_* | `zpSPCPortSocket` |
+| zpburma_b, zptortuga, zpblacksea | 350-600 | 15-20 | pirateport / harbour_0x | per map |
+| zpdanube (river) | 400, base = land | 4 | Harbour_River_NE / NW / SE / SW (the owner's socket + 3 platforms) | `SocketTradeRoute` inside the grouping |
+
+The recipe: `rmCreateArea` 400-600 tiles, coherence 1, base height of the land (a beach: lower), the site's mix,
+smoothing 15-20 at sea but about 4 in a river (wide smoothing raises the bed toward the route), centred about one
+site-radius behind the harbour so it joins the land; the harbour grouping 14-16 m in front of the site's centre,
+facing the water, its socket INSIDE it. Position everything from the route's authored line, never read-backs at
+route ends (mapcheck S9).
+
+**Sockets inside groupings (owner 2026-10-07, track this):** a STANDARD socket works inside a grouping -
+`SocketTradeRoute` (Australia's Harbour_Universal_*, the Danube's Harbour_River_*), the SPC port socket
+`zpSPCPortSocket` (Caribbean Wars' Harbour_Center_*). A CAPTURABLE socket inside a grouping does NOT work - an engine
+bug: place those by object def. One grouping with its socket is the simple way; a separate route-linked socket next
+to platforms is not needed.
+
+**Harbour grouping names are SCREEN directions** (the camera is turned 45 deg), the suffix the side the harbour faces the
+water on (measured on Harbour_Universal_*, Harbour_Center_*): NE = world east, NW = world north, SE = world south,
+SW = world west; N / E / S / W are the diagonals between. The four main (world-axis) directions are therefore the set
+NE / NW / SE / SW. Harbour_River_NE / NW / SE / SW (2026-10-07): the owner's "Harbour center - platform unit" (profile
+RandMaps/groupings) - the socket as the origin, three platforms 9.4-10.1 m out (variants 130 / 247 / 247), no
+painted terrain.
+
+Pitfalls (Danube, 2026-10-08):
+- route-distance constraints count from the 16 m road's EDGE, 8 m beyond the line: "7 m" keeps land 15 m off;
+- measure the water at each harbour first (mapsim terrain grid): the Danube's point bars bring the bank to 28-31 m
+  off the route, the far bank is 46-51 m;
+- a NEW grouping file is found only after a game restart (rm-groupings-deploy);
+- an island (separate from the bank) is not reachable on foot - say so, never decide it silently either way.
+
 ## Diagnosis order
 
 1. `xmb_idcheck` on the two files (rung 2 of rm-diagnose)  2. the name exists in the mod file

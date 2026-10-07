@@ -12,7 +12,11 @@ The sync is automatic (2026-09-24): `python scripts/tools/sync_local_maps.py` ke
 (the ignored `config/local-maps.local.json`, e.g. `randmaps/zplondon` -> `00000_zplondon`) equal to the repo,
 which is always the source of truth. The PostToolUse hook runs it after an agent edits a registered map, the
 post-merge git hook (`--install-git-hook`, once per device) after every pull; `--add <repo stem> <local stem>`
-registers a new copy, `--check` lists stale ones. Never copy a `.mods.xml` into the game root.
+registers a new copy, `--check` lists stale ones. **The map under test goes on row 2 of the editor's Type list, right
+under Blank: `--top <repo stem>`** (one more leading zero than any map in the folder; `--add` and `--top` print the
+row). A copy registered as `00000_<map>` sits among 50 others and every generation scrolls for it (owner 2026-10-07:
+"20 USD only by wrong map name which sits too low"). A `.mods.xml` never goes into the game root (the mod loads its own
+copy): `--check` flags one as FORBIDDEN and `--sync` deletes it. Do not spend time diagnosing one, delete it.
 
 | # | Phase | Skill | Offline gate | In-game gate (only when placement matters) |
 |---|---|---|---|---|
@@ -29,6 +33,25 @@ registers a new copy, `--check` lists stale ones. Never copy a `.mods.xml` into 
 "It does not work" at any phase -> rm-diagnose before any theory. New art on the map -> rm-unit-bench
 before the map.
 
+## Known patterns: copy, don't derive
+
+Owner 2026-10-08: "It's a known pattern from other maps - needs to be tracked". Before building any of these, open
+the tracked recipe and the maps that use it:
+
+| Pattern | Where it is tracked |
+|---|---|
+| Harbours on a coast or river: the port site + harbour grouping (18 maps) | rm-trade-routes, "Harbour port sites" |
+| Player forts / castles as a start grouping (Malta, Danube): flat site beneath, all forts before any herd, starting units inside as on Malta, no flattener | rm-players |
+| Settlement groupings with / without the area flattener (`_noflatten` copies, map-edge rule) | rm-groupings-deploy, "Flatten / unflatten standard" |
+| Two teams of any split with a gap and a neutral settlement in it; FFA half-moon | rm-players |
+| Prince Elector build-limit ladder (toggle per threshold) | rm-triggers |
+| Premium terrain patches (tiny, incoherent, two mixes per region) | rm-areas |
+| Bridges with cliff docks across a river (Elbe, Florence, Danube) | rm-water-rivers |
+| The map under test on row 2 of the editor list (`--top`) | rm-workflow (above) |
+| The lobby minimap images (`<map>_mini.png` NEW / `_mini2.png`; gold border = normal maps, silver = historical) | lobby-minimap |
+
+A new pattern found in the mod's maps goes into this table and its skill the moment it is used a second time.
+
 ## Commands per gate
 
 ```bash
@@ -40,6 +63,25 @@ python sandbox/census/census.py <save.age3Yscn>                    # spawn truth
 python sandbox/census/bench_run.py --proto <unit> --nav d,r        # one unit, one map, verdict
 python sandbox/census/census_run.py <recipe> --seeds 3             # generate -> save -> census -> judge
 ```
+
+## Change batches: plan, then regenerate - never patch a moving list
+
+When the owner's feedback arrives as a batch, or keeps arriving while you work, and any request moves terrain
+structure (river or channel shape, routes, bridges, shores, the player layout, the map's type or folder), STOP
+patching:
+1. Collect every request into one numbered list in the owner's words, the open ones from earlier rounds included.
+2. Write ONE plan that rebuilds the terrain section as a whole from that list: build order, what each request becomes,
+   what is NOT in this round and why.
+3. Get the go. Then build the whole section fresh and check it with an editor generation and `save_diff.py`.
+
+Danube 2026-10-06: eight rounds (v2-v8b) each patched the last one while new requests kept coming. Several of them
+(a normal map, a route floor, wider water, a fifth socket, patches, forests) went into one untested round. The game
+left 15% of the map as water where mapsim showed land (save "Danube - total fsailure"). Owner: "I gave you a lot of
+change requests which rather required proper planning and basically complete terrain regeneration rather than
+patching."
+
+**Say first what is NOT done.** A request that is deferred, planned or refused is named in the first lines of the
+reply, never only in a plan at the end of it. Owner, same day: "silently skipped the trade route requirement".
 
 ## Editing rules that apply to every phase
 
@@ -62,12 +104,20 @@ python sandbox/census/census_run.py <recipe> --seeds 3             # generate ->
   objects. Copying a forest block means copying its `avoidAll` line too.
 - **Triggers and map setup:** start every trigger or starting-tech change at `rm-triggers` (the hub: laws, the
   setup-tech convention, routing to the specialised trigger skills).
-- **Map-edge constraints:** a square map needs one circle; a rectangular map needs a box AND a circle sized from
-  the corner. Treasures need a 20 m edge box plus `avoidAll` and 12 m off coin. The recipe is in `rm-objects-herds`,
-  "Map-edge constraints".
+- **Map-edge constraints (mapcheck S7 FAILs without them):** every scattered object (mines, herds, berries, fish,
+  treasures) carries them. A square map needs one circle, never a box alone (the corners stay open); a rectangular
+  map needs a box AND a circle sized from the corner. Treasures sit 20 m inside the edge, with `avoidAll` and 12 m
+  off coin. The recipe is in `rm-objects-herds`, "Map-edge constraints"; the Danube copied King of Bohemia's box
+  on a square map and its treasures left the circle (2026-10-06).
 
 ## What "verified" means in a report
 
 "mapcheck 0 FAIL (--live)" is static. "census P2 seed 4242: 6/6 holes" is placement. "screenshot
 bench_..._generated.png: renders" is visual. Say which of the three a claim rests on; never write
 "works" for a change that only passed mapcheck.
+
+**Terrain changes: the save diff is the gate, not the eye and not mapsim.** Save the first editor generation and run
+`python scripts/mapsim/save_diff.py "<profile>/Scenario/<save>.age3Yscn" <map>.xs --players N --out diff.png`
+(exit 0 = the game built the water mapsim predicts, within 3% of the map). mapsim's area growth is a model: large
+land areas held by several constraints can stop short in the engine while mapsim fills them (Danube v8b: 15.3% of
+the map water only in the game, 2026-10-06).

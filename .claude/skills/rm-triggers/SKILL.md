@@ -74,6 +74,20 @@ the trigger, or its effects sit in the setup's own list. London 2026-09-27: the 
 the file has also compiled, been granted and done nothing (index 1262 of 1312, 2026-08-19): check its index when
 law 2 does not explain a failure.
 
+## The Prince Elector site ladder (reverse engineered 2026-10-07)
+
+Owning several elector settlements raises the elector units' build limits: one step of `zpElectorSiteIncrease`
+(+9 Landsknecht, +15 Line Infantry, ...) per settlement beyond the first, taken back by `zpElectorSiteDecrease`.
+Per player a ladder of triggers counts the owned `zpElectorCenter` (Crownlands: its workshops' team flags). Use the
+Danube's `zpElectorSiteLadder(numSettlements)` (above `main`): one independent toggle per threshold n -
+"Elector Increase<n>" (count >= n, active at start) wakes only "Elector Decrease<n-1>" (count <= n-1), which wakes only
+Increase<n>. The hand-written chains of Crownlands / Unknown (4 castles) and Independence War's estates (6 houses)
+also wake the next rung of the same direction and count a loss of two settlements in one tick twice (4 -> 0 at once:
+-3 steps); fixing them deletes Fire Events from production triggers (AGENTS.md rule 9, waiting for the owner).
+mapsim records every trigger a script executes (`Extraction.triggers`); `scripts/mapcheck/elector_ladder.py`
+replays each ladder on walks of the owned count, and `scripts/mapcheck/tests/test_elector_ladder.py` runs it for every
+map with electors at 2, 4, 6 and 8 players (the three maps above as strict xfails).
+
 ## Before a trigger change ships
 
 - Every `TechID` exists in techtreemods; every effect name in triggerdata.xml.
