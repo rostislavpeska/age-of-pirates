@@ -1,11 +1,27 @@
 <material>
   <submaterial name="mata">
+    <materialdef name="default_cutout" />
+    <parameters>
+      <texture name="BaseColor" override="zbench_korean_military\stable\textures\korean_stable_mata_BaseColor" />
+      <texture name="Normals" override="zbench_korean_military\stable\textures\korean_stable_mata_Normals" />
+      <texture name="Masks" override="zbench_korean_military\stable\textures\korean_stable_mata_Masks" />
+      <texture name="Details" override="zbench_korean_military\stable\textures\korean_stable_mata_Details" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
     <materialdef name="default" />
     <parameters>
-      <texture name="BaseColor" override="zbench_korean_military\textures\physics_BaseColor" />
-      <texture name="Normals" override="zbench_korean_military\textures\physics_Normals" />
-      <texture name="Masks" override="zbench_korean_military\textures\physics_Masks" />
-      <texture name="Details" override="zbench_korean_military\textures\physics_Details" />
+      <texture name="BaseColor" override="buildings\korean_tc\textures\korean_tc_mata_BaseColor" />
+      <texture name="Normals" override="buildings\korean_tc\textures\korean_tc_mata_Normals" />
+      <texture name="Masks" override="buildings\korean_tc\textures\korean_tc_mata_Masks" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\korean_shared\textures\korean_shared_matc_v2_BaseColor" />
+      <texture name="Normals" override="buildings\korean_shared\textures\korean_shared_matc_v2_Normals" />
+      <texture name="Masks" override="buildings\korean_shared\textures\korean_shared_matc_v2_Masks" />
     </parameters>
   </submaterial>
 </material>
