@@ -345,5 +345,13 @@
 		<unit name="zpNativeHouseHussites">
 			<displaynameid>503591</displaynameid>
 		</unit>
+		<!-- the Factory block's wings are props, not clickable buildings (owner 2026-10-07: 'The factory wing is clickable') -->
+		<unit name="zpNatPropFactoryHallShort">
+			<flag>NotSelectable</flag>
+		</unit>
+		<!-- the park's Italian palace pavilion is a prop, not a clickable 'Native Building' (owner 2026-10-07) -->
+		<unit name="zpNatEUItalianPalaces">
+			<flag>NotSelectable</flag>
+		</unit>
 	</protomods>
 </mods>
