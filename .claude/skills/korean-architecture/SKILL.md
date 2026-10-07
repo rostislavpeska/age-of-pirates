@@ -17,6 +17,10 @@ their existing shared skills.
 
 ## Step 0 — inspect the model's functional reference before blockout
 
+Governing art direction: preserve a distinct Korean visual language while fitting
+the AoE Asian set. Apply the [two-reference review](references/palette-ages.md#korean-identity-within-the-aoe-asian-set)
+to appearance work as well as the functional donor inspection below.
+
 For a new Korean building, first inspect the latest accepted Korean Town Center
 and the exact Japanese/Chinese vanilla counterpart appropriate to its age and role.
 Record the intact model, damaged model, HKT and animfile identities. Inspect real
@@ -47,6 +51,7 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 | Window/door lattice, paper, reusable leaf patches | [Lattice and hanji](references/lattice-hanji.md) |
 | Roof tiles, color variation, moss, exposed clay | [Roof surface finish](references/roof-color.md) |
 | Rounded eave discs, scalloped pan ends, alpha backing and curved hip caps | [Rounded roof ends](references/roof-ends.md), then project pattern `KR-EAVE-01` |
+| Granite foundations, vertical gable boards and wooden ridge grain | [Stone and timber direction](references/stone-and-grain.md), then project pattern `KR-MAT-DIRECTION-01` |
 | Painted trim, gable background, player color, age progression | [Palette and age variants](references/palette-ages.md) |
 | Reproduce a Town Center revision or export both states | [Town Center evidence](references/town-center.md), then the current complete handoff |
 
@@ -88,6 +93,10 @@ For a local repair, assert unchanged geometry, UVs and texels outside the intend
 scope. Preserve the outer window frames when repairing the infill. Roof color is
 separate from roof normal/AO structure. Publish every standard review copy from
 the same revision and inspect the **actual destination** after publishing.
+
+Roof-end handoffs require the measured backing projection and rendered opaque-control
+checks in `references/roof-ends.md` / `scripts/check_alpha_chain.py`. Front opacity
+pixels or a connected Alpha socket alone do not establish a visible cutout (INC-103).
 
 Route actual operations through [architecture texturing](../blender-architecture-texturing/SKILL.md),
 [high/low baking](../blender-high-low-baking/SKILL.md),

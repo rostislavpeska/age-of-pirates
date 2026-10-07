@@ -2,6 +2,26 @@
 
 These are owner decisions for the Korean set, not universal historical rules.
 
+## Korean identity within the AoE Asian set
+
+Owner direction, 2026-10-07: Korean buildings must keep their specific visual
+language and still belong alongside AoE's Asian buildings. Use two reference roles:
+
+- **Korean identity:** the accepted Korean Town Center anchors roof profiles,
+  upturned wooden ridges, rounded tile ends, timber lattice and subdued hanji,
+  palette and age-appropriate decoration.
+- **Asian-set compatibility:** role/age-matched vanilla Japanese and Chinese
+  buildings anchor game-scale readability, value contrast, material roughness,
+  detail scale, contact shading and weathering. Adapt those rendering qualities
+  while retaining the Korean structural and decorative choices.
+
+Compare the candidate, TC and relevant vanilla examples at matched camera,
+lighting and displayed scale. Report Korean identity and set compatibility as
+separate visual findings; inspect full-building/game-scale views as well as crops.
+For windows, cooler infill is a controlled comparison option: judge separation
+from plaster and convincing frame recesses before escalating blue tint or AO.
+This art direction does not accept a pending revision or expand its asset budget.
+
 ## Sign text: use the game's Korean localization
 
 The owner requested Hangul instead of the earlier Hanja plaque and asked for the
@@ -44,6 +64,38 @@ Verify several player colors on the full model. A 90% weight is a channel value,
 not a gamma-space visual blend guessed from a screenshot. Export and decode the
 Details map to check that compression preserves the intended weights and leaves
 unpainted surfaces unaffected.
+
+For gable borders, first account for the complete visible wooden gable, including
+connected coplanar corner patches and short vertical returns. Derive the painted
+border from the union's outer boundary, not just the sloping top or one named
+panel. Validate both sides and all shared UV readers. Military r57 recorded a
+failure where the central-panel check passed but four small Barracks corner
+triangles remained undecorated; the project `KR-FINISH-01` card holds the recipe.
+
+### Complete bands and restrained red timber (military r58)
+
+The owner's "blue stripe all around all walls" is a complete architectural role,
+including both ends, courtyard returns and elevated clerestory walls. A mask with
+no leakage can still fail this brief by omitting entire walls. Use the player-colour
+skill's per-component coverage check and front/back/corner review. If mirrored
+upper plaster shares the proposed band texels, make scoped planar band cuts and
+reuse compatible existing skirt texels at the original density. Do not tint the
+upper plaster, duplicate whole wall charts or create another runtime page.
+
+For restrained TC red wood, reuse the accepted TC pigment and weathering recipe:
+seokganju `#8B3A2C`, faded wood `#948878`, soot `#2A241E`, 55% photographic high-pass
+grain, paint roughness 0.55 and reduced grain normal strength. In military r58 the
+scope is structural posts and gate timber, preserving natural-brown window frames,
+roof ridges and fence rails. These values reproduce an authored TC recipe; they
+are not a historical claim or a substitute for matched-lit comparison.
+
+Gate decoration must cover the visible broad leaves continuously. Inspect thin
+edge faces sharing the broad face's UV: an all-reader exclusion can protect the
+edge yet cut a hole through the ornament. Reusing an existing congruent broad-leaf
+patch repaired this without a new page or density loss. Validate the repaired
+leaf in the model, not just its atlas. r58 is a candidate until visual/export checks
+finish; the measured band repair added 217 vertices/184 faces across both models,
+used zero new atlas area, and kept roughly 112/112 texels per model unit.
 
 For plaster and wood, the owner rejected uniformly clean surfaces. Add restrained
 material-scale variation and plausible dirt/contact buildup. Preserve structural

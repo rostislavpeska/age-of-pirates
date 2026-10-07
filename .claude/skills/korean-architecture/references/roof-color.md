@@ -5,6 +5,16 @@ uniform roof. The requested finish takes cues from vanilla: neighboring tiles
 have slightly different tones, restrained moss in sheltered areas, and limited
 worn clay at exposed lips. Keep the existing tile courses and silhouette.
 
+**Set tint lock (owner, 2026-10-07):** Korean buildings of this set must use the
+accepted TC roof's same tints. Consume its finished material revision and inherited
+palette controls through the generic [building-set procedure](../../blender-architecture-texturing/references/building-set-consistency.md).
+The variation recipe below cannot substitute for comparing the actual TC output.
+Match roof fields, caps and alpha eave ends as separate roles; wooden main ridges
+inherit the TC timber role. Keep relief, rounded silhouettes and alpha protected
+in a tint repair. New per-building normalization or a similar raw clay source does
+not establish a match. Japanese/Chinese references inform set readability; the
+accepted Korean TC remains the palette authority for this set.
+
 ## Inputs and controls
 
 Use the frozen roof UV plan, baked coverage, **geometry-derived tile IDs**, course
@@ -55,3 +65,30 @@ not random stain painting to hide projection errors.
 Implementation: `research/Texturing_11/Claude_CP2/roof_v2.py`, `roof_tile_ids.py`,
 `ridge_eave_v2.py` and `window_wanja/r2_roof_finish.py` in the Korean repo. The
 registry and exemplar handoffs locate exact source fields and reports.
+
+## Set-match correction: inherit the whole shading recipe
+
+Military r50 retained the TC clay colors and local tile relief but omitted the
+TC's assembly-contact color stage. Like-for-like exposed roll samples were
+already within about one encoded RGB level; channels/contact were lighter.
+Do not globally darken the atlas to force its whole-roof mean to match.
+
+The accepted TC compositor applies assembly contact in linear color using
+`0.45 + 0.55 * assembly_AO ** 0.8`, in addition to the separate tile-local relief.
+In a new member, measure assembly contact from its own unchanged geometry; do not
+copy the TC's spatial shadow map. On shared texels evaluate all readers, keeping
+the least-dark value where the approved policy suppresses conflicting contact.
+Apply this stage once and keep its source separate from already-baked tile AO.
+
+Military r51 is a review candidate demonstrating this correction: 512 contact
+sampling, 48 rays, one-unit radius, unchanged 2048 outputs and no new islands.
+Those values are evidence, not universal defaults. Exclude inventoried alpha
+fronts from opaque AO blockers; a nonexistent semantic field silently excludes
+nothing. The authoritative per-face inventory identifies these fronts.
+
+Protect every nonroof occupied pixel, normal, alpha, player mask and roughness.
+An unchanged roughness resource stays byte-identical rather than being rewritten
+in another PNG channel format. Painter public-resource replacement/export was
+verified with exact roof-core pixels; source borders and padding remain authoritative.
+See military `uv_r51` and its external `ROOF_CONTACT_QA`, `COMPOSITE_QA`, Painter
+roundtrip and fixed-view review receipts. Owner and engine acceptance are separate.

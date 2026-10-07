@@ -15,6 +15,38 @@ Wood should read as separate bars: subtle bevel relief, grain along each bar,
 and restrained joints/contact AO. Avoid drawing wood grain across the empty paper.
 Do not add gratuitous ornament merely because the bake is expensive.
 
+Validate **material readability**, not just the presence of the hanji bitmap.
+Military r47 passed a 0.006 luma-variation floor with measured std 0.0098 yet
+looked like a uniform panel. Compare a dedicated window crop with the actual TC
+under matched lighting. Inspect physical fiber size, quiet mottling, roughness
+and contact at the real bars. Larger, higher-contrast fibers may read as cracks;
+keep that a visual check. Short-range frame AO can be shared conservatively by
+keeping the least-dark value at corresponding texels when the owner has allowed
+AO removal; this does not establish full-building AO. Record all affected readers
+and retain opaque grey paper unless the owner changes the art direction.
+
+After the r49 owner rejection (2026-10-07), review **window-versus-wall separation**
+as its own item: compare the actual TC leaf and role-matched Japanese/Chinese
+window crops, then matched close and RTS-size model views. Framed plaster panels
+elsewhere on those atlases are not window references. Check each enclosed cell's
+center-to-edge shading and warm lattice versus infill contrast; paper noise or a
+reviewer's "textured" judgment cannot close this item. The owner requested a
+muted blue-grey trial. Keep that a named art-direction variant, not a claim that
+hanji is transparent glass or that all Korean windows should be blue.
+
+Record the color space of baked shadow composition. TC Wanja multiplies sRGB by
+`.55 + .45*AO`; military r49 multiplied linear color by `.76 + .24*AO`, with AO
+clamped at .25 (minimum multiplier .82). Those coefficients are not equivalent.
+Use actual frame occluders and inspect every shared reader; widening AO distance
+must not darken a complete large pane or introduce another building's shadows.
+Distinguish channel storage from shader application. The accepted TC stores its
+measured window AO in Masks.R **and** shades BaseColor. Preserve that channel
+contract; do not clear R to avoid an imagined second multiplication. An additional
+Blender multiply is a separate shader operation and needs its own verification.
+Military r50 cleared window R while its preview did not use R at all (INC-120,
+owner rejection 2026-10-07). Compare packed AO-only, BaseColor-only and final views
+against TC; retain the measured contact field and immutable parent.
+
 User references live under `references/window-lattice/` in the external Korean
 asset library, with `INDEX.json`. Preferred simple references include
 `07_simple_cross_realism`, `09_preferred_repeated_cross` and
@@ -53,6 +85,18 @@ dimensions and final pixels to choose it for another model; do not copy world-un
 values across different scales. Bake antialiasing improves edges but does not
 increase final texel density. Mirrored leaves require tangent-space verification
 in the actual export, especially where the engine stores no bitangent sign.
+
+For new lattice HIGHs, join plain overlapping timber solids **before** beveling
+the joined exterior. Extend corner joints through the adjoining member width.
+Coplanar duplicate surfaces produced black AO squares at crossings in the military
+r55 pilot; Boolean unions of already beveled full-lap bars then dropped a vertical.
+The corrected order passed 238 centerline ray probes and eight exposed crossing
+AO samples at 0.994–1.0. Assert every intended bar is covered before baking and
+inspect crossing/corner crops afterward. Those numbers describe this pilot,
+not a universal requirement that exposed timber or real recesses have white AO.
+An isolated pattern/AO specimen is not whole-model acceptance: compare its final
+resolution against the modeled frame, retain the rollback, and check every shared
+reader before propagating its texture or removing inner lattice geometry.
 
 ## Implementation and evidence
 

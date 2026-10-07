@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "scope": "Korean architectural feature recipes; dated exemplar, not a replacement for latest accepted project HANDOFF",
-  "date": "2026-10-06",
-  "status": "scoped offline validation; owner requested paired game export; no new in-game acceptance",
+  "date": "2026-10-07",
+  "status": "r47 material direction repair candidate; r45b alpha retained, owner acceptance and engine validation pending",
   "roots": {
     "korean_repo": "Korean source repository",
     "assets": "external Korean Buildings Blender asset library"
@@ -145,6 +145,150 @@
       "path": "snapshots/2026-09-30-live-walls-r3/LIVE_SOURCE_AFTER.json",
       "role": "eave_accepted_geometry",
       "sha256": "702526511e755d425effd1c5d0a5aa8063d0870b07ec587ffda0c103cc4c4d18"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/backing.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "f691bcfc5e09c101349389a4fb414a1fd131c64458fd40dc7b80ee707e2efe55"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/bake_extended_fields.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "0bad3497d6d349e5d24a9760b6218bde42197b3866f9e0a051f3be710c1069a6"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/bake_fronts.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "d1046d86f8a5cfd85ba5c8d5c3a7c7e808ff8ff8ac3acdd98a5a8eb20b720468"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/boards.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "dddc1078105b9af40fe3004b691f81e4cbed79fa974b457a52a104ca20c16741"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/check_readers.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "54ea04e0995887bc7f3ee41447d06ce8b69e702e9bd90cdd074c9712ea4b3724"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/checkpoint.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "027d5534cee5b0e9fa12bb038cd16b23fff96f903414887ab59ecea3072ff3e7"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/close_lip_terminals.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "d7a2cef387839463f0adbce5eb9ac46d0faed1e873af79bbf4cadff2b9936653"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/compose.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "b1ed1f1af1fa8cabd9063666bc60f02cf38eba74f13c7628f2abf2c361900f18"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/compose_extended_fields.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "6227dd00c4d87afc01e4b36bc0f18b07d5888541f7d4df620f516f943444c0bc"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/eave_recipe.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "4a442e96cd403adc7b6eb2c300a8b26a46a7f4390e55496ff58ccdede96a1a31"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/finalize.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "a1e0e6d2e4358d27c673c27a1159faceaca68ecc047556011fef54243bb1f530"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/fit_cap_tips.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "9f86ca1c6b28ab0c38debfbd320de79b2ea72075d66f56b4b7260ec7b092fe9c"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/inventory.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "fc2cd9944612ca47a2476a4780400196f59cebb7e0a4a67e32bc8caca2accff8"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/project_lip.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "c9345c4c48815d05ae182e23b986c7d65f351b9a76e56f5763dd249455d9cc6e"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r43/render.py",
+      "role": "historical r43c projecting eave recipe; alpha handoff rejected INC-103; use r44 backing-alpha repair",
+      "sha256": "6e896daa9890f76f36baa93271a6f0bdfe1fd2c4d68cd7e7457f46f6f4c7289e"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r44/repair_maps.py",
+      "role": "r44 backing-alpha repair and independent verification; WIP owner review",
+      "sha256": "a7a91791372d2dcba83ff5853c947c9a06939d0d53c88c5bd2b60f7338f4c3ab"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r44/build_review.py",
+      "role": "r44 backing-alpha repair and independent verification; WIP owner review",
+      "sha256": "fa1410791141b899839c7de0d9620556eead4c0869c431a8aa6d3b69240495e3"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r44/render_silhouette.py",
+      "role": "r44 backing-alpha repair and independent verification; WIP owner review",
+      "sha256": "acf5d921c046bedd1ad423c7f4ca1dca2bb918c9bc5567227bf0bb4adc90aef9"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r44/check_preservation.py",
+      "role": "r44 backing-alpha repair and independent verification; WIP owner review",
+      "sha256": "c211df4d2d9c78f61a4819998b35a604154c5dc837708157dabcbe2b5cad500c"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r44/audit_projection.py",
+      "role": "r44 backing-alpha repair and independent verification; WIP owner review",
+      "sha256": "1532873f9cb4add269729d96235b4f27db3153aeb127cc6d57f49ea5349bdaf5"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Colonial_Military_12/uv_r44/finalize.py",
+      "role": "r44 backing-alpha repair and independent verification; WIP owner review",
+      "sha256": "29dd6acb1976fada8d862edbdc3f870b2bddcd2ac1f1e28ffc7d8a8f6cbb60a9"
+    },
+    {
+      "root": "korean_repo",
+      "path": "patterns/korean/material_orientation.md",
+      "role": "TC stone and architectural grain direction rule",
+      "sha256": "5c52c37218cac3019ed10c8c0e0917a24654c6eb0c4bae6b6c637e9965f14851"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/source_maps.py",
+      "role": "TC source axes and whole-panel grain frames",
+      "sha256": "96b0f9bbf40e4eaa5e46f64ec4e44bed57077fd858e1b3f655d6e16ae4242e9f"
+    },
+    {
+      "root": "korean_repo",
+      "path": "research/Texturing_11/Claude_CP2/compose_textures.py",
+      "role": "TC source tint and weathering recipe",
+      "sha256": "2a0bbdd5d8be1dad94d96262551d343880f1f9aa0e546f1761932d9afd1ac168"
     }
   ]
 }
