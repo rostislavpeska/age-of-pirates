@@ -41,10 +41,13 @@ height.
 - Raise the LAND to the bridge, not only the docks: docks at the bridge's height above lower land made a step at the
   road (owner: "cliffs now too high compared to other terrain ... shift all terrain height a bit up"). The Danube's
   `landHeight` went from 2.983 to 3.2; the docks use `landHeight`, the elector plateaus `landHeight+2.0`.
-- The dock top keeps the map's base mix: a cliff area paints its own ground over the top unless told not to.
-  `rmSetAreaCliffPainting(id, false, true, true, 1.5, true)` (paint the sides, not the ground) with the area's mix =
-  the base mix (owner: "cliffs on their own don't support terrain mix ... paint the area with the base mix, only the
-  area on top of the cliff"). The Danube's elector plateaus already did this.
+- The dock top in the map's base mix (owner: "cliffs on their own don't support terrain mix, so can we paint the area
+  with the base mix? Only the area on top of the cliff"). A cliff area ignores its own `rmSetAreaMix` and paints its
+  cliff ground on the top. Keep that painting, then build a plain area on the same spot right after the dock: same
+  size and location, coherence 1, the base mix, `shortAvoidImpassableLand` (2 m off the cliff and the water), NO base
+  height (paint only, as terrain patches) - `zpdanube.xs`, "bridge dock top".
+  WRONG (2026-10-07): `rmSetAreaCliffPainting(id, false, ...)` (no ground painting) on a dock raised out of the river
+  left the riverbed texture on its top. It only suits a plateau built on land (the Danube's elector plateaus).
 
 ### 3. More vegetation: forest size, spacing and scattered trees
 

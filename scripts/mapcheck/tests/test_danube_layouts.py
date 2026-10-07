@@ -175,9 +175,15 @@ def test_the_land_is_level_with_the_bridges_and_the_docks_keep_the_base_mix():
     src = DANUBE.read_text(encoding="utf-8").replace("\r\n", "\n")
     assert "float landHeight = 3.2;" in src
     dock = src[src.index('int bridgeDockID = rmCreateArea("bridge dock "+b);'):src.index("rmBuildArea(bridgeDockID);")]
-    for line in ("rmSetAreaBaseHeight(bridgeDockID, landHeight);", 'rmSetAreaMix(bridgeDockID, "italy_grass_lush");',
-                 "rmSetAreaCliffPainting(bridgeDockID, false, true, true, 1.5, true);"):
-        assert line in dock, line
+    assert "rmSetAreaBaseHeight(bridgeDockID, landHeight);" in dock
+    # the cliff keeps its own painting: without its ground the dock top showed the riverbed (owner's screenshot,
+    # 2026-10-07); a paint-only area on the same spot lays the base mix on the top
+    assert "rmSetAreaCliffPainting" not in dock
+    top = src[src.index('int dockTopID = rmCreateArea("bridge dock top "+b);'):src.index("rmBuildArea(dockTopID);")]
+    for line in ('rmSetAreaMix(dockTopID, "italy_grass_lush");', "rmAddAreaConstraint(dockTopID, shortAvoidImpassableLand);"):
+        assert line in top, line
+    assert "BaseHeight" not in top and "Cliff" not in top and src.index("rmBuildArea(bridgeDockID);") < src.index(
+        "rmBuildArea(dockTopID);")
     assert 'rmSetBaseTerrainMix("italy_grass_lush");' in src
     assert "rmSetAreaBaseHeight(electorPlateauID, landHeight+2.0);" in src
 

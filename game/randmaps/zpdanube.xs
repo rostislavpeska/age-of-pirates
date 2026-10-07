@@ -724,14 +724,31 @@ void main(void)
 		rmSetAreaCliffType(bridgeDockID, "Italian Cliff River");
 		rmSetAreaCliffEdge(bridgeDockID, 1, 1.0, 0.1, 1.0, 0);
 		rmSetAreaCliffHeight(bridgeDockID, 0, 0.0, 1.0);
-		// the top keeps the area's mix, the map's base mix (owner 2026-10-07: "cliffs on their own don't support terrain
-		// mix ... paint the area with the base mix, only the area on top of the cliff"): the cliff paints its sides,
-		// not its ground - the elector plateaus' painting (above)
-		rmSetAreaCliffPainting(bridgeDockID, false, true, true, 1.5, true);
 		rmAddAreaToClass(bridgeDockID, classLand);
 		rmAddAreaToClass(bridgeDockID, rmClassID("classBridge"));
 		rmSetAreaObeyWorldCircleConstraint(bridgeDockID, false);
 		rmBuildArea(bridgeDockID);
+
+		// its top in the base mix (owner 2026-10-07: "cliffs on their own don't support terrain mix, so can we paint the
+		// area with the base mix? Only the area on top of the cliff"): a cliff area ignores its own mix, and without its
+		// ground painting it showed the riverbed it was raised from. A plain area on the same spot paints the mix and
+		// nothing else (no height, as the terrain patches), 2 m off the cliff and the water ("Land", impassable)
+		int dockTopID = rmCreateArea("bridge dock top "+b);
+		rmSetAreaSize(dockTopID, rmAreaTilesToFraction(300), rmAreaTilesToFraction(300));
+		if (b == 1)
+			rmSetAreaLocation(dockTopID, rmXMetersToFraction(bridgeX-1.0), rmZMetersToFraction(armNorthZ+36.0));
+		if (b == 2)
+			rmSetAreaLocation(dockTopID, rmXMetersToFraction(bridgeX-1.0), rmZMetersToFraction(armNorthZ-36.0));
+		if (b == 3)
+			rmSetAreaLocation(dockTopID, rmXMetersToFraction(bridgeX-1.0), rmZMetersToFraction(armSouthZ+36.0));
+		if (b == 4)
+			rmSetAreaLocation(dockTopID, rmXMetersToFraction(bridgeX-1.0), rmZMetersToFraction(armSouthZ-36.0));
+		rmSetAreaCoherence(dockTopID, 1.0);
+		rmSetAreaMix(dockTopID, "italy_grass_lush");
+		rmAddAreaConstraint(dockTopID, shortAvoidImpassableLand);
+		rmSetAreaObeyWorldCircleConstraint(dockTopID, false);
+		rmSetAreaWarnFailure(dockTopID, false);
+		rmBuildArea(dockTopID);
 	}
 
 	// ************************** Trade sockets measured from the routes **************************
