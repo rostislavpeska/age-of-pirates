@@ -319,6 +319,7 @@
 		<unit name="zpNativeHouseOrthodox">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>   <!-- the Minster block's monastery wings are props (owner 2026-10-07) -->
 		</unit>
 		<unit name="zpPropStatueHomeCity">
 			<flag>NoIdleActions</flag>
