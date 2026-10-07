@@ -319,6 +319,7 @@
 		<unit name="zpNativeHouseOrthodox">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>   <!-- the Minster block's monastery wings are props (owner 2026-10-07) -->
 		</unit>
 		<unit name="zpPropStatueHomeCity">
 			<flag>NoIdleActions</flag>
@@ -344,6 +345,14 @@
 		     London instead of Hussite Camp (user 2026-09-24); the other maps keep the Hussite name -->
 		<unit name="zpNativeHouseHussites">
 			<displaynameid>503591</displaynameid>
+		</unit>
+		<!-- the Factory block's wings are props, not clickable buildings (owner 2026-10-07: 'The factory wing is clickable') -->
+		<unit name="zpNatPropFactoryHallShort">
+			<flag>NotSelectable</flag>
+		</unit>
+		<!-- the park's Italian palace pavilion is a prop, not a clickable 'Native Building' (owner 2026-10-07) -->
+		<unit name="zpNatEUItalianPalaces">
+			<flag>NotSelectable</flag>
 		</unit>
 	</protomods>
 </mods>

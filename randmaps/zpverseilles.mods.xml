@@ -325,5 +325,9 @@
 			<obstructionradiusx>1.5900</obstructionradiusx>
 			<obstructionradiusz>1.5900</obstructionradiusz>
 		</unit>
+		<!-- the Factory block's wings are props, not clickable buildings (owner 2026-10-07: 'The factory wing is clickable') -->
+		<unit name="zpNatPropFactoryHallShort">
+			<flag>NotSelectable</flag>
+		</unit>
 	</protomods>
 </mods>
