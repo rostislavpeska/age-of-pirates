@@ -1,6 +1,6 @@
 ---
 name: substance-painter-remote
-description: Control Substance 3D Painter through its built-in remote scripting for projects, mesh maps, resources, saves and exports. Includes a version-specific Painter 9.1.2 connector for named fill layers and texture assignment, with generator commands quarantined after native crashes. Use for Painter material assembly, bake import and export, including when no compatible MCP is installed.
+description: Control Substance 3D Painter through device-local discovery and its remote scripting API. Probe the actual installation, API process and project before editing; use public project/resource/export APIs and the separately validated bounded 9.1.2 layer adapter. Use for Painter materials, mesh maps, saves and exports, including when no MCP is installed.
 ---
 
 # Substance Painter by remote scripting
@@ -17,20 +17,33 @@ window is not proof that it is the process listening on the scripting endpoint.
 Connector development is a separate trial on a saved copy; a successful button invocation
 is not proof that a parameter change, saved project or exported texture is correct.
 
-Painter 9.1.2 (`C:\Program Files\Adobe\Adobe Substance 3D Painter`) is too old for the published
-Painter MCPs, and none is needed: Painter itself runs scripts sent to a local port.
+Do not infer the installation or capabilities from another computer. Run
+`python scripts/painter_environment.py --local-config <this-device-tool-paths.json> --report <scratch-report.json>`.
+The ignored local file uses `tools.substance-painter.path`, `host` and `port`.
+An explicit executable is validated; otherwise an unambiguous running process or
+Windows installation registry entry can identify it. Environment overrides:
+`PAINTER_LOCAL_CONFIG`, `PAINTER_EXECUTABLE`, `PAINTER_HOST`, `PAINTER_PORT`.
+Never put a discovered device path into this skill or tracked recipes.
+
+Report **API reachable**, **backend PID**, **window visibility**, **project path** and
+**operation verified** separately. A hidden API process is not the owner's visible window.
+With multiple instances, mutations require `PAINTER_EXPECT_PID` matching the API process;
+never select an instance merely because its executable path matches. The probe does not
+prove which window is foreground. Do not bring a window forward or relaunch the owner's
+instance without the applicable screen-control authorization.
 
 ## Start
 
-Launch only on the owner's word (as with the game, never on your own initiative), with no
-project open in another Painter instance:
+On an authorized start, the portable launcher checks for existing processes before
+launching; it never silently restarts or creates a second instance:
 
 ```powershell
-Start-Process "C:\Program Files\Adobe\Adobe Substance 3D Painter\Adobe Substance 3D Painter.exe" -ArgumentList "--enable-remote-scripting"
+python scripts/painter_environment.py --local-config <this-device-tool-paths.json> --start --report <scratch-report.json>
 ```
 
-The port opens about one second later. `python scripts/sp_remote.py --check` prints the version
-or exits 2. A Painter started without the flag does not listen: ask the owner to restart it.
+This starts a background instance and reports it as such. `python scripts/sp_remote.py --check`
+prints the observed version or exits2. A manually started visible instance may lack
+`--enable-remote-scripting`; do not confuse it with another listening process.
 
 ## Client (`scripts/sp_remote.py`)
 
@@ -50,21 +63,28 @@ right after `create`), so `until` polls a condition, by default "not busy".
 
 - `project.create(mesh)`, `close()`, state (`is_open`, `is_busy`, `last_imported_mesh_path`).
 - Texture sets: one per material of the FBX; names, resolution (`set_resolution`).
+  On9.1.2 resolve a named set from `all_texture_sets()` (or the observed
+  `TextureSet.from_name`); there is no module-level `get_texture_set`.
 - `resource.import_project_resource(path, Usage.TEXTURE)` and
   `TextureSet.set_mesh_map_resource(MeshMapUsage.X, id)` - slots: AO, BentNormals, Curvature,
   Height, ID, Normal, Opacity, Position, Thickness, WorldSpaceNormal.
-- Also present, not yet exercised: `baking` (parameters, `bake_async`), `export.export_project_textures(config)`,
-  `project.save_as`.
+- `export.export_project_textures(config)` and `project.save_as`: exercised with
+  saved/reopened military r60 sources and scoped texture comparisons.
+- Also present, not yet exercised here: `baking` (parameters, `bake_async`).
 
-**No public layer API in this version:** Python API 0.2.11 has no `layerstack` module and
+**No public layer API in9.1.2:** Python API0.2.11 has no `layerstack` module and
 JS `alg` has no layer namespace. This does **not** mean all layer work requires desktop input.
 `scripts/painter_connector.py` uses the public APIs where available and a version-gated Qt
 adapter for named layer controls. Fill creation/rename, channel toggles, texture resource
 selection and saved two-page base materials were exercised on 9.1.2. Black-mask creation,
 generator creation and Dirt resource binding succeeded individually, but later batch use
 exited during `ensure_generator` even without numeric controls. The generator path and
-numeric controls are quarantined. See the reference for exact evidence
-and commands. Do not describe this internal UI adapter as Adobe's public layer API.
+numeric controls in the original all-in-one adapter remain quarantined. The separately
+validated `scripts/legacy_session.py` uses small queued steps, persistent control context,
+correct effect labels and native slider properties. Read
+[the bounded repair and save/reopen proof](references/bounded-9.1.2.md) before using it.
+Do not describe this internal Qt adapter as Adobe's public layer API. On another version,
+probe for public `layerstack` capabilities first; do not blindly force the9.1.2 adapter.
 
 ## Shared UVs: load owners only
 
@@ -76,6 +96,21 @@ are complete on the full model in Blender and in game. Bake in Blender
 ([blender-high-low-baking](../blender-high-low-baking/SKILL.md) `bake_owner_maps.py`, after the
 [UV freeze](../blender-architecture-texturing/references/pipeline-order.md)) and import the
 maps as mesh maps, rather than baking in Painter.
+
+**Prove coverage from the current mesh, not historical owner labels.** Rasterize
+all currently bound own-atlas UV triangles and compare them with the exported
+Painter triangles. Every used pixel must have a representative. Chart equality
+can omit independently packed AO banks, larger members and newly remapped faces.
+Keep valid owners; add only uncovered UV polygon portions from current readers,
+interpolating their positions and corner normals. Recheck coverage and overlaps.
+Do not export every shared member to conceal the gap. Korean military r60 found
+39,252 Barracks and11,107 Stable missing texels this way (INC-137).
+Compare a baseline export with the canonical maps before accepting new paint;
+successful resource binding does not prove a complete exported atlas.
+`scripts/owner_coverage.py` checks current versus authoring UV triangles on each
+page (NumPy on the client/Blender host). Its negative tests include a missing AO
+bank and an underrepresented larger member. This raster gate complements, rather
+than replaces, geometric overlap and material/normal-channel checks.
 
 ## Rules
 

@@ -19,7 +19,9 @@ import time
 import uuid
 import painter_audit as audit
 
-HOST, PORT = 'localhost', 60041
+from painter_environment import settings
+_settings = settings()
+HOST, PORT = _settings['host'], _settings['port']
 
 
 class PainterError(RuntimeError):
@@ -30,7 +32,24 @@ class PainterJobUnknown(PainterError):
     audit_outcome = 'unknown'
 
 
-def _post(kind, code, timeout=3600, *, operation=None, mutating=None, script_name=None):
+def guard_instance():
+    """Refuse ambiguous mutations; a successful socket is not the owner's window."""
+    expected = os.environ.get('PAINTER_EXPECT_PID')
+    if expected:
+        actual = py('import os\nRESULT=os.getpid()', timeout=5,
+                    operation='painter.target_identity', mutating=False)
+        if actual != int(expected):
+            raise PainterError('Painter API PID differs from PAINTER_EXPECT_PID; nothing changed')
+    elif os.name == 'nt':
+        from painter_environment import windows_processes
+        processes = windows_processes()
+        if len(processes) > 1:
+            raise PainterError('Multiple Painter instances: inspect painter_environment.py and set PAINTER_EXPECT_PID to the intended API process before mutations')
+
+
+def _post(kind, code, timeout=3600, *, operation=None, mutating=True, script_name=None):
+    if mutating:
+        guard_instance()
     with audit.Operation(operation or ('remote.' + kind), mutating=mutating,
                          script=audit.script_info(code, script_name), timeout_s=timeout) as trace:
         with audit.endpoint_lock(HOST, PORT):
@@ -71,7 +90,10 @@ def py(code, timeout=3600, **audit_fields):
 _LATER = '''
 import builtins, traceback, os, json, time
 from datetime import datetime, timezone
-from PySide2 import QtCore
+try:
+    from PySide6 import QtCore
+except ImportError:
+    from PySide2 import QtCore
 def _sp_later(code, job_id, audit_path, audit_metadata):
     old = getattr(builtins, '_sp_job', None)
     if old and old.get('state') in ('queued', 'running'):
@@ -198,7 +220,7 @@ def check():
 if __name__ == '__main__':
     if sys.argv[1] == '--check':
         v = check()
-        print(v or 'Painter remote scripting is not reachable on port 60041'); sys.exit(0 if v else 2)
+        print(v or 'Painter remote scripting is not reachable at %s:%s' % (HOST, PORT)); sys.exit(0 if v else 2)
     kind, arg = sys.argv[1], sys.argv[2]
     code = open(arg, encoding='utf-8').read() if os.path.isfile(arg) else arg
     try:

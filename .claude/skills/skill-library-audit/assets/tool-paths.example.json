@@ -2,6 +2,7 @@
   "tools": {
     "blender": {"path": ""},
     "photoshop": {"path": ""},
+    "substance-painter": {"path": "", "host": "localhost", "port": 60041},
     "resource-manager": {"path": ""},
     "gr2-converter": {"path": ""},
     "gr2-inspector": {"path": ""},

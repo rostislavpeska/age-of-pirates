@@ -10,7 +10,13 @@
     "scripts/smoke_test.py",
     "scripts/sp_remote.py",
     "scripts/test_legacy_runtime_audit.py",
-    "scripts/test_painter_audit.py"
+    "scripts/test_painter_audit.py",
+    "references/bounded-9.1.2.md",
+    "scripts/legacy_session.py",
+    "scripts/owner_coverage.py",
+    "scripts/painter_environment.py",
+    "scripts/test_owner_coverage.py",
+    "scripts/test_painter_environment.py"
   ],
   "skills": [
     "blender-architecture-texturing",
@@ -28,7 +34,7 @@
         "smoke-test"
       ],
       "optional": false,
-      "note": "Adobe Substance 3D Painter 9.1.2 started with --enable-remote-scripting (port 60041). The --check probe verifies the running session; installation alone does not."
+      "note": "Discover the installed Painter and actual scripting process on this device. Probe version, PID, project and capabilities; installation or a visible window alone proves none of those."
     },
     {
       "id": "python",
@@ -41,7 +47,7 @@
         "smoke-test"
       ],
       "optional": false,
-      "note": "Host Python 3 standard library only.",
+      "note": "Host Python standard library for connection helpers; owner-coverage analysis additionally needs the separately declared NumPy package.",
       "commands": [
         "python",
         "python3"
@@ -60,6 +66,19 @@
       ],
       "optional": false,
       "note": "Provided by the tested Painter 9.1.2 embedded Python runtime; these are not host-Python pip requirements. Probe the version and connector before invoking its legacy UI bridge."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "requiredFor": [
+        "owner-coverage"
+      ],
+      "optional": false,
+      "note": "Client-side coverage rasterizer; not a Painter embedded dependency."
     }
   ]
 }

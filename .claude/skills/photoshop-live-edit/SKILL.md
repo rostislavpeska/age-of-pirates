@@ -5,6 +5,13 @@ description: Control an open desktop Photoshop document through Windows COM and 
 
 # Live Photoshop editing and export
 
+For atlas edits, verify RGB underneath zero alpha as well as visible pixels.
+Photoshop CC2018 PNG export cleared hidden RGB in a window-only edit, damaging
+protected roof-edge colour padding despite unchanged alpha. Keep the layered PSD,
+but merge only the authorized edited region into its frozen atlas parent and
+rebuild only that region's gutters. Compare all channels outside the scope byte
+for byte; never promote the whole export because the visible edit looks correct.
+
 Use the user's live Photoshop document as the source. This workflow is agent-neutral:
 it needs local Windows command execution in the user's desktop session, not a
 particular model, agent extension or Photoshop MCP server. It was recovered from
@@ -21,7 +28,7 @@ use it. Otherwise use this verified Windows route:
 From the repository root, run this read-only inventory:
 
 ```powershell
-powershell.exe -NoProfile -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/photoshop.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/photoshop.ps1
 ```
 
 Outside this repository, substitute the absolute installed skill path. The helper
@@ -30,6 +37,10 @@ changes layers or installs anything during the inventory. It reports Photoshop
 version, open document IDs/paths, unsaved state, selected layers and layer structure.
 
 Read [connection diagnosis and evidence](references/connection.md) if it fails.
+`-ExecutionPolicy Bypass` applies only to this helper process; do not change the
+machine/user execution policy. Verify the actual COM version and document inventory
+on each device. A connection is not proof of a visible foreground window or a
+successful edit; the disposable smoke test establishes save/reopen/export support.
 
 ## Start Photoshop when the operator asks
 
@@ -37,7 +48,7 @@ A cannot-attach result (`0x800401E3`) usually means Photoshop is not running. Sa
 so. Start it only when the operator asks, or has approved a task that needs it:
 
 ```powershell
-powershell.exe -NoProfile -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/start_photoshop.ps1 -LocalConfig <local tool-paths file>
+powershell.exe -NoProfile -ExecutionPolicy Bypass -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/start_photoshop.ps1 -LocalConfig <local tool-paths file>
 ```
 
 The starter attaches first and starts nothing if Photoshop already answers. If a
@@ -80,7 +91,7 @@ pattern, data-map precautions and safe PSD/TGA handling. Write a task-specific J
 file to scratch, inspect it, then run:
 
 ```powershell
-powershell.exe -NoProfile -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/photoshop.ps1 -ScriptPath "C:/scratch/task-edit.jsx"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -NonInteractive -STA -File .claude/skills/photoshop-live-edit/scripts/photoshop.ps1 -ScriptPath "C:/scratch/task-edit.jsx"
 ```
 
 This executes code with Photoshop's authority; `-ScriptPath` is **not** a read-only

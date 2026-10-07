@@ -46,6 +46,13 @@ class FakeHTTP:
 
 class Harness(unittest.TestCase):
     def setUp(self):
+        self.process_patch=patch('painter_environment.windows_processes',return_value=[])
+        self.process_patch.start()
+        self.addCleanup(self.process_patch.stop)
+        self.env_patch=patch.dict(os.environ)
+        self.env_patch.start()
+        os.environ.pop('PAINTER_EXPECT_PID',None)
+        self.addCleanup(self.env_patch.stop)
         self.temp = tempfile.TemporaryDirectory(prefix='painter-audit-test-')
         self.root = Path(self.temp.name)
         audit.configure(log_path=self.root/'events.jsonl', project='offline-test', remote_pid=0)
@@ -178,7 +185,11 @@ class Harness(unittest.TestCase):
         self.assertEqual(self.rows()[-1]['phase'], 'unknown')
 
     def test_timeout_after_enqueue_remains_unknown(self):
-        with self.remote(run=False) as callbacks:
+        # Deterministic client deadline: fsync/host load must not turn this into
+        # a timeout before enqueue, which is a different recovery case.
+        ticks=iter([0.,.001,.002,.003,.020])
+        clock=types.SimpleNamespace(monotonic=lambda:next(ticks),sleep=lambda _:None)
+        with self.remote(run=False) as callbacks, patch.object(sp,'time',clock):
             with self.assertRaises(TimeoutError):
                 sp.later('RESULT=42', poll=.001, timeout=.015)
             self.assertEqual(len(callbacks), 1)

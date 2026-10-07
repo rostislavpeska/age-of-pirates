@@ -11,8 +11,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import sp_remote  # noqa: E402
 
-PAINTER = Path(r'C:\Program Files\Adobe\Adobe Substance 3D Painter')
-mesh = sys.argv[1] if len(sys.argv) > 1 else str(PAINTER / 'resources/python/modules/automated_tests/resources/4cubes3udims.fbx')
+from painter_environment import capabilities
+identity = capabilities()
+assert identity['reachable'], 'Painter is not reachable; run painter_environment.py first'
+installation = Path(identity['executable']).parent
+mesh = sys.argv[1] if len(sys.argv) > 1 else str(installation / 'resources/python/modules/automated_tests/resources/4cubes3udims.fbx')
+if not Path(mesh).is_file():
+    sys.exit('Test mesh not present in this installation; supply an explicit disposable mesh path')
 image = sys.argv[2] if len(sys.argv) > 2 else None
 IMPORTS = 'import substance_painter.project as p, substance_painter.textureset as ts, substance_painter.resource as r\n'
 
