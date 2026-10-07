@@ -49,3 +49,19 @@ asset and inspect the tangent basis. Isolate unlit basecolor, normal-map-disable
 shading and the final material before recolouring textures or altering masks.
 
 Test the same unit, file version and camera view after each focused change. Keep source files, conversion staging and distributable runtime assets in distinct locations.
+# Shared normal textures include a tangent convention
+
+Pin a reused normal texture's channel convention **and the consuming mesh's tangent
+basis**, in addition to image/UV identity. The same image can shade differently
+after a serializer change even when CRC, density, materials and native loading pass.
+Compare source and decoded runtime normal samples under all four red/green sign
+combinations, then test reconstructed world normals on real receiver triangles.
+Do not recompress a protected shared map to repair one new consumer.
+
+Korean military r58 / INC-131: the accepted TC prop DDT used red-flip/green-as-is
+for the old converter, whereas the new derivative-based writer used green-flip-only.
+A material-specific, evidence-pinned change negated tangent T and derived B while
+retaining handedness. It changed only the prop tangent XYZ in both model states;
+UVs, geometric normals, weights, triangles and shared image bytes stayed identical.
+Four targeted/native tests and actual prop samples confirmed the compensation.
+This is a measured compatibility case, not a universal instruction to flip tangents.

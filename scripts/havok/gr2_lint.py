@@ -51,9 +51,9 @@ Why each check exists (every one is a defect that reached the game first):
                           unverifiable class does not clear the model. The shipped Korean TC carried a third set (matc
                           512, the hidden faces).
   texel_density           (every model) the UNIVERSAL UV density floor (blender-architecture-texturing
-                          references/uv-density-floor.md): median >= 100 t/u, <= 2 % of the area below 60 t/u per model
-                          and per page, <= 3 % on collapsed UVs. "Scattered UV map is a nightmare" (owner). Hard; only
-                          the owner's recorded waiver (profile "waivers", his whole message) exempts.
+                          references/uv-density-floor.md): configured median/face floors per model and page
+                          (currently 90/54 t/u), plus area-share/collapse limits. Below-floor exceptions require
+                          the exact candidate's recorded owner GO; malformed/collapsed UV failures remain blocking.
 
 Profiles: scripts/havok/gr2_lint_profiles.json ("references" = numbers measured on vanilla files; "profiles" = the
 building's own design facts and tolerances; every art/buildings folder has one, at least its texture class - a profile
@@ -63,6 +63,7 @@ check is SKIP, never PASS. Reads only; writes nothing next to the model (DLL out
 texture sizes are read from the archive headers in memory, nothing is extracted.
 """
 import argparse
+import hashlib
 import importlib.util
 import json
 import os
@@ -1040,7 +1041,7 @@ def _channel(name):
     return 'normal' if c in ('normal', 'normals') else c
 
 
-def own_pages(subs, repl, art_root, shared=False):
+def own_pages(subs, repl, art_root, shared=False, excluded_files=()):
     """every DISTINCT own texture file (INC-033) -> (pages [(size, label)], files {channel: {key: (size, name)}},
     unknown [names]): a channel is the map name (BaseColor, Normals ...); page slot n holds the n-th largest file of
     each channel, labelled by its BaseColor file when that is the largest. Shared vanilla files count only when
@@ -1053,6 +1054,8 @@ def own_pages(subs, repl, art_root, shared=False):
     for ch, t in items:
         r = resolve_texture(t, art_root)
         if r['src'] != 'mod' and not (shared and r['src'] == 'vanilla'):
+            continue
+        if r['src'] == 'mod' and str(Path(r['file']).resolve()).lower() in excluded_files:
             continue
         name = Path(str(t).replace(chr(92), '/')).name
         size = max(r['W'], r['H']) if r.get('W') and r.get('H') else None
@@ -1068,6 +1071,112 @@ def own_pages(subs, repl, art_root, shared=False):
         label = bc[1] if bc and bc[0] == size else max(slot.values(), key=lambda x: (x[0] or 10 ** 9, x[1]))[1]
         pages.append((size, label))
     return pages, files, unknown
+
+
+def shared_mod_dependencies(prof, model, art_root):
+    """Validate explicit shared-mod dependencies; never infer sharing from a name or folder.
+
+    Profile texture_budget.shared_mod_dependencies entries contain source_names, confirmed_by,
+    and files [{path (art-relative, WITH extension), sha256, width, height}]. The owner's message
+    must name this model, the source and sharing/reuse. Exact paths prevent renamed duplicates
+    from borrowing an exclusion; hashes pin the reviewed version. This affects the ceiling only,
+    never density, missing-texture, material or geometry checks. A pinned recorded_owner_chat evidence
+    artifact is also supported when the real owner instruction has no app message id. A staging junction
+    may point to the same resource under explicit shared_mod_canonical_art_root. No entries preserves old behavior.
+    """
+    entries = (prof.get('texture_budget') or {}).get('shared_mod_dependencies') or []
+    if not entries:
+        return set(), [], []
+    excluded, accepted, errors = set(), [], []
+    names = list(prof.get('names') or []) + [model, str(model).replace('_', ' ')]
+    root = Path(art_root).resolve() if art_root is not None else None
+    canonical = None
+    canonical_setting = (prof.get('texture_budget') or {}).get('shared_mod_canonical_art_root')
+    if canonical_setting:
+        candidate, missing_vars = local_path(canonical_setting)
+        if candidate and not missing_vars and candidate.is_absolute() and candidate.is_dir():
+            canonical = candidate.resolve()
+        else:
+            errors.append('shared mod canonical art root must resolve to an existing absolute directory')
+    for dep in entries:
+        if not isinstance(dep, dict):
+            errors.append('shared mod dependency must be an object')
+            continue
+        who, sources = dep.get('confirmed_by'), dep.get('source_names') or []
+        auth = dep.get('authorization')
+        authorized = False
+        if isinstance(auth, dict) and auth.get('kind') == 'recorded_owner_chat':
+            # Owner chat is also an authority when no app message id exists. The agent records
+            # the REAL quote and citation once; a pinned artifact is the trusted approval store,
+            # not a claim of cryptographic identity verification or a generated owner message id.
+            try:
+                evidence_path, missing_vars = local_path(auth.get('path') or '')
+                raw = evidence_path.read_bytes() if evidence_path and not missing_vars else b''
+                evidence = json.loads(raw)
+                authorized = (hashlib.sha256(raw).hexdigest() == auth.get('sha256')
+                              and evidence.get('authority') == 'owner'
+                              and evidence.get('kind') == 'recorded_owner_chat'
+                              and evidence.get('purpose') == 'shared_mod_dependencies'
+                              and bool(evidence.get('source_citation'))
+                              and bool(evidence.get('owner_quote'))
+                              and evidence['owner_quote'] == auth.get('owner_quote')
+                              and model in (evidence.get('models') or [])
+                              and bool(sources)
+                              and set(sources) <= set(evidence.get('source_names') or []))
+            except (OSError, ValueError, TypeError, AttributeError):
+                authorized = False
+            who = 'recorded owner chat'
+        else:
+            try:
+                store = _density_module().verifier(owner_message_store(prof))
+                text = store.text(who)
+                authorized = (bool(text) and _names_in(text, names) and _names_in(text, sources)
+                              and bool(re.search(r'\b(?:shared?|sharing|reuse|reusing|existing)\b', text, re.I)))
+            except (OSError, ValueError, TypeError):
+                authorized = False
+        if not authorized:
+            errors.append(f'shared mod dependency {sources}: owner {who} does not authorize model/source sharing')
+            continue
+        if not dep.get('files'):
+            errors.append(f'shared mod dependency {sources}: no exact files declared')
+            continue
+        for item in dep['files']:
+            if not isinstance(item, dict):
+                errors.append('shared mod file must be an object')
+                continue
+            rel = str(item.get('path') or '').replace(chr(92), '/')
+            path = (root / rel).resolve() if root else None
+            if (not rel or Path(rel).is_absolute() or ':' in rel or '..' in Path(rel).parts or root is None
+                    or path == root):
+                errors.append(f'shared mod path must stay under art/: {rel}')
+                continue
+            if not path.is_relative_to(root):
+                # An isolated stage may expose EXACT existing runtime resources via a junction.
+                # Require its resolved target to equal the same relative resource beneath the
+                # profile's explicit canonical art root; arbitrary external targets remain invalid.
+                expected = (canonical / rel).resolve() if canonical else None
+                if canonical is None or not path.is_relative_to(canonical) or path != expected:
+                    errors.append(f'shared mod junction {rel} is outside its declared canonical art root/resource')
+                    continue
+            sha = str(item.get('sha256') or '').lower()
+            dims = (item.get('width'), item.get('height'))
+            if (not re.fullmatch('[0-9a-f]{64}', sha)
+                    or any(type(v) is not int or v <= 0 for v in dims)):
+                errors.append(f'shared mod file {rel}: SHA256 and positive dimensions required')
+                continue
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != sha:
+                errors.append(f'shared mod file {rel}: missing or changed from its pinned SHA256')
+                continue
+            if image_size(path) != dims:
+                errors.append(f'shared mod file {rel}: dimensions differ from {dims}')
+                continue
+            key = str(path).lower()
+            if key not in excluded:
+                excluded.add(key)
+                accepted.append(dict(path=rel, sha256=sha, width=dims[0], height=dims[1],
+                                     source_names=sources, confirmed_by=who,
+                                     authorization=auth if isinstance(auth, dict) else None))
+    return excluded, accepted, errors
 
 
 def _names_in(text, names):
@@ -1109,7 +1218,8 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
     """AoP texture-budget CEILING (owner 2026-09-30, m334-m336): the model's own texture files over all its stages
     (INC-033) against its class (small 1x2048, medium 2048 + a 1024 complement, large 2x2048). The class is set per
     model with the owner and verified against his message store; shared vanilla atlases are reported, counted only
-    when texture_budget.count_shared_vanilla says so."""
+    when texture_budget.count_shared_vanilla says so. Pinned shared-mod dependencies can be excluded via
+    texture_budget.shared_mod_dependencies; density/material checks still apply to those resources."""
     cfg = prof.get('_texture_budget') or {}
     classes = cfg.get('classes') or {}
     entry = model_class(prof, model)
@@ -1126,7 +1236,8 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
             return R(stage, 'texture_budget', False, f'{Path(m).name} cannot be read ({type(e).__name__}: {e})')
     sets = texture_sets(subs, art_root)
     shared = bool(cfg.get('count_shared_vanilla'))
-    pages, files, unknown = own_pages(subs, repl, art_root, shared)
+    excluded, shared_mod, shared_errors = shared_mod_dependencies(prof, model, art_root)
+    pages, files, unknown = own_pages(subs, repl, art_root, shared, excluded)
     other = [s for s in sets if s['src'] == 'vanilla' and not shared]
     missing = [t for s in sets for t in s['missing']]
     cls, who = entry.get('class'), entry.get('confirmed_by')
@@ -1136,7 +1247,9 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
         over.append(f'{len(pages)} sets > {len(ceiling)}')
     over += [f"{label} {size} > {c}" for (size, label), c in zip(pages, ceiling) if size is None or size > c]
     txt = lambda s: f"{Path(s['basecolor'].replace(chr(92), '/')).name} {s['size']} ({'/'.join(s['shaders'])})"  # noqa: E731
-    own_sets = sorted((s for s in sets if s['src'] == 'mod' or (shared and s['src'] == 'vanilla')),
+    own_sets = sorted((s for s in sets if (s['src'] == 'mod'
+                      and str(Path(resolve_texture(s['basecolor'], art_root)['file']).resolve()).lower() not in excluded)
+                      or (shared and s['src'] == 'vanilla')),
                       key=lambda s: -(s['size'] or 10 ** 9))
     n_files = sum(len(v) for v in files.values())
     head = (f"{model}: class {cls or '-'} ({f'owner {who}' if who else entry.get('status') or 'no class'}), ceiling "
@@ -1146,7 +1259,9 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
             + f"; own set(s): {', '.join(map(txt, own_sets)) or 'none'}")
     if other:
         head += '; shared vanilla, not counted: ' + ', '.join(map(txt, other))
-    why, verified = [], True
+    if shared_mod:
+        head += '; pinned shared mod files, not counted: ' + ', '.join(s['path'] for s in shared_mod)
+    why, verified = list(shared_errors), True
     if not cls or cls not in classes:
         why.append(entry.get('why') or f"no texture class recorded for {model} (the owner sets it per model)")
     elif not who:
@@ -1169,7 +1284,7 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
              confirmed_by=who, confirmed=verified, ceiling=ceiling,
              sets=[dict(basecolor=s['basecolor'], src=s['src'], size=s['size'], shaders=s['shaders'], subs=s['subs'])
                    for s in sets], counted=len(pages), pages=[p[0] for p in pages], own_files=n_files,
-             sources=[str(m) for m in mats] + [str(a) for a in anims])
+             sources=[str(m) for m in mats] + [str(a) for a in anims], shared_mod_dependencies=shared_mod)
 
 
 def density_groups(info, mat_path, art_root):
