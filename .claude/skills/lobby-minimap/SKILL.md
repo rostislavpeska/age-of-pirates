@@ -92,6 +92,12 @@ session scratchpad (AGENTS.md rule 8).
 Owner 2026-10-07: three per map, usually the native settlements; no sky in the picture; standard in-game views are
 fine ("photomode seems to be too tricky"; "stop chasing the engine"). Only what is below is proven.
 
+**What the owner ships is his own photo-mode shots** (the Danube's final set, his commit 45279420, replaced the agent's
+top-down shots the same evening): a low camera close to the subject, a horizon and a strip of sky under the frame's
+top edge, a warm late-day lighting preset, and a foreground that leads in (01: the bridge with the castle behind it;
+02: the Hussite camp at sunset; 03: the Orthodox monastery up close). Treat the agent's top-down shots as placeholders
+until he replaces them, and compare any new set against `data/wpfg/resources/images/icons/random_map/danube/`.
+
 | What | Value |
 |---|---|
 | Files | `<map>_01.png` .. `_03.png` beside the minimap images; lobby XML `<loadss>ui\random_map\<map>\<map>_01</loadss>` x 3 |
