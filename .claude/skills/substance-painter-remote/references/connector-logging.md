@@ -71,6 +71,13 @@ recover substeps from old runs. Keep quarantine while investigating in isolation
 
 ## Verification
 
+For close/switch helpers, compare the resolved full project and mesh paths with
+the current handoff, then verify `project.is_open()` is false. A helper returning
+an ownership assertion has not closed anything. Report that result before
+starting a successor project; never infer closure from an attempted command.
+Korean military r48 retained its saved project because a copied directory suffix
+was stale; r49 preflight caught it before any wrong-project mutation.
+
 Run the offline suite; it contacts no Painter instance and deliberately crashes no app:
 
 ```powershell

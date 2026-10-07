@@ -500,3 +500,217 @@
 {"time": "2026-10-06T19:29:31", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r42-save-live-review-copy", "action": "live_save_repair_copy.py", "risk": "R9", "file": null, "agent": "astra"}
 {"time": "2026-10-06T19:29:33", "event": "after", "operation_id": "military-r42-save-live-review-copy", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\shared_r42\\roof_repair_review\\LIVE_SAVED.json"}
 {"time": "2026-10-06T19:31:56", "event": "after", "operation_id": "military-r42-append-roof-repair", "status": "VERIFIED", "evidence": "C:/work/korean-military-176/shared_r42/roof_repair_review/LIVE_VERIFIED.json"}
+{"time": "2026-10-06T20:41:35", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-live-read", "action": "live_read.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:41:35", "event": "after", "operation_id": "r43c-live-read", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BEFORE.json"}
+{"time": "2026-10-06T20:56:57", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-backup-20261006-1858", "action": "live_backup.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:57:02", "event": "after", "operation_id": "r43c-backup-20261006-1858", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BACKUP_RECEIPT.json"}
+{"time": "2026-10-06T20:57:55", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-append-20261006-1900", "action": "live_append.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:58:25", "event": "after", "operation_id": "r43c-append-20261006-1900", "status": "UNKNOWN", "evidence": "timed out"}
+{"time": "2026-10-06T20:58:48", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-inspect-after-append-20261006-1902", "action": "live_read.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:58:48", "event": "after", "operation_id": "r43c-inspect-after-append-20261006-1902", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_AFTER_APPEND.json"}
+{"time": "2026-10-06T20:59:05", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-bind0-20261006-1903", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:06", "event": "after", "operation_id": "r43c-bind0-20261006-1903", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BIND_0.json"}
+{"time": "2026-10-06T20:59:08", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-bind1-20261006-1903", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:08", "event": "after", "operation_id": "r43c-bind1-20261006-1903", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BIND_1.json"}
+{"time": "2026-10-06T20:59:10", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-bind2-20261006-1903", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:10", "event": "after", "operation_id": "r43c-bind2-20261006-1903", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BIND_2.json"}
+{"time": "2026-10-06T20:59:12", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-bind3-20261006-1903", "action": "live_bind_3.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:12", "event": "after", "operation_id": "r43c-bind3-20261006-1903", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BIND_3.json"}
+{"time": "2026-10-06T20:59:14", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-bind4-20261006-1903", "action": "live_bind_4.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:14", "event": "after", "operation_id": "r43c-bind4-20261006-1903", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BIND_4.json"}
+{"time": "2026-10-06T20:59:16", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-bind5-20261006-1903", "action": "live_bind_5.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:16", "event": "after", "operation_id": "r43c-bind5-20261006-1903", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_BIND_5.json"}
+{"time": "2026-10-06T20:59:52", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-verify-20261006-1904", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T20:59:55", "event": "after", "operation_id": "r43c-verify-20261006-1904", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_VERIFY_RECEIPT.json"}
+{"time": "2026-10-06T21:00:55", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-topology-20261006-1905", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:00:55", "event": "after", "operation_id": "r43c-topology-20261006-1905", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_TOPOLOGY_RECEIPT.json"}
+{"time": "2026-10-06T21:01:48", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-show-20261006-1910", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:01:48", "event": "after", "operation_id": "r43c-show-20261006-1910", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-06T21:05:45", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-terminal-20261006-1920", "action": "live_terminal_fix.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:05:45", "event": "after", "operation_id": "r43c-terminal-20261006-1920", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_TERMINAL_RECEIPT.json"}
+{"time": "2026-10-06T21:06:04", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-live_verify-final-20261006-1921", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:06:07", "event": "after", "operation_id": "r43c-live_verify-final-20261006-1921", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_VERIFY_FINAL_RECEIPT.json"}
+{"time": "2026-10-06T21:06:08", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-live_topology-final-20261006-1921", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:06:08", "event": "after", "operation_id": "r43c-live_topology-final-20261006-1921", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_TOPOLOGY_FINAL_RECEIPT.json"}
+{"time": "2026-10-06T21:07:45", "event": "before", "status": "IN_PROGRESS", "operation_id": "r43c-save-final-20261006-1922", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:07:51", "event": "after", "operation_id": "r43c-save-final-20261006-1922", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r43c\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-06T21:20:03", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-read-live-alpha-20261006", "action": "inspect_live.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:20:04", "event": "after", "operation_id": "r44-read-live-alpha-20261006", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_READ_RECEIPT.json"}
+{"time": "2026-10-06T21:47:00", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-live-backup", "action": "live_backup.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:47:05", "event": "after", "operation_id": "r44-alpha-live-backup", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BACKUP_RECEIPT.json"}
+{"time": "2026-10-06T21:47:46", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-live-append", "action": "live_append.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:21", "event": "after", "operation_id": "r44-alpha-live-append", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_APPEND_RECEIPT.json"}
+{"time": "2026-10-06T21:48:39", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-bind-0", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:39", "event": "after", "operation_id": "r44-alpha-bind-0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BIND_0.json"}
+{"time": "2026-10-06T21:48:41", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-bind-1", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:42", "event": "after", "operation_id": "r44-alpha-bind-1", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BIND_1.json"}
+{"time": "2026-10-06T21:48:43", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-bind-2", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:44", "event": "after", "operation_id": "r44-alpha-bind-2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BIND_2.json"}
+{"time": "2026-10-06T21:48:45", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-bind-3", "action": "live_bind_3.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:46", "event": "after", "operation_id": "r44-alpha-bind-3", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BIND_3.json"}
+{"time": "2026-10-06T21:48:48", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-bind-4", "action": "live_bind_4.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:48", "event": "after", "operation_id": "r44-alpha-bind-4", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BIND_4.json"}
+{"time": "2026-10-06T21:48:50", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-bind-5", "action": "live_bind_5.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:48:50", "event": "after", "operation_id": "r44-alpha-bind-5", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_BIND_5.json"}
+{"time": "2026-10-06T21:49:37", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-live_verify", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:49:39", "event": "after", "operation_id": "r44-alpha-live_verify", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\live_verify_RECEIPT.json"}
+{"time": "2026-10-06T21:49:41", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-live_topology", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:49:41", "event": "after", "operation_id": "r44-alpha-live_topology", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\live_topology_RECEIPT.json"}
+{"time": "2026-10-06T21:50:12", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-live-show", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:50:13", "event": "after", "operation_id": "r44-alpha-live-show", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-06T21:50:14", "event": "before", "status": "IN_PROGRESS", "operation_id": "r44-alpha-live-save", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T21:50:19", "event": "after", "operation_id": "r44-alpha-live-save", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\alpha_r44\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-06T22:30:39", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-backup", "action": "live_backup.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:30:49", "event": "after", "operation_id": "military-r45b-backup", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BACKUP_RECEIPT.json"}
+{"time": "2026-10-06T22:32:03", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-append", "action": "live_append.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:32:44", "event": "after", "operation_id": "military-r45b-append", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_APPEND_RECEIPT.json"}
+{"time": "2026-10-06T22:36:06", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-bind0", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:07", "event": "after", "operation_id": "military-r45b-bind0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BIND_0.json"}
+{"time": "2026-10-06T22:36:20", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-bind1", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:21", "event": "after", "operation_id": "military-r45b-bind1", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BIND_1.json"}
+{"time": "2026-10-06T22:36:22", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-bind2", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:23", "event": "after", "operation_id": "military-r45b-bind2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BIND_2.json"}
+{"time": "2026-10-06T22:36:25", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-bind3", "action": "live_bind_3.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:26", "event": "after", "operation_id": "military-r45b-bind3", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BIND_3.json"}
+{"time": "2026-10-06T22:36:28", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-bind4", "action": "live_bind_4.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:29", "event": "after", "operation_id": "military-r45b-bind4", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BIND_4.json"}
+{"time": "2026-10-06T22:36:31", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-bind5", "action": "live_bind_5.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:31", "event": "after", "operation_id": "military-r45b-bind5", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_BIND_5.json"}
+{"time": "2026-10-06T22:36:54", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-verify", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:56", "event": "after", "operation_id": "military-r45b-verify", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_VERIFY_RECEIPT.json"}
+{"time": "2026-10-06T22:36:58", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-topology", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:36:58", "event": "after", "operation_id": "military-r45b-topology", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_TOPOLOGY_RECEIPT.json"}
+{"time": "2026-10-06T22:36:59", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-show", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:37:00", "event": "after", "operation_id": "military-r45b-show", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-06T22:37:01", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r45b-save", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T22:37:07", "event": "after", "operation_id": "military-r45b-save", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\eaves_r45\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-06T23:05:06", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r46-backup", "action": "live_backup.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:05:14", "event": "after", "operation_id": "military-r46-backup", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BACKUP_RECEIPT.json"}
+{"time": "2026-10-06T23:05:55", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r46-append", "action": "live_append.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:06:40", "event": "after", "operation_id": "military-r46-append", "status": "UNKNOWN", "evidence": "timed out"}
+{"time": "2026-10-06T23:08:18", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r46-inspect-after-timeout", "action": "live_inspect.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:08:18", "event": "after", "operation_id": "military-r46-inspect-after-timeout", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_INSPECT.json"}
+{"time": "2026-10-06T23:10:35", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r46-read-shared-nodes", "action": "inspect_materials.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:10:35", "event": "after", "operation_id": "military-r46-read-shared-nodes", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\MATERIAL_NODES_RECEIPT.json"}
+{"time": "2026-10-06T23:28:12", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-bind-final-0", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:28:14", "event": "after", "operation_id": "r46-bind-final-0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BIND_0.json"}
+{"time": "2026-10-06T23:28:33", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-bind-final-1", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:28:35", "event": "after", "operation_id": "r46-bind-final-1", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BIND_1.json"}
+{"time": "2026-10-06T23:28:35", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-bind-final-2", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:28:36", "event": "after", "operation_id": "r46-bind-final-2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BIND_2.json"}
+{"time": "2026-10-06T23:28:37", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-bind-final-3", "action": "live_bind_3.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:28:38", "event": "after", "operation_id": "r46-bind-final-3", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BIND_3.json"}
+{"time": "2026-10-06T23:28:38", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-bind-final-4", "action": "live_bind_4.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:28:39", "event": "after", "operation_id": "r46-bind-final-4", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BIND_4.json"}
+{"time": "2026-10-06T23:28:40", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-bind-final-5", "action": "live_bind_5.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:28:40", "event": "after", "operation_id": "r46-bind-final-5", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_BIND_5.json"}
+{"time": "2026-10-06T23:29:16", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-final-roughness_binding", "action": "roughness_binding.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:29:16", "event": "after", "operation_id": "r46-final-roughness_binding", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\roughness_binding.receipt.json"}
+{"time": "2026-10-06T23:29:16", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-final-live_verify", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:29:23", "event": "after", "operation_id": "r46-final-live_verify", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\live_verify.receipt.json"}
+{"time": "2026-10-06T23:29:24", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-final-live_topology", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:29:24", "event": "after", "operation_id": "r46-final-live_topology", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\live_topology.receipt.json"}
+{"time": "2026-10-06T23:30:27", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-show-final-reviewed-materials", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:30:28", "event": "after", "operation_id": "r46-show-final-reviewed-materials", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-06T23:30:28", "event": "before", "status": "IN_PROGRESS", "operation_id": "r46-save-verified-live-copy", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:30:37", "event": "after", "operation_id": "r46-save-verified-live-copy", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r46\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-06T23:54:23", "event": "before", "status": "IN_PROGRESS", "operation_id": "r47-append-material-review-once", "action": "live_append.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:55:08", "event": "after", "operation_id": "r47-append-material-review-once", "status": "UNKNOWN", "evidence": "timed out"}
+{"time": "2026-10-06T23:55:41", "event": "before", "status": "IN_PROGRESS", "operation_id": "r47-inspect-after-append-timeout", "action": "live_inspect.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-06T23:55:43", "event": "after", "operation_id": "r47-inspect-after-append-timeout", "status": "UNKNOWN", "evidence": "[WinError 10061] No connection could be made because the target machine actively refused it"}
+{"time": "2026-10-07T00:00:34", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-readback-after-port-return", "action": "live_inspect.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:00:34", "event": "after", "operation_id": "military-r47-readback-after-port-return", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_INSPECT_RECEIPT_2.json"}
+{"time": "2026-10-07T00:25:04", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-0", "action": "live_bind_r5_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:25:07", "event": "after", "operation_id": "military-r47-bind-r5-0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_0.json"}
+{"time": "2026-10-07T00:25:24", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-1", "action": "live_bind_r5_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:25:27", "event": "after", "operation_id": "military-r47-bind-r5-1", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_1.json"}
+{"time": "2026-10-07T00:25:29", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-2", "action": "live_bind_r5_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:25:36", "event": "after", "operation_id": "military-r47-bind-r5-2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_2.json"}
+{"time": "2026-10-07T00:25:38", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-3", "action": "live_bind_r5_3.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:25:46", "event": "after", "operation_id": "military-r47-bind-r5-3", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_3.json"}
+{"time": "2026-10-07T00:25:48", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-4", "action": "live_bind_r5_4.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:25:58", "event": "after", "operation_id": "military-r47-bind-r5-4", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_4.json"}
+{"time": "2026-10-07T00:26:52", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-5", "action": "live_bind_r5_5.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:27:11", "event": "after", "operation_id": "military-r47-bind-r5-5", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_5.json"}
+{"time": "2026-10-07T00:28:18", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r5-6", "action": "live_bind_r5_6.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:28:36", "event": "after", "operation_id": "military-r47-bind-r5-6", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R5_6.json"}
+{"time": "2026-10-07T00:34:05", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r6-pending-7", "action": "live_bind_r5_7.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:34:35", "event": "after", "operation_id": "military-r47-bind-r6-pending-7", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R6_7.json"}
+{"time": "2026-10-07T00:37:15", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-bind-r6-8", "action": "live_bind_r5_8.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:37:30", "event": "after", "operation_id": "military-r47-bind-r6-8", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_BIND_R6_8.json"}
+{"time": "2026-10-07T00:37:59", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-refresh-r6-0", "action": "live_refresh_r6_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:38:30", "event": "after", "operation_id": "military-r47-refresh-r6-0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_REFRESH_R6_0.json"}
+{"time": "2026-10-07T00:38:50", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-refresh-r6-1", "action": "live_refresh_r6_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:39:00", "event": "after", "operation_id": "military-r47-refresh-r6-1", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_REFRESH_R6_1.json"}
+{"time": "2026-10-07T00:39:36", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-comparison-transforms", "action": "live_comparison_fix.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:39:36", "event": "after", "operation_id": "military-r47-comparison-transforms", "status": "FAILED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_COMPARISON_FIX.json"}
+{"time": "2026-10-07T00:41:01", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-comparison-transforms-v2", "action": "live_comparison_fix.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:41:01", "event": "after", "operation_id": "military-r47-comparison-transforms-v2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_COMPARISON_FIX_V2.json"}
+{"time": "2026-10-07T00:41:18", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-verify-final", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:41:23", "event": "after", "operation_id": "military-r47-verify-final", "status": "FAILED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_VERIFY_RECEIPT.json"}
+{"time": "2026-10-07T00:42:32", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-verify-canonical-paths", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:42:41", "event": "after", "operation_id": "military-r47-verify-canonical-paths", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_VERIFY_CANONICAL_RECEIPT.json"}
+{"time": "2026-10-07T00:43:06", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-topology-final", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:43:06", "event": "after", "operation_id": "military-r47-topology-final", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_TOPOLOGY_RECEIPT.json"}
+{"time": "2026-10-07T00:43:32", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-show-final", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:43:32", "event": "after", "operation_id": "military-r47-show-final", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-07T00:44:18", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r47-save-final", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T00:44:27", "event": "after", "operation_id": "military-r47-save-final", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_materials_r47\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-07T01:25:18", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-append-linked-review", "action": "live_begin.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:25:24", "event": "after", "operation_id": "military-r48-append-linked-review", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_BEGIN.json"}
+{"time": "2026-10-07T01:28:40", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-bind-batch0", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:29:24", "event": "after", "operation_id": "military-r48-bind-batch0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_BIND_0.json"}
+{"time": "2026-10-07T01:29:51", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-bind-batch1", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:30:36", "event": "after", "operation_id": "military-r48-bind-batch1", "status": "UNKNOWN", "evidence": "timed out"}
+{"time": "2026-10-07T01:31:23", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-binding-readback-after-timeout", "action": "live_binding_probe.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:31:23", "event": "after", "operation_id": "military-r48-binding-readback-after-timeout", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_BINDING_PROBE_RECEIPT.json"}
+{"time": "2026-10-07T01:31:43", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-bind-batch2", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:32:12", "event": "after", "operation_id": "military-r48-bind-batch2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_BIND_2.json"}
+{"time": "2026-10-07T01:32:43", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-full-live-readback", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:32:51", "event": "after", "operation_id": "military-r48-full-live-readback", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_VERIFY_RECEIPT.json"}
+{"time": "2026-10-07T01:33:18", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-live-topology", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:33:19", "event": "after", "operation_id": "military-r48-live-topology", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_TOPOLOGY_RECEIPT.json"}
+{"time": "2026-10-07T01:33:22", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-live-show", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:33:23", "event": "after", "operation_id": "military-r48-live-show", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-07T01:33:28", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r48-live-save", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T01:33:39", "event": "after", "operation_id": "military-r48-live-save", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r48\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-07T02:06:36", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-append-linked-review", "action": "live_begin.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:06:44", "event": "after", "operation_id": "military-r49-append-linked-review", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_BEGIN.json"}
+{"time": "2026-10-07T02:07:17", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-bind0", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:08:02", "event": "after", "operation_id": "military-r49-bind0", "status": "UNKNOWN", "evidence": "timed out"}
+{"time": "2026-10-07T02:09:16", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-bind0-unknown-readback", "action": "live_probe_all.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:09:16", "event": "after", "operation_id": "military-r49-bind0-unknown-readback", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_PROBE_ALL_RECEIPT.json"}
+{"time": "2026-10-07T02:09:44", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-bind1-unique-materials", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:09:45", "event": "after", "operation_id": "military-r49-bind1-unique-materials", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_BIND_1.json"}
+{"time": "2026-10-07T02:09:48", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-bind2-unique-materials", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:09:48", "event": "after", "operation_id": "military-r49-bind2-unique-materials", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_BIND_2.json"}
+{"time": "2026-10-07T02:10:08", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-verify", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:10:25", "event": "after", "operation_id": "military-r49-verify", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_VERIFY_RECEIPT.json"}
+{"time": "2026-10-07T02:11:27", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-topology", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:11:27", "event": "after", "operation_id": "military-r49-topology", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_TOPOLOGY_RECEIPT.json"}
+{"time": "2026-10-07T02:11:29", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-show", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:11:30", "event": "after", "operation_id": "military-r49-show", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_SHOW_RECEIPT.json"}
+{"time": "2026-10-07T02:11:34", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r49-save", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:11:52", "event": "after", "operation_id": "military-r49-save", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_details_r49\\LIVE_SAVE_RECEIPT.json"}
+{"time": "2026-10-07T02:46:22", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-preflight", "action": "live_preflight.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:46:22", "event": "after", "operation_id": "military-r50-live-preflight", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_preflight.json"}
+{"time": "2026-10-07T02:49:29", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-save-before", "action": "live_save_before.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:49:35", "event": "after", "operation_id": "military-r50-live-save-before", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_save_before.json"}
+{"time": "2026-10-07T02:49:58", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-begin", "action": "live_begin.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:50:04", "event": "after", "operation_id": "military-r50-live-begin", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_begin.json"}
+{"time": "2026-10-07T02:50:21", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-bind-0", "action": "live_bind_0.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:50:22", "event": "after", "operation_id": "military-r50-live-bind-0", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_bind_0.json"}
+{"time": "2026-10-07T02:50:25", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-bind-1", "action": "live_bind_1.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:50:26", "event": "after", "operation_id": "military-r50-live-bind-1", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_bind_1.json"}
+{"time": "2026-10-07T02:50:28", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-bind-2", "action": "live_bind_2.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:50:28", "event": "after", "operation_id": "military-r50-live-bind-2", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_bind_2.json"}
+{"time": "2026-10-07T02:50:46", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-verify", "action": "live_verify.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:51:02", "event": "after", "operation_id": "military-r50-live-verify", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_verify.json"}
+{"time": "2026-10-07T02:51:50", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-topology", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:51:50", "event": "after", "operation_id": "military-r50-live-topology", "status": "FAILED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_topology.json"}
+{"time": "2026-10-07T02:52:29", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-topology-verified-inputs", "action": "live_topology.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:52:29", "event": "after", "operation_id": "military-r50-live-topology-verified-inputs", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_topology.json"}
+{"time": "2026-10-07T02:52:31", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-show-verified-inputs", "action": "live_show.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:52:32", "event": "after", "operation_id": "military-r50-live-show-verified-inputs", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_show.json"}
+{"time": "2026-10-07T02:52:35", "event": "before", "status": "IN_PROGRESS", "operation_id": "military-r50-live-save-verified-inputs", "action": "live_save.py", "risk": "R9", "file": null, "agent": "astra"}
+{"time": "2026-10-07T02:52:49", "event": "after", "operation_id": "military-r50-live-save-verified-inputs", "status": "VERIFIED", "evidence": "C:\\work\\korean-military-176\\tc_windows_r50\\mcp_save.json"}

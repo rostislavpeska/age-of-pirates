@@ -72,3 +72,11 @@ because a reply was lost. Saved-file verification does not certify an unsaved li
 scene or its loaded images. Keep the existing source and accepted revision intact.
 Set `AOP_BLENDER_LOG` to a session log location when appropriate; CRASH_LOG.jsonl
 is private runtime history and must not be included in public skill exports.
+
+For shared-material image binding, collect unique material datablocks and image
+nodes across the intended scenes before assigning. Do not assign the same node
+again for every object using that material; skip an already correct binding.
+Keep R9's four-image batch limit. In Korean r49, an object-loop batch lost its
+reply at45 seconds; after readback, two deduplicated batches updated five nodes
+each across12 materials in0.81/0.36 seconds inside Blender. Final binding and
+geometry readback still applies; timing alone is not correctness evidence.
