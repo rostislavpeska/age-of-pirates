@@ -250,11 +250,15 @@ def check_against_triggerdata(triggers: List[Trigger], td) -> List[str]:
 # ------------------------------------------------------------------ simulator
 class World:
     """gun[socket_symbol] = {player: count of zpAntiShipGun within range};
-    suspended[socket_symbol] = AutoConvert suspend state."""
+    suspended[socket_symbol] = AutoConvert suspend state;
+    units[(player, proto)] = units the player owns ("Player Unit Count");
+    techs = every "ZP Set Tech Status (XS)" in firing order: (player, tech, status)."""
 
-    def __init__(self, sockets):
+    def __init__(self, sockets=(), units=None):
         self.gun: Dict[str, Dict[int, int]] = {s: {} for s in sockets}
         self.suspended = {s: False for s in sockets}
+        self.units: Dict[Tuple[int, str], int] = dict(units or {})
+        self.techs: List[Tuple[Any, Any, Any]] = []
         self.log: List[str] = []
 
     def any_gun(self, s: str) -> bool:
@@ -276,6 +280,8 @@ def _cond_true(c: Item, w: World) -> bool:
         return _cmp(c.get("Op"), w.gun[sym].get(pl, 0), float(c.get("Count")))
     if c.name == "Always":
         return True
+    if c.name == "Player Unit Count":
+        return _cmp(c.get("Op"), w.units.get((c.get("PlayerID"), c.get("ProtoUnit")), 0), float(c.get("Count")))
     raise DSLError(f"simulator does not model condition {c.name!r}")
 
 
@@ -288,6 +294,8 @@ def _apply(e: Item, w: World, fire: List[str]):
         w.log.append(f"suspend {sym} {w.suspended[sym]}")
     elif e.name == "Fire Event":
         fire.append(e.get("EventID")["trigger"])
+    elif e.name == "ZP Set Tech Status (XS)":
+        w.techs.append((e.get("PlayerID"), e.get("TechID"), e.get("Status")))
     else:
         raise DSLError(f"simulator does not model effect {e.name!r}")
 

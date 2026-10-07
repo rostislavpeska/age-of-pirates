@@ -509,19 +509,20 @@ void main(void)
 	vector castleControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(castleControllerID2, 0));
 	vector castleControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(castleControllerID3, 0));
 	
-	// Place Castles
+	// Place Castles: the copies without the area flattener (owner 2026-10-07: its 40 x 40 m square would
+	// cut the castles' cliffs; Hussite_Camp_0N_noflatten = Hussite_Camp_0N before the flattener)
 
-	int countrysideCastleID1 = rmCreateGrouping("Bohemian Castle 1", "Hussite_Camp_0"+bohemianCastle1Type);
+	int countrysideCastleID1 = rmCreateGrouping("Bohemian Castle 1", "Hussite_Camp_0"+bohemianCastle1Type+"_noflatten");
 	/*rmSetObjectDefMinDistance(countrysideCastleID1, 0.0);
 	rmSetObjectDefMaxDistance(countrysideCastleID1, 3.0);*/
 	rmPlaceGroupingAtLoc(countrysideCastleID1, 0, rmXMetersToFraction(xsVectorGetX(castleControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc1)), 1);
 	
-	int countrysideCastleID2 = rmCreateGrouping("Bohemian Castle 2", "Hussite_Camp_0"+bohemianCastle2Type);
+	int countrysideCastleID2 = rmCreateGrouping("Bohemian Castle 2", "Hussite_Camp_0"+bohemianCastle2Type+"_noflatten");
 	/*rmSetObjectDefMinDistance(countrysideCastleID2, 0.0);
 	rmSetObjectDefMaxDistance(countrysideCastleID2, 3.0);*/
 	rmPlaceGroupingAtLoc(countrysideCastleID2, 0, rmXMetersToFraction(xsVectorGetX(castleControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc2)), 1);
 
-	int countrysideCastleID3 = rmCreateGrouping("Bohemian Castle 3", "Hussite_Camp_0"+bohemianCastle3Type);
+	int countrysideCastleID3 = rmCreateGrouping("Bohemian Castle 3", "Hussite_Camp_0"+bohemianCastle3Type+"_noflatten");
 	/*rmSetObjectDefMinDistance(countrysideCastleID3, 0.0);
 	rmSetObjectDefMaxDistance(countrysideCastleID3, 3.0);*/
 	rmPlaceGroupingAtLoc(countrysideCastleID3, 0, rmXMetersToFraction(xsVectorGetX(castleControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc3)), 1);

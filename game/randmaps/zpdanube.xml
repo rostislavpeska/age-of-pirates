@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "503617" displayNameID = "503616" loadDetails="503618" largeMapName = "zpdanube"
+    imagepath = "ui\random_map\danube\danube_mini" cannotReplace = "" loadBackground="ui\random_map\kingofbohemia\kingofbohemia_map">
+    <loadss>ui\random_map\danube\danube_01</loadss>
+    <loadss>ui\random_map\danube\danube_02</loadss>
+    <loadss>ui\random_map\danube\danube_03</loadss>
+</mapinfo>

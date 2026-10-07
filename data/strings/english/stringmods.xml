@@ -3615,6 +3615,9 @@
       <string _locid="503612">Chang Ning</string>
       <string _locid="503613">An Ji</string>
       <string _locid="503614">Qing Yuan</string>
+      <string _locid="503616">Danube</string>
+      <string _locid="503617">Land map on the Danube Bend. The river closes the land inside the bend on three sides: only the bridges lead to the castles of the Prince Electors and the rich mines there.\n\nSettlements: Prince Electors, Hussites, Orthodox, Jesuits</string>
+      <string _locid="503618">Only the bridges lead into the bend. Hold them to claim the Electors' castles and the rich mines.</string>
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->

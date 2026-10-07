@@ -44,6 +44,17 @@ def steam_twin():
     return check
 
 
+@pytest.fixture
+def local_backup():
+    """local_backup("sandbox/backups/..."): the bytes of a gitignored backup on the owner's machine, or None where it is
+    absent (another device, a cleaned sandbox). The comparison against it is then left out and the test's repo-side
+    assertions still run (test_london_roles: the 2026-09-21/22 grouping exports)."""
+    def read(rel):
+        p = REPO / rel
+        return p.read_bytes() if p.is_file() else None
+    return read
+
+
 @pytest.fixture(scope="session")
 def xmb_current():
     """xmb_current("data/protomods.xml"): the .xml.xmb twin decodes to the same tree as the .xml (xmbc's canon: tags,

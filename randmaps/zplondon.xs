@@ -1971,6 +1971,7 @@ void main(void)
 	rmAddObjectDefConstraint(fishDef, fishVsPlateau);
 	rmAddObjectDefConstraint(fishDef, fishVsRamp);
 	rmAddObjectDefConstraint(fishDef, insideFrame);
+	rmAddObjectDefConstraint(fishDef, insideWorld);
 	rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);
 	int salmonDef = rmCreateObjectDef("salmon");
 	rmAddObjectDefItem(salmonDef, "FishSalmon", 1, 2.0);
@@ -1980,6 +1981,7 @@ void main(void)
 	rmAddObjectDefConstraint(salmonDef, fishVsPlateau);
 	rmAddObjectDefConstraint(salmonDef, fishVsRamp);
 	rmAddObjectDefConstraint(salmonDef, insideFrame);
+	rmAddObjectDefConstraint(salmonDef, insideWorld);
 	rmPlaceObjectDefAtLoc(salmonDef, 0, 0.5, 0.5, salmonCount);
 	rmEchoInfo("LONDON fish: " + bassCount + " FishBass + " + salmonCount + " FishSalmon asked, " + fishSpacingM + " m apart");
 

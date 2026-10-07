@@ -1,9 +1,11 @@
 """London's revolt / setup system (user 2026-09-22): Paris's shapes.
-  - starting techs by team (zpparis.xs 1984-2047): ONE tech per player (user 2026-09-24: 'no duplicities') - attackers (team 0,
-    Stuart) zpLondonAttackerSetup, defenders (team 1, Parliament) zpLondonDefenderSetup; both activate zpLondonSetup (the shared
-    setup: Military Camp, PopulationCap 250, no houses, the cathedral / bank / tower techs, zpForbidRevolutions,
-    zpExtendedStuartLondon, the trade-route plan) and then grey the other side's big button (DisableShadow strips it, offShadow
-    lights the fake); players 0..N zpTollstation + deEUMapUpdateVisuals (Paris 2024-2033, gaia included);
+  - starting techs (zpparis.xs 1984-2047): the shared setup zpLondonSetup FIRST, fired by the trigger for players 0..N (Military
+    Camp, PopulationCap 250, no houses, the cathedral / bank / tower techs, zpForbidRevolutions, zpExtendedStuartLondon, the
+    trade-route plan); then ONE side setup per player (user 2026-09-24: 'no duplicities') - attackers (team 0, Stuart)
+    zpLondonAttackerSetup, defenders (team 1, Parliament) zpLondonDefenderSetup - which only grey the other side's big button
+    (DisableShadow strips it, offShadow lights the fake). 2026-09-27: switched on from INSIDE the side setups, zpLondonSetup only
+    flipped its flag and none of its effects ran (rm-triggers law 2), so the trigger fires it, before the side setups that strip
+    the buttons it adds (law 5); players 0..N zpTollstation + deEUMapUpdateVisuals (Paris 2024-2033, gaia included);
   - the AI Commonwealth: Paris's Iniciate / Timer / Execute chain (3393-3466) for the defenders only, gated twice on holding a
     Parliament post (cTechzpNativeParliament, zpParliament's Age0 agetech);
   - the fake-button trio per side (tech pair + power + ability + protounitcommand on the TradingPost), Paris's records as the mould;
@@ -41,14 +43,17 @@ def _set(pl: str, tech: str, ind: int) -> str:
 class TestStartingTechsByTeam:
     def test_paris_shape(self):
         t = _code(_text(LONDON)); s = t[t.index('rmCreateTrigger("LondonStartingTechs");'):t.index('rmAddTriggerEffect("Player : Override Civilization for Flag");')]
-        loop = s[s.index("for (k=1; <= cNumberNonGaiaPlayers)"):s.index("for (i = 0; <= cNumberNonGaiaPlayers)")]
+        generic = s[:s.index("for (k=1; <= cNumberNonGaiaPlayers)")]
+        assert "for (i = 0; <= cNumberNonGaiaPlayers)" in generic and _set("i", "cTechzpLondonSetup", 2) in generic   # first, 0..N
+        rest = s[s.index("for (k=1; <= cNumberNonGaiaPlayers)"):]
+        loop = rest[:rest.index("for (i = 0; <= cNumberNonGaiaPlayers)")]
         att = loop[loop.index("if (rmGetPlayerTeam(k) == 0)"):loop.index("else")]; dfd = loop[loop.index("else"):]
         assert _set("k", "cTechzpLondonAttackerSetup", 3) in att and "cTechzpLondonDefenderSetup" not in att     # one tech per player
         assert _set("k", "cTechzpLondonDefenderSetup", 3) in dfd and "cTechzpLondonAttackerSetup" not in dfd
         assert loop.count('rmAddTriggerEffect("ZP Set Tech Status (XS)");') == 2
-        gaia = s[s.index("for (i = 0; <= cNumberNonGaiaPlayers)"):]
+        gaia = rest[rest.index("for (i = 0; <= cNumberNonGaiaPlayers)"):]
         assert _set("i", "cTechzpTollstation", 2) in gaia and _set("i", "cTechdeEUMapUpdateVisuals", 2) in gaia
-        assert _set("0", "cTechzpConverGate", 1) in gaia and "cTechzpLondonSetup" not in t and "cTechzpExtendedStuart\"" not in t
+        assert _set("0", "cTechzpConverGate", 1) in gaia and t.count('"cTechzpLondonSetup"') == 1 and "cTechzpExtendedStuart\"" not in t
         assert 'rmCreateTrigger("ExtendedStuart"' not in t and s.count("rmCreateTrigger(") == 1
 
     def test_setup_techs(self):
@@ -68,8 +73,8 @@ class TestStartingTechsByTeam:
             s_ = _tech(n)
             assert "<status>UNOBTAINABLE</status>" in s_ and "<flag>Shadow</flag>" in s_
             got = re.findall(r'<effect [^>]*>[^<]*</effect>', s_)
-            assert got == ['<effect type="TechStatus" status="active">zpLondonSetup</effect>'] + \
-                ['<effect type="TechStatus" status="active">%s</effect>' % p for p in pair] and s_.count("<effect ") == 3, (n, got)
+            # only the other side's button pair: the trigger fires zpLondonSetup itself, before these (test_paris_shape)
+            assert got == ['<effect type="TechStatus" status="active">%s</effect>' % p for p in pair] and s_.count("<effect ") == 2, (n, got)
         s = _text(REPO / "data/techtreemods.xml")
         assert s.index('name="zpLondonDefenderSetup"') < s.index("<!--TEST TECHS-->")
 

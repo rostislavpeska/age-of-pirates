@@ -244,7 +244,24 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
 
     labeled: List[tuple] = []
     located = [a for a in rs.areas if a.x is not None]
+    # A long numbered series ("river channel 0".."river channel 246": zpdanube.xs draws its channel as 125 discs) is
+    # labelled once with its count and drawn without per-member outlines; its grown shape is the information
+    series: Dict[str, int] = {}
+    for area in located:
+        base = area.name.rstrip("0123456789").rstrip()
+        if base != area.name:
+            series[base] = series.get(base, 0) + 1
+    series_labeled: set = set()
     for area in sorted(located, key=lambda a: -a.radius_m):
+        base = area.name.rstrip("0123456789").rstrip()
+        if base != area.name and series.get(base, 0) >= 8:
+            if base in series_labeled:
+                continue
+            series_labeled.add(base)
+            ax.annotate(f"{base} x{series[base]}", (area.x, area.z), xytext=(0, -9),
+                        textcoords="offset points", fontsize=5.5, ha="center",
+                        va="center", color="#aab4c0", alpha=0.9, xycoords=tr)
+            continue
         outline = True
         if area.water_type is not None:
             ec, ls, label_col = "#9cc4e4", (0, (2, 3)), "#dbe9f7"
@@ -391,16 +408,22 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                 sections = list(branch["variants"][0].get("sections", {}).values())
             r_mid = (branch["min"] + branch["max"]) / 2.0
             for s, e in sections:
+                # The engine's convention (xs_extract.ring_positions, pinned 2026-08-10): fraction s sits at
+                # (0.5 + r sin 2 pi s, 0.5 + r cos 2 pi s), clockwise from north, so matplotlib's angle is 90 - 360 s
+                # and a section s -> e runs from 90 - 360 e to 90 - 360 s counter-clockwise. The old arc used
+                # 360 s from +X (2026-10-07: Danube's north / south arcs drawn in the south-east, beyond its land route)
                 arc = Arc((0.5, 0.5), 2 * r_mid, 2 * r_mid,
-                          theta1=s * 360.0, theta2=e * 360.0,
+                          theta1=90.0 - e * 360.0, theta2=90.0 - s * 360.0,
                           edgecolor=RING, linewidth=2.6, alpha=0.9, zorder=3.4)
                 arc.set_transform(tr)
                 ax.add_patch(arc)
-            if sections:
-                ax.text(0.5, 0.985, "section arcs assume 0°=+X CCW (uncalibrated, E3)",
-                        fontsize=6, ha="center", va="top", color=RING, alpha=0.8,
-                        transform=ax.transAxes)
         break
+
+    # The nominal player starts (ring_positions, the same model the checks use): numbered rings
+    for k, (px, pz) in enumerate(rs.player_locs or [], start=1):
+        ax.scatter([px], [pz], s=46, facecolor="none", edgecolor="#ffffff", linewidths=1.4, zorder=4.6, transform=tr)
+        ax.annotate(str(k), (px, pz), xytext=(0, 6), textcoords="offset points", fontsize=6, ha="center",
+                    color="#ffffff", zorder=4.6, xycoords=tr)
 
     # Layer 3, groupings: the REAL footprint box as a 50% dark rectangle —
     # and ONLY the box, never a verdict dot on top (user directive

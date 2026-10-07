@@ -8,13 +8,23 @@ config/local-maps.example.json on first use):
 
     {"maps": [{"repo": "randmaps/zplondon", "local": "00000_zplondon"}]}
 
-Each entry covers <repo>.xs and <repo>.xml -> <RandMaps>/<local>.xs and .xml. A .mods.xml is never copied into the
-game root. The repo copy always wins: --sync overwrites a local copy that differs.
+Each entry covers <repo>.xs and <repo>.xml -> <RandMaps>/<local>.xs and .xml. The repo copy always wins: --sync
+overwrites a local copy that differs.
 
-    python scripts/tools/sync_local_maps.py [--check]        every copy: OK / EOL / STALE / MISSING (exit 1 unless all OK)
+A per-map .mods.xml NEVER belongs in the game root (owner 2026-10-06: "mods xml in game root is NONSENSE"): the mod
+loads its own randmaps/<map>.mods.xml, a root copy is at best a redundant duplicate and crashed the game on 2026-09-19.
+--check reports every Game/RandMaps/*.mods.xml as FORBIDDEN (exit 1); --sync, the hook and the post-merge hook delete it.
+
+    python scripts/tools/sync_local_maps.py [--check]        every copy: OK / EOL / STALE / MISSING, and FORBIDDEN for a
+                                                              root .mods.xml (exit 1 unless all OK)
                                                               EOL = same content, only the line endings differ
-    python scripts/tools/sync_local_maps.py --sync           copy the repo file over every stale or missing copy
+    python scripts/tools/sync_local_maps.py --sync           copy the repo file over every stale or missing copy and
+                                                              delete every root .mods.xml
     python scripts/tools/sync_local_maps.py --add randmaps/zpparis 00000_zpparis     register one, then sync it
+    python scripts/tools/sync_local_maps.py --top game/randmaps/zpdanube    THE MAP UNDER TEST: register it with one
+                                                              more leading zero than any map in the folder, so it is
+                                                              row 2 of the editor's Type list (right under Blank), and
+                                                              sync it. --add and --top both print the row.
     python scripts/tools/sync_local_maps.py --hook           Claude Code PostToolUse: sync the entry of an edited map
     python scripts/tools/sync_local_maps.py --install-git-hook   .git/hooks/post-merge runs --sync after every pull
 
@@ -100,6 +110,8 @@ def status(entries: List[Dict], rm: Path, repo: Path = REPO) -> List[Dict]:
             else:                                # same text, other line endings is not a content change
                 state = "EOL" if _sha(dst, True) == _sha(src, True) else "STALE"
             rows.append({"entry": e, "src": src, "dst": dst, "state": state})
+    for p in sorted(rm.glob("*.mods.xml")):      # never in the game root (module docstring)
+        rows.append({"entry": None, "src": None, "dst": p, "state": "FORBIDDEN"})
     return rows
 
 
@@ -110,6 +122,10 @@ def sync(entries: List[Dict], rm: Path, repo: Path = REPO, quiet: bool = False) 
             shutil.copyfile(r["src"], r["dst"])
             print(f"[local maps] {r['dst'].name} <- {r['src'].relative_to(repo).as_posix()} ({r['state'].lower()})")
             r["state"] = "SYNCED"
+        elif r["state"] == "FORBIDDEN":
+            r["dst"].unlink()
+            print(f"[local maps] {r['dst'].name} deleted: a .mods.xml never belongs in the game root")
+            r["state"] = "REMOVED"
     if not quiet:
         _print(rows, repo)
     return rows
@@ -117,9 +133,31 @@ def sync(entries: List[Dict], rm: Path, repo: Path = REPO, quiet: bool = False) 
 
 def _print(rows: List[Dict], repo: Path) -> None:
     for r in rows:
-        src = r["src"].relative_to(repo).as_posix() if r["src"] else r["entry"]["repo"]
+        src = r["src"].relative_to(repo).as_posix() if r["src"] else (r["entry"]["repo"] if r["entry"] else "(game root)")
         dst = r["dst"].name if r["dst"] else r["entry"]["local"]
         print(f"  {r['state']:<12} {src} -> {dst}")
+
+
+def editor_order(rm: Path) -> List[str]:
+    """The Scenario Editor's Type list under Blank: the folder's maps, sorted case-insensitively (2026-10-07: row 2
+    00000000_zpdanube, then 0000000_areaprobe, 000000_destrbench_..., 00000_zpatols before 00000_zpBalearicIslands)."""
+    return sorted((p.stem for p in rm.glob("*.xs") if p.with_suffix(".xml").is_file()), key=str.lower)
+
+
+def editor_row(local: str, rm: Path) -> int:
+    """1-based row of a local copy in the editor's Type list (row 1 is Blank)."""
+    return editor_order(rm).index(local) + 2
+
+
+def top_stem(stem: str, rm: Path, entries: List[Dict]) -> str:
+    """The local stem that puts the map under test on row 2, right under Blank: its own copy when one already sits
+    there, else one more leading zero than any map in the folder (owner 2026-10-07: a Danube copy registered as
+    00000_zpdanube sat among 49 other 00000_ maps and every test generation scrolled for it)."""
+    order = editor_order(rm)
+    if order and any(e["repo"] == stem and e["local"] == order[0] for e in entries):
+        return order[0]
+    zeros = max((len(n) - len(n.lstrip("0")) for n in order), default=0)
+    return "0" * (zeros + 1) + "_" + stem.rsplit("/", 1)[-1]
 
 
 def hook(payload: Dict, entries: List[Dict], rm: Path, repo: Path = REPO) -> List[Dict]:
@@ -144,6 +182,7 @@ def main(argv=None) -> int:
     g.add_argument("--check", action="store_true")
     g.add_argument("--sync", action="store_true")
     g.add_argument("--add", nargs=2, metavar=("REPO_STEM", "LOCAL_STEM"))
+    g.add_argument("--top", metavar="REPO_STEM", help="register the map under test on row 2 of the editor's list")
     g.add_argument("--hook", action="store_true")
     g.add_argument("--install-git-hook", action="store_true")
     a = ap.parse_args(argv)
@@ -163,22 +202,27 @@ def main(argv=None) -> int:
             print("no AoE3DE install on this machine (AOE3DE_GAME / Steam): no local map copies to keep")
         return 0
     reg = load_registry()
-    if a.add:
-        stem, local = (s.rsplit(".", 1)[0] if s.endswith(EXTS) else s for s in a.add)
+    if a.add or a.top:
+        stem, local = (s.rsplit(".", 1)[0] if s.endswith(EXTS) else s for s in (a.add or [a.top, a.top]))
         if not any((REPO / (stem + ext)).is_file() for ext in EXTS):
             print(f"no {stem}.xs / .xml in the repo")
             return 1
+        if a.top:
+            local = top_stem(stem, rm, reg["maps"])
         reg["maps"] = [e for e in reg["maps"] if e["local"] != local] + [{"repo": stem, "local": local}]
         LOCAL.write_text(json.dumps(reg, indent=1) + "\n", encoding="utf-8")
         print(f"registered {stem} -> {local}")
         sync([{"repo": stem, "local": local}], rm)
+        row = editor_row(local, rm)
+        print(f"{local}: row {row} of the Scenario Editor's Type list"
+              + ("" if row <= 2 else f" - a map under test belongs on row 2: --top {stem}"))
         return 0
     if a.hook:
         hook(payload, reg["maps"], rm)
         return 0
     if a.sync:
         rows = sync(reg["maps"], rm)
-        return 0 if all(r["state"] in ("OK", "SYNCED") for r in rows) else 1
+        return 0 if all(r["state"] in ("OK", "SYNCED", "REMOVED") for r in rows) else 1
     rows = status(reg["maps"], rm)
     _print(rows, REPO)
     return 0 if all(r["state"] == "OK" for r in rows) else 1

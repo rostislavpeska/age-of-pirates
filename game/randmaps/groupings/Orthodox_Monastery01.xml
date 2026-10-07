@@ -7,6 +7,7 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="41" posx="8.9045" posz="-8.3539" orientx="-0.3825" orienty="0.0000" orientz="-0.9240">NativeTownObstruction</unit>
 		<unit variation="41" posx="9.1621" posz="-9.8971" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseOrthodox</unit>
 		<unit variation="56" posx="0.4578" posz="-8.9250" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketOrthodox</unit>

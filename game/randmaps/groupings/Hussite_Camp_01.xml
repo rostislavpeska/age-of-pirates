@@ -7,6 +7,7 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="177" posx="-1.1257" posz="-12.1550" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="33" posx="-4.0685" posz="-11.5272" orientx="0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropCannon</unit>
 		<unit variation="91" posx="1.2925" posz="-10.6890" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpNativeHouseHussites</unit>

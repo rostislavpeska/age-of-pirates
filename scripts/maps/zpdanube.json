@@ -1,0 +1,37 @@
+{
+  "map": "zpdanube",
+  "version": 1,
+  "script": "repo:game/randmaps/zpdanube.xs",
+  "notes": "Danube Bend: water base, a river_trail route in a U opening east, the channel drawn as exact discs along a smoothed, meandering centreline and the shores built around it, Elbe bridge docks. Geometry measured in the trade-route probe (docs/trade_routes_guide.md 5.8, docs/ideas/2026-10-01-danube-map.md).",
+  "evidence": [
+    {"id": "trprobe6-sockets-2026-10-01", "date": "2026-10-01",
+     "source": "measurement",
+     "claim": "SocketTradeRoute linked to a river_trail route and placed with max distance 6 m at bank points 36 m off the route placed 4 of 4, 35-41 m from the route.",
+     "ref": "census of trprobe6.age3Yscn (probe generation 6, session ef9a49b4)"},
+    {"id": "trprobe6-shores-2026-10-01", "date": "2026-10-01",
+     "source": "measurement",
+     "claim": "Shore areas sized beyond the region left by a trade-route distance constraint of 18 fill that region completely: banks 26-34 m from the route along both arms and the bend.",
+     "ref": "minimap of probe generation 6 measured with bank_measure.py (session ef9a49b4); trade routes guide 5.8"},
+    {"id": "trprobe6-edge-2026-10-01", "date": "2026-10-01",
+     "source": "measurement",
+     "claim": "A river_trail route whose arms end at the map edge beyond the world circle builds, and its corridor of water runs out at the edge, so the land between the arms stays locked.",
+     "ref": "minimap of probe generations 2-6 (session ef9a49b4)"}
+  ],
+  "known_issues": [
+    {"check": "SIM:ROUTE_TOO_FAR", "match": "river socket",
+     "why": "bank sockets placed off the route stay where placed (36 m in probe generation 6); the Danube's stand 38-50 m off it, measured from the built route, so no land touches the route",
+     "evidence": "trprobe6-sockets-2026-10-01"},
+    {"check": "SIM:AREA_SHORTFALL", "match": "inner shore",
+     "why": "the inner shore is sized beyond the locked region on purpose, so it fills it to the banks",
+     "evidence": "trprobe6-shores-2026-10-01"},
+    {"check": "SIM:AREA_SHORTFALL", "match": "hills 4",
+     "why": "the inner shore's hills are sized like the inner shore, beyond the locked region, so they cover it up to 12 m from the water",
+     "evidence": "trprobe6-shores-2026-10-01"},
+    {"check": "SIM:ROUTE_DRIFT", "match": "river socket",
+     "why": "linked sockets stay where they are placed off the route (36 m in the probe), they do not snap onto it",
+     "evidence": "trprobe6-sockets-2026-10-01"},
+    {"check": "SIM:OUTSIDE_CIRCLE", "match": "waypoint",
+     "why": "both arms run out at the east edge to lock the inner shore",
+     "evidence": "trprobe6-edge-2026-10-01"}
+  ]
+}

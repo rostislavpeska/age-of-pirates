@@ -296,7 +296,11 @@ class TestPlacement:
         pos = [s.find('<tech name="%s"' % n) for n in (CAPTAIN, PRIZE, SET, "zpTrainBonhommeRichard1", "zpTrainBonhommeRichard2")]
         assert all(0 < p < marker for p in pos) and pos == sorted(pos)
         jones = [int(_c(_techs()[n], "dbid")) for n in (CAPTAIN, PRIZE, SET, "zpTrainBonhommeRichard1", "zpTrainBonhommeRichard2")]
-        later = [int(d) for d in re.findall(r"<dbid>(\d+)</dbid>", s[s.find("</tech>", pos[-1]):marker])]   # dbid-less vanilla merge records may follow
+        # vanilla merge records may follow: dbid-less ones, and those that keep their vanilla dbid and merge effects
+        # (YPHCChineseImperialNavy, dbid 3977, 2026-09-27)
+        tail = s[s.find("</tech>", pos[-1]):marker]
+        later = [int(d) for b in re.findall(r'<tech name ?= ?"[^"]+".*?</tech>', tail, re.S) if "mergemode=" not in b
+                 for d in re.findall(r"<dbid>(\d+)</dbid>", b)]
         assert all(d > max(jones) for d in later), "only later (higher-dbid) techs may follow the new techs before the test marker"
 
     def test_side_records_are_last(self):

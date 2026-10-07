@@ -14,6 +14,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import pytest
+
 REPO = Path(__file__).resolve().parents[3]
 STEAM = Path(r"C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\Game\RandMaps")
 LONDON = REPO / "randmaps/zplondon.xs"
@@ -476,10 +478,12 @@ class TestGateOrder:
         i = x.index('<tech name="zpConverGate"')
         assert 'toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocket"' in x[i:x.index("</tech>", i)]
 
-    def test_bridge_export_carries_invisible_gate_sockets(self):
+    def test_bridge_export_carries_invisible_gate_sockets(self, local_backup):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert b.count(b">zpInvisibleGateSocket</unit>") == 2 and b"SPCFortGate" not in b and b"zpSPCWaterSpawnPoint" not in b and b"<heights>" in b
-        assert (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-21_waterspawn_placeholders.xml").is_file()
+        rel = "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-21_waterspawn_placeholders.xml"
+        if local_backup(rel) is None:      # gitignored: only on the device that made it
+            pytest.skip("local (backup): no %s - every repo-side assertion before this line passed" % rel)
 
 
 class TestCountryside:
@@ -677,7 +681,7 @@ class TestTowerOwnership:
         t = _code(_text(LONDON))
         return t, t[t.index("int towerSweepM = 40;"):t.index("int victoryCountDown = 480;")]
 
-    def test_exports_tower_sockets_and_unique_gate_sockets(self):
+    def test_exports_tower_sockets_and_unique_gate_sockets(self, local_backup):
         for name, sockets in self.SOCKETS.items():
             b = (REPO / ("game/randmaps/groupings/%s.xml" % name)).read_bytes()
             assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerProp" not in b and b"zpSPCFortWallProp" not in b and b.count(b">deSPCFortWallLargeProp</unit>") == 10
@@ -689,11 +693,11 @@ class TestTowerOwnership:
             for i, proto in zip(gates, sockets):
                 head = lines[i][:lines[i].index(">SPCFortGate</unit>")]
                 assert lines[i + 1] == head + ">" + proto + "</unit>", (name, proto)     # same position and orientation as the gate
-            old = (REPO / ("sandbox/backups/groupings/%s_2026-09-22_towerprops.xml" % name)).read_bytes()
-            assert old.replace(b">zpSPCFortTowerProp</unit>", b">zpSPCSocketCityTowerWooden</unit>").count(b"</unit>") == b.count(b"</unit>") - 2
+            old = local_backup("sandbox/backups/groupings/%s_2026-09-22_towerprops.xml" % name)   # gitignored, may be absent
+            assert old is None or old.replace(b">zpSPCFortTowerProp</unit>", b">zpSPCSocketCityTowerWooden</unit>").count(b"</unit>") == b.count(b"</unit>") - 2
             for l in lines:
                 if l.endswith(">zpSPCSocketCityTowerWooden</unit>"):
-                    assert (l.replace(">zpSPCSocketCityTowerWooden</unit>", ">zpSPCFortTowerProp</unit>") + chr(13) + chr(10)).encode("utf-8") in old
+                    assert old is None or (l.replace(">zpSPCSocketCityTowerWooden</unit>", ">zpSPCFortTowerProp</unit>") + chr(13) + chr(10)).encode("utf-8") in old
 
     def test_protos_and_transform_techs_exist(self):
         pm = (REPO / "data/protomods.xml").read_text(encoding="utf-8", errors="replace")
@@ -836,7 +840,7 @@ class TestBridgeOwnership:
     SWEEP = ("SPCFortGate", "deSPCFortWallLargeProp", "zpSPCFortCornerPropFlat", "deSPCSocketCityTower", "deSPCCityTower")
     BRIDGE_VARS = ("bridgeSocket1Unit", "bridgeSocket2Unit", "bridgeSocket3Unit", "bridgeSocket4Unit")
 
-    def test_export_flat_sockets_last_and_unique_gate_sockets(self):
+    def test_export_flat_sockets_last_and_unique_gate_sockets(self, local_backup):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerPropFlat" not in b and b"SPCFortGate" not in b and b"Wooden" not in b
         assert b.count(b">deSPCSocketCityTower</unit>") == 4 and b.count(b">zpInvisibleGateSocket</unit>") == 2
@@ -847,10 +851,10 @@ class TestBridgeOwnership:
         for i, proto in zip(gens, ("zpInvisibleGateSocketE", "zpInvisibleGateSocketF")):
             head = lines[i][:lines[i].index(">zpInvisibleGateSocket</unit>")]
             assert lines[i + 1] == head + ">" + proto + "</unit>"
-        old = (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-22_flatprops.xml").read_bytes()
-        assert old.count(b">zpSPCFortTowerPropFlat</unit>") == 4 and b.count(b"</unit>") == old.count(b"</unit>") + 2 - 1   # + gate sockets E / F, - one Venetian pole (2026-09-24)
+        old = local_backup("sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-22_flatprops.xml")   # gitignored, may be absent
+        assert old is None or old.count(b">zpSPCFortTowerPropFlat</unit>") == 4 and b.count(b"</unit>") == old.count(b"</unit>") + 2 - 1   # + gate sockets E / F, - one Venetian pole (2026-09-24)
         for l in lines[end - 4:end]:
-            assert (l.replace(">deSPCSocketCityTower</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
+            assert old is None or (l.replace(">deSPCSocketCityTower</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
 
     def test_venice_tower_family(self, xmb_current):
         # user 2026-09-22: Venice's own towers, not clones - the vanilla tower techs must apply

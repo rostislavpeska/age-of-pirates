@@ -67,7 +67,7 @@ def _ring_positions(ex: Extraction) -> Optional[list]:
     ignored), so consumers must mark results approx."""
     from scripts.mapsim.xs_extract import ring_positions
     return ring_positions(ex.player_events, ex.scenario.players,
-                          ex.scenario.teams)
+                          ex.scenario.teams, ex.scenario.team_sizes)
 
 
 def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
@@ -100,7 +100,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                 # Teams occupy contiguous ring blocks; anchor at the block's
                 # angular midpoint member.
                 members = [k for k in range(n_players)
-                           if team_of(k + 1, n_players, n_teams) == a.loc_team]
+                           if team_of(k + 1, n_players, n_teams, ex.scenario.team_sizes) == a.loc_team]
                 if members:
                     import math
                     xs = [ring[k][0] - 0.5 for k in members]

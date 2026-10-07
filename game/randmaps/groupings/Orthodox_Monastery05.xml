@@ -7,6 +7,7 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="223" posx="0.9067" posz="-10.0584" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDark</unit>
 		<unit variation="127" posx="-0.7231" posz="-10.0901" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
 		<unit variation="223" posx="4.8502" posz="-10.0246" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDark</unit>

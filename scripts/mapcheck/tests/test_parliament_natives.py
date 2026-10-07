@@ -592,12 +592,14 @@ class TestExtendedStuart:
     def test_london_flips_the_shadow_for_every_player(self, steam_twin):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
         steam_twin(REPO / "randmaps/zplondon.xs", "00000_zplondon.xs")
-        # 2026-09-24 (no duplicities): the London extension (zpExtendedStuartLondon, the SPC big button) sits in zpLondonSetup, which both
-        # side techs activate BEFORE they strip the other side's button; the generic zpExtendedStuart stays for other maps
+        # 2026-09-24 (no duplicities): the London extension (zpExtendedStuartLondon, the SPC big button) sits in zpLondonSetup; the
+        # generic zpExtendedStuart stays for other maps. 2026-09-27: the trigger fires zpLondonSetup itself, for players 0..N, BEFORE
+        # the side setups strip the other side's button (switched on from inside a side setup its effects never ran, rm-triggers law 2)
         T_ = _techs()
         assert '<effect type="TechStatus" status="active">zpExtendedStuartLondon</effect>' in T_["zpLondonSetup"]
         for side, strip in (("zpLondonAttackerSetup", "zpNatParliamentBigbuttonDisableShadow"), ("zpLondonDefenderSetup", "zpNatStuartBigbuttonDisableShadow")):
-            b = T_[side]; assert b.index(">zpLondonSetup<") < b.index(">%s<" % strip), side
+            b = T_[side]; assert ">zpLondonSetup<" not in b and (">%s<" % strip) in b, side
+            assert t.index('"cTechzpLondonSetup"') < t.index('"cTech%s"' % side), side
         i = t.index('rmCreateTrigger("LondonStartingTechs")')
         assert '"cTechzpExtendedStuart"' not in t and 'rmCreateTrigger("ExtendedStuart"' not in t and i < t.index('rmCreateTrigger("Activate Parliament" + k)')
 
@@ -693,23 +695,22 @@ class TestSovereignOfTheSeas:
         assert _c(b, "dbid") == "41549" and _c(b, "displaynameid") == "503532" and _c(b, "rollovertextid") == "503533"
         assert "<status>UNOBTAINABLE</status>" in b and ">Industrialize</techstatus>" in b
         assert "<flag>YPNativeImprovement</flag>" in b and "<flag>CountsTowardMilitaryScore</flag>" in b
-        assert '<cost resourcetype="Wood">800.0000</cost>' in b and '<cost resourcetype="Gold">600.0000</cost>' in b
-        COAT = "deSPCHMWhitecoat"
-        # 2026-09-24 (user, the split): the flagship sails alone (the vanilla HCShipFrigates shape), every dock builds
-        # Regal Ships from then on, and the ship raises vanilla Whitecoats; Rupert and the Cavaliers moved to The Last Cavalier
+        # 2026-09-26 (0d4b6a92): Wood 800 -> 600
+        assert '<cost resourcetype="Wood">600.0000</cost>' in b and '<cost resourcetype="Gold">600.0000</cost>' in b
+        # 2026-09-24 (user, the split): the flagship sails alone (the vanilla HCShipFrigates shape) and every dock builds
+        # Regal Ships from then on; Rupert and the Cavaliers moved to The Last Cavalier. 2026-09-26 (0d4b6a92): the Regal Ship
+        # no longer enables, trains or caps the vanilla Whitecoat (the Trading Post trains the mod's through the Stuart expansion)
         assert 'amount="1.00" subtype="FreeHomeCityUnit" unittype="%s"' % self.SHIP in b and "FreeHomeCityUnitShipped" not in b
         assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">%s<' % self.SHIP, b)
         # AbstractDock = Dock, YPDockAsian, dePort, deSPCSupplyDepot, deDryDock and the mod's zpDrydock; column 9 is free on all
         assert '<effect type="CommandAdd" proto="%s" page="0" column="9">\n        <target type="ProtoUnit">AbstractDock</target>' % self.SHIP in b.replace(chr(13), "")
-        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
-        assert '<effect type="CommandAdd" proto="%s" page="0" column="1">' % COAT in b          # ships train land units on page 0
-        assert re.search(r'amount="20.00" subtype="BuildLimit"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
+        assert "deSPCHMWhitecoat" not in b
         assert "Rupert" not in b and "Cavalier" not in b and "Hitpoints" not in b
         assert "<flag>CheckWaterHCGatherPoint</flag>" in b          # it ships a warship
         icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuart" + chr(92) + "sovereign_seas.png"
         assert "<icon>" + icon + "</icon>" in b                    # the crown-and-anchor, forged from the user's art
         assert (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
-        assert b.count("<effect ") == 6 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
+        assert b.count("<effect ") == 3 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
         for dock in ("Dock", "YPDockAsian", "dePort", "deDryDock", "zpDrydock"):
             u = _units().get(dock, "")
@@ -759,7 +760,8 @@ class TestSovereignOfTheSeas:
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503532">Sovereign of the Seas</string>' in st
         roll = re.search(r'<string _locid="503533">([^<]*)</string>', st).group(1)
-        assert "Every Dock builds Regal Ships from now on (up to 2)" in roll and "Whitecoats (up to 20)" in roll and "Rupert" not in roll
+        # 2026-09-26 (0d4b6a92): the Whitecoat sentence went with the Whitecoat effects
+        assert "Every Dock builds Regal Ships from now on (up to 2)" in roll and "Whitecoat" not in roll and "Rupert" not in roll
         assert '<string _locid="503534">Sovereign of the Seas</string>' in st and '<string _locid="503548">Merhonour</string>' in st
 
     def test_royal_burgh(self):

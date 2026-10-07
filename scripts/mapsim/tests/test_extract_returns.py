@@ -262,3 +262,13 @@ class TestLondon:
         _, rs = london4
         (mark,) = [p for p in rs.placements if p.name == "london bridge marker"]
         assert mark.players == [1, 2, 3, 4] and mark.item_counts == (("zpAILondonBridge", 1),)
+
+
+def test_int_declaration_truncates_a_float_initialiser():
+    # the engine truncates (vanilla `int size=2.0*sqrt(...)`); zpdanube.xs snaps its river skeleton to the trade
+    # route's 16 m cells this way, and a float kept here moved every channel disc off its cell
+    src = (HEADER + "float v = 432.0;\nint cell = v / 16.0;\nfloat snapped = 16.0 * cell + 8.0;\n"
+           "int odd = 500.0 / 16.0;\n"
+           'int d = rmCreateObjectDef("s " + snapped + " " + (16.0 * odd + 8.0));\n}')
+    _, ex = run_src(src)
+    assert next(iter(ex.defs.values())).name == "s 440 504"

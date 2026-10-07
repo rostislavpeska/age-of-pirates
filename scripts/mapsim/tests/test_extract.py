@@ -165,8 +165,8 @@ class TestBiasGuard:
     @pytest.mark.skipif(not (GAME / "amazonia.xs").is_file(), reason="game not installed")
     def test_amazonia_extracts(self):
         ex = extract(GAME / "amazonia.xs", Scenario(4, 2))
-        # size = 2.0*sqrt(players*playerTiles): the classic stock formula.
-        assert ex.map_size_x == pytest.approx(2.0 * (4 * 11000) ** 0.5, rel=1e-6)
+        # int size = 2.0*sqrt(players*playerTiles): the classic stock formula; the int declaration truncates (419.52 -> 419)
+        assert ex.map_size_x == int(2.0 * (4 * 11000) ** 0.5)
         assert len(ex.defs) > 30
         assert len(ex.warnings) <= 2
 

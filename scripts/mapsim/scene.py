@@ -43,6 +43,9 @@ class Scenario:
     teams: int
     koth: bool = False
     nomad: bool = False
+    # Explicit lobby team sizes in team order, contiguous lobby blocks (1v7 = (1, 7): player 1 alone on team 0).
+    # None = the even split of team_of. 2026-10-07, the Danube's uneven 2-team layouts.
+    team_sizes: Optional[Tuple[int, ...]] = None
 
     def __post_init__(self) -> None:
         if self.players < 1:
@@ -51,6 +54,10 @@ class Scenario:
             raise ValueError(
                 f"teams must be in 1..players ({self.players}), got {self.teams!r}"
             )
+        if self.team_sizes is not None and (len(self.team_sizes) != self.teams
+                                            or sum(self.team_sizes) != self.players or min(self.team_sizes) < 1):
+            raise ValueError(f"team_sizes {self.team_sizes!r} must give {self.teams} teams of >= 1 summing to "
+                             f"{self.players} players")
 
 
 def _check_when(when: Dict[str, Any], sc: Scenario) -> bool:
@@ -94,12 +101,20 @@ def _check_when(when: Dict[str, Any], sc: Scenario) -> bool:
     return True
 
 
-def team_of(player: int, players: int, teams: int) -> int:
+def team_of(player: int, players: int, teams: int, sizes: Optional[Tuple[int, ...]] = None) -> int:
     """The team (0-based) of lobby player `player` (1-based): contiguous blocks in lobby order, 1,2,3 against 4,5,6 at
     6 players / 2 teams. The ONE team model of mapsim - rmGetPlayerTeam, rmGetNumberPlayersOnTeam, the placement ring,
     team-anchored areas, the preview and the twin all use it (until 2026-09-25 rmGetPlayerTeam alternated,
     (p - 1) % teams, while the ring used blocks). Ground truth: in 44 of 44 live P6T2 editor saves players 1-3 share
-    one side (Versailles' attackers, Malta's team sections, Aztec City's team-0 ring, both London saves 1,2/3,4)."""
+    one side (Versailles' attackers, Malta's team sections, Aztec City's team-0 ring, both London saves 1,2/3,4).
+    `sizes` (Scenario.team_sizes) gives the blocks explicitly: (1, 7) puts player 1 alone on team 0."""
+    if sizes:
+        acc = 0
+        for t, n in enumerate(sizes):
+            acc += int(n)
+            if int(player) <= acc:
+                return t
+        return len(sizes) - 1
     return (int(player) - 1) * max(1, int(teams)) // max(1, int(players))
 
 

@@ -516,6 +516,14 @@ class Extraction:
     route_types: Dict[int, Any] = dfield(default_factory=dict)
     # handle -> the line of its rmBuildTradeRoute: the route exists for constraints only from then on
     route_build_lines: Dict[int, int] = dfield(default_factory=dict)
+    # rmGetTradeRouteWayPoint reads at a route END (fraction <= 0 or >= 1): (line, route handle, fraction). The engine
+    # returned the map origin there (Danube v8b / v9 saves, 2026-10-07), so these read Tainted and mapcheck S9 FAILs
+    route_end_reads: List[Tuple[int, Any, float]] = dfield(default_factory=list)
+    # The trigger DSL as the script executed it (2026-10-07, the elector ladder test), one dict per rmCreateTrigger in
+    # creation order: {"name", "line", "conditions": [{"name", "params": [(pname, value)]}], "effects": [...],
+    # "priority", "active", "run_immediately", "loop"}. A trigger's id is its index (rmTriggerID resolves underscores
+    # to spaces, rm-triggers law 3); an EventID parameter is recorded as {"trigger": <name with underscores>}.
+    triggers: List[Dict[str, Any]] = dfield(default_factory=list)
     rivers: Dict[int, "XRiver"] = dfield(default_factory=dict)
     connections: Dict[int, "XConnection"] = dfield(default_factory=dict)
     constraints: Dict[str, Dict[str, Any]] = dfield(default_factory=dict)
@@ -679,7 +687,7 @@ TAINTED_FUNCS = {
 }
 
 
-def ring_positions(player_events, players: int, teams: int):
+def ring_positions(player_events, players: int, teams: int, sizes=None):
     """Deterministic NOMINAL player positions from the placement calls
     recorded so far — the single implementation shared by the bridge and
     the in-extractor rmPlayerLocX/ZFraction resolution (per-player content
@@ -754,6 +762,12 @@ def ring_positions(player_events, players: int, teams: int):
 
     def _pos(ev, idx, count, whole_ring=False):
         if ev.get("call") == "rmPlacePlayersCircular":
+            sec = ev.get("section")
+            if sec and _n(sec[0]) is not None and _n(sec[1]) is not None and abs(float(sec[1]) - float(sec[0])) < 1e-9:
+                # A section of no length places NOBODY (Danube v12, 2026-10-07: a lone player's section (c, c) - the
+                # editor saves of 1v1 and 2v1 had no Town Center for the lone players). Not a full ring: the player
+                # stands nowhere, here the map centre, so every start check fails. mapcheck S10 flags the call.
+                return (0.5, 0.5)
             r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
             s0, s1 = _sec(ev)
             w = s1 - s0
@@ -792,13 +806,13 @@ def ring_positions(player_events, players: int, teams: int):
     # on a line, the attackers by rmPlacePlayer) or else stands at the map centre (Aztec City places team 0 only;
     # the real team-1 Town Center is 0.03 from the centre at 2p and 6p).
     untargeted = [e for e in evs if e.get("team") is None]
-    members = {t: [k for k in range(n) if team_of(k + 1, n, n_teams) == t] for t in range(n_teams)}
+    members = {t: [k for k in range(n) if team_of(k + 1, n, n_teams, sizes) == t] for t in range(n_teams)}
     out = []
     for k in range(n):
         if k + 1 in placed:
             out.append(placed[k + 1])
             continue
-        t = team_of(k + 1, n, n_teams)
+        t = team_of(k + 1, n, n_teams, sizes)
         if t in team_evs:
             out.append(_pos(team_evs[t], members[t].index(k), len(members[t])))
         elif untargeted:
@@ -820,6 +834,7 @@ class Extractor:
         self.constraint_handles: Dict[int, str] = {}
         self.routes: Dict[int, bool] = {}
         self.variant_stack: List[str] = []
+        self._trigger = -1                     # the trigger rmSwitchToTrigger / rmCreateTrigger made current
         # Depth of enclosing NON-nominal tainted-if arms; placements
         # recorded at depth > 0 carry nominal=False (Part H4).
         self.alt_depth: int = 0
@@ -895,6 +910,10 @@ class Extractor:
         if op == "decl":
             _, _type, name, expr, _line = stmt
             value = self.eval(expr) if expr is not None else _default(_type)
+            if _type == "int" and type(value) is float:
+                # XS truncates a float initialiser towards zero (vanilla `int size=2.0*sqrt(...)`; zpdanube.xs
+                # snaps the river skeleton to 16 m cells with `int cell = v / 16.0;`)
+                value = int(value)
             self.scopes[-1][name] = value
             return
         if op == "assign":
@@ -1115,6 +1134,44 @@ class Extractor:
 
     # -- engine dispatch ------------------------------------------------------
 
+    def _trigger_call(self, name: str, args: List[Any], line: int) -> Any:
+        """Record the trigger DSL as executed (Extraction.triggers); no geometry. The engine compiles each trigger to a
+        rule (rm-trigger-testing section 3), so loops, ifs and helpers in the script are already resolved here."""
+        trs = self.res.triggers
+        a0 = args[0] if args else None
+        if name == "rmCreateTrigger":
+            trs.append({"name": str(a0), "line": line, "conditions": [], "effects": [], "priority": None,
+                        "active": None, "run_immediately": None, "loop": None})
+            self._trigger = len(trs) - 1
+            return self._trigger
+        if name == "rmTriggerID":
+            key = str(a0).replace(" ", "_")
+            return next((i for i, t in enumerate(trs) if t["name"].replace(" ", "_") == key), -1)
+        if name == "rmSwitchToTrigger":
+            self._trigger = a0 if isinstance(a0, int) and 0 <= a0 < len(trs) else -1
+            return 0
+        if self._trigger < 0:
+            return 0
+        t = trs[self._trigger]
+        if name in ("rmAddTriggerCondition", "rmAddTriggerEffect"):
+            t["conditions" if "Condition" in name else "effects"].append({"name": str(a0), "params": []})
+        elif name.startswith(("rmSetTriggerConditionParam", "rmSetTriggerEffectParam", "rmAddTriggerEffectParam")):
+            items = t["conditions"] if "Condition" in name else t["effects"]
+            if items and len(args) >= 2:
+                value = args[1]
+                if args[0] == "EventID" and isinstance(value, int) and 0 <= value < len(trs):
+                    value = {"trigger": trs[value]["name"].replace(" ", "_")}
+                items[-1]["params"].append((str(args[0]), value))
+        elif name == "rmSetTriggerPriority":
+            t["priority"] = a0
+        elif name == "rmSetTriggerActive":
+            t["active"] = bool(a0)
+        elif name == "rmSetTriggerRunImmediately":
+            t["run_immediately"] = bool(a0)
+        elif name == "rmSetTriggerLoop":
+            t["loop"] = bool(a0)
+        return 0
+
     def _kings_hill_placer(self, args: List[Any], line: int) -> int:
         """Vanilla ypKOTHInclude.xs ypKingsHillPlacer(xLoc, yLoc, walkDistance, extraConstraint), replayed as its
         builtin calls: eight constraints, object def 'KingsHill' with item ypKingsHill, min distance 0, max distance
@@ -1195,7 +1252,9 @@ class Extractor:
             return self._kings_hill_landfill(args, line)
         if name in OPAQUE_DEF_BUILDERS:
             return OpaqueDef(name)
-        if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
+        if name in TRIGGER_FUNCS:
+            return self._trigger_call(name, args, line)
+        if name in NOOP_FUNCS:
             return 0
         if name == "rmGetTradeRouteWayPoint":
             # Deterministic: the point at arc-length fraction t along the
@@ -1207,6 +1266,12 @@ class Extractor:
             # snaps to 16 m blocks around this polyline.
             handle = args[0] if args else None
             t = args[1] if len(args) > 1 else None
+            if isinstance(t, (int, float)) and (float(t) <= 1e-6 or float(t) >= 1.0 - 1e-6):
+                # A read at a route's END is not a point we can trust: in game the Danube's route 1 returned the map
+                # origin at both ends, and a river drawn through those reads ran to the map corner (v8b / v9 saves,
+                # 2026-10-07; scratchpad hypo_test: best of 64 hypotheses on both saves). Recorded for mapcheck S9.
+                res.route_end_reads.append((line, handle, float(t)))
+                return Tainted("rmGetTradeRouteWayPoint(..., route end)")
             wps = res.route_waypoints.get(handle) if not isinstance(handle, Tainted) else None
             if (wps and not isinstance(t, Tainted) and t is not None
                     and res.map_size_x and res.map_size_z
@@ -1237,7 +1302,7 @@ class Extractor:
             # call has run yet or the player index is runtime/invalid.
             p = args[0] if args else None
             if not isinstance(p, Tainted) and p is not None:
-                ring = ring_positions(res.player_events, sc.players, sc.teams)
+                ring = ring_positions(res.player_events, sc.players, sc.teams, sc.team_sizes)
                 k = int(p)
                 if ring is not None and 1 <= k <= len(ring):
                     x, z = ring[k - 1]
@@ -1250,6 +1315,8 @@ class Extractor:
         # --- XS math builtins ---
         if name == "sqrt":
             return _t(args[0], math.sqrt)
+        if name in ("sin", "cos"):          # radians, as the engine's (RM dump: float sin(float), float cos(float))
+            return _t(args[0], math.sin if name == "sin" else math.cos)
         if name == "abs":
             return _t(args[0], abs)
         if name == "pow":
@@ -1351,7 +1418,7 @@ class Extractor:
                 return Tainted(f"rmGetPlayerTeam({args[0].expr})")
             p = int(args[0])
             if 1 <= p <= sc.players:
-                return team_of(p, sc.players, sc.teams)
+                return team_of(p, sc.players, sc.teams, sc.team_sizes)
             return (p - 1) % max(1, sc.teams)
         if name == "rmGetNomadStart":
             return sc.nomad
@@ -1359,6 +1426,8 @@ class Extractor:
             t = args[0]
             if isinstance(t, Tainted):
                 return Tainted("rmGetNumberPlayersOnTeam(?)")
+            if sc.team_sizes:
+                return sc.team_sizes[int(t)] if 0 <= int(t) < len(sc.team_sizes) else 0
             base = sc.players // sc.teams
             extra = sc.players % sc.teams
             return base + (1 if int(t) < extra else 0)

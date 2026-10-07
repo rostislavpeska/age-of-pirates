@@ -47,7 +47,8 @@ class RunResult:
 # from G1: grep sees commented-out code, a checker must not.
 # --------------------------------------------------------------------------
 
-def _strip(src: str) -> str:
+def _strip(src: str, keep_strings: bool = False) -> str:
+    """Comments (and, unless keep_strings, string contents) blanked to spaces; offsets and line numbers kept."""
     out: List[str] = []
     i, n = 0, len(src)
     mode = ""  # "" | line | block | str
@@ -59,7 +60,7 @@ def _strip(src: str) -> str:
             if c == "/" and i + 1 < n and src[i + 1] == "*":
                 mode = "block"; out.append("  "); i += 2; continue
             if c == '"':
-                mode = "str"; out.append(" "); i += 1; continue
+                mode = "str"; out.append('"' if keep_strings else " "); i += 1; continue
             out.append(c); i += 1
         elif mode == "line":
             if c == "\n":
@@ -72,7 +73,7 @@ def _strip(src: str) -> str:
         else:  # str
             if c == '"':
                 mode = ""
-            out.append(" "); i += 1
+            out.append(c if keep_strings else " "); i += 1
     return "".join(out)
 
 
@@ -98,7 +99,9 @@ def _duplicate_declarations(stripped: str) -> List[Tuple[str, int, int]]:
     if not decls:
         return []
     out: List[Tuple[str, int, int]] = []
-    seen: Dict[Tuple[int, str], int] = {}   # (block_id, name_lower) -> line
+    # (block_id, name) -> line. Names are case-sensitive: zplondon.xs declares rampSteps and rampStepS side by side
+    # (since 9c11b233, 2026-09-24) and compiles in game; a lower-cased key made that a false FAIL (2026-10-06)
+    seen: Dict[Tuple[int, str], int] = {}
     block_stack = [0]
     next_id = 1
     paren = 0
@@ -107,7 +110,7 @@ def _duplicate_declarations(stripped: str) -> List[Tuple[str, int, int]]:
         while di < len(decls) and decls[di][0] == off:
             name = decls[di][1]
             if paren == 0:
-                key = (block_stack[-1], name.lower())
+                key = (block_stack[-1], name)
                 line = _line_of(stripped, off)
                 if key in seen:
                     out.append((name, line, seen[key]))
@@ -299,7 +302,178 @@ def static_checks(path: Path, scenario) -> RunResult:
                               "mod images tree (vanilla asset, or a broken "
                               "reference)", map=stem,
                               guide_ref="guide ch.10"))
+
+    # S7 — map-edge constraints on scattered objects (rm-objects-herds "Map-edge constraints"; owner 2026-10-06:
+    # treasures and mines landed outside the playable circle on the Danube, whose objects carried King of Bohemia's
+    # BOX edge on a square map). A constraint tests the object's centre only, and rmSetWorldCircleConstraint does not
+    # keep a searched object inside the circle. Square map: a full circle (pie centred 0.5/0.5, radius at least a few
+    # metres inside the rim). Rectangular map: that circle AND a box. The maps that already lacked them on 2026-10-06
+    # are baselined (s7_edge_baseline.json): up to their count the findings are WARN, so the legacy roster stays
+    # readable; a new map, or a baselined map whose count grows, FAILs.
+    edge = _edge_constraint_findings(ex, stem)
+    allowed = _edge_baseline().get(stem.lower(), 0)
+    for f in edge:
+        if len(edge) <= allowed:
+            f = Finding("S7", "WARN", f.basis, f"[legacy, baselined 2026-10-06: fix when the map is next touched] "
+                        f"{f.message}", map=f.map, line=f.line, guide_ref=f.guide_ref)
+        F(f)
+
+    # S8 / S9 — build order and route read-backs (Danube v9, 2026-10-07: "you build trade route after the bridges";
+    # its river drawn through rmGetTradeRouteWayPoint reads ran to the map corner and 15% of the map stayed water)
+    for f in _build_order_findings(src, ex, stem):
+        F(f)
+    # S10 — a placement section of no length places nobody (Danube v12 1v1 / 2v1, 2026-10-07)
+    for f in _placement_findings(ex, stem):
+        F(f)
     return res
+
+
+def _placement_findings(ex, stem: str) -> List[Finding]:
+    """S10: rmPlacePlayersCircular on a placement section of no length (start == end, as the extractor evaluated it
+    for this scenario). The engine places nobody there: Danube v12 gave a lone player the section (c, c) and the
+    editor saves of 1v1 and 2v1 had no Town Center for the lone players. A lone player stands at his section's START,
+    so the section still needs a length."""
+    out: List[Finding] = []
+    for ev in ex.player_events:
+        sec = ev.get("section")
+        if ev.get("call") != "rmPlacePlayersCircular" or not sec:
+            continue
+        if not all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in sec[:2]):
+            continue
+        s0, s1 = float(sec[0]), float(sec[1])
+        if abs(s1 - s0) < 1e-9:
+            out.append(Finding("S10", "FAIL", "deterministic",
+                               f"rmPlacePlayersCircular on the placement section ({s0:.3f}, {s1:.3f}) of no length "
+                               f"(placement team {ev.get('team')}): the engine places nobody there - give a lone "
+                               f"player's section a length, he stands at its start", map=stem))
+    return out
+
+
+WATER_ROUTE_MARKERS = ("river_trail", "water_trail")   # route types boats use; every other type is a land route
+
+
+def _build_order_findings(src: str, ex, stem: str) -> List[Finding]:
+    """S8: a LAND trade route built after a bridge grouping is placed (every repo map but Danube v9 builds its land
+    routes first - Florence 477 / 522, London 743 / 810, Paris 350 / 413; a bridge goes onto a finished road). S9: an
+    rmGetTradeRouteWayPoint read at a route end (fraction <= 0 or >= 1, as the extractor evaluated it): the engine
+    returned the map origin there. Pure function of the RAW source (grouping files and route types are strings, which
+    _strip blanks), so tests can call it on fixtures."""
+    out: List[Finding] = []
+    stripped = _strip(src, keep_strings=True)
+    bridge_vars = set(re.findall(r'(\w+)\s*=\s*rmCreateGrouping\(\s*[^,]+,\s*"[^"]*bridge[^"]*"', stripped,
+                                 flags=re.IGNORECASE))
+    first_bridge = None
+    for v in bridge_vars:
+        m = re.search(r'rmPlaceGrouping\w*\(\s*%s\b' % re.escape(v), stripped)
+        if m and (first_bridge is None or m.start() < first_bridge):
+            first_bridge = m.start()
+    if first_bridge is not None:
+        for m in re.finditer(r'rmBuildTradeRoute\(\s*(\w+)\s*,\s*"([^"]+)"\s*\)', stripped):
+            kind = m.group(2).lower()
+            if any(w in kind for w in WATER_ROUTE_MARKERS):
+                continue
+            if m.start() > first_bridge:
+                out.append(Finding(
+                    "S8", "FAIL", "deterministic",
+                    f"land trade route {m.group(1)!r} ({m.group(2)}) is built after the first bridge grouping is placed "
+                    f"(line {_line_of(stripped, first_bridge)}): build the land route first, then put the bridges on it",
+                    map=stem, line=_line_of(stripped, m.start()), guide_ref="rm-trade-routes: build order"))
+    lines = stripped.split("\n")
+    for line, handle, frac in getattr(ex, "route_end_reads", []) or []:
+        # an initializer overwritten before anything reads it is harmless (zpkingofbohemia.xs 738:
+        # `vector socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.0);`, reassigned at 0.12 before its first use)
+        text = lines[line - 1] if 0 < line <= len(lines) else ""
+        dm = re.search(r'\bvector\s+(\w+)\s*=\s*rmGetTradeRouteWayPoint', text)
+        if dm:
+            after = "\n".join(lines[line:])
+            nxt = re.search(r'\b%s\b(\s*=(?!=))?' % re.escape(dm.group(1)), after)
+            if nxt and nxt.group(1):
+                continue
+        out.append(Finding(
+            "S9", "FAIL", "deterministic",
+            f"rmGetTradeRouteWayPoint at a route end (fraction {frac:g}): the engine returned the map origin there "
+            f"(Danube 2026-10-07); read interior fractions only, and draw geometry from the authored waypoints",
+            map=stem, line=line, guide_ref="rm-trade-routes: route read-backs"))
+    return out
+
+
+EDGE_SEARCH_MIN_M = 40.0      # a placement searching further than this from its anchor is a scatter
+EDGE_RIM_MARGIN_M = 4.0       # the circle's radius must sit at least this far inside the half map size
+EDGE_BASELINE = Path(__file__).resolve().parent / "s7_edge_baseline.json"
+
+
+def _edge_baseline() -> Dict[str, int]:
+    """S7 findings per map stem (lower case) on 2026-10-06; tests/test_edge_constraints.py ratchets them down."""
+    try:
+        counts = json.loads(EDGE_BASELINE.read_text(encoding="utf-8"))["counts"]
+    except (OSError, ValueError, KeyError):
+        return {}
+    out: Dict[str, int] = {}
+    for k, v in counts.items():
+        stem = Path(k).stem.lower()
+        out[stem] = max(out.get(stem, 0), int(v))
+    return out
+
+
+def _edge_constraint_findings(ex, stem: str) -> List[Finding]:
+    """S7: every scattered object def (placed in an area, or searched more than EDGE_SEARCH_MIN_M from its anchor;
+    route-docked sockets and groupings excluded) carries a circle edge constraint, and a box as well on a rectangular
+    map. Pure function of the extraction, so tests can call it on fixtures."""
+    out: List[Finding] = []
+    sx, sz = ex.map_size_x, ex.map_size_z
+    if not isinstance(sx, (int, float)) or not isinstance(sz, (int, float)):
+        return out
+    square = abs(float(sx) - float(sz)) < 1.0
+    half_min = min(float(sx), float(sz)) / 2.0
+    half_diag = (float(sx) ** 2 + float(sz) ** 2) ** 0.5 / 2.0
+
+    def is_circle(spec) -> bool:
+        if spec.get("kind") != "pie":
+            return False
+        c = spec.get("center") or [None, None]
+        r = spec.get("r_max_m")
+        if not all(isinstance(v, (int, float)) for v in (c[0], c[1], r)):
+            return False
+        if abs(float(c[0]) - 0.5) > 0.01 or abs(float(c[1]) - 0.5) > 0.01:
+            return False
+        rim = half_min if square else half_diag
+        return float(r) <= rim - EDGE_RIM_MARGIN_M
+
+    def is_box(spec) -> bool:
+        if spec.get("kind") != "box":
+            return False
+        b = spec.get("box") or []
+        if len(b) < 4 or not all(isinstance(v, (int, float)) for v in b[:4]):
+            return False
+        x0, z0, x1, z1 = (float(v) for v in b[:4])
+        return min(x0, z0) > 0.0 and max(x1, z1) < 1.0
+
+    scattered: Dict[int, Tuple[Any, int]] = {}
+    for p in ex.placements:
+        if p.def_handle is None or not p.nominal:
+            continue
+        d = ex.defs.get(p.def_handle)
+        if d is None or d.is_grouping or d.route_docked:
+            continue
+        search = d.max_dist if isinstance(d.max_dist, (int, float)) else 0.0
+        if p.kind == "in_area" or float(search) >= EDGE_SEARCH_MIN_M:
+            scattered.setdefault(p.def_handle, (d, p.def_line))
+    for handle, (d, line) in sorted(scattered.items(), key=lambda kv: kv[1][1]):
+        specs = [ex.constraints.get(c, {}) for c in d.constraints]
+        has_circle = any(is_circle(s) for s in specs)
+        has_box = any(is_box(s) for s in specs)
+        if square and not has_circle:
+            why = ("a box alone leaves the corners open" if has_box else "no edge constraint")
+            out.append(Finding("S7", "FAIL", "deterministic",
+                               f"object {d.name!r} is scattered on a square map without a circle edge constraint "
+                               f"({why}): it can land outside the playable circle", map=stem, line=d.line,
+                               guide_ref="rm-objects-herds: Map-edge constraints"))
+        elif not square and not (has_circle and has_box):
+            missing = " and ".join(w for w, ok in (("a corner circle", has_circle), ("an edge box", has_box)) if not ok)
+            out.append(Finding("S7", "FAIL", "deterministic",
+                               f"object {d.name!r} is scattered on a rectangular map without {missing}",
+                               map=stem, line=d.line, guide_ref="rm-objects-herds: Map-edge constraints"))
+    return out
 
 
 def _image_exists(ref: str) -> bool:

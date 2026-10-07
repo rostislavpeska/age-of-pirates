@@ -571,14 +571,15 @@ int jewish3ID = rmCreateGrouping("jewish 3", "Jewish_Settlement_0"+jewish3Villag
 	rmAddGroupingConstraint(jewish3ID, avoidTownCenterFar);
 	rmAddGroupingConstraint(jewish3ID, circleConstraint);
 
-// Maltese
+// Maltese (the Orthodox_South copies without the area flattener, owner 2026-10-07: its 40 x 40 m
+// square would cut the terraces round the villages)
 
 int maltese1VillageTypeID = rmRandInt(1,3);
 int maltese1ID = -1;
 	if (christianVariation == 0)
    		maltese1ID = rmCreateGrouping("maltese 1", "Maltese_village_ME0"+maltese1VillageTypeID);
 	else
-		maltese1ID = rmCreateGrouping("maltese 1", "Orthodox_South_0"+maltese1VillageTypeID);
+		maltese1ID = rmCreateGrouping("maltese 1", "Orthodox_South_0"+maltese1VillageTypeID+"_noflatten");
 	rmSetGroupingMinDistance(maltese1ID, 0);
 	rmSetGroupingMaxDistance(maltese1ID, 60);
 	rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
@@ -594,7 +595,7 @@ int maltese2ID = -1;
    if (christianVariation == 0)
    		maltese2ID = rmCreateGrouping("maltese 2", "Maltese_village_ME0"+maltese2VillageTypeID);
 	else
-		maltese2ID = rmCreateGrouping("maltese 2", "Orthodox_South_0"+maltese2VillageTypeID);
+		maltese2ID = rmCreateGrouping("maltese 2", "Orthodox_South_0"+maltese2VillageTypeID+"_noflatten");
    rmSetGroupingMinDistance(maltese2ID, 0);
    rmSetGroupingMaxDistance(maltese2ID, 60);
    rmAddGroupingConstraint(maltese2ID, avoidImpassableLand);
@@ -610,7 +611,7 @@ int maltese3ID = -1;
    if (christianVariation == 0)
    		maltese3ID = rmCreateGrouping("maltese 3", "Maltese_village_ME0"+maltese3VillageTypeID);
 	else
-		maltese3ID = rmCreateGrouping("maltese 3", "Orthodox_South_0"+maltese3VillageTypeID);
+		maltese3ID = rmCreateGrouping("maltese 3", "Orthodox_South_0"+maltese3VillageTypeID+"_noflatten");
    rmSetGroupingMinDistance(maltese3ID, 0);
    rmSetGroupingMaxDistance(maltese3ID, 60);
    rmAddGroupingConstraint(maltese3ID, avoidImpassableLand);

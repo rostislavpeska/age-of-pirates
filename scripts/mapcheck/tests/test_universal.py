@@ -70,6 +70,10 @@ class TestDuplicateDeclarations:
     def test_different_names_ok(self):
         assert _duplicate_declarations("{ int a = 1; int b = 2; }") == []
 
+    def test_names_differing_only_in_case_ok(self):
+        # XS names are case-sensitive: zplondon.xs 927-928 (rampSteps, rampStepS) compiles in game since 2026-09-24
+        assert _duplicate_declarations("{ float rampSteps = 4.0; float rampStepS = 1.0; }") == []
+
 
 class TestStaticTier:
     def test_ok_min_clean(self):

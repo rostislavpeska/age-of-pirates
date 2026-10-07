@@ -850,10 +850,12 @@ void main(void)
 		rmAddAreaToClass(nativeVillage1, rmClassID("classPlateau"));
 		rmBuildArea(nativeVillage1);
 
+		// the monasteries without the area flattener (owner 2026-10-07): its 40 x 40 m square would cut the
+		// village plateau's 2 m cliff
 		int nativeCampID = -1;
 		if (i == 0){
 			if (placementOrder == 1){
-				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery1Type);
+				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery1Type + "_noflatten");
 			}
 			else{
 				nativeCampID = rmCreateGrouping("native camp"+i, "Cossack_Camp_0"+cossackCamp1Type);
@@ -861,7 +863,7 @@ void main(void)
 		}
 		else if (i == 1){
 			if (placementOrder == 2){
-				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery1Type);
+				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery1Type + "_noflatten");
 			}
 			else{
 				nativeCampID = rmCreateGrouping("native camp"+i, "Cossack_Camp_0"+cossackCamp1Type);
@@ -869,7 +871,7 @@ void main(void)
 		}
 		else if (i == 2){
 			if (placementOrder == 1){
-				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery2Type);
+				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery2Type + "_noflatten");
 			}
 			else{
 				nativeCampID = rmCreateGrouping("native camp"+i, "Cossack_Camp_0"+cossackCamp2Type);
@@ -877,7 +879,7 @@ void main(void)
 		}
 		else{
 			if (placementOrder == 2){
-				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery2Type);
+				nativeCampID = rmCreateGrouping("native camp"+i, "Orthodox_Monastery0" + orthodoxMonastery2Type + "_noflatten");
 			}
 			else{
 				nativeCampID = rmCreateGrouping("native camp"+i, "Cossack_Camp_0"+cossackCamp2Type);
