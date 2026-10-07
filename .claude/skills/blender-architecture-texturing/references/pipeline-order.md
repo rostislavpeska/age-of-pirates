@@ -43,8 +43,10 @@ as a one-command recipe with explicit inputs.
    Extend pilots through explicit per-region recipes, not by deleting `only`: a good
    center region does not certify its upturned corners or the next slope's source.
 7. **Texture and export.** Tiled materials projected in 3D and baked into the owners,
-   painted details, then export. Sources: Poly Haven / Substance assets by default, edited (tinted,
-   made seamless); GPT-generated images only for genuinely unique textures (image harness, Claude only).
+   painted details, then export. Sources: Poly Haven / Substance assets by default, with
+   FreeStylized and ambientCG as additional candidates in the [source catalogue](sources-seamless.md#texture-source-catalogue).
+   Match the established set and verify each asset's terms before editing (tinting, making seamless);
+   GPT-generated images only for genuinely unique textures (image harness, Claude only).
 
 **Every phase ends with a `HANDOFF.json`** ([handoff contract](handoff-contract.md)): standard canonical
 outputs so any agent can continue at any phase by consuming them - never reinventing an upstream result
