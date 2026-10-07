@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "convention": "raw_gr2=(author_u,1-author_v)",
+  "author_checkpoint": "r58",
+  "author_blend_sha256": "c2cda70e72d9c84902c2884e82d8ec239d49d64e7cbfa45ccc2a3486ee5ee498",
+  "author_payload_sha256": "84792fb5df212250c4a81e2c6bd918889ab13dd97c704e41aa8d8af531afb3fd",
+  "provenance": "INC-133; independent known-working TC raw buffers; derived from frozen author triangles, not candidate GR2",
+  "expected": {
+    "intact": {
+      "mata": {
+        "corners": 16032,
+        "position_f32_sha256": "afc5457df63fc1665577ee38cba772c2dad1e7155b10bc9152aae01587cbdd3d",
+        "raw_uv_f16_sha256": "6b53d52b173c37f694dc54a54840004f33bfac41a770c3a6cb7f13ef03b1f64c"
+      },
+      "matc": {
+        "corners": 11622,
+        "position_f32_sha256": "fc3a6b1e0de2e28673a54a87b90a7a31223c3331a11d35857ba706a79e38f72f",
+        "raw_uv_f16_sha256": "ce1c55c3405b7987128b86483fa0408b0ac8b497ae0d6e4b89f1285da94679d2"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "9682884ddb1f5892622ee300e0aa410672969488fc470993c5bbdf16fa48cea2",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    },
+    "damaged": {
+      "mata": {
+        "corners": 26475,
+        "position_f32_sha256": "eeecaab5a5f0076f1df5dbb694fefd93c1d0ad4b00fa468da63e6689cd2d6e75",
+        "raw_uv_f16_sha256": "5b78a88f031c4df628f6254a7ccce7ae4e154d9c325bd75abb798a4e2487f639"
+      },
+      "matz": {
+        "corners": 16200,
+        "position_f32_sha256": "5b2bb4310c76e3989d5c8695d308e783bac6004d01fc4742411f2deb457da9a2",
+        "raw_uv_f16_sha256": "a95de93e223692802bac03a891b2697fbbc5ea7d1718cba933a66861e9967b97"
+      },
+      "matc": {
+        "corners": 18027,
+        "position_f32_sha256": "5673cd49f8cf71853e2aeae482d7c0a6ab7ca36ddb112c41cda1b4ab68ae4808",
+        "raw_uv_f16_sha256": "ab03448dada4c7fade25fe027e16c6af22cbef24d5044d25b0a31ea71e027980"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "9682884ddb1f5892622ee300e0aa410672969488fc470993c5bbdf16fa48cea2",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "authority": "owner",
+  "kind": "recorded_owner_chat",
+  "purpose": "shared_mod_dependencies",
+  "source_citation": "Exact owner instruction from current Korean military workflow chat, quoted to export reviewer by root on 2026-10-07; no app message id available.",
+  "owner_quote": "The atlas (matc) is one shared with Town |Center and caN WORK FOER ALL Koprean buildings - should also be on the Korean specific rules (shared materials / textures / other assets)",
+  "models": [
+    "korean_barracks_physics",
+    "korean_stable_physics",
+    "korean_barracks_physics_damaged",
+    "korean_stable_physics_damaged"
+  ],
+  "source_names": [
+    "Korean TC shared matC"
+  ]
+}

@@ -462,6 +462,11 @@
     "status": "proposed, owner to confirm"
    }
   },
+  "korean_shared": {
+   "resource_only": true,
+   "resource_kind": "shared_texture_atlas",
+   "_doc": "TC-compatible matC texture dependency only; no building model or own page allocation. Consumers pin its files and owner authorization in config/gr2_lint_military.json."
+  },
   "wall": {
    "texture_budget": {
     "class": "small",

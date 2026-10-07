@@ -1376,6 +1376,8 @@ def resolve_profile(profiles, name):
         raise KeyError(f"no lint profile {name!r} in gr2_lint_profiles.json (every building folder has one; a model "
                        "without a profile is not cleared)")
     p = dict(profiles['profiles'][name])
+    if p.get('resource_only'):
+        raise KeyError(f'{name!r} is a shared texture dependency, not an exportable building profile')
     p['name'] = name
     p['_texture_budget'] = profiles.get('texture_budget') or {}       # the owner's classes and counting rule
     p['_tools'] = profiles.get('tools') or {}
@@ -1496,6 +1498,10 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
                 results.append(check_materials(stage, info, damaged_material, art_root))
             results.append(check_texture_budget(stage, mat, art_root, prof, model, **union))
             results.append(check_density(stage, info, mat, art_root, prof, model))
+            if prof.get('uv_contract'):
+                from gr2_uv_contract import check as check_uv_contract
+                ok, message = check_uv_contract(stage, info, prof['uv_contract'], Path(__file__).resolve().parents[2])
+                results.append(R(stage, 'source_uv_contract', ok, message))
         if animfile is not None:
             results.append(check_crlf(animfile))
     finally:

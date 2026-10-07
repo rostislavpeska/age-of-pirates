@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "authority": "owner",
+  "kind": "recorded_owner_chat",
+  "purpose": "shared_mod_dependencies",
+  "source_citation": "Exact owner instruction from current Korean military workflow chat, quoted to export reviewer by root on 2026-10-07; no app message id available.",
+  "owner_quote": "You can use the pots from Korean TC. Keep the material and UV tied to TC and only define material as matb with link to TC material then. That's fine.",
+  "models": [
+    "korean_barracks_physics",
+    "korean_stable_physics",
+    "korean_barracks_physics_damaged",
+    "korean_stable_physics_damaged"
+  ],
+  "source_names": [
+    "Korean TC pots"
+  ]
+}

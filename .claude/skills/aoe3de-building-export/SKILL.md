@@ -47,4 +47,18 @@ dependent step; do not install, upgrade or silently substitute them during prefl
 7. Validate material and animation XML against a working target asset, then apply the consuming mod's line-ending, XMB and reference rules.
 8. Report Blender validation, conversion validation and in-game validation separately.
 
+**Raw UV export boundary (INC-133):** a direct Blender-to-GR2 writer must store
+`(u, 1-v)`, with tangents computed from those final raw UVs. Do not also flip the
+DDT image rows. Establish the convention against a working asset; compare every
+serialized triangle corner, its position and material against frozen source data
+using an independent check. Density and a serializer roundtrip cannot catch a
+consistently wrong coordinate convention. Render the actual bound GR2 meshes with
+their XML-resolved DDT textures, including asymmetric atlas landmarks and alpha;
+authoring-file beauty renders do not validate the exported mapping. Retain the
+failed file as a negative fixture. Report any unverified engine normal-shader
+assumption separately from the proven texture lookup.
+
+Editor test entries must have distinct localized names from both the vanilla
+donor and any comparison clone. Verify the compiled string tables, not only XML.
+
 After a failure, retain the artifacts and test one falsifiable hypothesis. A repeated failure with the same recipe requires inspection of the actual FBX/GR2/XML evidence before another export.

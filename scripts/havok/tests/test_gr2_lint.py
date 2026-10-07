@@ -548,6 +548,14 @@ def test_every_building_folder_has_a_class_and_only_the_owner_confirms_one():
     prof = PROFILES["profiles"]
     folders = {p.name for p in (REPO / "art" / "buildings").iterdir() if p.is_dir()}
     assert folders <= set(prof), sorted(folders - set(prof))
+    resources = {k for k, v in prof.items() if v.get('resource_only')}
+    assert resources == {'korean_shared'}
+    for name in resources:
+        assert prof[name]['resource_kind'] == 'shared_texture_atlas'
+        assert not list((REPO / 'art' / 'buildings' / name).rglob('*.gr2'))
+        with pytest.raises(KeyError, match='not an exportable building'):
+            L.resolve_profile(PROFILES, name)
+    prof = {k: v for k, v in prof.items() if k not in resources}
     classes = PROFILES["texture_budget"]["classes"]
     assert {k: v["ceiling"] for k, v in classes.items()} == {"small": [2048], "medium": [2048, 1024],
                                                             "large": [2048, 2048]}
