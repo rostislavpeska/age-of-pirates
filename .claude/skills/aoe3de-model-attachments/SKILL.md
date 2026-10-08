@@ -1,0 +1,108 @@
+---
+name: aoe3de-model-attachments
+description: Attachments on Age of Empires III DE models end to end - the animfile XML side (<attachment>/<include>, <attach a frombone tobone syncanims>, which component and which simskeleton resolve the bone, BuildingCompletion stages, flags) and the Blender/GR2 side (where attachment bones come from, frames, rotation AND scale, adding them to the intact and the damaged model). Ships attachment_check.py (every tobone resolves in every model and simskeleton; no flag bones on construction stages) and add_bones.py (explicit position/rotation/scale bone appender). Use before attaching horses, flags, smoke, fire, props or scaffolds to a building or unit, and when "attached props appear at the origin", "two horses on top of each other", "the attachment is rotated", "a flag floats over the construction", "the flag is missing", "attachment works intact but not damaged".
+---
+
+# Attachments on models: XML and Blender
+
+An attachment is two things that must agree: an **animfile** line that names a bone, and a **bone** that exists,
+with the right transform, in every skeleton the engine uses at that moment. Bone mechanics (appending, GXO
+tables, converter roots) are in **unit-bones**; this skill covers the wiring, the resolution rule and the checks.
+
+## 1. The XML side
+
+```xml
+<submodel>korean_stable_built
+  <attachment>horse1<include>buildings\native_civs\corral\iroquois_horse1.xml</include>
+  </attachment>                                         <!-- definition: an include or an inline <component> -->
+  <component>LIVE<logic type="Destruction">
+      <p1><assetreference type="GrannyModel"><file>...\korean_stable_physics_damaged</file></assetreference></p1>
+      <p99><assetreference type="GrannyModel"><file>...\korean_stable_physics</file></assetreference></p99>
+    </logic>
+    <attach a="horse1" frombone="bone_master" tobone="bone_horse1" syncanims="1" />   <!-- live, per state -->
+    ...
+  </component>
+  <anim>Idle<component>LIVE</component>
+    <simskeleton><model>...\korean_stable_physics_damaged</model></simskeleton></anim>
+  <anim>Death<component>DEAD</component>
+    <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0" /></anim>  <!-- event -->
+</submodel>
+```
+
+- `a` names the `<attachment>`; `tobone` is a bone of the **host** model; `frombone` a bone of the attached
+  model (vanilla stables use `bone_master`, which the DE horse skeleton lacks - the engine then uses the horse
+  model's origin; vanilla ships it this way and its stables show their horses).
+- An `<attach>` inside a `<component>` is live while that component shows; one inside an `<anim>` belongs to
+  that animation/event (Death smoke).
+- `<definebone>` lines do **not** create bones in a GR2 (the Korean TC animfile declares 103, its construction
+  GR2 has 7); they are optional for attachments (**unit-bones**).
+- Runtime art XML is CRLF (**aoe-xml**); write paths with real backslashes - an escaped `\n` inside
+  `buildings\native_civs` once turned into a line break.
+
+## 2. The resolution rule (measured 2026-10-08)
+
+**The `tobone` must exist in every model the component can show AND in the `<simskeleton>` model of every
+anim that plays the component.** A bone missing there resolves to nothing: the attachment drops to the
+**model origin with identity rotation** - with two horses that looks like "one over another, wrong rotation".
+
+| Model | `bone_horse*` | Horse bone transform |
+|---|---|---|
+| vanilla `east_stables_2age.gr2` (intact) | 1, 2, 3 under `Bone_main` | quat (0, .7071, 0, .7071), scale .8, flags 7 |
+| vanilla `east_stables_age2_damaged.gr2` | 1, 2, 3 under `bone_master` | identical |
+| Korean stable intact (2026-10-08 b6e4344f) | 1, 2 | identical to vanilla |
+| Korean stable damaged (b6e4344f) | **none** -> both horses at the origin in game | - |
+
+Vanilla carries the bones in both skeletons; the Korean fix appended the same two bones to the damaged model
+(meshes, bone order and HKT untouched). **unit-bones** already said "the damaged model needs the same bones";
+the check below now enforces it.
+
+## 3. Per-state attachments (buildings)
+
+| State | Attachments | Rule |
+|---|---|---|
+| Intact (BuildingCompletion p100) | civ/garrison flags, horses, smoke, props per the building's contract | bones in intact AND damaged/simskeleton models |
+| Last construction stage (p66, project policy) | none visible - no flags, horses, props | the construction GR2 must not carry `bone_flag_civ` / `bone_garrisonflag`: the engine hangs the player flag on those names even without an `<attach>` line. A donor skeleton passes them on silently - audit and rename/remove |
+| Earlier vanilla stages (p0/p33) | vanilla scaffold attached at `ATTACHPOINT` | keep the vanilla routing |
+| Damaged / destruction | as intact while assembled; a flag follows its surviving support | **havok-destruction** animtrans rules; never root-parent everything blindly |
+| Death | debris/smoke events | anim-level `<attach>` |
+
+## 4. The Blender / GR2 side
+
+- **Frames.** Blender world (x right, y forward, z up) -> engine raw = (-X, Z, -Y). Some assets are exported
+  through the converter with an extra turn (Korean TC: `rotate_y_deg 90`); a bone or state model built with a
+  different frame lands turned (**aoe3de-building-states** `state_frame_check.py`).
+- **Where bones come from.** Writer route (`multimaterial_gr2.replace`): the skeleton is the donor's, copied
+  verbatim - it brings the donor's flag/hitpoint/attachment bones with it. Converter route: bones from the
+  scene/GXO, attach bones as children of the one root, never a second root (**unit-bones**).
+- **Transform = position + rotation + scale.** Vanilla attachment bones can carry scale (stable horses .8);
+  `gr2_addbones.py` (GXO tables) writes identity scale, so use `scripts/add_bones.py` here for scaled or
+  explicitly rotated bones:
+
+```bash
+python .claude/skills/aoe3de-model-attachments/scripts/add_bones.py IN.gr2 TABLE.json OUT.gr2 [--from-blender]
+# TABLE.json: [{"name": "bone_horse1", "parent": null, "pos": [1.085, -3.42, 0], "rot_blender": [[0,1,0],[-1,0,0],[0,0,1]], "scale": 0.8}]
+```
+
+  Run it on the intact AND the damaged model with the same table. It reproduces the Korean stable fix byte
+  for byte (test). Measure clearance against the real model before placing anything that stands (horses).
+- **Removing a donor bone you must not keep** (construction flag): rename it in place to a same-length
+  harmless name and recompute the Granny CRC - recipe `strip_flag_bone_r71.py` in the Korean repo's
+  `research/Construction_13/recipes_r67_r71/matc1024_r71/`.
+
+## 5. Checks, in order
+
+```bash
+python .claude/skills/aoe3de-model-attachments/scripts/attachment_check.py art/<path>/<model>.xml   # static, seconds
+python scripts/havok/gr2_lint.py ... <folder>                                                     # dll_read, bindings
+```
+
+Then **rm-unit-bench** / the owner's game test. `attachment_check.py` resolves mod-local GR2s; vanilla archive
+models are reported NOT CHECKED, never as passed.
+
+## 6. Incidents this skill exists for (2026-10-08)
+
+- Korean stable horses at the stall-wing origin, sideways: bones only in the intact GR2 (b6e4344f, fixed after).
+- Korean construction models carried `bone_flag_civ` from the donor skeleton (513928bd, fixed in 7585fc4c).
+- Tests: `tests/test_attachments.py` keeps both as regression cases against git history.
+
+Related: **unit-bones**, **aoe3de-building-states**, **havok-destruction**, **aoe-xml**, **gr2-granny-edit**.

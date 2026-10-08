@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/state_frame_check.py",
+    "tests/test_state_frame.py"
+  ],
+  "skills": [
+    "aoe3de-model-attachments",
+    "aoe-building-pipeline",
+    "aoe3de-destructible-building",
+    "havok-destruction",
+    "unit-bones",
+    "aoe-xml",
+    "rm-unit-bench",
+    "aoe3de-bar-archives"
+  ],
+  "external": [
+    {
+      "id": "aop-project-tools",
+      "kind": "capability",
+      "requiredFor": [
+        "attachment-check",
+        "bone-append",
+        "frame-check"
+      ],
+      "optional": false,
+      "note": "The AoP repository supplies scripts/havok (gr2_read GR2 reader, gr2_addbones writer, gr2_lint DLL flat route). Run from that repository; these are not bundled helpers.",
+      "modules": [
+        "gr2_read",
+        "gr2_addbones",
+        "gr2_lint"
+      ]
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "bone-append",
+        "frame-check"
+      ],
+      "optional": false,
+      "note": "Standalone helper interpreter.",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ]
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "note": "Runs the bundled tests.",
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
+      ]
+    }
+  ]
+}
