@@ -11,4 +11,131 @@
     <sound filename="zp_misc\american_estate.wav" volume="1.0000">
     </sound>
   </soundset>
+  <!-- Koreans (civ zpKoreans): AoE2 DE Korean villager voices, sound/korean/Koreans_Villager_*_AoE2.wav.
+       Families mirror vanilla JapaneseVillagerM_/F_* and JapaneseFishingBoat* (soundsetsy.xml). Defined only:
+       no _snds file uses them yet (owner 2026-10-08). -->
+  <soundset name="zpKoreanVillagerM_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Select_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Select_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Task_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Task_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Task_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Task_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Attack_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Build_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Repair_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Farm_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Mine_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Forage_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Hunt_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Chop_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerM_Fish" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Fish_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Select_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Select_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Task_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Task_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Task_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Task_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Attack_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Build_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Female_Repair_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Farm_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Mine_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Forage_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Hunt_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Chop_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanVillagerF_Fish" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Female_Fish_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanFishingBoatSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Select_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpKoreanFishingBoatAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Villager_Male_Fish_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Task_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Villager_Male_Task_2_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdefmods>
