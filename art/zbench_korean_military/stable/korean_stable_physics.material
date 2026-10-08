@@ -19,9 +19,9 @@
   <submaterial name="matc">
     <materialdef name="default" />
     <parameters>
-      <texture name="BaseColor" override="buildings\korean_shared\textures\korean_shared_matc_v2_BaseColor" />
-      <texture name="Normals" override="buildings\korean_shared\textures\korean_shared_matc_v2_Normals" />
-      <texture name="Masks" override="buildings\korean_shared\textures\korean_shared_matc_v2_Masks" />
+      <texture name="BaseColor" override="buildings\korean_shared\textures\korean_shared_matc_r65_BaseColor" />
+      <texture name="Normals" override="buildings\korean_shared\textures\korean_shared_matc_r65_Normals" />
+      <texture name="Masks" override="buildings\korean_shared\textures\korean_shared_matc_r65_Masks" />
     </parameters>
   </submaterial>
 </material>

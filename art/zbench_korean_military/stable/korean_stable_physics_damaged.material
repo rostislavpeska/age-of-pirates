@@ -19,17 +19,9 @@
   <submaterial name="matc">
     <materialdef name="default" />
     <parameters>
-      <texture name="BaseColor" override="buildings\korean_shared\textures\korean_shared_matc_v2_BaseColor" />
-      <texture name="Normals" override="buildings\korean_shared\textures\korean_shared_matc_v2_Normals" />
-      <texture name="Masks" override="buildings\korean_shared\textures\korean_shared_matc_v2_Masks" />
-    </parameters>
-  </submaterial>
-  <submaterial name="matz">
-    <materialdef name="destructible" />
-    <parameters>
-      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor" />
-      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals" />
-      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks" />
+      <texture name="BaseColor" override="buildings\korean_shared\textures\korean_shared_matc_r65_BaseColor" />
+      <texture name="Normals" override="buildings\korean_shared\textures\korean_shared_matc_r65_Normals" />
+      <texture name="Masks" override="buildings\korean_shared\textures\korean_shared_matc_r65_Masks" />
     </parameters>
   </submaterial>
 </material>
