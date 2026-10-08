@@ -70,7 +70,10 @@ right after `create`), so `until` polls a condition, by default "not busy".
   Height, ID, Normal, Opacity, Position, Thickness, WorldSpaceNormal.
 - `export.export_project_textures(config)` and `project.save_as`: exercised with
   saved/reopened military r60 sources and scoped texture comparisons.
-- Also present, not yet exercised here: `baking` (parameters, `bake_async`).
+- `baking` (exercised 2026-10-08): `bake_async` of normal/WSN/AO/curvature/position/thickness in
+  8-14 s at 2048. Connect the completion callback strongly (`connect_strong`); a plain connection is
+  dropped and the wait never returns. Afterwards call `ui.switch_to_mode(UIMode.Edition)` before any
+  layer step.
 
 **No public layer API in9.1.2:** Python API0.2.11 has no `layerstack` module and
 JS `alg` has no layer namespace. This does **not** mean all layer work requires desktop input.
@@ -85,6 +88,13 @@ correct effect labels and native slider properties. Read
 [the bounded repair and save/reopen proof](references/bounded-9.1.2.md) before using it.
 Do not describe this internal Qt adapter as Adobe's public layer API. On another version,
 probe for public `layerstack` capabilities first; do not blindly force the9.1.2 adapter.
+
+The owner's plaster recipe (white fill + height, black mask, Dirt generator) runs end to end on
+9.1.2 with this bounded adapter: two runs, 540 steps, no crash, exact readback after reopen. Read
+[white-coat Dirt relief](references/whitedirt-relief-9.1.2.md) for the step order, measured
+settings, the 16-bit Height export and its pitfalls (select_mask before ensure_generator_effect,
+integer Grunge_Scale, true-case save paths, AO binding, saturated dark-AO blocks).
+The owner does not want Painter upgraded (2026-10-08); keep 9.1.2 workflows working.
 
 ## Shared UVs: load owners only
 

@@ -45,6 +45,17 @@ The lighten modes touch only texels with Details.R > 0 (optionally inside `--reg
 Details map). They blend by R, so a soft edge moves by its fraction. They keep grain, soot and AO as relative
 brightness (`grey = target x (Y / mean Y)^0.6`, capped) and lift the field's mean to `--target-srgb` (default 211).
 
+## Budget: measure what the player sees
+
+Vanilla Asian buildings (18 JP/CN atlases, measured 2026-10-08) put player colour on **0.6-4 % of
+used texels (median 2.1 %)**, on thin stripes, base trims, eave bands or one panel; never on tile
+fields, posts or door leaves; the mask is hard (61-96 % of non-zero texels >= 250) and worn like
+flaking paint. A texel share hides stacking: on the Korean Barracks a 0.8 % texel share was still
+3.8 % on screen, because the one kept band cell was stacked ~7x and its light base made it louder.
+Report the **stack-weighted share** (texels x visible faces sharing them) or the pixel share of a
+blue-vs-red render pair, before and after; narrowing a stacked band to one 10-12 texel stripe is the
+effective lever. Evidence: AoP workflow journal 2026-10-08-claude-05 and -16.
+
 ## Workflow
 
 1. **Scope.** Agree which surfaces carry player colour (owner's screenshot or words). Freeze the UVs first: Details

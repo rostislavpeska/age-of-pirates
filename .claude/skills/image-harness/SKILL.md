@@ -20,6 +20,13 @@ URL. `python .claude/skills/image-harness/scripts/generate.py --ping` checks URL
 no bill). `scripts/test_no_secrets.py` fails if the local file is tracked or unignored, or if its values
 appear in any tracked file.
 
+**New device, Claude Code in auto mode (2026-10-08):** the permission classifier refuses an agent
+reading the n8n webhook URL from the Claude config or writing `config/image-harness.local.env`
+("Credential Exploration"), and may then refuse even `test -f` on that file. Do not work around it:
+write a small self-deleting helper into the session scratchpad that composes the file from the
+owner's own config, give the owner the one-line command to run it, and verify with `--ping`
+afterwards. Until then the harness is unavailable; plan the work without paid image edits.
+
 ## Generate
 
 ```bash

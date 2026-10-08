@@ -16,7 +16,8 @@
     "scripts/owner_coverage.py",
     "scripts/painter_environment.py",
     "scripts/test_owner_coverage.py",
-    "scripts/test_painter_environment.py"
+    "scripts/test_painter_environment.py",
+    "references/whitedirt-relief-9.1.2.md"
   ],
   "skills": [
     "blender-architecture-texturing",

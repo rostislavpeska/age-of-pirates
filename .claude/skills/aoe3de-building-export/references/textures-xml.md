@@ -12,6 +12,20 @@ python scripts/validate_opaque_textures.py texture.tga texture.ddt
 
 Texture-only edits do not normally require FBX/GR2 re-export unless UVs, geometry, material bindings or vertex data also changed.
 
+### Re-encoding an existing runtime texture (measured 2026-10-08, Korean military/TC)
+
+- **Prove the codec first:** re-encode the untouched source and require a byte-identical DDT before
+  encoding new maps (the Korean r60 BaseColor DXT5 and Normals DXT1 both reproduced byte-for-byte).
+- **16-bit PNG sources:** load with `cv2.imread(..., IMREAD_UNCHANGED)` and `np.rint(v/257)`. Pillow
+  silently truncates 16-bit RGBA to 8-bit; the re-encoded normals then differed from the installed DDT.
+- **Normal edits keep the installed per-atlas transform:** build detail in the source convention,
+  blend there (RNM), then apply exactly the transform the installed DDT already uses for that atlas.
+  The Korean sources were all OpenGL, but the installed maps were G-flipped (Barracks/Stable) and
+  R-flipped (Town Center); new relief must follow each atlas's own transform or it inverts in game.
+- **Gutters before mips:** after changing chart texels, refresh the gutter at least ~48 px out.
+  The writer's Lanczos mip filter reaches old gutter colours at mip 4 that an 8 px refresh leaves
+  (measured halos up to 25 levels on 20-27 border texels per atlas).
+
 ## Editable source
 
 Keep the editable source synchronized with exported TGA/DDT files. Preserve simple semantic masks for material regions when repeated color or AO tuning is expected. Once the operator makes a manual correction, the current editable file is the source of truth. Export its live state and retain the previous shipped file as a checkpoint outside runtime folders.
