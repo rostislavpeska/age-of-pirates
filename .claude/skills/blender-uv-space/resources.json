@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "files": ["SKILL.md", "references/research.md", "scripts/pixel_audit.py", "scripts/pack_masks.py", "tests/test_space.py"],
+  "skills": ["blender-uv-observability", "blender-uv-reuse", "blender-uv-conjoin"],
+  "external": [
+    {"id":"python","kind":"executable","commands":["python","python3"],"requiredFor":["audit","pack"],"optional":false,"note":"Runs standalone UV-space measurements."},
+    {"id":"numpy","kind":"python-package","distribution":"numpy","modules":["numpy"],"requiredFor":["audit","pack"],"optional":false,"note":"Pixel arrays and affine correspondence."},
+    {"id":"shapely","kind":"python-package","distribution":"shapely","modules":["shapely"],"requiredFor":["audit","pack"],"optional":false,"note":"Shapely2 geometry, raster sampling and exact post-checks."},
+    {"id":"pillow","kind":"python-package","distribution":"Pillow","modules":["PIL"],"requiredFor":["audit"],"optional":false,"note":"Pixel accounting image and stated integer dilation."},
+    {"id":"opencv","kind":"python-package","distribution":"opencv-python","modules":["cv2"],"requiredFor":["pack"],"optional":false,"note":"Local mask correlation; verified discrete placement and exact geometry follow."}
+  ]
+}

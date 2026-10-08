@@ -5,8 +5,13 @@ def load(path,subproject=None):
     raw=json.loads(Path(path).read_text(encoding='utf-8-sig'))
     out={k:v for k,v in raw.items() if k!='subprojects'}
     if subproject:
-        if subproject not in raw.get('subprojects',{}):raise ValueError('Unknown subproject')
-        out.update(raw['subprojects'][subproject]);out['subproject']=subproject
+        def resolve(name,seen):
+            if name in seen:raise ValueError('Profile inheritance cycle')
+            if name not in raw.get('subprojects',{}):raise ValueError('Unknown subproject')
+            part=dict(raw['subprojects'][name]);parent=part.pop('extends',None)
+            merged=resolve(parent,seen|{name}) if parent else {}
+            merged.update(part);return merged
+        out.update(resolve(subproject,set()));out['subproject']=subproject
     if not out.get('page_sizes') or not isinstance(out.get('square_only'),bool):raise ValueError('Missing page policy')
     return out
 def validate_page(profile,width,height):

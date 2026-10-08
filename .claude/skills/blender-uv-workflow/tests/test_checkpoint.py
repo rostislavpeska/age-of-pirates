@@ -15,6 +15,13 @@ import checkpoint as C
 
 
 class CheckpointTests(unittest.TestCase):
+    def test_ao_and_freeze_require_white_baked_view(self):
+        for stage in ('ao','freeze'):
+            d,spec=self.candidate(stage)
+            spec['views']=[v for v in spec['views'] if v['kind']!='ao_white']
+            report=C.validate(spec,d)
+            self.assertEqual(report['status'],'INCOMPLETE')
+            self.assertTrue(any('ao_white' in text for text in report['incomplete']))
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

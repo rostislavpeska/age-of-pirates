@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/contract.md",
+    "scripts/contract.py",
+    "scripts/profile.py",
+    "scripts/comparison_workspace.py",
+    "scripts/workspace.py",
+    "tests/test_contract.py"
+  ],
+  "skills": ["blender-uv-workflow"],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "requiredFor": [
+        "check"
+      ],
+      "optional": false,
+      "note": "Runs evidence validation."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "modules": [
+        "bpy",
+        "mathutils"
+      ],
+      "requiredFor": [
+        "live-review"
+      ],
+      "optional": false,
+      "note": "Consumer supplies Blender and an approved live integration."
+    }
+  ]
+}

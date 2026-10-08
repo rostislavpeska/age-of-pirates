@@ -94,6 +94,28 @@ effective 77-92 -> a bit below / same level. 1024 map: all eave cutouts, all rid
 roof tiles. Before restoring 225 charts that S12 had parked at hidden-page density, 17.6%
 of the visible area sat at 15 texels/unit - always measure the p10, not only the median.
 
+## Texture-set coherence (one set per binding)
+
+Incident 2026-10-08: a review shader bound the new shared atlas colour with the retired revision's normal and
+mask maps (on the retired UVs), and a page move kept the old tangents. Maps bound together must come from ONE
+texture set of one revision; the consumer's UVs must sit inside the atlas regions and its tangents must follow
+the set's convention. Names and sizes cannot decide this (vanilla reuses a base model's normals/masks under a
+new colour in about a quarter of all submaterials), so own sets are registered:
+
+- `config/texture_sets.json`: own sets by revision (channel paths + DDT hashes, `retired`, preview hashes/aliases,
+  atlas `regions`, `tangent` convention). Register every new own texture revision before binding it.
+- `<consumer-root>/scripts/havok/texture_sets.py`: the rules; `gr2_lint.py` runs `texture_sets`, `atlas_regions` and
+  `tangent_convention` on every model (FAIL = mixed or retired sets, faces outside the regions, wrong tangents).
+- Variants (`<parameters variant="N">`, the Corvette pattern): a recolour changes BaseColor/Details only and keeps
+  the default normals/masks; a full re-skin from more than one source is reported as a warning, not failed.
+  Same-channel structure correlation is reported (calibrated: recolours 0.95, but repainted sails/player-colour
+  maps drop to 0.1-0.4), never used as a gate.
+- Blender scenes: `blender -b <file.blend> --python scripts/blender_texture_sets.py -- <out.json> [<repo root>]`
+  (read-only; the same script can run live through the MCP). Run it on every review/preview scene before
+  delivering pictures.
+
+Tests: `python -m pytest <consumer-root>/scripts/havok/tests/test_texture_sets.py`.
+
 ## Not yet covered (next work)
 
 - Export handoff: GR2 conversion and AoE3DE `.material` files per page, DDT formats

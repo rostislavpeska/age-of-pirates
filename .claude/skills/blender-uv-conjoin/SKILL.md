@@ -5,6 +5,10 @@ description: Apply explicit per-region UV sharing policies to coherent charts, p
 
 # UV conjoinment (merge similar charts, then repack)
 
+All operator delivery follows the required portable
+[UV operator contract](../blender-uv-observability/SKILL.md). Family colours must
+come from actual owner/member UV correspondence, not arbitrary island colours.
+
 Goal: the smallest atlas at a fixed texel density that still reads like an AoE
 texture set. Two levers, in this order of payoff on the Korean TC (page A):
 

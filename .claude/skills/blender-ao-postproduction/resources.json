@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/resolve_ao.py",
+    "tests/test_resolve_ao.py"
+  ],
+  "skills": [
+    "blender-uv-ao-separation",
+    "blender-uv-workflow",
+    "blender-uv-observability"
+  ],
+  "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "requiredFor": [
+        "processing"
+      ],
+      "optional": false,
+      "note": "Required numeric/image dependency for AO scalar reprojection and verification."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ],
+      "requiredFor": [
+        "processing"
+      ],
+      "optional": false,
+      "note": "Required numeric/image dependency for AO scalar reprojection and verification."
+    },
+    {
+      "id": "scipy",
+      "kind": "python-package",
+      "distribution": "scipy",
+      "modules": [
+        "scipy"
+      ],
+      "requiredFor": [
+        "processing"
+      ],
+      "optional": false,
+      "note": "Required numeric/image dependency for AO scalar reprojection and verification."
+    }
+  ]
+}

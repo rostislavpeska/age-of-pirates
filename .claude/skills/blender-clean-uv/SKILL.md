@@ -5,6 +5,10 @@ description: Author coherent architectural UV charts and deliver actual editable
 
 # Clean architectural UVs
 
+All operator delivery follows the required portable
+[UV operator contract](../blender-uv-observability/SKILL.md), including direct use
+of this skill. A pending sharing copy is labelled pending, never invented.
+
 For multi-step work, start with [the shared UV workflow](../blender-uv-workflow/SKILL.md).
 This is checkpoint 2a: show chart colors, a saved checker and readable worksheets.
 Then show a separate material-class review (2b) before sharing. Chart cleanliness

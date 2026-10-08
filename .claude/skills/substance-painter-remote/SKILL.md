@@ -45,6 +45,13 @@ This starts a background instance and reports it as such. `python scripts/sp_rem
 prints the observed version or exits2. A manually started visible instance may lack
 `--enable-remote-scripting`; do not confuse it with another listening process.
 
+For an independent pre-sharing AO diagnostic, unique UVs on a complete copied
+assembly are appropriate. Label its `.spp` as a reference, not the final shared-UV
+paint master. `alg.mapexport.saveMeshMap` defaults to texture-set resolution, which
+can differ from bake resolution: pass explicit `resolution:[width,height]` and
+verify actual output dimensions. In `later(..., until=...)`, the Python condition
+must assign `RESULT`; a bare expression leaves the client waiting after success.
+
 ## Client (`scripts/sp_remote.py`)
 
 | Call | Use |

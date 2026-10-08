@@ -9,6 +9,12 @@ sharing, AO variants, then packing/freeze. Declare the runtime budget upfront;
 apply its fit gate at freeze. Read [pipeline order](references/pipeline-order.md)
 for pilot/master/runtime bake dependencies and observable delivery.
 
+UV work MUST also satisfy the portable
+[operator contract](../blender-uv-observability/SKILL.md): simultaneous standard
+checker, black resource isolations and actual sharing copies for every model,
+with editable UV/image bindings and consumer-supplied page policy. This required
+companion travels with the harness; project AGENTS.md is not its only home.
+
 Every phase hands off through a standard `HANDOFF.json` ([handoff contract](references/handoff-contract.md),
 `scripts/handoff.py`): consume the upstream phase's canonical outputs, never reinvent them.
 

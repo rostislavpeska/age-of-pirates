@@ -3,6 +3,13 @@ name: blender-architecture
 description: Builds and repairs architectural Blender models with approved blockouts, realistic construction profiles, editable topology and monitored geometry budgets. Use for architectural blockout, modeling, topology repair and geometry review in Blender.
 ---
 # Architecture modeling
+At the start of every modelling session, explicitly agree the texture-space
+contract with the operator: model/set scope, owned page count and dimensions,
+existing shared atlas identity/cells and reused dependencies. Repeat an existing
+owner-confirmed contract rather than asking again; missing terms need agreement
+before new modelling/UV allocation. Record it in the consumer profile/handoff.
+Diagnostics cannot add unapproved production pages. See the portable
+[UV operator contract](../blender-uv-observability/SKILL.md).
 Read [construction and review](references/construction.md) for geometry work. Before removing hidden faces or classifying low-detail backs, read [surface visibility and destruction](references/surface-visibility.md). Use the sibling `blender-architecture-texturing` skill for UV/material planning.
 
 For material-only classification of difficult undersides and interior faces, use

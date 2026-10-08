@@ -1,9 +1,9 @@
 # Checkpoint contract v1
 
-Draft operator contract: `blender-uv-observability` is undergoing the owner's
-workspace review. Do not promote its proposed checks into mandatory phase gates
-until that review and the requested deep audit. Existing requirements below
-remain binding; the draft adds no acceptance claim to historical receipts.
+The operator layout was accepted on 2026-10-08 and extended on 2026-10-09 with
+white texture-baked AO per model. The portable `blender-uv-observability` contract
+is mandatory; this does not retroactively accept historical assets. Follow
+[the AO handoff contract](ao-handoff.md) before final packing.
 
 The existing phase handoff and asset revision store remain authoritative for files
 and versions. A CHECKPOINT is evidence for a substep, not another asset database.
@@ -14,8 +14,8 @@ and versions. A CHECKPOINT is evidence for a substep, not another asset database
 | clean | 2a | coverage, charts, continuity, stretch | model, checker, uv_sheet |
 | materials | 2b | coverage, material_classes, protected_scope | model, materials, legend |
 | share | 3a | coverage, families, correspondence, channels, protected_scope | model, families, uv_sheet |
-| ao | 3b | coverage, ao_correspondence, ao_recipe, continuity | model, ao_heatmap, families |
-| freeze | 3c | coverage, overlap, density, page_budget, padding, source_detail, shared_mapping | model, checker, uv_sheet |
+| ao | 3b | coverage, ao_correspondence, ao_recipe, continuity | model, ao_white, ao_heatmap, families |
+| freeze | 3c | coverage, overlap, density, page_budget, padding, source_detail, shared_mapping | model, checker, uv_sheet, ao_white |
 | base | 4 | coverage, bindings, bake_contract, texture_qa | model, basecolor, normal, ao |
 | details | 5 | bindings, texture_qa, protected_scope | model, details, player_color |
 | game | 6 | source_binding, export_roundtrip, runtime_lint, installed_hashes, game_test | intact, destruction |

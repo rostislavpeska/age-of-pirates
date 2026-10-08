@@ -29,3 +29,13 @@ def test_empty_and_misaligned_scope_fail():
 
 def test_nonfinite_values_fail():
     assert assess([[100]],[[float('nan')]],[[True]])['status']=='FAIL'
+
+def test_shared_readers_do_not_authorize_repeated_ao_multiplication():
+    expected=np.array([[255,204],[153,102]],dtype=float)
+    repeated=expected/255.0
+    for application_count in (2,3,10):
+        actual=np.rint(255*repeated**application_count)
+        assert assess(expected,actual,np.ones_like(expected,dtype=bool))['status']=='FAIL'
+    # Ten readers of the unchanged texels still sample the original values.
+    for reader in range(10):
+        assert assess(expected,expected,np.ones_like(expected,dtype=bool))['status']=='PASS'

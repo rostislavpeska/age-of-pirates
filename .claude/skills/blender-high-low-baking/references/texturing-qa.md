@@ -154,6 +154,9 @@ frame centre and not a speck, no wall filling the frame from under 1 m. Otherwis
 
 Keep an effect ledger distinguishing measured AO, its packed runtime channel,
 BaseColor composition and shader application. Storing AO is not applying it twice.
+Shared-island reader count does not darken the stored value. Verify one bake writer
+per texel and track actual composition applications; never brighten AO by reader
+count. Follow the portable [AO postproduction contract](../../blender-uv-workflow/references/ao-handoff.md#ao-accumulation-count-applications-not-shared-islands).
 Preserve the accepted reference/engine contract even when BaseColor already has
 contact shading. `scripts/check_ao_storage.py` compares an explicitly scoped,
 aligned measured field to the final packed channel; it rejects a cleared channel

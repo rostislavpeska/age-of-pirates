@@ -5,7 +5,8 @@
     "scripts/pages.py",
     "scripts/test_pages.py",
     "scripts/bounded_pack.py",
-    "scripts/test_bounded_pack.py"
+    "scripts/test_bounded_pack.py",
+    "scripts/blender_texture_sets.py"
   ],
   "skills": [
     "aoe3de-building-export",
@@ -27,6 +28,18 @@
       "distribution": "numpy",
       "modules": [
         "numpy"
+      ]
+    },
+    {
+      "id": "consumer-texture-sets",
+      "kind": "capability",
+      "requiredFor": [
+        "texture-set-coherence"
+      ],
+      "optional": false,
+      "note": "Consumer supplies scripts/havok/texture_sets.py and config/texture_sets.json; adapter resolves the explicit consumer root.",
+      "modules": [
+        "texture_sets"
       ]
     }
   ]

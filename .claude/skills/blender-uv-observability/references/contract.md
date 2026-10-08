@@ -12,11 +12,12 @@ owns physical class and texture destinations; conjoin owns correspondence; AO
 separation owns shadow variants; final packing owns runtime fit and density.
 This interface consumes their results. It must not silently invent their passes.
 
-Use a source-bound manifest and a separate live readback. Required readback fields
-are implemented in `scripts/contract.py`: revision, model census, mode readiness,
-page size, selected scope, active/editor/shader UV identity, image identity,
-out-of-canvas loops, pixel-coordinate conversion error, density values and sharing
-owner/member counts. A successful render is not a substitute for editable data.
+Use a source-bound manifest and a separate live readback. The small layout smoke
+check in `../scripts/contract.py` consumes schema 2: model/resource census,
+simultaneous visible copies, standard checker, black isolation errors, actual UV
+and family correspondence errors, page policy and one exercised editor selection.
+Schema 1 and the earlier three-mode workspace were rejected and are obsolete.
+A successful render is not a substitute for editable data.
 Fail on missing or stale evidence. Keep `pending`, `file_verified`, `live_verified`
 and `owner_accepted` distinct. Recheck affected evidence after mutation.
 
@@ -42,3 +43,32 @@ identity; never overwrite the previous attempt with a successful retry.
 
 These sources support the design principles, not proof that this implementation
 is correct. Test the implementation against the current asset and negative cases.
+
+## Small smoke test and portable packaging
+
+Run `python -m unittest discover -s <skill-root>/tests -v`, then
+`python <skill-root>/scripts/contract.py <consumer-output>/OPERATOR_READBACK.json`.
+These checks reject missing copies, separate scenes, custom checkers, non-black
+excluded faces, wrong UV bindings, fake sharing and invalid project pages. They
+consume measured evidence; they do not independently inspect Blender or prove
+agent compliance. Capture the actual UI and exercise selection separately.
+
+For a short fresh-reader test, give another agent only this skill and a consumer
+profile. Ask for the copy count/layout for three models and four resources, black
+isolation rule, profile precedence and disposition of fake family colours. Expect
+21 simultaneous copies at the AO stage (18 before AO), excluded faces black, subproject overriding project and
+rejection of colours without actual sharing. Record whether this reader ran;
+unit fixtures alone are not an agent test. Use existing job coordination.
+
+At AO review/freeze, schema 2 additionally requires an AO copy for each model,
+baker identity, texture-baked status, source geometry coverage, actual bake hash and
+allowed dimensions. Unique references cannot claim frozen shared AO or enter runtime
+export. An early profile may request these copies before the AO gate. See
+[AO handoff](../../blender-uv-workflow/references/ao-handoff.md). Historical 18-copy
+receipts remain historical; they cannot satisfy the extended AO-stage requirement.
+
+`resources.json` declares this package and the consuming skills declare it as a
+required companion. An export missing it must fail dependency checks. No public
+publication is implied. The Korean adapter is optional sample UI; restore it from
+the saved Blender Text through the approved integration after reopening. Never
+enable automatic Python execution globally as a workaround.

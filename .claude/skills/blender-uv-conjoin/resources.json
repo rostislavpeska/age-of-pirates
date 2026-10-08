@@ -20,6 +20,7 @@
     "blender-clean-uv",
     "blender-high-low-baking",
     "blender-uv-ao-separation",
+    "blender-uv-observability",
     "blender-uv-reuse",
     "blender-uv-workflow"
   ],

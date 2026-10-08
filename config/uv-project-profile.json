@@ -1,16 +1,81 @@
 {
   "schema": 1,
   "project": "age-of-pirates",
-  "page_sizes": [512, 1024, 2048],
+  "page_sizes": [
+    512,
+    1024,
+    2048
+  ],
   "square_only": true,
   "default_working_page": 2048,
   "standard_checker": "BLENDER_COLOR_GRID",
   "subprojects": {
     "korean": {
-      "page_sizes": [512, 1024, 2048],
+      "page_sizes": [
+        512,
+        1024,
+        2048
+      ],
       "square_only": true,
       "default_working_page": 2048,
-      "standard_checker": "BLENDER_COLOR_GRID"
+      "standard_checker": "BLENDER_COLOR_GRID",
+      "shared_dependencies": {
+        "generic_atlas": {
+          "resource_group": "GENERIC",
+          "scope": "all Korean buildings, all ages",
+          "identity": "korean_shared_matc_r65",
+          "size": [
+            1024,
+            1024
+          ],
+          "runtime_prefix": "art/buildings/korean_shared/textures/korean_shared_matc_r65",
+          "status": "used by TC intact/damaged/construction and Barracks/Stable intact/damaged/construction (2026-10-08); retired 512 pages deleted; canonical record: Korean repo patterns/korean/shared_atlas_r65.json",
+          "new_pages_allowed": false
+        }
+      }
+    },
+    "korean-houses": {
+      "extends": "korean",
+      "resource_groups": [
+        "WALLS",
+        "ROOFS",
+        "GENERIC",
+        "POTTERY"
+      ],
+      "owned_pages": {
+        "WALLS": {
+          "count": 1,
+          "size": [
+            2048,
+            2048
+          ]
+        },
+        "ROOFS": {
+          "count": 1,
+          "size": [
+            2048,
+            2048
+          ]
+        }
+      },
+      "model_scope": [
+        "House A",
+        "House B",
+        "House C"
+      ],
+      "reused_textures": "unlimited existing resources; preserve source bindings; no new pottery atlas",
+      "agreement": {
+        "date": "2026-10-08",
+        "source": "Owner: 2 textures - all walls + all roofs 2048 + generic atlas - use existing one; existing texture reuse unlimited",
+        "status": "owner_confirmed"
+      },
+      "ao_review_required": true,
+      "ao_reference": {
+        "size": [2048, 2048],
+        "scope": "one unique diagnostic bake per house; no runtime export",
+        "source": "Owner 2026-10-09: white baked AO model per building before conflict decisions and final rearrangement"
+      },
+      "diagnostics": "ID/checker on agreed production UVs; separately labelled unique AO coordinates for measurement only; no separate larger generic sheets"
     }
   },
   "authority": "Owner instruction 2026-10-08: UV pages must be square 512, 1024 or 2048. Working-page count is not a runtime budget exemption."

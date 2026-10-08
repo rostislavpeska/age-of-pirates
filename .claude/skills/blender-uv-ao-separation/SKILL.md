@@ -15,7 +15,10 @@ beam-end faces. See [results and lessons](references/results.md).
 
 ## Workflow
 
-The AO sampled in steps 1-3 is a measurement for deciding families, not a deliverable.
+The AO sampled in steps 1-3 is a measurement for deciding families. Also publish
+the required white texture-baked reference on every model before decisions, and the
+resolved shared-UV bake after final packing, per the portable
+[AO handoff contract](../blender-uv-workflow/references/ao-handoff.md).
 Re-grouping moves charts: existing bakes on the previous layout become invalid - list them
 for the owner first ([pipeline order](../blender-architecture-texturing/references/pipeline-order.md)).
 
@@ -55,6 +58,10 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
   Missing correspondence cannot be repaired by a neutral-mask claim.
   Compare the least destructive candidate that fits the owner's density allowance;
   additional AO removal is a separate visible trade-off.
+- **Explicit owner, never stack order.** No top/bottom UV placement determines a
+  supported bake winner. Choose and record one receiver per shared texel; preserve
+  the assembled occluders. A light owner is not evidence of compatibility. A neutral
+  region affects every reader and cannot clear only one overlapping face.
 - Apply the mask **before** AO is multiplied into BaseColor or written to Masks.R.
   An AO mask cannot remove shadows already baked into BaseColor, nor dirt/roughness
   or tangent-space normal differences. Preserve those independent channels.
@@ -90,6 +97,9 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
   charts that simply found no geometric match.
 
 ## Tools
+
+For the subsequent map processing, effect ledger and resolved deliverables use
+[blender-ao-postproduction](../blender-ao-postproduction/SKILL.md).
 
 `scripts/ao_sample.py`, `scripts/attach_ao.py`, `scripts/ao_compat.py` (tests D1 mean,
 D2 p95 bins, D3 SSIM, D4 classes, D5 combined, **D6 points - default**), `scripts/bake_owner_ao.py`.

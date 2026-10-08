@@ -3,6 +3,7 @@
   "files": [
     "SKILL.md",
     "references/bakes-and-recovery.md",
+    "references/ao-handoff.md",
     "references/checkpoints.md",
     "references/review-packet.md",
     "references/sharing-and-capacity.md",
@@ -13,12 +14,15 @@
     "tests/test_shared_mapping.py"
   ],
   "skills": [
+    "blender-ao-postproduction",
     "aoe-uv-atlas-export",
     "blender-clean-uv",
     "blender-high-low-baking",
     "blender-uv-ao-separation",
     "blender-uv-conjoin",
-    "blender-uv-reuse"
+    "blender-uv-observability",
+    "blender-uv-reuse",
+    "blender-uv-space"
   ],
   "external": [
     {

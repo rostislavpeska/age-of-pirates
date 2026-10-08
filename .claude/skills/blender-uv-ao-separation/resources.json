@@ -13,6 +13,7 @@
     "scripts/test_neutralize_ao.py"
   ],
   "skills": [
+    "blender-ao-postproduction",
     "aoe-uv-atlas-export",
     "blender-architecture-texturing",
     "blender-clean-uv",

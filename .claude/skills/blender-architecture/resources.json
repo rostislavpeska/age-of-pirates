@@ -12,6 +12,7 @@
     "blender-architecture-texturing",
     "blender-hidden-surfaces",
     "blender-overlap-cleanup",
+    "blender-uv-observability",
     "skill-library-audit"
   ],
   "external": [
