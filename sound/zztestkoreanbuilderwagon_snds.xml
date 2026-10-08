@@ -1,0 +1,6 @@
+<protounitsounddef>
+  <protounit name="zzTESTKoreanBuilderWagon">
+    <soundtype name="Select"><soundset name="JapaneseVillagerM_Select" /></soundtype>
+    <soundtype name="Acknowledge"><soundset name="JapaneseVillagerM_Acknowledge" /></soundtype>
+  </protounit>
+</protounitsounddef>

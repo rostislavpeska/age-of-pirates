@@ -3630,6 +3630,10 @@
       <string _locid="503625">Japanese Stable (Reference)</string>
       <string _locid="503626">Japanese Stable (Reference)</string>
 
+            <string _locid="503627">TEST Korean Builder Wagon</string>
+      <string _locid="503628">TEST Korean Builder Wagon</string>
+      <string _locid="503629">Test builder. Repeatedly constructs the Korean Town Center, Barracks and Stable slowly. Use Colonial Age or later and provide building resources.</string>
+
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->
       <string _locid="400001">Christmas Village</string>
