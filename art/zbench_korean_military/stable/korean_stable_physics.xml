@@ -1,5 +1,7 @@
 <animfile>
   <definebone>BONE_HITPOINTBAR</definebone>
+  <definebone>bone_horse1</definebone>
+  <definebone>bone_horse2</definebone>
   <submodel>korean_stable_construction_stage_01<component>korean_stable_construction_stage_01<assetreference type="GrannyModel">
         <file>buildings\asian_civs\construction\asi_4x4_stage1</file>
       </assetreference>
