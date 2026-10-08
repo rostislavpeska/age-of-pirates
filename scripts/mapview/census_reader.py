@@ -338,7 +338,8 @@ def vanilla_source() -> Optional[Path]:
     try:
         from scripts.refdata import catalogs
         built = catalogs._live_proto_path(force=True)
-    except Exception:                                            # no game install / no archive tools: the snapshot
+    except (Exception, SystemExit):                              # no game install / no archive tools: the snapshot
+        # (bartool reports a missing install with SystemExit, which Exception does not catch - CI has no install)
         built = None
     if built is not None and Path(built).is_file():
         return Path(built)
