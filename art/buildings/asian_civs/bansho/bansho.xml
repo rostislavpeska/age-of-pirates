@@ -548,19 +548,39 @@
             </logic>
           </industrialize>
           <zpkoreanvisuals>
-            <logic type="BuildingCompletion">
-              <p0>
-                <submodelref ref="korean_barracks_construction_stage_01" />
-              </p0>
-              <p33>
-                <submodelref ref="korean_barracks_construction_stage_02" />
-              </p33>
-              <p66>
-                <submodelref ref="korean_barracks_construction_stage_03" />
-              </p66>
-              <p100>
-                <submodelref ref="korean_barracks_built" />
-              </p100>
+            <logic type="Tech">
+              <none>
+                <logic type="BuildingCompletion">
+                  <p0>
+                    <submodelref ref="japanese_sub_construction_stage_01" />
+                  </p0>
+                  <p33>
+                    <submodelref ref="japanese_sub_construction_stage_02" />
+                  </p33>
+                  <p66>
+                    <submodelref ref="japanese_sub_construction_age_02_stage_03" />
+                  </p66>
+                  <p100>
+                    <submodelref ref="japan_bansho_age2" />
+                  </p100>
+                </logic>
+              </none>
+              <colonialize>
+                <logic type="BuildingCompletion">
+                  <p0>
+                    <submodelref ref="korean_barracks_construction_stage_01" />
+                  </p0>
+                  <p33>
+                    <submodelref ref="korean_barracks_construction_stage_02" />
+                  </p33>
+                  <p66>
+                    <submodelref ref="korean_barracks_construction_stage_03" />
+                  </p66>
+                  <p100>
+                    <submodelref ref="korean_barracks_built" />
+                  </p100>
+                </logic>
+              </colonialize>
             </logic>
           </zpkoreanvisuals>
         </logic>

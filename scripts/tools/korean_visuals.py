@@ -7,10 +7,12 @@ cannot be patched partially, so the mod ships a full copy of each vanilla animfi
 
   * the Korean model's <definebone> lines that vanilla lacks (after the last vanilla one);
   * the Korean model's <submodel> blocks (after the last vanilla submodel);
-  * one more child of the Japanese "Tech" logic, <zpkoreanvisuals>, holding the Korean
-    BuildingCompletion logic. It is the LAST child, so it wins over colonialize/industrialize
-    while the owner has the tech - the vanilla pattern of <dehciturbidepalace> in the
-    Mediterranean branch of town_center.xml and of the mod's <zpazteccitydefendersetup> in dock.xml.
+  * one more child of the Japanese "Tech" logic, <zpkoreanvisuals>. It is the LAST child, so it wins
+    over colonialize/industrialize while the owner has the tech - the vanilla pattern of
+    <dehciturbidepalace> in the Mediterranean branch of town_center.xml and of the mod's
+    <zpazteccitydefendersetup> in dock.xml. Inside it a nested age switch: <none> = the vanilla
+    Discovery Age look (generic Asian, as Japan), <colonialize> = the Korean model from the first
+    upgrade (Colonial Age) on.
 
 zpKoreanVisuals is activated only by zpAge0Korean (data/techtreemods.xml), so Japanese buildings stay
 Japanese. Every vanilla byte is kept: --check rebuilds the files from the installed game and
@@ -132,16 +134,29 @@ def merge(vanilla, korean_text, culture, add_attack):
     # 2. Korean submodels after the last vanilla submodel
     last = out.rindex('</submodel>\n') + len('</submodel>\n')
     out = out[:last] + ''.join(subs) + out[last:]
-    # 3. the marker branch, last child of the culture's Tech logic
+    # 3. the marker branch, last child of the culture's Tech logic. Inside it a nested age switch (owner
+    #    2026-10-08: "Age0 is generic asian (same as Japan) and age1 and age2 (1st upgrade is the new one"):
+    #      <none>         the vanilla Discovery Age branch, verbatim
+    #      <colonialize>  the Korean model - from the first upgrade on; colonialize stays active, so it holds
+    #                     through Industrial/Imperial too (one Korean model so far)
     t0, t1 = tech_logic_span(out, culture)
     close = out.rindex('</logic>', t0, t1)
     line0 = out.rindex('\n', 0, close) + 1
     ind = out[line0:close]                       # indentation of the Tech logic's closing tag
-    body = '\n'.join((ind + '    ' + l[4:]) if l.startswith('    ') else (ind + '    ' + l)
-                     for l in completion.split('\n'))
-    branch = '%s  <%s>\n%s\n%s  </%s>\n' % (ind, MARKER, body, ind, MARKER)
-    out = out[:line0] + branch + out[line0:]
+    none = re.search(r'\n(%s  <none>\n.*?\n%s  </none>)\n' % (ind, ind), out[t0:t1], re.S)
+    korean = '\n'.join((ind + '        ' + l[4:]) if l.startswith('    ') else (ind + '        ' + l)
+                       for l in completion.split('\n'))
+    parts = ['%s  <%s>' % (ind, MARKER), '%s    <logic type="Tech">' % ind]
+    if none:                                     # the vanilla stable has no <none> branch
+        parts.append('\n'.join('    ' + l for l in none.group(1).split('\n')))
+    parts += ['%s      <colonialize>' % ind, korean, '%s      </colonialize>' % ind,
+              '%s    </logic>' % ind, '%s  </%s>' % (ind, MARKER)]
+    out = out[:line0] + '\n'.join(parts) + '\n' + out[line0:]
     return out
+
+
+def canon(e):
+    return (e.tag, sorted(e.attrib.items()), (e.text or '').strip(), [canon(c) for c in e])
 
 
 def verify(text, culture):
@@ -159,7 +174,13 @@ def verify(text, culture):
             tech = br.find('logic')
             kids = [c.tag for c in tech]
             assert kids[-1] == MARKER, kids
-            return kids
+            inner = tech.find(MARKER).find('logic')
+            assert inner.get('type') == 'Tech'
+            ages = [c.tag for c in inner]
+            assert ages[-1] == 'colonialize' and ages[:-1] in ([], ['none']), ages
+            if 'none' in kids:   # the Discovery Age branch is a copy of vanilla's (indentation aside)
+                assert canon(inner.find('none')) == canon(tech.find('none'))
+            return kids + ['/'.join(ages)]
     raise AssertionError('no %s branch' % culture)
 
 
