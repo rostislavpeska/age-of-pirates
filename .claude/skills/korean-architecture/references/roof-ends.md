@@ -9,10 +9,25 @@ parameters and the military transfer status; do not duplicate that implementatio
 Use this recipe when working on the round cover-tile ends, scalloped pan ends or
 curved side/hip caps. Main top ridges remain timber per the Korean art direction.
 
+The **accepted Korean Town Center is the primary roof-end standard**, explicitly
+preferred by the owner over the Japanese Shrine on 8 October 2026. Reuse its
+receiver, relief and cutout method at the new roof's measured scale. Japanese/
+Chinese models inform functional silhouette and footprint comparisons, not a
+replacement end treatment. This preference is recorded in project KR-EAVE-01.
+
 The required unit of work is **field + front + back/under + corners + UV readers**.
 A field-only normal bake is not a finished eave. Model the disc and pan ends on
 the HIGH, then derive matching alpha from its actual silhouette. Keep field rows
 and end centers in one measured coordinate system. Bind opacity in the preview.
+
+**LOW/HIGH distinction (owner correction, 8 October 2026):** LOW uses clean
+continuous roof fields and perpendicular/steep overlapping eave receiver strips,
+with a hard normal and UV break at the fold. Individual rounded tile noses,
+end discs and scalloped pans belong in HIGH and are baked onto these strips;
+they are not a row of separate LOW solids. Overall projection, closure and backing
+clearance remain real geometry. Preserve matching cutout readers on front, back
+and under surfaces. The rejected House r1-r3 interpretation does not supersede
+the accepted Town Center recipe or authorize edits to the military workstream.
 
 Do not paste the TC opacity atlas onto a different UV layout. The accepted TC
 uses separate source opacity packed into cutout BaseColor at export; its PNG
