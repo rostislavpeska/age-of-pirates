@@ -336,7 +336,8 @@ class Ocr:
     def __init__(self):
         self.p = subprocess.Popen(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
                                    str(HERE / "ocr_server.ps1")], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                                  stderr=subprocess.DEVNULL, text=True, encoding="utf-8")
+                                  stderr=subprocess.DEVNULL, text=True, encoding="utf-8",
+                                  errors="replace")   # PowerShell may emit a cp1252 byte
         ready = self.p.stdout.readline()
         if "ready" not in ready:
             raise RuntimeError("OCR server did not start: " + ready)
@@ -346,7 +347,7 @@ class Ocr:
         with self.lock:
             self.p.stdin.write(str(Path(path).resolve()) + "\n")
             self.p.stdin.flush()
-            r = json.loads(self.p.stdout.readline())
+            r = json.loads(self.p.stdout.readline(), strict=False)   # OCR text may carry control characters
         return [ln["text"] for ln in r.get("lines", [])]
 
     def close(self):
