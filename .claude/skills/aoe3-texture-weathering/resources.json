@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/vanilla-targets.md",
+    "references/recipe-contract.md",
+    "scripts/colourstats.py",
+    "scripts/ddt2png.py"
+  ],
+  "skills": [
+    "bar-extract",
+    "substance-painter-remote",
+    "aoe3de-player-colour",
+    "aoe3de-building-export",
+    "korean-architecture"
+  ],
+  "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": ["numpy"],
+      "requiredFor": ["metrics", "decode"],
+      "optional": false,
+      "note": "Array maths for the colour statistics and the DDT decoder."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "distribution": "Pillow",
+      "modules": ["PIL"],
+      "requiredFor": ["metrics", "decode"],
+      "optional": false,
+      "note": "Image IO, Gaussian blur and the BCn decoder behind the synthetic DDS header."
+    }
+  ]
+}

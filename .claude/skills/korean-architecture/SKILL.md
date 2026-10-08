@@ -54,6 +54,7 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 | Rounded eave discs, scalloped pan ends, alpha backing and curved hip caps | [Rounded roof ends](references/roof-ends.md), then project pattern `KR-EAVE-01` |
 | Granite foundations, vertical gable boards and wooden ridge grain | [Stone and timber direction](references/stone-and-grain.md), then project pattern `KR-MAT-DIRECTION-01` |
 | Painted trim, gable background, player color, age progression | [Palette and age variants](references/palette-ages.md) |
+| Weathering: two-coat plaster, rips, mould, darker hanji, door iron, lacquer wear, player-colour budget, stacked-cell limits | [Plaster, paper and wear](references/plaster-weathering.md), then [aoe3-texture-weathering](../aoe3-texture-weathering/SKILL.md) |
 | Reproduce a Town Center revision or export both states | [Town Center evidence](references/town-center.md), then the current complete handoff |
 
 [recipes.json](recipes.json) indexes the exact implementation and evidence files.

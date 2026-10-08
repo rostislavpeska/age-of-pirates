@@ -7,7 +7,15 @@
     "references/palette-ages.md",
     "references/roof-color.md",
     "references/town-center.md",
-    "scripts/check_recipes.py"
+    "scripts/check_recipes.py",
+    "references/roof-ends.md",
+    "references/stone-and-grain.md",
+    "references/plaster-weathering.md",
+    "scripts/check_alpha_chain.py",
+    "scripts/check_eave_contract.py",
+    "scripts/test_alpha_chain.py",
+    "scripts/test_alpha_clearance.py",
+    "scripts/test_eave_contract.py"
   ],
   "skills": [
     "aoe-building-pipeline",
@@ -15,7 +23,21 @@
     "blender-architecture-texturing",
     "blender-high-low-baking",
     "blender-uv-workflow",
-    "roof-tile-direction-qa"
+    "roof-tile-direction-qa",
+    "aoe3-texture-weathering"
   ],
-  "external": []
+  "external": [
+    {
+      "id": "aop-local-env",
+      "kind": "capability",
+      "modules": [
+        "local_env"
+      ],
+      "requiredFor": [
+        "recipe-check"
+      ],
+      "optional": false,
+      "note": "Consumer helper <consumer-root>/scripts/tools/local_env.py resolving this device's AOP_KOREAN_REPO / AOP_KOREAN_ASSETS from config/aop.local.env."
+    }
+  ]
 }
