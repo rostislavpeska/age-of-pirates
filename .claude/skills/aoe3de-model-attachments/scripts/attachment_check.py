@@ -10,12 +10,19 @@ component. ATTACHPOINT is engine-provided (the model origin) and never looked up
 case-insensitively. The tobone must exist in ALL of them: the engine
 resolves it through the animated (simskeleton) skeleton, so a bone present only in the intact model drops the
 attachment to the model origin with no rotation.
+Declaration: every custom tobone must be declared with <definebone> in the animfile. The engine registers bone
+names from the anim XML (its own messages: "Couldn't register bone name", "...the bone was not defined in the unit's
+anim XML"); vanilla declares every custom attach bone (39/39 horse, 26/26 flag attaches; the undeclared ones are the
+engine's built-in tags - ROOT, MASTER, HEAD, PROP1/2, PELVIS, R/L HAND, Bip01 ... - or dead typos). An undeclared
+bone also drops the attachment to the model origin with no rotation, even when every GR2 has the bone.
 Policy (AoE Buildings construction rules): a construction-stage submodel (referenced from BuildingCompletion
 below p100) must not carry bone_flag_civ / bone_garrisonflag - the engine hangs the player flag on them.
 Archive (vanilla) models are reported as not checked. Exit 0 PASS, 1 FAIL.
 Found 2026-10-08: the Korean stable horses both appeared at the stall-wing origin, sideways - bone_horse1/2 were
 in the intact GR2 only while the LIVE Idle anim's simskeleton is the damaged GR2 (vanilla stables carry the horse
-bones in both); the Korean construction models inherited bone_flag_civ from the donor skeleton.
+bones in both); the Korean construction models inherited bone_flag_civ from the donor skeleton. After the bones were
+added to the damaged GR2 (cc76b0ac) the horses still stood at the origin in game: the animfile never declared
+bone_horse1/2 with <definebone> (fixed 2026-10-08 evening).
 """
 import argparse, json, re, sys
 import xml.etree.ElementTree as ET
@@ -25,6 +32,12 @@ REPO = Path(__file__).resolve().parents[4]   # .claude/skills/<skill>/scripts/<t
 sys.path.insert(0, str(REPO / 'scripts' / 'havok'))
 
 FLAG_BONES = ('bone_flag_civ', 'bone_garrisonflag')
+ENGINE_TAGS = {'attachpoint', 'root', 'master', 'head', 'prop1', 'prop2', 'pelvis', 'r hand', 'l hand'}   # vanilla attaches these undeclared
+
+
+def needs_definebone(tobone):
+    t = (tobone or '').strip().lower()
+    return bool(t) and t not in ENGINE_TAGS and not t.startswith('bip01')
 
 
 def bones(gr2):
@@ -63,6 +76,16 @@ def check(animfile, art_root=None, bones_of=bones):
             el = parent.get(el)
         return el if el is not None else root
 
+    declared = {name_of(d).lower() for d in root.iter('definebone')}
+    for att in root.iter('attach'):
+        tobone = att.get('tobone')
+        if needs_definebone(tobone):
+            ok = tobone.strip().lower() in declared
+            rows.append(dict(attach=att.get('a'), tobone=tobone, role='definebone', status='OK' if ok else 'FAIL'))
+            if not ok:
+                findings.append(f"attach '{att.get('a')}' -> {tobone}: not declared with <definebone>{tobone}</definebone> in this "
+                                f"animfile; the engine cannot register the name and drops the attachment to the model origin "
+                                f"with no rotation (vanilla declares every custom attach bone)")
     for att in root.iter('attach'):
         comp = att
         while comp is not None and comp.tag != 'component':

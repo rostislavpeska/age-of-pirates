@@ -85,7 +85,9 @@ one editor generation, the bunting attached with `<attach frombone="ATTACHPOINT"
 
 ## Where the bones must be declared
 
-Animfile `<definebone>` lines are optional for attachments but keep them consistent; `.dmg` damage templates
+Every custom bone an `<attach tobone>` names must be declared with `<definebone>` in that animfile (vanilla: 39/39
+horse, 26/26 flag attaches; undeclared, the attachment sits at the model origin - Korean stable 2026-10-08,
+**aoe3de-model-attachments**). Engine tags such as `ATTACHPOINT`, `ROOT`, `MASTER` need none. `.dmg` damage templates
 name `boneimpact*` and `bone_debris_*`; the engine finds the garrison flag by `bone_garrisonflag` and the civ
 flag by `bone_flag_civ`.
 
