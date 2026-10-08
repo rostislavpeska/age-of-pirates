@@ -1,0 +1,39 @@
+<techtreemods>
+  <!-- ==================================================================
+       KOREANS (playable civ) - tech dbids 60000-60999, strings 600000+.
+
+       zpAge0Korean is the Age0 tech of the zpKoreans civ (data/civmods.xml).
+       It activates the Japanese Age0 tech - the vanilla pattern of
+       YPAge0JapaneseSPC, which activates the Japanese Age0 parts - so the
+       Koreans play exactly as the Japanese, plus one marker:
+
+       zpKoreanVisuals switches the Town Center, Barracks and Stable to the
+       Korean models. It is the last child of the Japanese "Tech" logic in
+       art/buildings/town_center/town_center.xml,
+       art/buildings/asian_civs/bansho/bansho.xml and
+       art/buildings/asian_civs/stable/stable.xml (vanilla copies plus the
+       Korean branch; regenerate with scripts/tools/korean_visuals.py), the
+       way vanilla DEHCIturbidePalace swaps the Town Center look.
+
+       Later Korean changes go into these techs, never into Japanese ones.
+       This add-on's techtreemods.xml holds only these two, so they are the first
+       techs of the file (AoP: techs near the bottom of a big techtreemods.xml did
+       not apply - see zpNeutralCathedralSelectableP1 in AoP's file).
+       ================================================================== -->
+  <tech name="zpKoreanVisuals" type="Normal">
+    <dbid>60000</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="zpAge0Korean" type="Normal">
+    <dbid>60001</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">YPAge0Japanese</effect>
+      <effect type="TechStatus" status="active">zpKoreanVisuals</effect>
+    </effects>
+  </tech>
+</techtreemods>

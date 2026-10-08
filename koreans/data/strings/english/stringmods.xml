@@ -1,0 +1,15 @@
+<stringmods>
+  <stringtable>
+    <language name="English">
+      <!-- ===== NEW STRINGS: Koreans add-on ids 600000+ (AoP never uses this range). English text; the
+           export copies the compiled table to every language folder (stringsync rule for a table without
+           REWRITES). Ascending ids. ===== -->
+      <string _locid="600000">Koreans</string>
+      <string _locid="600001">&lt;color=1.0, 1.0, 0.0&gt;Civilization bonus:&lt;/color&gt;\nVillagers cannot hunt. Shrines attract animals to generate resources.\n&lt;color=1.0, 1.0, 0.0&gt;Unique units:&lt;/color&gt;\nAshigaru Musketeer, Atakebune, Daimyo, Flaming Arrow, Fune, Sohei Archer, Morutaru, Naginata Rider, Tekkousen, Samurai, Yabusame Archer and Yumi Archer.\n&lt;color=1.0, 1.0, 0.0&gt;Unique buildings:&lt;/color&gt;\nKorean Town Center, Barracks and Stable. Cherry Orchard is a resource for food. Dojo generates armies automatically and Shrines are homes.\n&lt;color=1.0, 1.0, 0.0&gt;Wonders:&lt;/color&gt;\nGolden Pavilion, Great Buddha, The Shogunate, Torii Gates and Toshogu Shrine\n\nThe Joseon dynasty ruled Korea from Hanseong for five centuries and proclaimed the Korean Empire in 1897.</string>
+      <string _locid="600002">Hanseong</string>
+      <string _locid="600003">Samyeong Daesa</string>
+      <string _locid="600004">Empress Myeongseong</string>
+      <string _locid="600005">Empress Myeongseong is a shrewd and determined ruler. She seeks strong allies abroad, keeps a watchful eye on every rival and defends her realm with patience before she strikes.</string>
+    </language>
+  </stringtable>
+</stringmods>
