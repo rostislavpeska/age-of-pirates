@@ -71,22 +71,22 @@
             },
             "files": [
               {
-                "path": "buildings/korean_shared/textures/korean_shared_matc_v2_BaseColor.ddt",
-                "sha256": "7d8decf3d725b58b3e0fcd446bc45c7f439bc29aadcf1db21e90efa12985c195",
-                "width": 512,
-                "height": 512
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_BaseColor.ddt",
+                "sha256": "ab986a62a37bb7f21cc01ba12d1cc3f6b9e766330475aa6a5fbe85a20c7d719d",
+                "width": 1024,
+                "height": 1024
               },
               {
-                "path": "buildings/korean_shared/textures/korean_shared_matc_v2_Normals.ddt",
-                "sha256": "974921923f95b685ad03419a21708f38a896eb1ce4dc3bdfa5e381f2fca2d6be",
-                "width": 512,
-                "height": 512
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Normals.ddt",
+                "sha256": "2f91e0bb857f25ab01552d5b5409182ea495a29405a234fe85d58a6dbecd353a",
+                "width": 1024,
+                "height": 1024
               },
               {
-                "path": "buildings/korean_shared/textures/korean_shared_matc_v2_Masks.ddt",
-                "sha256": "459cb6ebc87d2f19c39d86eaf6e467a949e7f4d5cfd94128e99cdd08f85f5612",
-                "width": 512,
-                "height": 512
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Masks.ddt",
+                "sha256": "9ae32260b70ad94db7285a5ee0c8f6e85c387734b831fdb547f9f31bf0f4927f",
+                "width": 1024,
+                "height": 1024
               }
             ]
           },
@@ -146,8 +146,8 @@
         "ground_supports": []
       },
       "uv_contract": {
-        "path": "config/gr2_uv_contracts/korean_barracks_r59.json",
-        "sha256": "1c244c7979fb274133e2823a38835f8281b801be4ec2e3e6047603645c5ba967"
+        "path": "config/gr2_uv_contracts/korean_barracks_r71.json",
+        "sha256": "bbba8a983257d350d3a6a2459aac4daef365be816ab5e206bf31f50dc72468d8"
       }
     },
     "korean_stable_physics": {
@@ -183,22 +183,22 @@
             },
             "files": [
               {
-                "path": "buildings/korean_shared/textures/korean_shared_matc_v2_BaseColor.ddt",
-                "sha256": "7d8decf3d725b58b3e0fcd446bc45c7f439bc29aadcf1db21e90efa12985c195",
-                "width": 512,
-                "height": 512
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_BaseColor.ddt",
+                "sha256": "ab986a62a37bb7f21cc01ba12d1cc3f6b9e766330475aa6a5fbe85a20c7d719d",
+                "width": 1024,
+                "height": 1024
               },
               {
-                "path": "buildings/korean_shared/textures/korean_shared_matc_v2_Normals.ddt",
-                "sha256": "974921923f95b685ad03419a21708f38a896eb1ce4dc3bdfa5e381f2fca2d6be",
-                "width": 512,
-                "height": 512
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Normals.ddt",
+                "sha256": "2f91e0bb857f25ab01552d5b5409182ea495a29405a234fe85d58a6dbecd353a",
+                "width": 1024,
+                "height": 1024
               },
               {
-                "path": "buildings/korean_shared/textures/korean_shared_matc_v2_Masks.ddt",
-                "sha256": "459cb6ebc87d2f19c39d86eaf6e467a949e7f4d5cfd94128e99cdd08f85f5612",
-                "width": 512,
-                "height": 512
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Masks.ddt",
+                "sha256": "9ae32260b70ad94db7285a5ee0c8f6e85c387734b831fdb547f9f31bf0f4927f",
+                "width": 1024,
+                "height": 1024
               }
             ]
           },
@@ -467,8 +467,8 @@
         ]
       },
       "uv_contract": {
-        "path": "config/gr2_uv_contracts/korean_stable_r59.json",
-        "sha256": "c728a37673b2bf9aa4fa7e7d9c52e367c6dcadae6bd42cc3db78e0b23d6ad212"
+        "path": "config/gr2_uv_contracts/korean_stable_r71.json",
+        "sha256": "9045b06581dccef2bc1f16d1dfbfd80ac261125a3b51c36246f058d48af389de"
       }
     }
   }
