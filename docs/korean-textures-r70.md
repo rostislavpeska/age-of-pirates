@@ -1,4 +1,4 @@
-# Korean r70e textures, 8 October 2026 (night run + morning fix)
+# Korean r70f textures, 8 October 2026 (night run + morning fixes)
 
 Owner brief: the Korean Barracks, Stable and Town Center textures were "too perfect, too geometric";
 make them illustrative, slightly exaggerated AoE3 style with imperfections - walls with damage, mould
@@ -16,7 +16,9 @@ Texture-only; no UV, geometry, alpha, material or GR2 change.
   Masks, materials, GR2, HKT, shared `matc` and TC props are unchanged.
 - Restart the game (art needs a process restart) and place **Korean Barracks**, **Korean Stable** and
   **ZP TEST Korean Town Center - Destruction Test** in the Scenario Editor.
-- Installed revision: **r70e** = r70d plus the owner's player-colour plank pattern (history keeps r70b-r70d).
+- Installed revision: **r70f** = r70d + the owner's player-colour plank pattern (r70e) + lighter wood under
+  the paint on all three buildings, TC panels included (owner: "The wooden background color beneath the
+  colored parts can even be slightly lighter"); paint base luma 160 -> 187. History keeps r70b-r70e.
   Owner, morning 2026-10-08: "I like your textures, feel free to merge them to pirate rework."
 - Library packages (candidate, with the saved Painter project, maps, change masks, views, sources,
   QA and HANDOFF.json): AoE Buildings > Korean > Colonial > 2d-assets > barracks / stable /
