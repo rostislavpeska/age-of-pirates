@@ -10,7 +10,7 @@ from the game's BAR archives (**aoe3de-bar-archives**). 1,360 attaches name a bo
 | Flag attaches under a simskeleton with the bone in the simskeleton model | 2 of 2 |
 | Smoke/chimney/fire attaches whose bone is in the intact model but not in the simskeleton | 22 (in-game effect not verified) |
 | Attaches whose bone exists in no model (dead vanilla attaches, tolerated silently) | 66 under a simskeleton, more elsewhere |
-| Attaches naming a bone no `<definebone>` declares | 231 |
+| Attaches naming a bone no `<definebone>` declares | 231 - all engine tags (`HEAD` 68, `MASTER` 57, `ROOT` 29, `PROP1/2` 34, `Bip01 ...`, `PELVIS`, `R HAND`) or dead/typo names (`coolking_pot`, `bone_chimney_smoke`, `bone_smoke`); **every** horse (39) and flag (26) attach bone is declared |
 | Scaffold/frame attaches | 66, all `ATTACHPOINT` -> `ATTACHPOINT` |
 | Horse attaches inside a LowPoly `<normal>` branch whose `lp_*` model has no horse bone | every vanilla stable and corral |
 

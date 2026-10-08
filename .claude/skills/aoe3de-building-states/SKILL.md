@@ -115,6 +115,7 @@ Do not launch the game without authorization; offline gates never prove physics 
 | Earlier stages: `asi_4x4_stage1`, then `asi_4x4_stage2` + `asi_4x4_frame` at ATTACHPOINT | verified | same files; unitbench pre-flight resolves them |
 | Engine flags hang on `bone_flag_civ` / `bone_garrisonflag` | verified in project history | **unit-bones** (Treasure Ship); owner rule for construction models |
 | `<definebone>` does not create a GR2 bone | verified | Korean TC: 103 definebones, construction GR2 7 bones |
+| Custom attach bones need a `<definebone>` (unit-bones said optional) | **corrected** | vanilla 39/39 horse, 26/26 flag attaches declared; Korean stable horses stayed at the origin with bones in both GR2s until declared (2026-10-08); `attachment_check.py` enforces it |
 | Converter output with a second root is not drawn | verified | **unit-bones** bone bench 2026-09-26 |
 | Animation tracks override rest transforms | verified in project history | **unit-bones** / **ship-sails** |
 | "The Korean Stable once lost the horse's rotation (90 deg)" | **corrected** | the 2026-10-08 failure was missing bones in the simskeleton (origin + identity rotation); bone orientation equals vanilla |

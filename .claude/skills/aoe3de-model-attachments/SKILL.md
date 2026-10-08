@@ -37,16 +37,23 @@ tables, converter roots) are in **unit-bones**; this skill covers the wiring, th
   branch only: vanilla stables keep the horse bones out of their `lp_*` models.
 - `ATTACHPOINT` is engine-provided (the model origin), never a GR2 bone: all 66 vanilla scaffold/frame
   attaches are `frombone="ATTACHPOINT" tobone="ATTACHPOINT"`.
-- `<definebone>` lines do **not** create bones in a GR2 (the Korean TC animfile declares 103, its construction
-  GR2 has 7); they are optional for attachments (**unit-bones**; 231 vanilla attaches name undeclared bones).
+- **Declare every custom attach bone with `<definebone>` at the top of the host animfile.** Without it the
+  engine cannot register the name and the attachment drops to the model origin with no rotation, even when every
+  GR2 has the bone (Korean stable, 2026-10-08). Vanilla declares every one: 39/39 horse and 26/26 flag attaches;
+  the undeclared vanilla names are engine tags (`ATTACHPOINT`, `ROOT`, `MASTER`, `HEAD`, `PROP1/2`, `PELVIS`,
+  `R/L HAND`, `Bip01 ...`) or dead typos. The game's own messages: "Couldn't register bone name", "...the bone
+  was not defined in the unit's anim XML". A `<definebone>` does **not** create a bone in a GR2 (the Korean TC
+  declares 103, its construction GR2 has 7): declaration and bone are both required.
 - Runtime art XML is CRLF (**aoe-xml**); write paths with real backslashes - an escaped `\n` inside
   `buildings\native_civs` once turned into a line break.
 
 ## 2. The resolution rule (measured 2026-10-08)
 
-**The `tobone` must exist in every model the component can show AND in the `<simskeleton>` model of every
-anim that plays the component.** A bone missing there resolves to nothing: the attachment drops to the
-**model origin with identity rotation** - with two horses that looks like "one over another, wrong rotation".
+**The `tobone` must be declared with `<definebone>` in the animfile, AND exist in every model the component can
+show AND in the `<simskeleton>` model of every anim that plays the component.** If any of the three is missing
+the attachment drops to the **model origin with identity rotation** - with two horses that looks like "one over
+another, wrong rotation". The 2026-10-08 Korean stable failed twice: first bones only in the intact GR2, then
+(after the damaged GR2 got them, cc76b0ac) still no `<definebone>` - same picture in game both times.
 
 | Model | `bone_horse*` | Horse bone transform |
 |---|---|---|
@@ -54,6 +61,7 @@ anim that plays the component.** A bone missing there resolves to nothing: the a
 | vanilla `east_stables_age2_damaged.gr2` | 1, 2, 3 under `bone_master` | identical |
 | Korean stable intact (2026-10-08 b6e4344f) | 1, 2 | identical to vanilla |
 | Korean stable damaged (b6e4344f) | **none** -> both horses at the origin in game | - |
+| Korean stable animfile (b6e4344f..d6866a9c) | no `<definebone>bone_horse1/2</definebone>` -> still at the origin with the bones in both models | - |
 
 Vanilla carries the bones in both skeletons; the Korean fix appended the same two bones to the damaged model
 (meshes, bone order and HKT untouched). **unit-bones** already said "the damaged model needs the same bones";
@@ -114,7 +122,9 @@ models are reported NOT CHECKED, never as passed.
 
 ## 6. Incidents this skill exists for (2026-10-08)
 
-- Korean stable horses at the stall-wing origin, sideways: bones only in the intact GR2 (b6e4344f, fixed after).
+- Korean stable horses at the stall-wing origin, sideways: bones only in the intact GR2 (b6e4344f, fixed in
+  cc76b0ac) AND no `<definebone>` for them (still at the origin in the owner's game after cc76b0ac; declared
+  2026-10-08 evening). The first fix was declared done from offline checks that did not cover the declaration.
 - Korean construction models carried `bone_flag_civ` from the donor skeleton (513928bd, fixed in 7585fc4c).
 - Tests: `tests/test_attachments.py` keeps both as regression cases against git history.
 

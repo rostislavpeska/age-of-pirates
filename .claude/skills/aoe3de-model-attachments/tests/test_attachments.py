@@ -10,6 +10,7 @@ import attachment_check as AC  # noqa: E402
 
 REPO = AC.REPO
 ANIM = """<animfile>
+  <definebone>bone_horse1</definebone>
   <submodel>built<component>LIVE<logic type="Destruction">
       <p1><assetreference type="GrannyModel"><file>x\\damaged</file></assetreference></p1>
       <p99><assetreference type="GrannyModel"><file>x\\intact</file></assetreference></p99></logic>
@@ -48,7 +49,7 @@ def test_flag_bone_in_a_construction_stage_fails(tmp_path):
 def test_archive_models_are_reported_not_passed(tmp_path):
     f = tmp_path / 'a.xml'; f.write_text(ANIM)
     rep = AC.check(f, tmp_path / 'empty-art', bones_of=lambda p: [])
-    assert all(r['status'].startswith('NOT CHECKED') for r in rep['rows'])
+    assert all(r['status'].startswith('NOT CHECKED') for r in rep['rows'] if r.get('role') != 'definebone')
 
 
 def git_blob(rev, path, out):
@@ -72,7 +73,8 @@ def test_regression_2026_10_08_stable_as_pushed_before_the_fix_fails(tmp_path):
     git_blob('b6e4344f', 'art/' + d + 'korean_stable_physics_con.gr2', art / d / 'korean_stable_physics_con.gr2')
     git_blob('b6e4344f', 'art/' + d + 'korean_stable_physics.xml', tmp_path / 'stable.xml')
     rep = AC.check(tmp_path / 'stable.xml', art)
-    assert rep['status'] == 'FAIL' and len(rep['findings']) == 4
+    assert rep['status'] == 'FAIL' and sum('missing in' in f for f in rep['findings']) == 4
+    assert sum('<definebone>' in f for f in rep['findings']) == 2
 
 
 def test_regression_2026_10_08_construction_flag_bone_fails(tmp_path):
@@ -96,6 +98,7 @@ def test_add_bones_reproduces_the_stable_horse_fix_byte_for_byte(tmp_path):
 
 
 ANIM_LOWPOLY = r"""<animfile>
+  <definebone>bone_horse1</definebone>
   <component>LIVE<logic type="LowPoly">
       <normal>
         <logic type="Destruction">
@@ -121,7 +124,7 @@ def run_lowpoly(tmp_path, skeletons):
 def test_an_attach_in_the_lowpoly_normal_branch_does_not_need_the_bone_in_the_lowpoly_model(tmp_path):
     """vanilla stables.xml: horse attaches sit in <normal>; lp_*_stables models carry no horse bones."""
     rep = run_lowpoly(tmp_path, {'intact': ['bone_horse1'], 'damaged': ['bone_horse1'], 'lp': ['root']})
-    assert rep['status'] == 'PASS' and not any(r['ref'] == r'x\lp' for r in rep['rows'])
+    assert rep['status'] == 'PASS' and not any(r.get('ref') == r'x\lp' for r in rep['rows'])
 
 
 def test_bone_names_compare_case_insensitively_and_attachpoint_is_engine_provided(tmp_path):
@@ -133,3 +136,27 @@ def test_bone_names_compare_case_insensitively_and_attachpoint_is_engine_provide
 def test_the_normal_branch_still_needs_the_bone_in_its_damaged_simskeleton(tmp_path):
     rep = run_lowpoly(tmp_path, {'intact': ['bone_horse1'], 'damaged': ['root'], 'lp': []})
     assert rep['status'] == 'FAIL' and any('simskeleton' in f for f in rep['findings'])
+
+
+def test_an_undeclared_custom_bone_fails_even_when_every_model_has_it(tmp_path):
+    art = tmp_path / 'art' / 'x'; art.mkdir(parents=True)
+    for n in ('intact', 'damaged', 'con'):
+        (art / f'{n}.gr2').write_bytes(b'')
+    f = tmp_path / 'a.xml'; f.write_text(ANIM.replace('<definebone>bone_horse1</definebone>', ''))
+    rep = AC.check(f, tmp_path / 'art', bones_of=lambda p: {'intact': ['bone_horse1'], 'damaged': ['bone_horse1'], 'con': []}[p.stem])
+    assert rep['status'] == 'FAIL' and len(rep['findings']) == 1 and '<definebone>' in rep['findings'][0]
+
+
+def test_engine_tags_need_no_declaration():
+    assert not any(AC.needs_definebone(b) for b in ('ATTACHPOINT', 'ROOT', 'MASTER', 'HEAD', 'PROP1', 'R HAND', 'Bip01 L ForeArm'))
+    assert AC.needs_definebone('bone_horse1') and AC.needs_definebone('bone_prop')
+
+
+def test_regression_2026_10_08_stable_with_damaged_bones_but_no_definebone_fails(tmp_path):
+    """cc76b0ac: bones in the intact AND damaged GR2, horses still at the origin in game - no <definebone>."""
+    art = tmp_path / 'art'; d = 'zbench_korean_military/stable/'
+    for n in ('korean_stable_physics.gr2', 'korean_stable_physics_damaged.gr2', 'korean_stable_physics_con.gr2'):
+        git_blob('cc76b0ac', 'art/' + d + n, art / d / n)
+    git_blob('cc76b0ac', 'art/' + d + 'korean_stable_physics.xml', tmp_path / 'stable.xml')
+    rep = AC.check(tmp_path / 'stable.xml', art)
+    assert rep['status'] == 'FAIL' and len(rep['findings']) == 2 and all('<definebone>' in f for f in rep['findings'])
