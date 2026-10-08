@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 
-def snapshot(objects, output_dir, dataset, material_map):
+def snapshot(objects, output_dir, dataset, material_map, *, allow_zero_area_tessellation=False):
     """material_map: every material name -> {physical_material: str, alpha: bool}."""
     if not objects or any(o.type != 'MESH' for o in objects):
         raise ValueError('Pass an explicit nonempty list of mesh objects.')
@@ -16,6 +16,7 @@ def snapshot(objects, output_dir, dataset, material_map):
     if any(p.exists() for p in paths):
         raise FileExistsError('Choose a new dataset name; immutable snapshot already exists.')
     faces, triangles, face_ids, hashes = [], [], [], {}
+    omitted_analysis_triangles = []
     for obj in objects:
         if obj.mode != 'OBJECT' or any(m.show_viewport for m in obj.modifiers):
             raise ValueError(f'{obj.name}: use base Object-mode mesh or prepare an explicit analysis copy with source mapping.')
@@ -40,6 +41,12 @@ def snapshot(objects, output_dir, dataset, material_map):
             fid = len(faces)
             tris = np.array([[tuple(obj.matrix_world @ mesh.vertices[v].co) for v in t.vertices] for t in by_polygon[p.index]], float)
             cross = np.cross(tris[:, 1] - tris[:, 0], tris[:, 2] - tris[:, 0])
+            zero = np.linalg.norm(cross, axis=1) < 1e-12
+            if allow_zero_area_tessellation and np.any(zero) and not np.all(zero):
+                omitted_analysis_triangles.append({'object': obj.name, 'polygon': p.index,
+                    'tessellation_indices': np.flatnonzero(zero).tolist(),
+                    'reason': 'zero-area cached tessellation only; original polygon retained'})
+                tris = tris[~zero]; cross = cross[~zero]
             norm = cross.sum(0)
             if np.linalg.norm(norm) < 1e-12 or np.any(np.linalg.norm(cross, axis=1) < 1e-12):
                 raise ValueError(f'Degenerate analysis polygon {obj.name}:{p.index}.')
@@ -59,5 +66,6 @@ def snapshot(objects, output_dir, dataset, material_map):
     manifest = {'fingerprint': fingerprint, 'object_geometry_uv_hashes': hashes, 'material_contract': material_map,
                 'face_count': len(faces), 'analysis_triangle_count': len(triangles), 'source_modified': False,
                 'world_up': 'Z', 'evaluated_modifiers': False}
+    manifest['omitted_analysis_triangles'] = omitted_analysis_triangles
     paths[2].write_text(json.dumps(manifest, indent=2), encoding='utf-8')
     return manifest

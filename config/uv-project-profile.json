@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "project": "age-of-pirates",
+  "page_sizes": [512, 1024, 2048],
+  "square_only": true,
+  "default_working_page": 2048,
+  "standard_checker": "BLENDER_COLOR_GRID",
+  "subprojects": {
+    "korean": {
+      "page_sizes": [512, 1024, 2048],
+      "square_only": true,
+      "default_working_page": 2048,
+      "standard_checker": "BLENDER_COLOR_GRID"
+    }
+  },
+  "authority": "Owner instruction 2026-10-08: UV pages must be square 512, 1024 or 2048. Working-page count is not a runtime budget exemption."
+}

@@ -1,5 +1,10 @@
 # Checkpoint contract v1
 
+Draft operator contract: `blender-uv-observability` is undergoing the owner's
+workspace review. Do not promote its proposed checks into mandatory phase gates
+until that review and the requested deep audit. Existing requirements below
+remain binding; the draft adds no acceptance claim to historical receipts.
+
 The existing phase handoff and asset revision store remain authoritative for files
 and versions. A CHECKPOINT is evidence for a substep, not another asset database.
 

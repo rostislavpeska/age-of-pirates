@@ -67,6 +67,11 @@ reports and scoped owner acceptance. A background result is FILE_VERIFIED, not
 LIVE_VERIFIED. Preserve unsaved live work; use connectors. No desktop fallback is
 authorized here. Color legends distinguish chart IDs, materials, sharing and AO.
 
+The draft [operator workspace](../blender-uv-observability/SKILL.md) is being
+reviewed by the owner before standardization and deep audit. It is not yet a new
+mandatory gate. Unwrap remains a multi-skill discipline; this workflow coordinates
+specialist evidence. Pending sharing never counts as completed conjoinment.
+
 Deliver the owner's [standard review packet](references/review-packet.md): all
 model/resource UV sheets, measured resolution comparisons, space accounting,
 bounded improvement proposals, lessons/tracking and per-scope UV bindings. This
