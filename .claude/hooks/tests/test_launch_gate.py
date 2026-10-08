@@ -199,6 +199,36 @@ def test_background_agents_count_and_ended_ones_do_not(env):
     assert res['facts']['A']['running_agents'] == ['agent-b1']
 
 
+@pytest.mark.parametrize('tool,terminal,success,error,followup,matched,ended', [
+    ('SubagentHandback', True, True, False, False, True, True),
+    ('SubagentHandback', False, True, False, False, True, False),
+    ('SubagentHandback', True, False, False, False, True, False),
+    ('SubagentHandback', True, True, True, False, True, False),
+    ('SubagentHandback', True, True, False, True, True, False),
+    ('SubagentHandback', True, True, False, False, False, False),
+    ('Read', True, True, False, False, True, False),
+])
+def test_terminal_handback_releases_only_a_confirmed_finished_agent(
+        env, tool, terminal, success, error, followup, matched, ended):
+    add_bg(env, 'handback', 'completed or still running')
+    path = env.sess / 'subagents' / 'agent-handback.jsonl'
+    rows = [
+        {'type': 'assistant', 'message': {'stop_reason': None, 'content': [
+            {'type': 'tool_use', 'id': 'finish', 'name': tool}]}},
+        {'type': 'user', 'toolEndsTurn': terminal, 'message': {'content': [
+            {'type': 'tool_result', 'tool_use_id': 'finish' if matched else 'other',
+             'is_error': error, 'content': [
+                 {'type': 'text', 'text': json.dumps({'success': success})}]}]}},
+    ]
+    if followup:
+        rows.append({'type': 'user', 'message': {'content': 'Continue with a new instruction.'}})
+    path.write_text('\n'.join(json.dumps(row) for row in rows), encoding='utf-8')
+    g = load_gate()
+    assert g._turn_ended(path) is ended
+    agents = g.session_agents([env.sess], time.time())
+    assert next(a['running'] for a in agents if a['id'] == 'agent-handback') is not ended
+
+
 def test_read_only_lookup_agent_is_exempt_from_the_cap_and_logged(env):
     add_run(env, 'wf_aaaa0001-001', 'job-one')
     add_run(env, 'wf_aaaa0002-002', 'job-two')

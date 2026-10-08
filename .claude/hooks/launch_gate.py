@@ -426,13 +426,19 @@ def _scan_runs(sdirs, now):
 
 
 def _turn_ended(transcript):
-    """True when the transcript's last user/assistant entry is an assistant end_turn"""
+    """Recognize end_turn and a successful terminal SubagentHandback receipt.
+
+    Newer transcripts finish with a user tool result, not an assistant end_turn.
+    Require the terminal marker, matching tool call and explicit success; an
+    ordinary result, failed handback or later follow-up still occupies a slot.
+    """
     with open(transcript, 'rb') as f:
         f.seek(0, 2)
         size = f.tell()
         f.seek(max(0, size - 262144))
         data = f.read()
-    for raw in reversed(data.split(b'\n')):
+    rows = []
+    for raw in data.split(b'\n'):
         raw = raw.strip()
         if not raw:
             continue
@@ -440,11 +446,46 @@ def _turn_ended(transcript):
             d = json.loads(raw)
         except ValueError:
             continue
+        if isinstance(d, dict):
+            rows.append(d)
+    for index in range(len(rows) - 1, -1, -1):
+        d = rows[index]
         t = d.get('type')
         if t == 'assistant':
             msg = d.get('message') if isinstance(d.get('message'), dict) else {}
             return msg.get('stop_reason') == 'end_turn'
         if t == 'user':
+            if d.get('toolEndsTurn') is True:
+                msg = d.get('message') or {}
+                content = msg.get('content') or []
+                if not isinstance(content, list):
+                    return False
+                for result in content:
+                    if not isinstance(result, dict) or result.get('type') != 'tool_result' or result.get('is_error'):
+                        continue
+                    tool_id = result.get('tool_use_id')
+                    if not tool_id:
+                        continue
+                    called = any(
+                        isinstance(item, dict) and item.get('type') == 'tool_use'
+                        and item.get('id') == tool_id and item.get('name') == 'SubagentHandback'
+                        for row in rows[:index] if row.get('type') == 'assistant'
+                        for item in (row.get('message') or {}).get('content', [])
+                    )
+                    if not called:
+                        continue
+                    payload = result.get('content')
+                    texts = [payload] if isinstance(payload, str) else [
+                        item.get('text', '') for item in payload or []
+                        if isinstance(item, dict) and item.get('type') == 'text'
+                    ]
+                    for text in texts:
+                        try:
+                            receipt = json.loads(text)
+                        except (ValueError, TypeError):
+                            continue
+                        if isinstance(receipt, dict) and receipt.get('success') is True:
+                            return True
             return False
     return False
 
