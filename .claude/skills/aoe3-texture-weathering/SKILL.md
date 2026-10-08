@@ -37,6 +37,9 @@ and for player colour a `__Details`; outside its claim it is byte-identical. Har
   rips, mould blobs); use low-frequency gradients and fine grain. Marks repeat as stamps otherwise.
 - **Hierarchy:** a calm field with dirty edges. Keep relief and speckle near frames and the base,
   leave 30-40 % of a panel quiet; core-minus-ring luma +15..+25, dirt marks p90 10-15 texels.
+  Edge bands are min(25 px, 15-20 % of the panel's short side), and every zone mask is feathered
+  over 30-60 px with noise: a mask stepping over 3 rows printed a straight seam on all 21 faces of a
+  stacked cell.
 - **Plaster:** the owner's Elector recipe - lighter cream top-coat islands over a warmer, darker
   under-coat, island edges feathered in BaseColor and raised in the normal map. Source the islands from
   the Painter white-coat Dirt run ([white-coat Dirt relief](../substance-painter-remote/references/whitedirt-relief-9.1.2.md)).
@@ -45,7 +48,9 @@ and for player colour a `__Details`; outside its claim it is byte-identical. Har
 - **Paper:** clearly darker and warmer than the adjacent plaster (gap >= 25 L), tea stains, grime halo
   along the lattice.
 - **Roof moss** on a protected bake: overlay only, DARKER than the tile (vanilla), broken into pads
-  hugging channels, AO-driven opacity, no straight edges along tile courses.
+  hugging channels, AO-driven opacity, no straight edges along tile courses. On dark neutral slate it
+  also needs chroma (C* 16-19, hue 105-115): darker moss at C* ~12 reads as soot and the roof looks
+  unchanged at game zoom; lighter-than-tile moss reads as lime paint.
 - **Player colour:** vanilla budget 0.6-4 % (median 2.1 %) on a light neutral base with paint-worn
   edges; measure it stack-weighted (aoe3de-player-colour).
 
