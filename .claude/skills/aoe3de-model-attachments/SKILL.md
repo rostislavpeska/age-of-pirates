@@ -117,14 +117,32 @@ python scripts/havok/gr2_lint.py ... <folder>                                   
 
 `attach_plot.py` draws the host (a height slice, top view, game display frame) with the attached model at each
 bone's rest transform and an arrow for its facing; look at it before any game test (inside the bay, clear of
-posts, facing like the vanilla building). Then **rm-unit-bench** / the owner's game test. `attachment_check.py` resolves mod-local GR2s; vanilla archive
-models are reported NOT CHECKED, never as passed.
+posts, facing like the vanilla building). `attachment_check.py` resolves mod-local GR2s; vanilla archive
+models are reported NOT CHECKED, never as passed. Offline checks never prove the game shows the attachment:
+finish with section 6.
 
-## 6. Incidents this skill exists for (2026-10-08)
+## 6. See it in game
+
+The attachment test that counts is a look at the placed building (**aoe3de-trigger-camera**): a test map with the
+building and Camera Cut views aimed at the attachment bones, run through the Scenario Editor's Playtest.
+
+```bash
+python scripts/aitest/camera_bench.py gen --proto zzKoreanStablePhysics --tag korstable --bones art/zbench_korean_military/stable/korean_stable_physics.gr2:bone_horse1,bone_horse2 --headings 60,90,120
+python scripts/aitest/camera_bench.py editor --tag korstable
+```
+
+- Bone to world for a building placed by the random map: world = unit position + (-raw x, raw y, -raw z).
+- The two failure pictures differ: an unresolved bone puts the attachment at the model origin, unrotated (several
+  attachments stacked there); a resolved bone with a wrong transform puts it somewhere else, turned.
+- Report the stills with the verdict; the owner's acceptance stays separate.
+
+## 7. Incidents this skill exists for (2026-10-08)
 
 - Korean stable horses at the stall-wing origin, sideways: bones only in the intact GR2 (b6e4344f, fixed in
-  cc76b0ac) AND no `<definebone>` for them (still at the origin in the owner's game after cc76b0ac; declared
-  2026-10-08 evening). The first fix was declared done from offline checks that did not cover the declaration.
+  cc76b0ac) AND no `<definebone>` for them (still at the origin in the owner's game after cc76b0ac; declared in
+  30b76906). The first fix was declared done from offline checks that did not cover the declaration. After
+  30b76906 both horses stand in the first and third bays facing out: verified in game by the owner and in the
+  first camera bench run (2026-10-08).
 - Korean construction models carried `bone_flag_civ` from the donor skeleton (513928bd, fixed in 7585fc4c).
 - Tests: `tests/test_attachments.py` keeps both as regression cases against git history.
 

@@ -1,5 +1,5 @@
 {
-  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia; 2026-09-24: menu_live_probe / menu_post_probe = button background (81,34,17) at x 2560 - the plateau of a left-edge gradient, x 2460 = (48,19,9), x 2500 = (68,29,14): MEASURE, never shift a probe unmeasured - of the in-match menu at y 615 (Quit) and the post-match menu at y 414 (Quit; Restart in the live menu); 2026-09-25: the driver's and snapshots' former 2880x1800 literals moved here unchanged - lobby_minimap (fingerprint centre + r), lobby_minimap_corner, yesno_yes_edge / yesno_no_edge (the resignation dialog; its Yes = quit_yes), minimap_center.r (snapshot crop), mouse_park",
+  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia; 2026-09-24: menu_live_probe / menu_post_probe = button background (81,34,17) at x 2560 - the plateau of a left-edge gradient, x 2460 = (48,19,9), x 2500 = (68,29,14): MEASURE, never shift a probe unmeasured - of the in-match menu at y 615 (Quit) and the post-match menu at y 414 (Quit; Restart in the live menu); 2026-09-25: the driver's and snapshots' former 2880x1800 literals moved here unchanged - lobby_minimap (fingerprint centre + r), lobby_minimap_corner, yesno_yes_edge / yesno_no_edge (the resignation dialog; its Yes = quit_yes), minimap_center.r (snapshot crop), mouse_park; 2026-10-08: Scenario Editor points measured from screenshots (camera_bench.py editor): home_editor = the home menu's Scenario Editor button, editor_new = the New toolbar icon (227,190,45), editor_play = the Playtest toolbar button (36,90,187), editor_type_arrow = the New Scenario dialog's Type drop-down arrow (200,162,45), editor_generate = its Generate button (96,96,96); in Playtest, Escape opens the menu whose Quit is match_quit, then quit_yes returns to the editor",
   "home_skirmish": {
     "x": 187,
     "y": 652,
@@ -158,5 +158,50 @@
     "x": 1440,
     "y": 60,
     "rgb": null
+  },
+  "home_editor": {
+    "x": 186,
+    "y": 900,
+    "rgb": [
+      82,
+      34,
+      17
+    ]
+  },
+  "editor_new": {
+    "x": 40,
+    "y": 76,
+    "rgb": [
+      227,
+      190,
+      45
+    ]
+  },
+  "editor_play": {
+    "x": 2736,
+    "y": 76,
+    "rgb": [
+      36,
+      90,
+      187
+    ]
+  },
+  "editor_type_arrow": {
+    "x": 1678,
+    "y": 764,
+    "rgb": [
+      200,
+      162,
+      45
+    ]
+  },
+  "editor_generate": {
+    "x": 1575,
+    "y": 1232,
+    "rgb": [
+      96,
+      96,
+      96
+    ]
   }
 }

@@ -15,7 +15,8 @@
     "aoe-xml",
     "gr2-granny-edit",
     "rm-unit-bench",
-    "aoe3de-bar-archives"
+    "aoe3de-bar-archives",
+    "aoe3de-trigger-camera"
   ],
   "external": [
     {
