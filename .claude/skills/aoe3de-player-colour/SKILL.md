@@ -56,6 +56,15 @@ Report the **stack-weighted share** (texels x visible faces sharing them) or the
 blue-vs-red render pair, before and after; narrowing a stacked band to one 10-12 texel stripe is the
 effective lever. Evidence: AoP workflow journal 2026-10-08-claude-05 and -16.
 
+**Within a building set, copy the set's pattern before tuning the budget** (owner, 2026-10-08): find how
+the reference building places player colour (Korean Town Center wall base = wood sill | player-colour
+panel ~0.375 m, Details 255, hard | wood rail; vanilla JP/CN = a stripe between beams) and apply the
+same structure to every member. On the Korean skirts: the two lower planks carry player colour, the top
+plank stays wood. Removing the role entirely (pinstripes only) read as an overcorrection, and leaving
+one building on its old full band broke the set. Paint the base under the planks lighter than the bare
+wood (Korean set: luma ~187 with the grain kept) so the colour reads, and lift the reference's panels by
+the same amount. Evidence: journal 2026-10-08-claude-21 and -22.
+
 ## Workflow
 
 1. **Scope.** Agree which surfaces carry player colour (owner's screenshot or words). Freeze the UVs first: Details

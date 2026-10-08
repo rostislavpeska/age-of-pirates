@@ -38,12 +38,16 @@ worn around the lattice wood." Panes L ~120-140 against plaster L ~150-170 (keep
 building), warm R-B +15..+30, tea tide-marks, grey smudges, a 3-8 texel grime halo along every bar,
 frayed paper at some joints, one slightly fresher replaced pane per row where panes are unique.
 
-## Player colour (Barracks)
+## Player colour (whole set, owner-confirmed pattern)
 
-Vanilla budget 0.6-4 %. r70: courtyard caps/bands, skirt boards, headers and end beams lost player
-colour; the shared band cell became dark lacquered board [88,64,44] with two thin worn pinstripes;
-gable emblems kept. Stack-weighted visible share 7.6 % -> ~1.1 %. Stable/TC player colour was out of
-scope and stays byte-identical (including its base).
+One pattern for TC, Barracks and Stable, taken from the Town Center wall base (wood sill | player-colour
+panel ~0.375 m | wood rail): on every three-plank skirt the two lower planks carry player colour (Details
+255, worn edges, chips to wood) and the top plank is wood. Paint base luma ~187 with the plank grain kept
+(r70f lifted the TC panels to the same value). Courtyard caps/bands are stone; gable emblems kept;
+Stable headers/end beams keep r60 colour. The Barracks hall band cell [966,275,1094,336] is also read by
+the courtyard plaster strips and the clerestory band, so they show the same two-plank strip (a plain
+variant breaks both end walls). Visible share: Barracks 3.89 %, Stable 2.54 %, TC 3.22 %. The r70d
+pinstripe-only version (0.94 %) was rejected by the owner as an overcorrection.
 
 ## Doors, lacquer, stone, roof
 

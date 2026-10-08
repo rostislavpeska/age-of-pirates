@@ -51,8 +51,9 @@ and for player colour a `__Details`; outside its claim it is byte-identical. Har
   hugging channels, AO-driven opacity, no straight edges along tile courses. On dark neutral slate it
   also needs chroma (C* 16-19, hue 105-115): darker moss at C* ~12 reads as soot and the roof looks
   unchanged at game zoom; lighter-than-tile moss reads as lime paint.
-- **Player colour:** vanilla budget 0.6-4 % (median 2.1 %) on a light neutral base with paint-worn
-  edges; measure it stack-weighted (aoe3de-player-colour).
+- **Player colour:** copy the building set's existing pattern first (e.g. the Town Center's player-colour
+  plank panel between wood beams), then check the vanilla budget 0.6-4 % (median 2.1 %), stack-weighted;
+  paint the base under it lighter than bare wood with worn edges (aoe3de-player-colour).
 
 ## 4. Compose, relieve, refresh
 
