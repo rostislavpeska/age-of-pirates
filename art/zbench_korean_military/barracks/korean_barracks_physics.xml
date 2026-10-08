@@ -1,5 +1,59 @@
 <animfile>
   <definebone>BONE_HITPOINTBAR</definebone>
+  <submodel>korean_barracks_construction_stage_01<component>korean_barracks_construction_stage_01<assetreference type="GrannyModel">
+        <file>buildings\asian_civs\construction\asi_4x4_stage1</file>
+      </assetreference>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\constructions\2x2_construction_decal</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+      </decal>
+    </component>
+    <anim>Idle<component>korean_barracks_construction_stage_01</component>
+    </anim>
+  </submodel>
+  <submodel>korean_barracks_construction_stage_02<attachment>korean_barracks_4x4_center_con<component>korean_barracks_4x4_mid<assetreference type="GrannyModel">
+          <file>buildings\asian_civs\construction\asi_4x4_frame</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>korean_barracks_4x4_mid</component>
+      </anim>
+    </attachment>
+    <component>korean_barracks_construction_stage_02<assetreference type="GrannyModel">
+        <file>buildings\asian_civs\construction\asi_4x4_stage2</file>
+      </assetreference>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\constructions\2x2_construction_decal</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+      </decal>
+      <attach a="korean_barracks_4x4_center_con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0" />
+    </component>
+    <anim>Idle<component>korean_barracks_construction_stage_02</component>
+    </anim>
+  </submodel>
+  <submodel>korean_barracks_construction_stage_03<component>korean_barracks_construction_stage_03<assetreference type="GrannyModel">
+        <file>zbench_korean_military\barracks\korean_barracks_physics_con</file>
+      </assetreference>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\asian_civs\bansho\japan_bansho_ground</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+      </decal>
+    </component>
+    <anim>Idle<component>korean_barracks_construction_stage_03</component>
+    </anim>
+  </submodel>
+  <submodel>korean_barracks_built
   <component>LIVE<logic type="Destruction">
       <p1>
         <assetreference type="GrannyModel">
@@ -43,4 +97,20 @@
       <model>zbench_korean_military\barracks\korean_barracks_physics_damaged</model>
     </simskeleton>
   </anim>
+  </submodel>
+  <component>korean_barracks<logic type="BuildingCompletion">
+      <p0>
+        <submodelref ref="korean_barracks_construction_stage_01" />
+      </p0>
+      <p33>
+        <submodelref ref="korean_barracks_construction_stage_02" />
+      </p33>
+      <p66>
+        <submodelref ref="korean_barracks_construction_stage_03" />
+      </p66>
+      <p100>
+        <submodelref ref="korean_barracks_built" />
+      </p100>
+    </logic>
+  </component>
 </animfile>
