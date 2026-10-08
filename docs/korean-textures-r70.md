@@ -8,9 +8,9 @@ Texture-only; no UV, geometry, alpha, material or GR2 change.
 
 ## Where it is
 
-- **AoP branch `korean-textures-r70`** (owner: "Install in mod. It's fine. Rather separate branch.").
-  `Pirate-rework` is untouched apart from two skill commits and keeps the r62 textures.
-  Switch back: `git checkout Pirate-rework`. Restore the seven textures on this branch only:
+- **`Pirate-rework`** (first on branch `korean-textures-r70`, then merged on the owner's word: "I like your
+  textures, feel free to merge them to pirate rework"). The game reads the retail profile clone
+  (`Games/Age of Empires 3 DE/...`), not a Beta one. Restore the r62 textures:
   `python <work>/install/install_r70.py --rollback` (git restore from bcfd0236).
 - Installed files (7): Barracks/Stable/TC `mata` BaseColor and Normals, Barracks Details.
   Masks, materials, GR2, HKT, shared `matc` and TC props are unchanged.
@@ -20,6 +20,15 @@ Texture-only; no UV, geometry, alpha, material or GR2 change.
   the paint on all three buildings, TC panels included (owner: "The wooden background color beneath the
   colored parts can even be slightly lighter"); paint base luma 160 -> 187. History keeps r70b-r70e.
   Owner, morning 2026-10-08: "I like your textures, feel free to merge them to pirate rework."
+  In game the same day: "I see the buildings in game! The result is FANTASTIC!!!"
+- **r70g** (Stable only): the paddock mounting block (a Korean stone mounting step, object
+  `Stable/MountingBlock`) repainted as a wooden water trough - owner: "I don't like this stony pedestal".
+  Texture-only on its own cells 14 and 19 of `korean_stable_mata` (no other face reads them): side planks
+  along the trough, corner posts, worn rim, dark water with a sky streak; BaseColor + Normals re-encoded,
+  Details unchanged. Wood is resampled from the Stable's own beam cell.
+- Lint pins: `config/gr2_lint_military.json` pinned the pre-r70 Korean TC `mata` BaseColor/Normals that the
+  Barracks and Stable read for their pots; re-pinned to r70f with the owner's approval. `dll_read` still
+  cannot run on the TIGO PC (WSL distro name, no Wine/DLL there; INC-144).
 - Library packages (candidate, with the saved Painter project, maps, change masks, views, sources,
   QA and HANDOFF.json): AoE Buildings > Korean > Colonial > 2d-assets > barracks / stable /
   town-center > versions > `r70d-texture-candidate` (Korean repo commit 1f37551, report

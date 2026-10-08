@@ -103,13 +103,13 @@
             "files": [
               {
                 "path": "buildings/korean_tc/textures/korean_tc_mata_BaseColor.ddt",
-                "sha256": "93e9c848313b94c2d0a0d1c272d4a6d1618e7644f8de21b1b7112363800bba4b",
+                "sha256": "9f444e4f8d1ddc798c2a9eb3f3f90e06882be1d29aecb8c41d5deb9a3890867a",
                 "width": 2048,
                 "height": 2048
               },
               {
                 "path": "buildings/korean_tc/textures/korean_tc_mata_Normals.ddt",
-                "sha256": "c3b1a51d80dcad7eeffeb51e52c2ff5730d2eef6c70dae175bd10deaa4c329d8",
+                "sha256": "f3fdf917ca0cb1ebff167d31bfdba00a88c9f35c676af1ca316de72a4ed0a902",
                 "width": 2048,
                 "height": 2048
               },
@@ -215,13 +215,13 @@
             "files": [
               {
                 "path": "buildings/korean_tc/textures/korean_tc_mata_BaseColor.ddt",
-                "sha256": "93e9c848313b94c2d0a0d1c272d4a6d1618e7644f8de21b1b7112363800bba4b",
+                "sha256": "9f444e4f8d1ddc798c2a9eb3f3f90e06882be1d29aecb8c41d5deb9a3890867a",
                 "width": 2048,
                 "height": 2048
               },
               {
                 "path": "buildings/korean_tc/textures/korean_tc_mata_Normals.ddt",
-                "sha256": "c3b1a51d80dcad7eeffeb51e52c2ff5730d2eef6c70dae175bd10deaa4c329d8",
+                "sha256": "f3fdf917ca0cb1ebff167d31bfdba00a88c9f35c676af1ca316de72a4ed0a902",
                 "width": 2048,
                 "height": 2048
               },
