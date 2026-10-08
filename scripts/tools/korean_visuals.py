@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Build the Korean building visuals into the vanilla Barracks and Stable animfiles (Town Center: see BUILDINGS).
+"""Build the Korean building visuals into the vanilla Town Center, Barracks and Stable animfiles.
 
 Koreans (civ zpKoreans) use the vanilla protos ypBarracksJapanese and ypStableJapanese (and TownCenter), so
 every tech, card, AI rule and trigger that names them keeps working; only the look differs. Animfiles
@@ -30,12 +30,13 @@ BARTOOL = os.path.join(ROOT, '.claude', 'skills', 'aoe3de-bar-archives', 'script
 BS = chr(92)
 
 # (vanilla archive animfile, mod output, Korean source animfile, culture branch, add attack anims)
-# Korean Town Center: ready, but OFF until `gr2_lint.py --profile korean_tc art/buildings/korean_tc` exits 0
-# (AGENTS.md rule 13; 2026-10-08: 6 FAIL - texture budget, texel density, UV lineage). To switch it on, add
-#   ('Art/buildings/town_center/town_center.xml.XMB', 'art/buildings/town_center/town_center.xml',
-#    'art/buildings/korean_tc/korean_tc.xml', 'japanese', False),
-# Overriding town_center.xml touches every civ's Town Center; --check keeps its vanilla bytes honest.
+# Korean Town Center: ON by the owner's go of 2026-10-08 ("So GO with the Town center modification") while
+# `gr2_lint.py --profile korean_tc art/buildings/korean_tc` still FAILs 6 checks (texture budget, texel density,
+# UV lineage - the open texturing work, AGENTS.md rule 13). Overriding town_center.xml touches every civ's Town
+# Center; --check keeps its vanilla bytes honest.
 BUILDINGS = [
+    ('Art/buildings/town_center/town_center.xml.XMB', 'art/buildings/town_center/town_center.xml',
+     'art/buildings/korean_tc/korean_tc.xml', 'japanese', False),
     ('Art/buildings/asian_civs/bansho/bansho.xml.XMB', 'art/buildings/asian_civs/bansho/bansho.xml',
      'art/zbench_korean_military/barracks/korean_barracks_physics.xml', 'japanese', True),
     ('Art/buildings/asian_civs/stable/stable.xml.XMB', 'art/buildings/asian_civs/stable/stable.xml',

@@ -1359,7 +1359,7 @@
        KOREANS (playable civ) - the vanilla Japanese <civ> entry, field for field, with
        its own name (600000/600001), flags (objects\flags\zpkoreans + the WPF flag set),
        home city (homecityzpkoreans.xml) and Age0 tech zpAge0Korean (Japanese Age0 + the
-       zpKoreanVisuals marker for the Korean Barracks and Stable).
+       zpKoreanVisuals marker for the Korean Town Center, Barracks and Stable).
        Legacy UI fields (flag button sets, postgame texture, matchmaking textures,
        history preview, independence icon) still point at the Japanese assets.
        ================================================================== -->

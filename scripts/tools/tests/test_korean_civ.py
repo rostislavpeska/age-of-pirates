@@ -62,7 +62,8 @@ def test_flags_strings_home_city_and_personality_exist():
     assert 'zpMyeongseong' in [p.text for p in xml('game/ai/personalities.xml').findall('Personality')]
 
 
-@pytest.mark.parametrize('path', ['art/buildings/asian_civs/bansho/bansho.xml',
+@pytest.mark.parametrize('path', ['art/buildings/town_center/town_center.xml',
+                                  'art/buildings/asian_civs/bansho/bansho.xml',
                                   'art/buildings/asian_civs/stable/stable.xml'])
 def test_korean_branch_is_the_last_japanese_tech_child(path):
     root = xml(path)

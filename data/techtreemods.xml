@@ -7,13 +7,13 @@
        YPAge0JapaneseSPC, which activates the Japanese Age0 parts - so the
        Koreans play exactly as the Japanese, plus one marker:
 
-       zpKoreanVisuals switches the Barracks and Stable to the Korean
-       models. It is the last child of the Japanese "Tech" logic in
+       zpKoreanVisuals switches the Town Center, Barracks and Stable to the
+       Korean models. It is the last child of the Japanese "Tech" logic in
+       art/buildings/town_center/town_center.xml,
        art/buildings/asian_civs/bansho/bansho.xml and
        art/buildings/asian_civs/stable/stable.xml (vanilla copies plus the
        Korean branch; regenerate with scripts/tools/korean_visuals.py), the
-       way vanilla DEHCIturbidePalace swaps the Town Center look. The Korean
-       Town Center joins when its gr2_lint passes (see that script).
+       way vanilla DEHCIturbidePalace swaps the Town Center look.
 
        Later Korean changes go into these techs, never into Japanese ones.
        KEPT AT THE TOP OF THE FILE - see the note on
