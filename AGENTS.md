@@ -122,6 +122,10 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
   (pre-zip audit), `game-startup` (never kill the game; launch only on instruction).
 - Tools: `scripts/tools/check_art_eol.py`, `scripts/havok/ddt_dxt1.py` (DXT1 .ddt with mips),
   `scripts/havok/gr2_editmesh.py` (in-place vanilla model edits - the converter route loses large faces in game).
+- Koreans add-on: source `koreans/` (a mod root the game never reads here, never zipped with AoP), exported by
+  `scripts/tools/export_koreans.py` to the separate mod `../age-of-pirates-koreans` (public repo, generated - never
+  edited by hand). No Korean civ record goes into AoP's own data files; workflow and merge strategy in
+  `koreans/README.md`, open work in `koreans/AUDIT.md`.
 
 ## Local environment (every agent, every device)
 

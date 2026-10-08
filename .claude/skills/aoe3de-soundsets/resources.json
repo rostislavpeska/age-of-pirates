@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md"
+  ],
+  "skills": [
+    "aoe-xml",
+    "bar-extract",
+    "vanilla-merge"
+  ],
+  "external": [
+    {
+      "id": "ffmpeg",
+      "kind": "executable",
+      "commands": ["ffmpeg"],
+      "requiredFor": ["import-audio"],
+      "optional": true,
+      "note": "Converts downloaded .ogg voice lines to PCM 16-bit mono 22050 Hz WAV. Only needed to import new audio."
+    },
+    {
+      "id": "aop-project-tools",
+      "kind": "capability",
+      "requiredFor": ["check"],
+      "optional": false,
+      "note": "The AoP repository supplies .claude/skills/aoe-xml/scripts/xmlcheck.py and scripts/tools/check_art_eol.py; run the checks from that repository."
+    }
+  ]
+}
