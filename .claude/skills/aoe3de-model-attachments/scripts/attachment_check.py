@@ -2,9 +2,12 @@
 
     python attachment_check.py art/zbench_korean_military/stable/korean_stable_physics.xml [--art-root DIR] [--json out.json]
 
-For each <attach a=".." tobone=".."> inside a <component>, the check finds every GrannyModel that component can
-show (Destruction p1/p99, LowPoly normal/lowpoly ...) and the <simskeleton> model of every <anim> in the same
-scope (<submodel> or file root) that plays that component. The tobone must exist in ALL of them: the engine
+For each <attach a=".." tobone=".."> inside a <component>, the check finds every GrannyModel of the branch that
+holds the attach (an attach directly in the component: everything it can show, Destruction p1/p99 ...; an attach
+inside a LowPoly <normal> branch: only that branch - vanilla stables keep their horse bones out of the lowpoly
+model) and the <simskeleton> model of every <anim> in the same scope (<submodel> or file root) that plays that
+component. ATTACHPOINT is engine-provided (the model origin) and never looked up; bone names compare
+case-insensitively. The tobone must exist in ALL of them: the engine
 resolves it through the animated (simskeleton) skeleton, so a bone present only in the intact model drops the
 attachment to the model origin with no rotation.
 Policy (AoE Buildings construction rules): a construction-stage submodel (referenced from BuildingCompletion
@@ -67,7 +70,10 @@ def check(animfile, art_root=None, bones_of=bones):
         if comp is None:                                   # anim-level attach (e.g. Death smoke at ATTACHPOINT)
             continue
         scope = scope_of(comp); cname = name_of(comp); tobone = att.get('tobone')
-        models = [f.text.strip() for ar in comp.iter('assetreference') if ar.get('type') == 'GrannyModel' for f in ar.iter('file')]
+        if (tobone or '').strip().upper() == 'ATTACHPOINT':      # engine-provided origin, no bone to resolve
+            continue
+        holder = parent[att]                               # the branch that holds the attach (component or <normal>)
+        models = [f.text.strip() for ar in holder.iter('assetreference') if ar.get('type') == 'GrannyModel' for f in ar.iter('file')]
         sims = [m.text.strip() for an in scope.findall('anim') if any(name_of(c) == cname for c in an.findall('component'))
                 for s in an.findall('simskeleton') for m in s.findall('model')]
         for ref, role in [(m, 'model') for m in models] + [(s, 'simskeleton') for s in sims]:
@@ -76,7 +82,7 @@ def check(animfile, art_root=None, bones_of=bones):
                        submodel=name_of(scope) if scope is not root else None, ref=ref, role=role)
             if names is None:
                 row['status'] = 'NOT CHECKED (archive model)'
-            elif tobone in names:
+            elif tobone.lower() in {n.lower() for n in names}:
                 row['status'] = 'OK'
             else:
                 row['status'] = 'FAIL'
@@ -100,7 +106,7 @@ def check(animfile, art_root=None, bones_of=bones):
                 continue
             for f in ar.iter('file'):
                 names = skeleton(f.text.strip())
-                bad = [b for b in (names or []) if b in FLAG_BONES]
+                bad = [b for b in (names or []) if b.lower() in FLAG_BONES]
                 rows.append(dict(construction_stage=name_of(sm), p=stages[name_of(sm)], ref=f.text.strip(), flag_bones=bad,
                                  status='NOT CHECKED (archive model)' if names is None else ('FAIL' if bad else 'OK')))
                 if bad:

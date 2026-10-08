@@ -26,13 +26,20 @@ thresholds per building:
 <component>korean_tc<logic type="BuildingCompletion">
     <p0><submodelref ref="..._construction_stage_01" /></p0>     <!-- asi_4x4_stage1 (vanilla) -->
     <p33><submodelref ref="..._construction_stage_02" /></p33>   <!-- asi_4x4_stage2 + asi_4x4_frame at ATTACHPOINT -->
-    <p66><submodelref ref="..._construction_stage_03" /></p66>   <!-- OUR last construction model -->
+    <p66><submodelref ref="..._construction_stage_03" /></p66>   <!-- OUR last construction model + asi_4x4_stage2 at ATTACHPOINT -->
     <p100><submodelref ref="..._built" /></p100>                 <!-- the existing intact/destruction content -->
 </logic></component>
 ```
 
 - Project policy: author **only the last construction stage**; reuse the vanilla p0/p33 stages of the matching
   Japanese building (owner: "use the previous with scaffolding from Japanese"). No new scaffold or texture set.
+- The p66 stage also shows the vanilla scaffold base, exactly as every Japanese p66 stage does: `asi_4x4_stage2`
+  as an `<attachment>` of the stage submodel, `<attach frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0">`
+  after the stage component's decal (owner 2026-10-08: "attach the scaffold too"; Korean TC/Barracks/Stable,
+  recipe `scaffold_p66_r73.py`). Some of its material piles always end up inside the building - vanilla too
+  (18-39 % of the piles, see **aoe3de-model-attachments** vanilla evidence).
+- 697 of 721 vanilla BuildingCompletion logics use p0/p33/p66/p100; others exist (0/1/50/100, 0/25/50/75/100,
+  0/66/100 ...), so read the donor's thresholds.
 - Wrap the existing animfile content unchanged as the p100 submodel (keep `<definebone>` lines at the top);
   verify byte identity of that content after wrapping. Recipes must be idempotent: never wrap twice.
 - Without this block a building appears finished the moment construction starts (Korean TC, 2026-10-08).
@@ -48,8 +55,9 @@ python .claude/skills/aoe3de-building-states/scripts/state_frame_check.py --inta
 python .claude/skills/aoe3de-building-states/scripts/state_frame_check.py --intact art/.../X.gr2 --state art/.../X_damaged.gr2
 ```
 
-It pairs own-page corners by UV in the serialized models (compressed ones through the DLL flat route),
-solves the rigid transform and requires identity on >= 80 % inliers. Run it for every state before a game
+It pairs own-page corners by UV in the serialized models (compressed ones through the DLL flat route; on a PC
+without that route a compressed intact model is replaced by its raw `_damaged` twin, which shares the frame - the
+report names the reference used), solves the rigid transform and requires identity on >= 80 % inliers. Run it for every state before a game
 test; record the asset's export frame next to its recipe.
 
 ## 4. Construction model content (project policy)
@@ -64,6 +72,8 @@ test; record the asset's export frame next to its recipe.
   z = 0 for land buildings, docks need their own contract). New members use the shared parts atlas only.
 - Flags: no `bone_flag_civ` / `bone_garrisonflag` in the construction skeleton (**aoe3de-model-attachments**
   `attachment_check.py` enforces it); removing a mast mesh alone does not remove a flag.
+- `BONE_HITPOINTBAR` at the finished model's position on every stage. A donor skeleton brings the donor's:
+  the Korean TC stage had the Barracks bar at 9.05 m instead of the TC's (2.3284, 11.6993, -0.3933) until r73.
 - Count textures and material groups in the serialized model, not Blender slots.
 
 ## 5. Destruction is a separate derivative of the intact model
@@ -97,7 +107,11 @@ Do not launch the game without authorization; offline gates never prove physics 
 
 | Claim (method docs) | Status | Evidence |
 |---|---|---|
-| Vanilla last construction at p66, intact at p100 | verified for bansho, stable, Japanese TC | vanilla animfiles (Korean repo `construction_study_r63`) |
+| Vanilla last construction at p66, intact at p100 | verified: 697 of 721 vanilla logics (24 use other sets) | census of 551 vanilla building animfiles, 2026-10-08 |
+| Vanilla p66 = own `*_con_stage3` + `asi_4x4_stage2` at ATTACHPOINT | verified (every Japanese p66) | same census; Korean p66 follows it since r73 |
+| Scaffold parts use cutout materials | verified | `asi_4x4_stage2` mata and `japan_towncenter_age2_con_stage3` matb: `default_doublesided_cutout` |
+| Reference last-stage triangles (Bansho 696, Japan Stable 1,131, War Academy 2,944, Japan TC 1,198, `asi_4x4_stage2` 507) | verified, 5 of 5 exact | bound render triangles of the archive GR2s |
+| "Stable construction retains its fences" (2026-10-07 study) | **superseded** | owner 2026-10-08: props, furnishings and fences are removed |
 | Earlier stages: `asi_4x4_stage1`, then `asi_4x4_stage2` + `asi_4x4_frame` at ATTACHPOINT | verified | same files; unitbench pre-flight resolves them |
 | Engine flags hang on `bone_flag_civ` / `bone_garrisonflag` | verified in project history | **unit-bones** (Treasure Ship); owner rule for construction models |
 | `<definebone>` does not create a GR2 bone | verified | Korean TC: 103 definebones, construction GR2 7 bones |
@@ -110,6 +124,7 @@ Do not launch the game without authorization; offline gates never prove physics 
 | Hidden-frame visibility envelope, cover/exposure | method | Korean r69 records; not game-verified |
 | Physics behavior of hidden beams, flag following supports | **unverified** | needs the owner's game test |
 
-Tests: `tests/test_state_frame.py` (synthetic + the TC regression, marked `local`: needs the DLL route).
+Tests: `tests/test_state_frame.py` (synthetic + the TC regression, marked `local`: needs this repo's history;
+the DLL route or the raw damaged twin as reference).
 Related: **aoe3de-model-attachments**, **aoe-building-pipeline**, **aoe3de-destructible-building**,
 **havok-destruction**, **unit-bones**, **aoe-xml**, **rm-unit-bench**.

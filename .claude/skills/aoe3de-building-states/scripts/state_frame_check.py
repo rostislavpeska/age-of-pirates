@@ -7,7 +7,10 @@ surface keeps its UVs), solves the rigid transform state -> intact (Kabsch, trim
 two different walls) and requires identity on >= 80 % inliers: rotation within 1e-3, translation within 2 mm, median
 inlier residual within 1 mm. A state exported through a different
 frame (converter rotate_y, mirror, wrong axis map) fails with the measured angle, e.g. "90.0 deg about engine
-Y". Oodle-compressed models are read through the game DLL flat route (gr2_lint.dll_read), as the lint does.
+Y". Oodle-compressed models are read through the game DLL flat route (gr2_lint.dll_read), as the lint does. Where
+that route is missing (no Wine/WSL DLL setup on this PC) a compressed intact model is replaced by the building's raw
+`<stem>_damaged.gr2`: the assembled damaged model shares the intact frame and own-page UVs (gr2_lint
+assembled_rest_bounds; Korean TC 1,402 pairs, 99.7 % inliers) - the report names the reference actually used.
 Exit 0 PASS, 1 FAIL, 2 INCONCLUSIVE (too few unique UV pairs: no retained surfaces on that page).
 Found 2026-10-08: the Korean TC construction model came out 90 deg about Y from the intact TC (TC export
 config rotate_y_deg 90; construction written with the military axis map), and nothing checked it.
@@ -29,6 +32,19 @@ def model(path, workdir):
         tdir = L.find_tools(json.loads((REPO / 'config' / 'gr2_lint_military.json').read_text(encoding='utf-8')))
         dll = L.dll_read(path, tdir, workdir)
     return L.load(path, dll)
+
+
+def reference(intact, workdir):
+    """(model, path actually used): the intact model, or its raw _damaged twin when the intact one is compressed and
+    this PC has no DLL route."""
+    intact = Path(intact)
+    try:
+        return model(intact, workdir), intact
+    except ValueError:
+        twin = intact.with_name(intact.stem + '_damaged.gr2')
+        if not twin.exists() or L.header(twin).get('compressed'):
+            raise
+        return model(twin, workdir), twin
 
 
 def corners(info, material):
@@ -79,14 +95,19 @@ def main():
     ap.add_argument('--json')
     a = ap.parse_args()
     with tempfile.TemporaryDirectory() as w1, tempfile.TemporaryDirectory() as w2:
-        rep = solve(model(Path(a.intact), w1), model(Path(a.state), w2), a.material)
-    rep.update(intact=a.intact, state=a.state)
+        ref, used = reference(a.intact, w1)
+        if Path(used).resolve() == Path(a.state).resolve():
+            rep = dict(material=a.material, unique_uv_pairs=0, status='INCONCLUSIVE',
+                       why='the intact model is unreadable here and its damaged twin is the state itself')
+        else:
+            rep = solve(ref, model(Path(a.state), w2), a.material)
+    rep.update(intact=a.intact, reference_used=str(used), state=a.state)
     if a.json:
         Path(a.json).write_text(json.dumps(rep, indent=2))
     msg = {'PASS': 'same frame', 'FAIL': f"state model is NOT in the intact frame: {rep.get('angle_about_engine_y_deg')} deg about engine Y, "
            f"translation {rep.get('translation')}, corners up to {rep.get('max_corner_distance_as_is', 0):.3f} apart as installed",
            'INCONCLUSIVE': rep.get('why')}[rep['status']]
-    print(f"{rep['status']:12} {Path(a.state).name} vs {Path(a.intact).name} [{a.material}, {rep['unique_uv_pairs']} pairs, inliers {rep.get('inlier_fraction')}]: {msg}")
+    print(f"{rep['status']:12} {Path(a.state).name} vs {Path(rep['reference_used']).name} [{a.material}, {rep['unique_uv_pairs']} pairs, inliers {rep.get('inlier_fraction')}]: {msg}")
     sys.exit({'PASS': 0, 'FAIL': 1, 'INCONCLUSIVE': 2}[rep['status']])
 
 

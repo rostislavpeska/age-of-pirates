@@ -4,7 +4,9 @@
     "SKILL.md",
     "scripts/attachment_check.py",
     "scripts/add_bones.py",
-    "tests/test_attachments.py"
+    "tests/test_attachments.py",
+    "scripts/attach_plot.py",
+    "references/vanilla-evidence-2026-10-08.md"
   ],
   "skills": [
     "unit-bones",
@@ -12,7 +14,8 @@
     "havok-destruction",
     "aoe-xml",
     "gr2-granny-edit",
-    "rm-unit-bench"
+    "rm-unit-bench",
+    "aoe3de-bar-archives"
   ],
   "external": [
     {
@@ -21,7 +24,8 @@
       "requiredFor": [
         "attachment-check",
         "bone-append",
-        "frame-check"
+        "frame-check",
+        "placement-plot"
       ],
       "optional": false,
       "note": "The AoP repository supplies scripts/havok (gr2_read GR2 reader, gr2_addbones writer, gr2_lint DLL flat route). Run from that repository; these are not bundled helpers.",
@@ -36,7 +40,8 @@
       "kind": "python-package",
       "requiredFor": [
         "bone-append",
-        "frame-check"
+        "frame-check",
+        "placement-plot"
       ],
       "optional": false,
       "note": "Standalone helper interpreter.",
@@ -56,6 +61,19 @@
       "distribution": "pytest",
       "modules": [
         "pytest"
+      ]
+    },
+    {
+      "id": "matplotlib",
+      "kind": "python-package",
+      "requiredFor": [
+        "placement-plot"
+      ],
+      "optional": true,
+      "note": "attach_plot.py writes the top-view placement picture with Matplotlib (Agg backend).",
+      "distribution": "matplotlib",
+      "modules": [
+        "matplotlib"
       ]
     }
   ]

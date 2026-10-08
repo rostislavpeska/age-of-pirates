@@ -33,9 +33,12 @@ tables, converter roots) are in **unit-bones**; this skill covers the wiring, th
   model (vanilla stables use `bone_master`, which the DE horse skeleton lacks - the engine then uses the horse
   model's origin; vanilla ships it this way and its stables show their horses).
 - An `<attach>` inside a `<component>` is live while that component shows; one inside an `<anim>` belongs to
-  that animation/event (Death smoke).
+  that animation/event (Death smoke). An attach inside a logic branch (LowPoly `<normal>`) applies to that
+  branch only: vanilla stables keep the horse bones out of their `lp_*` models.
+- `ATTACHPOINT` is engine-provided (the model origin), never a GR2 bone: all 66 vanilla scaffold/frame
+  attaches are `frombone="ATTACHPOINT" tobone="ATTACHPOINT"`.
 - `<definebone>` lines do **not** create bones in a GR2 (the Korean TC animfile declares 103, its construction
-  GR2 has 7); they are optional for attachments (**unit-bones**).
+  GR2 has 7); they are optional for attachments (**unit-bones**; 231 vanilla attaches name undeclared bones).
 - Runtime art XML is CRLF (**aoe-xml**); write paths with real backslashes - an escaped `\n` inside
   `buildings\native_civs` once turned into a line break.
 
@@ -54,14 +57,21 @@ anim that plays the component.** A bone missing there resolves to nothing: the a
 
 Vanilla carries the bones in both skeletons; the Korean fix appended the same two bones to the damaged model
 (meshes, bone order and HKT untouched). **unit-bones** already said "the damaged model needs the same bones";
-the check below now enforces it.
+the check below now enforces it. Census of all 551 vanilla building animfiles (models read from the BAR
+archives): every one of the 34 horse attaches under a simskeleton has the bone in the simskeleton model; vanilla
+also ships dead attaches whose bone exists nowhere, so "vanilla does it" never excuses a missing bone in ours.
+Details: [vanilla evidence](references/vanilla-evidence-2026-10-08.md).
+
+Facing: with the vanilla horse transform the horse's head points to raw +X; in vanilla stables the heads point
+out through the open stall front. The Korean stable follows that (mangers behind the horses); turn both bones
+180 deg about raw Y, in both models, if the heads should face the mangers.
 
 ## 3. Per-state attachments (buildings)
 
 | State | Attachments | Rule |
 |---|---|---|
 | Intact (BuildingCompletion p100) | civ/garrison flags, horses, smoke, props per the building's contract | bones in intact AND damaged/simskeleton models |
-| Last construction stage (p66, project policy) | none visible - no flags, horses, props | the construction GR2 must not carry `bone_flag_civ` / `bone_garrisonflag`: the engine hangs the player flag on those names even without an `<attach>` line. A donor skeleton passes them on silently - audit and rename/remove |
+| Last construction stage (p66, project policy) | no flags, horses or props; the vanilla scaffold base `asi_4x4_stage2` at `ATTACHPOINT`, as every Japanese p66 stage (owner 2026-10-08: "attach the scaffold too") | the construction GR2 must not carry `bone_flag_civ` / `bone_garrisonflag`: the engine hangs the player flag on those names even without an `<attach>` line. A donor skeleton passes them on silently - audit and rename/remove. Its `BONE_HITPOINTBAR` sits where the finished model's does (a donor skeleton brings the donor's) |
 | Earlier vanilla stages (p0/p33) | vanilla scaffold attached at `ATTACHPOINT` | keep the vanilla routing |
 | Damaged / destruction | as intact while assembled; a flag follows its surviving support | **havok-destruction** animtrans rules; never root-parent everything blindly |
 | Death | debris/smoke events | anim-level `<attach>` |
@@ -93,10 +103,13 @@ python .claude/skills/aoe3de-model-attachments/scripts/add_bones.py IN.gr2 TABLE
 
 ```bash
 python .claude/skills/aoe3de-model-attachments/scripts/attachment_check.py art/<path>/<model>.xml   # static, seconds
+python .claude/skills/aoe3de-model-attachments/scripts/attach_plot.py X_damaged.gr2 units\natives\iroquois\axe_rider\axe_rider_1_horse --bones bone_horse1,bone_horse2 --out view.png
 python scripts/havok/gr2_lint.py ... <folder>                                                     # dll_read, bindings
 ```
 
-Then **rm-unit-bench** / the owner's game test. `attachment_check.py` resolves mod-local GR2s; vanilla archive
+`attach_plot.py` draws the host (a height slice, top view, game display frame) with the attached model at each
+bone's rest transform and an arrow for its facing; look at it before any game test (inside the bay, clear of
+posts, facing like the vanilla building). Then **rm-unit-bench** / the owner's game test. `attachment_check.py` resolves mod-local GR2s; vanilla archive
 models are reported NOT CHECKED, never as passed.
 
 ## 6. Incidents this skill exists for (2026-10-08)

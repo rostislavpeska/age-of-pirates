@@ -93,3 +93,43 @@ def test_add_bones_reproduces_the_stable_horse_fix_byte_for_byte(tmp_path):
                     str(tmp_path / 'new.gr2'), '--from-blender'], check=True, capture_output=True)
     fixed = REPO / 'art/zbench_korean_military/stable/korean_stable_physics_damaged.gr2'
     assert (tmp_path / 'new.gr2').read_bytes() == fixed.read_bytes()
+
+
+ANIM_LOWPOLY = r"""<animfile>
+  <component>LIVE<logic type="LowPoly">
+      <normal>
+        <logic type="Destruction">
+          <p1><assetreference type="GrannyModel"><file>x\damaged</file></assetreference></p1>
+          <p99><assetreference type="GrannyModel"><file>x\intact</file></assetreference></p99></logic>
+        <attach a="horse1" frombone="bone_master" tobone="BONE_HORSE1" syncanims="1" />
+      </normal>
+      <lowpoly><assetreference type="GrannyModel"><file>x\lp</file></assetreference></lowpoly></logic>
+    <attach a="scaffold" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0" />
+  </component>
+  <anim>Idle<component>LIVE</component><simskeleton><model>x\damaged</model></simskeleton></anim>
+</animfile>"""
+
+
+def run_lowpoly(tmp_path, skeletons):
+    art = tmp_path / 'art' / 'x'; art.mkdir(parents=True)
+    for n in skeletons:
+        (art / f'{n}.gr2').write_bytes(b'')
+    f = tmp_path / 'lp.xml'; f.write_text(ANIM_LOWPOLY)
+    return AC.check(f, tmp_path / 'art', bones_of=lambda p: skeletons[p.stem])
+
+
+def test_an_attach_in_the_lowpoly_normal_branch_does_not_need_the_bone_in_the_lowpoly_model(tmp_path):
+    """vanilla stables.xml: horse attaches sit in <normal>; lp_*_stables models carry no horse bones."""
+    rep = run_lowpoly(tmp_path, {'intact': ['bone_horse1'], 'damaged': ['bone_horse1'], 'lp': ['root']})
+    assert rep['status'] == 'PASS' and not any(r['ref'] == r'x\lp' for r in rep['rows'])
+
+
+def test_bone_names_compare_case_insensitively_and_attachpoint_is_engine_provided(tmp_path):
+    rep = run_lowpoly(tmp_path, {'intact': ['bone_horse1'], 'damaged': ['Bone_Horse1'], 'lp': []})
+    assert rep['status'] == 'PASS'
+    assert not any((r.get('tobone') or '').upper() == 'ATTACHPOINT' for r in rep['rows'])
+
+
+def test_the_normal_branch_still_needs_the_bone_in_its_damaged_simskeleton(tmp_path):
+    rep = run_lowpoly(tmp_path, {'intact': ['bone_horse1'], 'damaged': ['root'], 'lp': []})
+    assert rep['status'] == 'FAIL' and any('simskeleton' in f for f in rep['findings'])

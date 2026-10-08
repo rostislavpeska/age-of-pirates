@@ -1,5 +1,6 @@
 """aoe3de-building-states: every state model shares the intact model's frame.
-Synthetic cases need only numpy; the TC regression needs this repo's git history and the DLL route (local)."""
+Synthetic cases need only numpy; the TC regression needs this repo's git history (local; the DLL route or the
+raw damaged twin as reference)."""
 import subprocess, sys, tempfile
 from pathlib import Path
 import numpy as np
@@ -63,7 +64,18 @@ def test_regression_2026_10_08_tc_construction_turned_90_degrees_fails(tmp_path)
         pytest.skip('7585fc4c not in this clone')
     old = tmp_path / 'tc_con_r71.gr2'; old.write_bytes(r.stdout)
     with tempfile.TemporaryDirectory() as w:
-        intact = SF.model(REPO / 'art/buildings/korean_tc/korean_tc.gr2', w)   # Oodle-compressed: DLL flat route
+        # Oodle-compressed intact: DLL flat route, or the raw damaged twin on a PC without that route
+        intact, _ = SF.reference(REPO / 'art/buildings/korean_tc/korean_tc.gr2', w)
         rep = SF.solve(intact, SF.model(old, w), 'mata')
         assert rep['status'] == 'FAIL' and abs(abs(rep['angle_about_engine_y_deg']) - 90) < 0.5
         assert SF.solve(intact, SF.model(REPO / 'art/buildings/korean_tc/korean_tc_con.gr2', w), 'mata')['status'] == 'PASS'
+
+
+def test_compressed_intact_without_dll_falls_back_to_the_raw_damaged_twin(tmp_path, monkeypatch):
+    """a PC without the Wine/WSL DLL route still checks the Korean TC (its intact GR2 is Oodle-compressed)."""
+    tc = REPO / 'art/buildings/korean_tc/korean_tc.gr2'
+    if not tc.exists():
+        pytest.skip('Korean TC not in this checkout')
+    monkeypatch.setattr(SF.L, 'dll_read', lambda *a, **k: dict(status='SKIP', why='no DLL route (test)'))
+    ref, used = SF.reference(tc, tmp_path)
+    assert used.name == 'korean_tc_damaged.gr2' and ref['render']
