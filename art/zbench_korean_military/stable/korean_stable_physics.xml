@@ -54,6 +54,10 @@
     </anim>
   </submodel>
   <submodel>korean_stable_built
+  <attachment>horse1<include>buildings\native_civs\corral\iroquois_horse1.xml</include>
+  </attachment>
+  <attachment>horse3<include>buildings\native_civs\corral\iroquois_horse3.xml</include>
+  </attachment>
   <component>LIVE<logic type="Destruction">
       <p1>
         <assetreference type="GrannyModel">
@@ -66,6 +70,8 @@
         </assetreference>
       </p99>
     </logic>
+    <attach a="horse1" frombone="bone_master" tobone="bone_horse1" syncanims="1" />
+    <attach a="horse3" frombone="bone_master" tobone="bone_horse2" syncanims="1" />
     <decal>
       <effecttype>bump</effecttype>
       <texture>buildings\asian_civs\stable\japan\Japan_Stable_Decal</texture>
