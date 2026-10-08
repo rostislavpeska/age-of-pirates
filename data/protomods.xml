@@ -77257,7 +77257,7 @@
   <buildbounty>20.0000</buildbounty>
   <cost resourcetype="Wood">200.0000</cost>
   <buildingworkrate>1.0000</buildingworkrate>
-  <allowedage>1</allowedage>
+  <allowedage>0</allowedage>
   <armor type="Siege" value="0.0000" />
   <builderlimit>8</builderlimit>
   <unittype>LogicalTypeValidSabotage</unittype>
@@ -77397,7 +77397,7 @@
   <buildbounty>20.0000</buildbounty>
   <cost resourcetype="Wood">200.0000</cost>
   <buildingworkrate>1.0000</buildingworkrate>
-  <allowedage>1</allowedage>
+  <allowedage>0</allowedage>
   <armor type="Siege" value="0.0000" />
   <builderlimit>8</builderlimit>
   <unittype>LogicalTypeValidSabotage</unittype>
