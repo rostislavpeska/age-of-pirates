@@ -36,7 +36,10 @@ mutually exclusive scenes. For EACH model show:
    alone is not numeric density evidence.
 2. One isolation copy PER TEXTURE RESOURCE. Only that resource's faces receive
    material subtype/ID colours; every other face is BLACK. Black means excluded
-   from this isolation, not deleted or proven hidden.
+   from this isolation, not deleted or proven hidden. The isolation of a
+   hidden/backing/generic resource must look black from OUTSIDE (any lit face is a
+   visible face misfiled as inner); verify it before publishing, per the
+   [outside check](../blender-hidden-surfaces/SKILL.md#binding-rule-every-innerbacking-face-is-checked-from-outside).
 3. One ACTUAL CONJOINED-FAMILY colour copy. Owner and members have matching colours
    and corresponding shared UVs. Unique charts are gray. Before conjoin is done,
    keep this copy visibly PENDING; arbitrary island colours are not sharing.

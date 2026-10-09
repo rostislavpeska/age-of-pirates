@@ -53,6 +53,9 @@ overlap discovery and economical packing after this checkpoint.
 2. Classify visible, retained hidden and destruction-exposed surfaces using the
    camera/state contract. Allocate hidden opaque backs to a named low-density
    shared material only where justified; do not discount visible soffits.
+   Every face proposed as inner/backing must pass the
+   [outside check](../blender-hidden-surfaces/SKILL.md#binding-rule-every-innerbacking-face-is-checked-from-outside)
+   on the assembled model; a role or name (void, inner, bottom) never qualifies it.
 3. Unwrap coherent patches, check foldovers and both density axes, then create a
    unique working layout for independent inspection and later bake comparisons.
    Preserve explicitly permitted hidden-material repeats. Do not silently stack

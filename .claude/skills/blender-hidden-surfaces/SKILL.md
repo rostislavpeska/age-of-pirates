@@ -29,6 +29,25 @@ for that additional pass. The packaged classifier still implements the earlier
 Hybrid baseline; the accepted consumer aftercheck is documented separately and
 must not be advertised as a fully automatic replacement.
 
+## Binding rule: every inner/backing face is checked from OUTSIDE
+
+Owner correction, 9 October 2026 (Korean Castle UV r1): faces were sent to the shared
+generic atlas as "inner" because of their role or name (dark opening backs, an interior
+shadow core seen through a lookout band), and they were plainly visible from outside.
+
+- A face may go to a hidden/backing/generic resource ONLY after an outside check of
+  the ASSEMBLED model: rays or renders from the whole exterior camera envelope (all
+  azimuths, gameplay elevations plus low/grazing views), through every opening, with
+  all other parts as occluders. Any escaping ray or visible pixel keeps it visible.
+- Role, material, label, darkness, "void"/"inner"/"bottom" names and face normals are
+  candidate generators only, never certificates. Dark backs of embrasures, doors and
+  windows, and interiors seen through openings are VISIBLE surfaces.
+- Contact faces (bottoms resting on other parts, tops buried under a ceiling) still get
+  the same outside check; do not assume contact.
+- Before handoff, render the generic resource's black isolation copy from those views
+  and require it to read black from outside; keep the check's report in the handoff.
+  A role-filtered pixel count (only the "hidden" material) is not this check.
+
 ## Preserve the current checkpoint
 
 - Verify the actual Blender connection, file, scene, objects and mode through the
