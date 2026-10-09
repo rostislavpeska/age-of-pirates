@@ -28,6 +28,12 @@ The class is stored per model in `<consumer-root>/scripts/havok/gr2_lint_profile
 confirmed_by}`. A class without `confirmed_by` is only proposed, and it FAILS the export with "class not
 confirmed by the owner".
 
+A separate mod (one source of truth: its content never enters AoP) keeps its building profiles in its own repository
+and runs `gr2_lint.py --profiles <its file> --profile <name> art/buildings/<folder>/`. Its file says
+`"extends": "gr2_lint_profiles.json"`: it inherits the owner's classes and the DLL tool route, it can never redefine
+`texture_budget`, and its relative paths (owner message store, shared-dependency evidence, UV contracts) resolve from
+its own repository.
+
 `gr2_lint.py` enforces two gates:
 
 - **`texture_budget`:** counts the model's own texture sets, one per BaseColor, from the `.material` and the

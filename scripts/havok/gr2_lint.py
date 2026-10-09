@@ -67,7 +67,10 @@ building's own design facts and tolerances; every art/buildings folder has one, 
 without orientation / attach / damaged facts runs the generic checks only). External tools (the DLL route) are found
 through the profile file's "tools" entry or the GR2_LINT_TOOLS environment variable; when they are missing the DLL
 check is SKIP, never PASS. Reads only; writes nothing next to the model (DLL outputs go to a temp folder); vanilla
-texture sizes are read from the archive headers in memory, nothing is extracted.
+texture sizes are read from the archive headers in memory, nothing is extracted. A separate mod keeps its own building
+profiles in its own repository (--profiles <file>): {"extends": "gr2_lint_profiles.json"} inherits this file's tools
+(key by key) and the owner's texture_budget classes, which an extending file can never redefine; relative paths in a
+profile file (uv_contract, owner_messages, authorization evidence) resolve from that file's repository.
 """
 import argparse
 import hashlib
@@ -1272,7 +1275,7 @@ def shared_mod_dependencies(prof, model, art_root):
             # the REAL quote and citation once; a pinned artifact is the trusted approval store,
             # not a claim of cryptographic identity verification or a generated owner message id.
             try:
-                evidence_path, missing_vars = local_path(auth.get('path') or '')
+                evidence_path, missing_vars = profile_path(prof, auth.get('path') or '')
                 raw = evidence_path.read_bytes() if evidence_path and not missing_vars else b''
                 evidence = json.loads(raw)
                 authorized = (hashlib.sha256(raw).hexdigest() == auth.get('sha256')
@@ -1503,7 +1506,7 @@ def local_path(text):
 def owner_message_store(prof):
     """the owner's message store the waiver quotes are checked against: the profile file's tools.owner_messages
     ($AOP_TASKS_DIR/tasks.json); None = waivers cannot count"""
-    return local_path((prof.get('_tools') or {}).get('owner_messages'))[0]
+    return profile_path(prof, (prof.get('_tools') or {}).get('owner_messages'))[0]
 
 
 def check_density(stage, info, mat_path, art_root, prof, model):
@@ -1530,7 +1533,34 @@ def check_density(stage, info, mat_path, art_root, prof, model):
 
 # -------------------------------------------------------------------------------------------------------- driving
 def load_profiles(path=PROFILES):
-    return json.loads(Path(path).read_text(encoding='utf-8'))
+    """a profile file. "extends" names a profile file next to this script: its tools come in key by key (the file's
+    own keys win) and its texture_budget and references are taken as they are; the owner's classes are never
+    redefined by a separate mod. "_root" = the file's repository (nearest folder with .git, else the file's folder):
+    the base of the file's relative paths."""
+    path = Path(path).resolve()
+    doc = json.loads(path.read_text(encoding='utf-8'))
+    base_name = doc.get('extends')
+    if base_name is not None:
+        base_path = HERE / str(base_name)
+        if Path(str(base_name)).name != base_name or not base_path.is_file() or base_path == path:
+            raise ValueError(f'{path.name}: extends {base_name!r} is not another profile file next to gr2_lint.py')
+        if 'texture_budget' in doc:
+            raise ValueError(f'{path.name}: an extending profile file cannot redefine the owner\'s texture_budget')
+        base = json.loads(base_path.read_text(encoding='utf-8'))
+        doc['tools'] = {**(base.get('tools') or {}), **(doc.get('tools') or {})}
+        doc['texture_budget'] = base.get('texture_budget') or {}
+        doc.setdefault('references', base.get('references') or {})
+    doc['_root'] = str(next((d for d in path.parents if (d / '.git').exists()), path.parent))
+    return doc
+
+
+def profile_path(prof, text):
+    """a path named in a profile: $VARIABLES from this device's local environment (local_path), a relative path from
+    the profile file's repository ("_root"; the working folder for a profile that came from no file)"""
+    p, missing = local_path(text)
+    if p is not None and not p.is_absolute() and prof.get('_root'):
+        p = Path(prof['_root']) / p
+    return p, missing
 
 
 def resolve_profile(profiles, name):
@@ -1543,6 +1573,8 @@ def resolve_profile(profiles, name):
     p['name'] = name
     p['_texture_budget'] = profiles.get('texture_budget') or {}       # the owner's classes and counting rule
     p['_tools'] = profiles.get('tools') or {}
+    if profiles.get('_root'):
+        p['_root'] = profiles['_root']
     return p
 
 
@@ -1666,7 +1698,8 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             results.append(check_density(stage, info, mat, art_root, prof, model))
             if prof.get('uv_contract'):
                 from gr2_uv_contract import check as check_uv_contract
-                ok, message = check_uv_contract(stage, info, prof['uv_contract'], Path(__file__).resolve().parents[2])
+                ok, message = check_uv_contract(stage, info, prof['uv_contract'],
+                                                prof.get('_root') or Path(__file__).resolve().parents[2])
                 results.append(R(stage, 'source_uv_contract', ok, message))
         if animfile is not None:
             results.append(check_crlf(animfile))
