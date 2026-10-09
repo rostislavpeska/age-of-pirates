@@ -12,6 +12,12 @@ two cases (user amendment 2026-08-25): a direct user instruction, or the
 driver's explicit `--allow-restart` flag. Default automation without the
 flag stops and waits for a human.
 
+**"The game does not start" - check for a leftover process first** (2026-10-09): after quitting, `AoE3DE_s.exe`
+can stay alive with no window (`MainWindowTitle` empty, CPU flat, ~0.5 GB) - the stats/profile files are already
+written. Steam then treats the game as running and a new launch does nothing. It is not a data error (no new
+BugSplat dump in `%LOCALAPPDATA%\Temp\AoE3DE_s*.dmp`). The owner stops it with Steam's **Stop** button; agents never
+kill it. Right after that the launch starts normally (a new pid with the window title within ~10 s).
+
 ## user.cfg is not a toolbox
 
 `<profile>\Startup\user.cfg` holds exactly two lines for the harness (`showAiEchoes`,
