@@ -85,6 +85,13 @@ class Client(unittest.TestCase):
         r = subprocess.run([sys.executable, str(HERE / 'generate.py'), '--ledger'], capture_output=True, text=True, env=env)
         self.assertNotEqual(r.returncode, 0); self.assertIn('Claude-only', r.stderr + r.stdout)
 
+    def test_openai_edit_is_never_sent(self):
+        # INC-203: the multipart edit route hung the production n8n; the client refuses before loading any config.
+        env = dict(os.environ, CLAUDECODE='1', IMAGE_HARNESS_LEDGER=str(self.d / 'l.jsonl'), IMAGE_HARNESS_URL='', IMAGE_HARNESS_KEY='')
+        r = subprocess.run([sys.executable, str(HERE / 'generate.py'), 'edit it', '--out', str(self.d / 'o'), '--image', str(self.d / 'in.png'),
+                            '--mask', str(self.d / 'mask.png')], capture_output=True, text=True, env=env)
+        self.assertNotEqual(r.returncode, 0); self.assertIn('INC-203', r.stderr + r.stdout); self.assertFalse((self.d / 'l.jsonl').exists())
+
     def test_make_mask(self):
         out = self.d / 'm.png'
         r = subprocess.run([sys.executable, str(HERE / 'make_mask.py'), str(self.d / 'in.png'), str(out), '--rect', '0,0,32,16'],

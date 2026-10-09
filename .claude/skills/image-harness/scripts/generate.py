@@ -87,10 +87,19 @@ def ping(url, key):
     except urllib.error.HTTPError as e:
         if e.code == 401:
             sys.exit('PING: key rejected (401) - check IMAGE_HARNESS_KEY.')
-        print(f'PING OK: harness reachable and key accepted (HTTP {e.code} for the deliberately invalid request).')
+        if e.code >= 500:
+            # 502/503/504 come from the reverse proxy when n8n itself is down or restarting (INC-203).
+            sys.exit(f'PING: harness down (HTTP {e.code} from the proxy: n8n is not answering) - send nothing paid.')
+        if e.code == 404:
+            sys.exit('PING: n8n answers but the harness webhook is not registered (404): the workflow is inactive.')
+        if e.code != 400:
+            sys.exit(f'PING: unexpected HTTP {e.code} - the workflow answers invalid requests with 400; check it.')
+        print('PING OK: harness reachable and key accepted (HTTP 400 for the deliberately invalid request).')
         return
     except urllib.error.URLError as e:
         sys.exit(f'PING: harness unreachable ({e.reason}) - check IMAGE_HARNESS_URL.')
+    except TimeoutError:
+        sys.exit('PING: harness did not answer within 60 s - the n8n instance is down or busy; send nothing paid.')
     print('PING OK: harness reachable and key accepted.')
 
 
@@ -217,10 +226,12 @@ def ledger_report():
     rows = ledger_rows(); agg = {}
     for r in rows:
         k = (r.get('time', '')[:10], r.get('provider'), r.get('model'), r.get('operation', 'generate'))
-        c = agg.setdefault(k, [0, 0., 0]); c[0] += r.get('images', 1); c[1] += r.get('estimate_usd') or 0.; c[2] += r.get('estimate_usd') is None
+        c = agg.setdefault(k, [0, 0., 0, 0]); c[0] += r.get('images', 1); c[1] += r.get('estimate_usd') or 0.
+        c[2] += r.get('estimate_usd') is None; c[3] += r.get('status') == 'timeout'
     print(f'LEDGER {LEDGER} ({len(rows)} calls)')
-    for (day, prov, model, op), (imgs, usd, unpriced) in sorted(agg.items()):
-        print(f'  {day} {prov} {model} {op}: {imgs} image(s), ~${usd:.3f}' + (f' (+{unpriced} unpriced call(s))' if unpriced else ''))
+    for (day, prov, model, op), (imgs, usd, unpriced, timeouts) in sorted(agg.items()):
+        print(f'  {day} {prov} {model} {op}: {imgs} image(s), ~${usd:.3f}' + (f' (+{unpriced} unpriced call(s))' if unpriced else '')
+              + (f' incl. {timeouts} timed-out call(s), possibly billed' if timeouts else ''))
 
 
 def main():
@@ -258,8 +269,15 @@ def main():
     if a.dry_run:
         print('DRY RUN (nothing sent):', json.dumps(summary, indent=1))
         return
+    if summary['operation'] == 'edit' and summary['provider'] == 'openai':
+        sys.exit('REFUSED: OpenAI edits are disabled (INC-203): the first call through the multipart edit route hung the '
+                 "owner's production n8n for 35 min. Masks still validate with --dry-run; send edits with --provider "
+                 'gemini (no mask) until the route is redesigned.')
     dup = recent_duplicate(summary['request_sha256'])
     if dup and not a.allow_repeat:
+        if dup.get('status') == 'timeout':
+            sys.exit(f'REFUSED: the identical request timed out at {dup["time"]} and may have been billed. Check the '
+                     'harness first (--ping), then pass --allow-repeat to send it again.')
         sys.exit(f'REFUSED: the identical request was paid at {dup["time"]} -> {dup.get("files")}. Reuse those files, '
                  'change the request, or pass --allow-repeat if a second paid sample is really wanted.')
     url, key = load_config()
@@ -271,6 +289,14 @@ def main():
             text += ('\n  -> the n8n workflow is still v1 (no OpenAI edit route; nothing was billed). Apply the v2 change in '
                      'references/workflow-v2.md, or edit with --provider gemini (no mask).')
         sys.exit(f'HARNESS ERROR {e.code}: {text}')
+    except (TimeoutError, urllib.error.URLError) as e:
+        # The provider may still have produced (and billed) the image: count it, and stop retries from paying twice.
+        ledger_append(dict(time=datetime.datetime.now().isoformat(timespec='seconds'), status='timeout',
+                           operation=summary['operation'], provider=summary['provider'], model=summary['model'],
+                           quality=summary['quality'], images=summary['n'], estimate_usd=summary['estimate_usd'],
+                           request_sha256=summary['request_sha256'], files=[]))
+        sys.exit(f'HARNESS TIMEOUT after {a.timeout} s ({getattr(e, "reason", e)}): no image received; the call is in the '
+                 'ledger as possibly billed. Run --ping before sending anything else; report a harness that stays silent.')
     if res.get('error'):
         sys.exit(f'HARNESS ERROR: {json.dumps(res)[:1500]}')
     out.mkdir(parents=True, exist_ok=True)

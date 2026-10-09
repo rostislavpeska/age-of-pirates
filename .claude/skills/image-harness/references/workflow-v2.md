@@ -1,5 +1,9 @@
 # Harness workflow v2: the edit route
 
+**DO NOT APPLY (INC-203, 2026-10-09).** Published once on the owner's word; its first call hung the owner's
+production n8n inside the "OpenAI Edit" node (binary body built in a Code node) until the server was restarted.
+Kept as a record of what failed; a redesign must not pass image bytes through n8n binary handling.
+
 The n8n side of `generate.py --image/--mask`. Sanitized: no workflow id, credential id, host or webhook path (the repo
 is public); the live ids come from the n8n MCP (`n8n_list_workflows`, name "Claude Image Harness (Webhook)").
 Generate requests behave exactly as in v1 (generate only); v2 adds one route for OpenAI edits next to them.

@@ -68,9 +68,13 @@ python .claude/skills/image-harness/scripts/generate.py "Fill the transparent ar
 An OpenAI edit still regenerates the whole image and mask edges are soft, not pixel exact: composite
 the result back over the original through the mask when the kept area must stay identical.
 
-**Status (2026-10-09):** the client is v2. The n8n change (`references/workflow-v2.md`) waits for the owner
-(the permission classifier refused the agent applying it). Until it is published, OpenAI edits get a free
-400 that names the cause, and Gemini edits (`--provider gemini`) already work.
+**Status (2026-10-09, INC-203): OpenAI edits are disabled.** The multipart edit route
+(`references/workflow-v2.md`) was published on the owner's word; its first call hung the owner's
+production n8n (it also runs the AI Founders pipelines) inside the "OpenAI Edit" HTTP node, until the owner
+restarted the server 35 min later. The client refuses to send an OpenAI edit (masks still validate with
+`--dry-run`); Gemini edits (`--provider gemini`, no mask) use the route that has run since 2026-09-28.
+Rolling the route back needs the owner (the permission classifier refused the agent). A redesign keeps
+binary bytes out of n8n Code/HTTP binary handling (see "Workflow").
 
 ## Agent safety (paid tool, agent-only)
 
@@ -117,6 +121,13 @@ request -> route openai / gemini / openai_edit -> provider HTTP call (provider k
 credentials, never in this repo) -> images as base64 JSON. The edit route and the request contract are in
 `references/workflow-v2.md` (sanitized: no ids, host or path).
 Synchronous: the response carries the images (tested 2026-09-28: openai low 1024 and gemini 1K
-with a reference image). Successful executions are not stored (`saveDataSuccessExecution: none`),
-so images do not accumulate on the server; errors are stored for debugging. Errors: 400 invalid
-request, 401 wrong key, 502 provider error with its message.
+with a reference image). Errors: 400 invalid request, 401 wrong key, 502 provider error with its
+message, and 502/504 from the proxy when n8n itself is down (`--ping` says so).
+
+**It is the owner's production n8n** (the AI Founders pipelines run there): one hung execution stops all of
+them (INC-203). The workflow saves successful executions too (`saveDataSuccessExecution: all`, read
+2026-10-09; the earlier note "none" was wrong), so every image's base64 lands in the instance's SQLite
+store until pruning. The AI Founders house skill `n8n-webhook-key-gate` (ai-founders-bot repo) forbids
+image bytes through webhooks for exactly that reason: pass URLs. Any change to this workflow is
+validated, applied by the owner's word, followed at once by `--ping`, and every paid test after it runs
+alone with a short `--timeout`.
