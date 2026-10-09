@@ -24,6 +24,7 @@ Oodle-compressed and the reader cannot open it - that is expected (the tools nev
 | `gr2_pieces.py DMG.gr2 [substring] [rig.gxo]` | per-piece vertex clouds of a destruction model (BoneIndices), optional position match against a GXO's sail meshes with an auto-detected frame |
 | `gr2_pose.py MODEL.gr2 ANIM.gr2 [substring]` | a static-pose anim vs the model's rest: per bone delta rotation (axis/angle) and scale/shear matrix |
 | `gr2_addbones.py VANILLA.gr2 TABLE.gxo OUT.gr2 --inplace --map mirror [--only ...]` | append bones from a GXO `b` table into the vanilla skeleton, in place (see below) |
+| `gr2_reskeleton.py DONOR.gr2 TARGET.gr2 OUT.gr2 [--tol 0.005]` | give a skinned model another model's skeleton (bones, hierarchy, rest/inverse-world matrices, skeleton and model names) while every mesh byte stays the target's; refuses missing bound bones or joints off by more than `--tol`. Used for the Disciple on the yabusame rider skeleton so cavalry animations drive it (joints identical; vertex/index sections byte-identical, one count byte changed; native GXO dump OK). Verify with `skinned-model-check` |
 | `gr2_splitmesh.py BONES.gr2 RIG.gxo OUT.gr2` | cut triangles whose vertices coincide with the GXO's `sail_*` meshes into new rigid meshes bound to those meshes' bones; vertex bytes copied verbatim |
 | `rig_table.py` (Blender: `blender -b RIG.blend --python scripts/havok/rig_table.py -- OUT.gxo`) | the bone table + `sail_*` mesh vertices of a Blender rig in GXO form - replaces a converter dump of the rig (verified identical) |
 | `fbx_check.py NEW.fbx VANILLA.fbx OUT_DIR` | Blender headless: loop-by-loop comparison (positions, normals, UVs) + renders |
@@ -129,7 +130,8 @@ scenes = engine units in the same frame), so no converter is needed for tables.
 - A converter FBX of a vanilla gr2 imports at engine/254 in Blender (units /2.54, then /100); converter-made
   gr2s import at engine/100. `fbx_check.py` reports the ratio (1.0 or 2.54 are the two sane values).
 
-Related skills: **ship-sails** (the full sail pipeline that uses these tools), **unit-bones**,
+Related skills: **skinned-model-check** (before/after proof for edits of skinned unit models: skeleton, weights,
+moved vertices), **ship-sails** (the full sail pipeline that uses these tools), **unit-bones**,
 **havok-destruction**, **bar-extract**.
 
 ## Converter: not part of the repo, any tool that reads/writes GXO or FBX will do

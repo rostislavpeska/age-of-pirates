@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "THIRD_PARTY_NOTICES.md",
+    "scripts/run_skin_check.py",
+    "scripts/skin_check.py",
+    "scripts/test_run_skin_check.py"
+  ],
+  "skills": ["gr2-granny-edit"],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "executable",
+      "requiredFor": ["check"],
+      "optional": false,
+      "note": "Background Blender (tested 5.1). BLENDER or tools.blender.path in the gitignored config/tool-paths.local.json."
+    },
+    {
+      "id": "gr2-converter-wine",
+      "kind": "capability",
+      "requiredFor": ["gr2 input"],
+      "optional": true,
+      "note": "The owner's GR2 converter under Wine in a WSL Ubuntu distro (OneDrive 'DE Converter', wine/gxo_wine.sh). Not needed for FBX/GLB inputs. Never launched on the Windows host."
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["wrapper"],
+      "optional": false,
+      "note": "Python 3 for run_skin_check.py (standard library only)."
+    }
+  ]
+}

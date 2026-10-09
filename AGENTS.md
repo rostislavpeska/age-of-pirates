@@ -20,6 +20,13 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    referenced by their archive path (`homecity\british\british_tol\textures\british_tol_matA_BaseColor` in a
    `.material`, `buildings\fort\west_fort_decal` in an animfile) - never copied under `art/` or `sound/`, not
    even renamed. Only content the mod itself made is a file here.
+   **Exception (owner 2026-10-09): a distinct unit made as a retexture of a vanilla unit** may clone the vanilla
+   gr2 under its own name (extracted with `bartool extract --in-repo`, the one case rule 3 allows), with its own
+   `.material` and mod-made textures. The clone never changes shape: vanilla geometry, UVs and vertex data stay
+   exactly as shipped (internal names may be renamed, `gr2_rename.py`; the skeleton may be replaced by another vanilla
+   unit's skeleton whose joints sit at the same places, `gr2_reskeleton.py`, e.g. an infantry body on a rider
+   skeleton); the retexture works within the vanilla silhouette. Vanilla textures it still uses are referenced by archive path, never copied. Not for a look that a
+   `materialvariant` of the same unit would do.
 3. **Vanilla extractions never enter the repo.** `bartool extract` only into the session scratchpad
    (skill `bar-extract`); the tool refuses in-repo targets.
 4. **`data/*.xml` edits are inert until the `.xml.xmb` twin is rebuilt**
