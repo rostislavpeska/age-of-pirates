@@ -33,6 +33,31 @@ save the review state and verify the saved active scene. Record disk delivery an
 live delivery separately. Evidence: Korean Houses INC-183, 2026-10-09: texture r13
 was on disk while the owner still saw the older AO/UV r5 scene.
 
+## Delivered means visible in the owner's Blender (enforced)
+
+Owner, 2026-10-09: "this handoff contract should be unbreakable". A checkpoint was reported as delivered while the
+owner's viewer still showed an older file. Files on disk, a published package or a pointer write are not delivery.
+
+- **Enforced by `handoff.py` (schema 2).** A handoff that asks for the owner's review or acceptance must carry three
+  things, or `write` refuses it and `check` reports drift. This means `owner_review: pending`, status `review` or
+  status `accepted`.
+  - `primary_blend`, a canonical `.blend` entry;
+  - `active_scene`;
+  - `delivery.live_readback = {version, file_sha256, scene, viewer, at}`. The file hash must equal the primary
+    `.blend` and the scene must equal `active_scene`.
+- **Accepted also records his words:** `owner_acceptance = {quote, at}`.
+- **The readback comes only from the live viewer pair** in
+  [blender-uv-observability](../../blender-uv-observability/SKILL.md):
+  - `live_viewer.py` runs in his Blender. It loads every newer version at once and stashes unsaved edits to a
+    recovery copy rather than waiting. It writes a heartbeat.
+  - `live_publish.py` publishes and waits for a fresh heartbeat with the same bytes and scene. Exit 0 writes
+    `LIVE_READBACK.json`. Exit 4 means NOT VISIBLE: say "published, not delivered" and why. Never say done.
+- **Library packages are re-checked.** The publisher refuses a staged HANDOFF that asks for review without a
+  matching readback, or that was hand-written outside `handoff.py`.
+- **Order:** stage → `live_publish.py` (readback) → `handoff.py write` with the readback → publish the package →
+  report.
+- **Schema-1 handoffs** written before this rule stay historical records.
+
 ## Phases (fixed ids)
 
 | id | Canonical outputs (what downstream MUST consume) |

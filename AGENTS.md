@@ -73,6 +73,11 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
      is at least one status every 30 min.
    - **"Done" means visible:** in the owner's Blender through the publish step, or pictures in chat. Files on
      disk alone are not a result.
+     - A Blender delivery is proven only by the live viewer's readback. `blender-uv-observability`
+       `live_publish.py` exits 0 and writes `LIVE_READBACK.json`.
+     - Exit 4 = "published, NOT delivered" plus the reason.
+     - A handoff asking for his review carries that readback: `handoff.py` and the library publisher refuse it
+       otherwise (owner 2026-10-09: "this handoff contract should be unbreakable").
    - **No silent waits or stalls:** an agent that waits (memory gate, render, lock) logs why. The coordinator
      reports any agent idle for more than 15 min and any gate that holds with nothing running.
    - **Live links are watched:** while the owner's Blender is driven, a watchdog checks the MCP port and a drop is

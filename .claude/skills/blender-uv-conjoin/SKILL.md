@@ -89,6 +89,11 @@ the library's conservative default is T1. Reflection is not enabled by this help
   not to un-merge everything.
 - This helper uses proper rotations only. A separate reflected-sharing method must
   prove normal/tangent and directional-channel compatibility before use.
+- **Any custom correspondence (e.g. vertex KD-tree under 90-degree Z rotations) must also map every face normal onto
+  its owner face's normal.** A flat, centrally symmetric island matches the owner's vertex SET under r and r+180. The
+  first match can be the in-plane reflection, and the UV copy is then MIRRORED. One castle checkpoint shipped 2,010
+  mirrored member faces while its docs said "never a mirror". After every copy, run the workflow integrity gate
+  (`blender-uv-workflow/scripts/uv_integrity.py`: winding + exact stacking on the owner).
 - **Role registration gate (2026-09-28, Korean TC tower eaves).** A member must land on the owner texels of
   its OWN role, not just inside the owner chart: an eave strip has an end-tile FRONT row and a cut-out UNDER
   band; a T3 merge put 4 tower-eave charts onto the rear-hall strip upside down and 1.5x wide, so the tower's

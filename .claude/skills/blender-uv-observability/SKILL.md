@@ -105,6 +105,18 @@ the UV editor; named scenes alone do not prove it works. Restore custom controls
 on reopen through the approved Blender API or stored UI script; do not change
 Python trust preferences. Keep current action, failures and unfinished work visible.
 
+### Delivery to the owner's Blender is proven, never assumed
+
+A checkpoint reaches the owner only through the live viewer pair:
+- `scripts/live_viewer.py` is started once in his GUI Blender (screen control: announce it first). It loads every
+  newer published version at once. Unsaved edits are saved to a recovery copy, never discarded and never a reason to
+  wait. It writes the heartbeat `VIEWER_STATE.json` (pid, version, file sha256, scene, time).
+- `scripts/live_publish.py` publishes the copy and waits for that heartbeat. Exit 0 writes `LIVE_READBACK.json`, the
+  `delivery.live_readback` block that a review handoff needs. Exit 4 is NOT VISIBLE: report "published, not
+  delivered" with its reason, and never "done".
+- A viewer that waited for unsaved edits once stayed on an older file while the new one was reported delivered.
+- Tests: `tests/test_live_publish.py`, and `tests/blender_live_viewer_check.py` in background Blender.
+
 Use the existing job, handoff, incident and MCP safety systems. This contract is a
 required companion of blender-uv-workflow and blender-architecture-texturing.
 It must travel with their portable dependency closure. Project AGENTS.md files

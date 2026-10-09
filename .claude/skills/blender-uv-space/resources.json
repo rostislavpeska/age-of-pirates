@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "files": ["SKILL.md", "references/research.md", "scripts/pixel_audit.py", "scripts/pack_masks.py", "tests/test_space.py"],
+  "files": ["SKILL.md", "references/research.md", "scripts/pixel_audit.py", "scripts/pack_masks.py", "scripts/safe_pack.py", "tests/test_space.py", "tests/blender_safe_pack_check.py"],
   "skills": ["blender-uv-observability", "blender-uv-reuse", "blender-uv-conjoin"],
   "external": [
     {"id":"python","kind":"executable","commands":["python","python3"],"requiredFor":["audit","pack"],"optional":false,"note":"Runs standalone UV-space measurements."},

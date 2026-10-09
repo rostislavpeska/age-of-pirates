@@ -180,6 +180,44 @@ def checkpoint_errors(spec, base):
         return [f'workflow_checkpoint: {e}']
 
 
+def asks_owner(h):
+    return h.get('status') in ('review', 'accepted') or str(h.get('owner_review') or '').lower() == 'pending'
+
+
+def delivery_errors(h, base):
+    """Owner 2026-10-09: "this handoff contract should be unbreakable". A handoff that asks for the owner's review or
+    acceptance names its primary .blend (a canonical entry) and active scene, and carries the LIVE READBACK of the owner's
+    viewer showing exactly those bytes: delivery.live_readback = {version, file_sha256, scene, viewer, at}. Files on disk,
+    a published package or a pointer write are not delivery (a viewer stuck on an older file was reported as delivered).
+    Accepted additionally records his words: owner_acceptance = {quote, at}."""
+    if not asks_owner(h):
+        return []
+    err = []
+    canon = {c.get('path'): c for c in (h.get('canonical') or {}).values()}
+    pb, scene = h.get('primary_blend'), h.get('active_scene')
+    if not pb or not str(pb).lower().endswith('.blend') or pb not in canon:
+        err.append('primary_blend must name a canonical .blend entry (owner rule 2026-10-09)')
+    if not scene:
+        err.append('active_scene missing (the scene the primary .blend opens on)')
+    rb = (h.get('delivery') or {}).get('live_readback') or {}
+    want = (canon.get(pb) or {}).get('sha256') or (sha(resolve(base, pb)) if pb and resolve(base, pb).is_file() else None)
+    if not rb:
+        err.append("delivery.live_readback missing: not visible in the owner's Blender, so not delivered")
+    else:
+        for k in ('version', 'file_sha256', 'scene', 'viewer', 'at'):
+            if not rb.get(k):
+                err.append(f'delivery.live_readback.{k} missing')
+        if want and rb.get('file_sha256') and rb['file_sha256'] != want:
+            err.append('delivery.live_readback.file_sha256 is not the primary .blend: the viewer showed other bytes')
+        if scene and rb.get('scene') and rb['scene'] != scene:
+            err.append(f"delivery.live_readback.scene {rb['scene']!r} is not the active scene {scene!r}")
+    if h.get('status') == 'accepted':
+        oa = h.get('owner_acceptance') or {}
+        if not (oa.get('quote') and oa.get('at')):
+            err.append("accepted needs owner_acceptance = {quote, at}: the owner's own words")
+    return err
+
+
 def write(spec_path, out, owner_messages=None, profiles=None):
     spec = json.loads(Path(spec_path).read_text()); out = Path(out) if out else Path(spec_path).with_name('HANDOFF.json')
     base = out.parent; errors = []
@@ -200,6 +238,7 @@ def write(spec_path, out, owner_messages=None, profiles=None):
         budget, prof = page_budget_errors(spec, owner_messages, profiles)
         errors += budget + density_source_errors(spec) + density_errors(spec, owner_messages, prof)
     errors += checkpoint_errors(spec, base)
+    errors += delivery_errors(spec, base)
     for inp in spec.get('inputs', []):
         h = resolve(base, inp['handoff'])
         if not h.exists():
@@ -211,7 +250,7 @@ def write(spec_path, out, owner_messages=None, profiles=None):
                 errors.append(f'input {h} has status {up.get("status")}')
     if errors:
         print('HANDOFF INVALID', *errors, sep='\n  '); return 3
-    spec['schema'] = 1; spec.setdefault('date', datetime.date.today().isoformat())
+    spec['schema'] = 2; spec.setdefault('date', datetime.date.today().isoformat())     # 2: delivery rule enforced
     out.write_text(json.dumps(spec, indent=2)); print('HANDOFF WRITTEN', out); return 0
 
 
@@ -224,6 +263,8 @@ def check(path, owner_messages=None, profiles=None):
         elif c.get('sha256') and p.is_file() and sha(p) != c['sha256']:
             drift.append(f'{role}: changed since the handoff')
     drift += checkpoint_errors(h, path.parent)
+    if int(h.get('schema') or 1) >= 2:          # schema-1 handoffs stay historical records (written before the rule)
+        drift += delivery_errors(h, path.parent)
     if h.get('phase') == '03_uv' and h.get('status') in ('review', 'accepted'):
         budget, prof = page_budget_errors(h, owner_messages, profiles)
         drift += budget + density_source_errors(h) + density_errors(h, owner_messages, prof)

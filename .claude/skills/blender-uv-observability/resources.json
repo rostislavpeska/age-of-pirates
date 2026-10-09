@@ -7,7 +7,11 @@
     "scripts/profile.py",
     "scripts/comparison_workspace.py",
     "scripts/workspace.py",
-    "tests/test_contract.py"
+    "scripts/live_viewer.py",
+    "scripts/live_publish.py",
+    "tests/test_contract.py",
+    "tests/test_live_publish.py",
+    "tests/blender_live_viewer_check.py"
   ],
   "skills": ["blender-uv-workflow"],
   "external": [

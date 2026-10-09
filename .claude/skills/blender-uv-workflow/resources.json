@@ -11,7 +11,9 @@
     "tests/test_checkpoint.py",
     "tests/uv_checkpoint_fixture.py",
     "scripts/shared_mapping.py",
-    "tests/test_shared_mapping.py"
+    "tests/test_shared_mapping.py",
+    "scripts/uv_integrity.py",
+    "tests/test_uv_integrity.py"
   ],
   "skills": [
     "blender-ao-postproduction",

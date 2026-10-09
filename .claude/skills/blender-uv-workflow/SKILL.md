@@ -21,6 +21,25 @@ save, verify, inspect and embed the current UV maps in chat **before** the next
 dependent mutation. Delivered WIP is not owner acceptance; prior authorization
 to continue still applies. Do not accumulate all evidence until the final report.
 
+**Integrity gate after EVERY UV-changing step** (unwrap, share/conjoin copy, AO variant split, pack, page move), not
+once at the start. Run `scripts/uv_integrity.py`:
+- inside Blender: `blender -b file.blend --python scripts/uv_integrity.py -- --config gate.json --out report.json`;
+- exit 1 = FAIL;
+- `audit()` on extracted faces works anywhere.
+
+It fails closed on:
+- negative UV winding (a mirrored copy);
+- a member face that does not reproduce its owner's polygon exactly, or sits on another page;
+- shared-atlas faces outside their real regions;
+- out-of-bounds, collapsed or non-finite UVs;
+- with a before-snapshot, any non-target face that moved.
+
+A flip check that ran before sharing proves nothing about the shared layout: one checkpoint shipped 2,010 mirrored
+member faces that way. A correspondence is accepted only if it preserves orientation (mapped face normals agree).
+A vertex-SET match alone is ambiguous for flat symmetric islands. Scripted packs use
+[`safe_pack`](../blender-uv-space/scripts/safe_pack.py). Its tests inject every defect class, because a gate that
+never fires proves nothing.
+
 1. **Geometry:** exact authored/protected/reference census, ground and attachment
    contracts, surface checks and budget. Use the geometry skill's accepted result.
 2. **Clean charts:** use [blender-clean-uv](../blender-clean-uv/SKILL.md). Stitch

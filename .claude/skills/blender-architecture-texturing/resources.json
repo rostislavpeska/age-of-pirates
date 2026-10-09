@@ -26,6 +26,7 @@
     "scripts/handoff.py",
     "scripts/test_density_floor.py",
     "scripts/test_handoff_wip.py",
+    "scripts/test_handoff_delivery.py",
     "scripts/test_uv_metrics.py",
     "scripts/uv_metrics.py",
     "scripts/validate_uv.py",

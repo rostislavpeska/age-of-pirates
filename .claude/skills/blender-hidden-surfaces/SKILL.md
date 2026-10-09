@@ -47,6 +47,13 @@ shadow core seen through a lookout band), and they were plainly visible from out
 - Before handoff, render the generic resource's black isolation copy from those views
   and require it to read black from outside; keep the check's report in the handoff.
   A role-filtered pixel count (only the "hidden" material) is not this check.
+- **Black proves nothing without a lit positive control.** Run the same views with an owned page isolated and
+  require it to light a stated floor of pixels (for example most of the model's silhouette). Otherwise the check
+  FAILS.
+  - Castle UV r4 incident: the check read 0 lit pixels because the model had been placed off camera from stale
+    world matrices. Its control lit 197 k px instead of ~4 M.
+  - Background scripts evaluate the view layers before reading `matrix_world`
+    (`blender-uv-space/scripts/safe_pack.py: fresh_world()`).
 
 ## Preserve the current checkpoint
 

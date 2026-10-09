@@ -280,9 +280,14 @@ def block(tmp_path, groups=None, faces='faces.npz'):
 
 def uv_spec(tmp_path, **kw):
     (tmp_path / 'plan.json').write_text('{}', encoding='utf-8')
+    (tmp_path / 'Model.blend').write_bytes(b'the delivered UV blend')       # review handoffs carry the live readback
     spec = {'model': 'korean_tc', 'phase': '03_uv', 'status': 'review', 'producer': 'test', 'next': '04_bake',
-            'canonical': {'plan': {'path': 'plan.json'}, 'uv_faces': {'path': 'faces.npz'}},
-            'density': block(tmp_path), 'page_budget': {'pages': [{'name': 'P2048', 'size': 2048}]}}
+            'canonical': {'plan': {'path': 'plan.json'}, 'uv_faces': {'path': 'faces.npz'}, 'blend': {'path': 'Model.blend'}},
+            'density': block(tmp_path), 'page_budget': {'pages': [{'name': 'P2048', 'size': 2048}]},
+            'primary_blend': 'Model.blend', 'active_scene': 'UV',
+            'delivery': {'live_readback': {'version': 'uv-1', 'file_sha256': HO.sha(tmp_path / 'Model.blend'), 'scene': 'UV',
+                                           'viewer': 'pid 1', 'at': '2026-10-09T12:00:00Z'}},
+            'owner_acceptance': {'quote': 'fixture acceptance', 'at': '2026-10-09T12:00:00Z'}}
     spec.update(kw)
     spec['workflow_checkpoint'] = freeze_fixture(tmp_path / 'workflow', spec['model'],
         {role: tmp_path / entry['path'] for role, entry in spec['canonical'].items()})

@@ -58,6 +58,23 @@ useful content. Shared dependency occupancy is not newly allocated owned cost.
    necessary padding, final page bounds and existing dependencies fixed. A failed
    heuristic does not prove infeasibility; a successful one does not prove optimality.
 
+### Scripted packs touch only their targets
+
+Every Blender pack in a script goes through `scripts/safe_pack.py` (`safe_pack(objs, targets, page_px)`):
+- It uses FACE select mode. Selecting polygons in object mode and entering edit mode with UV sync in VERTEX mode
+  flushes the selection onto every face whose vertices are all selected. A pack then moved hidden faces of another
+  page out of their shared-atlas regions, and density looked fine.
+- It snapshots every non-target face and raises if one moved.
+- It runs `average_islands_scale` first. Charts moved between pages of different size (2048 to 1024 overflow) keep
+  their old UV size under a scaled pack and land at half density.
+- When choosing which charts move to a smaller page, rank candidates by page median AND share below the face floor.
+  A median dominated by a few long strips hid 42 % of a page below the floor.
+- `tests/blender_safe_pack_check.py` (background Blender) first reproduces the flush, then proves the fix.
+
+Background scripts call `fresh_world()` before reading `matrix_world`: parented objects carry stale world matrices
+in a freshly loaded file. Copies placed from them landed tens of metres off, and a render check passed with the model
+off camera.
+
 `scripts/pack_masks.py` is a bounded, deterministic outline-aware experiment.
 It preserves full owner groups and only uses declared multiples of 90 degrees.
 Its conservative coarse raster is followed by exact polygon validation; it is
@@ -81,4 +98,5 @@ Do not promise zero unused pixels or remove safety margins to claim 100% use.
 Do not report credit-card or memory savings merely from filling a fixed-size page:
 allocation falls only when page dimensions/count/channels/formats actually change.
 
-Smoke tests: `python -m unittest discover -s .claude/skills/blender-uv-space/tests -v`.
+Smoke tests: `python -m unittest discover -s .claude/skills/blender-uv-space/tests -v`, and in Blender
+`blender -b --factory-startup --python-exit-code 1 --python .claude/skills/blender-uv-space/tests/blender_safe_pack_check.py`.
