@@ -5,6 +5,8 @@
     "references/construction.md",
     "references/surface-visibility.md",
     "scripts/audit_mesh.py",
+    "scripts/beam_contact.py",
+    "scripts/test_beam_contact.py",
     "scripts/surface_visibility.py",
     "scripts/test_surface_visibility.py"
   ],

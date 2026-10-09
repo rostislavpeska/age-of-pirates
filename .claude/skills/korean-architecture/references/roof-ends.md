@@ -152,3 +152,21 @@ Retain the failed shaded render as a regression case. An emission-only alpha
 test, connected Alpha socket, or nonzero transparent-pixel count cannot pass the
 handoff alone. Preserve actual texture-alpha bytes and test all opaque geometry
 behind cutouts independently from mesh closure and bake ray coverage.
+# Roof-end colour and visual regression checks
+
+Treat exposed clay end discs, scalloped pans and roof-field surfaces as separate
+material roles when inheriting the Town Center finish. A roof-field colour sample
+is not an end-disc colour reference. Resolve the actual effective object material,
+UV binding and current texture revision; retain that reference read-only.
+
+From fixed frontal and oblique cameras compare full material, unlit BaseColor,
+AO-only and neutral-grey normal-only views. Include a normal-disabled control when
+darkness survives the isolated normal view, and inspect both lit and shadow sides.
+Test all repeated readers and door/window-adjacent eaves. Do not brighten AO or
+invert correct normals to hide a BaseColor mismatch. Preserve the agreed page
+budget, UV coordinates, cutout alpha and unrelated pixels during a colour repair.
+
+Owner evidence, Korean Houses 2026-10-09: dark ends were rejected; actual TC
+comparison identified a separate grey end-clay treatment. The owner confirmed the
+separated-view method with "Testing works". This confirms the review method,
+not every future textured candidate or engine shading.

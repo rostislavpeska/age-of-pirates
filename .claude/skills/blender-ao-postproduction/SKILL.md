@@ -17,6 +17,13 @@ add pages. All trials run in background; follow the
 1. Compare each reader against its actual owner at corresponding surface points.
    Record recipe, source hashes, triangulation and excluded degenerate surfaces.
    Means and a lighter-looking owner cannot establish compatibility.
+   For a repair comparison, preserve the reference mesh's vertex connectivity,
+   triangle order, normals and diagnostic coordinates; edit only the intended
+   vertices. Rebuilding the same visible triangles with one vertex per corner
+   is not an equivalent baker input. Korean Houses, 2026-10-09: disconnected
+   diagnostic triangles changed even unchanged-roof AO; preserving the original
+   indexed reference restored pixel-identical roof AO. Record such a trial as
+   invalid evidence rather than treating its new conflicts as a UV requirement.
 2. If differences matter, keep a distinct AO variant and remeasure capacity; or
    prepare a clearly labelled common neutral-mask candidate. Human acceptance of
    that contact-shadow loss is separate from numerical correctness. Work can

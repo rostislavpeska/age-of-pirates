@@ -10,6 +10,28 @@ surface; a centerline above the roof can leave an unintended floating gap.
 
 Align course heights and the FULL ledge profile around corners, including short returns. Derive repeated windows/columns from shared dimensions and projection depths; do not guess each extrusion independently. Consistent depth also makes reusable UVs and AO practical.
 
+### Lattice and joinery terminations
+
+Declare the support of both ends of every rail and mullion, including window and
+door variants. Check longitudinal clearance AND coverage of the end cross section.
+A bar touching a paper panel or a lower board at only one edge is not a supported
+joint. Preserve intentional moving-leaf clearances through an explicit exception;
+do not apply a universal grow/intersect operation to every beam.
+
+`scripts/beam_contact.py` certifies actual closed axis-aligned eight-vertex,
+six-quad boxes before measuring a declared butt joint. Missing caps, slanted parts
+and other unsupported topology are INCONCLUSIVE and require mesh-level inspection.
+Never replace such geometry with its bounds and call it verified. Consumer adapters
+must provide stable semantic part IDs, the intended support, units and tolerances.
+Use neutral frontal AND oblique closeups for every opening after the numerical
+check. Rerun affected UV density and AO correspondence after geometry repairs.
+
+Evidence: Korean Houses, 2026-10-09: outer rails stopped 0.0125 units short of
+their jambs; vertical bars met lower panels only at an edge. Owner detected this
+during texture review. Negative controls cover gaps, edge-only support, excessive
+penetration, missing caps and crossed quads. This check does not establish arbitrary
+mesh watertightness or artistic acceptance.
+
 ## Overlap
 Use the sibling [two-gate overlap workflow](../../blender-overlap-cleanup/SKILL.md)
 before classifying backs or investing in UV/AO/bakes. Assign one corner-post owner
