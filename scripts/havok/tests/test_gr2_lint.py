@@ -26,25 +26,38 @@ sys.dont_write_bytecode = True
 
 import gr2_lint as L  # noqa: E402
 
-KTC = REPO / "art" / "buildings" / "korean_tc"
+S18K = "ba233e90"                                                       # the SHIPPED S18k Korean TC
+S18K_ART = Path(__import__("tempfile").gettempdir()) / "gr2_lint_s18k_art"
+KTC = S18K_ART / "buildings" / "korean_tc"                              # the frozen specimen folder
+ART = S18K_ART                                                          # its art root (texture headers)
 
 
 def s18k(name):
-    """the SHIPPED S18k Korean TC model (commit ba233e90), read from git: the live art/ file is the builder's latest
-    install (2026-09-30 12:15 an Oodle-compressed intact replaced it and 15 of these tests broke); the pinned numbers
-    below are S18k's. .material / .xml / .hkt are unchanged since that commit and stay the live ones."""
+    """the SHIPPED S18k Korean TC (commit ba233e90) as ONE self-contained folder read from git: gr2, hkt, .material,
+    animfile and the textures it binds. The live art/ folder moved on (2026-09-30 an Oodle-compressed intact replaced the
+    gr2 and 15 of these tests broke; 2026-10-08 the TC moved to the shared Korean r65 atlas and the 512 matc page was
+    deleted), so the pinned numbers below are S18k's and never mix live files. Text files get CRLF like a checkout."""
     import subprocess
-    import tempfile
-    out = Path(tempfile.gettempdir()) / "gr2_lint_s18k" / name
+    out = KTC / name
     if not out.exists():
-        r = subprocess.run(["git", "-C", str(REPO), "show", f"ba233e90:art/buildings/korean_tc/{name}"],
-                           capture_output=True, timeout=120)
-        if r.returncode:
-            pytest.skip(f"the S18k specimen is not in this clone (git show ba233e90:{name})")
-        out.parent.mkdir(parents=True, exist_ok=True)
-        tmp = out.with_suffix(".part")
-        tmp.write_bytes(r.stdout)
-        tmp.replace(out)
+        ls = subprocess.run(["git", "-C", str(REPO), "ls-tree", "-r", "--name-only", S18K, "art/buildings/korean_tc"],
+                            capture_output=True, text=True, timeout=120)
+        if ls.returncode or not ls.stdout.strip():
+            pytest.skip(f"the S18k specimen is not in this clone (git ls-tree {S18K})")
+        for rel in ls.stdout.split():
+            dst = S18K_ART / rel[len("art/"):]
+            if dst.exists():
+                continue
+            r = subprocess.run(["git", "-C", str(REPO), "show", f"{S18K}:{rel}"], capture_output=True, timeout=120)
+            if r.returncode:
+                pytest.skip(f"the S18k specimen is not in this clone (git show {S18K}:{rel})")
+            data = r.stdout
+            if dst.suffix.lower() in (".xml", ".material"):
+                data = data.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            tmp = dst.with_suffix(dst.suffix + ".part")
+            tmp.write_bytes(data)
+            tmp.replace(dst)
     return out
 
 
@@ -70,7 +83,7 @@ def run(**kw):
     files = dict(intact=str(s18k("korean_tc.gr2")), hkt=str(KTC / "korean_tc_damaged.hkt"),
                  intact_material=str(KTC / "korean_tc.material"), damaged_material=str(KTC / "korean_tc_damaged.material"))
     files.update(kw)
-    res = L.lint(PROF, **files, use_dll=False, art_root=REPO / "art")
+    res = L.lint(PROF, **files, use_dll=False, art_root=ART)
     return {(r["stage"], r["check"]): r for r in res}
 
 
@@ -84,7 +97,8 @@ def installed_intact():
 
 
 # ------------------------------------------------------------------------------------------------ the specimens
-TEXTURE_GATES = ("texture_budget", "texel_density")        # KTC-165: the shipped model FAILS these (tests further down)
+TEXTURE_GATES = ("texture_budget", "texel_density",        # KTC-165: the shipped model FAILS these (tests further down)
+                 "texture_sets")                           # 2026-10-08: S18k binds the retired v1 TC page (test_texture_sets.py)
 KNOWN_TANGENT_DEFECT = ("tangents",)                       # 2026-09-30: S18k ships 5277 zero tangents (pages A, H)
 
 
@@ -303,6 +317,7 @@ def passing_texture_gates(monkeypatch):
     monkeypatch.setattr(L, "check_texture_budget", lambda stage, *a, **k: L.R(stage, "texture_budget", True, "stub"))
     monkeypatch.setattr(L, "check_density", lambda stage, *a, **k: L.R(stage, "texel_density", True, "stub"))
     monkeypatch.setattr(L, "check_tangents", lambda stage, *a, **k: L.R(stage, "tangents", True, "stub"))
+    monkeypatch.setattr(L, "check_texture_sets", lambda stage, *a, **k: L.R(stage, "texture_sets", True, "stub"))
 
 
 def test_cli_exit_codes(passing_uv_gate, passing_texture_gates):
@@ -356,7 +371,7 @@ def need_vanilla(*stems):
 
 def ktc_groups(info, stage="intact"):
     return L.density_groups(info, KTC / ("korean_tc.material" if stage == "intact" else "korean_tc_damaged.material"),
-                            REPO / "art")
+                            ART)
 
 
 def test_the_shipped_korean_tc_fails_the_ceiling_on_the_third_set():
@@ -377,7 +392,7 @@ def test_the_shipped_korean_tc_fails_the_ceiling_on_the_third_set():
 def test_the_shipped_korean_tc_density_exactly_as_measured(installed_intact):
     """gates/density_baseline.json: a median 107.0 PASSES; b 9.6 % of the area below 60 t/u FAILS, all of it on the
     matc page (the hidden faces: 28.6 % of that page below 60); without matc 0 % below, p2 105.6; 278 islands / 100 u2"""
-    r = L.check_density("intact", installed_intact, KTC / "korean_tc.material", REPO / "art", PROF, "korean_tc")
+    r = L.check_density("intact", installed_intact, KTC / "korean_tc.material", ART, PROF, "korean_tc")
     # Keep the measured historical60 baseline intact while the runtime policy uses54.
     m = DF.measure(ktc_groups(installed_intact), dict(FLOOR, model_median_min=100, face_floor=60))
     assert r["status"] == "FAIL" and r["data"]["verdict"] == "FAIL"
@@ -394,7 +409,7 @@ def test_the_shipped_korean_tc_density_exactly_as_measured(installed_intact):
 def test_the_shipped_damaged_model_fails_the_floor_on_matc_too():
     need_archive()                                      # the destruction sheet's size comes from the game archive
     info = L.read_raw(s18k("korean_tc_damaged.gr2"))
-    r = L.check_density("damaged", info, KTC / "korean_tc_damaged.material", REPO / "art", PROF, "korean_tc")
+    r = L.check_density("damaged", info, KTC / "korean_tc_damaged.material", ART, PROF, "korean_tc")
     m = r["data"]["metrics"]
     assert r["status"] == "FAIL" and ("face_floor", MATC) in {(f["rule"], f["page"]) for f in r["data"]["findings"]}
     assert m["pages"]["destructionsheet_mata_basecolor"]["p50"] > 100          # vanilla cut faces pass easily
@@ -416,7 +431,7 @@ def test_only_the_owners_whole_message_exempts_the_hidden_page(tmp_path, monkeyp
     prof = copy.deepcopy(PROF)
     prof["waivers"] = [dict(id="W-D1", check="density_floor", model="korean_tc", pages=[MATC], proposal=proposal, owner_quote=text,
                             msg="m900", at="2026-09-30T11:00:00Z", recorded_by="test")]
-    check = lambda p: L.check_density("intact", installed_intact, KTC / "korean_tc.material", REPO / "art", p,  # noqa
+    check = lambda p: L.check_density("intact", installed_intact, KTC / "korean_tc.material", ART, p,  # noqa
                                       "korean_tc")
     r = check(prof)
     assert r["status"] == "PASS" and r["data"]["verdict"] == "WAIVED" and "WAIVED W-D1" in r["summary"]
@@ -578,7 +593,7 @@ def test_inc036_a_generic_owner_message_never_waives_the_korean_tc(tmp_path, mon
         {"id": "m901", "text": "Keep the KTC matc page out of the DPI floor, it is hidden."}]}}}), encoding="utf-8")
     monkeypatch.setattr(L, "owner_message_store", lambda prof: store)
     prof = copy.deepcopy(PROF)
-    check = lambda p: L.check_density("intact", installed_intact, KTC / "korean_tc.material", REPO / "art", p,  # noqa
+    check = lambda p: L.check_density("intact", installed_intact, KTC / "korean_tc.material", ART, p,  # noqa
                                       "korean_tc")
     for mid, text, pages in (("m278", "approve", None), ("m264", "yes", [MATC])):
         prof["waivers"] = [dict(id="W-X", check="density_floor", model="korean_tc", owner_quote=text, msg=mid,

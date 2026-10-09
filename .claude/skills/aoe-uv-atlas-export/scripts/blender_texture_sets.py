@@ -6,7 +6,9 @@ by file hash (on disk or packed), a 12-hex hash prefix in the image name, or a r
 its channels from ONE registered set and never from a retired one. Unregistered images are listed, never guessed.
 
 Background (saved file, read-only):
-    blender -b <file.blend> --python blender_texture_sets.py -- <out.json> [<aop repo root>]
+    blender -b <file.blend> --python blender_texture_sets.py -- <out.json> [<aop repo root> [<registry json>]]
+The registry defaults to AoP's config/texture_sets.json; pass the project's own (e.g. the Koreans add-on
+tools/texture_sets.json) for its scenes.
 Live (owner's Blender through the MCP, read-only): exec this file with OUT=None, it returns the report dict.
 Exit / result: errors == [] means coherent. Writes nothing into the .blend.
 """
@@ -53,11 +55,11 @@ def _upstream_images(sock, seen=None):
     return out
 
 
-def scan(repo_root=None):
+def scan(repo_root=None, registry=None):
     root = _repo(repo_root)
     sys.path.insert(0, str(root / 'scripts' / 'havok'))
     import texture_sets as TS
-    reg = TS.load_registry(root / 'config' / 'texture_sets.json')
+    reg = TS.load_registry(registry or root / 'config' / 'texture_sets.json')
     report = dict(file=bpy.data.filepath, registry_sets=len(reg['_sets']) if reg else 0, materials=[], errors=[], unregistered=[])
     for mat in bpy.data.materials:
         if not mat.use_nodes or mat.node_tree is None:
@@ -90,7 +92,7 @@ def scan(repo_root=None):
 
 if __name__ == '__main__':
     argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
-    rep = scan(argv[1] if len(argv) > 1 else None)
+    rep = scan(argv[1] if len(argv) > 1 else None, argv[2] if len(argv) > 2 else None)
     if argv:
         Path(argv[0]).write_text(json.dumps(rep, indent=1), encoding='utf-8')
     print('TEXTURE_SETS', 'errors', len(rep['errors']), 'materials', len(rep['materials']), 'unregistered', len(rep['unregistered']), flush=True)

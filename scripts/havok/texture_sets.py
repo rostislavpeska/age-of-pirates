@@ -5,7 +5,7 @@ revision and Normals/Masks from another (r65 colour on v2 UVs with v2 normal + m
 a UV remap / tangent rewrite. Names alone cannot tell legal reuse from a mix-up (vanilla reuses a base model's
 Normals/Masks under a new BaseColor in 412 of AoP's 1,720 submaterials), so the checks are layered:
 
-  1 registry      config/texture_sets.json lists the project's OWN texture sets by revision (channel -> art path +
+  1 registry      <mod>/tools|config/texture_sets.json (registry_for) lists the mod's OWN texture sets by revision (channel -> art path +
                   sha256, retired flag, preview-image hashes and aliases, atlas regions, tangent convention). A binding
                   may take channels from ONE registered set only (or that set's declared variants); a retired set is
                   never bound.
@@ -48,6 +48,16 @@ def stem(ref):
 def channel(name):
     n = str(name).strip().lower()
     return 'normals' if n in ('normal', 'normals') else n
+
+
+def registry_for(path):
+    """the registry of the mod a file belongs to: walk up from it to the first folder holding tools/texture_sets.json
+    or config/texture_sets.json (each mod keeps its own sets: AoP config/, the Koreans add-on tools/); else AoP's."""
+    for d in Path(path).resolve().parents:
+        for rel in ('tools/texture_sets.json', 'config/texture_sets.json'):
+            if (d / rel).is_file():
+                return d / rel
+    return REGISTRY
 
 
 def load_registry(path=REGISTRY):

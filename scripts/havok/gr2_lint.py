@@ -653,6 +653,44 @@ def check_materials(stage, info, mat_path, art_root):
              used=used, submaterials=subs, missing_textures=missing_tex)
 
 
+def check_texture_sets(stage, mat_path, art_root):
+    """texture_sets.py rules 1 + 2: one texture set per binding, no retired set (config/texture_sets.json)."""
+    import texture_sets as TS
+    if not mat_path or not Path(mat_path).exists():
+        return R(stage, 'texture_sets', None, 'no .material given')
+    reg = TS.load_registry(TS.registry_for(mat_path))
+    res = TS.material_findings(mat_path, reg, art_root)
+    summary = ('; '.join(res['errors']) if res['errors'] else
+               f"one texture set per binding ({len(reg['_sets'])} registered sets)" if reg else 'one texture set per binding (no registry)')
+    if res['warnings']:
+        summary += f" | WARN {len(res['warnings'])}: " + '; '.join(res['warnings'])
+    return R(stage, 'texture_sets', not res['errors'], summary, errors=res['errors'], warnings=res['warnings'])
+
+
+def check_atlas_regions(stage, info, mat_path):
+    """texture_sets.py rule 3: faces bound to a registered atlas lie inside its region boxes (a texture path swap
+    without a UV remap puts them across region borders)."""
+    import texture_sets as TS
+    checked, outside, sets = TS.region_findings(info, mat_path, TS.load_registry(TS.registry_for(mat_path)) if mat_path else None)
+    if not checked:
+        return R(stage, 'atlas_regions', True, 'no face bound to a registered atlas')
+    return R(stage, 'atlas_regions', outside == 0, f"{checked - outside}/{checked} triangle(s) inside one region box of {sets}"
+             + (f"; {outside} OUTSIDE every region (UVs not remapped to this atlas?)" if outside else ''), outside=outside, sets=sets)
+
+
+def check_tangent_convention(stage, info, mat_path, min_share=0.9, min_tris=50):
+    """texture_sets.py rule 4: the GR2 tangents of faces on a registered set follow its convention (T = +dP/du for
+    uv_derivative, -dP/du for negate_t_and_b); a page move without new tangents inverts the relief."""
+    import texture_sets as TS
+    rows = [r for r in TS.tangent_findings(info, mat_path, TS.load_registry(TS.registry_for(mat_path)) if mat_path else None) if r[3] >= min_tris]
+    if not rows:
+        return R(stage, 'tangent_convention', True, 'no face bound to a registered set with a tangent convention')
+    bad = [r for r in rows if r[2] < min_share]
+    txt = ', '.join(f'{s} {c}: {share:.1%} of {n}' for s, c, share, n in rows)
+    return R(stage, 'tangent_convention', not bad, txt + (f' | FAIL below {min_share:.0%}: {[r[0] for r in bad]}' if bad else ''),
+             rows=[dict(set=s, convention=c, share=share, triangles=n) for s, c, share, n in rows])
+
+
 def check_bindings(stage, info):
     skel = {b['name'] for b in info['bones']}
     missing = sorted({n for m in info['render'] for n in m['bone_names'] if n not in skel})
@@ -1487,6 +1525,8 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
                 if prof.get('intact_bones'):
                     results.append(check_bone_set(stage, info, prof['intact_bones']))
                 results.append(check_materials(stage, info, intact_material, art_root))
+                results += [check_texture_sets(stage, intact_material, art_root), check_atlas_regions(stage, info, intact_material),
+                            check_tangent_convention(stage, info, intact_material)]
             else:
                 results.append(check_bindings(stage, info))
                 if 'damaged' in prof:
@@ -1496,6 +1536,8 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
                     results.append(check_hkt(stage, info, hkt, prof) if hkt
                                    else R(stage, 'hkt_pairing', None, 'no .hkt given'))
                 results.append(check_materials(stage, info, damaged_material, art_root))
+                results += [check_texture_sets(stage, damaged_material, art_root), check_atlas_regions(stage, info, damaged_material),
+                            check_tangent_convention(stage, info, damaged_material)]
             results.append(check_texture_budget(stage, mat, art_root, prof, model, **union))
             results.append(check_density(stage, info, mat, art_root, prof, model))
             if prof.get('uv_contract'):

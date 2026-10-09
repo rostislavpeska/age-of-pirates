@@ -3602,11 +3602,6 @@
       <string _locid="503600">ZP NAT House Pirates Small</string>
       <string _locid="503601">ZP NAT House Pirates Small Flat</string>
 
-      <string _locid="503602">Korean Town Center - Destruction Test</string>
-      <string _locid="503603">ZP TEST Korean Town Center - Destruction Test</string>
-      <string _locid="503604">Chinese Town Center - Destruction Control</string>
-      <string _locid="503605">ZP TEST Chinese Town Center - Destruction Control</string>
-      <string _locid="503606">Experimental Havok destruction test. Compare progressive damage and final collapse with the Chinese donor.</string>
       <string _locid="503607">Royalist musketeer. Builds barricades and Military Camps after the Stuart expansion is unlocked.</string>
       <string _locid="503608">Captain Huang's Treasure Ship</string>
       <string _locid="503609">Ships a Treasure Ship and a Fire Junk.</string>
@@ -3621,18 +3616,7 @@
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->
-      <string _locid="503619">Korean Barracks</string>
-      <string _locid="503620">Korean Barracks</string>
-      <string _locid="503621">Japanese Barracks (Reference)</string>
-      <string _locid="503622">Japanese Barracks (Reference)</string>
-      <string _locid="503623">Korean Stable</string>
-      <string _locid="503624">Korean Stable</string>
-      <string _locid="503625">Japanese Stable (Reference)</string>
-      <string _locid="503626">Japanese Stable (Reference)</string>
 
-            <string _locid="503627">TEST Korean Builder Wagon</string>
-      <string _locid="503628">TEST Korean Builder Wagon</string>
-      <string _locid="503629">Test builder. Repeatedly constructs the Korean Town Center, Barracks and Stable slowly. Use Colonial Age or later and provide building resources.</string>
 
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

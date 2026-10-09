@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "authority": "owner",
+  "kind": "recorded_owner_chat",
+  "purpose": "shared_mod_dependencies",
+  "source_citation": "Exact owner words, Claude Code chat 2026-10-08 (TC shared atlas migration request: migrate TC intact/damaged backing to the existing shared atlas, strip the old copies); followed by 'Good, fix it, fix also barracks and stables.' No app message id available. Earlier military record: shared_matc_owner_evidence.json (the atlas is shared with the Town Center and all Korean buildings).",
+  "owner_quote": "We need to save space obsessively, so only one copy of the atlas most be in game - the new one.",
+  "models": [
+    "korean_tc",
+    "korean_tc_damaged"
+  ],
+  "source_names": [
+    "Korean TC shared matC"
+  ]
+}

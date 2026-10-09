@@ -1,6 +1,8 @@
 """aoe3de-trigger-camera: Camera Cut vectors and the camera bench's generated triggers (no game, no network)."""
 import math
 import re
+
+import pytest
 import sys
 from pathlib import Path
 
@@ -55,7 +57,9 @@ def test_generated_map_has_one_camera_cut_per_view_and_markers():
 def test_bone_offset_maps_raw_to_world_like_the_placed_stable():
     """2026-10-08 top view: world = position + (-raw x, raw y, -raw z); horse bones raw (-1.085, 0, 3.42) and
     (-1.085, 0, -0.02) -> mean world offset (1.085, 0, -1.70)."""
-    gr2 = REPO / 'art/zbench_korean_military/stable/korean_stable_physics.gr2'
+    gr2 = REPO.parent / 'age-of-pirates-koreans' / 'art/zbench_korean_military/stable/korean_stable_physics.gr2'
+    if not gr2.is_file():                     # the Korean models live in the Koreans add-on (temporary rule, AGENTS.md 15)
+        pytest.skip('the Korean Stable specimen is in ../age-of-pirates-koreans')
     off = CB.bone_offset(gr2, ['bone_horse1', 'bone_horse2'])
     assert abs(off[0] - 1.085) < 1e-3 and abs(off[1]) < 1e-3 and abs(off[2] + 1.70) < 1e-3
 

@@ -115,6 +115,22 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    ids>]` (the CLI is the way; `POST /api/incidents` only when the optional task app runs, tasks README "Reporting an
    incident"). It prints the INC id; S0/S1 open a P0 task. The coordinator investigates; the reporter continues its task.
 
+15. **One source of truth: no duplicates of separate mods in AoP.** A separate mod or project (the Koreans add-on
+   `../age-of-pirates-koreans`, any future civ add-on) lives only in its own repository. Never create a copy, mirror,
+   source folder, export pipeline or second version of it inside AoP unless the owner explicitly requests a merge
+   and confirms it. A duplicate you find is reported (rule 14), not followed. **Skills are the exception and always
+   live here:** every skill goes into AoP's `.claude/skills/`, even one created while working in the separate repo;
+   a skill holds the generic method only. **Project-specific documentation stays in the project's own repo**
+   (Korean plan, audit, design and research stay in the Korean repositories, never in AoP). Owner, 2026-10-08:
+   "One source of truth!!! NEVER TWO!!!", "skills always into Age of Pirates", "Korean specific documentation stays
+   in korean repo" (INC-170).
+   **Temporary (owner 2026-10-09): ALL Korean content lives in `../age-of-pirates-koreans`, AoP keeps none** -
+   civ records AND the Korean building models, textures, 3D test benches, their sounds and test maps. Owner: "It
+   should contain them. All Korean stuff should be there", "temporary. We will merge, but not now". Until the owner
+   orders the merge, new Korean work goes there; AoP keeps only the generic skills and tools.
+   Exception (owner 2026-10-09): `zpKoreanBombard` is AoP gameplay and stays in AoP, with the Korean soldier voices it
+   uses (`sound/korean/`, the `Korean_Soldier_*` soundsets).
+
 ## Where things are
 
 - Skills: `.claude/skills/` - `bar-extract` (vanilla files, XML<->XMB), `aoe-building-pipeline` (buildings,
@@ -122,10 +138,10 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
   (pre-zip audit), `game-startup` (never kill the game; launch only on instruction).
 - Tools: `scripts/tools/check_art_eol.py`, `scripts/havok/ddt_dxt1.py` (DXT1 .ddt with mips),
   `scripts/havok/gr2_editmesh.py` (in-place vanilla model edits - the converter route loses large faces in game).
-- Koreans add-on: source `koreans/` (a mod root the game never reads here, never zipped with AoP), exported by
-  `scripts/tools/export_koreans.py` to the separate mod `../age-of-pirates-koreans` (public repo, generated - never
-  edited by hand). No Korean civ record goes into AoP's own data files; workflow and merge strategy in
-  `koreans/README.md`, open work in `koreans/AUDIT.md`.
+- Koreans add-on: a separate mod and repository, `../age-of-pirates-koreans`, the single source of truth for every
+  Korean civ record, tool and test (owner 2026-10-08: never a second copy, source folder or export here). AoP stays
+  Korean-free (`scripts/tools/tests/test_no_korean_civ_in_aop.py`); workflow and merge strategy in that repo's
+  `README.md`, open work in its `AUDIT.md`.
 
 ## Local environment (every agent, every device)
 
