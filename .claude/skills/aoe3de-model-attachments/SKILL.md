@@ -1,6 +1,6 @@
 ---
 name: aoe3de-model-attachments
-description: Attachments on Age of Empires III DE models end to end - the animfile XML side (<attachment>/<include>, <attach a frombone tobone syncanims>, which component and which simskeleton resolve the bone, BuildingCompletion stages, flags) and the Blender/GR2 side (where attachment bones come from, frames, rotation AND scale, adding them to the intact and the damaged model). Ships attachment_check.py (every tobone resolves in every model and simskeleton; no flag bones on construction stages) and add_bones.py (explicit position/rotation/scale bone appender). Use before attaching horses, flags, smoke, fire, props or scaffolds to a building or unit, and when "attached props appear at the origin", "two horses on top of each other", "the attachment is rotated", "a flag floats over the construction", "the flag is missing", "attachment works intact but not damaged".
+description: Attachments on Age of Empires III DE models end to end - the animfile XML side (<attachment>/<include>, <attach a frombone tobone syncanims>, which component and which simskeleton resolve the bone, BuildingCompletion stages, flags) and the Blender/GR2 side (where attachment bones come from, frames, rotation AND scale, adding them to the intact and the damaged model). Ships attachment_check.py (every tobone resolves in every model and simskeleton; no flag bones on construction stages) add_bones.py (explicit position/rotation/scale bone appender) and move_bones.py (moves a donor's own bone in place). Use before attaching horses, flags, smoke, fire, props or scaffolds to a building or unit, and when "attached props appear at the origin", "two horses on top of each other", "the attachment is rotated", "a flag floats over the construction", "the flag is missing", "attachment works intact but not damaged".
 ---
 
 # Attachments on models: XML and Blender
@@ -108,6 +108,13 @@ python .claude/skills/aoe3de-model-attachments/scripts/add_bones.py IN.gr2 TABLE
 
   Run it on the intact AND the damaged model with the same table. It reproduces the Korean stable fix byte
   for byte (test). Measure clearance against the real model before placing anything that stands (horses).
+- **Moving a donor bone that sits in the wrong place** (the donor's flag on the donor's front, your pole on the
+  ridge): `scripts/move_bones.py IN.gr2 TABLE.json OUT.gr2` - same table format and frames as `add_bones.py`,
+  without "parent". It rewrites only that bone record's local transform and inverse world matrix in place, then
+  recomputes the CRC; the layout and every other byte stay the same. Never add a second bone of the same name in
+  another case: the engine looks bones up case-insensitively. Korean castle 2026-10-10: the Japanese castle donor's
+  `bone_garrisonflag` moved onto the ridge pole on the intact and the damaged model, then `add_bones.py` added
+  `BONE_HITPOINTBAR` and `bone_launchpoint01-06` (the attack bones, at the gun ports 0.15 m outside the wall).
 - **Removing a donor bone you must not keep** (construction flag): rename it in place to a same-length
   harmless name and recompute the Granny CRC - recipe `strip_flag_bone_r71.py` in the Korean repo's
   `research/Construction_13/recipes_r67_r71/matc1024_r71/`.
