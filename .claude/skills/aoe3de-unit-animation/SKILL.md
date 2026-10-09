@@ -13,8 +13,11 @@ are what fixed them, each with its guard.
 ## 1. Every animation the tactics name must exist and move
 
 - Collect `<anim>` names from the unit's tactics actions; a builder (`<type>Build</type>`) also needs `Build`,
-  `BuildLifting`, `BuildSaw`, `BuildStaking` (the engine picks per building); explorers need `Pickup` (treasure) and
-  their knockout set (`Knockout`, `KnockoutIdle`, `Recover`; DE has no mounted knockout: alias them, a known debt).
+  `BuildLifting`, `BuildSaw`, `BuildStaking` (the engine picks per building); explorers need `Pickup` (treasure).
+  Knockout: foot heroes carry `Knockout`, `KnockoutIdle`, `Recover`; **mounted heroes carry none of them** (Hetman,
+  Ras, Emir, Lakota war chief): the engine then plays the death animation and the hero lies on the ground until
+  revived. Never alias those names to `Idle` on a mounted hero - the knocked-out Korean monk stayed in the saddle
+  (owner's test 2026-10-09). The engine picks these three by name from the animfile; tactics never list them.
 - An alias that copies `Idle` "exists" but stands still: the monk froze while building and picking up treasure.
   Borrow a real matched pair instead - for mounted Asian heroes General Kichiro (`spc_kichiro_horse/rider`: `Pickup`,
   `Build*`, `Smokescreen`), plus the attachments those blocks attach (hammer, smoke).

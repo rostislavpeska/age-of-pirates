@@ -64,3 +64,16 @@ def test_mod_unit_and_building_art_has_no_dark_player_colour():
             if r and r[0] < 60:
                 dark.append('%s %.0f' % (p.relative_to(repo).as_posix(), r[0]))
     assert not dark, dark
+
+
+def test_pcfix_reaches_an_area_whose_soft_edge_touches_a_corner(tmp_path):
+    """Bohemian knight 2026-10-09: soft (alpha 128-249) pixels joined the sash to an image corner; the repair skipped
+    it while the check still saw it dark. Both now judge the same area (alpha < 128)."""
+    p = art(tmp_path, (10, 10, 10))
+    a = np.array(Image.open(p))
+    a[0:200, 0:3, 3] = 200                         # a soft strip from the top-left corner down the left edge ...
+    a[180:200, 0:60, 3] = 200                      # ... and across to the sash
+    Image.fromarray(a).save(p)
+    res, _ = pcfix.fix(p)
+    res.save(p)
+    assert pccheck.region_luma(p)[0] >= 150

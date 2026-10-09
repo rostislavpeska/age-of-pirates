@@ -20,12 +20,15 @@ from scipy.ndimage import binary_dilation
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from pccheck import LUMA, player_area, region_luma  # noqa: E402
 
-LO, HI, FLAT = 150.0, 245.0, 205.0
+LO, HI, FLAT, TARGET = 150.0, 245.0, 205.0, 150.0
 
 
 def region(alpha):
-    inner = player_area(alpha < 250)
-    return binary_dilation(inner, iterations=1) & (alpha < 255) | inner
+    """The area pccheck.py judges (alpha < 128, no image corner, no frame strip) plus its soft rim: the partially
+    transparent pixels up to 2 px around it. Bohemian knight 2026-10-09: an alpha < 250 search joined the area to a
+    corner through soft pixels and left it dark."""
+    inner = player_area(alpha < 128)
+    return binary_dilation(inner, iterations=2) & (alpha < 255) | inner
 
 
 def fix(path):
@@ -37,7 +40,11 @@ def fix(path):
     lum = a[..., :3] @ LUMA
     vals = lum[m]
     p5, p95 = np.percentile(vals, [5, 95])
-    if p95 - p5 > 12 and p95 > 25:                        # folds still stored: keep them, lift them to light grey
+    med = float(np.median(vals))
+    if med >= 40:                                         # a deep but real shading: scale it, keep its contrast
+        grey = np.clip(lum * TARGET / med, 0, 250)        # (a stretch to 150..245 turned the Janissary's coat grain
+        how = 'shading scaled x%.2f (median %.0f -> %.0f)' % (TARGET / med, med, TARGET)   # into white blotches)
+    elif p95 - p5 > 12 and p95 > 25:                      # faint folds still stored: lift them to light grey
         grey = LO + (HI - LO) * np.clip((lum - p5) / (p95 - p5), 0, 1)
         how = 'folds kept (luminance %.0f..%.0f -> %.0f..%.0f)' % (p5, p95, LO, HI)
     else:
