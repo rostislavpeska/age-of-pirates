@@ -31,7 +31,14 @@ Why each check exists (every one is a defect that reached the game first):
                           piece's render vertices lie inside its own convex hull.
   materials               mesh material bindings == the .material submaterials; referenced mod textures exist.
   crc / dll_read          header CRC valid; the game's Granny DLL reads the file (headless gr2_to_raw.py route:
-                          rc 0 and a non-empty output). The DLL route also decodes Oodle-compressed files.
+                          rc 0 and a non-empty output). The DLL route also decodes Oodle-compressed files. Route from
+                          the local env (AOP_GR2_DLL_ROUTE wsl|native|both, AOP_WSL_DISTRO, AOP_GR2_DLL): the TIGO PC
+                          never ran it (distro 'Ubuntu' hard-coded, Wine half installed: INC-149/168, 2026-10-09).
+                          The native route converts in three memory layouts and needs identical bytes.
+  fixups                  no pointer fixup outside the objects reachable from the root (gr2_fixups.py). The append-only
+                          writer left re-pointed root arrays with their fixups: the DLL then converted every Korean
+                          writer output out of bounds (layout-dependent bytes, crashes) while single runs passed;
+                          vanilla files have none (INC-187, 2026-10-09).
   animfile_crlf           the animfile the engine parses has CRLF endings (AGENTS.md rule 1).
   tangents                every used vertex has a non-zero tangent: materialdefault normalises it, a zero tangent is
                           NaN lighting (legacy DE conversions ship all zeros; west_townhall rendered 'very dark' with
@@ -68,6 +75,7 @@ import importlib.util
 import json
 import os
 import re
+import shutil
 import struct
 import subprocess
 import sys
@@ -225,21 +233,32 @@ def _mark_bound(info):
 
 
 # ----------------------------------------------------------------------------------------------- DLL route (headless)
-def dll_read(path, tdir, workdir):
-    """run the game's granny2_age3de.dll on PATH (GrannyConvertFileToRaw, gr2_to_raw.py's hand-built exe under
-    Wine/WSL) in a UNIQUE Linux work folder, so parallel users of gr2_to_raw never share in.gr2/out.gr2.
-    -> dict(status PASS/FAIL/SKIP, rc, out_bytes, flat path)"""
-    if tdir is None or not (Path(tdir) / 'gr2_to_raw.py').exists():
-        return dict(status='SKIP', why=f'gr2_to_raw.py not found (tools dir {tdir}); set GR2_LINT_TOOLS')
-    sys.path.insert(0, str(tdir))
+DLL_ROUTES = ('wsl', 'native', 'both')
+
+
+def _local_value(name):
+    """this device's local environment value (scripts/tools/local_env.py: the environment, else config/aop.local.env)"""
+    tools = str(HERE.parent / 'tools')
+    if tools not in sys.path:
+        sys.path.append(tools)
+    import local_env
+    return local_env.value(name)
+
+
+def smart_app_control_on():
+    """True/False on Windows (registry CI\\Policy VerifiedAndReputablePolicyState: 0 off, 1 on, 2 evaluation); None when
+    it cannot be read. The native route never runs unless this is False: SAC caches a block verdict per exe."""
+    if os.name != 'nt':
+        return None
     try:
-        import gr2_to_raw as g2r
-    finally:
-        sys.path.pop(0)
-    src = Path(path).resolve()
-    dst = Path(workdir) / (src.stem + '_flat.gr2')
-    exe = Path(workdir) / '_gr2lint_tool.exe'
-    exe.write_bytes(g2r.build_exe())
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SYSTEM\CurrentControlSet\Control\CI\Policy') as k:
+            return winreg.QueryValueEx(k, 'VerifiedAndReputablePolicyState')[0] != 0
+    except OSError:
+        return None
+
+
+def _dll_wsl(g2r, src, dst, exe, distro):
     work = f'$HOME/gr2lint_{os.getpid()}_{uuid.uuid4().hex[:8]}'
     cmd = (f'set -e; unset DISPLAY WAYLAND_DISPLAY; export WINEDLLOVERRIDES=winedbg.exe=d WINEARCH=win32 '
            f'WINEPREFIX=$HOME/.wine_gxo WINEDEBUG=-all; mkdir -p {work}; cd {work}; '
@@ -247,16 +266,101 @@ def dll_read(path, tdir, workdir):
            f'set +e; timeout 300 wine ./gr2raw.exe >/dev/null 2>&1; rc=$?; set -e; echo "RC=$rc"; '
            f'if [ -f out.gr2 ]; then cp out.gr2 "{g2r.wsl_path(dst)}"; fi; cd /; rm -rf {work}')
     try:
-        r = subprocess.run(['wsl.exe', '-d', g2r.DISTRO, '--exec', 'bash', '-c', cmd], capture_output=True, text=True,
+        r = subprocess.run(['wsl.exe', '-d', distro, '--exec', 'bash', '-c', cmd], capture_output=True, text=True,
                            timeout=400)
         rc = next((int(l[3:]) for l in r.stdout.splitlines() if l.startswith('RC=')), None)
         tail = (r.stdout[-300:] + r.stderr[-300:]).strip()
     except (OSError, subprocess.SubprocessError) as e:
         rc, tail = None, repr(e)
-    n = dst.stat().st_size if dst.exists() else 0
-    ok = rc == 0 and n > 0
-    return dict(status='PASS' if ok else 'FAIL', rc=rc, out_bytes=n, flat=str(dst) if n else None,
-                **({} if ok else {'tail': tail}))
+    if rc is None:
+        tail = f'WSL distro {distro!r} did not run the tool (set AOP_WSL_DISTRO: wsl -l -v). ' + tail
+    return rc, tail
+
+
+NATIVE_LAYOUTS = (8, 72, 136)   # extra work-folder name lengths: the process memory layout differs per run
+
+
+def _dll_native(g2r, src, dst, exe, dll):
+    """the same tool and DLL run directly on Windows (only where Smart App Control is off), once per work-folder length
+    in NATIVE_LAYOUTS. A file the DLL reads out of bounds (orphan pointer fixups, INC-187) converts differently or crashes
+    depending on the memory layout, so every run must pass with byte-identical output."""
+    outs, tails, rc_all = [], [], 0
+    for n in NATIVE_LAYOUTS:
+        work = Path(dst).parent / ('native_' + uuid.uuid4().hex + 'n' * n)[:8 + n]
+        work.mkdir()
+        shutil.copyfile(src, work / 'in.gr2')
+        shutil.copyfile(dll, work / 'granny2_age3de.dll')
+        shutil.copyfile(exe, work / 'gr2raw.exe')
+        try:
+            r = subprocess.run([str(work / 'gr2raw.exe')], cwd=str(work), capture_output=True, timeout=300)
+            rc, tail = r.returncode, (r.stdout[-300:] + r.stderr[-300:]).decode('utf-8', 'replace').strip()
+        except (OSError, subprocess.SubprocessError) as e:
+            rc, tail = None, repr(e)
+        if rc is not None and rc & 0xffffffff == 0xC0000005:
+            tail = f'access violation 0xC0000005 inside granny2_age3de.dll (layout +{n}). ' + tail
+        out = work / 'out.gr2'
+        outs.append(out.read_bytes() if out.exists() and out.stat().st_size else None)
+        if rc != 0 or outs[-1] is None:
+            if rc_all == 0:
+                rc_all = rc if rc not in (0, None) else (None if rc is None else -2)
+            tails.append(tail or f'layout +{n}: rc={rc}, no output')
+        shutil.rmtree(work, ignore_errors=True)
+    if rc_all == 0 and len({o for o in outs}) > 1:
+        rc_all, tails = -1, [f'outputs differ between memory layouts {NATIVE_LAYOUTS}: the DLL reads data out of bounds '
+                             '(orphan pointer fixups? python scripts/havok/gr2_fixups.py)']
+    if rc_all == 0:
+        Path(dst).write_bytes(outs[0])
+    return rc_all, '; '.join(tails)
+
+
+def dll_read(path, tdir, workdir):
+    """run granny2_age3de.dll (the converter's copy of the game's Granny runtime) on PATH: GrannyConvertFileToRaw via
+    gr2_to_raw.py's hand-built exe. Route = local env AOP_GR2_DLL_ROUTE:
+      wsl (default)  under Wine in the WSL distro AOP_WSL_DISTRO (default gr2_to_raw.DISTRO), in a UNIQUE Linux work
+                     folder, so parallel users of gr2_to_raw never share in.gr2/out.gr2;
+      native         the same exe and DLL (AOP_GR2_DLL) directly on Windows - refused while Smart App Control is on;
+      both           both routes; PASS only when both pass with byte-identical outputs.
+    -> dict(status PASS/FAIL/SKIP, rc, out_bytes, flat path, route)"""
+    if tdir is None or not (Path(tdir) / 'gr2_to_raw.py').exists():
+        return dict(status='SKIP', why=f'gr2_to_raw.py not found (tools dir {tdir}); set GR2_LINT_TOOLS')
+    sys.path.insert(0, str(tdir))
+    try:
+        import gr2_to_raw as g2r
+    finally:
+        sys.path.pop(0)
+    route = (_local_value('AOP_GR2_DLL_ROUTE') or 'wsl').strip().lower()
+    if route not in DLL_ROUTES:
+        return dict(status='FAIL', rc=None, out_bytes=0, flat=None, route=route,
+                    tail=f'AOP_GR2_DLL_ROUTE={route!r} is not one of {DLL_ROUTES}')
+    dll = _local_value('AOP_GR2_DLL')
+    if route in ('native', 'both'):
+        why = None
+        if not dll or not Path(dll).is_file():
+            why = f'AOP_GR2_DLL not set or not found ({dll}): the native route needs the converter granny2_age3de.dll'
+        elif smart_app_control_on() is not False:
+            why = 'Smart App Control is on or unreadable: the native route is refused (use the wsl route)'
+        if why:
+            return dict(status='SKIP', why=why, route=route)
+    src = Path(path).resolve()
+    exe = Path(workdir) / '_gr2lint_tool.exe'
+    exe.write_bytes(g2r.build_exe())
+    runs = {}
+    for r_ in (('wsl', 'native') if route == 'both' else (route,)):
+        dst = Path(workdir) / f'{src.stem}_{r_}_flat.gr2'
+        if r_ == 'wsl':
+            rc, tail = _dll_wsl(g2r, src, dst, exe, _local_value('AOP_WSL_DISTRO') or g2r.DISTRO)
+        else:
+            rc, tail = _dll_native(g2r, src, dst, exe, dll)
+        n = dst.stat().st_size if dst.exists() else 0
+        runs[r_] = dict(rc=rc, out_bytes=n, flat=str(dst) if n else None, ok=rc == 0 and n > 0, tail=tail)
+    ok = all(x['ok'] for x in runs.values())
+    tail = '; '.join(f"{k}: {v['tail']}" for k, v in runs.items() if not v['ok'])
+    if ok and len(runs) == 2 and Path(runs['wsl']['flat']).read_bytes() != Path(runs['native']['flat']).read_bytes():
+        ok, tail = False, 'wsl and native outputs differ: the routes disagree'
+    first = runs['wsl' if 'wsl' in runs else 'native']
+    return dict(status='PASS' if ok else 'FAIL', rc=first['rc'], out_bytes=first['out_bytes'], flat=first['flat'],
+                route=route, **({'runs': {k: {'rc': v['rc'], 'out_bytes': v['out_bytes']} for k, v in runs.items()}}
+                                if len(runs) == 2 else {}), **({} if ok else {'tail': tail}))
 
 
 def load(path, dll=None):
@@ -425,11 +529,31 @@ def check_crc(stage, info):
              f" ({h['bits']}-bit, {'Oodle-compressed' if h['compressed'] else 'raw'})")
 
 
+def check_fixups(stage, path, h):
+    """no pointer fixup outside the objects reachable from the root (INC-187): an orphaned array's fixups make the
+    Granny DLL convert the file out of bounds - nondeterministic output or a crash, which one DLL run can miss"""
+    if h.get('compressed'):
+        return R(stage, 'fixups', None, 'Oodle-compressed: relocation tables not readable here (the DLL route converts it)')
+    try:
+        from gr2_fixups import orphan_fixups
+        rep = orphan_fixups(path)
+    except Exception as e:
+        return R(stage, 'fixups', False, f'cannot walk the type tree ({type(e).__name__}: {e})')
+    n = len(rep['orphans'])
+    return R(stage, 'fixups', n == 0, f"{n} orphan pointer fixup(s) of {rep['fixups']}"
+             + (f" - first {rep['orphans'][:3]}; repair: python scripts/havok/gr2_fixups.py --scrub IN OUT" if n else ''),
+             orphans=n)
+
+
 def check_dll(stage, dll):
     if dll['status'] == 'SKIP':
         return R(stage, 'dll_read', None, dll['why'])
-    return R(stage, 'dll_read', dll['status'] == 'PASS', f"granny2_age3de.dll rc={dll['rc']} output {dll['out_bytes']} B",
-             **{k: v for k, v in dll.items() if k in ('tail',)})
+    runs = dll.get('runs')
+    how = (' (' + ', '.join(f"{k} rc={v['rc']} {v['out_bytes']} B" for k, v in runs.items()) + ', identical)'
+           if runs and dll['status'] == 'PASS' else '')
+    return R(stage, 'dll_read', dll['status'] == 'PASS',
+             f"granny2_age3de.dll [{dll.get('route', 'wsl')}] rc={dll['rc']} output {dll['out_bytes']} B{how}",
+             **{k: v for k, v in dll.items() if k in ('tail', 'route', 'runs')})
 
 
 def check_limits(stage, info, prof):
@@ -1503,7 +1627,7 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
                             check_texture_budget(stage, mat, art_root, prof, model, **union)]
                 continue
             infos[stage] = info
-            results += [check_crc(stage, info), check_dll(stage, dll)]
+            results += [check_crc(stage, info), check_fixups(stage, path, h), check_dll(stage, dll)]
             results += check_limits(stage, info, prof)
             results.append(check_tangents(stage, info))
             if prof.get('rest_contract'):

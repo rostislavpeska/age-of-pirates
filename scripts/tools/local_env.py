@@ -144,6 +144,25 @@ def _row(rows, state, name, detail=''):
     rows.append((state, name, detail))
 
 
+def wsl_distros():
+    """the WSL distro names on this device (wsl.exe -l -q writes UTF-16); None when wsl.exe cannot be run"""
+    import subprocess
+    try:
+        out = subprocess.run(['wsl.exe', '-l', '-q'], capture_output=True, timeout=30).stdout
+    except (OSError, subprocess.SubprocessError):
+        return None
+    text = out.decode('utf-16-le', errors='replace') if b'\0' in out else out.decode('utf-8', errors='replace')
+    return [ln.strip().strip('\0') for ln in text.splitlines() if ln.strip().strip('\0')]
+
+
+# keys whose value is not a path: (check(value) -> None when ok, else the problem)
+NON_PATH = {
+    'AOP_GR2_DLL_ROUTE': lambda v: None if v.lower() in ('wsl', 'native', 'both') else 'not wsl, native or both',
+    'AOP_WSL_DISTRO': lambda v: (None if (d := wsl_distros()) is not None and v in d else
+                                 'not a WSL distro on this device (%s)' % ', '.join(d or ['wsl.exe unavailable'])),
+}
+
+
 def check(repo=REPO, out=print):
     """print every local file and value; returns the number of problems (missing local files, broken paths)"""
     import json
@@ -165,6 +184,9 @@ def check(repo=REPO, out=print):
                 src = ' (environment)' if os.environ.get(k) else ''
                 if not v:
                     _row(rows, 'unset', k, hints.get(k, 'not in the example'))
+                elif k in NON_PATH:
+                    bad = NON_PATH[k](v)
+                    _row(rows, 'BROKEN' if bad else 'ok', k, v + src + (' - ' + bad if bad else ''))
                 elif os.path.exists(v):
                     _row(rows, 'ok', k, v + src)
                 else:

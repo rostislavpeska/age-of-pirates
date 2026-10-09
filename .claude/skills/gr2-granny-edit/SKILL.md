@@ -29,6 +29,8 @@ Oodle-compressed and the reader cannot open it - that is expected (the tools nev
 | `fbx_check.py NEW.fbx VANILLA.fbx OUT_DIR` | Blender headless: loop-by-loop comparison (positions, normals, UVs) + renders |
 | `anim_tracks.py IN.gxo OUT.gxo --keep bone_sail [--group ROOT]` / `--drop Object02` | filter animation tracks in GXO form, force the track-group name |
 | `converter.py --format gr2\|gxo\|fbx FILE` | conversion wrapper: runs your configured converter or, in manual mode, tells you what to produce and waits (see the last section) |
+| `multimaterial_gr2.py` (`replace(donor, parts, out, materials, damaged=)`) | the donor-preserving multi-material writer of the Korean building exports (intact and damaged at donor layout); versioned here since 2026-10-09, refuses donors with orphan fixups and asserts none in its output |
+| `gr2_fixups.py FILE...` / `--scrub IN OUT` | orphan pointer fixups (outside every object reachable from the root); `--scrub` drops them and zeroes their slots, reachable bytes unchanged. `gr2_lint` check `fixups` |
 
 ## Facts that were each wrong once (do not re-derive)
 
@@ -48,6 +50,14 @@ Oodle-compressed and the reader cannot open it - that is expected (the tools nev
 - Never move an existing array to another section (crashes the loader). Grow section 0 in place: insert after
   the array, shift every later offset (relocation sources/targets, first16/first8), or append new records at the
   end and only update counts/pointers (what `gr2_splitmesh.py` does).
+- **A re-pointed array must lose its pointer fixups** (INC-187, 2026-10-09). Appending a new root/MeshBindings
+  array and re-pointing to it leaves the old array in the section with its fixups: `granny2_age3de.dll` then
+  converts the file out of bounds - live memory pointers over the next section's vertex/index bytes, output that
+  changes with the process memory layout, or 0xC0000005. One DLL run passes such a file (the 2026-10-07 military
+  PASS logs did). Vanilla Shrine/scaffold files: 0 orphans of 382-733 fixups; every Korean writer output: 12-58.
+  Re-pointing the vanilla Shrine's root.Meshes alone (same two pointers) reproduced it; dropping the two old
+  fixups fixed it. `gr2_fixups.py` finds them; the earlier "intermittent native loading" below may be the same
+  defect.
 - The inspected ship damaged roots (`bone_main`) carry a **90-degree Y rest rotation**; their intact roots
   (`Object02`) are identity. This is not universal: the early Chinese Town Center has an essentially
   identity `BONE_MAIN` in both models. Inspect the chosen donor before converting relative transforms.
@@ -97,7 +107,9 @@ scenes = engine units in the same frame), so no converter is needed for tables.
 
 1. `gr2_dump.py OUT.gr2` - CRC ok, bones/meshes/bindings as intended; `--tracks` on anims (only the intended
    bones, track group = root name).
-2. When a compatible native loader is available, require its load check for new buffers or bindings.
+2. `gr2_fixups.py OUT.gr2` must report 0 orphan fixups. When a compatible native loader is available, require
+   its load check for new buffers or bindings, in more than one memory layout with identical output (`gr2_lint`
+   dll_read: AOP_GR2_DLL_ROUTE native/both converts in three work-folder lengths).
    CRC and this Python reader alone missed the Korean trial's marshalling defect. Direct
    `GrannyReadEntireFile` / `GrannyGetFileInfo`, or a read-only GXO dump through the configured converter,
    checks native deserialization. Investigate a native crash before installation; distinguish a load failure
