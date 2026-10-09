@@ -40,7 +40,10 @@ It separates documented practice, project decisions and measured specimen result
    borders, mips, shallow/grazing views and one asymmetric feature. Document normal
    and AO passes independently; a successful bake call alone is not acceptance.
    A generic tile field proves the machinery only. For an architectural roof,
-   test the curved slope, its eave turn, round tile ends and UV alignment together;
+   bake and review the WHOLE roof assembly in one recipe - field, eave fronts, undersides,
+   caps/ridges, with the parts that have no relief declared (owner 2026-10-09: "the roof
+   bottom should always be baked together"); `scripts/assembly_scope.py` enforces it inside
+   `bake_owner_maps.py`. Test the curved slope, its eave turn, round tile ends and UV alignment together;
    see [roof-transition evidence](references/process.md#roof-transition-specimens).
    Fit complete motifs inside the receiver and stop relief at structural edges.
    For vertical eaves, check the shell cross-section, hard-normal/UV break and
@@ -102,6 +105,12 @@ exception. Require completion manifests and coverage, not process exit alone.
   requires both the UV `freeze` and the separate LOW `input_contract`. Expanding a pilot means
   declaring and validating its new scope; deleting `only` does not prove production coverage.
   `preflight_only` writes cheap scope/receiver evidence without loading HIGHs or baking.
+- `scripts/assembly_scope.py`: the **assembly gate**, run by `bake_owner_maps.py` before preflight. A scope
+  containing a roof material needs `"assembly"` (spec path or inline: parts -> materials, `bake: high|none`,
+  reasons); every owner face of every `high` part must be in the scope (all pages, all sources), parts a building
+  lacks go to `assembly_absent` with a reason. `test_assembly_scope.py` (pure Python) keeps the 2026-10-09
+  field-only roof pilot as its failing case. Project specs live with the project's art skill (Korean:
+  `korean-architecture/references/roof_assembly_spec.json`).
 - **Texturing QA (every iteration, before the owner sees it):** [texturing-qa.md](references/texturing-qa.md) -
   shot list, pass criteria, normal-stacking and material-consistency rules; `scripts/qa_textures.py`
   (numeric: empty texels, flat islands, class colour targets), `scripts/qa_detectors.py` (second rhythm in a

@@ -51,6 +51,7 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 | Window/door lattice, paper, reusable leaf patches | [Lattice and hanji](references/lattice-hanji.md) |
 | Roof tiles, color variation, moss, exposed clay | [Roof surface finish](references/roof-color.md) |
 | Tile laps or shadows appear to face uphill; verify the full bake/export chain | [Roof tile direction QA](../roof-tile-direction-qa/SKILL.md), then the Korean roof recipe |
+| ANY roof bake or roof specimen: the whole roof bakes as one assembly (field + eave fronts + underlip + caps; soffit/timber ridge declared) | [One roof = one bake](references/roof-ends.md#one-roof--one-bake-owner-9-october-2026) + [roof_assembly_spec.json](references/roof_assembly_spec.json); the bake tool's assembly gate refuses a partial roof |
 | Rounded eave discs, scalloped pan ends, alpha backing and curved hip caps | [Rounded roof ends](references/roof-ends.md), then project pattern `KR-EAVE-01` |
 | Granite foundations, vertical gable boards and wooden ridge grain | [Stone and timber direction](references/stone-and-grain.md), then project pattern `KR-MAT-DIRECTION-01` |
 | Painted trim, gable background, player color, age progression | [Palette and age variants](references/palette-ages.md) |

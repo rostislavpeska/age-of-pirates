@@ -69,6 +69,7 @@ def main(exe):
         recipe = {'plan': f'{t}/plan.json', 'sources': {'L': 'Low'}, 'highs': [{'objects': ['High', 'Interferer']}],
                   'pages': {'P': 64}, 'maps': ['NORMAL', 'AO', 'OPACITY'], 'extrusion': .3, 'max_ray_distance': .6,
                   'scope': {'mode': 'pilot', 'regions': [{'id': 'pair', 'faces': ['L:0','L:1'], 'highs': ['High']}]},
+                  'assembly': {'name': 'machinery fixture: one tile plane, no eave or caps', 'parts': {'field': {'materials': ['ROOF_TILE'], 'bake': 'high'}}},
                   'margin': 2, 'samples': 4, 'freeze': f'{t}/freeze.json', 'out_dir': f'{t}/bake'}
         (Path(tmp) / 'recipe.json').write_text(json.dumps(recipe))
         r = blender(exe, f'{t}/fixture.blend', '--python', str(HERE / 'bake_owner_maps.py'), '--', f'{t}/recipe.json')

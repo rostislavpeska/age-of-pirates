@@ -1,5 +1,31 @@
 # Rounded Korean roof ends: feature contract
 
+## One roof = one bake (owner, 9 October 2026)
+
+"The roof bottom should always be baked together - possibly also the ridges." A roof is baked, reviewed and
+handed over as ONE assembly. A field-only bake is never a specimen, a pilot or a step: the castle pilot of
+that day baked the tile field alone, its eave fronts and underlip on another page were left grey, and the owner
+had to point it out although this file already demanded "field + front + back/under + corners".
+
+| Part (castle subtype / TC-military class) | Source | Maps |
+| --- | --- | --- |
+| Tile field (`roof_field` / `ROOF_TILE`) | tile HIGH: set-reference section and downhill laps, measured against the TC HIGH | NORMAL (+ TC roof_v2 lip bump), AO, tile IDs |
+| Eave front (`roof_end_receiver`) | front HIGH from military `uv_r43/eave_recipe.py` `relief()` on the actual receiver faces, on the field's roll rows | NORMAL, AO, role IDs, OPACITY from the same recipe's `silhouette()` |
+| Underlip / back (`roof_underlip` / `EAVE_BACKING`) | no relief | flat NORMAL; OPACITY = the front's alpha at the underlip's actual height |
+| Hip/verge caps (`clay_cap`) | cap HIGH: TC `ridge_v2/build_ridge_high.py` tiles (arc-length courses from the top, lip step, bead, eave upturn) + round end-tile disc | NORMAL, AO, tile IDs |
+| Soffit band (`soffit_rafters`) | none - must stay behind the cutout clearance | assembly AO |
+| Main ridge (`ridge_timber`) | none - timber (KR-RIDGE-01), grain along the length | colour pass, assembly AO |
+| Gable boards, hidden backing | none | colour pass / never visible |
+
+Enforcement, not memory: every roof bake recipe sets `"assembly"` to
+[roof_assembly_spec.json](roof_assembly_spec.json). `blender-high-low-baking/scripts/bake_owner_maps.py` runs
+`assembly_scope.py` before any preflight and refuses a roof scope that leaves a part out, misses a page holding a
+part's owner faces, lacks a source object (caps) or gives a `none` part no reason. A part a building really lacks
+is declared in `assembly_absent` with its reason. One review shows every part with its own maps and the alpha
+bound; the eave gates below (`check_alpha_chain.py`, `check_eave_contract.py` with the building's declared
+`expected_own_pages`) run on that assembly. Worked example: Korean repo
+`research/Colonial_Expansion_17/castle_geometry_r1/ROOF_ASSEMBLY.md` (Colonial pavilion).
+
 Read the Korean repository pattern **KR-EAVE-01**,
 `patterns/korean/rounded_eave_tiles.md`, resolved through the current handoff and
 `recipes.json`. It traces the accepted TC HIGH, fitted roof banks, course-ID bake,

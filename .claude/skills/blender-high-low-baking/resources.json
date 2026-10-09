@@ -30,7 +30,9 @@
     "scripts/test_normal_hemisphere.py",
     "scripts/test_qa_detectors.py",
     "scripts/test_state_regression.py",
-    "scripts/uv_fingerprint.py"
+    "scripts/uv_fingerprint.py",
+    "scripts/assembly_scope.py",
+    "scripts/test_assembly_scope.py"
   ],
   "skills": [
     "blender-architecture",

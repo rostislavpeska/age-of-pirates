@@ -18,6 +18,8 @@ recipe = {
                                              # (a missed ray on a solid roof face must never become a hole)
   "freeze": "uv_freeze.json",                # optional: refuse unless the layer matches the freeze
   "input_contract": "low_contract.json",     # geometry/normals/triangles, separate from UV freeze
+  "assembly": "roof_assembly_spec.json",     # REQUIRED when a scoped face is a roof material: the whole roof bakes
+                                             # together (assembly_scope.py; owner 2026-10-09)
   "out_dir": "..."
 }
 Every recipe declares exact scope and allowed source pairs. Production mode requires
@@ -51,13 +53,17 @@ def _load(name):
     return mod
 
 
-fp_mod, pair, contract = _load('uv_fingerprint'), _load('bake_pair'), _load('bake_contract')
+fp_mod, pair, contract, assembly = _load('uv_fingerprint'), _load('bake_pair'), _load('bake_contract'), _load('assembly_scope')
 cfg = json.load(open(sys.argv[sys.argv.index('--') + 1]))
 plan = json.load(open(cfg['plan']))['faces']
 pages = cfg['pages']; UV = cfg.get('uv_name', 'UV_Final'); out = Path(cfg['out_dir'])
 maps = cfg.get('maps', ['NORMAL'])
 scope = contract.validate_scope(cfg, plan, {key: len(bpy.data.objects[name].data.polygons)
                                           for key, name in cfg['sources'].items()})
+# Assembly gate (owner 2026-10-09): a roof scope must hold its whole roof - field, eave fronts, undersides, caps.
+asm = assembly.check(cfg, plan, Path(sys.argv[sys.argv.index('--') + 1]).parent)
+if asm['verdict'] != 'PASS':
+    raise ValueError('ASSEMBLY GATE FAIL: ' + ' | '.join(asm['errors']))
 input_fp = contract.fingerprint(list(cfg['sources'].values()))
 contract.check_contract(cfg, input_fp)
 
@@ -109,7 +115,7 @@ for key, name in cfg['sources'].items():
             t.data.materials.clear(); t.data.materials.append(m)
             targets.setdefault(pg, []).append(t)
 assert targets, 'No owner faces matched the plan, pages and "only"'
-preflight = dict(scope=scope, low_contract=input_fp, uv_fingerprint=fp, receivers=receiver_checks)
+preflight = dict(scope=scope, assembly=asm, low_contract=input_fp, uv_fingerprint=fp, receivers=receiver_checks)
 (out / 'preflight.json').write_text(json.dumps(preflight, indent=2))
 if cfg.get('preflight_only'):
     print('PREFLIGHT_PASS', out / 'preflight.json')

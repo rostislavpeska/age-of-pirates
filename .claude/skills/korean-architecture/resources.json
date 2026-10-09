@@ -15,7 +15,8 @@
     "scripts/check_eave_contract.py",
     "scripts/test_alpha_chain.py",
     "scripts/test_alpha_clearance.py",
-    "scripts/test_eave_contract.py"
+    "scripts/test_eave_contract.py",
+    "references/roof_assembly_spec.json"
   ],
   "skills": [
     "aoe-building-pipeline",

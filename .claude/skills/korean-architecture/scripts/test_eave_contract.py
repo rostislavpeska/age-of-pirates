@@ -19,4 +19,8 @@ class Contract(unittest.TestCase):
  def test_budget(self):
   self.d['own_pages']=[4096,4096];self.assertEqual(assess(self.d)['verdict'],'FAIL')
 
+ def test_declared_budget_of_another_building(self):
+  self.d['own_pages']=[2048,1024];self.assertEqual(assess(self.d)['verdict'],'FAIL')
+  self.d['expected_own_pages']=[2048,1024];r=assess(self.d);self.assertNotIn('budget',' '.join(r['errors']))
+
 if __name__=='__main__':unittest.main()

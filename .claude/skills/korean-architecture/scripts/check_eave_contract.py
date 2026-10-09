@@ -23,7 +23,10 @@ def assess(data):
   if r.get('reader_mismatch_fraction',1)>.05:errors.append(name+': mismatched repeated/underlip reader')
   if r.get('material_placeholder',True):errors.append(name+': placeholder material remains on required feature')
   if r.get('geometry_and_uv_identity_checked') is not True:errors.append(name+': unbound geometry/UV evidence')
- if data.get('own_pages')!=[2048,2048]:errors.append('military own-page budget drift')
+ # Own-page budget: the building's owner-confirmed pages (e.g. castle 2048+1024), declared beside the measured pages.
+ # The military [2048,2048] default keeps its historical reports valid; a different building must declare its own.
+ expected_pages=data.get('expected_own_pages',[2048,2048])
+ if data.get('own_pages')!=expected_pages:errors.append('own-page budget drift (declared '+str(expected_pages)+')')
  if data.get('additional_runtime_materials')!=0:errors.append('runtime material proliferation')
  chain=data.get('alpha_chain')
  if not isinstance(chain,dict):errors.append('missing measured backing and rendered alpha-chain evidence')

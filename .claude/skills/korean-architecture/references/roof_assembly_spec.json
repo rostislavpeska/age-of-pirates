@@ -1,0 +1,56 @@
+{
+  "name": "Korean tiled roof assembly (KR-EAVE-01 + KR-ROOF-01 + KR-RIDGE-01)",
+  "owner_rule": "2026-10-09: the roof bottom should always be baked together with the field - possibly also the ridges",
+  "usage": "bake recipe key \"assembly\": path to this file; the blender-high-low-baking assembly gate (assembly_scope.py) refuses any roof scope that leaves a part out",
+  "parts": {
+    "field": {
+      "materials": ["roof_field", "ROOF_TILE"],
+      "bake": "high",
+      "source": "tile HIGH with the set reference section and downhill laps (TC roof_v2 course function, measured against the TC HIGH)",
+      "maps": ["NORMAL (+ TC roof_v2 lip bump)", "AO", "EMIT tile IDs"]
+    },
+    "front": {
+      "materials": ["roof_end_receiver", "EAVE_FRONT"],
+      "bake": "high",
+      "source": "front HIGH: TC/military eave_recipe relief (round disc + rim + scalloped pan) on the actual receiver faces, on the field's roll rows",
+      "maps": ["NORMAL", "AO", "EMIT role IDs", "OPACITY from eave_recipe.silhouette"]
+    },
+    "underlip": {
+      "materials": ["roof_underlip", "EAVE_BACKING"],
+      "bake": "high",
+      "source": "the front HIGH (no relief there); alpha = the front's alpha at the underlip's ACTUAL height (KR-EAVE-01 step 7)",
+      "maps": ["NORMAL (flat)", "OPACITY projected from the front"]
+    },
+    "caps": {
+      "materials": ["clay_cap", "CAP", "ROOF_CAP"],
+      "bake": "high",
+      "source": "cap HIGH: TC ridge_v2 cap tiles (courses by arc length from the top, lip step, bead, eave upturn) + round end-tile disc",
+      "maps": ["NORMAL", "AO", "EMIT tile IDs"]
+    },
+    "soffit": {
+      "materials": ["soffit_rafters"],
+      "bake": "none",
+      "reason": "no modelled relief on the soffit band; it must sit behind the cutout clearance and takes the assembly AO pass"
+    },
+    "main_ridge_timber": {
+      "materials": ["ridge_timber", "ridge_wood"],
+      "bake": "none",
+      "reason": "KR-RIDGE-01: the main ridge is timber - grain along its length in the colour pass, assembly AO; no tile HIGH"
+    },
+    "built_up_ridge": {
+      "materials": ["ridge_plaster"],
+      "bake": "none",
+      "reason": "built-up plaster ridge: colour pass + assembly AO until a ridge HIGH is authored (declare it in the review)"
+    },
+    "gable": {
+      "materials": ["gable_board"],
+      "bake": "none",
+      "reason": "vertical gable boards (KR-MAT-DIRECTION-01): colour pass + assembly AO"
+    },
+    "hidden_backing": {
+      "materials": ["hidden_backing"],
+      "bake": "none",
+      "reason": "never visible; shared generic atlas cell"
+    }
+  }
+}
