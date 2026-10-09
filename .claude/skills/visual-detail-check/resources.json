@@ -4,7 +4,9 @@
     "SKILL.md",
     "scripts/detail_visibility.py",
     "scripts/loaded_version.py",
-    "scripts/test_detail_visibility.py"
+    "scripts/test_detail_visibility.py",
+    "scripts/small_size_check.py",
+    "scripts/test_small_size_check.py"
   ],
   "skills": [],
   "external": [

@@ -1,6 +1,6 @@
 ---
 name: visual-detail-check
-description: Check that a small visual detail (texture feature, seam, valley, trim, decal, emblem, icon element) is really visible - and not too loud - at the size the player sees it, in the renderer that counts (the game), before reporting it. Proves which version the running game shows, measures the detail against a capture without it at on-screen scale, and makes an enlarged crop sheet to look at. Use whenever the owner says "I don't see it", "too strong", "more subtle", "thinner", or before claiming that a detail reads at game distance.
+description: Check that a small visual detail (texture feature, seam, valley, trim, decal, emblem, icon element) is really visible - and not too loud - at the size the player sees it, and that an icon or portrait stays clean and clear at 128/64/48 px, in the renderer that counts (the game), before reporting it. Proves which version the running game shows, measures the detail against a capture without it at on-screen scale, and makes an enlarged crop sheet to look at. Use whenever the owner says "I don't see it", "too strong", "more subtle", "thinner", "look cleaner", "not clear at small size", or before claiming that a detail or an icon reads at game distance.
 ---
 
 # Visual detail check: see it, measure it, in the renderer that counts
@@ -50,6 +50,29 @@ it.
 
 With `--verdict` the report prints the band between "too weak" and "too strong" verdicts for each metric. A band
 belongs to one renderer, lighting and scale; never carry it to another renderer.
+
+## 3b. Small sizes: is a whole picture clear as an icon?
+
+For icons and portraits there is no "without" capture. Judge each picture at the sizes the player sees it (128, 64,
+48 px) against references the owner accepts (vanilla icons or portraits of the same kind):
+
+```bash
+python scripts/small_size_check.py --ref vanilla=V.png --img old=OLD.png --img new=NEW.png     --show NEW_ICON_BORDERED.png --sizes 128,64,48 --out DIR
+```
+
+| Metric | Meaning |
+| --- | --- |
+| `subject` | Share of the picture that stands out from the backdrop (CIEDE2000 > 14 from the frame colour). A dark roof on a dark backdrop drops out of it. |
+| `mottle` | Median local L* spread on the subject's flat areas: dirt, moss, blotches, tile checker. Lower is cleaner. |
+| `shape`, `edges`, `speckle` | Big-form contrast, structure left, pixel noise. Context only. |
+
+Measure on the subject, never on the whole frame. On 2026-10-09 the global measures ranked an old, blotchy portrait
+"cleaner", because its flat dark backdrop outweighed the dirty roof. Only after masking the subject did the numbers
+match what the eye saw. At the same time, look at the 64 px column of `small_size_sheet.png`.
+
+If a dark subject stands out too little, measure the contrast at its upper outline against the halo next to it. A thin
+rim light on that outline and a backdrop darkened towards the corners raise it without adding mottle; vanilla
+portraits do the same. Example, 2026-10-09: an edge contrast of 3 L* rose to 10 (vanilla reference 18).
 
 ## 4. Look, then describe
 

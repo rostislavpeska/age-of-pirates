@@ -59,7 +59,7 @@ def metrics(im, n):
     inner = cv2.erode(subj, np.ones((3, 3), np.uint8)).astype(bool)
     w = max(3, round(5 * n / 128)) | 1
     mu = cv2.blur(L, (w, w)); sd = np.sqrt(np.maximum(cv2.blur(L * L, (w, w)) - mu * mu, 0))
-    flat = inner & (G < np.percentile(G[inner], 60)) if inner.any() else inner
+    flat = inner & (G <= np.percentile(G[inner], 60)) if inner.any() else inner   # <=: a flat surface has G = 0
     return small, {'subject': float(subj.mean()), 'mottle': float(np.median(sd[flat])) if flat.any() else float('nan'),
                    'shape': float(cv2.GaussianBlur(L, (0, 0), max(.5, n / 64)).std()), 'edges': float(G.mean()),
                    'speckle': float((fine ** 2).sum() / ((G ** 2).sum() + 1e-6))}
