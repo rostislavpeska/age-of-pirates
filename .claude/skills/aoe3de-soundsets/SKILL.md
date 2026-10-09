@@ -120,5 +120,5 @@ python scripts/tools/check_art_eol.py          # sound XML is runtime XML: CRLF 
 | What | Where |
 |---|---|
 | AoE2 Korean soldier voices, used by the Korean bombard native | `sound/korean/Koreans_Soldier_*_AoE2.wav`, sets `Korean_Soldier_*` in `sound/soundsetsy.xml` (2024, legacy full copy) |
-| AoE2 Korean villager voices, 22 sets, defined only | `koreans/sound/` (Korean civ add-on), sets `zpKoreanVillager{M,F}_*`, `zpKoreanFishingBoat*` |
+| AoE2 Korean villager voices, 22 sets, defined only | the Koreans add-on repo `age-of-pirates-koreans`: files `sound/korean/`, sets `zpKoreanVillager{M,F}_*`, `zpKoreanFishingBoat*` in its `tools/korean_soundsets.xml` |
 | Power start sound | `American_Estate` in `sound/soundsetsde.mods.xml`, used by `data/abilities/powermods.xml` |

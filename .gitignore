@@ -102,9 +102,6 @@ scripts/mapview/out/
 !/data/wpfg/**/*.bmp
 !/data/wpfg/**/*.gif
 !/data/wpfg/**/*.webp
-# the Koreans add-on source (koreans/) is a mod root: same runtime homes (owner 2026-10-08)
-!/koreans/art/**/*.png
-!/koreans/data/wpfg/**/*.png
 !/docs/images/**/*.png
 !/docs/images/**/*.jpg
 !/docs/images/**/*.jpeg
