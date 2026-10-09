@@ -22,7 +22,8 @@ verify the expected project and imported mesh identity as strictly as before bak
 An earlier failed create/close must never let a later save label an unrelated open
 document as a completed diagnostic. Close an owned project before renaming its
 saved file. Put multi-line client code in a script; nested shell quoting is not
-a reliable orchestration layer. Korean House AO refresh, 2026-10-09, INC-177.
+a reliable orchestration layer. Korean House AO refresh, 2026-10-09, INC-180
+(original local ID INC-177, remapped during cross-device reconciliation).
 
 Do not infer the installation or capabilities from another computer. Run
 `python scripts/painter_environment.py --local-config <this-device-tool-paths.json> --report <scratch-report.json>`.
