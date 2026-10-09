@@ -17,6 +17,7 @@
     "scripts/derive_maps.py",
     "scripts/master_bake.py",
     "scripts/master_unwrap.py",
+    "scripts/normal_hemisphere.py",
     "scripts/qa_detectors.py",
     "scripts/qa_shots.py",
     "scripts/qa_textures.py",
@@ -26,6 +27,7 @@
     "scripts/test_ao_storage.py",
     "scripts/test_bake_owner_maps.py",
     "scripts/test_master_derive.py",
+    "scripts/test_normal_hemisphere.py",
     "scripts/test_qa_detectors.py",
     "scripts/test_state_regression.py",
     "scripts/uv_fingerprint.py"

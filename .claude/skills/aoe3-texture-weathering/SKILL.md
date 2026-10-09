@@ -57,7 +57,10 @@ and for player colour a `__Details`; outside its claim it is byte-identical. Har
 
 ## 4. Compose, relieve, refresh
 
-Apply claims by priority; refresh gutters >= 48 px around changed texels (Lanczos mip 4); turn the
+Apply claims by priority; refresh gutters within the asset's declared padding and nearest-owner
+territory. A 48 px dilation is appropriate only when that space is reserved; never overwrite another
+chart or silently repack a frozen atlas to reach it. Test the actual mip filter and report remaining
+bleed where the available margin is insufficient. Turn the
 merged height into a detail normal in the SOURCE convention, blend with RNM, then apply the transform
 the installed DDT uses for that atlas ([re-encoding rules](../aoe3de-building-export/references/textures-xml.md)). Prove
 the codec reproduces the installed DDT byte-for-byte before encoding new maps.

@@ -91,3 +91,15 @@ unclear; do not repeat a full manual turntable for each local edit. Neutral unit
 normals, a UV hash and successful bake execution are validity evidence, not complete
 surface coverage or visual acceptance. Keep corner/edge checks and actual destination
 shader/mip validation at the appropriate review milestone.
+
+## Backing-strip hemisphere check
+
+Do not lower a displaced HIGH seam curtain through its own bottom edge. It can
+invert the narrow backing while the broad tile field still renders correctly.
+On a flat structural backing, use the canonical backing surface as its explicit
+HIGH source and keep it separate from the detailed tile/eave projection groups.
+Check the final tangent normals on covered opaque texels with
+`normal_hemisphere.py`; negative tangent Z beyond quantization tolerance needs
+source/projection diagnosis, not a blind clamp. Painter can clamp these normals
+to the tangent horizon, so a successful import/export is not identity proof.
+The checker is bounded: it does not establish lap direction or engine convention.

@@ -35,8 +35,11 @@ effects (damp, streaks) by it.
 ## Compose
 
 Priority order (low to high) used on the Korean set: stone, timber, plaster, hanji, doors, player
-colour/courtyard, roof overlays. Refresh gutters >= 48 px around changed used texels by push-pull,
-leave other gutters identical. Merge heights -> OpenGL detail normal normalize(-dh/dx, +dh/drow, 1)
+colour/courtyard, roof overlays. Refresh only the declared empty gutter territory nearest to each
+owner; a fixed 48 px dilation can overwrite neighbors on a four-pixel-margin atlas. Preserve other
+owners, measure the actual mip/filter result and report insufficient padding without silently
+changing UVs. Use exact pixel-centre containment for coverage statistics: rounded polygon drawing
+can include outside pixels along every edge. Merge heights -> OpenGL detail normal normalize(-dh/dx, +dh/drow, 1)
 -> RNM into the OpenGL source -> the installed per-atlas transform. Keep player-colour base texels of
 buildings whose player colour was out of scope byte-identical.
 

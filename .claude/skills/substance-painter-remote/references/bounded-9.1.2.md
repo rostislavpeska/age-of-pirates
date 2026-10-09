@@ -44,6 +44,10 @@ the older monolithic generator recipe.
    `ensure_generator_effect`, `bind_generator`, `set_generator_value` per parameter.
    For an existing generator use `select_mask`, `select_generator`, then values.
    `inspect_generator` reads back the actual native values.
+   Channel toggle keys are the observed button texts (`color`, `rough`, `metal`,
+   `height`, `nrm` on the tested instance), whereas resource labels include
+   `Base color`, `Roughness` and `Normal`. Export uses still other identifiers such
+   as `basecolor`; inspect before substituting one naming scheme for another.
 5. Save, reopen and export by public API. Verify generator resource, parameters,
    non-flat output and the intended pixel changes. Repeated setup must reuse a
    single named effect, not accumulate layers.
