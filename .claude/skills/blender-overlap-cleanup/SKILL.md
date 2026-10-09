@@ -76,6 +76,15 @@ Blender `bpy` is required for scene access. These helpers do not install softwar
 
 ## Helpers and verification
 
+For a declared covered trim/beam termination, use `scripts/termination_plane.py`
+against the **actual sloped cover face**, in one coordinate system. Require the
+specified setback for the complete end, then verify finite cover extent, alpha
+and underside visibility in fixed corner views. This is a bounded geometric check,
+not general collision or transparency certification. Its regression includes the
+Korean House cap that protruded below a sloping eave despite plausible overall
+bounds (owner, 2026-10-09); test both original failure and repaired coordinates,
+plus rotated copies. Gap/contact tests alone do not catch protruding trim ends.
+
 `scripts/overlap_geometry.py` supplies world-space coplanar intersection,
 transverse crossing witnesses, positive box-volume overlap, protected-alpha handling, and planar union-boundary
 planning against **caller-certified opaque boxes**. It does not certify boxes,

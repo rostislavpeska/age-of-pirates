@@ -4,7 +4,9 @@
     "SKILL.md",
     "references/repair-methods.md",
     "scripts/overlap_geometry.py",
-    "scripts/test_overlap_geometry.py"
+    "scripts/test_overlap_geometry.py",
+    "scripts/termination_plane.py",
+    "scripts/test_termination_plane.py"
   ],
   "skills": [
     "blender-architecture"
