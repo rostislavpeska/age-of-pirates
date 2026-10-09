@@ -17,7 +17,10 @@
     "scripts/painter_environment.py",
     "scripts/test_owner_coverage.py",
     "scripts/test_painter_environment.py",
-    "references/whitedirt-relief-9.1.2.md"
+    "references/whitedirt-relief-9.1.2.md",
+    "references/second-instance-9.1.2.md",
+    "scripts/launch_second_instance.py",
+    "scripts/second_instance/startup/rpc_endpoint.py"
   ],
   "skills": [
     "blender-architecture-texturing",
@@ -80,6 +83,19 @@
       ],
       "optional": false,
       "note": "Client-side coverage rasterizer; not a Painter embedded dependency."
+    },
+    {
+      "id": "painter-embedded-qt",
+      "kind": "capability",
+      "requiredFor": [
+        "second-instance"
+      ],
+      "optional": true,
+      "modules": [
+        "PySide6",
+        "PySide2"
+      ],
+      "note": "Painter's own embedded Python provides PySide (6 on newer builds, 2 on older ones); scripts/second_instance/startup/rpc_endpoint.py runs only inside a Painter process started by launch_second_instance.py, never in the host Python."
     }
   ]
 }

@@ -53,6 +53,13 @@ This starts a background instance and reports it as such. `python scripts/sp_rem
 prints the observed version or exits2. A manually started visible instance may lack
 `--enable-remote-scripting`; do not confuse it with another listening process.
 
+**Someone else's instance holds the endpoint (its project must not be touched)?** Start an own hidden second
+instance with its own port: `python scripts/launch_second_instance.py --report <scratch.json>` (startup plugin
+`scripts/second_instance/startup/rpc_endpoint.py`, 127.0.0.1:60042), then set `PAINTER_HOST=127.0.0.1`,
+`PAINTER_PORT=60042`, `PAINTER_EXPECT_PID=<endpoint_pid>` and work on a copy of their `.spp`. Proven 2026-10-09 with
+300+ bounded steps; read [the second instance and generator-mask rounds](references/second-instance-9.1.2.md)
+(also: the Dirt generator's non-linear `dirt_level`, probe-channel export rounds, compositor NaN guard).
+
 For an independent pre-sharing AO diagnostic, unique UVs on a complete copied
 assembly are appropriate. Label its `.spp` as a reference, not the final shared-UV
 paint master. `alg.mapexport.saveMeshMap` defaults to texture-set resolution, which
