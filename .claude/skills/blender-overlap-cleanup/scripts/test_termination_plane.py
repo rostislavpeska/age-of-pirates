@@ -1,3 +1,4 @@
+"""INC-188: a covered beam must not protrude through its sloped eave."""
 import unittest
 import numpy as np
 from termination_plane import check_termination

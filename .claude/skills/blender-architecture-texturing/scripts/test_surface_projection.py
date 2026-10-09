@@ -1,3 +1,4 @@
+"""INC-186: valid atlas area must not conceal collapsed source coordinates."""
 import unittest
 import numpy as np
 from surface_projection import triangle_metrics,face_frame
