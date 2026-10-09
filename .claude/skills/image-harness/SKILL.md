@@ -1,6 +1,6 @@
 ---
 name: image-harness
-description: CLAUDE ONLY - GPT, Codex, Astra and Gemini agents must NOT use this skill; they generate images natively and this harness is paid per image. Generate or edit images (texture sources, tiles, decals, icons art, portraits, references) from Claude Code through the owner's n8n workflow "Claude Image Harness (Webhook)" - OpenAI gpt-image by default (what GPT uses natively), Gemini image models for edits with reference images. Use when Claude needs an image made: "generate a texture", "make an image", "create a tile source", "edit this image", "image prompt".
+description: CLAUDE ONLY - GPT, Codex, Astra and Gemini agents must NOT use this skill; they generate images natively and this harness is paid per image. Generate or edit images (texture sources, tiles, decals, icons art, portraits, references) from Claude Code through the owner's n8n workflow "Claude Image Harness (Webhook)" - OpenAI gpt-image by default (what GPT uses natively), OpenAI masked edits (fill or repaint only the transparent area of a mask) and Gemini instruction/reference edits. Use when Claude needs an image made: "generate a texture", "make an image", "create a tile source", "edit this image", "image prompt".
 ---
 
 # Image harness (Claude only)
@@ -38,11 +38,52 @@ python .claude/skills/image-harness/scripts/generate.py "PROMPT" --out "<scratch
 | `--provider` | `openai` (default) / `gemini` (default when `--ref` is given) |
 | `--model` | openai `gpt-image-1` (default), `gpt-image-1-mini` (cheaper; **always for icons**, see Budget rules), `gpt-image-1.5`; gemini `gemini-3.1-flash-image-preview` (`gemini-2.5-flash-image` fallback). The workflow forwards any model name to the provider |
 | openai | `--size 1024x1024` / `1536x1024` / `1024x1536`, `--quality low\|medium\|high\|auto` (medium), `--background transparent\|opaque\|auto`, `--n 1..4`, `--format png\|jpeg\|webp` |
-| gemini | `--aspect 1:1` (e.g. 16:9), `--image-size 1K\|2K\|4K`, `--ref img.png` (repeatable: edit/reference images), one image per call |
+| gemini | `--aspect 1:1` (e.g. 16:9), `--image-size 1K\|2K\|4K`, `--ref img.png` (repeatable: style references for a new image; to change a picture use Edit below), one image per call |
 
-Output: `DIR/NAME_1.png ...` plus `DIR/NAME.json` (prompt, provider, model, settings, usage,
-revised prompt, time) - the provenance record texture work requires. It prints paths only;
-never read image data into the conversation except to look at a result.
+Output: `DIR/NAME_1.png ...` plus `DIR/NAME.json` (operation, prompt, inputs with sha256, provider,
+model, settings, usage, estimate, revised prompt, time) - the provenance record texture work requires.
+It prints paths only; never read image data into the conversation except to look at a result.
+
+## Edit (harness v2)
+
+Change an existing picture instead of starting from nothing: fill a placeholder region, repaint one
+area, restyle a layout, combine inputs.
+
+```bash
+# 1. free: mark the editable area (alpha 0) and look at the magenta preview before paying
+python .claude/skills/image-harness/scripts/make_mask.py layout.png mask.png --key FF00FF --grow 4 --preview mask_preview.png
+# 2. free: validate + estimate
+python .claude/skills/image-harness/scripts/generate.py "Fill the transparent area with ..." --out "<scratchpad>" --name fill --image layout.png --mask mask.png --quality low --dry-run
+# 3. paid: the same command without --dry-run
+```
+
+| Route | How | Notes |
+| --- | --- | --- |
+| OpenAI masked edit | `--image IN.png --mask MASK.png` | only alpha-0 pixels change; the mask is applied to the FIRST image, same size, PNG < 4 MB (checked locally before paying) |
+| OpenAI edit, no mask | `--image A.png [--image B.png ...] --provider openai` | up to 16 inputs, the model redraws the whole picture; `--input-fidelity high` keeps faces/details of the inputs (gpt-image-1/1.5) |
+| Gemini edit | `--image IN.png --provider gemini` | instruction-only edits, no mask; also the route for "paint in the style of this reference" |
+
+`make_mask.py` takes `--rect x0,y0,x1,y1` (repeatable), `--paint BW.png [--edit-black]` or `--key RRGGBB
+[--tol]`; `--grow PX` lets the model blend into the surroundings, `--feather PX` softens the border.
+An OpenAI edit still regenerates the whole image and mask edges are soft, not pixel exact: composite
+the result back over the original through the mask when the kept area must stay identical.
+
+**Status (2026-10-09):** the client is v2. The n8n change (`references/workflow-v2.md`) waits for the owner
+(the permission classifier refused the agent applying it). Until it is published, OpenAI edits get a free
+400 that names the cause, and Gemini edits (`--provider gemini`) already work.
+
+## Agent safety (paid tool, agent-only)
+
+- `--dry-run` validates everything locally and prints the request summary with an estimate; nothing is
+  sent. Use it before every new kind of request.
+- Duplicate guard: an identical request (prompt, settings, input and mask hashes) within 10 minutes is
+  refused, so an agent's retry never pays twice. `--allow-repeat` only when a second sample is really wanted.
+- Ledger: every paid call is appended to `~/.image-harness/ledger.jsonl` (device-local; `IMAGE_HARNESS_LEDGER`
+  overrides). `--ledger` prints calls and estimated USD per day, model and operation: the count every report
+  needs (AGENTS.md rule 12).
+- Errors are actionable and arrive before any spending: mask size, alpha or format, a missing input, a
+  wrong provider for a mask or reference all exit with the fix in the message.
+- Offline tests: `python -m pytest .claude/skills/image-harness/scripts -q` (no network, nothing billed).
 
 ## Budget rules
 
@@ -65,13 +106,16 @@ never read image data into the conversation except to look at a result.
 - Cost per 1024x1024 image (OpenAI list prices, checked 2026-10-09): gpt-image-1 low ~$0.011, medium
   ~$0.042, high ~$0.167; gpt-image-1-mini low ~$0.005; gpt-image-1.5 low ~$0.009. OpenAI marks
   gpt-image-1 deprecated (a third-party guide gives 23 October 2026 for its retirement): when it stops,
-  the workflow default needs a new model, on the owner's word.
+  the workflow default needs a new model, on the owner's word (`gpt-image-2` takes any size divisible by 16
+  up to 3840x2160 and no `input_fidelity`; `--model` passes it through today). Edits add the input
+  images' tokens to the price; the client's estimate covers the output image only.
 
 ## Workflow (owner's n8n, "Claude Image Harness (Webhook)")
 
 Webhook `POST` -> `x-api-key` check (the Character Generator harness pattern) -> normalise
-request -> route openai / gemini -> provider HTTP call (provider keys stay in n8n credentials,
-never in this repo) -> images as base64 JSON.
+request -> route openai / gemini / openai_edit -> provider HTTP call (provider keys stay in n8n
+credentials, never in this repo) -> images as base64 JSON. The edit route and the request contract are in
+`references/workflow-v2.md` (sanitized: no ids, host or path).
 Synchronous: the response carries the images (tested 2026-09-28: openai low 1024 and gemini 1K
 with a reference image). Successful executions are not stored (`saveDataSuccessExecution: none`),
 so images do not accumulate on the server; errors are stored for debugging. Errors: 400 invalid

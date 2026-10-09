@@ -2,26 +2,40 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
+    "references/workflow-v2.md",
     "scripts/generate.py",
+    "scripts/make_mask.py",
     "scripts/make_seamless.py",
+    "scripts/test_generate_client.py",
     "scripts/test_no_secrets.py"
   ],
-  "skills": ["blender-architecture-texturing"],
+  "skills": [
+    "blender-architecture-texturing"
+  ],
   "external": [
     {
       "id": "n8n-image-harness",
       "kind": "capability",
-      "requiredFor": ["generate"],
+      "requiredFor": [
+        "generate",
+        "edit"
+      ],
       "optional": false,
       "note": "Owner's n8n workflow 'Claude Image Harness (Webhook)'. URL and key: IMAGE_HARNESS_URL / IMAGE_HARNESS_KEY from the environment or the gitignored config/image-harness.local.env (template config/image-harness.example.env). Never in a tracked file: the repo is public."
     },
     {
       "id": "python",
       "kind": "executable",
-      "requiredFor": ["generate"],
+      "requiredFor": [
+        "generate",
+        "edit"
+      ],
       "optional": false,
-      "note": "Host Python 3 standard library only (make_seamless.py additionally needs numpy and Pillow).",
-      "commands": ["python", "python3"]
+      "note": "Host Python 3. generate.py needs only the standard library for generate; edits with --image/--mask, make_mask.py and make_seamless.py also need Pillow (make_mask/make_seamless numpy too).",
+      "commands": [
+        "python",
+        "python3"
+      ]
     }
   ]
 }
