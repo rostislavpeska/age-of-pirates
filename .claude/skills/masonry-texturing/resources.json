@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/continuity.md",
+    "references/ai-paint-gate.md",
+    "references/sources.md",
+    "scripts/masonry_lib.py",
+    "scripts/test_masonry_lib.py"
+  ],
+  "skills": [
+    "aoe3-texture-weathering",
+    "blender-architecture-texturing",
+    "blender-high-low-baking",
+    "image-harness"
+  ],
+  "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "requiredFor": [
+        "layout",
+        "gate"
+      ],
+      "optional": false,
+      "note": "Array maths for layouts, noise and the registration gate."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ],
+      "requiredFor": [
+        "layout",
+        "gate"
+      ],
+      "optional": false,
+      "note": "Noise resampling, morphology and image IO."
+    }
+  ]
+}
