@@ -4,6 +4,27 @@ Owner rule (2026-09-28): outputs are standardized per phase so any agent can tak
 **consume** the previous phase instead of reinventing it. All work is agent-agnostic (Claude, GPT/Codex,
 Gemini, a human). A phase is not finished until its `HANDOFF.json` exists and validates.
 
+## Primary final deliverable: the finished Blender scene
+
+Owner clarification, 2026-10-09: the final handoff is a **Blender scene containing
+the finalized models**. `HANDOFF.json` identifies and verifies that artifact; it
+does not replace it. Name the entry `.blend` and its active scene explicitly.
+
+For a completed textured-model handoff, that scene opens directly to every named
+finished model in the agreed batch, with final geometry, actual UVs, assigned
+materials, normal/alpha/processed-AO bindings and required props/attachments within
+the agreed scope. Use a readable framing and lighting setup. Diagnostic duplicates,
+old candidates and HIGH bake sources must not obscure or masquerade as the final
+models. Keep the full required UV operator workspace and authoring sources as
+clearly separate supporting deliverables; a clean final scene does not remove them.
+
+Save and reopen the actual delivered file. Verify model/part identities, materials,
+packed images or portable dependencies, and the default visible scene; personally
+inspect images rendered from that reopened scene. Link the `.blend` as the primary
+handoff. Unresolved required geometry/material/texture defects prevent a final
+completion claim. A candidate remains a candidate until the agreed acceptance gate;
+calling its file "final" does not establish acceptance or engine compatibility.
+
 ## Phases (fixed ids)
 
 | id | Canonical outputs (what downstream MUST consume) |
