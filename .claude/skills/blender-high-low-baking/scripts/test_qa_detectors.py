@@ -502,3 +502,36 @@ def test_d9_cli_masks_missing(tmp_path):
     (tmp_path / 'c.json').write_text(json.dumps(cfg))
     p = subprocess.run([sys.executable, str(HERE / 'qa_detectors.py'), str(tmp_path / 'c.json')], capture_output=True, text=True)
     assert p.returncode == 3 and "['masks']" in p.stdout, p.stdout + p.stderr
+
+
+# ------------------------------------------------------------------------------------------ D10 cutout_speckle
+def scallop_alpha(n=128, period=12.0, depth=6.0):
+    """eave front cut-out: opaque below a scalloped top edge (round tile ends), cut above."""
+    y, x = np.mgrid[0:n, 0:n].astype(np.float64)
+    edge = 40 + depth * np.abs(np.sin(np.pi * x / period))
+    return (y > edge).astype(np.float32)
+
+
+def test_d10_speckled_cutout_fails_shapes_and_fine_nets_pass():
+    clean = scallop_alpha()
+    assert Q.cutout_speckle_check(clean)['verdict'] == 'PASS'
+    rng = np.random.default_rng(10); bad = clean.copy(); y, x = np.mgrid[0:128, 0:128]
+    tri = (x > 70) & (y > 60) & (y - 60 > (x - 70) * 1.5)                 # the castle corner receiver: a cut triangle
+    bad[tri] = (rng.random(tri.sum()) < 0.12).astype(np.float32)        # ... with opaque specks from a degenerate coordinate
+    lab = np.where(x > 64, 1, 0)
+    r = Q.cutout_speckle_check(bad, lab, ['Receiver:20', 'Receiver:802'])
+    assert r['verdict'] == 'FAIL' and r['flagged_faces'] == ['Receiver:802'] and max(b['isolated'] for b in r['noisy_blocks']) > 8, r
+    net = np.zeros((128, 128), np.float32); net[::4, :] = 1; net[:, ::4] = 1                   # 1-texel lattice (vanilla net)
+    assert Q.cutout_speckle_check(net)['verdict'] == 'PASS'
+    dash = np.ones((128, 128), np.float32); dash[50:70] = 0; dash[60, ::3] = 1                 # aliased dashed seam in a cut band
+    assert Q.cutout_speckle_check(dash)['verdict'] == 'PASS'
+
+
+def test_d10_cli_reads_basecolor_alpha(tmp_path):
+    rng = np.random.default_rng(11); a = scallop_alpha(); a[80:120, 80:120] = (rng.random((40, 40)) < 0.15)
+    rgba = np.dstack([np.full((128, 128, 3), 90, np.uint8), (a * 255).astype(np.uint8)])
+    Image.fromarray(rgba, 'RGBA').save(tmp_path / 'bc.png')
+    cfg = dict(checks=[dict(id='alpha', type='cutout_speckle', alpha=str(tmp_path / 'bc.png'))])
+    (tmp_path / 'c.json').write_text(json.dumps(cfg))
+    p = subprocess.run([sys.executable, str(HERE / 'qa_detectors.py'), str(tmp_path / 'c.json')], capture_output=True, text=True)
+    assert p.returncode == 3 and "['alpha']" in p.stdout, p.stdout + p.stderr

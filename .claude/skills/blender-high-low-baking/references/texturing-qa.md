@@ -15,6 +15,9 @@ not by the owner. Every iteration = the two scripts below + a look at the sheet,
    structure) whenever it gives `masks`. Always give both. Owner 2026-10-09: "the doors have no normals and masks
    maps ... add test to catch such failures" - a GPT door pasted onto a sheet passed every earlier check. Islands are
    named `CLASS@x..-..,y..-..` (top-down page px); only the owner's words go into the page's `waive` list.
+   D10 `cutout_speckle` runs whenever the BaseColor has cut texels: a cut-out is a shape, so a 16-texel block with
+   more than 8 isolated cut/opaque texels is noise (owner 2026-10-10 "rooftop baking bug on the corners": the castle
+   eave corner receivers had carried a speckled alpha since the first texture run; nothing read the alpha).
 2. `scripts/qa_shots.py config.json` - pictures: the same fixed cameras every time (Cycles, background,
    the review file) -> one contact sheet. Look at every tile of the sheet.
    For a partial rerender, resolve the requested shot IDs before loading/rendering
@@ -84,6 +87,7 @@ the Korean TC maps (`Texturing_11/Claude_CP2/qa_detectors/real_check.py`, 2026-0
 | `mask_layout_check` | a mask from another UV layout | > 2 % of the mask energy outside the islands | final 0 %; the other page's dirt 8.5 % |
 | `channel_packing_check` | roughness / metallic / AO in the wrong channel | metallic p99 <= 0.1 off the metal classes; roughness p05 >= 0.05 and >= 50 % mid values; AO mean >= 0.35 | final Masks PASS; G<->B swap FAILS on both rules |
 | `class_pattern_check` | colour rhythms < 16 texels per class; flat islands | window 64, > 15 % of the class windows; relative luma std < class floor | flags the 13-texel window lattice painted into the P2048 colour and the 6-texel ridge courses on P1024 (owner decision per "Pattern period vs density") |
+| `cutout_speckle_check` (D10) | salt-and-pepper in a cut-out alpha (an alpha computed from a degenerate coordinate, a ray-cast opacity, a dithered mask) | > 8 isolated texels (differing from >= 7 of 8 neighbours) per 16-texel block | Korean castle C7: the speckled eave corner receivers 11-17 per block FAIL (R2 and R0, and on the DXT-decoded DDTs); the fixed C8 pages <= 2 (scallop tips); legitimate fine structure <= 6 (Korean TC matb aliased dashed seam, vanilla dock_props net) |
 | `masks_missing_check` (D9) | a painting pasted over flat Masks (no cavity AO, roughness or metallic follows what the colour shows) | albedo lines (as D8) with no line >= 0.04 in any Masks channel within 2 texels, per 16-texel tile; the face FAILS only when its whole-face Masks line p90 < 0.04 | Korean castle C7: the GPT door 0.012 FAILS; stone, brick, trims and the TC gable 0.065-0.27 PASS; plank boards with grain but no seam lines are reported as `textured_faces`, not failed. After the door got cavity AO, an iron metallic mask and per-material roughness it PASSES |
 
 Measured limits: 2-D window spectra mis-assign the slope harmonics of sharp tile lips and read one eave band as a

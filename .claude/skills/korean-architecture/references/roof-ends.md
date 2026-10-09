@@ -87,6 +87,23 @@ Keep geometry acceptance separate from successful ray coverage. Use
 `scripts/check_eave_contract.py` with measured evidence; it does not replace
 images, mesh/UV checks, or engine validation.
 
+**Corner receivers and underlips: side from geometry, never from the label**
+(owner 2026-10-10, "rooftop baking bug on the corners"). On the Korean castle
+pavilion, one receiver at each eave corner carried the neighbouring side's
+semantic label (or `Corner`). Every corner receiver's frame also took the
+vertical corner edge as its "top" (the two highest vertices). Along such a face
+the eave coordinate is constant, so the silhouette is read at one point on a
+scallop cusp and float noise flips the cut texel by texel: a speckled hole under
+the hip-cap end. The `Corner` one was left fully opaque.
+- A receiver's side comes from its own normal.
+- Its top edge is the highest vertex at each of its two eave coordinates.
+- An underlip's side is the one whose outward normal its centre lies furthest
+  along, which splits each corner at the mitre.
+
+The alpha QA gate D10 `cutout_speckle` (`blender-high-low-baking`
+`qa_textures.py`) now fails such noise. The castle recipe (`roof_assembly_opacity.py`)
+is in the Korean repository, with the castle states.
+
 If geometry changes, classify bake dependencies explicitly. Unchanged positions,
 UVs and corner normals can reuse their maps; altered outer roof rows need a new
 HIGH and bake. Preserve original skin weights when rebuilding mesh data, including

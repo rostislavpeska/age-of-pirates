@@ -34,6 +34,9 @@ One function per detector; each returns {"verdict": "PASS"|"FAIL"|"SKIP", ...num
   masks_missing_check   D9, the Masks twin of relief_missing (owner 2026-10-09: "the doors have no normals and masks
                         maps"): albedo LINES with no line in any Masks channel (AO, roughness, metallic) within 2 texels,
                         per 16x16 tile, named per face. config {"type": "masks_missing", "basecolor", "masks", "valid"?}
+  cutout_speckle_check  D10 (owner 2026-10-10 "rooftop baking bug on the corners"): salt-and-pepper in a cut-out alpha -
+                        a 16x16 block with > 8 isolated cut/opaque texels is noise, not a shape. config {"type":
+                        "cutout_speckle", "alpha" (RGBA BaseColor: channel 3, else "channel"), "valid"?}
 
 Images: .png/.jpg/.tif (8/16 bit, read as 0..1), .npy, .exr (converted once by background Blender into a
 cache .npy - set QA_BLENDER to the executable, QA_CACHE to the cache dir). Arrays are top-down (row 0 = the
@@ -1109,6 +1112,48 @@ def relief_drop_check(candidate_normal, base_normal, labels=None, keys=None, dec
                 params=dict(tile=tile, min_base=min_base, max_drop=max_drop, min_declared=min_declared))
 
 
+def isolated_texels(binary):
+    """texels whose binary value differs from >= 7 of their 8 neighbours (edges replicated): salt-and-pepper."""
+    b = np.asarray(binary, bool); p = np.pad(b, 1, mode='edge'); H, W = b.shape
+    same = sum((p[1 + dy:1 + dy + H, 1 + dx:1 + dx + W] == b).astype(np.int8)
+               for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx)
+    return same <= 1
+
+
+def cutout_speckle_check(alpha, labels=None, keys=None, valid=None, tile=16, thr=0.5, max_isolated=8, max_list=200):
+    """cutout_speckle (D10, owner 2026-10-10 "rooftop baking bug on the corners"): a cut-out (BaseColor alpha) is a
+    shape - a scallop, a lattice, a hole - so its isolated cut/opaque texels are rare tips scattered over the page. A
+    16x16 block holding more than max_isolated of them is a NOISE field (an alpha computed from a degenerate
+    coordinate, a ray-cast opacity bake, a dithered mask): FAIL, the blocks named per face. Measured 2026-10-10: the
+    speckled castle corner receivers 11-17 per block (R2 17/11/8, R0 14/12), the fixed pages <= 2 (scallop tips); fine
+    legitimate structure stays <= 6 (Korean TC matb aliased dashed seam 6, vanilla dock_props net 6, china TC 4)."""
+    a = np.asarray(alpha, np.float32)
+    a = a[..., 0] if a.ndim == 3 else a
+    iso = isolated_texels(a >= thr)
+    lab = np.zeros(a.shape, int) if labels is None else np.asarray(labels)
+    if valid is not None:
+        iso &= np.asarray(valid, bool) | (a < thr)              # cut texels inside an island count even off 'valid'
+    H, W = a.shape; ny, nx = -(-H // tile), -(-W // tile); rows = []; per_face = defaultdict(lambda: dict(isolated=0, tiles=0, boxes=[]))
+    for ty in range(ny):
+        for tx in range(nx):
+            sl = np.s_[ty * tile:(ty + 1) * tile, tx * tile:(tx + 1) * tile]
+            k = int(iso[sl].sum())
+            if k <= max_isolated:
+                continue
+            box = [tx * tile, ty * tile, min((tx + 1) * tile, W), min((ty + 1) * tile, H)]
+            faces = _tile_faces(lab[sl], keys, iso[sl]) if labels is not None else {}
+            rows.append(dict(box=box, isolated=k, faces=faces))
+            for f, n in faces.items():
+                e = per_face[f]; e['isolated'] += n; e['tiles'] += 1
+                if len(e['boxes']) < 12:
+                    e['boxes'].append(box)
+    reasons = [f'{len(rows)} blocks of {tile}x{tile} texels hold > {max_isolated} isolated cut-out texels (alpha noise, '
+               f'max {max(r["isolated"] for r in rows)}) - {[r["box"] for r in rows[:6]]}'] if rows else []
+    return dict(verdict='FAIL' if rows else 'PASS', reasons=reasons, isolated_texels=int(iso.sum()), cut_texels=int((a < thr).sum()),
+                noisy_blocks=rows[:max_list], flagged_faces=sorted(per_face), faces={k: per_face[k] for k in sorted(per_face)},
+                params=dict(tile=tile, thr=thr, max_isolated=max_isolated))
+
+
 # ----------------------------------------------------------------------------------------------- CLI
 def run_check(c):
     t = c['type']
@@ -1176,6 +1221,10 @@ def run_check(c):
         dec = read_mask(c['declared'], n.shape) if c.get('declared') else None
         kw = {k: c[k] for k in ('tile', 'min_base', 'max_drop', 'min_declared', 'min_face_texels') if k in c}
         return relief_drop_check(n, read_map(c['base']), declared=dec, valid=v, **kw)
+    if t == 'cutout_speckle':
+        al = read_map(c['alpha']); ch = c.get('channel', 3 if al.shape[-1] == 4 else 0)
+        kw = {k: c[k] for k in ('tile', 'thr', 'max_isolated') if k in c}
+        return cutout_speckle_check(al[..., ch], valid=read_mask(c['valid'], al.shape) if c.get('valid') else None, **kw)
     raise ValueError(f'unknown check type {t}')
 
 

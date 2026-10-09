@@ -15,7 +15,8 @@ expected; relative, so dark materials like a glaze are not flagged for being dar
 class luma mean vs target, normal length, and the STRUCTURE GATES of qa_detectors.py per class island (owner
 2026-10-09: "the doors have no normals and masks maps ... add test to catch such failures"): D8 relief_missing (albedo
 lines over a flat Normal) whenever "normal" is given, D9 masks_missing (albedo lines over flat Masks: no AO, roughness or
-metallic line) whenever "masks" is given; "structure_gates": false switches both off. Islands are named
+metallic line) whenever "masks" is given, D10 cutout_speckle (salt-and-pepper in the BaseColor alpha; owner 2026-10-10
+"rooftop baking bug on the corners") whenever the BaseColor has cut texels; "structure_gates": false switches them off. Islands are named
 CLASS@x<min>-<max>,y<min>-<max> (top-down page pixels). Exit code 3 when any check fails; the report lists the worst
 islands with their pixel bounding boxes so they can be found on the UV sheet.
 """
@@ -109,6 +110,14 @@ for page, pc in cfg['pages'].items():
                                                               'unsupported_texels', 'faces', 'textured_faces', 'face_masks_p90') if k in r}
             if r['verdict'] == 'FAIL':
                 report['fail'].append(f'{page} {gname}: {"; ".join(r["reasons"])} - {r["flagged_faces"][:6]}')
+    alpha = load(pc['basecolor'], n)[..., 3]                              # D10: a cut-out must be a shape, not noise
+    if cfg.get('structure_gates', True) and (alpha < 0.5).any():
+        td = lambda a: np.ascontiguousarray(a[::-1])
+        r = QD.cutout_speckle_check(td(alpha), td(glab) if keys else None, keys or None)
+        pr.setdefault('structure_gates', {})['cutout_speckle'] = {k: r[k] for k in ('verdict', 'reasons', 'isolated_texels', 'cut_texels',
+                                                                                     'flagged_faces', 'noisy_blocks')}
+        if r['verdict'] == 'FAIL':
+            report['fail'].append(f'{page} cutout_speckle: {"; ".join(r["reasons"])} - {r["flagged_faces"][:6]}')
     pr['flat_islands'].sort(key=lambda x: -x['px'])
     if pr['flat_islands']:
         report['fail'].append(f'{page}: {len(pr["flat_islands"])} flat islands, largest {pr["flat_islands"][0]}')
