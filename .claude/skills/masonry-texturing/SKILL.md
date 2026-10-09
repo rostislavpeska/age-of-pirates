@@ -51,6 +51,14 @@ Never fix a junction by painting it. Make it continuous by construction:
 - **Congruent texel sharing** (member faces reading an owner's texels) needs every corner identical (C4). Both
   constructions give exactly that.
 - **Ledges:** a horizontal ledge top gets its own grain, with the joints of the face below carried across it.
+- **Trim bands** (cap courses, string courses, coping edges) are rings too: one course of 0.7 m dressed blocks with
+  straight beds and dark joints.
+- **Tops, undersides and walkways:** map every pixel onto the band face beneath (the nearest vertical ring plane, by
+  depth and u-extent; try the four 90-degree rotations for congruent members). That gives `xn` along the ring and the
+  depth `r`.
+  - Narrow tops carry the band's head joints over the edge.
+  - A walkway is paved in rows along the edge (rows about 0.5 m deep, whole slabs per quarter, half-slab offset on
+    alternate rows), with dirt and moss against the inner wall.
 
 ## 4. Openings
 
@@ -98,7 +106,12 @@ Read [AI paint and registration](references/ai-paint-gate.md).
 - **Compose:**
   - painted units at about 40-55 % chroma, so the set hue stays;
   - luminance normalised per frame to the calibrated layout;
-  - joints and relief from the layout.
+  - joints and relief from the layout;
+  - on every painted sheet, near-black paint falls back to layout colour; a painted black line once left 48 empty
+    texels;
+  - clamp soot so paint luma >= 0.45 x layout luma: 0.6 flattened the brick, none left black blotches.
+- **Paint thin rings stacked:** paint levels of a tower that are thin strips stacked in one frame, as they stand on the
+  tower. That keeps them consistent; a lone thin strip came back almost unpainted.
 
 ## 8. Bake and shading
 
