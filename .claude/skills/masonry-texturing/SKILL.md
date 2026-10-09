@@ -112,9 +112,15 @@ Read [AI paint and registration](references/ai-paint-gate.md).
   - clamp soot so paint luma >= 0.45 x layout luma: 0.6 flattened the brick, none left black blotches.
 - **A generated painting pasted as its own sheet (a door, a medallion) needs its own Normal and Masks.** Measure the
   painting's features (bands, studs, seams, frames), build a height model from them and derive the normal, the metallic
-  mask, roughness per material and a cavity AO (`ATLAS_SURF.png` R rough, G metal, B weight; `ATLAS_AO.png`). Never
-  derive relief from the painting's RGB. The QA's D8/D9 structure gates fail a painting over a flat Normal or Masks
-  (owner 2026-10-09: "the doors have no normals and masks maps").
+  mask, roughness per material and a cavity AO (`ATLAS_SURF.png` R rough, G metal, B weight; `ATLAS_AO.png`). The
+  structure never comes from the painting's RGB; the QA's D8/D9 structure gates fail a painting over a flat Normal or
+  Masks (owner 2026-10-09: "the doors have no normals and masks maps").
+- **Surface detail on top of it may come from the painting** ([`scripts/paint_relief.py`](scripts/paint_relief.py),
+  owner: "pronounce the wood more ... parametrize it in case the base color is not that pronounced"): frequency bands
+  sized in final-page texels (finer than ~2 texels never reaches the game), dark = low, smoothed along the grain,
+  masked to the material (no ridge along an iron band), and `normalize` 0..1 so a pale painting still gets its full
+  depth. Drive the cavity AO and roughness from the same grain. Castle door: bands 2.5 / 8 texels at 0.9 / 1.4 mm,
+  normalise 0.75, boards cupped 0.9 mm with +-0.7 mm offsets.
 - **Paint thin rings stacked:** paint levels of a tower that are thin strips stacked in one frame, as they stand on the
   tower. That keeps them consistent; a lone thin strip came back almost unpainted.
 
@@ -143,5 +149,6 @@ The Korean castle recipes, outside AoP: `$AOP_KOREAN_REPO/research/Colonial_Expa
 - `premium_m*_paint.py`: gate and compose.
 - `texture_bake.py --sheets --smooth`.
 
-[`scripts/masonry_lib.py`](scripts/masonry_lib.py) holds the reusable pieces (outline extents, periodic noise, ring
+[`scripts/paint_relief.py`](scripts/paint_relief.py) turns a painting's surface detail into relief (tests in
+`test_paint_relief.py`). [`scripts/masonry_lib.py`](scripts/masonry_lib.py) holds the reusable pieces (outline extents, periodic noise, ring
 bond positions, rounded-box distance, registration gate) with tests. Sources from the research: [sources](references/sources.md).
