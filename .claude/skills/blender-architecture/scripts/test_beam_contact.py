@@ -1,5 +1,6 @@
+"""Contact geometry regressions, including INC-201: omitted lantern coverage."""
 import unittest
-from beam_contact import certify_box,contact
+from beam_contact import certify_box,contact,coverage
 
 def box(lo,hi):
     v=[[lo[0],lo[1],lo[2]],[hi[0],lo[1],lo[2]],
@@ -10,6 +11,20 @@ def box(lo,hi):
     return v,f
 
 class ContactTests(unittest.TestCase):
+    def test_window_only_report_cannot_hide_omitted_prop(self):
+        required=['window.mullion','lantern.infill']
+        rows=[{'id':'window.mullion','side':s,'status':'PASS'} for s in (-1,1)]
+        self.assertEqual(coverage(required,rows)['missing_endpoints'], [('lantern.infill',-1),('lantern.infill',1)])
+        self.assertEqual(coverage(required,rows)['status'],'FAIL')
+        rows += [{'id':'lantern.infill','side':s,'status':'PASS'} for s in (-1,1)]
+        self.assertEqual(coverage(required,rows)['status'],'PASS')
+    def test_duplicate_unknown_and_inconclusive_endpoints_fail(self):
+        rows=[{'id':'lamp','side':s,'status':'PASS'} for s in (-1,1)]
+        self.assertEqual(coverage(['lamp'],rows+[rows[0]])['status'],'FAIL')
+        self.assertEqual(coverage(['lamp'],rows+[{'id':'other','side':1,'status':'PASS'}])['status'],'FAIL')
+        rows[0]['status']='INCONCLUSIVE'
+        self.assertEqual(coverage(['lamp'],rows)['status'],'FAIL')
+        self.assertEqual(coverage([],[])['status'],'FAIL')
     def test_closed_supported_and_real_gap(self):
         b=certify_box(*box([0,0,0],[1,.03,.03]))
         self.assertEqual(contact(b,certify_box(*box([1,-.1,-.1],[1.1,.1,.1])),0,1)['status'],'PASS')

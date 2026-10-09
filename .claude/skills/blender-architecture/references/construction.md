@@ -26,6 +26,16 @@ must provide stable semantic part IDs, the intended support, units and tolerance
 Use neutral frontal AND oblique closeups for every opening after the numerical
 check. Rerun affected UV density and AO correspondence after geometry repairs.
 
+Inventory every candidate member independently from the contact-test selector,
+including reusable props and their instances. A filter such as `.Lattice.` must
+not silently omit lamp `.Infill.` bars. `beam_contact.coverage(required_ids,
+results)` requires exactly one passing check for each member's two ends; omitted,
+duplicate, unknown or inconclusive endpoints fail. Preserve a negative fixture
+that demonstrates the missing class was caught, then verify the saved model.
+Whole roof/storey moves likewise need an explicit complete assembly inventory:
+generic `ConnectedFields` meshes may not carry the tier's naming prefix. Compare
+each member's intended transform and inspect a saved-file front/corner render.
+
 Evidence: Korean Houses, 2026-10-09: outer rails stopped 0.0125 units short of
 their jambs; vertical bars met lower panels only at an edge. Owner detected this
 during texture review. Negative controls cover gaps, edge-only support, excessive

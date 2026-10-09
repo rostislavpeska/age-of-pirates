@@ -7,6 +7,28 @@ Unknown/slanted/open geometry is INCONCLUSIVE, never a fabricated passing box.
 from collections import Counter
 import math
 
+
+def coverage(required_ids, results):
+    """Prove both ends were tested for every independently inventoried member.
+
+    Required IDs come from the complete semantic candidate inventory, not the
+    selector that produced results. A narrower naming filter cannot certify itself.
+    Each result contains id, side (-1/+1), and status from a real contact check.
+    """
+    required = list(required_ids)
+    wanted = {(part, side) for part in required for side in (-1, 1)}
+    seen = Counter((row.get('id'), row.get('side')) for row in results)
+    missing = sorted(wanted - set(seen))
+    unexpected = sorted(set(seen) - wanted, key=str)
+    repeated = sorted((key for key, n in seen.items() if n != 1), key=str)
+    failed = [row for row in results if row.get('status') != 'PASS']
+    duplicate_ids = sorted(k for k, n in Counter(required).items() if n != 1)
+    ok = bool(required) and not (missing or unexpected or repeated or failed or duplicate_ids)
+    return {'status': 'PASS' if ok else 'FAIL', 'required_members': len(required),
+            'missing_endpoints': missing, 'unexpected_endpoints': unexpected,
+            'repeated_endpoints': repeated, 'duplicate_ids': duplicate_ids,
+            'failed_or_inconclusive': failed}
+
 def certify_box(vertices, faces, tolerance=1e-6):
     if len(vertices) != 8 or len(faces) != 6 or any(len(f) != 4 for f in faces):
         return None
