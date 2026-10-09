@@ -58,6 +58,17 @@ authoring-file beauty renders do not validate the exported mapping. Retain the
 failed file as a negative fixture. Report any unverified engine normal-shader
 assumption separately from the proven texture lookup.
 
+**Winding boundary (INC-198):** the engine culls by triangle winding and lights by
+the stored normal; the two must agree. A frame change with determinant -1 (a mirror,
+e.g. Blender -> raw `(-x, z, -y)`) flips the winding of every face whose corner order
+is kept: reverse each face's corners in the same step that maps the positions and
+normals, and apply the same order wherever corner order is pinned (UV contracts,
+writer comparisons). `gr2_lint` check `winding` fails a model below 90 % agreement
+by area or any mesh below 50 % (444 vanilla building GR2s: min 94.7 %). An inside-out
+model passes UV, density, frame, contract and DLL checks and renders black on
+two-sided cut-out pages and dark elsewhere (Korean House r14b, owner's game test);
+Blender's viewport shades back faces as front, so the authoring scene looks right.
+
 Editor test entries must have distinct localized names from both the vanilla
 donor and any comparison clone. Verify the compiled string tables, not only XML.
 

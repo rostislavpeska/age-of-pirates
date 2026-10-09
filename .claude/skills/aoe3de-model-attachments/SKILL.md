@@ -84,6 +84,11 @@ out through the open stall front. The Korean stable follows that (mangers behind
 | Damaged / destruction | as intact while assembled; a flag follows its surviving support | **havok-destruction** animtrans rules; never root-parent everything blindly |
 | Death | debris/smoke events | anim-level `<attach>` |
 
+**Garrison flag height:** the engine hangs the cloth of `buildings\flags\garrison_flag` (3.00 x 1.50) ABOVE
+`bone_garrisonflag` - the bone is the cloth's lower edge (owner, Korean House game test 2026-10-09). Put the bone one
+cloth height (1.5 m x the bone's scale) plus a margin under the pole tip and check nothing rises above the bone within
+the cloth's 3 m x scale sweep. A bone just under the tip floats the flag above the pole.
+
 ## 4. The Blender / GR2 side
 
 - **Frames.** Blender world (x right, y forward, z up) -> engine raw = (-X, Z, -Y). Some assets are exported

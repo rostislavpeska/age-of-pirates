@@ -27,6 +27,9 @@ Why each check exists (every one is a defect that reached the game first):
   base_binding            every damaged render triangle is bound to a piece bone; the base (fixed) bone may carry
                           only the platform (below profile height) and declared props. Unallowed triangles are
                           grouped into connected elements and counted per kind (e.g. window panels).
+  winding                 (every model) the face area whose winding agrees with the stored normal: >= 90 % per model,
+                          >= 50 % per mesh
+                          (vanilla 97-100 %; a mirrored export without corner reversal is ~0 %: inside out)
   hkt_pairing             every GR2 piece bone has its Havok body at the profile's axis map / scale, and every
                           piece's render vertices lie inside its own convex hull.
   materials               mesh material bindings == the .material submaterials; referenced mod textures exist.
@@ -582,6 +585,38 @@ def check_limits(stage, info, prof):
     b = R(stage, 'wrap16', changed == 0 and bool(rows), f"16-bit index wrap changes {changed} triangle(s)",
           changed_tris=changed)
     return [a, b]
+
+
+WINDING_MIN = 0.90      # model area share; 444 vanilla building GR2s: min 0.947, median 1.00 (2026-10-09)
+WINDING_MESH_MIN = 0.50  # per mesh: a mostly inside-out mesh; vanilla worst mesh 0.556 (west_stables_age2_deathmodel)
+
+
+def check_winding(stage, info):
+    """the front side of every face: the engine culls by winding and lights by the stored normal, so the two must agree.
+    A writer fed positions through a MIRRORED frame (det -1, e.g. Blender -> raw (-x, z, -y)) without reversing each
+    face's corner order ships every face inside out: the outside is culled, the inside drawn - two-sided cut-out roofs
+    render black, walls dark (Korean House r14, 2026-10-09: 0-2 % agreement; vanilla and the Korean TC 97-100 %).
+    Area share of faces whose winding normal agrees with the mean stored normal of their corners, per mesh and model."""
+    rows, tot, agree_area = [], 0.0, 0.0
+    for m in info['render']:
+        if not len(m['tris']) or m.get('nrm') is None:
+            continue
+        P, N = m['pos'][m['tris']], m['nrm'][m['tris']]
+        fn = np.cross(P[:, 1] - P[:, 0], P[:, 2] - P[:, 0])
+        area = 0.5 * np.linalg.norm(fn, axis=1)
+        agree = (fn * N.mean(1)).sum(1) > 0
+        a, s = float(area.sum()), float(area[agree].sum())
+        tot += a; agree_area += s
+        rows.append(dict(mesh=m['name'], mats=m['mats'], faces=int(len(area)), agree_area_share=round(s / a, 4) if a else None))
+    if not rows or tot <= 0:
+        return R(stage, 'winding', None, 'no render faces with normals')
+    share = agree_area / tot
+    bad = [r for r in rows if r['agree_area_share'] is not None and r['agree_area_share'] < WINDING_MESH_MIN]
+    return R(stage, 'winding', share >= WINDING_MIN and not bad,
+             f"{share * 100:.1f}% of the face area has its winding along the stored normal (min {WINDING_MIN * 100:.0f}%, "
+             f"per mesh {WINDING_MESH_MIN * 100:.0f}%)"
+             + (f"; INSIDE OUT: {[(r['mesh'], r['agree_area_share']) for r in bad]} (reverse each face's corner order "
+                "after a mirrored frame change)" if bad else ''), share=round(share, 4), meshes=rows)
 
 
 def check_tangents(stage, info):
@@ -1662,6 +1697,7 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             results += [check_crc(stage, info), check_fixups(stage, path, h), check_dll(stage, dll)]
             results += check_limits(stage, info, prof)
             results.append(check_tangents(stage, info))
+            results.append(check_winding(stage, info))
             if prof.get('rest_contract'):
                 results += check_ground_supports(stage, info, prof)
                 if stage == 'damaged':
