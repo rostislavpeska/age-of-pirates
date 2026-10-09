@@ -36,7 +36,7 @@ python .claude/skills/image-harness/scripts/generate.py "PROMPT" --out "<scratch
 | Option | Values (default) |
 | --- | --- |
 | `--provider` | `openai` (default) / `gemini` (default when `--ref` is given) |
-| `--model` | openai `gpt-image-1`; gemini `gemini-3.1-flash-image-preview` (`gemini-2.5-flash-image` fallback) |
+| `--model` | openai `gpt-image-1` (default), `gpt-image-1-mini` (cheaper; **always for icons**, see Budget rules), `gpt-image-1.5`; gemini `gemini-3.1-flash-image-preview` (`gemini-2.5-flash-image` fallback). The workflow forwards any model name to the provider |
 | openai | `--size 1024x1024` / `1536x1024` / `1024x1536`, `--quality low\|medium\|high\|auto` (medium), `--background transparent\|opaque\|auto`, `--n 1..4`, `--format png\|jpeg\|webp` |
 | gemini | `--aspect 1:1` (e.g. 16:9), `--image-size 1K\|2K\|4K`, `--ref img.png` (repeatable: edit/reference images), one image per call |
 
@@ -53,6 +53,19 @@ never read image data into the conversation except to look at a result.
 - For textures follow `blender-architecture-texturing/references/sources-seamless.md`:
   orthographic, neutral light, no baked shadows or lettering, physical scale in the prompt,
   tile check after. A generated RGB image is never a normal map; relief comes from geometry bakes.
+- For game icons follow `icon-forge/references/visual-language.md` (form by tech, colour across the set,
+  rendering, prompt template) and use **`--model gpt-image-1-mini --quality low`** unless the owner asks
+  otherwise (owner 2026-10-09: "for icons we always use mini if not requested differently"; tested the
+  same day: at 128 and 64 px as good as gpt-image-1). Fall back to the default `gpt-image-1` when mini's
+  result is bad or the icon is complex (a scene, several figures); **unit portraits** (the 512 portrait,
+  `iconforge --kind portrait`) use `gpt-image-1` from the start (owner, same day). Everything else keeps
+  the default `gpt-image-1`.
+  One icon per call: a grid of icons in one image splits one image's detail between the cells (low
+  1024 = 272 output tokens, 1536x1024 = 400) and comes back crude.
+- Cost per 1024x1024 image (OpenAI list prices, checked 2026-10-09): gpt-image-1 low ~$0.011, medium
+  ~$0.042, high ~$0.167; gpt-image-1-mini low ~$0.005; gpt-image-1.5 low ~$0.009. OpenAI marks
+  gpt-image-1 deprecated (a third-party guide gives 23 October 2026 for its retirement): when it stops,
+  the workflow default needs a new model, on the owner's word.
 
 ## Workflow (owner's n8n, "Claude Image Harness (Webhook)")
 

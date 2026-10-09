@@ -1,9 +1,24 @@
 ---
 name: icon-forge
-description: Composite artwork into Age of Empires III DE icon frames - tech, unit, ability, building and team-tech borders, the big-button frame, and borderless portraits. Use when adding or replacing any icon, iconwpf, portraiticon or big button for a new tech, unit, building or native, when generated or hand-painted art needs the game's gold border applied, or when a disabled/greyed variant is wanted. Triggers on "make an icon", "add the border", "icon for this tech", "big button image", "unit portrait", "greyed out icon", "512 portrait".
+description: Composite artwork into Age of Empires III DE icon frames - tech, unit, ability, building and team-tech borders, the big-button frame, and borderless portraits. Use when adding or replacing any icon, iconwpf, portraiticon or big button for a new tech, unit, building or native, when generated or hand-painted art needs the game's gold border applied, when a disabled/greyed variant is wanted, and BEFORE generating icon art: what an icon should show and how it should look (visual language, prompt template, set review sheet). Triggers on "make an icon", "add the border", "icon for this tech", "icon style", "icon prompt", "icons look wrong", "big button image", "unit portrait", "greyed out icon", "512 portrait".
 ---
 
-# Putting the game border on an icon
+# Icons: art direction, border, set review
+
+**Before any icon art is generated or painted, read [references/visual-language.md](references/visual-language.md):**
+the form follows what the tech does (object, hands, unit, scene, documents; unit-class upgrades reuse the vanilla
+medallions), colour is judged across the set, AoE icons are rendered props, not paintings. It holds the prompt
+template for any generator (image harness, GPT, Codex) and the set workflow. After bordering, review the set with
+its in-game neighbours:
+
+```bash
+python .claude/skills/icon-forge/scripts/iconsheet.py <scratchpad>/sheet.png <new icons> <neighbour icons>
+```
+
+It lays the set out at 128 and 64 px, names each icon's dominant colour and exits 1 when one colour covers more than
+80% of the set. The sheet goes to the scratchpad and into the report, never into the repo.
+
+## Putting the game border on an icon
 
 ```bash
 python .claude/skills/icon-forge/scripts/iconforge.py <art.png> <out.png> [options]
