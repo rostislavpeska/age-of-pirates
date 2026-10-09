@@ -9,7 +9,12 @@ not by the owner. Every iteration = the two scripts below + a look at the sheet,
 1. `blender -b --factory-startup --python-exit-code 1 --python scripts/qa_textures.py -- config.json` - numeric: per class and per UV island of the final maps. This helper imports `bpy` even for PNG inputs; host Python is insufficient. The separate `scripts/qa_detectors.py config.json` runs in host Python for ordinary raster inputs.
    Fails on: empty texels inside owner islands; a FLAT island (luma std below the class floor - a plain
    fill where a material should show structure); class mean colour off its target by more than the
-   tolerance; normal vectors not unit; opacity holes on classes that must be solid.
+   tolerance; normal vectors not unit; opacity holes on classes that must be solid; and the **structure gates** per
+   class island: D8 `relief_missing` (albedo lines over a flat Normal) whenever the page gives `normal`, D9
+   `masks_missing` (albedo lines over Masks that are flat across the whole face: no AO, roughness or metallic
+   structure) whenever it gives `masks`. Always give both. Owner 2026-10-09: "the doors have no normals and masks
+   maps ... add test to catch such failures" - a GPT door pasted onto a sheet passed every earlier check. Islands are
+   named `CLASS@x..-..,y..-..` (top-down page px); only the owner's words go into the page's `waive` list.
 2. `scripts/qa_shots.py config.json` - pictures: the same fixed cameras every time (Cycles, background,
    the review file) -> one contact sheet. Look at every tile of the sheet.
    For a partial rerender, resolve the requested shot IDs before loading/rendering
@@ -79,6 +84,7 @@ the Korean TC maps (`Texturing_11/Claude_CP2/qa_detectors/real_check.py`, 2026-0
 | `mask_layout_check` | a mask from another UV layout | > 2 % of the mask energy outside the islands | final 0 %; the other page's dirt 8.5 % |
 | `channel_packing_check` | roughness / metallic / AO in the wrong channel | metallic p99 <= 0.1 off the metal classes; roughness p05 >= 0.05 and >= 50 % mid values; AO mean >= 0.35 | final Masks PASS; G<->B swap FAILS on both rules |
 | `class_pattern_check` | colour rhythms < 16 texels per class; flat islands | window 64, > 15 % of the class windows; relative luma std < class floor | flags the 13-texel window lattice painted into the P2048 colour and the 6-texel ridge courses on P1024 (owner decision per "Pattern period vs density") |
+| `masks_missing_check` (D9) | a painting pasted over flat Masks (no cavity AO, roughness or metallic follows what the colour shows) | albedo lines (as D8) with no line >= 0.04 in any Masks channel within 2 texels, per 16-texel tile; the face FAILS only when its whole-face Masks line p90 < 0.04 | Korean castle C7: the GPT door 0.012 FAILS; stone, brick, trims and the TC gable 0.065-0.27 PASS; plank boards with grain but no seam lines are reported as `textured_faces`, not failed. After the door got cavity AO, an iron metallic mask and per-material roughness it PASSES |
 
 Measured limits: 2-D window spectra mis-assign the slope harmonics of sharp tile lips and read one eave band as a
 period - use the per-axis line spectra. The reference-free rhythm check does NOT see planks over a lattice (the

@@ -110,6 +110,11 @@ Read [AI paint and registration](references/ai-paint-gate.md).
   - on every painted sheet, near-black paint falls back to layout colour; a painted black line once left 48 empty
     texels;
   - clamp soot so paint luma >= 0.45 x layout luma: 0.6 flattened the brick, none left black blotches.
+- **A generated painting pasted as its own sheet (a door, a medallion) needs its own Normal and Masks.** Measure the
+  painting's features (bands, studs, seams, frames), build a height model from them and derive the normal, the metallic
+  mask, roughness per material and a cavity AO (`ATLAS_SURF.png` R rough, G metal, B weight; `ATLAS_AO.png`). Never
+  derive relief from the painting's RGB. The QA's D8/D9 structure gates fail a painting over a flat Normal or Masks
+  (owner 2026-10-09: "the doors have no normals and masks maps").
 - **Paint thin rings stacked:** paint levels of a tower that are thin strips stacked in one frame, as they stand on the
   tower. That keeps them consistent; a lone thin strip came back almost unpainted.
 

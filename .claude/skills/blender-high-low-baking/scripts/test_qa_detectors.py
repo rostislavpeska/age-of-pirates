@@ -460,3 +460,45 @@ def test_d8_cli_relief_types(tmp_path):
     (tmp_path / 'c.json').write_text(json.dumps(cfg))
     p = subprocess.run([sys.executable, str(HERE / 'qa_detectors.py'), str(tmp_path / 'c.json')], capture_output=True, text=True)
     assert p.returncode == 3 and "['miss', 'drop']" in p.stdout, p.stdout + p.stderr
+
+
+# ------------------------------------------------------------------------------------------ D9 masks_missing
+def flat_masks(n=96, ao=1.0, rough=0.6, metal=0.0):
+    m = np.empty((n, n, 3), np.float32); m[..., 0], m[..., 1], m[..., 2] = ao, rough, metal
+    return m
+
+
+def test_d9_masks_missing_flat_masks_fail_cavity_or_roughness_pass():
+    bad = Q.masks_missing_check(plank_albedo(), flat_masks())               # the castle door: paint over role constants
+    assert bad['verdict'] == 'FAIL' and bad['flagged_faces'] == [0] and bad['flagged_tiles'] >= 20, bad['reasons']
+    y = np.mgrid[0:96, 0:96][0]; seam = ((y % 16) == 0) | ((y % 16) == 1)
+    cav = flat_masks(); cav[..., 0] = np.where(Q.box_blur(seam.astype(np.float32), 1) > 0, 0.6, 1.0)   # cavity AO in seams
+    good = Q.masks_missing_check(plank_albedo(), cav)
+    assert good['verdict'] == 'PASS' and good['unsupported_texels'] < 50, good['reasons']
+    rough = flat_masks(); rough[..., 1] = np.where(seam, 0.9, 0.6)                                    # roughness follows them
+    assert Q.masks_missing_check(plank_albedo(), rough)['verdict'] == 'PASS'
+    rng = np.random.default_rng(4); grain = flat_masks()                    # textured Masks (grain streaks mid-plank), no seam lines
+    band = ((y % 16) >= 6) & ((y % 16) <= 10); grain[..., 1] = 0.6 + 0.12 * rng.uniform(-1, 1, 96)[y] * band
+    g = Q.masks_missing_check(plank_albedo(), grain)
+    assert g['verdict'] == 'PASS' and g['textured_faces'] == [0], (g['reasons'], g['face_masks_p90'])
+
+
+def test_d9_flat_by_design_passes_and_names_faces():
+    rng = np.random.default_rng(5)
+    plaster = np.repeat((0.8 + rng.normal(0, 0.02, (96, 96)))[..., None], 3, -1).astype(np.float32)
+    assert Q.masks_missing_check(plaster, flat_masks())['verdict'] == 'PASS'                        # no structure, no demand
+    lab = np.zeros((96, 96), int); lab[:, 48:] = 1
+    y = np.mgrid[0:96, 0:96][0]; mk = flat_masks(); mk[:, 48:, 0] = np.where(((y % 16) < 2), 0.6, 1.0)[:, 48:]
+    r = Q.masks_missing_check(plank_albedo(), mk, lab, ['Door:230', 'Wall:12'])
+    assert r['flagged_faces'] == ['Door:230'] and all(t['box'][2] <= 48 for t in r['tiles']), r['reasons']
+    w = Q.masks_missing_check(plank_albedo(), mk, lab, ['Door:230', 'Wall:12'], waive_faces={'Door:230'})
+    assert w['verdict'] == 'PASS' and w['waived_faces'] == ['Door:230']
+
+
+def test_d9_cli_masks_missing(tmp_path):
+    save_png16(tmp_path / 'm.png', flat_masks())
+    Image.fromarray((plank_albedo() * 255).astype(np.uint8)).save(tmp_path / 'bc.png')
+    cfg = dict(checks=[dict(id='masks', type='masks_missing', basecolor=str(tmp_path / 'bc.png'), masks=str(tmp_path / 'm.png'))])
+    (tmp_path / 'c.json').write_text(json.dumps(cfg))
+    p = subprocess.run([sys.executable, str(HERE / 'qa_detectors.py'), str(tmp_path / 'c.json')], capture_output=True, text=True)
+    assert p.returncode == 3 and "['masks']" in p.stdout, p.stdout + p.stderr

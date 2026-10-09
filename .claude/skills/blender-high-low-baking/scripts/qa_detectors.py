@@ -31,6 +31,9 @@ One function per detector; each returns {"verdict": "PASS"|"FAIL"|"SKIP", ...num
                         "basecolor", "normal", "valid"?}. Korean TC CLI with faces/elements: Claude_CP2/relief_gate.py
   relief_drop_check     tiles whose relief RMS falls by > half vs a base must lie in the job's DECLARED relief-removal
                         scope, else FAIL. config {"type": "relief_drop", "normal", "base", "declared"? (mask spec)}
+  masks_missing_check   D9, the Masks twin of relief_missing (owner 2026-10-09: "the doors have no normals and masks
+                        maps"): albedo LINES with no line in any Masks channel (AO, roughness, metallic) within 2 texels,
+                        per 16x16 tile, named per face. config {"type": "masks_missing", "basecolor", "masks", "valid"?}
 
 Images: .png/.jpg/.tif (8/16 bit, read as 0..1), .npy, .exr (converted once by background Blender into a
 cache .npy - set QA_BLENDER to the executable, QA_CACHE to the cache dir). Arrays are top-down (row 0 = the
@@ -982,6 +985,17 @@ def relief_missing_check(basecolor, normal, labels=None, keys=None, valid=None, 
     rel = relief_lines(normal, line_half) >= relief_thr
     rel &= lab >= 0                                          # gutters carry no relief of the face
     U = S & ~_dilate(rel, support_r)
+    out = _structure_gate(S, U, lab, keys, tile, min_struct, min_unsupported, min_face_texels, waive_faces, max_list,
+                          'carry albedo structure over a flat normal')
+    out['params'] = dict(tile=tile, struct_thr=struct_thr, min_run=min_run, relief_thr=relief_thr, support_r=support_r,
+                         min_struct=min_struct, min_unsupported=min_unsupported, min_face_texels=min_face_texels)
+    return out
+
+
+def _structure_gate(S, U, lab, keys, tile, min_struct, min_unsupported, min_face_texels, waive_faces, max_list, what):
+    """shared by D8/D9: S = albedo structure texels, U = the unsupported ones. Per tile x tile block FLAG when >=
+    min_struct unsupported AND >= min_unsupported of the block's structure; a face fails at >= min_face_texels."""
+    H, W = S.shape
     ny, nx = -(-H // tile), -(-W // tile)
     tiles, per_face = [], defaultdict(lambda: dict(unsupported=0, tiles=0, boxes=[]))
     for ty in range(ny):
@@ -1001,14 +1015,57 @@ def relief_missing_check(basecolor, normal, labels=None, keys=None, valid=None, 
     flagged = {k: v for k, v in per_face.items() if v['unsupported'] >= min_face_texels}
     failing = sorted(k for k in flagged if k not in waive)
     waived = sorted(k for k in flagged if k in waive)
-    reasons = [f'{len(failing)} faces carry albedo structure over a flat normal ({sum(flagged[k]["unsupported"] for k in failing)}'
+    reasons = [f'{len(failing)} faces {what} ({sum(flagged[k]["unsupported"] for k in failing)}'
                f' unsupported structure texels in {len({tuple(b) for k in failing for b in flagged[k]["boxes"]})}+ tiles)'] if failing else []
     return dict(verdict='FAIL' if failing else 'PASS', reasons=reasons, structure_texels=int(S.sum()),
                 unsupported_texels=int(U.sum()), flagged_tiles=len(tiles), tiles=tiles[:max_list],
                 flagged_faces=failing, waived_faces=waived, faces={k: flagged[k] for k in sorted(flagged)},
-                params=dict(tile=tile, struct_thr=struct_thr, min_run=min_run, relief_thr=relief_thr, support_r=support_r,
-                            min_struct=min_struct, min_unsupported=min_unsupported, min_face_texels=min_face_texels),
                 _unsupported_mask=U)
+
+
+# ----------------------------------------------------------------------------------------------- D9 masks gate
+# Owner 2026-10-09: "the doors have no normals and masks maps. Can you add it and also add test to catch such failures".
+# Measured on the Korean castle C7 R0 page (line response of the albedo lines' Masks, max over R/G/B, p50): the GPT door
+# pasted over a role-constant roughness, no metallic and no cavity AO 0.016 (3 % of its lines >= 0.04); every other sheet
+# (stone, brick, trims, the TC gable) 0.08-0.19 (98-100 % >= 0.04): their roughness follows the joints.
+# Face floor: plank boards whose Masks carry grain but no seam lines were flagged per tile; the door's whole-face Masks
+# line p90 is 0.012, every textured face >= 0.065 - a face FAILS only when its Masks are flat (p90 < face_p90 = 0.04).
+def masks_lines(masks, half=4):
+    """oriented structure of a packed Masks map: line_response of each of R, G, B (AO, roughness, metallic), max."""
+    m = np.asarray(masks, np.float32)
+    return np.maximum.reduce([line_response(m[..., k], half) for k in range(min(3, m.shape[-1]))])
+
+
+def masks_missing_check(basecolor, masks, labels=None, keys=None, valid=None, tile=16, line_half=4, struct_thr=0.07,
+                        min_run=10, masks_thr=0.04, support_r=2, interior_r=2, min_struct=12, min_unsupported=0.6,
+                        min_face_texels=150, face_p90=0.04, waive_faces=(), max_list=200):
+    """masks_missing: albedo structure (seams, bands, member edges) with no line in ANY Masks channel within support_r
+    texels = a painting pasted over flat masks (no cavity AO, roughness or metallic follows what the colour shows).
+    Same blocks, face naming and waivers as relief_missing_check."""
+    L = luma(basecolor[..., :3]) if basecolor.ndim == 3 else basecolor
+    H, W = L.shape
+    lab = np.zeros((H, W), int) if labels is None else np.asarray(labels)
+    ok = _interior(lab, interior_r) & (lab >= 0)
+    if valid is not None:
+        ok &= valid
+    S = line_structure(L, struct_thr, line_half, min_run) & ok
+    ml = masks_lines(masks, line_half); sup = (ml >= masks_thr) & (lab >= 0)
+    U = S & ~_dilate(sup, support_r)
+    out = _structure_gate(S, U, lab, keys, tile, min_struct, min_unsupported, min_face_texels, waive_faces, max_list,
+                          'carry albedo structure over flat Masks (no AO, roughness or metallic lines)')
+    name = (lambda i: keys[i]) if keys is not None else int
+    p90 = {name(i): float(np.quantile(ml[ok & (lab == i)], .9)) for i in np.unique(lab[ok & (lab >= 0)])}
+    textured = sorted(k for k in out['flagged_faces'] if p90.get(k, 0.) >= face_p90)    # Masks present, only off the seams
+    out['flagged_faces'] = [k for k in out['flagged_faces'] if k not in textured]; out['textured_faces'] = textured
+    out['face_masks_p90'] = {k: round(p90.get(k, 0.), 3) for k in out['faces']}
+    if not out['flagged_faces']:
+        out['verdict'], out['reasons'] = 'PASS', []
+    else:
+        out['reasons'] = [f'{len(out["flagged_faces"])} faces carry albedo structure over flat Masks (whole-face Masks line p90 < '
+                          f'{face_p90}: no AO, roughness or metallic structure) - {out["flagged_faces"][:6]}']
+    out['params'] = dict(tile=tile, struct_thr=struct_thr, min_run=min_run, masks_thr=masks_thr, support_r=support_r,
+                         min_struct=min_struct, min_unsupported=min_unsupported, min_face_texels=min_face_texels, face_p90=face_p90)
+    return out
 
 
 def relief_drop_check(candidate_normal, base_normal, labels=None, keys=None, declared=None, valid=None, tile=16,
@@ -1109,6 +1166,11 @@ def run_check(c):
         kw = {k: c[k] for k in ('tile', 'struct_thr', 'min_run', 'relief_thr', 'support_r', 'min_struct', 'min_unsupported',
                                 'min_face_texels') if k in c}
         r = relief_missing_check(bc, read_map(c['normal']), valid=v, **kw); r.pop('_unsupported_mask'); return r
+    if t == 'masks_missing':
+        bc = read_map(c['basecolor']); v = read_mask(c.get('valid'), bc.shape)
+        kw = {k: c[k] for k in ('tile', 'struct_thr', 'min_run', 'masks_thr', 'support_r', 'min_struct', 'min_unsupported',
+                                'min_face_texels', 'face_p90') if k in c}
+        r = masks_missing_check(bc, read_map(c['masks']), valid=v, **kw); r.pop('_unsupported_mask'); return r
     if t == 'relief_drop':
         n = read_map(c['normal']); v = read_mask(c.get('valid'), n.shape)
         dec = read_mask(c['declared'], n.shape) if c.get('declared') else None
