@@ -1,6 +1,6 @@
 ---
 name: aoe-xml
-description: The COMMON layer for every XML in the Age of Pirates mod - the mechanics that make the engine actually load a file (data XML + its .xml.xmb twin, runtime art/sound XML, strings per language), the placement convention for new records (above the TEST section, ids continuing the real sequence), the reference rules (archive assets by path, never copied), and the one verification command, scripts/xmlcheck.py. Read this BEFORE editing protomods, techtreemods, stringmods, tactics, abilities, any animfile, .material or _snds.xml; the specialised recipes (add-unit, add-building, extended-native, native-politician, aoe-building-pipeline ...) assume it and only add their domain content. Triggers on "add to protomods", "new proto", "animfile", "material file", "_snds", "xmb twin", "string id", "where do I put the record", "xml check", "model does not appear", "flag on the building", "pirate flag", "banner while gaia", "how does unit X do this".
+description: The COMMON layer for every XML in the Age of Pirates mod - the mechanics that make the engine actually load a file (data XML + its .xml.xmb twin, runtime art/sound XML, strings per language), the placement convention for new records (above the TEST section, ids continuing the real sequence), the reference rules (archive assets by path, never copied), and the one verification command, scripts/xmlcheck.py. Read this BEFORE editing protomods, techtreemods, stringmods, tactics, abilities, any animfile, .material or _snds.xml; the specialised recipes (add-unit, add-building, extended-native, native-politician, aoe-building-pipeline ...) assume it and only add their domain content. Triggers on "add to protomods", "new proto", "abilities not working", "random names", "randomnamemods", "animfile", "material file", "_snds", "xmb twin", "string id", "where do I put the record", "xml check", "model does not appear", "flag on the building", "pirate flag", "banner while gaia", "how does unit X do this".
 ---
 
 # aoe-xml - how XML works in this mod (mechanics only, no game design)
@@ -34,7 +34,7 @@ ids continuing the real sequence. Never beside an older related record.
 | `data/protomods.xml` | `<!--TEST AND TEMPORARY CONTENT-->` | `id` = `dbid` = last real id + 1 (21175 today) |
 | `data/techtreemods.xml` | `<!--TEST TECHS-->` | techs are keyed by `name` |
 | `data/strings/english/stringmods.xml` | the Christmas/test comment block at the end of NEW STRINGS | `_locid` = last real id + 1 (503439 today); display, editor, rollover as separate ids |
-| `data/protounitcommandmods.xml`, `abilities/abilitymods.xml`, `nuggetmods.xml` ... | end of file, before any trailing comment block | keyed by `name` |
+| `data/protounitcommandmods.xml`, `abilities/abilitymods.xml`, `randomnamemods.xml`, `nuggetmods.xml` ... | end of file, before any trailing comment block | keyed by `name` (abilitymods: the lower-case proto name as the element) |
 | `sound/<proto lowercase>_snds.xml` | own file | file name = lower-case proto name |
 | `art/<area>/<name>/` | own folder: `<name>.xml` + `<name>.material` (+ `.gr2`, `textures/` only for mod-made textures) | animfile path in the proto = `<area>\<name>\<name>.xml` |
 
@@ -82,6 +82,32 @@ action="..."` (DEHCPortugueseBattleshipCard: Heal). `xmlcheck.py` fails an abili
 longer define (Treasure Ship 2026-09-27: broadside stripped from the tactics while PowerBroadside stayed in
 abilitymods) and a PowerBroadside whose `BroadsideAttack`-type action is `active 0` (Treasure Ship 2026-09-27: the
 button did nothing in game).
+
+## Abilities and random names are separate files: a new proto inherits neither
+
+Neither is part of the proto. Both files are keyed by the proto's name, so a unit copied or cloned from a vanilla
+unit starts with no ability buttons and no personal name, even when its protomods record, tactics and `Abilities`
+command are complete. Koreans add-on, owner's test 2026-10-09: the monk (a Japanese monk copy) had an empty
+Abilities grid and was called by its display name.
+
+| File (vanilla original) | Key | Entry - one line each: XMB keeps element text verbatim |
+|---|---|---|
+| `data/abilities/abilitymods.xml` (`Data/abilities/abilities.xml`) | an element named by the **lower-case** proto name | `<zpmonkkorean><ability>ypPowerGuardianStun<rof>60</rof></ability>...</zpmonkkorean>`; optional `<tech>` (listed only once the tech is active), `<castonself>true</castonself>`, `<alwaysdisabledingrid>true</alwaysdisabledingrid>` (a passive shown in the grid), `<forceshowrollover>true</forceshowrollover>` |
+| `data/randomnamemods.xml` (`Data/randomnames.xml`) | `<protounit>` text = the proto name, exact case | `<protounit>zpMonkKorean<civ>Default<title>600028</title>...</civ></protounit>`; each `<title>` is the string id of one personal name; `<civ name>` per civ or `Default`; the proto needs flag `HeroName` or `HeroName2` |
+
+For a new unit made from another one:
+1. Read the source unit's entries: `bartool.py cat Data/abilities/abilities.xml.XMB` (`<sourcelowercase>`) and
+   `bartool.py cat Data/randomnames.xml.XMB` (`<protounit>Source`).
+2. Copy them under the new name, in the same order. Drop each ability the new unit lacks: a power's `<unitaction>`
+   must be an action in the new tactics (`xmlcheck` fails a dead one). New personal names are new strings.
+3. Rebuild both `.xmb` twins (they are data XML), then restart the game.
+
+An `Abilities` command without an entry is not by itself a bug: 63 vanilla units have one (Crossbowman, Priest,
+Envoy ...). So `xmlcheck` cannot flag a missing entry; follow the list above whenever a unit is copied.
+A separate add-on mod (`../age-of-pirates-koreans`) ships its own `data/abilities/abilitymods.xml` and
+`data/randomnamemods.xml` with only its entries, as with its protomods. These two files were first shipped this way
+on 2026-10-09: until a game test confirms them, check in game that AoP's abilities (Broadside on the pirate ships)
+and AoP's names survive with the add-on loaded.
 
 ## Verification ladder (do all of it before a game test)
 

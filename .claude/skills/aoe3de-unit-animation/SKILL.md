@@ -58,6 +58,14 @@ blender -b --factory-startup --python .claude/skills/aoe3de-unit-animation/scrip
 - Calibration (vanilla yabusame rider + horse, cavalry idle): rider z 0.406..1.179 seated. Disciple as is
   0.825..1.324 (floating); with `--skeleton-from` the rider and as built 0.406..1.148 (seated). The owner's game test
   confirmed the built file rides.
+- Bone names match like the engine: a space equals an underscore (`Bip01 Head` track drives `Bip01_Head`; about 20
+  vanilla `Bip01_*` models, the Ashigaru and Inca spearman among them, play the spaced `pikemen_charge_*` set).
+  The library is universal: a foot body with `Bip01_Prop1` takes the pikeman set and a polearm on `Bip01 Prop1`
+  (the Koreans' Seungbyeong, 2026-10-09: the Sohei animfile with the `Bip01` twin of each `*_pikeman` file).
+- **Scale trap**: the converter dumps the older library animations (`pikemen_charge_*`) at 2.54x the scale of a DE
+  model's GXO (head offset 0.328 against 0.129), which shows a giraffe neck that the game does not have (the gr2 says
+  0.328 for both). Before judging, compare one bone's key translation with the model's rest offset and scale the
+  key translations by that ratio.
 - The simulation proves the seat and the pose at one frame; motion, timing and in-game binding are the game test's
   (bench: `aoe3de-model-test-unit`).
 

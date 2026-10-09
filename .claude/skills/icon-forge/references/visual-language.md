@@ -76,8 +76,9 @@ Write each icon's own prompt. A shared style line may carry rendering words only
 2. **Generate one image per icon.** A grid of several icons in one image splits one image's detail between its cells
    and comes back crude (2026-10-09). Through the image harness: `--model gpt-image-1-mini --quality low` unless the
    owner asks otherwise (owner 2026-10-09; about 0.11 CZK per icon). Fall back to the default `gpt-image-1` when
-   mini's result is bad or the icon is complex (a scene, several figures); unit portraits (`--kind portrait`) use
-   `gpt-image-1` from the start.
+   mini's result is bad or the icon is complex (a scene, several figures). Unit portraits and unit icons follow the
+   recipe in SKILL.md "Unit portraits" (Gemini with vanilla portraits as references, then `portrait_compose.py`);
+   their player-colour area follows "Player colour" there.
 3. **Border** with `iconforge.py --kind <kind> --full`.
 4. **Review the set in context:** `iconsheet.py OUT.png <new icons> <in-game neighbours>` lays them out at 128 and
    64 px and names each icon's dominant colour; it exits 1 when one colour covers more than 80% of the set (calibrated

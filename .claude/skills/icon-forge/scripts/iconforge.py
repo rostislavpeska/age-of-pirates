@@ -35,6 +35,7 @@ import argparse
 import os
 import sys
 
+import numpy as np
 from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -55,18 +56,40 @@ def window(border):
     return box
 
 
+def resize_keep_rgb(im, size):
+    """Resize RGBA without premultiplying: Pillow's RGBA resize writes RGB (0,0,0) under every alpha-0 pixel, and the
+    game multiplies the player colour into that RGB, so a transparent player-colour area turns black in game
+    (pccheck.py; Korean monk portraits 2026-10-09). RGB and alpha are resized separately."""
+    if im.size == tuple(size):
+        return im.copy()
+    rgb = im.convert('RGB').resize(size, Image.LANCZOS)
+    rgb.putalpha(im.getchannel('A').resize(size, Image.LANCZOS))
+    return rgb
+
+
+def composite_keep_rgb(base, over):
+    """base.alpha_composite(over) that keeps base's RGB where the result stays transparent (Pillow writes black)."""
+    b = np.asarray(base, dtype=np.float32) / 255
+    o = np.asarray(over, dtype=np.float32) / 255
+    ba, oa = b[..., 3:], o[..., 3:]
+    out_a = oa + ba * (1 - oa)
+    blend = (o[..., :3] * oa + b[..., :3] * ba * (1 - oa)) / np.maximum(out_a, 1e-6)
+    rgb = np.where(out_a > 1e-6, blend, b[..., :3])
+    rgb = np.where(oa > 1e-6, rgb, b[..., :3])           # nothing on top: the art's own colour, unchanged
+    return Image.fromarray((np.concatenate([rgb, out_a], -1) * 255 + 0.5).clip(0, 255).astype(np.uint8))
+
+
 def fit(art, size, mode):
     tw, th = size
     if mode == 'contain':
         out = Image.new('RGBA', size, (0, 0, 0, 0))
-        c = art.copy()
-        c.thumbnail(size, Image.LANCZOS)
+        s = min(tw / art.width, th / art.height, 1)
+        c = resize_keep_rgb(art, (max(1, round(art.width * s)), max(1, round(art.height * s))))
         out.paste(c, ((tw - c.width) // 2, (th - c.height) // 2))
         return out
     # cover: scale so the shorter axis fills, then centre-crop the overflow
     s = max(tw / art.width, th / art.height)
-    r = art.resize((max(1, round(art.width * s)), max(1, round(art.height * s))),
-                   Image.LANCZOS)
+    r = resize_keep_rgb(art, (max(1, round(art.width * s)), max(1, round(art.height * s))))
     return r.crop(((r.width - tw) // 2, (r.height - th) // 2,
                    (r.width - tw) // 2 + tw, (r.height - th) // 2 + th))
 
@@ -130,12 +153,11 @@ def main(argv=None):
         canvas.paste(fit(art, border.size, a.fit), (0, 0))
     else:
         canvas.paste(fit(art, (r - l, b - t), a.fit), (l, t))
-    canvas.alpha_composite(border)
+    canvas = composite_keep_rgb(canvas, border)
 
     if a.size and a.size != canvas.width:
         # scale the finished composite so the border stays proportional
-        canvas = canvas.resize(
-            (a.size, round(canvas.height * a.size / canvas.width)), Image.LANCZOS)
+        canvas = resize_keep_rgb(canvas, (a.size, round(canvas.height * a.size / canvas.width)))
     canvas.save(a.out)
     print(f'{a.out}  {canvas.size[0]}x{canvas.size[1]}  border={NAMES[a.kind]}  '
           f'window={r - l}x{b - t} at ({l},{t})  fit={a.fit} '

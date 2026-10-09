@@ -102,9 +102,10 @@ binary bytes out of n8n Code/HTTP binary handling (see "Workflow").
   rendering, prompt template) and use **`--model gpt-image-1-mini --quality low`** unless the owner asks
   otherwise (owner 2026-10-09: "for icons we always use mini if not requested differently"; tested the
   same day: at 128 and 64 px as good as gpt-image-1). Fall back to the default `gpt-image-1` when mini's
-  result is bad or the icon is complex (a scene, several figures); **unit portraits** (the 512 portrait,
-  `iconforge --kind portrait`) use `gpt-image-1` from the start (owner, same day). Everything else keeps
-  the default `gpt-image-1`.
+  result is bad or the icon is complex (a scene, several figures). **Unit portraits** (the 512 portrait and the
+  unit icon made from it): the Gemini route with two vanilla portraits as `--ref`, one call per portrait, then
+  `icon-forge` `portrait_compose.py` (icon-forge "Unit portraits"; tested 2026-10-09: closest to vanilla;
+  gpt-image-1 came out cartoon-like). Everything else keeps the default `gpt-image-1`.
   One icon per call: a grid of icons in one image splits one image's detail between the cells (low
   1024 = 272 output tokens, 1536x1024 = 400) and comes back crude.
 - Cost per 1024x1024 image (OpenAI list prices, checked 2026-10-09): gpt-image-1 low ~$0.011, medium

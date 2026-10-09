@@ -56,6 +56,13 @@ def parse_model(path):
     return bones, meshes
 
 
+def norm(name):
+    """bone name as the engine matches it: a space and an underscore are the same character (vanilla 2026-10-09: the
+    Ashigaru, Inca spearman, Somali warrior and ~20 more Bip01_* models play pikemen_charge_*, whose tracks are
+    'Bip01 Head' ...)."""
+    return name.replace(' ', '_')
+
+
 def parse_anim(path, frame=0):
     """track name -> local 4x4 at key `frame`."""
     keys, cur, n = {}, None, 0
@@ -64,7 +71,7 @@ def parse_anim(path, frame=0):
             cur, n = line.split('"')[1], 0
         elif line.startswith('k ') and cur is not None:
             if n == frame:
-                keys[cur] = m4([float(x) for x in line.split()[1:13]])
+                keys[norm(cur)] = m4([float(x) for x in line.split()[1:13]])
             n += 1
     return keys
 
@@ -75,7 +82,7 @@ def pose(bones, keys):
     for i, b in enumerate(bones):
         p = b['parent']
         L0 = b['W0'] @ np.linalg.inv(bones[p]['W0']) if p >= 0 else b['W0']
-        Wp[i] = keys.get(b['name'], L0) @ (Wp[p] if p >= 0 else np.eye(4))
+        Wp[i] = keys.get(norm(b['name']), L0) @ (Wp[p] if p >= 0 else np.eye(4))
     return Wp
 
 
@@ -162,8 +169,8 @@ def main():
     write_obj(a.out, parts)
     allp = np.vstack([p for _, p, _ in parts])
     print('posed %s: z %.3f..%.3f, bones %d, driven by the animation %d, tracks without a bone %s' % (
-        os.path.basename(a.out), allp[:, 2].min(), allp[:, 2].max(), len(bones), len(names & set(keys)),
-        sorted(set(keys) - names)))
+        os.path.basename(a.out), allp[:, 2].min(), allp[:, 2].max(), len(bones), len({norm(n) for n in names} & set(keys)),
+        sorted(set(keys) - {norm(n) for n in names})))
 
 
 if __name__ == '__main__':
