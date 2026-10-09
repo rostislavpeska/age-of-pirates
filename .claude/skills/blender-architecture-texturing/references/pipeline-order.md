@@ -46,7 +46,8 @@ as a one-command recipe with explicit inputs.
    painted details, then export. Sources: Poly Haven / Substance assets by default, with
    FreeStylized and ambientCG as additional candidates in the [source catalogue](sources-seamless.md#texture-source-catalogue).
    Match the established set and verify each asset's terms before editing (tinting, making seamless);
-   GPT-generated images only for genuinely unique textures (image harness, Claude only).
+   GPT-generated images only for genuinely unique textures (image harness, Claude only; it also edits an existing
+   image - masked or by instruction - so a geometry-derived layout can be painted in; check afterwards that its lines did not move).
 
 **Every phase ends with a `HANDOFF.json`** ([handoff contract](handoff-contract.md)): standard canonical
 outputs so any agent can continue at any phase by consuming them - never reinventing an upstream result
