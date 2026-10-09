@@ -71,6 +71,10 @@ does not block Blender-only work; use it only for the selected workflow.
    For modeled high-poly relief projected onto a low mesh, use the companion
    [blender-high-low-baking](../blender-high-low-baking/SKILL.md) workflow and specimen checks.
 4. Apply an orientation-marked UV checker before decorative maps. Check both axes for density/stretch and mirrored motifs. Repeated elements must share projection depths and density. For grain, boards, masonry courses and curved timber, follow [material direction](references/material-orientation.md): source-image axes, role frames, continuous run coordinates, and every shared reader's final direction. Correct UVs alone do not establish correct texture orientation.
+   Also test both axes of the **actual source sampler** with `scripts/surface_projection.py`:
+   a nonzero atlas island can still display one stretched image column. Include cap,
+   stair and opposite/shared-reader faces; a scalar AO/mask is not a two-dimensional
+   material sample. Preserve a failing original specimen in the regression test.
 5. Inspect all angles after applying textures, especially under autonomous work: opposite towers, under ledges, sill floors, reveals, arch crowns and interiors. Compare unlit basecolor, AO-only, normal-disabled and final material views when diagnosing faults.
 6. For Painter read [MCP feasibility](references/painter-mcp.md). A project existing online is not proof of local compatibility. Do not install/upgrade it as a side effect of texturing.
 7. Keep layered sources, adjustment masks and an output manifest. Save a new texture version, apply to the confirmed Blender instance, verify packed/external paths, save and inspect. Never claim live updates when only a background copy changed. Use the destination engine skill for export.

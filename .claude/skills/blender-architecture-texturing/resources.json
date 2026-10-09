@@ -19,6 +19,8 @@
     "scripts/blender_uv_layout.py",
     "scripts/check_tile.py",
     "scripts/check_material_direction.py",
+    "scripts/surface_projection.py",
+    "scripts/test_surface_projection.py",
     "scripts/test_material_direction.py",
     "scripts/density_floor.py",
     "scripts/handoff.py",
@@ -67,6 +69,7 @@
         "uv-check",
         "uv-density",
         "material-direction",
+        "surface-projection",
         "edit-scope"
       ],
       "optional": false,
@@ -97,6 +100,7 @@
         "tile-check",
         "uv-density",
         "uv-edit",
+        "surface-projection",
         "edit-scope"
       ],
       "optional": false,

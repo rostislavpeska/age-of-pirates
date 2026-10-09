@@ -25,6 +25,14 @@ handoff. Unresolved required geometry/material/texture defects prevent a final
 completion claim. A candidate remains a candidate until the agreed acceptance gate;
 calling its file "final" does not establish acceptance or engine compatibility.
 
+When the owner requests that result in their open Blender, publish it there and
+read back the **live window's** active file, scene, visible model identities,
+material preview mode and bound images. A correct disk package or a documentation
+update cannot establish live publication. Preserve dirty work before switching;
+save the review state and verify the saved active scene. Record disk delivery and
+live delivery separately. Evidence: Korean Houses INC-183, 2026-10-09: texture r13
+was on disk while the owner still saw the older AO/UV r5 scene.
+
 ## Phases (fixed ids)
 
 | id | Canonical outputs (what downstream MUST consume) |
