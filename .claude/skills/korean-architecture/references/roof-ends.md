@@ -213,3 +213,32 @@ Owner evidence, Korean Houses 2026-10-09: dark ends were rejected; actual TC
 comparison identified a separate grey end-clay treatment. The owner confirmed the
 separated-view method with "Testing works". This confirms the review method,
 not every future textured candidate or engine shading.
+
+# Roof-field shading: the roll stripes dominate (owner, 10 October 2026)
+
+Owner, rejecting a castle roof made from the TC "pattern": "The vertical stripes must
+overrule the horizontal ones. Yours do the opposite. It's only shading. Nothing else...
+Simple. Study the Town Center."
+
+- **The TC look is shading only.** Light cover crowns and dark pans run down the slope:
+  these vertical stripes dominate. The course-lip lines across the slope are a weak
+  secondary mark. Do not add grain, moss, streaks, colour grades, normal or roughness
+  changes unless the owner asks for them by name.
+- **Find the slope axis from geometry before reading any rhythm.** A periodic luminance
+  profile on a UV page cannot tell rolls from courses by itself, because the periods are
+  close: on the TC page the roll pitch is 28.65 px and the course 31.6 px. Look at the
+  page's normal map instead.
+  - The rhythm whose period matches the cross-roll normal component is the **roll**
+    (TC: ny -0.74..+0.75 at 28.65 px, crown at the divergence peak).
+  - The one with a narrow lip shadow is the **course**.
+- **The 2026-10-10 mistake:** the castle r2 roof mapped the TC's dominant (roll) profile
+  onto the castle's course phase. The result was horizontal light bands and a plaid at
+  game distance.
+- **The accepted method** (castle r4, `castle_roof_stripes.py` in the Korean
+  repository):
+  - the TC roll profile across the castle's own covers and pans, read from the EMIT
+    roll channel (crown = cover centre);
+  - the TC lip profile as the weaker course term along the EMIT phase;
+  - both multiplied onto the roof's own tile colours.
+- **Before showing the owner:** compare against the installed TC (sha-check its DDTs)
+  under the same light and camera, at game distance.
