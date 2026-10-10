@@ -21,6 +21,12 @@ feedback so the pipeline does not rely only on determinism; the workflow must ru
    attribute -> colour, emission only, neutral grey background, orthographic. `--views game` (8 azimuths at 40 deg + 4
    grazing at 15 deg) or explicit `az:el` lists; `below` is informational. Add `--control-object NAME` (PLANTED control:
    one object painted in the defect colour) and `--clean-control` (every face default colour: nothing to report).
+   **Back faces are culled** (`--cull-backfaces`, default ON since 2026-10-10; renders made before that date drew back
+   faces and are not comparable): the game draws single-sided faces, so a drawn back face paints a hidden face from behind
+   (false black/magenta patches) and blocks see-through paths the game has (the back of a single-sided sheet). Pass
+   `--no-cull-backfaces` only when the inspected surfaces use a double-sided shader in game (`default_doublesided`,
+   `default_doublesided_cutout`: cloth, cut-out cards, open shells) or to reproduce a render made before the change.
+   `VIEWS_<tag>.json` records `cull_backfaces`.
 3. **Annotate** (`scripts/annotate_views.py DIR --legend ...`): burns the view label, the legend and an A-H x 1-6 grid
    into each image, long edge <= 1568 px; writes `ANNOTATED.json` (file, label, control, grid). Controls carry the
    same kind of label as real views.
@@ -89,6 +95,9 @@ feedback so the pipeline does not rely only on determinism; the workflow must ru
 - **Do not trust a single inspector** and do not trust consensus without verification: inspectors confuse thin outlines
   and eave hairlines with defects; verification decides.
 - **Do not reuse the planted control's twin view in the same batch** when avoidable (the pair reveals the plant).
+- **Drawn back faces fake findings and block see-through.** EEVEE draws back faces unless the material culls them; without
+  culling, inspectors saw hidden faces' back sides from behind and could not see through single-sided sheets (journal
+  2026-10-10-claude-civic-pair-16). Keep `--cull-backfaces` on for visibility work.
 
 ## Files
 
@@ -99,6 +108,7 @@ feedback so the pipeline does not rely only on determinism; the workflow must ru
   control twins of inspected views.
 - `scripts/run_inspector.py`: prompt filling, Claude headless and Codex runners, in-session prompt printing.
 - `scripts/aggregate_findings.py`: validity gates, voting, coverage.
-- `scripts/test_visual_inspector.py`: regression tests (no models called).
+- `scripts/test_visual_inspector.py`: regression tests (no models called; the back-face culling render test needs this
+  PC's Blender and is skipped without it).
 - `references/inspector_prompt.md`: the prompt template; `references/inspector_output.schema.json`: output schema.
 - `references/research.md`: the best-practice brief and its sources.

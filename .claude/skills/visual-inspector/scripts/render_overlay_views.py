@@ -2,7 +2,7 @@
 
     blender -b FILE.blend --python render_overlay_views.py -- --scene SCENE --collections A,B --attr ATTR \\
         --colors '{"4": [1, 0, 1]}' --default 0.72,0.72,0.72 --views game --out DIR --tag NAME \\
-        [--control-object OBJ --control-color 1,0,1] [--res 1000x750]
+        [--control-object OBJ --control-color 1,0,1] [--res 1000x750] [--no-cull-backfaces]
 
 Each face is coloured by an INT face attribute (value -> RGB; anything else -> default), as flat emission on a neutral
 grey background: no lighting, no texture, so a vision model only has to see colour. --views:
@@ -16,6 +16,9 @@ control colour's classes in another legend colour, so it looks like any defect-f
 as 'not following the legend' by 9 of 16 inspectors, 2026-10-10). --clean-control adds CLEAN_*.png: the same model in its legend colours with nothing to report, which catches inspectors
 that invent findings. Writes <tag>_<view>.png and VIEWS.json (camera,
 framing). Labels, legend and grid are burned in afterwards by annotate_views.py (outside Blender).
+Back faces are culled (--cull-backfaces, default ON since 2026-10-10) because AoE3 draws single-sided faces: a drawn back
+face shows a hidden face from behind and blocks see-through the game has. --no-cull-backfaces draws them (double-sided
+game shaders, comparing with older renders).
 """
 import argparse, json, math, sys
 from pathlib import Path
@@ -27,7 +30,7 @@ ap.add_argument('--scene', required=True); ap.add_argument('--collections', requ
 ap.add_argument('--colors', default='{}'); ap.add_argument('--default', default='0.72,0.72,0.72'); ap.add_argument('--views', default='game')
 ap.add_argument('--out', required=True); ap.add_argument('--tag', required=True); ap.add_argument('--res', default='1000x750')
 ap.add_argument('--control-object', default=None); ap.add_argument('--control-color', default='1,0,1'); ap.add_argument('--margin', type=float, default=1.12)
-ap.add_argument('--clean-control', action='store_true')
+ap.add_argument('--clean-control', action='store_true'); ap.add_argument('--cull-backfaces', action=argparse.BooleanOptionalAction, default=True)
 a = ap.parse_args(sys.argv[sys.argv.index('--') + 1:]); out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
 sc = bpy.data.scenes[a.scene]; bpy.context.window.scene = sc
 for vl in sc.view_layers:
@@ -40,6 +43,7 @@ objs = sorted({o for cn in a.collections.split(',') for o in bpy.data.collection
 
 def overlay_material(name, attr, cmap, dflt, force=None):
     m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
+    m.use_backface_culling = a.cull_backfaces              # the game draws single-sided faces: a back face is never seen
     outn = nt.nodes.new('ShaderNodeOutputMaterial'); em = nt.nodes.new('ShaderNodeEmission')
     if force is not None:
         em.inputs['Color'].default_value = (*force, 1)
@@ -93,7 +97,7 @@ def shoot(name, az, el):
     return {'file': f'{name}.png', 'azimuth': az, 'elevation': el, 'ortho_scale': cam.data.ortho_scale}
 
 
-rec = {'tag': a.tag, 'attr': a.attr, 'colors': colors, 'default': default, 'views': []}
+rec = {'tag': a.tag, 'attr': a.attr, 'colors': colors, 'default': default, 'cull_backfaces': a.cull_backfaces, 'views': []}
 for az, el in views:
     rec['views'].append(shoot(f'{a.tag}_az{int(az):03d}_el{int(el):+03d}', az, el))
 if a.control_object:

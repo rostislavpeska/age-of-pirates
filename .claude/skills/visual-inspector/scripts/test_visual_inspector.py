@@ -2,14 +2,17 @@
 
     python -m pytest test_visual_inspector.py -q
 """
-import json, sys
+import json, shutil, subprocess, sys
 from pathlib import Path
+
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from plan_batches import plan
 from aggregate_findings import aggregate, label_ok, cell
 import run_inspector
 
+HERE = Path(__file__).resolve().parent; REPO = Path(__file__).resolve().parents[4]   # <repo>/.claude/skills/visual-inspector/scripts
 SPEC = {'asset': 'test house', 'camera': '40 deg', 'legend': ['MAGENTA = hidden'], 'classes': {'H1': 'magenta visible?'},
         'not_defects': ['grey']}
 
@@ -131,3 +134,58 @@ def test_schema_is_strict_for_codex():
             for v in x.values():
                 walk(v)
     walk(s)
+
+
+def blender_exe():
+    """This PC's Blender (config/tool-paths.local.json, else blender on PATH), or None."""
+    cfg = REPO / 'config' / 'tool-paths.local.json'
+    try:
+        p = Path(json.loads(cfg.read_text(encoding='utf-8'))['tools']['blender']['path'])
+    except (OSError, KeyError, ValueError):
+        p = None
+    if p and p.is_file():
+        return p
+    w = shutil.which('blender')
+    return Path(w) if w else None
+
+
+def run_blender(cmd):
+    r = subprocess.run([str(c) for c in cmd], capture_output=True, timeout=300)
+    err, out = (x.decode('utf-8', 'replace')[-3000:] for x in (r.stderr, r.stdout))
+    assert r.returncode == 0, f'blender exit {r.returncode}: {cmd}\nSTDERR:\n{err}\nSTDOUT:\n{out}'
+    return out
+
+
+PROBE = (                                                 # one single-sided sheet, normal -Z, face attribute cls = 4
+    "import bpy, sys\n"
+    "from pathlib import Path\n"
+    "d = Path(sys.argv[sys.argv.index('--') + 1])\n"
+    "bpy.ops.wm.read_factory_settings(use_empty=True)\n"
+    "sc = bpy.context.scene; sc.name = 'S'; sc.render.dither_intensity = 0\n"   # dither 1 (default) varies the grey by 1 level
+    "col = bpy.data.collections.new('M'); sc.collection.children.link(col)\n"
+    "me = bpy.data.meshes.new('sheet'); me.from_pydata([(-1, -1, 0), (1, -1, 0), (1, 1, 0), (-1, 1, 0)], [], [(0, 3, 2, 1)])\n"
+    "me.attributes.new('cls', 'INT', 'FACE').data[0].value = 4\n"
+    "col.objects.link(bpy.data.objects.new('sheet', me))\n"
+    "bpy.ops.wm.save_as_mainfile(filepath=str(d / 'probe.blend'))\n")
+
+
+def test_overlay_culls_back_faces_by_default(tmp_path):
+    """A single-sided sheet seen from behind (normal -Z, camera 40 deg up): the game draws nothing there, so neither may the overlay."""
+    exe = blender_exe()
+    if not exe:
+        pytest.skip('no Blender on this machine (config/tool-paths.local.json)')
+    Image = pytest.importorskip('PIL.Image')
+    (tmp_path / 'probe.py').write_text(PROBE, encoding='utf-8')
+    run_blender([exe, '-b', '--factory-startup', '--python-exit-code', '1', '--python', tmp_path / 'probe.py', '--', tmp_path])
+    seen = {}
+    for tag, extra in (('cull', []), ('nocull', ['--no-cull-backfaces'])):
+        out = run_blender([exe, '-b', tmp_path / 'probe.blend', '--factory-startup', '--python-exit-code', '1',
+                           '--python', HERE / 'render_overlay_views.py', '--', '--scene', 'S', '--collections', 'M', '--attr', 'cls',
+                           '--colors', '{"4": [1, 0, 1]}', '--views', '0:40', '--res', '64x48', '--out', tmp_path / tag, '--tag', tag, *extra])
+        assert 'OVERLAY_DONE' in out, out
+        rec = json.loads((tmp_path / tag / f'VIEWS_{tag}.json').read_text(encoding='utf-8'))
+        with Image.open(tmp_path / tag / rec['views'][0]['file']) as im:
+            im = im.convert('RGB')
+        seen[tag] = (rec['cull_backfaces'], im.getpixel((32, 24)), im.getpixel((1, 1)))   # centre, background corner
+    assert seen['cull'][0] is True and seen['cull'][1] == seen['cull'][2], f'culled: the background must show through the back: {seen}'
+    assert seen['nocull'][0] is False and seen['nocull'][1] == (255, 0, 255), f'not culled: the back face draws magenta: {seen}'
