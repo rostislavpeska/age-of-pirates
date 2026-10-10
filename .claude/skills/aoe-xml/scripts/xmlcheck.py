@@ -12,6 +12,8 @@ Checks (ERROR = exit 1, WARN = informational):
                              _snds file present (mod or archive) and its soundsets defined
   animfile references ...... GrannyModel/GrannyAnim files, decal textures, popcornFx/ParticleSystem
   material references ...... every texture override resolves (mod .ddt or archive .ddt); submaterial names vs the gr2 (WARN)
+  materialdef vs source .... a BaseColor that cuts out keeps the alpha use (cut / ignore) of the vanilla material it
+                             retextures (material_source.py; Gakgung Archer 2026-10-09: cards drawn solid)
   ids ...................... proto ids unique and not in the vanilla range unless mergeMode=replace; string ids unique
   abilities ................ every ability's power <unitaction> is an action in the unit's tactics (else a dead
                              button): abilitymods units + vanilla units whose tactics file the mod overrides
@@ -20,6 +22,8 @@ Checks (ERROR = exit 1, WARN = informational):
                              protomods / techtreemods rewrites, every unit and tech in randmaps/*.mods.xml, every
                              cUnitTypezp... / cTechzp... in game/ai/core
 Resolution: mod folder first, then the archive index (bartool). Archive-referenced assets are the RULE, not a warning.
+Declared companion references (COMPANION_ART: AoP's castle.xml -> the Koreans add-on's castle models) resolve in the
+sibling add-on folder; ERROR if it is there without the file, WARN if the add-on is not next to this repo.
 """
 import glob, io, os, re, subprocess, sys
 import xml.etree.ElementTree as ET
@@ -29,7 +33,7 @@ os.chdir(REPO)
 sys.path.insert(0, os.path.join(REPO, '.claude', 'skills', 'aoe3de-bar-archives', 'scripts'))
 BS = chr(92)
 VANILLA_STRING_MAX = 300366
-errors = []; warns = []
+errors = []; warns = []; _MATERIAL_INDEX = None
 def err(m): errors.append(m)
 def warn(m): warns.append(m)
 
@@ -60,6 +64,22 @@ class Archive:
 
 def mod_has(*cands):
     return any(os.path.isfile(c) for c in cands)
+
+
+# Art an AoP file references on purpose from a companion add-on (a sibling folder in mods/local). Owner 2026-10-10: AoP's
+# castle.xml carries the Korean castle branch, whose models live only in the Koreans add-on ("reference to file which
+# doesn't exist in AoP. That's fine. The case civ=korea simply never happen when you don't have the mod installed").
+COMPANION_ART = {'buildings/korean_castle/': 'age-of-pirates-koreans'}
+
+
+def companion(kind, ref):
+    """None if ref is no companion reference; else True/False (found in the companion folder) or 'absent' (no folder)."""
+    p = norm(ref).lower()
+    folder = next((f for pre, f in COMPANION_ART.items() if p.startswith(pre)), None)
+    if folder is None or kind != 'gr2':
+        return None
+    root = os.path.join(os.path.dirname(REPO), folder)
+    return os.path.isfile(os.path.join(root, 'art', norm(ref) + '.gr2')) if os.path.isdir(root) else 'absent'
 
 
 def norm(p):
@@ -256,7 +276,11 @@ def check_animfile(path, arc):
         if f is None or not f.text or not f.text.strip(): continue
         ref = f.text.strip(); kind = {'GrannyModel': 'gr2', 'GrannyAnim': 'gr2', 'popcornFx': 'pkfx', 'ParticleSystem': 'particle'}.get(t)
         if kind and not resolve(kind, ref, arc):
-            err(f'{path}: {t} {ref} not found (mod or archive)')
+            c = companion(kind, ref)
+            if c == 'absent':
+                warn(f'{path}: {t} {ref} lives in a companion add-on that is not next to this repo (unchecked)')
+            elif c is not True:
+                err(f'{path}: {t} {ref} not found (mod, archive{" or companion add-on" if c is False else ""})')
         if t == 'CompositeModel' and not (resolve('animfile', ref + '.xml', arc) or resolve('animfile', ref + '.composite', arc)):
             warn(f'{path}: CompositeModel {ref}: no .xml/.composite found (resolution rule unverified)')
         if kind == 'gr2' and mod_has(f'art/{norm(ref)}.gr2') and not os.path.isfile(f'art/{norm(ref)}.material'):
@@ -289,6 +313,21 @@ def check_material(path, arc):
                 if b not in subs: warn(f'{path}: gr2 binds material {b!r} but no <submaterial name="{b}"> (case-sensitive?)')
         except NotImplementedError: pass          # converter-made gr2 (compressed): not readable, skip
         except Exception as e: warn(f'{path}: could not read {gr2}: {type(e).__name__}')
+    # the materialdef against the source's: what the BaseColor alpha does (cut / ignore) must match the vanilla material
+    # the mod material retextures (Gakgung Archer 2026-10-09: cards drawn solid under one def for the whole unit)
+    if arc.ok:
+        global _MATERIAL_INDEX
+        try:
+            import importlib.util
+            if _MATERIAL_INDEX is None:
+                spec = importlib.util.spec_from_file_location('material_source', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'material_source.py'))
+                ms = importlib.util.module_from_spec(spec); spec.loader.exec_module(ms)
+                _MATERIAL_INDEX = (ms, ms.load_index())
+            ms, data = _MATERIAL_INDEX
+            e, w = ms.check_file(path, REPO, data)
+            for m in e: err(m)
+            for m in w: warn(m)
+        except Exception as e: warn(f'{path}: materialdef source check skipped ({type(e).__name__}: {e})')
 
 
 # ---------------------------------------------------------------- main

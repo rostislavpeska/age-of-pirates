@@ -73,6 +73,22 @@ Grammar as used by the working files in this mod (koth.xml, london_basilica.xml,
   **R = ambient occlusion, G = roughness, B = metallic**. Normal maps are **DirectX green** (measured against vanilla
   `british_tol` 2026-09-17; a GL map inverts every joint). Mod-made textures: `scripts/havok/ddt_dxt1.py IN.png OUT.ddt
   --size 512` and `--pack AO ROUGH METAL OUT.ddt`.
+- **Cut-out alpha lives in the BaseColor, and only a cutting `<materialdef>` uses it.** Plumes, ornaments and other
+  cards are cut by the BaseColor alpha of a DXT5 (`RTS3`, alpha flag 4, format 9, mips down to 4x4: vanilla
+  `changdao_*_mata_BaseColor`) **under a `*cutout*` def** (`default_doublesided_cutout` for the Changdao ages 1-2).
+  Under `default` / `default_doublesided` / `destructible` the alpha is ignored and the card draws as a solid square.
+  The def is a per-model fact of the source: copy it from the vanilla `.material` of the very model the gr2 clones
+  (Changdao age 0 is `default_doublesided` although its BaseColor cuts out 12% of its texels; 269 vanilla unit
+  materials carry such unused alpha), never one value per unit (Gakgung Archer, two game tests 2026-10-09: right alpha,
+  wrong def, solid cards). `xmlcheck.py` runs `scripts/material_source.py`: it finds the source (a vanilla BaseColor
+  the material names, or the vanilla BaseColor whose cut-out mask matches ours, IoU >= 0.8) and fails a def that
+  treats the alpha differently; `material_source.py --explain changdao` prints the vanilla defs. Check the vanilla
+  source's header before re-encoding a retexture: format 9 means `ddt_dxt1.py --dxt5`, which keeps that profile and
+  resizes colour and alpha apart (an RGBA resize premultiplies: the colour under alpha 0 turns black and the game drew
+  black cards, Gakgung Archer 2026-10-09). A card is hidden by painting its alpha 0 over the whole card, rim texels
+  included. `ddt_dxt1.py` refuses DXT1 for an image that cuts out over 1% of its texels (`--drop-alpha` only when the
+  alpha is unused); vanilla Details carry a tiny 1-bit alpha (format 5, about 0.2% of texels, purpose unknown) that
+  DXT1 drops with a warning.
 - Vanilla textures are referenced by archive path, never copied (invariant 2).
 - One `.material` serves several gr2s only if their material names match; every gr2 next to it needs a `.material`
   of its own base name.
