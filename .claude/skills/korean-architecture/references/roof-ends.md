@@ -234,8 +234,10 @@ Simple. Study the Town Center."
 - **The 2026-10-10 mistake:** the castle r2 roof mapped the TC's dominant (roll) profile
   onto the castle's course phase. The result was horizontal light bands and a plaid at
   game distance.
-- **The accepted method** (castle r4, `castle_roof_stripes.py` in the Korean
-  repository):
+- **Superseded the same day** (owner: "too boring ... the quality is many levels below
+  the final Town Center"): copy the TC's own texels instead. See
+  `roof-texture-from-tc.md`. The r4 method, for the record (castle r4,
+  `castle_roof_stripes.py` in the Korean repository):
   - the TC roll profile across the castle's own covers and pans, read from the EMIT
     roll channel (crown = cover centre);
   - the TC lip profile as the weaker course term along the EMIT phase;

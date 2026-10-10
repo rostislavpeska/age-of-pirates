@@ -1,5 +1,7 @@
 # Roof color bound to real tile structure
 
+> **Read first:** [Roof texture from the TC](roof-texture-from-tc.md). A new roof copies the installed Town Center's own texels by tile coordinates (owner 2026-10-10). The finish rules below describe the TC's look; they are not a recipe to re-derive it.
+
 The owner likes the roof bake and normal relief, but rejected a perfectly clean,
 uniform roof. The requested finish takes cues from vanilla: neighboring tiles
 have slightly different tones, restrained moss in sheltered areas, and limited
