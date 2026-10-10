@@ -1,6 +1,6 @@
 ---
 name: image-harness
-description: CLAUDE ONLY - GPT, Codex, Astra and Gemini agents must NOT use this skill; they generate images natively and this harness is paid per image. Generate or edit images (texture sources, tiles, decals, icons art, portraits, references) from Claude Code through the owner's n8n workflow "Claude Image Harness (Webhook)" - OpenAI gpt-image by default (what GPT uses natively), OpenAI masked edits (fill or repaint only the transparent area of a mask) and Gemini instruction/reference edits. Use when Claude needs an image made: "generate a texture", "make an image", "create a tile source", "edit this image", "image prompt".
+description: CLAUDE ONLY - GPT, Codex, Astra and Gemini agents must NOT use this skill; they generate images natively and this harness is paid per image. Generate or edit images from Claude Code through the owner's n8n workflow "Claude Image Harness (Webhook)" - OpenAI gpt-image by default, Gemini instruction/reference edits (OpenAI masked edits disabled since INC-203). Two uses - (1) stand-alone images: texture sources, tiles, decals, icon art, portraits, references; (2) AI-PAINTED MODEL TEXTURES: paint a model's own UV layout / unrolled layout sheet (props such as barrels, crates, wheels, beams; masonry walls) with a vanilla texture as style reference, gate it and map it back onto the atlas - see "Paint a model's textures from its UV layout". Use when Claude needs an image or custom painted textures: "generate a texture", "custom GPT or Gemini textures", "paint the UV map", "textures from the UV layout", "make an image", "edit this image", "image prompt".
 ---
 
 # Image harness (Claude only)
@@ -43,6 +43,32 @@ python .claude/skills/image-harness/scripts/generate.py "PROMPT" --out "<scratch
 Output: `DIR/NAME_1.png ...` plus `DIR/NAME.json` (operation, prompt, inputs with sha256, provider,
 model, settings, usage, estimate, revised prompt, time) - the provenance record texture work requires.
 It prints paths only; never read image data into the conversation except to look at a result.
+
+## Paint a model's textures from its UV layout
+
+The main texture use, and the one agents missed while it lived only in a masonry skill (owner 2026-10-10: "More custom
+GPT or Gemini generated textures ... These can be generated from UV maps already. Check the skill. Maybe needs better
+description"). **The geometry owns the structure, the image model only paints the surface.** Full method, gates and
+compose rules: [masonry-texturing](../masonry-texturing/SKILL.md) section 7 and its
+[AI paint gate](../masonry-texturing/references/ai-paint-gate.md); it applies to any geometry-locked sheet, not only stone.
+
+1. **Layout sheet** in the model's own unrolled frame, at a scale above the final page density: lit layout colours
+   measured from the vanilla counterpart, joints and openings drawn, flat 0.5 grey outside, plus every detail the paint
+   must carry (rivets, nail heads, bung hole, rope twist). Props: lay the charts out like a vanilla prop atlas (barrel
+   staves side by side, heads as discs, long strips stacked as rows). Packed fragments of a building do not work.
+2. **One Gemini edit per sheet:** `--image LAYOUT.png --image STYLE_REF.png --provider gemini --image-size 1K` with the
+   vanilla counterpart as the "style reference only" image (barrel: `TNT_Barrel_matb`, wheel: `organ_gun_wheel_matA`,
+   crates: `nat_wood_crates_small_b_mata`). 1K is enough when the sheet's px/m exceeds the page's texels/m.
+3. **Gate before use.** Masonry: the joint F1 gate. **Wood:** grain cracks are dark lines too, so a correct wood painting
+   scores joint F1 0.25-0.41; gate wood with silhouette IoU >= 0.90 against the layout plus joint recall >= 0.70 at a
+   shift <= 4 px (Korean props 2026-10-10: 5/5 paintings IoU 0.988-0.996 at zero shift, recall 0.76-0.95).
+4. **Compose and map back:** luminance pulled toward the vanilla measurement, the painting's colour mostly kept (chroma
+   0.85; 0.6 plus layout-mean luminance washed a good keg painting grey), joints from the layout; every page texel samples
+   the sheet through the same layout coordinates. Normals: structure from the layout, surface detail from the painting
+   (masonry-texturing `paint_relief.py`). Then edge wear, rust and dirt generators from the bake's EDGE/CAV masks.
+
+Reference implementation (Korean props, outside AoP): `korean-market-dock/recipes/props_ai_sheet.py` (layout, gates,
+compose) and `props_sheet_apply.py` (map back, relief, edge generators).
 
 ## Edit (harness v2)
 
