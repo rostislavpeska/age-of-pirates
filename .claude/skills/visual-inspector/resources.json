@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/inspector_output.schema.json",
+    "references/inspector_prompt.md",
+    "references/research.md",
+    "scripts/aggregate_findings.py",
+    "scripts/annotate_views.py",
+    "scripts/colour_census.py",
+    "scripts/plan_batches.py",
+    "scripts/render_overlay_views.py",
+    "scripts/run_inspector.py",
+    "scripts/test_visual_inspector.py"
+  ],
+  "skills": [
+    "blender-hidden-surfaces",
+    "blender-uv-workflow"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "plan",
+        "aggregate",
+        "annotate"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "note": "Planner, runner and aggregator are pure Python; tests call no model."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "annotate"
+      ],
+      "optional": false,
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ],
+      "note": "Burns labels, legend and grid into the overlay renders."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "render-overlays"
+      ],
+      "optional": false,
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ],
+      "note": "Background renders of a saved file only; never the producer's live session."
+    },
+    {
+      "id": "claude-cli",
+      "kind": "executable",
+      "requiredFor": [
+        "inspect-claude-headless"
+      ],
+      "optional": true,
+      "commands": [
+        "claude"
+      ],
+      "note": "Headless Claude inspectors (claude -p --json-schema). Inside Claude Code, Agent subagents need no CLI."
+    },
+    {
+      "id": "codex-cli",
+      "kind": "executable",
+      "requiredFor": [
+        "inspect-codex"
+      ],
+      "optional": true,
+      "commands": [
+        "codex"
+      ],
+      "note": "codex exec inspectors; CODEX_BIN or the Codex desktop app's bundled codex.exe also work."
+    }
+  ]
+}

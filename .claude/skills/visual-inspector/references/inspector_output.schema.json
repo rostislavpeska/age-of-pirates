@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "visual-inspector output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["inspector_id", "images"],
+  "properties": {
+    "inspector_id": {"type": "string"},
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["image_file", "view_label_read", "clean", "findings"],
+        "properties": {
+          "image_file": {"type": "string"},
+          "view_label_read": {"type": "string"},
+          "clean": {"type": "boolean"},
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["class", "grid_cells", "what", "confidence", "severity"],
+              "properties": {
+                "class": {"type": "string"},
+                "grid_cells": {"type": "array", "items": {"type": "string"}},
+                "what": {"type": "string"},
+                "confidence": {"type": "string", "enum": ["low", "med", "high"]},
+                "severity": {"type": "string", "enum": ["minor", "major"]}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
