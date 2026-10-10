@@ -2,7 +2,9 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
-    "references/chart-construction.md"
+    "references/chart-construction.md",
+    "references/uv-logic-audit.md",
+    "scripts/uv_logic_audit.py"
   ],
   "skills": [
     "blender-architecture-texturing",

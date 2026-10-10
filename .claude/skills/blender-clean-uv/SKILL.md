@@ -43,6 +43,9 @@ overlap discovery and economical packing after this checkpoint.
 ## Workflow
 
 1. Read [chart construction and validation](references/chart-construction.md).
+   **Gate before texturing:** run `scripts/uv_logic_audit.py` - one owner chart per visible planar region and every
+   shared member in its owner's paint context (height, tilt); see [UV logic audit](references/uv-logic-audit.md)
+   (Korean Dock 2026-10-10: 146 plaster charts for 30 walls, members reading texels painted for another place).
    Build roofs, gables, facade panels and trim strips from adjacency and measured
    surface shape. A checker with consistent squares does not excuse fragmented
    per-face islands. Repair a representative patch before repeating the operation.
