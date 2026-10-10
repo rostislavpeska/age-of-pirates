@@ -50,6 +50,7 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 | Shared matc atlas, TC prop textures, decals and asset dependencies | Korean project `patterns/korean/shared_materials.md` and `shared_assets.json`; resolve the project root through `recipes.json`/the current handoff |
 | Window/door lattice, paper, reusable leaf patches | [Lattice and hanji](references/lattice-hanji.md) |
 | ANY new roof texture (field, caps, eave ends): copy the installed Town Center's own texels by tile coordinates, never re-derive the look (forensic, owner 2026-10-10: ~$300 a roof) | [Roof texture from the TC](references/roof-texture-from-tc.md) FIRST |
+| **ANY roof appearance (field, caps, eave-end clay, edges): sampled from the canonical TC, never re-implemented** | [Roof canon](references/roof-canonical.md) + `scripts/roof_canon.py` (gate) + `scripts/roof_lookdev.py` (TC vs building, same rig) |
 | Roof tiles, color variation, moss, exposed clay | [Roof surface finish](references/roof-color.md) |
 | Tile laps or shadows appear to face uphill; verify the full bake/export chain | [Roof tile direction QA](../roof-tile-direction-qa/SKILL.md), then the Korean roof recipe |
 | ANY roof bake or roof specimen: the whole roof bakes as one assembly (field + eave fronts + underlip + caps; soffit/timber ridge declared) | [One roof = one bake](references/roof-ends.md#one-roof--one-bake-owner-9-october-2026) + [roof_assembly_spec.json](references/roof_assembly_spec.json); the bake tool's assembly gate refuses a partial roof |
