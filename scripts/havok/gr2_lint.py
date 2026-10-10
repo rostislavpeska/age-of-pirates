@@ -865,6 +865,55 @@ def check_bindings(stage, info):
              missing=missing, mixed_tris=mixed)
 
 
+def twin_pieces(info, cm=100.):
+    """same-facing triangles at the same place (1 cm) bound to DIFFERENT bones -> {(bone_a, bone_b): count}"""
+    owners = {}
+    for m in info['render']:
+        P = np.round(np.asarray(m['pos'], float) * cm).astype(np.int64); Pf = np.asarray(m['pos'], float)
+        T = m['tris']; vb = m['bone']; bn = m['bone_names']
+        n = np.cross(Pf[T[:, 1]] - Pf[T[:, 0]], Pf[T[:, 2]] - Pf[T[:, 0]]); a = np.linalg.norm(n, axis=1)
+        for t, nn, aa in zip(T, n, a):
+            if aa < 1e-10:
+                continue
+            key = (tuple(sorted(map(tuple, P[t]))), tuple(np.round(nn / aa, 1)))
+            owners.setdefault(key, set()).add(bn[vb[t[0]]] if len(bn) else '?')
+    pairs = {}
+    for v in owners.values():
+        if len(v) > 1:
+            k = tuple(sorted(v))[:2]; pairs[k] = pairs.get(k, 0) + 1
+    return pairs
+
+
+def check_twin_pieces(stage, info, hkt_path=None, max_visible=2, body_props=None):
+    """A destruction piece's surface must have ONE owner when its bodies break at different times. The same surface on a
+    stage piece and an on-death piece (or on two stage pieces of different proxies, or on a piece and the static base)
+    flies off with one and stays with the other (owner 2026-10-10, Korean castle in game: "pieces get chipped but
+    underneath the original part stays on place (like cloning debris)" - coincident donor bodies both received the region
+    in the Voronoi fracture). Twins of two pieces that fall together (both on-death, or one stage proxy) are invisible:
+    vanilla has them (japanese_castle_age2_damag: 188 such triangles, 1 visible)."""
+    pairs = twin_pieces(info)
+    if not hkt_path and body_props is None:
+        n = sum(pairs.values())
+        return R(stage, 'twin_pieces', None if n else True, f'{n} triangle(s) duplicated on two bodies (no .hkt: timing unknown)')
+    if body_props is None:
+        from hkt_read import Tagfile
+        from hkt_props import bodies, props
+        tf = Tagfile(str(hkt_path)); body_props = {rb['name']: props(tf, rb) for _, rb in bodies(tf)}
+    P = body_props
+    def visible(a, b):
+        pa, pb = P.get(a), P.get(b)
+        if pa is None or pb is None:                         # a static bone (no body): the piece leaves, the twin stays
+            return True
+        if pa.get('type') != pb.get('type'):
+            return True
+        return pa.get('type') == 0 and pa.get('parent') != pb.get('parent')
+    vis = {k: v for k, v in pairs.items() if visible(*k)}; n_vis = sum(vis.values()); n_all = sum(pairs.values())
+    worst = sorted(vis.items(), key=lambda kv: -kv[1])[:6]
+    return R(stage, 'twin_pieces', n_vis <= max_visible,
+             f'{n_vis} triangle(s) on two bodies that break at different times (of {n_all} twins)' + (f' - {worst}' if worst else ''),
+             visible_twins=n_vis, twins=n_all, pairs=[[list(k), v] for k, v in worst])
+
+
 def check_frame(stage, dmg, intact, prof):
     d = prof['damaged']
     Pd, Pi = render_positions(dmg), render_positions(intact)
@@ -1721,6 +1770,7 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
                             check_tangent_convention(stage, info, intact_material)]
             else:
                 results.append(check_bindings(stage, info))
+                results.append(check_twin_pieces(stage, info, hkt))
                 if 'damaged' in prof:
                     results.append(check_frame(stage, info, infos['intact'], prof) if 'intact' in infos
                                    else R(stage, 'damaged_frame', None, 'no intact model given'))

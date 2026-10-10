@@ -820,3 +820,22 @@ def test_a_generic_profile_runs_the_universal_checks(capsys, tmp_path, monkeypat
     assert re.search(r"intact +texture_budget +PASS .*class small \(owner m336\)", out)
     assert re.search(r"intact +texel_density +PASS", out)
     assert "orientation" not in out and "flag_on_mast" not in out
+
+
+def test_twin_pieces_fail_only_when_the_twins_break_at_different_times():
+    """owner 2026-10-10 (Korean castle in game): "pieces get chipped but underneath the original part stays on place (like
+    cloning debris)" - the same surface on a stage piece and an on-death piece."""
+    tri = [[0, 0, 0], [1, 0, 0], [0, 1, 0]]
+
+    def mesh(pos, bones, names):
+        return dict(pos=np.array(pos, float), tris=np.arange(len(pos)).reshape(-1, 3), bone=np.array(bones), bone_names=names)
+
+    twin = dict(render=[mesh(tri + tri, [0, 0, 0, 1, 1, 1], ["chip", "stays"])])
+    props = {"chip": dict(type=0, parent=1), "stays": dict(type=1, parent=2), "a": dict(type=1, parent=3), "b": dict(type=1, parent=3)}
+    assert L.check_twin_pieces("damaged", twin, body_props=props, max_visible=0)["status"] == "FAIL"
+    together = dict(render=[mesh(tri + tri, [0, 0, 0, 1, 1, 1], ["a", "b"])])        # both fall on death: invisible
+    assert L.check_twin_pieces("damaged", together, body_props=props, max_visible=0)["status"] == "PASS"
+    static = dict(render=[mesh(tri + tri, [0, 0, 0, 1, 1, 1], ["chip", "base"])])    # no body: the twin never moves
+    assert L.check_twin_pieces("damaged", static, body_props=props, max_visible=0)["status"] == "FAIL"
+    apart = dict(render=[mesh(tri + [[5, 0, 0], [6, 0, 0], [5, 1, 0]], [0, 0, 0, 1, 1, 1], ["chip", "stays"])])
+    assert L.check_twin_pieces("damaged", apart, body_props=props, max_visible=0)["status"] == "PASS"

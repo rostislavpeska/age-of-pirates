@@ -23,6 +23,16 @@ description: Inspect and adapt Age of Empires III DE destruction assets - fractu
   `.dmg` templates = projectile impact system (`boneimpact*`), `simskeleton` = the skeleton the anims are
   sampled on (battleship: the damaged model; frigate: none).
 
+- **One surface, one owner** (owner 2026-10-10, Korean castle in game: "pieces get chipped but underneath the original
+  part stays on place (like cloning debris)").
+  - **Cause:** the same surface was bound to a stage piece and an on-death piece (or a static bone). The chip falls and its
+    twin stays.
+  - **How it happened:** donor graphs stack bodies on one spot (Japanese castle: `roof_stone_solidhull_hang_9` and
+    `roof_stone_solid_ondeath_42`). A Voronoi fracture that skips coincident seeds gives both of them the region.
+  - **Rule:** one seed owns a coincident region, the stage piece first.
+  - **Gate:** `gr2_lint` check `twin_pieces` reads the `.hkt` timing. Twins of pieces that fall together are tolerated:
+    vanilla has 188 of them.
+
 Tools: `hkt_read.py` (summary), `hkt_props.py` (properties), `hkt_patch.py` (in-place property/motion edits),
 `hkt_write.py` + `hull3d.py` (write a tagfile from a body list - used for the test cube; the generated cube never
 destructed progressively). Creating a new body graph from scratch remains unproven here.
