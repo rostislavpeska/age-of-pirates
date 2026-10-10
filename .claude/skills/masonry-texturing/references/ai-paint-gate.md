@@ -40,6 +40,21 @@ Measured on the castle:
 A FAIL keeps the layout colours, or gets one retry with `--allow-repeat`. A 5 px vertical shift on brick also failed
 correctly.
 
+## Wood gate (grain-rich paintings)
+
+Wood grain is full of dark cracks, so on a correctly painted wood sheet the dark-line precision collapses and the joint F1
+fails although the joints are in place. Gate wood on what must hold instead, at one shared shift within +-8 px:
+
+```
+sil    = max_channel(|paint - 0.5|) > 0.06          (the painted shapes against the flat grey background)
+IoU    = |shift(sil) & valid| / |shift(sil) | valid|
+recall = |dilate(shift(dark) & valid, 3) & J| / |J|
+PASS: IoU >= 0.90 and recall >= 0.70 and |dx|, |dy| <= 4
+```
+
+Measured on five Korean prop sheets (keg, wheel, crate, shot tray, chocks; 2026-10-10): joint F1 0.25-0.67 (four would
+have failed), IoU 0.988-0.996 and recall 0.76-0.95, all at zero shift. Keep the joint gate for masonry.
+
 ## Compose
 
 - **Shift** the painting by the gate's (dx, dy).
