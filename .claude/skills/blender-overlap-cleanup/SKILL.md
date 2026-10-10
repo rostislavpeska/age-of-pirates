@@ -74,7 +74,25 @@ Blender `bpy` is required for scene access. These helpers do not install softwar
    the repaired material-colored model active; retain diagnostics as secondary
    scenes. State actual changes, counts, unresolved contacts and user review state.
 
+## Gate 3: deterministic logic QA (generated buildings)
+
+Run `scripts/logic_qa.py` in the builder before saving and fail the build on any finding. It checks door free area
+and support, window clearance, stair headroom, roof poke/embed, member pierce, protrusion beyond declared joints,
+floating parts and z-fighting faces. Every finding is fixed in the generator or declared as a joint with a maximum
+depth; never widen a tolerance to pass. It also lists advisory inspection topics (attachment, junction_proud, frame_proud, opening_band, near_gap); review
+those, fix the real ones, and accept that some are false positives. Read [logic QA method, sources and pitfalls](references/logic-qa.md). Keep
+project part vocabulary in the project and pass it with `configure()`. A clean report does not replace step 6 and
+the owner's review.
+
 ## Helpers and verification
+
+Before any texture or AO bake, run `scripts/shell_orientation.py` on the export set (`--names-from`, `--strict`):
+every closed shell must enclose positive signed volume in world space. An inside-out shell passes UV integrity,
+density and distant review renders, yet in game (back faces culled) the camera sees its recessed inner faces,
+already darkened by AO (2026-10-10: a dock's gable boards read as black holes; 16 inspector views missed them).
+Repair by reversing the winding, then re-check UV winding (a reversed face's UVs are mirrored). The same run lists
+n-gons whose triangulation flips (`flipped_triangles`): a self-intersecting outline, e.g. a board whose sloped edge
+ends below its curved bottom edge; make the outline simple and re-unwrap that face (its old UVs are distorted too).
 
 For a declared covered trim/beam termination, use `scripts/termination_plane.py`
 against the **actual sloped cover face**, in one coordinate system. Require the
@@ -95,7 +113,7 @@ required. Opposing contacts are report-only unless the intact-only policy is
 explicitly justified.
 
 Run `python -m unittest discover -s scripts -p 'test_*.py'` from this skill's
-directory. These tests check geometry behavior, not artistic acceptance. Keep
+directory, and `blender -b --factory-startup --python scripts/blender_test_logic_qa.py` for Gate 3. These tests check geometry behavior, not artistic acceptance. Keep
 consumer paths, models, renders and case reports outside this reusable package.
 
 Record corrective prompts/app visits and measured human time. Separate agent

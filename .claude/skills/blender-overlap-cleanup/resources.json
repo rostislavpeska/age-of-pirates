@@ -2,10 +2,15 @@
   "schemaVersion": 1,
   "files": [
     "SKILL.md",
+    "references/logic-qa.md",
     "references/repair-methods.md",
+    "scripts/blender_test_logic_qa.py",
+    "scripts/logic_qa.py",
     "scripts/overlap_geometry.py",
-    "scripts/test_overlap_geometry.py",
+    "scripts/shell_orientation.py",
     "scripts/termination_plane.py",
+    "scripts/test_overlap_geometry.py",
+    "scripts/test_shell_orientation.py",
     "scripts/test_termination_plane.py"
   ],
   "skills": [
@@ -29,6 +34,7 @@
       "id": "numpy",
       "kind": "python-package",
       "requiredFor": [
+        "logic-qa",
         "overlap-audit"
       ],
       "optional": false,
@@ -56,7 +62,8 @@
       "kind": "application",
       "requiredFor": [
         "geometry-repair",
-        "live-handoff"
+        "live-handoff",
+        "logic-qa"
       ],
       "optional": false,
       "commands": [
