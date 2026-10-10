@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/junction_check.py",
+    "scripts/junction_shots.py",
+    "scripts/run_cases.py",
+    "scripts/run_bench.py",
+    "scripts/build_runner.py",
+    "scripts/blender_test_junction_check.py",
+    "fixtures/BUILDER_RULES.md",
+    "fixtures/J1_t_valley/brief.md",
+    "fixtures/J1_t_valley/key.json",
+    "fixtures/J2_crossed_hips/brief.md",
+    "fixtures/J2_crossed_hips/key.json",
+    "fixtures/J3_roof_tower/brief.md",
+    "fixtures/J3_roof_tower/key.json",
+    "fixtures/J4_curved_gable/brief.md",
+    "fixtures/J4_curved_gable/key.json",
+    "fixtures/J5_beam_angled_wall/brief.md",
+    "fixtures/J5_beam_angled_wall/key.json",
+    "fixtures/J6_veranda_posts/brief.md",
+    "fixtures/J6_veranda_posts/key.json",
+    "fixtures/J7_railing/brief.md",
+    "fixtures/J7_railing/key.json",
+    "fixtures/J8_cornice/brief.md",
+    "fixtures/J8_cornice/key.json"
+  ],
+  "skills": [
+    "blender-overlap-cleanup"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "run-cases",
+        "run-bench"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "note": "Runs the case and bench tables; launches Blender as a subprocess, one job at a time."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "junction-check"
+      ],
+      "optional": false,
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "note": "Sample arrays and bounding boxes; Blender's bundled Python ships it."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "junction-check",
+        "junction-shots",
+        "run-cases",
+        "run-bench"
+      ],
+      "optional": false,
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy",
+        "bmesh",
+        "mathutils"
+      ],
+      "note": "Background Blender (-b); tested with 5.1.2. Workbench renders the close-ups."
+    }
+  ]
+}

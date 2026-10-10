@@ -1,0 +1,17 @@
+{
+ "name": "J7 railing with a corner post",
+ "junctions": [
+  {"id": "rails-posts", "a": "Rail.*", "b": "Post.*", "strategy": "butt", "all_b": true, "reach": 0.1},
+  {"id": "posts-deck", "a": "Post.*", "b": "Deck", "strategy": "seated", "max_pen": 0.005, "max_gap": 0.005, "min_cover": 0.9}
+ ],
+ "orientation": ["*"],
+ "extents": [
+  {"part": "Rail.*", "min": [0.09, 0.015, 1.01], "max": [3.985, 2.91, 1.84], "tol": 0.025},
+  {"part": "Post.*", "min": [0, 0, 0.9], "max": [4.0, 3.0, 1.9]},
+  {"part": "Deck", "min": [0, 0, 0.8], "max": [4, 3, 0.9]}
+ ],
+ "probes": [
+  {"part": "Rail.*", "inside": [[1.0, 0.045, 1.8], [1.0, 0.045, 1.05], [3.0, 0.045, 1.8], [3.955, 0.8, 1.8], [3.955, 2.2, 1.05]]}
+ ],
+ "undeclared": {"scan": true, "max_pen": 0.01}
+}

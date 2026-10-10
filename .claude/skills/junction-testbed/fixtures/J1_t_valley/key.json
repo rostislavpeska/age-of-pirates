@@ -1,0 +1,19 @@
+{
+ "name": "J1 T-plan cross-gable valleys",
+ "junctions": [
+  {"id": "valley", "a": "Roof.Wing", "b": "Roof.Main", "strategy": "constructed", "reach": 0.5}
+ ],
+ "up": ["Roof.*"],
+ "orientation": ["Wall.*"],
+ "extents": [
+  {"part": "Roof.Main", "min": [-0.5, -0.5, 2.7113], "max": [10.5, 6.5, 4.7321]},
+  {"part": "Roof.Wing", "min": [2.5, 4.0, 2.7113], "max": [7.5, 11.5, 4.1547]},
+  {"part": "Wall.Main", "min": [0, 0, 0], "max": [10, 6, 3]},
+  {"part": "Wall.Wing", "min": [3, 6, 0], "max": [7, 11, 3]}
+ ],
+ "probes": [
+  {"part": "Roof.Main", "on": [[5, 4, 4.1547], [3.75, 5.25, 3.4330], [6.25, 5.25, 3.4330]]},
+  {"part": "Roof.Wing", "on": [[5, 4, 4.1547], [3.75, 5.25, 3.4330], [6.25, 5.25, 3.4330]]}
+ ],
+ "undeclared": {"scan": true, "max_pen": 0.01}
+}

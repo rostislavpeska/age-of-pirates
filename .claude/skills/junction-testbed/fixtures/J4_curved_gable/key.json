@@ -1,0 +1,19 @@
+{
+ "name": "J4 gable boards under a curved roof",
+ "junctions": [
+  {"id": "boards-roof", "a": "Gable.*", "b": "Roof.Main", "strategy": "seated", "max_pen": 0.005, "max_gap": 0.01, "min_cover": 0.8, "reach": 0.3}
+ ],
+ "up": ["Roof.*"],
+ "orientation": ["Gable.*", "Wall.*"],
+ "extents": [
+  {"part": "Roof.Main", "min": [-3.4, -2.5, 3.0875], "max": [3.4, 2.5, 4.4]},
+  {"part": "Gable.E", "min": [2.975, -2.0, 3.2], "max": [3.025, 2.0, 4.4]},
+  {"part": "Gable.W", "min": [-3.025, -2.0, 3.2], "max": [-2.975, 2.0, 4.4]},
+  {"part": "Wall.Hall", "min": [-3, -2, 0], "max": [3, 2, 3.2]}
+ ],
+ "probes": [
+  {"part": "Gable.*", "inside": [[3.0, 0, 4.37], [3.0, 1.0, 3.62], [3.0, -1.5, 3.36], [-3.0, 0, 4.37], [-3.0, -1.0, 3.62], [-3.0, 1.5, 3.36]]},
+  {"part": "Roof.Main", "on": [[0, 0, 4.4], [0, 1.0, 3.65], [0, -2.0, 3.2]]}
+ ],
+ "undeclared": {"scan": true, "max_pen": 0.01}
+}

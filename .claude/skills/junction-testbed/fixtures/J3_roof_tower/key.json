@@ -1,0 +1,18 @@
+{
+ "name": "J3 hall roof against a tower",
+ "junctions": [
+  {"id": "roof-tower", "a": "Roof.Hall", "b": "Tower", "strategy": "seated", "max_pen": 0.02, "max_gap": 0.005, "reach": 0.5},
+  {"id": "wall-tower", "a": "Wall.Hall", "b": "Tower", "strategy": "seated", "max_pen": 0.02, "max_gap": 0.005}
+ ],
+ "up": ["Roof.*"],
+ "orientation": ["Tower", "Wall.*"],
+ "extents": [
+  {"part": "Roof.Hall", "min": [2.0, -1.9, 3.2691], "max": [8.4, 1.9, 4.3660], "tol": 0.01},
+  {"part": "Tower", "min": [-2, -2, 0], "max": [2, 2, 10]},
+  {"part": "Wall.Hall", "min": [2, -1.5, 0], "max": [8, 1.5, 3.5]}
+ ],
+ "probes": [
+  {"part": "Roof.Hall", "on": [[2.0, 0, 4.3660], [2.0, 1.9, 3.2691], [2.0, -1.9, 3.2691], [2.0, 1.0, 3.7887]]}
+ ],
+ "undeclared": {"scan": true, "max_pen": 0.01}
+}
