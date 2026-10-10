@@ -75,6 +75,9 @@ does not block Blender-only work; use it only for the selected workflow.
    a nonzero atlas island can still display one stretched image column. Include cap,
    stair and opposite/shared-reader faces; a scalar AO/mask is not a two-dimensional
    material sample. Preserve a failing original specimen in the regression test.
+4b. When a look must repeat an accepted asset (a canonical roof, a set material), derive it from that asset's pinned
+   data - never adapt another derivative: [canonical derivation](references/canonical-derivation.md) (star topology,
+   exemplar transfer or statistics, executable gate, fixed look-dev rig; owner 2026-10-10 "each copy is worse and worse").
 5. Inspect all angles after applying textures, especially under autonomous work: opposite towers, under ledges, sill floors, reveals, arch crowns and interiors. Compare unlit basecolor, AO-only, normal-disabled and final material views when diagnosing faults.
 6. For Painter read [MCP feasibility](references/painter-mcp.md). A project existing online is not proof of local compatibility. Do not install/upgrade it as a side effect of texturing.
 7. Keep layered sources, adjustment masks and an output manifest. Save a new texture version, apply to the confirmed Blender instance, verify packed/external paths, save and inspect. Never claim live updates when only a background copy changed. Use the destination engine skill for export.
