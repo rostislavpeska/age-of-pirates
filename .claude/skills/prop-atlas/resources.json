@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md"
+  ],
+  "skills": [
+    "blender-architecture-texturing",
+    "blender-clean-uv",
+    "image-harness",
+    "masonry-texturing"
+  ],
+  "external": []
+}
