@@ -30,7 +30,14 @@ Every part matched by `a` is judged against the `b` parts within `reach` (defaul
 | camouflaged | no modelled seam (a texture valley) | gap .02, pen .02 |
 
 Optional per junction: `max_gap`, `max_pen`, `max_proud`, `min_cover` (share of a's faces facing b that touch it:
-attachment, not a corner contact), `reach`. A pattern matching nothing, or `seated` without `max_pen`, is
+attachment, not a corner contact), `max_zfight`, `reach`, `all_b`.
+
+Whole-scene checks in the same key: `orientation`, `up` (roof sheets face up), `extents`, `probes` (`inside`, `on`,
+`outside`: an opening that is really open), `buried` (faces lying face to face: a stair stacked from cubes, a wall
+assembled from boxes around a window), `uv` and `undeclared`. `uv` runs the `blender-clean-uv` audit
+(`uv_logic_audit.py`, unchanged, on labelled evaluated copies) for T1 - one chart per flat region, a wall around its
+window is ONE chart - and adds T2, the audit's specified rigid-mapping test (no stretch, flip, collapsed axis or
+rotated piece inside a flat chart; to move into the audit once its owner commits it). A pattern matching nothing, or `seated` without `max_pen`, is
 INCONCLUSIVE and fails the report. Never widen a limit to pass: fix the generator or change the declared strategy,
 and say so.
 
@@ -50,9 +57,10 @@ them outside every repository.
 
 ## Bench: eight junction fixtures
 
-`fixtures/` holds eight small scenes, one per junction class that failed on real buildings: J1 T-plan gable valleys,
+`fixtures/` holds eleven small scenes, one per junction class that failed on real buildings: J1 T-plan gable valleys,
 J2 crossed hip roofs, J3 hall roof ending against a tower, J4 gable boards under a curved roof, J5 beam into an angled
-wall, J6 posts under a sloping veranda roof, J7 railing with a corner post, J8 cornice around a tower. Each has a
+wall, J6 posts under a sloping veranda roof, J7 railing with a corner post, J8 cornice around a tower; with UVs: J9
+wall with a window, J10 wall with a door (U-shaped face), J11 straight stair. Each has a
 `key.json` and two briefs with the same sizes and part names: `brief.md` states the junction rules in words and
 millimetres (with `BUILDER_RULES.md`), `brief_plain.md` asks for the scene the way an owner normally would, with no
 junction rules (with `BUILDER_RULES_PLAIN.md`). The pair measures how much stating the junctions helps. A builder
@@ -97,6 +105,11 @@ must pass).
   continues past a solid on every side (post poking up through a roof) is passed through by the solid's reach.
   Mixing the two reported a 0.4 m overlap as 1.65 m, and hid a 2 cm post poke behind a near-zero sample.
 - Rails have two ends: judge every post within reach (`all_b`), not only the nearest.
-- Attachment is cover, not gap: a deck touching its wall frame at one corner has gap 0 and 6 % cover.
+- Attachment is cover, not gap: a deck touching its wall frame at one corner has gap 0 and 6 % cover. A face only
+  faces b when b is the first thing in front of it (a head board's end faces look at the jambs, not the wall).
+- Two faces lying exactly on each other are at distance 0: a ray started in front of a face never sees the other.
+  Find them with a range query around the face centre.
+- UV rotation inside a chart: a mirrored map has no angle (0/0), unmirror it first; and take one in-plane basis per
+  plane from the rounded normal with -0.0 cleared, or identical faces read 180 deg apart.
 - Name the whole assembly a part meets (wall panels sit behind the band, sill and posts that carry a deck).
 - A whole-building view hides small joints; the close-ups aim at the measured worst point.

@@ -12,6 +12,7 @@ You write ONE Python script for Blender 5.1 (`bpy`) that builds the scene in the
 - A **closed part** is a watertight solid with its faces pointing outward. A **sheet** is a single-sided surface with
   its faces pointing up or outward: the game draws only the front side of a face.
 - The model is a game building seen from an RTS camera, and it should look right.
+- Where a brief asks for UVs, give every part a UV map (the active UV layer) ready for a tiling texture.
 - Do not open, read or run the `junction-testbed` skill, any `key.json`, or any checker.
 
 Deliver the script only.

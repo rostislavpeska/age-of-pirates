@@ -29,7 +29,7 @@ def summary(rep):
         if j['status'] != 'PASS':
             bad = [m for m in j.get('members', []) if m['status'] != 'PASS']
             return 'FAIL %s: %s' % (j['id'], bad[0].get('reason', '') if bad else j.get('reason', j['status']))
-    for k in ('orientation', 'up', 'extents', 'probes', 'undeclared'):
+    for k in ('orientation', 'up', 'extents', 'probes', 'buried', 'uv', 'undeclared'):
         if k in rep and rep[k]['status'] != 'PASS':
             d = rep[k].get('defects', rep[k].get('clashes', []))
             return 'FAIL %s: %s' % (k, json.dumps(d[0])[:90] if d else '')
@@ -45,7 +45,8 @@ def main():
     ap.add_argument('--blender')
     a = ap.parse_args()
     exe = blender_exe(a.blender)
-    fixtures = {p.name.split('_')[0]: p for p in sorted(Path(a.fixtures).iterdir()) if (p / 'key.json').exists()}
+    fixtures = {p.name.split('_')[0]: p for p in sorted((p for p in Path(a.fixtures).iterdir() if (p / 'key.json').exists()),
+                                                         key=lambda p: int(p.name.split('_')[0][1:]))}       # J1 ... J11, numerically
     if a.only:
         fixtures = {k: v for k, v in fixtures.items() if k in a.only}
     sub = Path(a.submissions)

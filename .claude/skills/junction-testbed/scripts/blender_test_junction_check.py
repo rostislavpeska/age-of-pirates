@@ -51,6 +51,59 @@ def sheet(c, name, pts, solidify=None):
     return o
 
 
+def planar_uv(o, scale=(1.0, 1.0), collapse=False, normalise=False):
+    """Give every face a planar UV from world position on its dominant axis (one consistent projection per plane, so
+    coplanar neighbours share UVs: one chart per flat region). normalise=True maps each object's box to 0..1 per axis
+    (what a per-object auto-unwrap does: disconnected and stretched); collapse=True drops the second axis."""
+    me = o.data; uvl = me.uv_layers.new(name='UVMap'); mw = o.matrix_world
+    lo = [min((mw @ v.co)[i] for v in me.vertices) for i in range(3)]; hi = [max((mw @ v.co)[i] for v in me.vertices) for i in range(3)]
+    for p in me.polygons:
+        ax = max(range(3), key=lambda i: abs(p.normal[i])); a, b = [i for i in range(3) if i != ax]
+        for li in p.loop_indices:
+            w = mw @ me.vertices[me.loops[li].vertex_index].co
+            u, v = w[a], w[b]
+            if normalise:
+                u, v = (u - lo[a]) / max(hi[a] - lo[a], 1e-9), (v - lo[b]) / max(hi[b] - lo[b], 1e-9)
+            uvl.data[li].uv = (u * scale[0], 0.0 if collapse else v * scale[1])
+
+
+def wall_with_hole(c, name, hole=(1.4, 2.6, 1.0, 2.2), size=(4, .3, 3)):
+    """One closed wall mesh (x 0..size[0], y 0..size[1], z 0..size[2]) with a through hole x0..x1, z0..z1."""
+    xs = [0, hole[0], hole[1], size[0]]; zs = [0, hole[2], hole[3], size[2]]
+    bm = bmesh.new(); V = {}
+    for yi, y in enumerate((0, size[1])):
+        for i, x in enumerate(xs):
+            for k, z in enumerate(zs):
+                V[yi, i, k] = bm.verts.new((x, y, z))
+    for yi in (0, 1):
+        for i in range(3):
+            for k in range(3):
+                if (i, k) == (1, 1):
+                    continue
+                q = [V[yi, i, k], V[yi, i + 1, k], V[yi, i + 1, k + 1], V[yi, i, k + 1]]
+                bm.faces.new(q if yi else q[::-1])
+    ring = lambda path: [bm.faces.new([V[0, a, b], V[0, c_, d], V[1, c_, d], V[1, a, b]]) for (a, b), (c_, d) in zip(path, path[1:] + path[:1])]
+    ring([(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (2, 3), (1, 3), (0, 3), (0, 2), (0, 1)])   # outer sides
+    ring([(1, 1), (1, 2), (2, 2), (2, 1)])                                                                        # reveal
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); c.objects.link(o); return o
+
+
+def stair_solid(c, name, n=8, rise=.18, going=.28, width=1.2):
+    """One closed stair mesh: the sawtooth side profile extruded across the width."""
+    prof = [(0, 0)]
+    for k in range(n):
+        prof += [(k * going, (k + 1) * rise), ((k + 1) * going, (k + 1) * rise)]
+    prof += [(n * going, 0)]
+    m = len(prof)
+    V = [(0, y, z) for y, z in prof] + [(width, y, z) for y, z in prof]
+    F = [tuple(range(m)), tuple(range(2 * m - 1, m - 1, -1))] + [(i, (i + 1) % m, m + (i + 1) % m, m + i) for i in range(m)]
+    me = bpy.data.meshes.new(name); me.from_pydata(V, [], F); me.update()
+    bm = bmesh.new(); bm.from_mesh(me); bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:]); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); c.objects.link(o); return o
+
+
 def run(c, junctions, **extra):
     bpy.context.view_layer.update()
     return jc.evaluate(dict({'name': c.name, 'scope': {'collection': c.name}, 'junctions': junctions}, **extra))
@@ -252,6 +305,42 @@ try:
     sheet(c, 'Roof.Main', [(0, 0, 2), (0, 3, 2.5), (4, 3, 2.5), (4, 0, 2)])
     r = run(c, [], up=['Roof.*'])
     check('downward roof sheet fails', r['up']['status'] == 'FAIL', r)
+
+    # 10c. openings and UVs: one wall mesh with a window hole and one planar projection passes (hole open, no buried
+    # faces, one chart per flat region, rigid); the same wall as 8 boxes around the hole, each auto-unwrapped to 0..1,
+    # fails on buried faces, fragmentation and stretch; a collapsed projection fails T2
+    uvrule = [{'parts': ['Wall*'], 'min_area': .01}]
+    holeprobe = [{'part': 'Wall*', 'outside': [[2.0, .15, 1.6]], 'inside': [[.7, .15, 1.6], [2.0, .15, .5], [2.0, .15, 2.6]]}]
+    c = coll('wall one mesh')
+    planar_uv(wall_with_hole(c, 'Wall'))
+    r = run(c, [], probes=holeprobe, buried=[{'parts': ['Wall*']}], uv=uvrule)
+    check('one-mesh wall with a window hole passes', r['status'] == 'PASS', r)
+    c = coll('wall from boxes')
+    for k, (lo, hi) in enumerate([((0, 0, 0), (1.4, .3, 3)), ((2.6, 0, 0), (4, .3, 3)), ((1.4, 0, 0), (2.6, .3, 1)), ((1.4, 0, 2.2), (2.6, .3, 3))]):
+        planar_uv(box(c, 'Wall.%d' % k, lo, hi), normalise=True)
+    r = run(c, [], probes=holeprobe, buried=[{'parts': ['Wall*']}], uv=uvrule)
+    check('wall built from boxes around the hole fails (buried, fragmented, stretched)',
+          r['buried']['status'] == 'FAIL' and r['uv']['rules'][0]['T1']['fragmented'] > 0 and r['uv']['rules'][0]['T2']['bad'] and r['probes']['status'] == 'PASS', r)
+    c = coll('wall collapsed uv')
+    planar_uv(wall_with_hole(c, 'Wall'), collapse=True)
+    r = run(c, [], uv=uvrule)
+    check('collapsed UV projection fails T2', r['uv']['status'] == 'FAIL' and 'collapsed' in r['uv']['rules'][0]['T2']['bad'][0]['why'], r)
+    c = coll('wall filled hole')
+    planar_uv(box(c, 'Wall', (0, 0, 0), (4, .3, 3)))
+    r = run(c, [], probes=holeprobe)
+    check('a hole that was never cut fails the outside probe', r['probes']['status'] == 'FAIL', r)
+
+    # 10d. stairs: one solid from the profile passes; eight stacked step boxes fail on buried faces and fragmented sides
+    c = coll('stair solid')
+    planar_uv(stair_solid(c, 'Stair'))
+    r = run(c, [], buried=[{'parts': ['Stair*']}], uv=[{'parts': ['Stair*'], 'min_area': .01}])
+    check('stair as one solid passes', r['status'] == 'PASS', r)
+    c = coll('stair cubes')
+    for k in range(8):                                  # one box per step, side by side, each auto-unwrapped
+        planar_uv(box(c, 'Stair.%d' % k, (0, k * .28, 0), (1.2, (k + 1) * .28, (k + 1) * .18)), normalise=True)
+    r = run(c, [], buried=[{'parts': ['Stair*']}], uv=[{'parts': ['Stair*'], 'min_area': .01}], undeclared={'scan': True})
+    check('stair built from step boxes fails (buried faces, fragmented sides)',
+          r['buried']['status'] == 'FAIL' and r['uv']['rules'][0]['T1']['fragmented'] > 0, r)
 
     # 11. a pattern that matches nothing is inconclusive, never a silent pass
     c = coll('missing')

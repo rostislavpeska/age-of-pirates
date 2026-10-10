@@ -1,0 +1,160 @@
+{
+ "name": "J10 wall with a door opening",
+ "junctions": [
+  {
+   "id": "frame-wall",
+   "a": "Frame*",
+   "b": "Wall*",
+   "strategy": "seated",
+   "max_pen": 0.005,
+   "max_gap": 0.005,
+   "min_cover": 0.9
+  }
+ ],
+ "orientation": [
+  "*"
+ ],
+ "extents": [
+  {
+   "part": "Wall*",
+   "min": [
+    0,
+    0,
+    0
+   ],
+   "max": [
+    4,
+    0.3,
+    3
+   ]
+  },
+  {
+   "part": "Frame*",
+   "min": [
+    1.5,
+    0.05,
+    0
+   ],
+   "max": [
+    2.5,
+    0.25,
+    2.1
+   ],
+   "tol": 0.01
+  }
+ ],
+ "probes": [
+  {
+   "part": "Wall*",
+   "inside": [
+    [
+     0.7,
+     0.15,
+     1.0
+    ],
+    [
+     3.3,
+     0.15,
+     1.0
+    ],
+    [
+     2.0,
+     0.15,
+     2.6
+    ]
+   ],
+   "outside": [
+    [
+     2.0,
+     0.15,
+     1.0
+    ],
+    [
+     2.0,
+     0.15,
+     0.05
+    ],
+    [
+     1.55,
+     0.15,
+     1.0
+    ],
+    [
+     2.0,
+     0.15,
+     2.05
+    ]
+   ]
+  },
+  {
+   "part": "Frame*",
+   "inside": [
+    [
+     1.54,
+     0.15,
+     1.0
+    ],
+    [
+     2.46,
+     0.15,
+     1.0
+    ],
+    [
+     2.0,
+     0.15,
+     2.06
+    ]
+   ],
+   "outside": [
+    [
+     2.0,
+     0.15,
+     1.0
+    ],
+    [
+     2.0,
+     0.15,
+     0.05
+    ],
+    [
+     2.0,
+     0.02,
+     1.0
+    ],
+    [
+     2.0,
+     0.28,
+     1.0
+    ]
+   ]
+  }
+ ],
+ "buried": [
+  {
+   "parts": [
+    "Wall*"
+   ],
+   "max_area": 0.001
+  }
+ ],
+ "uv": [
+  {
+   "parts": [
+    "Wall*"
+   ],
+   "min_area": 0.01
+  },
+  {
+   "parts": [
+    "Frame*"
+   ],
+   "min_area": 0.005,
+   "t1": false,
+   "note": "wood: one chart per board (grain), so T2 only; T1 applies to the plaster wall"
+  }
+ ],
+ "undeclared": {
+  "scan": true,
+  "max_pen": 0.005
+ }
+}

@@ -45,8 +45,14 @@ an outline that crosses itself.
 up: every face of the matched single-sided sheets (roof fields) points above the horizon.
 extents: [{"part": fnmatch, "min": [x, y, z], "max": [x, y, z], "tol": .02}] the matched parts span that world box
 (null skips an axis), so a tiny or misplaced part cannot pass a junction.
-probes: [{"part": fnmatch, "inside": [[x, y, z]], "on": [[x, y, z]], "tol": .005}] points inside a matched closed part
-(a filled cornice corner) or on a matched surface (a valley line both roofs reach).
+probes: [{"part": fnmatch, "inside": [[x, y, z]], "on": [[x, y, z]], "outside": [[x, y, z]], "tol": .005}] points
+inside a matched closed part (a filled cornice corner), on a matched surface (a valley line both roofs reach), or
+outside every matched part (an opening that is really open).
+buried: [{"parts": [fnmatch], "max_area": .001}] faces lying face to face (opposite normals, .5 mm) within or between
+the matched parts: a stair stacked from cubes, a wall assembled from boxes around a window.
+uv: [{"parts": [fnmatch], "min_area": .01, "max_charts": 1}] T1 one chart per flat region (blender-clean-uv
+uv_logic_audit.py, run unchanged) and T2 rigid mapping inside each flat chart (scale .02, rotation .5 deg, no flip, no
+collapsed axis), on each part's active UV map.
 undeclared: any other crossing pair deeper than max_pen (default .01) fails - an overlap nobody declared.
 """
 import fnmatch
@@ -59,6 +65,7 @@ from types import SimpleNamespace
 import bpy
 import numpy as np
 from mathutils import Vector
+from mathutils.bvhtree import BVHTree
 
 _OVERLAP = Path(__file__).resolve().parents[2] / 'blender-overlap-cleanup' / 'scripts'
 sys.path.insert(0, str(_OVERLAP))
@@ -71,7 +78,7 @@ STRATEGY = {'constructed': {'max_gap': .005, 'max_pen': .005},
             'camouflaged': {'max_gap': .02, 'max_pen': .02}}
 REACH = .25
 FAR = 1.0                                   # gaps are measured up to 1 m; beyond that a part is reported as 'far'
-EXTRA = ('orientation', 'up', 'extents', 'probes', 'undeclared')    # whole-scene checks, in report order
+EXTRA = ('orientation', 'up', 'extents', 'probes', 'buried', 'uv', 'undeclared')    # whole-scene checks, in report order
 ZFIGHT_AREA = 1e-4                          # m2 of coincident same-facing faces tolerated (float noise); per junction: max_zfight
 COVER_STEP = .02                            # contact-cover sample spacing (m): a 4 x 4 grid missed 2.5 cm strips
 
@@ -284,9 +291,20 @@ def cover(sc, a, bs, reach, contact):
     reach) lying within `contact` of b, on a k x k grid per face (logic_qa's deck attachment rule, against named
     parts): a deck touching its wall at one corner covers 6 %, a seated deck most of its side. None: no facing face."""
     ns = sc.mesh(a); mw = ns.matrix_world; mw3 = mw.to_3x3(); Bs = [sc.part(b) for b in bs]
+    A = sc.part(a)
+    occ = [sc.part(n) for n in sc.objs if n != a and n not in bs and _near(A, sc.part(n), reach)]   # parts in between
+
+    def first(parts, o_, d_, dist):
+        ds = [h[3] for h in (P.bvh.ray_cast(o_ - d_ * 1e-3, d_, dist + 1e-3) for P in parts) if h[0] is not None]
+        return min(ds) if ds else None
 
     def hit(o_, d_, dist):
-        return any(B.bvh.ray_cast(o_ - d_ * 1e-3, d_, dist + 1e-3)[0] is not None for B in Bs)
+        """A b part is the first thing in front of the face (a jamb between a head board and the wall blocks it)."""
+        db = first(Bs, o_, d_, dist)
+        if db is None:
+            return False
+        do = first(occ, o_ + d_ * 1e-3, d_, dist) if occ else None
+        return do is None or db <= do + 2e-3
     me = ns.data; me.calc_loop_triangles()
     tris = defaultdict(list)
     for t in me.loop_triangles:
@@ -425,6 +443,161 @@ def judge_probes(sc, rules):
             d = min(P.bvh.find_nearest(Vector(p))[3] for P in parts)
             if d > r.get('tol', .005):
                 bad.append({'part': r['part'], 'point': p, 'reason': 'not on the surface (%.3f away)' % d})
+        for p in r.get('outside', []):                  # must stay empty: an opening that is really open
+            hit = next((P.name for P in parts if (P.closed and abs(lq.winding(np.array([p]), P)[0]) > .5)
+                        or (P.bvh.find_nearest(Vector(p), r.get('tol', .005))[0] is not None)), None)
+            if hit:
+                bad.append({'part': r['part'], 'point': p, 'reason': 'filled by ' + hit})
+    return {'status': 'FAIL' if bad else 'PASS', 'defects': bad}
+
+
+ULA = Path(__file__).resolve().parents[2] / 'blender-clean-uv' / 'scripts' / 'uv_logic_audit.py'
+
+
+def judge_uv(sc, rules):
+    """UV logic of the matched parts' active UV maps. T1 (blender-clean-uv uv_logic_audit.py, run unchanged on evaluated
+    copies labelled with its attribute contract): every flat region of >= min_area m2 is ONE chart - a wall around a
+    window hole is one chart, not 8 rectangles. T2 (the audit's specified rigid-mapping test, here until it lands
+    there): inside a flat chart every face maps 3D to UV as one similarity - scale within 2 %, rotation within 0.5 deg,
+    no flip, no collapsed axis (INC-184: a projection constant along one axis gave striped stone)."""
+    import runpy
+    import tempfile
+    out = []
+    for r in rules:
+        names = sorted({n for p in r['parts'] for n in sc.names(p)})
+        res = {'parts': r['parts'], 'objects': len(names)}
+        if not names:
+            out.append(dict(res, status='FAIL', reason='no part matches')); continue
+        coll = bpy.data.collections.new('__uvbench'); bpy.context.scene.collection.children.link(coll)
+        copies, no_uv = [], []
+        try:
+            for n in names:
+                ns = sc.mesh(n); me = ns.data.copy()
+                if not me.uv_layers:
+                    no_uv.append(n); bpy.data.meshes.remove(me); continue
+                me.uv_layers.active.name = 'UVBENCH'
+                for nm, val in (('paint_subtype_r2', 0), ('uv_resource_r2', 1), ('uv_chart_r2', 0), ('share_role_r2', 0)):
+                    at = me.attributes.new(nm, 'INT', 'FACE'); at.data.foreach_set('value', [val] * len(me.polygons))
+                o = bpy.data.objects.new('__uv_' + n, me); o.matrix_world = ns.matrix_world; coll.objects.link(o); copies.append(o)
+            T2 = rigid(copies, r.get('max_scale', .02), r.get('max_rot', .5))
+            if r.get('t1') is False:
+                # directional materials (wood grain per board): the audit's one-chart rule is for plaster-like
+                # surfaces (production runs it on plaster paint subtypes only); keep T2
+                T1 = {'regions': None, 'fragmentation_fail': 0, 'owner_charts_total': None, 'worst_regions': [], 'skipped': 't1 off'}
+            else:
+                rep_path = Path(tempfile.gettempdir()) / ('uvbench_%d.json' % id(r))
+                argv = sys.argv
+                sys.argv = ['uv_logic_audit.py', '--', '--collection', coll.name, '--uv', 'UVBENCH', '--subtypes', '0', '--page', '1',
+                            '--min-area', str(r.get('min_area', .01)), '--max-charts', str(r.get('max_charts', 1)), '--report', str(rep_path)]
+                try:
+                    runpy.run_path(str(ULA), run_name='__main__')
+                except SystemExit:
+                    pass
+                finally:
+                    sys.argv = argv
+                T1 = json.load(open(rep_path, encoding='utf-8'))
+        finally:
+            for o in copies:
+                me = o.data; bpy.data.objects.remove(o); bpy.data.meshes.remove(me)
+            bpy.data.collections.remove(coll)
+        frag = [x for x in T1.get('worst_regions', []) if x['fail']]
+        res.update(T1={'regions': T1['regions'], 'fragmented': T1['fragmentation_fail'], 'charts': T1['owner_charts_total'], 'worst': frag[:10]},
+                   T2=T2, no_uv=no_uv)
+        why = (['no UV map: ' + ', '.join(no_uv)] if no_uv else []) + \
+              (['%d flat regions split into several charts' % T1['fragmentation_fail']] if T1['fragmentation_fail'] else []) + \
+              (['%d faces not mapped rigidly' % len(T2['bad'])] if T2['bad'] else [])
+        out.append(dict(res, status='FAIL' if why else 'PASS', reason='; '.join(why)))
+    return {'status': 'FAIL' if any(x['status'] != 'PASS' for x in out) else 'PASS', 'rules': out,
+            'defects': [x['reason'] for x in out if x['status'] != 'PASS']}
+
+
+def rigid(objs, max_scale, max_rot):
+    """T2: per flat region and UV chart, fit each face's 3D-plane -> UV map (2 x 2 + offset, least squares); every
+    face must be a similarity (singular values within max_scale), not collapsed, and agree with the chart's median
+    scale (within max_scale) and rotation (within max_rot deg) with the same orientation sign."""
+    faces = []
+    for o in objs:
+        me = o.data; mw = o.matrix_world; uvl = me.uv_layers['UVBENCH'].data
+        for p in me.polygons:
+            if p.area < 1e-6 or len(p.vertices) < 3:
+                continue
+            n = (mw.to_3x3() @ p.normal).normalized(); P = [mw @ me.vertices[v].co for v in p.vertices]
+            faces.append({'o': o.name[5:], 'f': p.index, 'n': np.array(n), 'd': float(n.dot(P[0])), 'P': P,
+                          'uv': [tuple(uvl[l].uv) for l in p.loop_indices]})
+    par = list(range(len(faces)))
+
+    def fd(i):
+        while par[i] != i:
+            par[i] = par[par[i]]; i = par[i]
+        return i
+    key = defaultdict(list)                           # same plane AND shared (position, uv): one flat piece of one chart
+    for i, f in enumerate(faces):
+        for v, uv in zip(f['P'], f['uv']):
+            key[(tuple(np.round(f['n'], 2)), round(f['d'], 2), tuple(np.round(v, 3)), round(uv[0], 5), round(uv[1], 5))].append(i)
+    for ids in key.values():
+        for j in ids[1:]:
+            par[fd(j)] = fd(ids[0])
+    groups = defaultdict(list)
+    for i, f in enumerate(faces):
+        # one in-plane basis per plane: from the rounded normal with -0.0 cleared (orthogonal() of (0, -0.0, -1) and of
+        # (0, 0, -1) differ by 180 deg, which read as rotated faces)
+        n = Vector(tuple(float(x) + 0.0 for x in np.round(f['n'], 2))).normalized(); u = n.orthogonal().normalized(); w = n.cross(u)
+        X = np.array([[p.dot(u), p.dot(w), 1.0] for p in f['P']]); Y = np.array(f['uv'])
+        M, *_ = np.linalg.lstsq(X, Y, rcond=None); A = M[:2].T                # uv = A @ (x, y) + t
+        s = np.linalg.svd(A, compute_uv=False); det = float(np.linalg.det(A))
+        R = A if det >= 0 else A @ np.diag((1.0, -1.0))   # a mirrored map has no rotation angle (0/0): unmirror it first
+        f.update(s1=float(s[0]), s2=float(s[1]), det=det, rot=float(np.degrees(np.arctan2(R[1, 0] - R[0, 1], R[0, 0] + R[1, 1]))))
+        groups[fd(i)].append(f)
+    bad = []
+    for fs in groups.values():
+        sc_ = float(np.median([f['s1'] for f in fs])); sign = np.sign(np.median([f['det'] for f in fs])); rot = float(np.median([f['rot'] for f in fs]))
+        for f in fs:
+            why = []
+            if f['s2'] < 1e-9 or f['s2'] / f['s1'] < .2:
+                why.append('collapsed axis')
+            elif f['s1'] / f['s2'] - 1 > max_scale:
+                why.append('stretched %.1f %%' % (100 * (f['s1'] / f['s2'] - 1)))
+            if np.sign(f['det']) != sign:
+                why.append('flipped')
+            if sc_ > 0 and abs(f['s1'] / sc_ - 1) > max_scale:
+                why.append('scale %.1f %% off its chart' % (100 * (f['s1'] / sc_ - 1)))
+            if abs((f['rot'] - rot + 180) % 360 - 180) > max_rot:
+                why.append('rotated %.1f deg in its chart' % ((f['rot'] - rot + 180) % 360 - 180))
+            if why:
+                bad.append({'part': f['o'], 'face': f['f'], 'why': ', '.join(why)})
+    return {'faces': len(faces), 'flat_charts': len(groups), 'bad': bad[:40]}
+
+
+def judge_buried(sc, rules):
+    """Faces lying face to face with another face (opposite normals, within .5 mm), within a part or between the
+    matched parts: a stair stacked from cubes, a wall assembled from boxes around a window. Invisible, but they cost
+    triangles and texels and mark a construction that was never made one solid."""
+    bad = []
+    for r in rules:
+        names = sorted({n for p in r['parts'] for n in sc.names(p)})
+        V, F, own = [], [], []
+        for n in names:
+            P = sc.part(n); off = len(V); V += [Vector(v) for v in P.V]
+            F += [[off + int(i) for i in t] for t in P.T]; own += [n] * len(P.T)
+        if not F:
+            bad.append({'parts': r['parts'], 'reason': 'no part matches'}); continue
+        bvh = BVHTree.FromPolygons(V, F)
+        area = defaultdict(float)
+        for k, t in enumerate(F):
+            a, b, c = V[t[0]], V[t[1]], V[t[2]]
+            nrm = (b - a).cross(c - a); ar = nrm.length / 2
+            if ar < 1e-8:
+                continue
+            nrm.normalize(); cen = (a + b + c) / 3
+            # a face lying exactly on this one is at distance 0: a ray from in front of the face would miss it
+            for loc, n2, idx, d in bvh.find_nearest_range(cen, 5e-4):
+                if idx != k and n2.dot(nrm) < -.999:
+                    area[tuple(sorted((own[k], own[idx])))] += ar
+                    break
+        tot = sum(area.values())
+        if tot > r.get('max_area', 1e-3):
+            bad.append({'parts': r['parts'], 'buried_m2': round(tot, 4),
+                        'pairs': [{'a': k[0], 'b': k[1], 'm2': round(v, 4)} for k, v in sorted(area.items(), key=lambda kv: -kv[1])[:8]]})
     return {'status': 'FAIL' if bad else 'PASS', 'defects': bad}
 
 
@@ -482,6 +655,10 @@ def evaluate(key):
             rep['extents'] = judge_extents(sc, key['extents'])
         if key.get('probes'):
             rep['probes'] = judge_probes(sc, key['probes'])
+        if key.get('buried'):
+            rep['buried'] = judge_buried(sc, key['buried'])
+        if key.get('uv'):
+            rep['uv'] = judge_uv(sc, key['uv'])
         if key.get('undeclared', {}).get('scan'):
             rep['undeclared'] = judge_undeclared(sc, key.get('junctions', []), key['undeclared'])
     finally:

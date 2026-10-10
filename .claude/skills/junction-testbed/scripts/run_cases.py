@@ -51,7 +51,7 @@ def expand(s, roots):
 
 def failing(rep):
     out = {j['id'] for j in rep.get('junctions', []) if j['status'] != 'PASS'}
-    out |= {k for k in ('orientation', 'up', 'extents', 'probes', 'undeclared') if k in rep and rep[k]['status'] != 'PASS'}
+    out |= {k for k in ('orientation', 'up', 'extents', 'probes', 'buried', 'uv', 'undeclared') if k in rep and rep[k]['status'] != 'PASS'}
     return sorted(out)
 
 

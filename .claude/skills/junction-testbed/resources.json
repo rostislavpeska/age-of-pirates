@@ -33,10 +33,20 @@
     "fixtures/J5_beam_angled_wall/brief_plain.md",
     "fixtures/J6_veranda_posts/brief_plain.md",
     "fixtures/J7_railing/brief_plain.md",
-    "fixtures/J8_cornice/brief_plain.md"
+    "fixtures/J8_cornice/brief_plain.md",
+    "fixtures/J9_window_wall/brief.md",
+    "fixtures/J9_window_wall/brief_plain.md",
+    "fixtures/J9_window_wall/key.json",
+    "fixtures/J10_door_wall/brief.md",
+    "fixtures/J10_door_wall/brief_plain.md",
+    "fixtures/J10_door_wall/key.json",
+    "fixtures/J11_stairs/brief.md",
+    "fixtures/J11_stairs/brief_plain.md",
+    "fixtures/J11_stairs/key.json"
   ],
   "skills": [
-    "blender-overlap-cleanup"
+    "blender-overlap-cleanup",
+    "blender-clean-uv"
   ],
   "external": [
     {
