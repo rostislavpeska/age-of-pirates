@@ -48,6 +48,16 @@ def test_no_korean_building_content_in_aop():
         assert not (REPO / rel).exists(), rel
 
 
+def test_the_castle_exception_stays_in_aop():
+    """owner 2026-10-10: AoP's own castle override carries the Korean castle branch ("OR AoP can directly have Korean
+    civ in that file. If civ doesn't exist nothing happens", "So only castle.xml edit"): inert without the add-on, its
+    models live in the add-on, which ships no castle.xml of its own (its build guards that AoP's branch stays current)"""
+    text = (REPO / 'art/buildings/asian_civs/castle/castle.xml').read_text(encoding='utf-8')
+    assert text.count('<zpkoreanvisuals>') == 1 and '<submodel>korean_castle_built' in text
+    assert 'buildings' + chr(92) + 'korean_castle' + chr(92) + 'korean_castle' in text
+    assert not (REPO / 'art/buildings/korean_castle').exists()
+
+
 def test_the_bombard_exception_stays_in_aop():
     """owner 2026-10-09: zpKoreanBombard is AoP gameplay, with the Korean soldier voices it uses"""
     assert 'name="zpKoreanBombard"' in (REPO / 'data/protomods.xml').read_text(encoding='utf-8')

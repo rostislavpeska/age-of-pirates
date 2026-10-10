@@ -142,6 +142,9 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    orders the merge, new Korean work goes there; AoP keeps only the generic skills and tools.
    Exception (owner 2026-10-09): `zpKoreanBombard` is AoP gameplay and stays in AoP, with the Korean soldier voices it
    uses (`sound/korean/`, the `Korean_Soldier_*` soundsets).
+   Exception (owner 2026-10-10): AoP's own `art/buildings/asian_civs/castle/castle.xml` carries the Korean castle branch
+   (inert without the add-on; models in the add-on, which ships no castle.xml). Refresh it only with the add-on's
+   `python tools/korean_visuals.py --write-aop`; never delete it.
 
 ## Where things are
 
