@@ -2,7 +2,7 @@
  "name": "J5 beam into an angled wall",
  "junctions": [
   {"id": "beam-wall", "a": "Beam", "b": "Wall", "strategy": "butt", "max_gap": 0.005, "max_pen": 0.01, "min_cover": 0.9},
-  {"id": "post-beam", "a": "Post", "b": "Beam", "strategy": "seated", "max_pen": 0.005, "max_gap": 0.005, "min_cover": 0.9}
+  {"id": "post-beam", "a": "Post", "b": "Beam", "strategy": "seated", "max_pen": 0.005, "max_gap": 0.005, "min_cover": 0.75}
  ],
  "orientation": ["*"],
  "extents": [

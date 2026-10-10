@@ -6,6 +6,6 @@
 - `Post.1` to `Post.4`: closed boxes 0.2 x 0.2 in plan, centred at y = 2.9 and x = 0.6, 2.2, 3.8 and 5.4, standing
   on the ground (z = 0) and reaching up to the roof.
 
-Each post top is cut to the roof's slope: the whole top touches the roof's underside (gap at most 5 mm) and no part of
-a post shows above the roof (at most 5 mm). The roof's high edge meets the wall face along its full length (gap at
+Each post top is cut to the roof's slope and sits just under the roof: the whole top 1 to 5 mm below the roof (never
+exactly on the roof surface), and no part of a post shows above the roof (at most 5 mm). The roof's high edge meets the wall face along its full length (gap at
 most 5 mm, at most 2 cm into the wall).

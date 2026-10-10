@@ -30,8 +30,10 @@ nearest one is enough. Per `a` part:
          sides (a rafter resting under a roof field scores 0). Measured on every touching pair (BVH overlap() misses
          sheets that meet along a shared triangle diagonal)
   proud  how far `a` stands out beyond the `b` part it touches, across a's own axis (members butting into posts)
-  cover  (only with min_cover) share of a's faces that face the b parts lying within max_gap of them: touching at
-         one corner is not attachment (a balcony deck touching its wall on 6 % of its side, 2026-10-09)
+  cover  (only with min_cover) share of a's faces that face the b parts lying within max_gap of them, sampled every
+         2 cm: touching at one corner is not attachment (a balcony deck touching its wall on 6 % of its side)
+  zfight area of coincident same-facing faces of the pair (a board top laid exactly on the roof flickers in game);
+         fails above max_zfight (default 1e-4 m2). The undeclared scan applies the same rule to every touching pair
 Strategy defaults (an explicit max_* overrides):
   constructed  the parts share the seam               gap .005  pen .005
   seated       one rests in/on the other, hidden seat gap .005  pen = max_pen (required)
@@ -50,6 +52,7 @@ undeclared: any other crossing pair deeper than max_pen (default .01) fails - an
 import fnmatch
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -69,6 +72,8 @@ STRATEGY = {'constructed': {'max_gap': .005, 'max_pen': .005},
 REACH = .25
 FAR = 1.0                                   # gaps are measured up to 1 m; beyond that a part is reported as 'far'
 EXTRA = ('orientation', 'up', 'extents', 'probes', 'undeclared')    # whole-scene checks, in report order
+ZFIGHT_AREA = 1e-4                          # m2 of coincident same-facing faces tolerated (float noise); per junction: max_zfight
+COVER_STEP = .02                            # contact-cover sample spacing (m): a 4 x 4 grid missed 2.5 cm strips
 
 
 class Scene:
@@ -234,6 +239,23 @@ def depth(a, b, hidden):
     return (front[0], front[1], 'sheet through') if front[0] < back[0] else back + ('sheet through',)
 
 
+def zfight(A, B):
+    """Area (m2) of coincident same-facing faces between two parts, both ways (logic_qa's rule: triangle centroid
+    within .5 mm of the other part, normals within 2.5 deg; faces pointing down are never seen from the RTS camera).
+    A board top laid exactly on a roof, a post top cut exactly to it: both faces are drawn at one depth and flicker."""
+    best = 0.0
+    for X, Y in ((A, B), (B, A)):
+        area = 0.0
+        for c, nrm, ar in zip(X.pc, X.pn, X.pa):
+            if ar < 1e-6 or nrm.z < -.7:
+                continue
+            loc, n2, idx, d = Y.bvh.find_nearest(Vector(c), 1e-3)
+            if loc is not None and d < 5e-4 and nrm.dot(n2) > .999:
+                area += ar
+        best = max(best, area)
+    return best
+
+
 def measure(A, B, want_proud, hidden=False):
     t, crossing = touching(A, B)
     g, at = (0.0, None) if t else gap(A, B)
@@ -252,8 +274,9 @@ def measure(A, B, want_proud, hidden=False):
             if d > pen:
                 pen, at = d, Vector(p)
     pr = proud(A, B) if (want_proud and t) else None
+    zf = zfight(A, B) if t else 0.0
     return {'b': B.name, 'touch': t, 'gap': round(g, 4), 'pen': round(pen, 4), 'proud': None if pr is None else round(pr, 4),
-            'method': sorted(set(how)), 'at': None if at is None else [round(c, 3) for c in at]}
+            'zfight': round(zf, 5), 'method': sorted(set(how)), 'at': None if at is None else [round(c, 3) for c in at]}
 
 
 def cover(sc, a, bs, reach, contact):
@@ -264,21 +287,31 @@ def cover(sc, a, bs, reach, contact):
 
     def hit(o_, d_, dist):
         return any(B.bvh.ray_cast(o_ - d_ * 1e-3, d_, dist + 1e-3)[0] is not None for B in Bs)
+    me = ns.data; me.calc_loop_triangles()
+    tris = defaultdict(list)
+    for t in me.loop_triangles:
+        tris[t.polygon_index].append([mw @ me.vertices[i].co for i in t.vertices])
     tot = got = 0
-    for p in ns.data.polygons:
+    for p in me.polygons:
         if p.area < 1e-3:
             continue
         n = (mw3 @ p.normal).normalized()
         if not hit(mw @ p.center, n, reach):
             continue
-        pts = lq._face_points(ns, p)
+        pts = [q for tri in tris[p.index] for q in tri_points(*tri)]
         tot += len(pts); got += sum(1 for q in pts if hit(q, n, contact))
     return round(got / tot, 3) if tot else None
 
 
+def tri_points(a, b, c, step=COVER_STEP, cap=2000):
+    """Area-uniform barycentric grid inside a triangle, about `step` apart (at most cap points), centroid included."""
+    k = max(1, min(int(max((b - a).length, (c - b).length, (a - c).length) / step), int((2 * cap) ** .5)))
+    return [a + (b - a) * ((i + 1 / 3) / k) + (c - a) * ((j + 1 / 3) / k) for i in range(k) for j in range(k - i)]
+
+
 def judge_junction(sc, j):
     lim = dict(STRATEGY.get(j.get('strategy', 'constructed'), {}))
-    lim.update({k: j[k] for k in ('max_gap', 'max_pen', 'max_proud', 'min_cover') if j.get(k) is not None})
+    lim.update({k: j[k] for k in ('max_gap', 'max_pen', 'max_proud', 'min_cover', 'max_zfight') if j.get(k) is not None})
     out = {'id': j['id'], 'a': j['a'], 'b': j['b'], 'strategy': j.get('strategy', 'constructed'), 'limits': lim, 'members': []}
     an, bn = sc.names(j['a']), sc.names(j['b'])
     if not an or not bn:
@@ -312,6 +345,9 @@ def judge_junction(sc, j):
             why.append('pen %.3f > %.3f' % (m['pen'], lim['max_pen']))
         if m.get('proud') is not None and m['proud'] > lim['max_proud']:
             why.append('proud %.3f > %.3f' % (m['proud'], lim['max_proud']))
+        m['zfight'] = max(r['zfight'] for r in rows)
+        if m['zfight'] > lim.get('max_zfight', ZFIGHT_AREA):
+            why.append('coincident faces %.4f m2' % m['zfight'])
         if 'min_cover' in lim:
             m['cover'] = cover(sc, a, [r['b'] for r in rows], reach, max(lim['max_gap'], lq.CONTACT))
             if m['cover'] is None or m['cover'] < lim['min_cover']:
@@ -425,8 +461,9 @@ def judge_undeclared(sc, junctions, cfg):
             if not t:
                 continue
             d = max(depth(A, B, False)[0], depth(B, A, False)[0])
-            if d > lim:
-                found.append({'a': a, 'b': b, 'pen': round(d, 4)})
+            zf = zfight(A, B)
+            if d > lim or zf > ZFIGHT_AREA:
+                found.append({'a': a, 'b': b, 'pen': round(d, 4), 'zfight': round(zf, 5)})
     found.sort(key=lambda x: (-x['pen'], x['a'], x['b']))
     return {'max_pen': lim, 'status': 'FAIL' if found else 'PASS', 'clashes': found}
 

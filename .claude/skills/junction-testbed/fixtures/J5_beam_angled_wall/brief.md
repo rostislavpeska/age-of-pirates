@@ -8,4 +8,5 @@
   face to x = 4.325 (0.2 m past the post). It rests on the post.
 
 The beam's west end is cut to lie flat against the angled wall face: the whole end face touches the wall (gap at most
-5 mm), at most 1 cm into the wall. The post top is fully covered by the beam and touches it.
+5 mm), at most 1 cm into the wall. The beam sits centred on the post: the post top touches the beam across the beam's
+full width (the post is wider than the beam, so its two edge strips stay uncovered).

@@ -24,7 +24,16 @@
     "fixtures/J7_railing/brief.md",
     "fixtures/J7_railing/key.json",
     "fixtures/J8_cornice/brief.md",
-    "fixtures/J8_cornice/key.json"
+    "fixtures/J8_cornice/key.json",
+    "fixtures/BUILDER_RULES_PLAIN.md",
+    "fixtures/J1_t_valley/brief_plain.md",
+    "fixtures/J2_crossed_hips/brief_plain.md",
+    "fixtures/J3_roof_tower/brief_plain.md",
+    "fixtures/J4_curved_gable/brief_plain.md",
+    "fixtures/J5_beam_angled_wall/brief_plain.md",
+    "fixtures/J6_veranda_posts/brief_plain.md",
+    "fixtures/J7_railing/brief_plain.md",
+    "fixtures/J8_cornice/brief_plain.md"
   ],
   "skills": [
     "blender-overlap-cleanup"

@@ -8,6 +8,6 @@
 - `Gable.E` and `Gable.W`: closed boards 5 cm thick, centred on x = 3.0 and x = -3.0 (x 2.975 to 3.025 and -3.025 to
   -2.975). Each fills the gable end: from the wall top (z = 3.2) up to the roof, for y -2 to 2.
 
-The top edge of each board follows the curved roof: it touches the roof's underside along most of its length (gap at
-most 1 cm) and never passes through the roof (at most 5 mm). Board outlines must be simple shapes (never crossing
+The top edge of each board follows the curved roof just under it: 1 to 5 mm below the roof along most of its length
+(never exactly on the roof surface, never more than 1 cm below), and it never passes through the roof (at most 5 mm). Board outlines must be simple shapes (never crossing
 themselves) and the boards closed with faces pointing outward.

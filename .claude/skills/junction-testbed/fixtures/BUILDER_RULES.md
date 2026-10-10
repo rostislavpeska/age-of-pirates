@@ -13,6 +13,8 @@ You write ONE Python script for Blender 5.1 (`bpy`) that builds the scene in the
   its faces pointing up or outward: the game draws only the front side of a face.
 - Every junction in the brief is measured to the millimetre: gaps, parts running into or through each other, parts
   standing out beyond what they join, and how much of a seated face really touches.
+- Faces of two parts must never lie exactly on each other facing the same way: the game draws both at one depth and
+  they flicker. Where a part rests under another part's visible surface, keep it 1 to 5 mm below that surface.
 - Do not open, read or run the `junction-testbed` skill, its fixtures' `key.json` or any checker. Build the junctions
   right by construction.
 

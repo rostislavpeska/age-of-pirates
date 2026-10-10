@@ -53,8 +53,11 @@ them outside every repository.
 `fixtures/` holds eight small scenes, one per junction class that failed on real buildings: J1 T-plan gable valleys,
 J2 crossed hip roofs, J3 hall roof ending against a tower, J4 gable boards under a curved roof, J5 beam into an angled
 wall, J6 posts under a sloping veranda roof, J7 railing with a corner post, J8 cornice around a tower. Each has a
-`brief.md` (exact sizes, part names, the junction rules in words and millimetres) and a `key.json`. A builder gets
-`fixtures/BUILDER_RULES.md` plus one brief and returns one bpy script; in a baseline run it never runs the checker.
+`key.json` and two briefs with the same sizes and part names: `brief.md` states the junction rules in words and
+millimetres (with `BUILDER_RULES.md`), `brief_plain.md` asks for the scene the way an owner normally would, with no
+junction rules (with `BUILDER_RULES_PLAIN.md`). The pair measures how much stating the junctions helps. A builder
+gets one rules file plus briefs of one set and returns one bpy script per brief; in a baseline run it never runs the
+checker.
 
 ```text
 python scripts/run_bench.py --submissions DIR --out OUT [--builders NAME ...] [--only J1 ...] [--shots] [--expect PASS|FAIL]

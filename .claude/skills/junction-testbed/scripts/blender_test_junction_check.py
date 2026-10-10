@@ -173,10 +173,11 @@ try:
     r = run(c, [{'id': 'valley', 'a': 'Roof.Wing', 'b': 'Roof.Main', 'strategy': 'constructed'}])
     check('wing sheet overshooting the valley fails', J(r)['status'] == 'FAIL' and .03 < J(r)['worst_pen'] < .2, r)
 
-    # 8d. a rafter resting under a roof sheet is a contact, not a clash (declared seat, and in the undeclared scan)
+    # 8d. a rafter resting under a roof sheet (top 2 mm below it: an exactly coincident top would flicker, see 8f) is a
+    # contact, not a clash (declared seat, and in the undeclared scan)
     c = coll('rafter under sheet')
     sheet(c, 'Roof.Field', [(0, 0, 2), (4, 0, 2), (4, 3, 2), (0, 3, 2)])
-    box(c, 'Rafter', (1, -.3, 1.85), (1.1, 3.3, 2))
+    box(c, 'Rafter', (1, -.3, 1.848), (1.1, 3.3, 1.998))
     r = run(c, [{'id': 'rafter', 'a': 'Rafter', 'b': 'Roof.Field', 'strategy': 'seated', 'max_pen': .02}], undeclared={'scan': True})
     check('rafter resting under a roof sheet passes', r['status'] == 'PASS', r)
     r = run(c, [], undeclared={'scan': True})
@@ -194,6 +195,34 @@ try:
     sheet(c, 'Roof.Hall', [(1.6, -1.9, 3.27), (8.4, -1.9, 3.27), (8.4, 0, 4.37), (1.6, 0, 4.37)])
     r = run(c, [seat])
     check('roof sheet running into the tower fails', J(r)['status'] == 'FAIL' and abs(J(r)['worst_pen'] - .4) < .01, r)
+
+    # 8f. coincident faces: a board whose top lies exactly on the roof sheet flickers (fails); 2 mm lower it passes;
+    # a panel laid on a wall face, not declared, fails the undeclared scan
+    seat = {'id': 'board-roof', 'a': 'Board', 'b': 'Roof.Field', 'strategy': 'seated', 'max_pen': .005, 'max_gap': .01, 'min_cover': .8}
+    c = coll('board on roof')
+    sheet(c, 'Roof.Field', [(0, 0, 2), (4, 0, 2), (4, 3, 2), (0, 3, 2)])
+    box(c, 'Board', (1, .5, 1.5), (1.05, 2.5, 2))
+    r = run(c, [seat])
+    check('board top lying on the roof fails on coincident faces', J(r)['status'] == 'FAIL' and 'coincident' in J(r)['members'][0]['reason'], r)
+    c = coll('board under roof')
+    sheet(c, 'Roof.Field', [(0, 0, 2), (4, 0, 2), (4, 3, 2), (0, 3, 2)])
+    box(c, 'Board', (1, .5, 1.5), (1.05, 2.5, 1.998))
+    r = run(c, [seat])
+    check('board top 2 mm under the roof passes', r['status'] == 'PASS', r)
+    c = coll('panel on wall')
+    box(c, 'Wall', (0, 0, 0), (.3, 4, 3))
+    sheet(c, 'Panel', [(.3, 1, 1), (.3, 2, 1), (.3, 2, 2), (.3, 1, 2)])
+    r = run(c, [], undeclared={'scan': True})
+    check('undeclared coincident panel fails the scan', r['undeclared']['status'] == 'FAIL', r)
+
+    # 8g. cover is sampled finely: a 0.20 m beam on a 0.25 m post covers 80 % of the post top (a 4 x 4 grid read 100 %)
+    c = coll('beam on post')
+    box(c, 'Post', (3.875, -.125, 0), (4.125, .125, 2.8)); box(c, 'Beam', (0, -.1, 2.8), (4.325, .1, 3.05))
+    pb = {'id': 'post-beam', 'a': 'Post', 'b': 'Beam', 'strategy': 'seated', 'max_pen': .005}
+    r = run(c, [dict(pb, min_cover=.9)])
+    check('beam narrower than its post fails full cover', J(r)['status'] == 'FAIL' and .7 < J(r)['worst_cover'] < .9, r)
+    r = run(c, [dict(pb, min_cover=.75)])
+    check('... and passes the 75 % cover it really has', r['status'] == 'PASS', r)
 
     # 9. orientation: an inside-out board fails, a correct one passes
     c = coll('orient')
