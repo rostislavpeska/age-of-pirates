@@ -76,6 +76,11 @@ test; record the asset's export frame next to its recipe.
   z = 0 for land buildings, docks need their own contract). New members use the shared parts atlas only.
 - Flags: no `bone_flag_civ` / `bone_garrisonflag` in the construction skeleton (**aoe3de-model-attachments**
   `attachment_check.py` enforces it); removing a mast mesh alone does not remove a flag.
+- **A p66 filtered from the intact payload** (no new members) is valid when the kept parts read as a structure. The
+  Korean Market kept masonry, posts, girders, sills, lintels, floor bands, rafters and gallery decks, and dropped roofs,
+  walls, attics, gables, brackets, opening frames, lattice, rails, bins, goods, thatch, signs, the mast and props. In the
+  float check, every part touching the ground plane is a root, not only named plinths: the stall posts stand directly on
+  the ground. Market: 190 parts, all grounded.
 - `BONE_HITPOINTBAR` at the finished model's position on every stage. A donor skeleton brings the donor's:
   the Korean TC stage had the Barracks bar at 9.05 m instead of the TC's (2.3284, 11.6993, -0.3933) until r73.
 - Count textures and material groups in the serialized model, not Blender slots.

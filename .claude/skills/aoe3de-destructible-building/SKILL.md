@@ -110,6 +110,25 @@ not proof that all vanilla render components must be watertight.
    Record exact feedback against hashes. Missing stage feedback stays unknown.
    If a test fails, diagnose that failure before another whole-building rebuild.
 
+### Porting the fracture to another building or donor
+
+The Korean Market (2026-10-11) reused the Korean Dock r2 fracture on the Japanese market age 2 donor. Port by asserted
+replacements, never by editing the source building's recipe:
+- **Map onto the classes the new donor has.** Census its HKT bodies first: class, type and render share. The market
+  donor has `roof_stone`, `wall_stone`, `unique_*` and a `flagpole_wood` body, but no `pole_wood` or `object_cloth`. A
+  rule naming a class with no seed silently falls through.
+- **Clay tile roofs go to the donor's stone roof bodies.** Re-seed every roof body (stone and wood) over the new roofs by
+  area-weighted k-means.
+- **Keep the cap page id clear of the building's own pages.** The Dock put caps on page 5, which is the Market's own
+  alpha page, so the Market caps use 9.
+- **Take the cap materialdef from the donor's own damaged material.** Japanese market `matz`:
+  `destructible_doublesided_cutout`; Japanese dock: `destructible`.
+- **A land building's ruin** (`base`) is its foundations, post plinths and stone stairs. The water line and pile logic
+  go.
+
+Market result: 1,148 fragments on 142 of 273 bodies, 902 caps (none below 128 t/u), no support violations, and 3
+on-death bodies over the compactness target. gr2_lint passes everything except the texture class.
+
 For the accepted detailed example, read
 [Korean v20 evidence and limits](references/korean-v20-evidence.md). The existing
 project scripts are checkpoint-specific reproduction evidence, not a portable
