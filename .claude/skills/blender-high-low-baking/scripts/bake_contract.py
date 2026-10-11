@@ -101,7 +101,8 @@ def keep_faces(ob, indices, normal_tolerance=1e-4, quantization=2e-4):
     loop coordinates. The passed object is mutated, never its authoring source.
     Drift at or below `quantization` (Blender's custom-normal storage step) is accepted without restoration: the
     restored normals cannot be stored more precisely than that (civic Monastery hip shells: 1.06e-4 before and after
-    restoration, INC-233). Larger drift is restored and must then meet `normal_tolerance`.
+    restoration, INC-233). Larger drift is restored and must then meet the same storage step (a restored frame goes
+    through the same encoding: Market roof receiver 1.04e-4 after restoration).
     """
     import bpy
     import bmesh
@@ -141,14 +142,16 @@ def keep_faces(ob, indices, normal_tolerance=1e-4, quantization=2e-4):
     for n in names: me.attributes.remove(me.attributes[n])
     me.update(); me.calc_loop_triangles()
     after = max((v.vector - n).length for v, n in zip(me.corner_normals, wanted))
-    limit = normal_tolerance if restored else max(normal_tolerance, quantization)
+    # A restored frame is stored through the same custom-normal encoding, so it too can only be as exact as the storage
+    # step (Market roof receiver 2026-10-11: drift > 2e-4 restored to 1.04e-4, 0.006 degrees, refused at 1e-4).
+    limit = max(normal_tolerance, quantization)
     if after > limit:
         raise ValueError(f'Receiver corner normals changed by vector length {after:g} (limit {limit:g}).')
     got = {cyclic(loop_ids[l] for l in t.loops) for t in me.loop_triangles}
     if got != triangles:
         raise ValueError('Receiver extraction changed destination triangulation/winding.')
     return dict(face_ids=face_ids, loops=len(loop_ids), normal_error_before=before,
-                normal_error_after=after, normal_tolerance=normal_tolerance, restored=restored, quantization_step=quantization,
+                normal_error_after=after, normal_tolerance=normal_tolerance, restored=restored, quantization_step=quantization, limit=limit,
                 accepted_below_quantization=(not restored and before > normal_tolerance), triangles_equal=True)
 
 
