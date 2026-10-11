@@ -59,4 +59,5 @@ distro from `GXO_WSL_DISTRO`, else an exact `Ubuntu`, else the first `Ubuntu*` (
 Blender from `BLENDER`, else `tools.blender.path` in the gitignored `config/tool-paths.local.json`.
 
 Related: `gr2-granny-edit` (the edits), `unit-bones` (adding bones), `aoe3de-model-test-unit` (bench units for the
-game test). Third-party origin and licence: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+game test), `aoe3de-unit-model` (AoE3 unit model facts), `blender-organic-modeling` (generic character modeling
+and weights). Third-party origin and licence: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

@@ -43,5 +43,6 @@ owner had to ask for it; journal 2026-10-11-claude-13).
    the production proto never changes for a bench.
 
 Related: **rm-unit-bench** (one unit on a minimal map with the crash oracle), **aoe3de-building-states** (state routing),
-**aoe3de-model-attachments**, **havok-destruction**, **aoe-xml** (XMB twins). Worked example: the Koreans add-on
+**aoe3de-model-attachments**, **havok-destruction**, **aoe-xml** (XMB twins), **aoe3de-unit-model** (unit model
+facts and the checks before a bench). Worked example: the Koreans add-on
 benches `zzTESTKoreanTownCenter`, `...Barracks`, `...Stable`, `zzTESTKoreanHouseA/B/C` (2026-10-09).

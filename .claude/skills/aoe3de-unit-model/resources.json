@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/export-routes.md",
+    "references/lod-lowpoly.md",
+    "references/materials-textures.md",
+    "references/rider-skeleton.md",
+    "references/vanilla-unit-measurements.md",
+    "scripts/unit_gr2.py",
+    "scripts/measure_units.py",
+    "scripts/vertex_fill.py",
+    "scripts/joint_metrics.py",
+    "scripts/shape_metrics.py",
+    "scripts/clip_decode.py",
+    "scripts/clip_angles.py",
+    "scripts/track_coverage.py",
+    "scripts/texture_pages.py",
+    "scripts/tangent_compare.py",
+    "scripts/donor_to_blend.py",
+    "tests/test_unit_model_scripts.py",
+    "references/organic-uv-reference.md",
+    "profiles/organic_uv_unit_body_1024.json",
+    "tests/test_organic_uv_profile.py"
+  ],
+  "skills": [
+    "blender-organic-modeling",
+    "aoe3de-unit-animation",
+    "skinned-model-check",
+    "gr2-granny-edit",
+    "aoe3de-model-attachments",
+    "aoe3de-model-test-unit",
+    "aoe3de-bar-archives",
+    "blender-organic-uv"
+  ],
+  "external": [
+    {
+      "id": "project-gr2-reader",
+      "kind": "capability",
+      "requiredFor": [
+        "measure",
+        "verify",
+        "round-trip"
+      ],
+      "optional": false,
+      "note": "The consuming project's GR2 and texture tools, found by walking up from the scripts or from AOE3_UNIT_CONSUMER_ROOT: <consumer-root>/scripts/havok/gr2_read.py and gr2_dump.py (reader), gr2_lint.py (.material and archive texture sizes), gr2_fixups.py, gr2_reskeleton.py and rig_table.py (the Blender GXO writer), and <consumer-root>/scripts/tools/ddt_read.py (DXT1 decode).",
+      "modules": [
+        "gr2_read",
+        "gr2_dump",
+        "gr2_lint",
+        "ddt_read"
+      ]
+    },
+    {
+      "id": "gr2-converter-wine",
+      "kind": "capability",
+      "requiredFor": [
+        "verify"
+      ],
+      "optional": true,
+      "note": "The owner's GR2 converter under Wine in WSL (gxo-convert) for model GXOs of vanilla files (the horse) used by pose_sim.py (clips are decoded by clip_decode.py: a converter clip dump is a pose at key 0 only), for FBX inputs to skinned-model-check, and for the G0 route-B specimen. Never launched on the Windows host."
+    },
+    {
+      "id": "game-archives",
+      "kind": "directory",
+      "requiredFor": [
+        "measure"
+      ],
+      "optional": false,
+      "note": "Readable retail AoE3 DE .bar archives, read in memory and extracted into a temp folder; never into a repository. Auto-detection may need an explicit AOE3DE_GAME.",
+      "environment": "AOE3DE_GAME"
+    },
+    {
+      "id": "blender",
+      "kind": "executable",
+      "commands": [
+        "blender"
+      ],
+      "requiredFor": [
+        "round-trip",
+        "tangents"
+      ],
+      "optional": true,
+      "note": "Background Blender (blender -b, tested 5.1) runs donor_to_blend.py and rig_table.py, and the generic blender-organic-modeling/scripts/tangent_compare.py that scripts/tangent_compare.py calls; found through BLENDER, the consumer's config/tool-paths.local.json or PATH.",
+      "environment": "BLENDER",
+      "modules": [
+        "bpy",
+        "mathutils"
+      ]
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "measure",
+        "round-trip"
+      ],
+      "optional": false,
+      "note": "Array maths in every script (Blender bundles its own).",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ]
+    },
+    {
+      "id": "scipy",
+      "kind": "python-package",
+      "requiredFor": [
+        "measure"
+      ],
+      "optional": true,
+      "note": "shape_metrics.py uses a KD-tree for the symmetry search when SciPy is present and falls back to numpy.",
+      "distribution": "scipy",
+      "modules": [
+        "scipy"
+      ]
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "note": "Runs tests/test_unit_model_scripts.py.",
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
+      ]
+    }
+  ]
+}
