@@ -89,6 +89,23 @@ out through the open stall front. The Korean stable follows that (mangers behind
 cloth height (1.5 m x the bone's scale) plus a margin under the pole tip and check nothing rises above the bone within
 the cloth's 3 m x scale sweep. A bone just under the tip floats the flag above the pole.
 
+**Flag heights, both flags (vanilla norms, measured 2026-10-11).** Owner (Korean Market game test): "market flag sits too
+high on the flag pile", then "check the optimal flag distances ... same with garrisonflag ... Some objects like Town
+Center have two flags". `scripts/flag_heights.py survey` read 1,829 vanilla intact building models (464 flag bones; 108
+models carry both). Drop = the pole tip minus the bone (pole vertices within 0.25 m of the bone's vertical axis):
+
+| Flag bone | n | median drop | p10–p90 |
+| --- | --- | --- | --- |
+| `bone_flag_civ` | 313 | **1.38 m** | 0.99–1.63 m |
+| `bone_garrisonflag` | 141 | **2.40 m** | 0.91–2.93 m |
+
+The garrison bone sits further down. On two-flag buildings it hangs below the civ flag on the same pole, so its drop
+includes the civ flag's height. Put each bone at the tip minus that flag's median drop, at bone scale 1.
+
+`flag_heights.py check MODEL.gr2 --norms references/flag_norms_2026-10-11.json` fails a bone outside its p10–p90. Run it on the intact and the
+damaged model (the simskeleton). The Korean Market r1 failed at 0.20 m (the cloth floated above the pole); r2 passes at
+1.378 m.
+
 ## 4. The Blender / GR2 side
 
 - **Frames.** Blender world (x right, y forward, z up) -> engine raw = (-X, Z, -Y). Some assets are exported

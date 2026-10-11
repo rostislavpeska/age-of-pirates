@@ -6,7 +6,10 @@
     "scripts/add_bones.py",
     "tests/test_attachments.py",
     "scripts/attach_plot.py",
-    "references/vanilla-evidence-2026-10-08.md"
+    "references/vanilla-evidence-2026-10-08.md",
+    "scripts/flag_heights.py",
+    "references/flag_norms_2026-10-11.json",
+    "scripts/move_bones.py"
   ],
   "skills": [
     "unit-bones",
