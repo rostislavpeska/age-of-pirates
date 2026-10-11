@@ -45,6 +45,12 @@ useful content. Shared dependency occupancy is not newly allocated owned cost.
    charts. Try concave nesting before cuts; a connected strip may be straightened
    only with measured two-axis stretch and surface continuity. Never collapse a
    curved chart to a line or chop it into triangles to inflate a packing score.
+   Cutting a long linear-member strip at face boundaries so it packs is allowed;
+   never cut positional charts (plaster, stone: one chart per planar region), and
+   rerun the plaster/stone `uv_logic_audit.py` after every pack (Market r4m: a
+   20 m2 foundation chart was split and failed fragmentation).
+   Several owned pages pack at ONE common scale (normalize island densities first);
+   a per-page best scale silently gives the small page a higher density.
 3. Compare the retained layout, a rectangular packing baseline and an outline-aware
    candidate at the SAME scale, margin and page constraints. Large subtype shelves
    are not mandatory; subtype identity can travel with chart masks/IDs. If grouping

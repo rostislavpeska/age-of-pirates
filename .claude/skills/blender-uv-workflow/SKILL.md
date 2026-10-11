@@ -32,7 +32,14 @@ It fails closed on:
 - a member face that does not reproduce its owner's polygon exactly, or sits on another page;
 - shared-atlas faces outside their real regions;
 - out-of-bounds, collapsed or non-finite UVs;
-- with a before-snapshot, any non-target face that moved.
+- with a before-snapshot, any non-target face that moved;
+- **C coherence** (`surface_patch_deg`, owner 2026-10-11): one continuous surface = one texture unit. The unit is the
+  SMOOTH PATCH computed from the mesh (faces of one part and material joined across edges bending less than 25 degrees:
+  a roof slope between its hips, a wall panel, a post side). Each patch stays ONE UV island on ONE page and is shared
+  whole or not at all. Face-by-face symmetric stacking had cut every Market roof slope into an owner half, a member
+  half and unique patches while every other check passed;
+- **O folds** (`page_px`): no pixel of an owned page under two owner faces, inside one island too (a ring patch
+  unwrapped without its one cut folded onto itself).
 
 A flip check that ran before sharing proves nothing about the shared layout: one checkpoint shipped 2,010 mirrored
 member faces that way. A correspondence is accepted only if it preserves orientation (mapped face normals agree).
@@ -44,6 +51,8 @@ never fires proves nothing.
    contracts, surface checks and budget. Use the geometry skill's accepted result.
 2. **Clean charts:** use [blender-clean-uv](../blender-clean-uv/SKILL.md). Stitch
    adjacent surfaces into coherent charts; preserve editable UVs and per-run IDs.
+   Every smooth patch is one island (gate C); a ring or tube patch gets exactly one
+   cut (shortest path between its boundary loops) so it neither splits nor folds (O).
    Show checker, chart colors, readable UV sheets and close-ups on every model.
    Internal unpacked worksheets may extend outside 0–1; operator views must show
    the matching actual page and obey the consumer's page policy. Runtime capacity
@@ -58,6 +67,9 @@ never fires proves nothing.
    on a copy. Choose approximation per region, preserve approved chart boundaries,
    grain/role/normal/alpha/player-color compatibility. Conjoin all compatible
    same-material, same-shape, same-role charts under the declared regional policy;
+   the unit is the WHOLE smooth patch: patch X reads patch Y only when every face of X
+   maps one-to-one onto Y by one rigid map; never stack part of a patch, never cut a
+   self-symmetric patch (a dome, a centred panel) into stacked pieces;
    AO differences do not veto this first, provisional phase. Show family colors
    and owner versus member checks before AO. Aggressive coverage does not mean
    blanket geometric distortion or a blanket T3 preset.
@@ -81,10 +93,23 @@ never fires proves nothing.
    owner maps, common conflict masks, processed AO and the effect/application ledger.
    Keep the unique reference separate; the delivered white copies use production
    mapping. After a layout change reproject or rebake and repeat this verification.
-6. **Pack/freeze:** use [UV space efficiency](../blender-uv-space/SKILL.md) to account
-   for actual content, padding and unallocated pixels, and compare bounded packing
-   candidates without breaking semantic owners. Carry this companion with the
-   portable workflow. [aoe-uv-atlas-export](../aoe-uv-atlas-export/SKILL.md) packs a
+6. **Pack/freeze:** map-space compression is MANDATORY (owner, 2026-10-11); a layout
+   that skipped it cannot freeze. With [UV space efficiency](../blender-uv-space/SKILL.md),
+   on EVERY owned page: (a) `pixel_audit.py` accounting of content, padding and
+   unallocated pixels of the retained pack; (b) a bounded outline-aware `pack_masks.py`
+   candidate at the same gutter (quarter turns, finite scale list) beside it; (c) cut
+   long thin strips at face boundaries when they cap the page scale; (d) keep the best
+   VALIDATED candidate (members re-copied; integrity, overlap, bounds, gutter rerun) and
+   report before/after numbers. A Blender `pack_islands` or rectangle pass alone is not
+   this step. Compression never cuts a smooth patch (strip segmentation broke 180 Market
+   patches) and a page move takes whole parts (a roof field split over two pages). Owned pages keep ONE texel density: space left on the small page goes to
+   the next subtypes in the [atlas-export](../aoe-uv-atlas-export/SKILL.md) priority
+   list, never to upscaling the charts already there. **Alpha on the small page**
+   (owner, 2026-10-11): with a large + small pair (2048 + 1024) the SMALL page carries
+   the alpha/cutout surfaces (DXT5) and the large page stays opaque (DXT1). The only
+   exception is a declared shared base + building split (the Dock); decide it at the
+   page budget, before AO bakes. The `space` freeze check records all of this
+   (`references/checkpoints.md`). Carry this companion with the portable workflow. [aoe-uv-atlas-export](../aoe-uv-atlas-export/SKILL.md) packs a
    supported profile. Now enforce final density, page budget, mip-safe padding and
    accidental-overlap checks. Also require `shared_mapping`: every shared face has
    a compatible cell, in-cell UVs, verified source image bindings and a disposition
@@ -103,6 +128,13 @@ Read [sharing, capacity and density decisions](references/sharing-and-capacity.m
 before these phases. It separates the universal floor from working targets,
 requires an explicit owner GO for below-floor candidates, and accounts for AO
 growth before final packing. A pre-AO fit is provisional.
+
+**Coherence review (agentic, required at share and freeze):** after the gate's C/O PASS, render the
+`coherence` view (every smooth patch coloured by state: one island and whole = its family colour or grey,
+broken / partly stacked / folded = red) beside the families view, look at every roof slope, wall and timber
+close up, and stop on any patchwork the gate did not name: a surface that should be one unit by its real-world
+function (a tile field, a plastered wall) but is split by the patch angle. Record what was inspected in the
+checkpoint. The gate is deterministic; the look catches what the 25-degree rule cannot know.
 
 Every checkpoint has fixed views, actual editable data, source identity, machine
 reports and scoped owner acceptance. A background result is FILE_VERIFIED, not

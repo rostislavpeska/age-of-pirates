@@ -13,9 +13,9 @@ and versions. A CHECKPOINT is evidence for a substep, not another asset database
 | geometry | 1 | coverage, geometry, attachments, mesh_budget | model, ground, attachments |
 | clean | 2a | coverage, charts, continuity, stretch | model, checker, uv_sheet |
 | materials | 2b | coverage, material_classes, protected_scope | model, materials, legend |
-| share | 3a | coverage, families, correspondence, channels, protected_scope | model, families, uv_sheet |
-| ao | 3b | coverage, ao_correspondence, ao_recipe, continuity | model, ao_white, ao_heatmap, families |
-| freeze | 3c | coverage, overlap, density, page_budget, padding, source_detail, shared_mapping | model, checker, uv_sheet, ao_white |
+| share | 3a | coverage, families, correspondence, channels, protected_scope, coherence | model, families, uv_sheet, coherence |
+| ao | 3b | coverage, ao_correspondence, ao_recipe, continuity, coherence | model, ao_white, ao_heatmap, families |
+| freeze | 3c | coverage, overlap, density, page_budget, padding, source_detail, shared_mapping, space, coherence | model, checker, uv_sheet, ao_white, coherence |
 | base | 4 | coverage, bindings, bake_contract, texture_qa | model, basecolor, normal, ao |
 | details | 5 | bindings, texture_qa, protected_scope | model, details, player_color |
 | game | 6 | source_binding, export_roundtrip, runtime_lint, installed_hashes, game_test | intact, destruction |
@@ -28,6 +28,21 @@ Extract UVs, physical classes and shader/image bindings from the saved mesh; pas
 them to `scripts/shared_mapping.py`. A named matC slot or pointer in custom
 properties is not an image binding. Visible shared surfaces are allowed when their
 quality is reviewed; downward normals alone do not establish concealment.
+
+The `coherence` report (share, AO and freeze; owner 2026-10-11) is the integrity gate's check C over smooth
+patches plus O folds: `unit` = `smooth_patch`, integer `units` (> 0), `broken_into_islands`, `partial_stacks`,
+`split_over_pages` and `fold_pixels`, every defect count zero. The `coherence` view colours each patch by state
+beside the families view; the agent inspects roofs, walls and timber close up and records what it looked at.
+
+The `space` report at freeze is the mandatory map-space compression (owner,
+2026-10-11). `pages` maps each owned page to its `pixel_audit.py` integer counts
+`total_pixels`, `content_pixels`, `padding_pixels` and `unallocated_pixels`, which
+must sum to the page. `candidates_compared` (at least 2: the retained pack and an
+outline-aware candidate) and `selected` name the comparison. `page_density_ratio`
+is the max/min page median texel density (tolerance `page_density_tolerance`,
+default 1.1). `alpha_faces_on_large_page` counts alpha/cutout faces outside the
+small page; nonzero needs `alpha_exception` naming the declared shared base +
+building split. The validator rejects a PASS label without these.
 
 Order is linear above. A new checkpoint consumes a predecessor receipt. Same-stage
 iterations may consume the previous receipt of that stage. Geometry is the only

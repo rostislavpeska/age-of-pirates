@@ -57,7 +57,11 @@ freeze (`uv_fingerprint.py record`), never before.
   working texel) by bisection; never downscale one page to make the split work.
 - Material-based assignment: the small page takes, in priority order, alpha-bearing
   eave cutouts (must fit - alpha page), ridges, then solid roof tiles "as much as
-  possible"; everything else goes to the large page.
+  possible"; everything else goes to the large page. The large page stays opaque:
+  alpha on the large page with an opaque small page is wrong (owner, 2026-10-11),
+  except a declared shared base + building split such as the Dock. Free small-page
+  space takes the next subtype in this list, not a larger scale for the charts
+  already there; the workflow's `space` freeze check measures both.
 - Gutter in RUNTIME texels (4: DXT 4x4 blocks plus mips), converted to working texels
   per trial scale.
 - Keep original chart sizes until this step; only this step scales (uniformly).

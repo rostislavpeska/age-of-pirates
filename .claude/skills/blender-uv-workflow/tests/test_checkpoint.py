@@ -40,7 +40,7 @@ class CheckpointTests(unittest.TestCase):
         binding = {k: spec[k] for k in ('asset', 'revision', 'stage')}
         binding['inputs'] = {k: v['sha256'] for k, v in spec['inputs'].items()}
         for name in C.STAGES[stage][0].split():
-            metrics = dict(shared_face_count=0,unmapped=0,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0) if name=='shared_mapping' else {'measured':1}
+            metrics = dict(shared_face_count=0,unmapped=0,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0) if name=='shared_mapping' else (dict(pages={'P':dict(total_pixels=16,content_pixels=8,padding_pixels=4,unallocated_pixels=4)},candidates_compared=2,selected='outline',page_density_ratio=1.0,alpha_faces_on_large_page=0) if name=='space' else (dict(unit='smooth_patch',units=4,broken_into_islands=0,partial_stacks=0,split_over_pages=0,fold_pixels=0) if name=='coherence' else {'measured':1}))
             spec['checks'].append(self.ref(d, name + '.json', dict(binding, check=name,
                 status='PASS', validator={'name': 'fixture-measurement', 'version': '1'}, metrics=metrics)))
         for kind in C.STAGES[stage][1].split():
@@ -92,6 +92,38 @@ class CheckpointTests(unittest.TestCase):
         index=C.STAGES['freeze'][0].split().index('shared_mapping')
         self.change_report(spec,index,status='PASS',metrics=dict(shared_face_count=100,unmapped=1,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0))
         self.assertEqual(C.validate(spec,d)['status'],'INCOMPLETE')
+
+    def test_freeze_requires_compression_uniform_density_and_alpha_on_small_page(self):
+        parent = None
+        for stage in ('geometry','clean','materials','share','ao'):
+            parent = self.receipt(stage,parent)
+        d,spec=self.candidate('freeze',parent)
+        self.assertEqual(C.validate(spec,d)['status'],'PASS')
+        index=C.STAGES['freeze'][0].split().index('space')
+        good=C.read(Path(spec['checks'][index]['path']))['metrics']
+        for bad in (dict(good,candidates_compared=1), dict(good,page_density_ratio=1.64),
+                    dict(good,alpha_faces_on_large_page=12), {'measured':1},
+                    dict(good,pages={'P':dict(total_pixels=16,content_pixels=8,padding_pixels=4,unallocated_pixels=3)})):
+            self.change_report(spec,index,status='PASS',metrics=bad)
+            self.assertEqual(C.validate(spec,d)['status'],'INCOMPLETE',bad)
+        self.change_report(spec,index,status='PASS',metrics=dict(good,alpha_faces_on_large_page=12,alpha_exception='Dock: shared base page + building page'))
+        self.assertEqual(C.validate(spec,d)['status'],'PASS')
+
+    def test_share_and_freeze_require_coherent_surfaces(self):
+        parent = None
+        for stage in ('geometry', 'clean', 'materials'):
+            parent = self.receipt(stage, parent)
+        d, spec = self.candidate('share', parent)
+        self.assertEqual(C.validate(spec, d)['status'], 'PASS')
+        index = C.STAGES['share'][0].split().index('coherence')
+        good = C.read(Path(spec['checks'][index]['path']))['metrics']
+        for bad in (dict(good, partial_stacks=3), dict(good, broken_into_islands=1), dict(good, fold_pixels=131),
+                    dict(good, split_over_pages=2), dict(good, unit='chart'), {'measured': 1}):
+            self.change_report(spec, index, status='PASS', metrics=bad)
+            self.assertEqual(C.validate(spec, d)['status'], 'INCOMPLETE', bad)
+        spec['views'] = [v for v in spec['views'] if v['kind'] != 'coherence']
+        self.change_report(spec, index, status='PASS', metrics=good)
+        self.assertEqual(C.validate(spec, d)['status'], 'INCOMPLETE')
 
     def test_empty_metrics_never_passes(self):
         d, spec = self.clean(); self.change_report(spec, 0, metrics={})

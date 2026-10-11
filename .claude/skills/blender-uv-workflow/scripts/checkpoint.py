@@ -15,13 +15,51 @@ STAGES = {
     'geometry': ('coverage geometry attachments mesh_budget', 'model ground attachments'),
     'clean': ('coverage charts continuity stretch', 'model checker uv_sheet'),
     'materials': ('coverage material_classes protected_scope', 'model materials legend'),
-    'share': ('coverage families correspondence channels protected_scope', 'model families uv_sheet'),
-    'ao': ('coverage ao_correspondence ao_recipe continuity', 'model ao_white ao_heatmap families'),
-    'freeze': ('coverage overlap density page_budget padding source_detail shared_mapping', 'model checker uv_sheet ao_white'),
+    'share': ('coverage families correspondence channels protected_scope coherence', 'model families uv_sheet coherence'),
+    'ao': ('coverage ao_correspondence ao_recipe continuity coherence', 'model ao_white ao_heatmap families'),
+    'freeze': ('coverage overlap density page_budget padding source_detail shared_mapping space coherence', 'model checker uv_sheet ao_white coherence'),
     'base': ('coverage bindings bake_contract texture_qa', 'model basecolor normal ao'),
     'details': ('bindings texture_qa protected_scope', 'model details player_color'),
     'game': ('source_binding export_roundtrip runtime_lint installed_hashes game_test', 'intact destruction'),
 }
+
+
+def coherence_errors(metrics):
+    """One continuous surface = one texture unit (owner, 2026-10-11): uv_integrity check C over smooth patches plus O folds"""
+    keys = ('units', 'broken_into_islands', 'partial_stacks', 'split_over_pages', 'fold_pixels')
+    if metrics.get('unit') != 'smooth_patch' or any(type(metrics.get(k)) is not int or metrics[k] < 0 for k in keys):
+        return ['missing smooth-patch coherence census (unit, units, broken_into_islands, partial_stacks, split_over_pages, fold_pixels)']
+    out = [] if metrics['units'] > 0 else ['no surface units counted']
+    return out + [k + ' is nonzero' for k in keys[1:] if metrics[k]]
+
+
+def space_errors(metrics):
+    """Mandatory map-space compression at freeze (owner, 2026-10-11): pixel accounting of every owned page, an
+    outline-aware candidate compared with the retained pack, one density across pages, alpha on the small page."""
+    pages = metrics.get('pages')
+    if not isinstance(pages, dict) or not pages:
+        return ['missing per-page pixel accounting']
+    out = []
+    keys = ('total_pixels', 'content_pixels', 'padding_pixels', 'unallocated_pixels')
+    for name, page in pages.items():
+        if not isinstance(page, dict) or any(type(page.get(k)) is not int or page[k] < 0 for k in keys):
+            out.append(name + ': missing/noninteger pixel counts'); continue
+        if page['content_pixels'] + page['padding_pixels'] + page['unallocated_pixels'] != page['total_pixels']:
+            out.append(name + ': content + padding + unallocated is not the whole page')
+    if type(metrics.get('candidates_compared')) is not int or metrics['candidates_compared'] < 2:
+        out.append('no outline-aware candidate compared with the retained pack')
+    if not isinstance(metrics.get('selected'), str) or not metrics['selected'].strip():
+        out.append('no selected candidate')
+    ratio = metrics.get('page_density_ratio')
+    if not isinstance(ratio, (int, float)) or isinstance(ratio, bool) or ratio < 1:
+        out.append('missing page_density_ratio (max/min page median texel density)')
+    elif ratio > metrics.get('page_density_tolerance', 1.1):
+        out.append('owned pages differ in texel density (%.2fx)' % ratio)
+    if type(metrics.get('alpha_faces_on_large_page')) is not int or metrics['alpha_faces_on_large_page'] < 0:
+        out.append('missing alpha page census')
+    elif metrics['alpha_faces_on_large_page'] and not str(metrics.get('alpha_exception') or '').strip():
+        out.append('alpha surfaces on the large page without a declared shared-base + building exception')
+    return out
 
 
 def digest(data):
@@ -141,6 +179,12 @@ def validate(spec, base, seen=None, receipt=False):
         if name == 'shared_mapping':
             for problem in shared_mapping_errors(report.get('metrics') or {}):
                 incomplete.append('shared_mapping: ' + problem)
+        if name == 'space':
+            for problem in space_errors(report.get('metrics') or {}):
+                incomplete.append('space: ' + problem)
+        if name == 'coherence':
+            for problem in coherence_errors(report.get('metrics') or {}):
+                incomplete.append('coherence: ' + problem)
         if status not in ('PASS', 'FAIL', 'INCOMPLETE', 'REVIEW'):
             errors.append('invalid check status: ' + name)
         elif name.startswith('advisory:'):

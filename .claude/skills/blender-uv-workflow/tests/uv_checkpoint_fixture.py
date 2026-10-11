@@ -19,7 +19,7 @@ def freeze_fixture(root, asset, canonical, through='freeze'):
         spec = dict(schema=1, asset=asset, revision=bind['revision'], stage=stage, inputs=inputs, checks=[], views=[])
         for name in checks.split():
             p = d / (name + '.json')
-            metrics = dict(shared_face_count=0,unmapped=0,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0) if name=='shared_mapping' else {'fixture_only':True}
+            metrics = dict(shared_face_count=0,unmapped=0,incompatible=0,unbound=0,outside_cells=0,unreviewed_exposure=0,coverage_errors=0) if name=='shared_mapping' else (dict(pages={'P':dict(total_pixels=16,content_pixels=8,padding_pixels=4,unallocated_pixels=4)},candidates_compared=2,selected='outline',page_density_ratio=1.0,alpha_faces_on_large_page=0) if name=='space' else (dict(unit='smooth_patch',units=4,broken_into_islands=0,partial_stacks=0,split_over_pages=0,fold_pixels=0) if name=='coherence' else {'fixture_only':True}))
             p.write_text(json.dumps(dict(bind, check=name, status='PASS',
                 metrics=metrics, validator={'name': 'synthetic-unit-test', 'version': '1'})))
             spec['checks'].append(ref(p))
