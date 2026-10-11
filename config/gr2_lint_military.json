@@ -146,8 +146,8 @@
         "ground_supports": []
       },
       "uv_contract": {
-        "path": "config/gr2_uv_contracts/korean_barracks_gr2canon_r1.json",
-        "sha256": "6d16c70f8ca71c97ae1a5c7c6bb868ee2bb5938a5923e213e5e49e059ef8c40d"
+        "path": "config/gr2_uv_contracts/korean_barracks_gr2canon_r2.json",
+        "sha256": "42bcbb93d83ab340aa8f204ff81f39b43f42fa840a26ab43f12a80d1c5426bdf"
       }
     },
     "korean_stable_physics": {
@@ -467,8 +467,8 @@
         ]
       },
       "uv_contract": {
-        "path": "config/gr2_uv_contracts/korean_stable_gr2canon_r1.json",
-        "sha256": "af35e6a49d5d52fb4e3475b7b29bdfd338e6567fc1b0138067129915554aacee"
+        "path": "config/gr2_uv_contracts/korean_stable_gr2canon_r2.json",
+        "sha256": "544b043b088e508eff7314a3bdfa16f60d6136062797b964b0c72e216b94d2c6"
       }
     }
   }
