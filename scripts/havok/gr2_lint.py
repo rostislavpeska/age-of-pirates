@@ -1761,6 +1761,8 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             if 'attach' in prof:
                 results += check_attach(stage, info, prof)
             if stage == 'intact':
+                from gr2_ao_check import check as check_ao_shared_uv          # INC: shared-UV AO (owner 2026-10-12)
+                results.append(check_ao_shared_uv(stage, info, intact_material, art_root, prof, read_material, resolve_texture, R))
                 if 'attach' in prof:
                     results.append(check_flag(stage, info, prof))
                 if prof.get('intact_bones'):

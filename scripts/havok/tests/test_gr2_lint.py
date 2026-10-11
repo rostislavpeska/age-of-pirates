@@ -98,7 +98,8 @@ def installed_intact():
 
 # ------------------------------------------------------------------------------------------------ the specimens
 TEXTURE_GATES = ("texture_budget", "texel_density",        # KTC-165: the shipped model FAILS these (tests further down)
-                 "texture_sets")                           # 2026-10-08: S18k binds the retired v1 TC page (test_texture_sets.py)
+                 "texture_sets",                           # 2026-10-08: S18k binds the retired v1 TC page (test_texture_sets.py)
+                 "ao_shared_uv")                           # 2026-10-12: a bake check (Masks.R vs geometry), not geometry
 KNOWN_TANGENT_DEFECT = ("tangents",)                       # 2026-09-30: S18k ships 5277 zero tangents (pages A, H)
 
 
