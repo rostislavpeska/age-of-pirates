@@ -37,6 +37,10 @@ One function per detector; each returns {"verdict": "PASS"|"FAIL"|"SKIP", ...num
   cutout_speckle_check  D10 (owner 2026-10-10 "rooftop baking bug on the corners"): salt-and-pepper in a cut-out alpha -
                         a 16x16 block with > 8 isolated cut/opaque texels is noise, not a shape. config {"type":
                         "cutout_speckle", "alpha" (RGBA BaseColor: channel 3, else "channel"), "valid"?}
+  member_repeat_check   D11 (owner 2026-10-11 flag mast "very repetitive texture pattern"): the luma profile along one
+                        straight member (world metres; owner texels + reader samples) repeats - a member longer than its
+                        tileable source, or one strip read by stacked segments. Function only (needs per-sample world
+                        positions); Korean civic driver: korean-civic-pair work/recipes/member_repeat_gate.py
 
 Images: .png/.jpg/.tif (8/16 bit, read as 0..1), .npy, .exr (converted once by background Blender into a
 cache .npy - set QA_BLENDER to the executable, QA_CACHE to the cache dir). Arrays are top-down (row 0 = the
@@ -1152,6 +1156,53 @@ def cutout_speckle_check(alpha, labels=None, keys=None, valid=None, tile=16, thr
     return dict(verdict='FAIL' if rows else 'PASS', reasons=reasons, isolated_texels=int(iso.sum()), cut_texels=int((a < thr).sum()),
                 noisy_blocks=rows[:max_list], flagged_faces=sorted(per_face), faces={k: per_face[k] for k in sorted(per_face)},
                 params=dict(tile=tile, thr=thr, max_isolated=max_isolated))
+
+
+def member_repeat_check(s, val, bin_m=0.01, min_lag=0.3, min_repeats=3.0, max_corr=0.6, copy_corr=0.9, copy_repeats=2.0,
+                        detrend_m=0.5, min_len=1.0, flat=0.004):
+    """member_repeat (D11, owner 2026-10-11 on the Consulate flag mast: "very repetitive texture pattern... Wrong UV
+    mapping"): the texture signal along ONE straight member must not repeat. s = metres along the member axis, val =
+    luma of the texel each sample SHOWS (owner texels AND reader samples, so a short strip read by a chain of stacked
+    segments counts too). A member longer than its tileable source shows the same knots / patches at a fixed spacing
+    (measured: the 7.63 m mast over the 2.03 m timber tile, one 2-texel line of it, 3.76 repeats, corr 0.99 at 2.03 m)
+    and the eye reads it as a pattern at once; texture-space window detectors never see it (a 2-texel strip fails their
+    coverage, a 260-texel period exceeds their window). Profile = mean val per bin_m, gradients (AO, grime) removed by a
+    detrend_m running mean; normalised autocorrelation per lag >= min_lag. FAIL = a RHYTHM (corr >= max_corr at a lag
+    that fits >= min_repeats times) or a COPY (corr >= copy_corr, >= copy_repeats times). Calibration 2026-10-11 (civic
+    pair, 175 members): tile repeats 0.96-0.99 (mast 3.76x, ridges 3.6x / 2.38x, sill + lintel 3.0x); clean members
+    <= 0.55; a single pair of unrelated dark spots at exactly L/2 (Monastery jambs: end AO + one knot) 0.63-0.70 at
+    2.0x = a coincidence, not a pattern. Shorter members SKIP; a flat profile (painted, std < flat) PASSES."""
+    s = np.asarray(s, np.float64); v = np.asarray(val, np.float64)
+    L = float(s.max() - s.min()) if len(s) else 0.
+    base = dict(length_m=round(L, 3), params=dict(bin_m=bin_m, min_lag=min_lag, min_repeats=min_repeats, max_corr=max_corr,
+                                                  copy_corr=copy_corr, copy_repeats=copy_repeats, detrend_m=detrend_m))
+    rmin = min(min_repeats, copy_repeats)
+    if L < max(min_len, rmin * min_lag):
+        return dict(verdict='SKIP', reasons=[f'member {L:.2f} m shorter than {max(min_len, rmin * min_lag):.2f} m'], **base)
+    nb = int(L / bin_m) + 1; k = np.minimum(((s - s.min()) / bin_m).astype(int), nb - 1)
+    cnt = np.bincount(k, minlength=nb); sm = np.bincount(k, v, minlength=nb); ok = cnt > 0
+    prof = np.interp(np.arange(nb), np.nonzero(ok)[0], sm[ok] / cnt[ok])
+    w = max(int(round(detrend_m / bin_m)), 1)
+    x = prof - np.convolve(np.pad(prof, w, mode='reflect'), np.ones(2 * w + 1) / (2 * w + 1), 'valid')
+    if x.std() < flat:
+        return dict(verdict='PASS', reasons=[], corr=0., lag_m=None, profile_std=round(float(x.std()), 5), **base)
+    best_c, best_lag, fails = -1., None, []
+    for lag in range(max(int(round(min_lag / bin_m)), 1), int(nb / rmin) + 1):
+        a, b = x[:-lag], x[lag:]; sa, sb = a.std(), b.std()
+        if sa < 1e-9 or sb < 1e-9:
+            continue
+        c = float(((a - a.mean()) * (b - b.mean())).mean() / (sa * sb)); rep = L / (lag * bin_m)
+        if c > best_c:
+            best_c, best_lag = c, lag * bin_m
+        if (c >= max_corr and rep >= min_repeats) or (c >= copy_corr and rep >= copy_repeats):
+            fails.append((c, lag * bin_m, rep))
+    reasons = []
+    if fails:
+        c, lg, rep = max(fails)
+        reasons = [f'texture repeats along the member: corr {c:.2f} at {lg:.2f} m ({rep:.1f} repeats over {L:.2f} m)']
+        best_c, best_lag = c, lg
+    return dict(verdict='FAIL' if fails else 'PASS', reasons=reasons, corr=round(best_c, 3), lag_m=None if best_lag is None else round(best_lag, 3),
+                repeats=None if best_lag is None else round(L / best_lag, 2), profile_std=round(float(x.std()), 5), **base)
 
 
 # ----------------------------------------------------------------------------------------------- CLI

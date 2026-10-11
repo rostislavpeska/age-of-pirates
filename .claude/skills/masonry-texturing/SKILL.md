@@ -158,6 +158,13 @@ speckle, a grid of soft joints.
   consuming project names its reference (Korean set: the castle foundation stone).
 - Weathering climbs from the foot where the owner asks for it (moss and mold, patchy, stronger in joints). It must read at
   game distance.
+- **The relief must read at game scale** (owner 2026-10-11, Consulate wall: "improve the wall normal map", then "harden the
+  masonry skill to have more pronounced maps"). Measure it before handing over. Shade the final Normal map with the
+  sun L = (-.5, .6, .62), box-downsample 4x (game camera), then take the luma sd over the stone texels. Consulate 사괴석:
+  r7 sd 0.052 read flat in game; r8c 0.074 was accepted. Treat 0.07 as the floor for coursed stone. The levers that
+  got there, in metres: recessed joints -0.0045 with a +0.0085 stone pillow; a stone dome of 0.004 over 2-14 % of the
+  stone in from the joint; pier blocks -0.004 / +0.007; a lime base of -0.005. All of these change the height field
+  (civic pair `recipes/civic_masonry_v3.py`), not a global normal-strength multiplier.
 - Project recipes belong in the consuming project's pattern library (Korean: `patterns/korean/masonry.md`, KR-MASONRY-01).
 
 ## Reference implementation

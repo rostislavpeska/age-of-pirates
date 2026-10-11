@@ -535,3 +535,31 @@ def test_d10_cli_reads_basecolor_alpha(tmp_path):
     (tmp_path / 'c.json').write_text(json.dumps(cfg))
     p = subprocess.run([sys.executable, str(HERE / 'qa_detectors.py'), str(tmp_path / 'c.json')], capture_output=True, text=True)
     assert p.returncode == 3 and "['alpha']" in p.stdout, p.stdout + p.stderr
+
+
+def member_signal(L, period=None, seed=12, px=128):
+    """samples along a member: s (m) and a wood-like luma (knots + streaks); period -> one tile line repeated."""
+    rng = np.random.default_rng(seed); s = np.arange(0, L, 1 / px)
+    if period:
+        tile = np.convolve(rng.random(int(period * px)), np.ones(5) / 5, 'same'); v = tile[(np.arange(len(s)) % len(tile))]
+    else:
+        v = np.convolve(rng.random(len(s)), np.ones(5) / 5, 'same')
+    return s, 0.3 + 0.1 * v + 0.05 * s / L                               # + an AO-like gradient the detrend removes
+
+
+def test_d11_member_longer_than_tile_fails_unique_passes():
+    s, v = member_signal(7.63, period=2.03)                                # the Consulate mast over the timber tile
+    r = Q.member_repeat_check(s, v)
+    assert r['verdict'] == 'FAIL' and abs(r['lag_m'] - 2.03) < 0.03 and r['repeats'] > 3, r
+    s2, v2 = member_signal(7.63)
+    assert Q.member_repeat_check(s2, v2)['verdict'] == 'PASS'
+    s3, v3 = member_signal(3.0, period=2.03)                               # under 2 repeats: one tile seam is not a pattern
+    assert Q.member_repeat_check(s3, v3)['verdict'] == 'PASS'
+    s4, v4 = member_signal(4.6, period=2.03)                               # 2.3 identical copies (the Consulate entry ridge)
+    assert Q.member_repeat_check(s4, v4)['verdict'] == 'FAIL'
+    s5 = np.arange(0, 2.5, 1 / 128); rng = np.random.default_rng(3)        # one coincident pair: end AO + one knot at L/2
+    v5 = 0.3 + 0.12 * np.convolve(rng.random(len(s5)), np.ones(9) / 9, 'same') - 0.06 * (np.exp(-((s5 - .1) / .08) ** 2) + np.exp(-((s5 - 1.35) / .08) ** 2))
+    r5 = Q.member_repeat_check(s5, v5)
+    assert r5['verdict'] == 'PASS' and r5['corr'] > 0.5, r5                 # correlated, but a pair is not a rhythm
+    assert Q.member_repeat_check(np.arange(0, .5, .01), np.zeros(50))['verdict'] == 'SKIP'
+    assert Q.member_repeat_check(*member_signal(5.0, period=None)[:1], np.full(640, .4))['verdict'] == 'PASS'   # flat paint

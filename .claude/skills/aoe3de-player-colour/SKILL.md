@@ -76,6 +76,16 @@ one building on its old full band broke the set. Paint the base under the planks
 wood (Korean set: luma ~187 with the grain kept) so the colour reads, and lift the reference's panels by
 the same amount. Evidence: journal 2026-10-08-claude-21 and -22.
 
+**A motif is whole on every face that shows it, or it is not painted** (owner 2026-10-11, Korean Consulate gable:
+"this decoration in gable - nice but splited ... either two decorations on each side or nothing"). The r7 medallion
+sat at the board centre, exactly behind the king post, and every gable reading those texels showed it cut in two.
+Before placing a discrete motif (medallion, emblem, crest), ray-cast the board along its normal against the rest of
+the LOW model, on the owner AND every reader face, and map the hits to page texels (civic pair:
+`recipes/civic_gable_occluders.py`). Place it at the centre if the footprint is clear on every face; otherwise as a
+mirrored pair clear of the occluder; otherwise leave it out. A reader's outline must not cut it either. The painter
+asserts this on the result (`civic_gable_frieze.py --occluders ... --emblem-place auto`). A continuous band crossed by
+a post is fine: it ends against the post on both sides.
+
 ## Workflow
 
 1. **Scope.** Agree which surfaces carry player colour (owner's screenshot or words). Freeze the UVs first: Details
