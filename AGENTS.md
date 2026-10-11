@@ -61,9 +61,11 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    they encode its dependencies (2026-09-27: the London side setup techs were moved unasked, and their order
    dependency on the generic setup was missed).
 
-10. **The image harness is Claude-only.** GPT, Codex, Astra and Gemini agents generate images natively and
-   must never call `.claude/skills/image-harness` or its n8n webhook: every call is billed to the owner's API
-   accounts. Claude Code uses it (the client refuses outside Claude Code).
+10. **The billed image-harness route is Claude-only.** GPT, Codex, Astra and Gemini agents generate images natively
+   and must never call its CLI or n8n webhook: those calls are billed to the owner's API accounts. Claude Code
+   uses that route (the client refuses outside Claude Code). Owner, 2026-10-12: the shared layout-painting method
+   in `.claude/skills/image-harness` may also be used with GPT native image generation; this does not authorize
+   the billed route or bypassing its guard.
 
 11. **Screen control is announced first.** Before any agent or subagent takes the screen - mouse or keyboard
    automation, driving the game or any GUI app, desktop screenshots or screen recording, computer-use / browser
