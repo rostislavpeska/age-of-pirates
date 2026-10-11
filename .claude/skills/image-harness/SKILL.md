@@ -77,6 +77,11 @@ compose rules: [masonry-texturing](../masonry-texturing/SKILL.md) section 7 and 
    painting: thatch courses "in different directions" = the structure-tensor straw angle of every course within 6 degrees of
    its layout angle and alternating (a painting that ignored the slants failed; one that followed +-4..8 degree slants passed
    but did not read - draw the requested property boldly enough to be seen).
+   **Multi-item sheets (Market stall goods):** Gemini repaints the "flat grey" surround (lighter, vignetted): measure the
+   background from the painting's border. Score each rect's silhouette in its own window. Test item presence by colour
+   contrast to the ring around it (dark items fail a "brighter centre" test) and item kind by brightness-free
+   chromaticity. Gemini keeps large distinct shapes but regroups small repeated items: mark each small item's kind in the
+   layout, gate per crate, and compose each crate from the painting that passed for it.
 
 Reference implementation (Korean props, outside AoP): `korean-market-dock/recipes/props_ai_sheet.py` (layout, gates,
 compose) and `props_sheet_apply.py` (map back, relief, edge generators).
