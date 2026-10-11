@@ -73,8 +73,15 @@ Method and gates: [image-harness](../image-harness/SKILL.md) "Paint a model's te
   must carry (rivets, nail heads, bung hole, rope twist, straw weave, end-grain rings).
 - **Style reference: a small material crop**, not a whole vanilla atlas - Gemini copied a native-crates atlas's stake
   layout into a firewood sheet (IoU 0.33). Add "paint over the FIRST image in place, never move, add or remove a shape".
-- **Gate per material:** silhouette IoU >= 0.90 for every sheet; joint recall >= 0.70 over BOARD joints only (chart
-  outlines of cloth, silk or cords are frayed or light, recall 0.03-0.67 on correct paintings); masonry keeps the joint F1.
+- **Sheet gate (what the mapping samples):** every layout texel painted (coverage >= 0.97; "painted" = off the flat 0.5
+  background OR locally textured, or grey stone and iron read as unpainted), joint recall >= 0.70 over BOARD joints only
+  (outlines of cloth, silk or cords are frayed or light: recall 0.03-0.67 on correct paintings), each chart's mean colour
+  consistent with its layout material (luma ratio 0.35-2.8, hue cosine >= 0.3 unless grey), shift <= 4 px. Do NOT gate
+  on global silhouette IoU: on sparse sheets Gemini paints the charts in place and then fills the empty grey with extra
+  ropes or stones (IoU 0.11-0.60 on 16 correct sheets) - paint outside the charts is never sampled. Masonry keeps the
+  joint F1 (slow: 289 shifted dilations, run it only there).
+- **Refusals:** a text-only answer (no image) came back twice for "military ammunition crate"; "wooden storage crate"
+  painted at once. Retry a no-image answer once, then reword neutrally.
 - **Compose** toward the measured vanilla luma per material (wood .23, straw .37, cloth .58, paper .70, brass .50, onggi
   .24, iron .20 sRGB), chroma ~0.85.
 - **Generators** from the bake's EDGE (bevel convexity) and CAV (short AO): wood/clay/stone chipped edges, iron bright
