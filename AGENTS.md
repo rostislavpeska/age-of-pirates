@@ -226,6 +226,7 @@ Check the live tool connection required by the selected skill before editing ass
 For geometry use `.claude/skills/blender-architecture/SKILL.md`; for UVs and textures use
 `.claude/skills/blender-architecture-texturing/SKILL.md`. Building work in this mod starts with
 `.claude/skills/aoe-building-pipeline/SKILL.md`, which adds the AoP profile to the reusable workflow.
+Deforming organic models (characters, riders, animals) use `.claude/skills/blender-organic-modeling/SKILL.md`; AoE3 unit facts are in `.claude/skills/aoe3de-unit-model/SKILL.md`.
 For live Photoshop documents, layered edits or texture exports, read
 `.claude/skills/photoshop-live-edit/SKILL.md`. It includes the tested Windows COM/JSX
 connection used in this project; absence of Photoshop MCP does not rule out that route.

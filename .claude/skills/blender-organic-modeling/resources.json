@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/clothing-armour.md",
+    "references/contract-and-blockout.md",
+    "references/deformation-topology.md",
+    "references/lod.md",
+    "references/sculpt-retopo.md",
+    "references/skinning-pose-tests.md",
+    "references/sources.md",
+    "scripts/README.md",
+    "scripts/blender_env.py",
+    "scripts/organic_weights.py",
+    "scripts/organic_audit.py",
+    "scripts/organic_probe.py",
+    "scripts/tangent_compare.py",
+    "scripts/fixture_bodies.py",
+    "scripts/test_organic_weights.py",
+    "scripts/test_organic_audit.py",
+    "scripts/test_organic_probe.py",
+    "scripts/test_tangent_compare.py"
+  ],
+  "skills": [
+    "blender-asset-conventions",
+    "blender-mcp-safety",
+    "workflow-journal",
+    "skill-library-audit"
+  ],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "modeling",
+        "checks",
+        "audit",
+        "probe",
+        "tangent-compare",
+        "tests"
+      ],
+      "optional": false,
+      "commands": [
+        "blender"
+      ],
+      "environment": "BLENDER",
+      "modules": [
+        "bpy",
+        "bmesh",
+        "mathutils"
+      ],
+      "note": "Background Blender (blender -b --factory-startup) runs every check, probe and render; scripts/organic_audit.py, organic_probe.py and tangent_compare.py relaunch themselves in it from host Python, finding it from --blender-exe, else --local-config FILE (tools.blender.path, the file this audit's --local-config reads), else BLENDER, else blender on PATH, else the standard install folder; the tests read BLENDER, PATH and the standard folder. The direct form needs --python-exit-code 2. Recipes and probe numbers were measured on Blender 5.1.2. Confirm version, file and scene before any live edit."
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "checks",
+        "audit",
+        "probe",
+        "tangent-compare",
+        "tests"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "note": "Host Python 3.9+ launches the background Blender runs and reads their JSON reports; organic_weights.py and blender_env.py are pure standard library."
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
+      ],
+      "note": "Host Python package for the scripts/test_*.py suites; the Blender suites skip when no Blender is found, the pure ones run anywhere."
+    },
+    {
+      "id": "target-skeleton",
+      "kind": "capability",
+      "requiredFor": [
+        "modeling",
+        "checks",
+        "audit"
+      ],
+      "optional": false,
+      "note": "The consuming project supplies the target armature or bone table, its bind pose, the list of bones that may carry weight (organic_audit --allowed-bones), the test animations and a reference asset with its measurements."
+    },
+    {
+      "id": "game-vertex-reader",
+      "kind": "capability",
+      "requiredFor": [
+        "tangent-compare"
+      ],
+      "optional": true,
+      "note": "The consuming project's game-file reader writes the per-vertex P/N/T/UV/I JSON that tangent_compare.py reads; this package ships no game-format reader."
+    },
+    {
+      "id": "phase-handoff-writer",
+      "kind": "capability",
+      "requiredFor": [
+        "handoff"
+      ],
+      "optional": false,
+      "note": "Consumer-provided phase-handoff contract and writer, not bundled here. In this library it is hosted by the hard-surface texturing package: blender-architecture-texturing/references/handoff-contract.md and blender-architecture-texturing/scripts/handoff.py. That writer refuses a handoff with status review/accepted or owner_review pending unless it names primary_blend, active_scene and delivery.live_readback. A public copy of this package names the consumer's own writer."
+    }
+  ]
+}

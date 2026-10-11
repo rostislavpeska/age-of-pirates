@@ -116,8 +116,8 @@ Use profile bands for lathed shapes: a single-island unwrap compresses rim and b
 against the belly. Mark such charts organic/curved: do not strip-join them across
 architecture rules, never split them as "hollow frames" (their pieces turn continuously;
 frames use at most about four directions), and conjoin them only with near-identical
-instances. Truly free-form organic assets (units, animals, cloth) use Blender's
-auto-unwrap plus a plain pack and no conjoinment.
+instances. Truly free-form organic assets (units, animals, cloth on a body) are out of
+scope here: their UVs belong to the separate `blender-organic-uv` skill.
 
 ## Camera and hidden allocation
 

@@ -456,3 +456,54 @@ UV checkpoint has explicit substeps. Final density and page ceilings still apply
 Checkpoint receipts supplement existing HANDOFF and asset revisions; no second
 version database or agent-specific skill mirror is introduced. Public skill
 publication remains a separate allowlisted operation.
+
+## Organic modeling split (2026-10-10)
+
+Deforming organic assets (characters, riders, clothing and armour worn on a body,
+later animals) have their own packages, separate from the hard-surface suite:
+
+| Package | Layer | Status |
+| --- | --- | --- |
+| `blender-organic-modeling` | generic Blender method: contract, blockout on the target skeleton, deformation topology, retopology, weights, pose tests, silhouette and LOD gates; bundled background audit and probes (`scripts/README.md`) | created |
+| `blender-asset-conventions` | neutral conventions both sides share: units and axes, naming, export copy, counts, evidence levels, pointers to the shared contracts | created |
+| `aoe3de-unit-model` | AoE3 DE unit facts: measured vanilla budgets, rider skeletons, LowPoly LOD, materials, export routes | created |
+| `blender-organic-uv` | generic organic UVs: declared seam rules, SLIM, mirror-exact unique layout, island-scale head priority, raster packer, evaluator and gate tool; game numbers only through a profile kept in the game layer (`aoe3de-unit-model/profiles/`) | created 2026-10-11 |
+
+Dependency rules:
+
+- Organic packages never declare hard-surface method packages, and the reverse also
+  holds. Organic packages may declare `blender-asset-conventions` and the neutral
+  packages (`blender-mcp-safety`, `workflow-journal`, `skill-library-audit`).
+- Generic packages never declare `aoe3de-*` packages and hold no AoE3 names; the AoE3
+  layer declares the generic one.
+- The AoE3 layer reuses the generic tools instead of copying them: its tangent check
+  dumps the game buffers and runs `blender-organic-modeling/scripts/tangent_compare.py`;
+  its gate list runs the generic `organic_audit.py` with the AoE3 bone lists.
+- Hard-surface skills name the organic and conventions packages by plain name only -
+  no Markdown link and no `resources.json` entry. `blender-architecture` is on the
+  `architecture` export allowlist (`scripts/skill-sync-manifest.json`); a link or a
+  declared companion would pull packages that are not allowlisted into its export
+  closure. The first draft (2026-10-10) linked and declared `blender-asset-conventions`
+  there while this section claimed the closure was unchanged; the link and the entry
+  were reverted the same day, so the claim now holds. `blender-clean-uv` likewise names
+  `blender-organic-uv` by plain name.
+- Shared contracts still hosted by hard-surface packages (the phase handoff, the live
+  viewer pair) are named by package-prefixed path from the conventions package, not
+  linked. The organic skill uses the handoff writer the same way; its G1 handoff carries
+  the delivery fields the writer enforces (`primary_blend`, `active_scene`,
+  `delivery.live_readback`).
+- Organic baking and texturing are not covered yet (candidate name
+  `blender-organic-texturing`); the architectural baking rules are not organic rules.
+- Korean unit plans, models and benches stay in the Korean repositories (AGENTS.md
+  rule 15); the skills hold the generic method and the AoE3 facts only.
+- `AGENTS.md` routes organic geometry to `blender-organic-modeling` and AoE3 unit facts
+  to `aoe3de-unit-model`, next to the architecture routing line.
+
+Phase 2, each step only with the owner's approval: move the live viewer pair and its
+tests into `blender-asset-conventions`; split the handoff contract into its generic
+part and the UV density/page-budget part (this needs a hook in `handoff.py`); add a
+`skinning` journal stage; extract a generic core of the skinned-model checker if
+organic assets are ever exported; forward the export-copy and counts rules the
+hard-surface skills still restate to `blender-asset-conventions` (an allowlisted skill
+first needs the conventions package on its allowlist). None of the new packages is on
+the public export allowlist.
