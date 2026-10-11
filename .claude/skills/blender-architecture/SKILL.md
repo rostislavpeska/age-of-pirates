@@ -11,6 +11,7 @@ before new modelling/UV allocation. Record it in the consumer profile/handoff.
 Diagnostics cannot add unapproved production pages. See the portable
 [UV operator contract](../blender-uv-observability/SKILL.md).
 Read [construction and review](references/construction.md) for geometry work. Before removing hidden faces or classifying low-detail backs, read [surface visibility and destruction](references/surface-visibility.md). Use the sibling `blender-architecture-texturing` skill for UV/material planning.
+Deforming organic assets (characters, riders, clothing and armour worn on a body, animals) are out of scope; use the separate `blender-organic-modeling` skill. Scene, naming and export-copy conventions shared with organic work: the separate `blender-asset-conventions` skill.
 
 For material-only classification of difficult undersides and interior faces, use
 [hybrid hidden surfaces](../blender-hidden-surfaces/SKILL.md). It proposes shared

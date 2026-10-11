@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/scene-and-export.md"
+  ],
+  "skills": [
+    "blender-mcp-safety",
+    "workflow-journal",
+    "skill-library-audit"
+  ],
+  "external": []
+}
