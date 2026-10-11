@@ -16,7 +16,7 @@ from pathlib import Path
 
 SKILLS = Path(__file__).resolve().parents[2]
 PATH = SKILLS / 'JOURNAL.jsonl'
-STAGES = ('modeling', 'unwrap', 'conjoin', 'ao', 'atlas', 'baking', 'texturing', 'export', 'review', 'tooling')
+STAGES = ('modeling', 'unwrap', 'conjoin', 'ao', 'atlas', 'baking', 'texturing', 'export', 'review', 'tooling', 'postproduction')
 KINDS = ('correction', 'failure', 'confirmed', 'measurement', 'idea')
 STATUSES = ('open', 'distilled', 'rejected')
 
