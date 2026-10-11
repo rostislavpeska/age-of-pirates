@@ -66,3 +66,45 @@ acceptance result.
 **Acceptance is conjunctive:** source geometry, final normal reconstruction,
 AO/color direction, current runtime identity and visible result must agree.
 Global averages cannot excuse one reversed roof field. Inconclusive is not PASS.
+
+## World-space bake intent (no HIGH model)
+
+`scripts/bake_intent_check.py` reads the final normal map through the low mesh's own UVs and tangent frames and judges
+each face against its own downhill direction. Use it when there is no HIGH to compare against, e.g. an analytic or
+transferred tile page, or as the first screen before the full chain above. The four measures:
+
+| measure | what it catches | does not depend on |
+| --- | --- | --- |
+| lap asymmetry | reversed laps (green flipped) | UV orientation (frame resolved) |
+| roll axis ratio | rolls turned 90 deg (R/G swapped) | UV orientation |
+| lap axis p50 | sagging / skewed courses | UV convention (content-derived) |
+| texel anisotropy | a stretched or squeezed course coordinate | the map |
+
+Calibration (2026-10-11), all on decoded final maps:
+
+| roof | lap | roll | lap axis p50 | anisotropy p05 / p95 | verdict |
+| --- | --- | --- | --- | --- | --- |
+| Korean TC, own HIGH bake (tile-texel mask) | 5.46 | 2.16 | 16.1 deg | .91 / 1.10 | PASS |
+| TC, flipG control | .55 | 2.24 | - | - | inverts |
+| TC, swapRG control | 1.01 | .45 | - | - | inverts |
+| rice paddy r4, analytic page on a pyramid; course coordinate measured along leaning grid columns | 3.43 | 1.87 | 23.8 deg | .45 / 1.00 | FAIL |
+| rice paddy r6, course coordinate = arc length up the fall line | 13798* | 2.37 | 12.0 deg | 1.00 / 1.00 | PASS |
+
+*The pan of an analytic page has almost no steep texels that face uphill, so the ratio is large; only "well above 1"
+matters.
+
+The r4 failure is the one the owner saw in game ("the bake incorrect"). Lap and roll still passed there, so on their
+own they would have missed it. The lap axis and anisotropy measures catch it. Starting thresholds
+(`bake_intent_core.THRESHOLDS`):
+- lap asymmetry >= 2;
+- roll ratio >= 1.5;
+- lap axis p50 <= 20 deg;
+- anisotropy p05 >= .8 and p95 <= 1.25;
+- at least 2000 texels.
+
+Recalibrate on the set's own known-correct roof before tightening them.
+
+Deliberately odd faces (a corner sweep, a flared eave) are declared with a FACE attribute, `intent_free` = 1, by the
+builder, not afterwards by the checker. They are measured apart (`declared`) and never gate. On the r6 pyramid, 272
+sweep faces show lap axis p50 21 deg there and are reported, not failed. Declaring a face is a design statement:
+record why in the builder.

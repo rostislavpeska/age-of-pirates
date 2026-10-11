@@ -1,6 +1,6 @@
 ---
 name: roof-tile-direction-qa
-description: Diagnose and verify overlapping roof-tile direction across source geometry, baked normals, UV sharing, AO/color and exported maps. Use when tile laps or shadows appear reversed, or when validating a tiled roof bake before repetition or export.
+description: Diagnose and verify overlapping roof-tile direction across source geometry, baked normals, UV sharing, AO/color and exported maps. Use when tile laps or shadows appear reversed, courses look sagging, skewed or stretched, or when validating a tiled roof bake before repetition or export (world-space bake intent check, no HIGH model needed).
 ---
 
 # Roof tile direction QA
@@ -58,13 +58,33 @@ These are deliberately bounded helpers, **not an automatic full-roof certificate
   Exit 0 means frame coherence only; exit 1 is a failed frame, not proof of a bad
   roof. It does not extract Blender frames or implement an engine shader.
 
+- `scripts/bake_intent_check.py` (Blender front end of `scripts/bake_intent_core.py`, pure NumPy): the
+  **world-space bake intent** of the FINAL normal map on the low mesh, no HIGH needed. Downhill comes from each
+  face's own slope, so swept, curved and pyramid roofs are judged on their own geometry. It reports four measures:
+  - lap asymmetry: laps must face downhill;
+  - roll axis ratio: rolls must run down the fall line;
+  - lap axis: the in-plane tilt direction of the lap texels. It is content-derived and independent of the UV
+    convention. Sagging or skewed courses raise it;
+  - texel anisotropy: catches a stretched course coordinate.
+
+  It also runs both negative controls (flipG, swapRG), which must invert the measures, or the verdict is
+  INCONCLUSIVE. The angle between the UV frame and the fall line depends on the UV convention, so it is reported and
+  never gated.
+
+  Intended deviations: the builder sets a FACE attribute (`--free-attr`, default `intent_free`) on deliberately odd
+  faces, such as a corner sweep zone. Those faces are measured apart (`declared`) and never gate. Without that flag
+  the same faces would fail, which is how a weird shape on purpose avoids a false positive.
+
+  Starting thresholds and their calibration are in the measurement protocol. Exit 0 PASS, 1 FAIL, 2 INCONCLUSIVE.
+
 ```sh
 python scripts/normal_frame_gate.py <scratch>/frames.npz --out <scratch>/frame-report.json
+blender -b FILE.blend --python-exit-code 1 --python scripts/bake_intent_check.py -- --objects ROOF [ROOF ...]     --normal FINAL_NORMAL.png [--flip-g] [--slot N] [--texel-mask MASK.npy] --out <scratch>/bake-intent.json
 python -m unittest discover -s scripts -p "test_*.py"
 ```
 
-Run these relative to this skill folder. No application, network or asset mutation
-is performed by the helpers. Choose a Python environment with NumPy; do not install
+Run these relative to this skill folder. No network or asset mutation is performed by the
+helpers (bake_intent_check.py runs in background Blender, read-only). Choose a Python environment with NumPy; do not install
 or launch software just to turn a missing capability into a green check.
 
 ## Observable handoff

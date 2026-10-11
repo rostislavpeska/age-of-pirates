@@ -6,7 +6,10 @@
     "scripts/roof_lap_gate.py",
     "scripts/test_roof_lap_gate.py",
     "scripts/normal_frame_gate.py",
-    "scripts/test_normal_frame_gate.py"
+    "scripts/test_normal_frame_gate.py",
+    "scripts/bake_intent_core.py",
+    "scripts/bake_intent_check.py",
+    "scripts/test_bake_intent_core.py"
   ],
   "skills": [],
   "external": [
@@ -26,6 +29,15 @@
       "requiredFor": ["measure", "test"],
       "optional": false,
       "note": "Used by the tangent-frame validator; roof_lap_gate itself needs only the standard library."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "commands": ["blender"],
+      "modules": ["bpy"],
+      "requiredFor": ["bake-intent"],
+      "optional": true,
+      "note": "Background Blender (-b), read-only, for scripts/bake_intent_check.py only; the core and its tests are host Python."
     }
   ]
 }

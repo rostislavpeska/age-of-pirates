@@ -1,6 +1,6 @@
 """Inside-out shells: a closed shell must enclose positive signed volume (2026-10-10 Dock gable boards)."""
 import unittest
-from shell_orientation import check_mesh, self_intersecting
+from shell_orientation import check_mesh, geometric_closure, self_intersecting
 
 CUBE_V = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0), (0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1)]
 CUBE_F = [(0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)]   # outward
@@ -44,6 +44,32 @@ class ShellTests(unittest.TestCase):
         self.assertTrue(self_intersecting(bottom + top))
         fixed = [(1.695, 4.8877)] + bottom[1:-1] + [(3.765, 4.8877)] + top
         self.assertFalse(self_intersecting(fixed))
+
+
+def unwelded(faces):
+    """one separate quad per face (own vertices): every face is its own open shell"""
+    v, f = [], []
+    for q in faces:
+        f.append(tuple(range(len(v), len(v) + len(q)))); v += [CUBE_V[i] for i in q]
+    return v, f
+
+
+class UnweldedTests(unittest.TestCase):
+    def test_unwelded_box_is_open_to_the_shell_test(self):
+        v, f = unwelded(CUBE_F)
+        self.assertTrue(all(x['status'] == 'OPEN' for x in check_mesh(v, f)))
+
+    def test_unwelded_outward_box_closed_positive(self):
+        closed, vol = geometric_closure(*unwelded(CUBE_F))
+        self.assertTrue(closed); self.assertAlmostEqual(vol, 1.0)
+
+    def test_unwelded_inside_out_box_negative(self):
+        closed, vol = geometric_closure(*unwelded([tuple(reversed(q)) for q in CUBE_F]))
+        self.assertTrue(closed); self.assertAlmostEqual(vol, -1.0)
+
+    def test_unwelded_open_box_not_judged(self):
+        closed, _ = geometric_closure(*unwelded(CUBE_F[:5]))
+        self.assertFalse(closed)
 
 
 if __name__ == '__main__':

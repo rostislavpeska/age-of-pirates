@@ -15,6 +15,13 @@ Pure functions (no bpy) for tests; run inside Blender for a report:
 --names-from takes a JSON list of object names (or {"objects": [...]}) - pass the export set, so blockout leftovers in
 the same file do not count. --strict exits 1 on any inside-out shell. Open shells are listed, never judged (their
 orientation is a modelling convention, not a volume).
+
+Unwelded closed parts: a builder that writes one separate quad per face (own UVs per face, e.g. a timber member on an
+atlas) leaves every face its own OPEN shell, so the shell test never judges it. `geometric_closure` judges the whole
+object instead: when its face area vectors cancel (sum |a| > 0, |sum a| < 1e-3 sum |a| - a geometrically closed
+surface, welded or not) its signed volume must be positive; such objects are listed with "unwelded": true
+(2026-10-11: every timber member of a rice-paddy shelter was inside-out since its first revision; 0 closed shells, so
+nothing caught it until a floating-member check pointed at the wrong part).
 """
 import json, sys
 
@@ -66,6 +73,20 @@ def check_mesh(verts, faces, eps=1e-9):
     return res
 
 
+def geometric_closure(verts, faces, tol=1e-3):
+    """(closed, volume) of the whole surface, welded or not: closed when the face area vectors cancel."""
+    sx = sy = sz = total = 0.0
+    for f in faces:
+        a = verts[f[0]]
+        for i in range(1, len(f) - 1):
+            b, c = verts[f[i]], verts[f[i + 1]]
+            u = (b[0] - a[0], b[1] - a[1], b[2] - a[2]); w = (c[0] - a[0], c[1] - a[1], c[2] - a[2])
+            n = (u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0])
+            sx += n[0]; sy += n[1]; sz += n[2]; total += (n[0] ** 2 + n[1] ** 2 + n[2] ** 2) ** .5
+    closed = total > 0 and (sx * sx + sy * sy + sz * sz) ** .5 < tol * total
+    return closed, signed_volume(verts, faces, range(len(faces)))
+
+
 def self_intersecting(pts2):
     """True when a closed 2D outline (list of (x, y)) crosses itself (non-adjacent edges intersect)."""
     def cross(o, a_, b_):
@@ -102,10 +123,17 @@ def main():
     for o in sorted(objs, key=lambda o: o.name):
         mw = o.matrix_world; me = o.data
         verts = [tuple(mw @ v.co) for v in me.vertices]
-        for r in check_mesh(verts, [tuple(p.vertices) for p in me.polygons]):
+        faces = [tuple(p.vertices) for p in me.polygons]
+        res = check_mesh(verts, faces)
+        for r in res:
             rep['open_shells' if r['status'] == 'OPEN' else 'closed_shells'] += 1
             if r['status'] == 'INSIDE_OUT':
                 rep['inside_out'].append({'object': o.name, **r})
+        if res and all(r['status'] == 'OPEN' for r in res):          # unwelded faces: judge the object as one surface
+            closed, vol = geometric_closure(verts, faces)
+            if closed and vol < -1e-9:
+                rep['inside_out'].append({'object': o.name, 'faces': len(faces), 'closed': True, 'volume': vol,
+                                          'status': 'INSIDE_OUT', 'unwelded': True})
         me.calc_loop_triangles(); flips = {}
         for t in me.loop_triangles:
             if t.area > 1e-10 and t.normal.dot(me.polygons[t.polygon_index].normal) < 0:

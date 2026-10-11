@@ -93,6 +93,9 @@ Before any texture or AO bake, run `scripts/shell_orientation.py` on the export 
 every closed shell must enclose positive signed volume in world space. An inside-out shell passes UV integrity,
 density and distant review renders, yet in game (back faces culled) the camera sees its recessed inner faces,
 already darkened by AO (2026-10-10: a dock's gable boards read as black holes; 16 inspector views missed them).
+A part written as one separate quad per face (own UVs per face, e.g. timber members on an atlas) has no closed shell;
+the run judges such an object as one surface when its face area vectors cancel (listed `unwelded: true`; 2026-10-11:
+19 rice-paddy timber members inside-out for three revisions with "0 closed shells").
 Repair by reversing the winding, then re-check UV winding (a reversed face's UVs are mirrored). The same run lists
 n-gons whose triangulation flips (`flipped_triangles`): a self-intersecting outline, e.g. a board whose sloped edge
 ends below its curved bottom edge; make the outline simple and re-unwrap that face (its old UVs are distorted too).
