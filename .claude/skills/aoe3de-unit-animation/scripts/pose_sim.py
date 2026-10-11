@@ -5,13 +5,21 @@ deform by linear blend skinning. Optionally seats the posed model on a posed mou
 bone, as a horse animfile attaches its rider) and simulates a skeleton swap (gr2_reskeleton.py) before building it.
 
     python pose_sim.py --model RIDER.gxo --anim RIDE.gxo --out posed.obj
-           [--frame 0] [--mount HORSE.gxo --mount-anim HORSE_IDLE.gxo [--seat attachpoint]]
+           [--frame 0] [--det-tol 0.001] [--orthonormalize]
+           [--mount HORSE.gxo --mount-anim HORSE_IDLE.gxo [--seat attachpoint]]
            [--skeleton-from DONOR.gxo]
 
-GXO from the GR2 converter (`--format gxo`, works for animation-only files where FBX refuses). Only key 0 of a
-converter animation dump is a clean pose (later keys drift; measured 2026-10-09), so judge frame 0. Writes OBJ files
-(z up, with UVs: `<out>` and `<out stem>_mount.obj`) for a background Blender render, and prints the posed height range
-and how many bones the animation drives. Validated on the vanilla yabusame rider + horse: seated correctly.
+Models: GXO from the GR2 converter (`--format gxo`) or written from Blender by `scripts/havok/rig_table.py --skinned`.
+Clips: a converter GXO dump is a pose at key 0 ONLY - from key 1 on its keys leave the curves (oprichnik_attack_a:
+a bone whose curve is constant turns and shrinks, det 0.97 by key 17, 0.0003 by key 159; horse_idle_a reaches det 4e8),
+and neither a polar factor nor rest offsets recover them (verified 2026-10-11). For any key after 0, decode the clip
+straight from its gr2 with aoe3de-unit-model's `clip_decode.py` (same GXO text, every key a pose). Every key is
+checked: a bone-driving track whose 3x3 has |det - 1| > --det-tol (default 0.001) is refused, naming the track (raise
+the tolerance only for a decoded clip that keys scale on purpose). `--orthonormalize` replaces each key's 3x3 by its
+nearest rotation after that check: float polish, not a repair. Writes OBJ files (z up, with UVs: `<out>` and
+`<out stem>_mount.obj`) for a background Blender render, and prints the posed height range and how many bones the
+animation drives. Validated on the vanilla yabusame rider + horse (cavalry idle, key 0): seated, z 0.406..1.179 with
+the converter's clips and with decoded ones.
 """
 import argparse
 import os
@@ -74,6 +82,44 @@ def parse_anim(path, frame=0):
                 keys[norm(cur)] = m4([float(x) for x in line.split()[1:13]])
             n += 1
     return keys
+
+
+def bad_tracks(keys, bones, tol=1e-3):
+    """[(track, det)] for the tracks that drive a bone of `bones` and whose 3x3 has |det - 1| > tol: a converter dump
+    after key 0 (or keyed scale). Tracks without a bone are ignored, as the engine ignores them."""
+    names = {norm(b['name']) for b in bones}
+    out = []
+    for name, K in sorted(keys.items()):
+        if name in names:
+            d = float(np.linalg.det(K[:3, :3]))
+            if not abs(d - 1.0) <= tol:
+                out.append((name, d))
+    return out
+
+
+def check_keys(keys, bones, tol, what):
+    bad = bad_tracks(keys, bones, tol)
+    if bad:
+        raise SystemExit('%s: %d bone-driving track(s) with |det - 1| > %g: %s. A converter GXO dump of a clip is a pose '
+                         'at key 0 only; decode the clip with aoe3de-unit-model clip_decode.py (raise --det-tol only for '
+                         'a decoded clip that keys scale)' % (what, len(bad), tol,
+                                                             ', '.join('%s %.4g' % x for x in bad[:6])))
+
+
+def orthonormalize(keys):
+    """keys with each 3x3 replaced by its polar factor (the nearest rotation: U @ Vt of the SVD, sign-fixed to det +1),
+    translations kept. Polishes float noise of a key that is already a rotation; it cannot recover a converter key
+    after 0 (verified 2026-10-11: orthonormalized, the converter's oprichnik_idle1 drops iron_rider_0's head to 75 GXO
+    units below its pelvis, the decoded clip keeps it 0.266 above)."""
+    out = {}
+    for name, K in keys.items():
+        U, _, Vt = np.linalg.svd(K[:3, :3])
+        if np.linalg.det(U @ Vt) < 0:
+            U[:, -1] *= -1
+        K2 = K.copy()
+        K2[:3, :3] = U @ Vt
+        out[name] = K2
+    return out
 
 
 def pose(bones, keys):
@@ -141,6 +187,10 @@ def main():
     ap.add_argument('--anim', required=True)
     ap.add_argument('--out', required=True)
     ap.add_argument('--frame', type=int, default=0)
+    ap.add_argument('--det-tol', type=float, default=1e-3,
+                    help='refuse a key whose bone-driving track has |det - 1| above this (default 0.001)')
+    ap.add_argument('--orthonormalize', action='store_true',
+                    help='after the check, replace each key 3x3 by its nearest rotation (float polish only)')
     ap.add_argument('--mount')
     ap.add_argument('--mount-anim')
     ap.add_argument('--seat', default='attachpoint', help='seat bone name ending (case/underscore-insensitive)')
@@ -154,11 +204,21 @@ def main():
     if missing:
         raise SystemExit('weighted bones missing from the skeleton: %s' % missing)
     keys = parse_anim(a.anim, a.frame)
+    if not keys:
+        raise SystemExit('%s has no key %d' % (a.anim, a.frame))
+    check_keys(keys, bones, a.det_tol, 'key %d of %s' % (a.frame, os.path.basename(a.anim)))
+    if a.orthonormalize:
+        keys = orthonormalize(keys)
     Wp = pose(bones, keys)
     seat = np.eye(4)
     if a.mount:
         mb, mm = parse_model(a.mount)
-        Mp = pose(mb, parse_anim(a.mount_anim, a.frame) if a.mount_anim else {})
+        mkeys = parse_anim(a.mount_anim, a.frame) if a.mount_anim else {}
+        if a.mount_anim:
+            check_keys(mkeys, mb, a.det_tol, 'key %d of %s' % (a.frame, os.path.basename(a.mount_anim)))
+        if a.orthonormalize:
+            mkeys = orthonormalize(mkeys)
+        Mp = pose(mb, mkeys)
         si = next(i for i, b in enumerate(mb) if b['name'].lower().replace('_', '').endswith(a.seat.lower().replace('_', '')))
         seat = Mp[si]
         write_obj(os.path.splitext(a.out)[0] + '_mount.obj', [(m['name'], skin(mb, Mp, m), m) for m in mm if m['vw']])

@@ -1,6 +1,6 @@
 ---
 name: aoe3de-unit-animation
-description: How Age of Empires III DE units are animated and how to change it safely - animfile anims a unit's tactics need, mounted units (horse animfile including a rider, matched horse/rider pairs, projectile release on the horse's Attack tag), how animations bind to bones (by name, keys local to the model's parent, root/model names), putting an infantry body on a rider skeleton (gr2_reskeleton.py), and previewing a pose without the game (pose_sim.py on converter GXO). Use when a unit "stands still while building", "floats above the horse", "shoots before the bow is drawn", "has no pickup/build/knockout animation", when borrowing animations from another unit, mounting a foot model, or before an owner game test of a unit's animations.
+description: How Age of Empires III DE units are animated and how to change it safely - animfile anims a unit's tactics need, mounted units (horse animfile including a rider, matched horse/rider pairs, projectile release on the horse's Attack tag), how animations bind to bones (by name, keys local to the model's parent, root/model names), putting an infantry body on a rider skeleton (gr2_reskeleton.py), and previewing a pose without the game (pose_sim.py on GXO models, clips decoded from the gr2). Use when a unit "stands still while building", "floats above the horse", "shoots before the bow is drawn", "has no pickup/build/knockout animation", when borrowing animations from another unit, mounting a foot model, or before an owner game test of a unit's animations.
 ---
 
 # Unit animation (animfiles, rigs, timing)
@@ -58,6 +58,7 @@ blender -b --factory-startup --python .claude/skills/aoe3de-unit-animation/scrip
 
 - GXO text from the GR2 converter (`gxo-convert`: `--format gxo`; it refuses animation-only files as FBX but dumps
   them as GXO). Only **key 0** of a converter animation dump is a clean pose: judge frame 0.
+- Later keys: decode the clip (`aoe3de-unit-model` `clip_decode.py`); `--det-tol` refuses drifted converter keys.
 - Calibration (vanilla yabusame rider + horse, cavalry idle): rider z 0.406..1.179 seated. Disciple as is
   0.825..1.324 (floating); with `--skeleton-from` the rider and as built 0.406..1.148 (seated). The owner's game test
   confirmed the built file rides.
@@ -73,4 +74,5 @@ blender -b --factory-startup --python .claude/skills/aoe3de-unit-animation/scrip
   (bench: `aoe3de-model-test-unit`).
 
 Related: `gr2-granny-edit` (GR2 tools, GXO format), `skinned-model-check` (weights and skeleton proof),
-`aoe3de-model-attachments` (attach/sync), `aoe-xml` (animfile grammar), `gxo-convert` (converter under Wine).
+`aoe3de-model-attachments` (attach/sync), `aoe-xml` (animfile grammar), `gxo-convert` (converter under Wine),
+`aoe3de-unit-model` (unit model facts: budgets, skeleton donors, LowPoly LOD, export routes).
