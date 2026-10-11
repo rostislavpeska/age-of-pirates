@@ -165,3 +165,15 @@ hash-verified reports; when they change, invalidate only dependent results. Miss
 evidence is INCOMPLETE, a failed experiment stays visible, and a timeout is UNKNOWN.
 Record confirmed lessons with the shared journal. Run the bundled failure fixtures
 with `python -m unittest discover -s .claude/skills/blender-uv-workflow/tests -v`.
+
+## Hidden surfaces behind cut-outs; review single-sided
+
+A face classified hidden (shared backing atlas) can still show THROUGH an alpha cut-out. Run
+[`scripts/alpha_backing_check.py`](scripts/alpha_backing_check.py) on every alpha page. It casts rays through sampled cut
+texels into the model and fails when the same assembly's front-facing opaque surface lies within `--own-depth` behind a cut,
+unless that texel is cut too. Hits on back faces are reported separately: the game culls back faces (vanilla omits them).
+
+The review must draw single-sided like the game (`use_backface_culling` on every review material). A double-sided viewer
+showed back faces plugging every eave scallop that is open in game, so the owner saw a solid band (Korean Market
+2026-10-11). A move of 67 'hidden' faces onto the alpha page, based on that double-sided reading, was unnecessary and was
+withdrawn.

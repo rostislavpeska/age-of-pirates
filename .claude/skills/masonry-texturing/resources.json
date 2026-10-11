@@ -6,7 +6,9 @@
     "references/ai-paint-gate.md",
     "references/sources.md",
     "scripts/masonry_lib.py",
-    "scripts/test_masonry_lib.py"
+    "scripts/test_masonry_lib.py",
+    "scripts/masonry_floor.py",
+    "scripts/test_masonry_floor.py"
   ],
   "skills": [
     "aoe3-texture-weathering",

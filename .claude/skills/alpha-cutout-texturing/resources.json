@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/slab_fold.py",
+    "scripts/slab_profile_map.py",
+    "scripts/test_slab_fold.py"
+  ],
+  "skills": [
+    "aoe-xml",
+    "aoe3de-building-export",
+    "blender-architecture-texturing",
+    "blender-uv-workflow",
+    "image-harness",
+    "masonry-texturing"
+  ],
+  "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": ["numpy"],
+      "requiredFor": ["fold", "seam-qa"],
+      "optional": false,
+      "note": "Outline geometry, folded coordinates and the seam statistics."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "distribution": "Pillow",
+      "modules": ["PIL"],
+      "requiredFor": ["fold", "seam-qa"],
+      "optional": false,
+      "note": "Face rasterisation on the page and image IO."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "commands": ["blender"],
+      "modules": ["bpy", "mathutils"],
+      "requiredFor": ["profile-map"],
+      "optional": false,
+      "note": "Background Blender (blender -b) reads the slab's faces, UVs and shared edges for slab_profile_map.py; tested on 5.1."
+    }
+  ]
+}

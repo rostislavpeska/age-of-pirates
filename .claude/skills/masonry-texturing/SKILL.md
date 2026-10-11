@@ -140,6 +140,26 @@ Read [AI paint and registration](references/ai-paint-gate.md).
 - Pin the stone target to the measured value. Re-check the frames byte for byte before reusing paid paintings
   (keep calibration scoped to the painted object).
 
+## 10. Quality floor (enforced)
+
+Owner 2026-10-11 (Korean Market): "the masonry needs more love ... extend the masonry skill to enforce more love". A single
+tiled stone source with a drawn joint grid is below the floor on any visible masonry: identical boxy blocks, uniform
+speckle, a grid of soft joints.
+- Run [`scripts/masonry_floor.py`](scripts/masonry_floor.py) on every page that carries masonry. It exits non-zero on
+  failure, but it is ADVISORY until its repeat metric is calibrated on real pages. On the Korean Market r7c (premium) it
+  still trips `tile_repeat` on 4 of 19 walls and on the procedural paving; on the tiled r1 source it trips more groups. Per masonry group it measures three things. `tile_repeat` is the autocorrelation peak of the high-passed stone
+  interiors, with joints masked because courses repeat by design; a repeated source tile peaks, painted stone does not.
+  `stone_identity` is the low-pass tone spread, since each stone needs its own tone. `joint_share` is the share of dark
+  joint texels, which must exist but not swamp the stone. Synthetic controls are in `test_masonry_floor.py`.
+- Lay structure out analytically at every texel from the face's masonry coordinates: rings unrolled round each body at
+  world height, stair profiles, top x/y. Joints, relief and wear then agree across corners and steps by construction; the
+  painting only colours it. Use a stable hash (CRC32) for per-stone randomness: Python `hash()` is salted per process.
+- Grade the stone to the set's MEASURED reference chromaticity, keeping luminance; do not hand-tune a warm multiplier. A
+  consuming project names its reference (Korean set: the castle foundation stone).
+- Weathering climbs from the foot where the owner asks for it (moss and mold, patchy, stronger in joints). It must read at
+  game distance.
+- Project recipes belong in the consuming project's pattern library (Korean: `patterns/korean/masonry.md`, KR-MASONRY-01).
+
 ## Reference implementation
 
 The Korean castle recipes, outside AoP: `$AOP_KOREAN_REPO/research/Colonial_Expansion_17/castle_geometry_r1/recipes/`.

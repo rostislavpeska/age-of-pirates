@@ -82,6 +82,13 @@ compose rules: [masonry-texturing](../masonry-texturing/SKILL.md) section 7 and 
    contrast to the ring around it (dark items fail a "brighter centre" test) and item kind by brightness-free
    chromaticity. Gemini keeps large distinct shapes but regroups small repeated items: mark each small item's kind in the
    layout, gate per crate, and compose each crate from the painting that passed for it.
+   **Every composed face declares its grain intent and is validated** (Korean Market stall thatch, owner: "wrong texture
+   orientation", "side textures ... flawed"). Strands follow the fall line on tops, undersides and end profiles. Derive
+   each face's strand axis in 3D from its corners and the sheet coordinates it actually sampled, and validate with
+   `blender-architecture-texturing/scripts/check_material_direction.py`. A vertical end-profile frame failed by 70 degrees
+   (keep it as the negative control). A THICK alpha part (a thatch slab) takes one folded parameterisation, and its cut
+   runs through every face. Per-face frames and opaque end-grain edges gave seams and a leftover rim under the fringe
+   (owner: "the corner is redundant"); see `alpha-cutout-texturing`.
 
 Reference implementation (Korean props, outside AoP): `korean-market-dock/recipes/props_ai_sheet.py` (layout, gates,
 compose) and `props_sheet_apply.py` (map back, relief, edge generators).

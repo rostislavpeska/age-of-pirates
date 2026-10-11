@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/seam_inventory.py",
+    "scripts/seam_monitor.py",
+    "scripts/test_seam_monitor.py"
+  ],
+  "skills": [
+    "alpha-cutout-texturing",
+    "masonry-texturing"
+  ],
+  "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": ["numpy"],
+      "requiredFor": ["monitor", "edit"],
+      "optional": false,
+      "note": "Seam sampling, statistics, ownership raster and the tone blend."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "distribution": "Pillow",
+      "modules": ["PIL"],
+      "requiredFor": ["monitor", "edit"],
+      "optional": false,
+      "note": "Page IO and the seam strip contact sheet."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "commands": ["blender"],
+      "modules": ["bpy"],
+      "requiredFor": ["inventory"],
+      "optional": false,
+      "note": "Background Blender (blender -b) reads edges, UVs and face attributes for seam_inventory.py; tested on 5.1."
+    }
+  ]
+}

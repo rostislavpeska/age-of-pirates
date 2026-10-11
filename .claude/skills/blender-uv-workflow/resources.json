@@ -13,7 +13,8 @@
     "scripts/shared_mapping.py",
     "tests/test_shared_mapping.py",
     "scripts/uv_integrity.py",
-    "tests/test_uv_integrity.py"
+    "tests/test_uv_integrity.py",
+    "scripts/alpha_backing_check.py"
   ],
   "skills": [
     "blender-ao-postproduction",
