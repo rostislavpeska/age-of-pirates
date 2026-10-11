@@ -760,7 +760,7 @@ def test_inc033_every_confirmed_folder_class_names_the_models_it_covers():
     """INC-033: no folder class silently covers a different building type: each confirmed class lists its models, and every
     model of the folder (a .gr2 with a .material) is listed or has a per_model entry"""
     for name, v in PROFILES["profiles"].items():
-        tb = v["texture_budget"]
+        tb = v.get("texture_budget") or {}          # a resource profile (korean_shared: an atlas, no building) has no class
         if not tb.get("confirmed_by"):
             continue
         assert tb.get("models") and v.get("names"), name
