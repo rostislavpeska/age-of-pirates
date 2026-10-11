@@ -128,12 +128,20 @@ may use the harness, and a manual edit works too.
 
    - Islands: `--at u,v` (page fraction, repeatable), `--island N`, or `--all`.
    - Raw GR2 UVs are page image coordinates.
+   - **Before game export / Blender source:** use `--uv-json selected_uv.json` instead of `--gr2/--mat`.
+     JSON is `{origin:"top-left", source_id:"blend-hash:object:page", uv_layer:"name", triangles:[[[u,1-v],...],...]}`.
+     Export selected faces of the intended page only; triangulation is a read-only view of Blender's loop triangles.
+     The helper records the JSON hash. Never export a temporary game model just to extract a paint island.
    - Writes `EDIT_INPUT.png`: the island crop on a neutral grey canvas of a generator aspect (1:1, 2:3, 3:2).
    - Writes `EDIT_MASK.png`: alpha 0 = the island = editable.
    - Writes `GUIDE.png` (magenta outlines) and `ISLAND.json`, which holds a prompt template.
 2. **Paint, with one call per island set:**
    - **GPT native:** edit `EDIT_INPUT.png` and attach `EDIT_MASK.png` if the tool takes a mask. Use the template
      from `ISLAND.json`: keep every edge, joint and opening in place; flat light; no text; no new objects.
+     In Codex, inspect the input with `view_image`, then call native `image_gen` with `referenced_image_paths`.
+     The current native tool has no binary-mask argument: treat the guide as visual guidance and enforce the
+     exact mask locally during `apply`. Do not imply the generator obeyed a hard mask. Preserve its original
+     result and prompt; apply to a new candidate page, inspect the mapped model, and retain failed gates.
    - **Claude:** `generate.py --image EDIT_INPUT.png --provider gemini`.
    - Save the result as `PAINTED.png`. Save the exact prompt, too.
 3. **Apply (free, local):**
@@ -142,10 +150,12 @@ may use the harness, and a manual edit works too.
    python .claude/skills/image-harness/scripts/uv_island_paint.py apply --dir DIR --painted PAINTED.png --route native-gpt --prompt-file PROMPT.txt --out-page NEW.png [--ddt X.ddt --ddt-out NEW.ddt]
    ```
 
-   - Any returned size works: it is resized to the canvas, and the crop is taken back from its placement.
+   - A returned size with the same aspect works: resize to the canvas and take the crop from its placement.
+     An aspect mismatch above 2% is rejected; register it rather than stretching the texture.
    - **Gate:** the edge correlation inside the island must be ≥ 0.35. Pass `--restyle` only when a new structure was
      asked for. A random image scores 0.00; a faithful repaint scores 0.997.
    - Only island texels change. Alpha is never repainted.
+     `APPLY.json` explicitly reports zero changed protected texels and zero changed alpha texels.
    - `APPLY.json` records the route, prompt, call count, hashes and cost. Cost is `unknown` unless known; never a
      made-up receipt.
    - `--ddt` patches the game DDT block-wise.

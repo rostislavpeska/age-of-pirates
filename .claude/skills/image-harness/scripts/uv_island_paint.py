@@ -40,7 +40,16 @@ def islands(gr2, mat):
     for m in read_raw(gr2)['render']:
         if m['mats'][0].lower() == mat.lower():
             uv = np.asarray(m['uv'], float)[:, :2]; tris += [uv[t] for t in np.asarray(m['tris'])]
-    T = np.array(tris); key = np.round(T.reshape(-1, 2) / 1e-5).astype(np.int64); parent = list(range(len(T)))
+    return components(tris)
+
+
+def components(tris):
+    T = np.asarray(tris, float)
+    if T.ndim != 3 or T.shape[1:] != (3, 2) or not len(T) or not np.isfinite(T).all():
+        raise ValueError('Expected nonempty finite UV triangles [N,3,2]')
+    if T.min() < -1e-6 or T.max() > 1 + 1e-6:
+        raise ValueError('UV triangles must be inside the requested 0..1 page')
+    key = np.round(T.reshape(-1, 2) / 1e-5).astype(np.int64); parent = list(range(len(T)))
     def f(x):
         while parent[x] != x: parent[x] = parent[parent[x]]; x = parent[x]
         return x
@@ -56,7 +65,17 @@ def islands(gr2, mat):
 
 def extract(a):
     O = Path(a.out); O.mkdir(parents=True, exist_ok=True); page = Image.open(a.page).convert('RGBA'); W, H = page.size
-    T, comps = islands(a.gr2, a.mat); sel = []
+    if a.uv_json:
+        src = json.loads(Path(a.uv_json).read_text(encoding='utf-8'))
+        if src.get('origin') != 'top-left':
+            raise ValueError('UV JSON must explicitly use top-left image coordinates; Blender V becomes 1-V')
+        if not src.get('source_id') or not src.get('uv_layer'):
+            raise ValueError('UV JSON needs source_id and uv_layer for provenance')
+        T, comps = components(src['triangles'])
+    else:
+        if not a.mat: raise ValueError('--mat is required with --gr2')
+        T, comps = islands(a.gr2, a.mat)
+    sel = []
     if a.all: sel = list(range(len(T)))
     for i in a.island or []: sel += comps[i]
     for at in a.at or []:
@@ -78,9 +97,11 @@ def extract(a):
     em = Image.new('RGBA', (CW, CH), (0, 0, 0, 255)); em.putalpha(Image.eval(full, lambda x: 0 if x else 255)); em.save(O / 'EDIT_MASK.png')
     guide = canvas.copy(); guide.paste((255, 0, 255), mask=full.filter(ImageFilter.FIND_EDGES)); guide.save(O / 'GUIDE.png')
     cm.save(O / 'ISLAND_MASK_PAGE_CROP.png')
-    rec = dict(page=str(Path(a.page).resolve()), page_sha256=sha(a.page), page_size=[W, H], gr2=Path(a.gr2).name, gr2_sha256=sha(a.gr2), material=a.mat,
+    rec = dict(page=str(Path(a.page).resolve()), page_sha256=sha(a.page), page_size=[W, H], material=a.mat,
                triangles=len(set(sel)), box=list(map(int, box)), canvas=[CW, CH], placed=[ox, oy, ox + size[0], oy + size[1]], scale=s, mask_texels=int(M.sum()),
                edit_input_sha256=sha(O / 'EDIT_INPUT.png'), edit_mask_sha256=sha(O / 'EDIT_MASK.png'), prompt_template=PROMPT)
+    if a.uv_json: rec.update(uv_json=Path(a.uv_json).name, uv_json_sha256=sha(a.uv_json), source_id=src['source_id'], uv_layer=src['uv_layer'], origin='top-left')
+    else: rec.update(gr2=Path(a.gr2).name, gr2_sha256=sha(a.gr2))
     (O / 'ISLAND.json').write_text(json.dumps(rec, indent=1)); print('EXTRACT', O, rec['triangles'], 'triangles', rec['mask_texels'], 'texels, edit', size)
 
 
@@ -99,6 +120,11 @@ def _edges(img):
 def apply(a):
     D = Path(a.dir); rec = json.loads((D / 'ISLAND.json').read_text()); CW, CH = rec['canvas']; px0, py0, px1, py1 = rec['placed']
     painted = Image.open(a.painted).convert('RGB')               # any returned size: the canvas aspect is a generator aspect
+    aspect_error = abs((painted.width / painted.height) / (CW / CH) - 1)
+    if aspect_error > .02:
+        raise ValueError('Generated canvas aspect differs by more than 2%; register its placement before applying, do not stretch it')
+    assert sha(D / 'EDIT_INPUT.png') == rec['edit_input_sha256'], 'edit input changed after extraction'
+    assert sha(D / 'EDIT_MASK.png') == rec['edit_mask_sha256'], 'edit mask changed after extraction'
     painted = painted.resize((CW, CH), Image.LANCZOS)
     inp = Image.open(D / 'EDIT_INPUT.png').convert('RGB'); mask = np.asarray(Image.open(D / 'EDIT_MASK.png'))[..., 3] == 0
     e0, e1 = _edges(inp)[mask], _edges(painted)[mask]
@@ -112,9 +138,16 @@ def apply(a):
     region = page.crop(rec['box']); out_rgb = Image.composite(small.convert('RGBA'), region, cm)
     out_rgb.putalpha(region.getchannel('A'))                         # alpha (cutouts) is never repainted
     new = page.copy(); new.paste(out_rgb, rec['box'][:2])
+    original_array, new_array = np.asarray(page), np.asarray(new)
+    protect = np.ones(original_array.shape[:2], bool)
+    protect[y0:y1, x0:x1] = np.asarray(Image.open(D / 'ISLAND_MASK_PAGE_CROP.png')) == 0
+    outside_changed = int(np.any(original_array != new_array, axis=-1)[protect].sum())
+    alpha_changed = int((original_array[..., 3] != new_array[..., 3]).sum())
+    assert outside_changed == 0 and alpha_changed == 0, 'Protected pixels or alpha changed'
     res = dict(painted=str(Path(a.painted).resolve()), painted_sha256=sha(a.painted), route=a.route, calls=a.calls, cost_usd=a.cost,
                prompt=(Path(a.prompt_file).read_text(encoding='utf-8') if a.prompt_file else a.prompt), structure=round(structure, 3),
                min_structure=a.min_structure, restyle=a.restyle, gate='PASS' if ok else 'FAIL')
+    res.update(outside_changed_texels=outside_changed, alpha_changed_texels=alpha_changed, aspect_error=aspect_error)
     if not ok and not a.force:
         (D / 'APPLY.json').write_text(json.dumps(res, indent=1)); raise SystemExit(f'GATE FAIL: structure {structure:.2f} < {a.min_structure} (the painting moved the island\'s edges; --restyle if a new structure was asked)')
     new.save(a.out_page); res.update(out_page=str(Path(a.out_page).resolve()), out_page_sha256=sha(a.out_page))
@@ -126,7 +159,7 @@ def apply(a):
 
 
 ap = argparse.ArgumentParser(); sub = ap.add_subparsers(dest='cmd', required=True)
-e = sub.add_parser('extract'); e.add_argument('--page', required=True); e.add_argument('--gr2', required=True); e.add_argument('--mat', required=True)
+e = sub.add_parser('extract'); e.add_argument('--page', required=True); src = e.add_mutually_exclusive_group(required=True); src.add_argument('--gr2'); src.add_argument('--uv-json'); e.add_argument('--mat')
 e.add_argument('--at', action='append'); e.add_argument('--island', action='append', type=int); e.add_argument('--all', action='store_true')
 e.add_argument('--out', required=True); e.add_argument('--size', type=int, default=1024); e.add_argument('--margin', type=int, default=6)
 p = sub.add_parser('apply'); p.add_argument('--dir', required=True); p.add_argument('--painted', required=True); p.add_argument('--out-page', required=True)
