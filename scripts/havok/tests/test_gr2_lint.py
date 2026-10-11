@@ -572,8 +572,9 @@ def test_every_building_folder_has_a_class_and_only_the_owner_confirms_one():
             L.resolve_profile(PROFILES, name)
     prof = {k: v for k, v in prof.items() if k not in resources}
     classes = PROFILES["texture_budget"]["classes"]
+    # 4x2048: the Korean House family only (owner 2026-10-12 "Approve 4x2048", "Yes: House A/B/C = 4x2048")
     assert {k: v["ceiling"] for k, v in classes.items()} == {"small": [2048], "medium": [2048, 1024],
-                                                            "large": [2048, 2048]}
+                                                            "large": [2048, 2048], "4x2048": [2048] * 4}
     confirmed = {k: (v["texture_budget"]["class"], v["texture_budget"]["confirmed_by"]) for k, v in prof.items()
                  if v["texture_budget"].get("confirmed_by")}
     assert confirmed == {"korean_tc": ("medium", "m335"), "market": ("medium", "m335"), "house": ("small", "m336")}

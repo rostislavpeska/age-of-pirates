@@ -16,7 +16,8 @@
   "classes": {
    "small": {"ceiling": [2048], "_doc": "1x2048: barracks-size and smaller (the house is small, m336)"},
    "medium": {"ceiling": [2048, 1024], "_doc": "1x2048 + one 1024 complement for the transparent / cutout objects: Town Center, Market, possibly others per model (m335). Only medium has the complement"},
-   "large": {"ceiling": [2048, 2048], "_doc": "2x2048: cathedral, basilica, the bigger wonders"}
+   "large": {"ceiling": [2048, 2048], "_doc": "2x2048: cathedral, basilica, the bigger wonders"},
+   "4x2048": {"ceiling": [2048, 2048, 2048, 2048], "_doc": "4x2048: the Korean House family only (Koreans add-on, owner 2026-10-12: \"Approve 4x2048\", then \"Yes: House A/B/C = 4x2048\"): the Colonial skin WALLS + ROOFS and the Discovery straw Hanok skin WALLS + ROOFS, one set each shared by House A/B/C over every stage; the shared atlases are pinned dependencies, not counted"}
   },
   "count_shared_vanilla": false,
   "_count_doc": "PROPOSED (gates/BUDGET_INVENTORY.md, 2026-09-30), owner to confirm: shared vanilla atlases a model borrows (generic props, the destruction sheet) are listed by the check but not counted - vanilla's own West TC age 3 loads three sets that way. Also to confirm: '1x2048' is counted as sets with a size cap (implemented), not as a pixel sum."
