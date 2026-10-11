@@ -38,6 +38,8 @@
   <definebone>bone_debris_5c</definebone>
   <definebone>bone_debris_5d</definebone>
   <definebone>bone_garrisonflag</definebone>
+  <definebone>bone_banner_l</definebone>
+  <definebone>bone_banner_r</definebone>
   <submodel>chinese_sub_construction_stage_01<component>construction_stage_01<assetreference type="GrannyModel"><file>buildings\asian_civs\construction\asi_4x4_stage1</file></assetreference><decal><effecttype>bump</effecttype><texture>buildings\asian_civs\castle\castle_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\asian_civs\castle\castle_ground_bump</bumptexture><width>12.50</width><height>12.50</height></decal></component><anim>Idle<component>construction_stage_01</component></anim></submodel>
   <submodel>chinese_sub_construction_stage_02<attachment>4x4_middle_scalf<component>4x4_mid_scalf<assetreference type="GrannyModel"><file>buildings\asian_civs\construction\asi_4x4_frame</file></assetreference></component><anim>Idle<component>4x4_mid_scalf</component></anim></attachment><component>construction_stage_02<assetreference type="GrannyModel"><file>buildings\asian_civs\construction\asi_4x4_stage2</file></assetreference><decal><effecttype>bump</effecttype><texture>buildings\asian_civs\castle\castle_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\asian_civs\castle\castle_ground_bump</bumptexture><width>12.50</width><height>12.50</height></decal><attach a="4x4_middle_scalf" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></component><anim>Idle<component>construction_stage_02</component></anim></submodel>
   <submodel>chinese_sub_construction_age_01_stage_03<attachment>scalf<component>scalf<assetreference type="GrannyModel"><file>buildings\asian_civs\construction\asi_4x4_stage2</file></assetreference></component><anim>Idle<component>scalf</component></anim></attachment><component>sub_construction_age1_stage3<assetreference type="GrannyModel"><file>buildings\asian_civs\castle\China\China_castle_age1\china_castle_age1_con_stage3</file></assetreference><decal><effecttype>bump</effecttype><texture>buildings\asian_civs\castle\castle_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\asian_civs\castle\castle_ground_bump</bumptexture><width>12.50</width><height>12.50</height></decal><attach a="scalf" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></component><anim>Idle<component>sub_construction_age1_stage3</component></anim></submodel>
@@ -128,6 +130,8 @@
     <anim>Idle<component>collapse_smoke</component>
     </anim>
   </attachment>
+  <attachment>korean_castle_banner<include>buildings\korean_castle\banner\korean_castle_banner.xml</include>
+  </attachment>
   <component>LIVE<logic type="Destruction">
       <p1>
         <assetreference type="GrannyModel">
@@ -165,6 +169,8 @@
     <simskeleton>
       <model>buildings\korean_castle\korean_castle_damaged</model>
     </simskeleton>
+    <attach a="korean_castle_banner" frombone="bone_main" tobone="bone_banner_l" syncanims="0" />
+    <attach a="korean_castle_banner" frombone="bone_main" tobone="bone_banner_r" syncanims="0" />
   </anim>
     <anim>RangedAttack<assetreference type="GrannyAnim">
         <file>animation_library\building\ranged_attack</file>
@@ -175,6 +181,8 @@
       <simskeleton>
         <model>buildings\korean_castle\korean_castle_damaged</model>
       </simskeleton>
+    <attach a="korean_castle_banner" frombone="bone_main" tobone="bone_banner_l" syncanims="0" />
+    <attach a="korean_castle_banner" frombone="bone_main" tobone="bone_banner_r" syncanims="0" />
     </anim>
     <anim>RangedAttackShip<assetreference type="GrannyAnim">
         <file>animation_library\building\ranged_attack</file>
@@ -185,6 +193,8 @@
       <simskeleton>
         <model>buildings\korean_castle\korean_castle_damaged</model>
       </simskeleton>
+    <attach a="korean_castle_banner" frombone="bone_main" tobone="bone_banner_l" syncanims="0" />
+    <attach a="korean_castle_banner" frombone="bone_main" tobone="bone_banner_r" syncanims="0" />
     </anim>
   <anim>Death<component>DEAD</component>
     <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0" />
