@@ -171,12 +171,12 @@
    "run": "page",
    "metric": "texel_density.visible_weighted.p10",
    "hard": {
-    "min": 314
+    "min": 313
    },
    "target": {
     "min": 350
    },
-   "evidence": "iron_rider_0 313 (seated idle, pitch 47, 8 headings)"
+   "evidence": "iron_rider_0 313.4 (uv_eval run VAN_iron_rider_0_body: seated idle oprichnik_idle1 k0 on horse_idle_a k0, pitch 47, 8 headings), reproduced exactly by gr2_lint's visibility port; keshik_rider_rank01 332.2 (sword_idle_A k0 on horse_idle_A k0). Hard min = floor of the lowest vanilla reference, 313: the earlier 314 rounded 313.4 up and failed the reference itself (review finding 2026-10-11, resolved by measurement)"
   },
   {
    "id": "coverage",

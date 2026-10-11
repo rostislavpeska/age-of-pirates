@@ -61,8 +61,10 @@ package's scripts, listed in [the skill](../SKILL.md)) or documented in the cite
 3. For pose tests, write the mesh with `<consumer-root>/scripts/havok/rig_table.py ... --skinned --scale 0.393700787`
    (1/2.54): the model GXO then has the units and frame of the converter's dumps of vanilla clips, which is what
    `pose_sim.py` binds against (section 4).
-4. The scale a GXO needs for the converter's GXO -> gr2 direction (engine units, as converter-made gr2 files have,
-   is the inference) is settled by the G0 round trip (section 3), not assumed.
+4. The scale a GXO needs for the converter's GXO -> gr2 direction: **engine units, `--scale 1`** (measured
+   2026-10-11 on the Pyeongon specimen: the converter takes GXO numbers as engine units without rescaling; at 1 the
+   skeleton lands within 7.8e-6 of the donor and positions within 5e-9, at 0.3937 everything is 0.3937x). The
+   donor-preserving writer (section 6) reads the same `--scale 1` GXO.
 
 Proof of steps 1 and 3 (2026-10-11, iron_rider_0): donor_to_blend then rig_table `--skinned --scale 0.393700787
 --quantize` on the two `REF_` meshes gives back the converter's dump - 32 bones in the same order with the same
@@ -135,7 +137,7 @@ For a unit whose shape stays vanilla: a retexture clone, a dropped part, moved e
 - Consumer policy may limit this route (AoP allows a cloned vanilla gr2 only for a distinct unit made as a retexture,
   geometry unchanged).
 
-## 6. Route B: new skinned geometry (not yet proven)
+## 6. Route B: new skinned geometry (proven offline 2026-10-11; the bench test is open)
 
 A body that changes shape is a mod-made model, not a clone. Facts that make this route risky:
 
@@ -148,16 +150,41 @@ A body that changes shape is a mod-made model, not a clone. Facts that make this
 - The GXO lines rig_table writes for the converter beyond what pose_sim reads (`mt`, `mm`, `fg`, unit `vn`) follow the
   converter's own dumps; that the converter accepts them is unverified until G0 step 4.
 
-Candidate writers, each to be proven by the G0 round trip:
+Candidate writers, each to be proven by the G0 round trip (2026-10-11 run on the Pyeongon G1 r2 body + flail with
+the H1 UVs, 1270 triangles, every ladder step recorded in C:/work/unit-process/export (HANDOFF.json)):
 
 | Writer | Data | Status |
 | --- | --- | --- |
-| Converter, GXO -> gr2 from `rig_table.py --skinned` | skinned 40-byte | unproven: acceptance, scale, shading, compression |
+| Converter, GXO -> gr2 from `rig_table.py --skinned` | not the vanilla layout | **rejected on evidence**: accepts the GXO at `--scale 1`; writes a 32-bit Oodle1 file (repo reader, `gr2_fixups`, `vertex_fill`, the anim viewer all refuse it; the game DLL reads it); vertex layout Position, BoneWeights, BoneIndices, Normal real32x3, UV0 - **no Tangent, no DiffuseColor0**; rebuilds the skeleton (7.8e-6 off, not byte for byte); unused weight slots do not repeat slot 0; re-quantizes weights (26 of 753 body vertices off by 1/255). The same on the 2026-10-11 G0 specimen. |
+| `<consumer-root>/scripts/havok/skinned_gr2.py` (donor-preserving, a NEW file around the donor) | skinned 40-byte | **proven offline**: donor skeleton byte for byte, the donor's own vertex type, MikkTSpace tangents on the final data (recomputed on the written file: median dot 1.0, sign 100 %; the Tangent.w -127 path of mirrored UVs and hard edges proven on a synthetic mesh through Blender's MikkTSpace, and real hard edges on the helmet specimen: 21 split-normal positions), 0 orphan fixups, no donor mesh/vertex/index/UV/texture data left (bytes AND geometry, see below); game DLL read on both routes identical to the repo reader; vertex fill identical in kind to iron_rider_0; skin check 0 FAIL; seated pose test on 445 keys of 42 clip pairs within 0.0002 cm of the Blender export; inside the horse at alive keys 2.3-17.1 cm per key (5.4-17.1 cm as the worst key of each pair) against the donor's 22.2-31.1 cm (24.4-31.1), at death keys up to 32.0 cm (donor 30.9); lit like vanilla in the anim viewer's game-shader port. The game bench (section 7, step 7) is still open. |
 | `<consumer-root>/scripts/havok/multimaterial_gr2.py` (donor-preserving, append-only) | rigid 24-byte only; refuses non-rigid weights | proven on building data |
 | Same writer for a **rigid attachment** (hat, rigid weapon) on a vanilla attachment donor | rigid 24-byte | **inferred**: its accepted layout (Position real32x3 @0, Normal binormal_int8x3 @12, BasicStaticPackedData0 uint8 @15, Tangent binormal_int8x3 @16, BasicStaticPackedData1 uint8 @19, TextureCoordinates0 real16x2 @20) is exactly the layout of every vanilla rigid unit attachment measured (steppe_rider_sword, light_cavalry_sword_age02, naginata_lance, dragoon_gun1, yabusamerider_bow, keshik_hat_rank02; `scripts/vertex_fill.py`, 2026-10-11). Needs one bench test before anything relies on it. |
 
 The rigid route bears on the weapon-rig choice ([rider skeleton](rider-skeleton.md), section 7): a rigid prop on
 `Bip01 Prop1` could reuse it, a skinned chain cannot.
+
+What `skinned_gr2.py` refuses (repair round 2026-10-11, after an independent verification broke the first version):
+
+- **Scale (INC-251).** A 0.3937x GXO (the pose-test scale) written at `--scale 1` passed every byte check of the
+  first version and the unit lint. The writer now needs a GXO bone table that lists every palette bone, every GXO
+  joint within 1e-3 units of the donor joint at `--scale` (the specimen: 2e-7; the 0.3937 GXO: 0.85), and the meshes
+  sitting on the donor skeleton (`skeleton_fit.py`: vertex-to-dominant-bone distance p50 <= 0.20 and p95 <= 0.45
+  units, mesh / weighted-joint height ratio 1.0-2.2; the 20 DE riders measure 0.107-0.156, 0.196-0.371 and
+  1.19-1.90; the 0.3937x model 0.266, 0.786 and 0.47). The fit check is coarse (unit-system errors, gross offsets);
+  the joint check is the fine one. The same fit runs in the lint (`unit_fit`).
+- **Donor data beyond bytes (INC-252).** The vanilla body and whip handed back through Blender at scale 1.0001 held
+  no donor byte run but 100 % of their positions and UVs. The clean proof now also measures, per output mesh, the
+  share of its vertices on donor positions (as stored, and after normalising each mesh pair by bounding box or by
+  centroid and RMS radius), on donor UV pairs (as stored or V-flipped) and whether its welded topology equals a donor
+  mesh's; more than 1 % or an equal topology refuses. A re-export that drops one vertex changes the topology
+  signature (the iron body did), so positions and UVs carry that case.
+- **No output from a failed build.** The file is written as `OUT.partial` and renamed only after verify, the clean
+  proof and the tangent recheck (median dot >= 0.999, sign >= 0.99) pass; an existing `OUT` survives a failed
+  overwrite.
+- Also refused, each with a test: the donor as output, a compressed, 32-bit, non-gr2 or bad-CRC donor, a donor
+  whose skinned layout is not the vanilla one, a donor with two skeletons or models, two materials in one mesh,
+  v/vn/vt/vw count mismatch, a face past the vertices, unreferenced vertices, zero tangents, Blender missing (no
+  other tangent rule is substituted).
 
 ## 7. The ladder (every export)
 
@@ -191,7 +218,11 @@ Blender and the game file must agree on mesh count, triangle count, bone list an
 
 ## 9. Consumer export gates
 
-A consuming mod may gate game tests on its own lint. As of 2026-10-11 AoP's `gr2_lint` profiles
-(`<consumer-root>/scripts/havok/gr2_lint_profiles.json`) and texture-budget classes cover buildings only: there is no
-unit profile and no owner-confirmed unit texture class, so even the G0 specimen has no lint gate. Ask the owner for
-both at G0 (section 3, step 7); never skip the lint or invent a profile.
+A consuming mod may gate game tests on its own lint. AoP (2026-10-11): `gr2_lint --profile unit_rider_1024`
+(`unit_profiles` in `<consumer-root>/scripts/havok/gr2_lint_profiles.json`), **PROPOSED for the owner**: skeleton,
+skeleton fit (`unit_fit`, the scale gate), weights, vertex layout and budget against references measured on
+iron_rider_0 and keshik_rider_rank01 (both pass 16/16), the UNIVERSAL UV density floor (`texel_density`, as for every
+model: no unit exemption) with the organic UV gate profile's higher density minima on top (`unit_density`,
+`--pose-npz` for the visible-weighted part), and the unit texture class `unit_human_1024` (1x1024, PROPOSED from the
+owner's 2026-10-11 words): texture_budget FAILS until his confirmation is recorded in the owner message store. Never
+skip the lint or invent a profile.

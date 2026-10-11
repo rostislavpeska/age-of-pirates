@@ -31,11 +31,21 @@ What the output holds (a new file, every object written fresh; nothing is append
   triangle's corner order is reversed; V flipped once (gr2_uv_convention.blender_to_gr2_uv) before the tangents.
 - uncompressed; every pointer fixup reachable from the root (0 orphans by construction, checked: INC-187/INC-203).
 
+Gates before writing (a failing gate raises, nothing is written): the donor opens through the repo reader (64-bit,
+uncompressed, CRC, one skeleton and one model, the vanilla skinned layout); the GXO (v/vn/vt/vw counts, one material
+per mesh, faces inside the vertices, 8-bit weights); the SCALE (INC-251): a bone table is present, every palette bone
+is in it and every GXO joint lies within JOINT_TOL (1e-3 units) of the donor joint at --scale, and the meshes sit on the
+donor skeleton (skeleton_fit.py: vertex-to-dominant-bone distance and mesh/joint height ratio within the limits
+measured on 20 DE riders).
 Checks after writing (in the report; a failing check raises): CRC, the repo reader reopens the file, skeleton bone
 records byte-identical to the donor's, vertex type identical to the donor's, vertex and index bytes equal what was
 packed, materials / palettes / triangle counts, 0 orphan fixups, the winding of >= 97 % of the face area along the
-stored normals, MikkTSpace recomputed on the written file against the stored tangents (median dot, sign agreement),
-and prove_clean: no donor vertex record, position, index run, mesh / material / texture name or source path in OUT.
+stored normals, MikkTSpace recomputed on the written file against the stored tangents (median dot >= 0.999, sign
+agreement >= 0.99), and prove_clean: no donor vertex record, position, index run, mesh / material / texture name or
+source path in OUT, and beyond exact bytes (INC-252: a re-export defeats a byte search) no OUT mesh with more than 1 %
+of its vertices on donor positions (as stored, or after centring and scaling a mesh pair) or on donor UV pairs, and none
+whose welded topology equals a donor mesh's. The file is written as OUT.partial and renamed to OUT only after every
+check passed: a failed build leaves no output (an existing OUT stays as it was).
 The game's own DLL read is NOT here: run gr2_lint (dll_read) and the unit ladder (aoe3de-unit-model export-routes.md
 section 7) on the output.
 
@@ -75,6 +85,15 @@ SCALAR = {10: ('f', 4), 19: ('i', 4), 20: ('I', 4), 15: ('h', 2), 16: ('H', 2), 
           21: ('e', 2), 11: ('b', 1), 12: ('B', 1), 13: ('b', 1), 14: ('B', 1)}
 TANGENT_SAME = 0.9999          # corners of one vertex whose MikkTSpace tangents agree this well share it
 WINDING_MIN = 0.97
+JOINT_TOL = 1e-3               # GXO joint vs donor joint, engine units (the specimen 2e-7, the converter 7.8e-6; the
+#                                0.3937x GXO 0.85): the fine scale gate (INC-251); skeleton_fit is the coarse one
+RECHECK_DOT_MIN, RECHECK_SIGN_MIN = 0.999, 0.99   # MikkTSpace on the WRITTEN file vs the stored tangents, per corner
+#                                (median dot, sign agreement; vanilla iron_rider_0 0.99997 / 0.9997, the specimen 1.0 / 1.0)
+CLEAN_POS_TOL = 1e-3           # a vertex within 1e-3 units (per coordinate) of a donor vertex sits on donor data
+CLEAN_NORM_TOL = 1e-3          # the same after each mesh pair is centred and scaled to unit RMS radius (a scaled copy)
+CLEAN_UV_TOL = 1e-4            # a UV pair within 1e-4 of a donor UV pair, as stored or V-flipped
+CLEAN_MAX_SHARE = 0.01         # more than 1 % of a mesh's vertices on donor positions or UVs = donor data (W2: 0 %)
+TOPOLOGY_MIN_FACES = 24        # a welded-topology signature identifies a mesh from this size (a quad is any quad)
 
 
 class WriteError(Exception):
@@ -661,6 +680,17 @@ def _member(g, tref, name):
     return None
 
 
+def open_donor(path):
+    """the donor through the repo reader; a file it cannot open (compressed, not a gr2, truncated) is refused here as a
+    WriteError, never as a crash later in the build"""
+    try:
+        g = Gr2(str(path))
+    except (NotImplementedError, AssertionError, struct.error, ValueError, IndexError, KeyError, OSError) as e:
+        raise WriteError('donor %s cannot be read as an uncompressed 64-bit gr2 (%s: %s)' % (Path(path).name,
+                                                                                            type(e).__name__, e))
+    return g
+
+
 def donor_parts(g):
     """the donor records the writer reads: root, skeleton, model, first skinned mesh and its vertex type."""
     if g.ptr != 8 or g.magic != MAGIC64:
@@ -696,14 +726,15 @@ def obb(mesh, k, inverse_world):
 
 
 def write(donor, meshes, out, *, textures=None, from_file_name=None, overwrite=False):
-    """meshes (with tangents) -> OUT.gr2 around the donor skeleton. Returns the write record."""
+    """meshes (with tangents) -> OUT.gr2 around the donor skeleton. Returns the write record. The bare serializer: no
+    scale, fit, verify or clean gate runs here - export through build() (the CLI), never through write() alone."""
     donor, out = Path(donor), Path(out)
     if out.resolve() == donor.resolve():
         raise WriteError('refusing to overwrite the donor')
     if out.exists() and not overwrite:
         raise WriteError('output exists: %s (pass overwrite)' % out)
     textures = textures or {}
-    g = Gr2(str(donor))
+    g = open_donor(donor)
     d = donor_parts(g)
     root_t = (g.root_type_sec, g.root_type_off)
     W = Out(g)
@@ -886,11 +917,12 @@ def decode(path):
     return out
 
 
-def tangent_recheck(path, blender=None):
-    """MikkTSpace recomputed on the WRITTEN file's data, compared per corner with the stored tangents."""
+def tangent_recheck(path, blender=None, tangent_fn=None):
+    """MikkTSpace (or the injected tangent_fn of a test) recomputed on the WRITTEN file's data, compared per corner with
+    the stored tangents."""
     meshes = decode(path)
     res = []
-    for m, (T, S) in zip(meshes, mikktspace(meshes, blender)):
+    for m, (T, S) in zip(meshes, tangent_fn(meshes) if tangent_fn else mikktspace(meshes, blender)):
         st = m.tan[:, :3].astype(float)
         st /= np.linalg.norm(st, axis=1)[:, None]
         dots, agree = [], []
@@ -922,8 +954,131 @@ def _strings_of(g):
     return out
 
 
+def mesh_arrays(g):
+    """per mesh of an opened gr2: name, positions (n,3) and UVs (n,2) as stored (real32 columns found by name in its
+    vertex type; None when absent or not real32), triangles (m,3)"""
+    out = []
+    for rec, _ in refs(g, g.root().get('Meshes')):
+        vd = g.read(*rec['PrimaryVertexData'][2], *rec['PrimaryVertexData'][1])
+        _, vt, nv, dp = vd['Vertices']
+        stride = g.struct_size(*vt)
+        offs = {m['name']: (o, m['type'], max(m['count'], 1)) for m, o in g.layout(*vt)[0]}
+        raw = np.frombuffer(bytes(g.payload[dp[0]][dp[1]:dp[1] + stride * nv]), np.uint8).reshape(nv, stride) \
+            if nv and dp else np.zeros((0, stride), np.uint8)
+
+        def col(name, k):
+            o, t, c = offs.get(name, (None, None, 0))
+            if o is None or t != 10 or c < k:
+                return None
+            return raw[:, o:o + 4 * k].copy().view('<f4').astype(np.float64)
+        top = g.read(*rec['PrimaryTopology'][2], *rec['PrimaryTopology'][1])
+        if top.get('Indices') and top['Indices'][1]:
+            (s, o), n, dt = top['Indices'][2], top['Indices'][1], '<i4'
+        elif top.get('Indices16') and top['Indices16'][1]:
+            (s, o), n, dt = top['Indices16'][2], top['Indices16'][1], '<u2'
+        else:
+            s = o = n = 0
+            dt = '<i4'
+        w = np.dtype(dt).itemsize
+        tris = np.frombuffer(bytes(g.payload[s][o:o + n * w]), dt).astype(np.int64).reshape(-1, 3) if n else \
+            np.zeros((0, 3), np.int64)
+        out.append(dict(name=rec['Name'], pos=col('Position', 3), uv=col('TextureCoordinates0', 2), tris=tris))
+    return out
+
+
+def near_share(A, B, tol, chunk=256):
+    """the share of the rows of A within tol (per coordinate) of some row of B"""
+    if A is None or B is None or not len(A) or not len(B):
+        return 0.0
+    hit = np.zeros(len(A), bool)
+    for s in range(0, len(A), chunk):
+        hit[s:s + chunk] = (np.abs(A[s:s + chunk, None, :] - B[None, :, :]).max(2) <= tol).any(1)
+    return float(hit.mean())
+
+
+def normalized(P, how='rms'):
+    """positions moved and scaled to a canonical frame, so a copy that was only moved and uniformly scaled lands on the
+    original: 'rms' = centred on the centroid of the distinct points, unit RMS radius; 'box' = the bounding box's
+    minimum corner at 0, its largest side 1 (robust to a few dropped interior vertices, which move the centroid)"""
+    if how == 'box':
+        lo = P.min(0)
+        ext = float((P.max(0) - lo).max())
+        return (P - lo) / (ext if ext > 1e-12 else 1.0)
+    U = np.unique(P, axis=0)
+    c = U.mean(0)
+    r = float(np.sqrt(((U - c) ** 2).sum(1).mean()))
+    return (P - c) / (r if r > 1e-12 else 1.0)
+
+
+def topology_signature(P, T):
+    """the welded topology of a mesh, independent of vertex order, scale and splits: vertices welded by identical
+    stored positions, distinct non-degenerate faces, edges, boundary edges and a 3-round Weisfeiler-Lehman hash of the
+    vertex graph"""
+    P32 = np.asarray(P, np.float32)
+    _, inv = np.unique(P32, axis=0, return_inverse=True)
+    W = inv.reshape(-1)[np.asarray(T, np.int64)]
+    W = W[(W[:, 0] != W[:, 1]) & (W[:, 1] != W[:, 2]) & (W[:, 0] != W[:, 2])]
+    faces = np.unique(np.sort(W, 1), axis=0) if len(W) else np.zeros((0, 3), np.int64)
+    e = np.sort(np.vstack([faces[:, [0, 1]], faces[:, [1, 2]], faces[:, [0, 2]]]), 1)
+    edges, cnt = np.unique(e, axis=0, return_counts=True) if len(e) else (np.zeros((0, 2), np.int64), np.zeros(0))
+    nbr = {int(v): [] for v in np.unique(faces)}
+    for a, b in edges:
+        nbr[int(a)].append(int(b))
+        nbr[int(b)].append(int(a))
+    lab = {v: str(len(n)) for v, n in nbr.items()}
+    for _ in range(3):
+        lab = {v: hashlib.sha1((lab[v] + '|' + ','.join(sorted(lab[u] for u in nbr[v]))).encode()).hexdigest()[:16]
+               for v in nbr}
+    wl = hashlib.sha256('\n'.join(sorted(lab.values())).encode()).hexdigest()[:16]
+    return dict(vertices=len(nbr), faces=int(len(faces)), edges=int(len(edges)), boundary_edges=int((cnt == 1).sum()),
+                wl=wl)
+
+
+def geometry_overlap(gd, go):
+    """the donor's geometry in OUT beyond exact bytes (INC-252: a re-export defeats a byte search): per OUT mesh the share
+    of its vertices on donor positions (as stored; and per donor mesh after centring and scaling both), on donor UV
+    pairs (as stored or V-flipped), and whether its welded topology equals a donor mesh's"""
+    dm, om = mesh_arrays(gd), mesh_arrays(go)
+    dpos = np.vstack([m['pos'] for m in dm if m['pos'] is not None]) if any(m['pos'] is not None for m in dm) else None
+    duv = np.vstack([m['uv'] for m in dm if m['uv'] is not None]) if any(m['uv'] is not None for m in dm) else None
+    dsig = {m['name']: topology_signature(m['pos'], m['tris']) for m in dm
+            if m['pos'] is not None and len(m['tris']) >= TOPOLOGY_MIN_FACES}
+    rows = []
+    for m in om:
+        r = dict(mesh=m['name'], vertices=0 if m['pos'] is None else len(m['pos']), faces=len(m['tris']))
+        r['positions_share'] = round(near_share(m['pos'], dpos, CLEAN_POS_TOL), 4)
+        best = (0.0, None)
+        if m['pos'] is not None and len(m['pos']):
+            for how in ('rms', 'box'):
+                mo = normalized(m['pos'], how)
+                for d in dm:
+                    if d['pos'] is not None and len(d['pos']):
+                        s = near_share(mo, normalized(d['pos'], how), CLEAN_NORM_TOL)
+                        if s > best[0]:
+                            best = (s, '%s (%s)' % (d['name'], how))
+        r['positions_share_normalized'], r['normalized_vs'] = round(best[0], 4), best[1]
+        uv_direct = near_share(m['uv'], duv, CLEAN_UV_TOL)
+        uv_flip = near_share(None if m['uv'] is None else np.c_[m['uv'][:, 0], 1.0 - m['uv'][:, 1]], duv, CLEAN_UV_TOL)
+        r['uv_share'] = round(max(uv_direct, uv_flip), 4)
+        if m['pos'] is not None and len(m['tris']) >= TOPOLOGY_MIN_FACES:
+            sig = topology_signature(m['pos'], m['tris'])
+            r['topology'] = sig
+            r['topology_identical_to'] = [k for k, v in dsig.items() if v == sig]
+        else:
+            r['topology'], r['topology_identical_to'] = 'not distinctive below %d faces' % TOPOLOGY_MIN_FACES, []
+        r['donor_data'] = bool(max(r['positions_share'], r['positions_share_normalized'], r['uv_share']) > CLEAN_MAX_SHARE
+                               or r['topology_identical_to'])
+        rows.append(r)
+    return dict(meshes=rows, donor_topologies=dsig, limits=dict(pos_tol=CLEAN_POS_TOL, norm_tol=CLEAN_NORM_TOL,
+                                                               uv_tol=CLEAN_UV_TOL, max_share=CLEAN_MAX_SHARE,
+                                                               topology_min_faces=TOPOLOGY_MIN_FACES))
+
+
 def prove_clean(donor, out, own=()):
-    """what of the donor's mesh, vertex, index and texture data is left in OUT (all counts must be 0).
+    """what of the donor's mesh, vertex, index, UV and texture data is left in OUT (all must be 0 / below the limits).
+    Exact bytes: donor vertex records, positions, 16-index runs. Beyond bytes (geometry_overlap, INC-252): per OUT mesh
+    at most CLEAN_MAX_SHARE of its vertices on donor positions (as stored, and after centring + scaling each mesh pair)
+    and on donor UV pairs (as stored or V-flipped), and no welded topology equal to a donor mesh's.
     Allowed donor strings: bone, skeleton and model names, type member names, vertex component names and the
     ArtToolInfo / ExporterInfo / root ExtendedData strings (what the writer copies on purpose). `own`: strings the
     writer authored from its own inputs (mesh, material and texture names, the map usage 'color'); a donor string equal
@@ -990,34 +1145,90 @@ def prove_clean(donor, out, own=()):
                donor_strings=len(donor_strings), donor_strings_copied_by_design=len(shared) - len(leaked) - len(coincident),
                donor_strings_found=leaked, coincident_with_own_names=coincident, texture_images_in_out=texture_images,
                texture_section_bytes=go.sections[5]['data_size'] if go.sec_count > 5 else 0)
+    ov = geometry_overlap(gd, go)
+    rep['geometry'] = ov
+    rep['meshes_on_donor_geometry'] = [r['mesh'] for r in ov['meshes'] if r['donor_data']]
     rep['clean'] = (vert_hits == 0 and pos_hits == 0 and index_hits == 0 and not leaked and texture_images == 0
-                    and rep['texture_section_bytes'] == 0)
+                    and rep['texture_section_bytes'] == 0 and not rep['meshes_on_donor_geometry'])
     return rep
 
 
 # ------------------------------------------------------------------------------------------------------ driver
-def donor_bind_check(donor, parsed, scale=1.0):
-    """the GXO's bone table against the donor skeleton: same names and order, joint positions (engine frame)."""
-    g = Gr2(str(donor))
+def donor_skeleton(g):
+    """names, parents and world joint positions (engine frame) of the donor's skeleton"""
     bones = g.array(refs(g, g.root()['Skeletons'])[0][0]['Bones'])
     names = [b['Name'] for b in bones]
-    world = {b['Name']: np.linalg.inv(np.array(b['InverseWorldTransform'], float).reshape(4, 4))[3, :3] for b in bones}
+    J = np.array([np.linalg.inv(np.array(b['InverseWorldTransform'], float).reshape(4, 4))[3, :3] for b in bones])
+    par = [b['ParentIndex'][0] if isinstance(b['ParentIndex'], (tuple, list)) else b['ParentIndex'] for b in bones]
+    return names, [int(x) for x in par], J
+
+
+def donor_bind_check(g, parsed, scale=1.0):
+    """the GXO's bone table against the donor skeleton (INC-251): every GXO bone in the donor, every palette bone in the
+    GXO table, every GXO joint (engine frame, x scale) within JOINT_TOL of the donor's. -> record with 'fails'."""
+    if not isinstance(g, Gr2):
+        g = open_donor(g)
+    names, _, J = donor_skeleton(g)
+    world = dict(zip(names, J))
     gx = parsed.get('bones') or []
-    diff = [float(np.abs((np.asarray(t) @ A) * scale - world[n]).max()) for n, t in zip(gx, parsed.get('bone_t', []))
-            if n in world]
-    return dict(gxo_bones=len(gx), donor_bones=len(names), same_names_and_order=gx == names,
-                missing_in_donor=[n for n in gx if n not in world],
-                joint_max_abs_diff=round(max(diff), 7) if diff else None)
+    palette = sorted({b for m in parsed['meshes'] for b in m['mb']})
+    diff = {n: float(np.abs((np.asarray(t) @ A) * scale - world[n]).max())
+            for n, t in zip(gx, parsed.get('bone_t', [])) if n in world}
+    worst = max(diff, key=diff.get) if diff else None
+    rep = dict(gxo_bones=len(gx), donor_bones=len(names), same_names_and_order=gx == names,
+               missing_in_donor=[n for n in gx if n not in world],
+               palette_not_in_gxo_table=[b for b in palette if b not in gx],
+               joint_max_abs_diff=round(diff[worst], 7) if worst else None, joint_worst_bone=worst,
+               joint_tolerance=JOINT_TOL)
+    fails = []
+    if not gx:
+        fails.append('the GXO has no bone table ("b" lines): its scale cannot be proven against the donor skeleton')
+    if rep['missing_in_donor']:
+        fails.append('GXO bones missing from the donor skeleton: %s' % rep['missing_in_donor'])
+    if rep['palette_not_in_gxo_table']:
+        fails.append('palette bones absent from the GXO bone table (their joints are unchecked): %s'
+                     % rep['palette_not_in_gxo_table'])
+    if worst and diff[worst] > JOINT_TOL:
+        fails.append('GXO joint %s sits %.6f units from the donor joint at --scale %s (tolerance %g): wrong scale or '
+                     'frame - write the GXO with rig_table.py --skinned --scale 1 from the donor scene' %
+                     (worst, diff[worst], scale, JOINT_TOL))
+    rep['fails'] = fails
+    return rep
+
+
+def fit_check(g, meshes):
+    """the prepared meshes (engine frame) against the donor skeleton: skeleton_fit (the coarse, model-independent scale
+    and placement gate)"""
+    import skeleton_fit as F
+    names, parents, J = donor_skeleton(g)
+    rep = F.fit([dict(name=m.name, pos=m.pos, w=m.w, bi=m.bi, palette=m.bones) for m in meshes], names, parents, J)
+    rep['fails'] = F.judge(rep)
+    rep['limits'] = F.LIMITS
+    return rep
 
 
 def build(donor, gxo, out, *, scale=1.0, material_names=None, mesh_names=None, textures=None, blender=None,
           tangent_fn=None, recheck=True, overwrite=False):
-    """GXO + donor -> OUT.gr2 with every check; returns the report (raises WriteError on any failure)."""
+    """GXO + donor -> OUT.gr2 with every check; returns the report (raises WriteError on any failure).
+    Gates before writing: the donor (readable, 64-bit, CRC, one skeleton and model, vanilla skinned layout), the GXO
+    (counts, one material per mesh, 8-bit weights), the bind check (joints within JOINT_TOL) and the skeleton fit. The
+    file is written next to OUT as OUT.partial; verify, prove_clean and the tangent recheck run on it, and only a file
+    that passes them all is renamed to OUT - a failed build leaves no OUT (and an existing OUT untouched)."""
+    donor, out = Path(donor), Path(out)
+    if out.resolve() == donor.resolve():
+        raise WriteError('refusing to overwrite the donor')
+    if out.exists() and not overwrite:
+        raise WriteError('output exists: %s (pass overwrite)' % out)
+    g = open_donor(donor)
+    donor_parts(g)
     parsed = parse_gxo(gxo)
     meshes = from_gxo(parsed, scale, material_names, mesh_names)
-    bind = donor_bind_check(donor, parsed, scale)
-    if bind['missing_in_donor']:
-        raise WriteError('GXO bones missing from the donor skeleton: %s' % bind['missing_in_donor'])
+    bind = donor_bind_check(g, parsed, scale)
+    if bind['fails']:
+        raise WriteError('; '.join(bind['fails']))
+    fit = fit_check(g, meshes)
+    if fit['fails']:
+        raise WriteError('the meshes do not sit on the donor skeleton (skeleton_fit): %s' % '; '.join(fit['fails']))
     pre = [dict(name=m.name, gxo_vertices=m.n, triangles=len(m.tris)) for m in meshes]
     corner = tangent_fn(meshes) if tangent_fn else mikktspace(meshes, blender)
     final, splits = [], []
@@ -1030,16 +1241,36 @@ def build(donor, gxo, out, *, scale=1.0, material_names=None, mesh_names=None, t
                  influences={str(i): int(((m.w > 0).sum(1) == i).sum()) for i in range(1, 5)})
     rep = dict(tool='skinned_gr2', donor=str(donor), gxo=str(gxo), scale=scale,
                tangents='injected (%s)' % getattr(tangent_fn, '__name__', 'fn') if tangent_fn else 'MikkTSpace (Blender)',
-               donor_bind=bind, prepared=pre)
-    rep['write'] = write(donor, final, out, textures=textures, overwrite=overwrite)
-    rep['verify'] = verify(out, donor, final)
-    own = {m.name for m in final} | {m.material for m in final} | {m.material + '_file' for m in final} | \
-        set(rep['write']['textures']) | {'color'}
-    rep['clean'] = prove_clean(donor, out, own)
-    if not rep['clean']['clean']:
-        raise WriteError('donor data left in the output: %s' % rep['clean'])
-    if recheck and not tangent_fn:
-        rep['tangent_recheck'] = tangent_recheck(out, blender)
+               donor_bind=bind, skeleton_fit=fit, prepared=pre)
+    tmp = out.with_name(out.name + '.partial')
+    try:
+        rep['write'] = write(donor, final, tmp, textures=textures, from_file_name='skinned_gr2.py ' + out.stem,
+                             overwrite=True)
+        rep['verify'] = verify(tmp, donor, final)
+        own = {m.name for m in final} | {m.material for m in final} | {m.material + '_file' for m in final} | \
+            set(rep['write']['textures']) | {'color'}
+        rep['clean'] = prove_clean(donor, tmp, own)
+        if not rep['clean']['clean']:
+            c = rep['clean']
+            raise WriteError('donor data in the output: vertex records %d, positions %d, index runs %d, strings %s, '
+                             'meshes on donor geometry %s %s' % (
+                                 c['donor_vertex_records_found'], c['donor_positions_found'],
+                                 c['donor_index_windows_found'], c['donor_strings_found'], c['meshes_on_donor_geometry'],
+                                 [{k: r[k] for k in ('mesh', 'positions_share', 'positions_share_normalized', 'uv_share',
+                                                     'topology_identical_to')} for r in c['geometry']['meshes']]))
+        if recheck:
+            rc = tangent_recheck(tmp, blender, tangent_fn)
+            rep['tangent_recheck'] = rc
+            bad = [r for r in rc if r['dot_median'] < RECHECK_DOT_MIN or r['sign_agree'] < RECHECK_SIGN_MIN]
+            if bad:
+                raise WriteError('stored tangents disagree with the recomputed ones (min median dot %s, sign %s): %s'
+                                 % (RECHECK_DOT_MIN, RECHECK_SIGN_MIN, bad))
+        os.replace(tmp, out)
+    except BaseException:
+        if tmp.exists():
+            tmp.unlink()
+        raise
+    rep['write']['path'] = str(out)
     return rep
 
 
@@ -1099,7 +1330,17 @@ def main(argv=None):
     print('VERIFY crc %s, skeleton %s, orphan fixups %d, meshes %s' % (v['crc_ok'], v['skeleton'], v['orphan_fixups'],
                                                                      [(x['name'], x['layout_vanilla'],
                                                                        x['vertex_bytes_equal']) for x in v['meshes']]))
-    print('CLEAN %s' % rep['clean'])
+    c = rep['clean']
+    print('CLEAN %s: vertex records %d/%d, positions %d, index runs %d/%d, leaked strings %s, texture images %d' % (
+        c['clean'], c['donor_vertex_records_found'], c['donor_vertex_records'], c['donor_positions_found'],
+        c['donor_index_windows_found'], c['donor_index_windows'], c['donor_strings_found'], c['texture_images_in_out']))
+    for r in c['geometry']['meshes']:
+        print('  GEOMETRY %(mesh)s: on donor positions %(positions_share)s, scaled copy %(positions_share_normalized)s '
+              '(vs %(normalized_vs)s), on donor UVs %(uv_share)s, topology identical to %(topology_identical_to)s' % r)
+    f = rep['skeleton_fit']
+    print('FIT dist p50 %s p95 %s, height ratio %s; joints max %s off the donor (%s)' % (
+        f.get('dist_p50'), f.get('dist_p95'), f.get('height_ratio'), rep['donor_bind']['joint_max_abs_diff'],
+        rep['donor_bind']['joint_worst_bone']))
     for t in rep.get('tangent_recheck', []):
         print('TANGENTS %s' % t)
     return 0

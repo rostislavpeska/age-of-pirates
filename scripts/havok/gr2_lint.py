@@ -65,6 +65,18 @@ Why each check exists (every one is a defect that reached the game first):
                           (currently 90/54 t/u), plus area-share/collapse limits. Below-floor exceptions require
                           the exact candidate's recorded owner GO; malformed/collapsed UV failures remain blocking.
 
+Unit profiles ("unit_profiles", kind unit; 2026-10-11, PROPOSED for the owner): a skinned unit model runs crc, fixups,
+dll_read, vertex_limit, wrap16, tangents, winding and materials, then unit_skeleton (one reference skeleton byte for
+byte), unit_fit (the meshes sit on that skeleton: skeleton_fit.py, the scale gate of INC-251), unit_weights (8-bit sums
+255, descending, cap, slot-0 convention, allowed bones), unit_vertex (the vanilla 40-byte skinned layout and fill),
+unit_budget (measured vanilla maxima), texture_budget with the unit classes ("unit_texture_budget"; a listed vanilla
+reference with no own texture file is not applicable), texel_density (the UNIVERSAL floor, as for every model: no unit
+exemption, INC-253) and unit_density (the organic UV gate profile's higher density minima on top of it; --pose-npz for
+the visible-weighted part, a numpy port of blender-organic-uv's visibility). References: "unit_references", measured
+with --measure-unit-reference.
+
+    python scripts/havok/gr2_lint.py --profile unit_rider_1024 --intact X.gr2 [--pose-npz SEATED_IDLE.npz] [FOLDER]
+
 Profiles: scripts/havok/gr2_lint_profiles.json ("references" = numbers measured on vanilla files; "profiles" = the
 building's own design facts and tolerances; every art/buildings folder has one, at least its texture class - a profile
 without orientation / attach / damaged facts runs the generic checks only). External tools (the DLL route) are found
@@ -146,7 +158,7 @@ def _mesh(name, loc, nv, comps, tris, groups, mats, bone_names, iw, layout):
                 nrm=comps.get('Normal'), uv=comps.get('TextureCoordinates0'), bone=bone, bone_names=list(bone_names),
                 tan=comps.get('Tangent'), tanw=comps.get('BasicStaticPackedData1'),
                 tris=np.asarray(tris, np.int64).reshape(-1, 3), groups=[tuple(int(x) for x in gr) for gr in groups],
-                mats=list(mats), index_width=iw, layout=layout)
+                mats=list(mats), index_width=iw, layout=layout, comps=comps)
 
 
 def read_raw(path):
@@ -601,7 +613,7 @@ def check_winding(stage, info):
     for m in info['render']:
         if not len(m['tris']) or m.get('nrm') is None:
             continue
-        P, N = m['pos'][m['tris']], m['nrm'][m['tris']]
+        P, N = m['pos'][m['tris']], m['nrm'][m['tris']][..., :3]     # skinned Normal is x4 (w = 127): xyz only
         fn = np.cross(P[:, 1] - P[:, 0], P[:, 2] - P[:, 0])
         area = 0.5 * np.linalg.norm(fn, axis=1)
         agree = (fn * N.mean(1)).sum(1) > 0
@@ -629,7 +641,7 @@ def check_tangents(stage, info):
         if m.get('tan') is None or not len(m['tris']):
             continue
         used = np.unique(m['tris'])
-        zero = int((np.linalg.norm(m['tan'][used], axis=1) < 0.5).sum())
+        zero = int((np.linalg.norm(m['tan'][used][:, :3], axis=1) < 0.5).sum())   # x4 tangents: w is the sign
         fade = int(((m['tanw'][used, 0].astype(np.int64) & 127) != 127).sum()) if m.get('tanw') is not None else None
         row = dict(mesh=m['name'], vertices=int(len(used)), zero_tangent=zero, fade_not_127=fade)
         rows.append(row)
@@ -1615,6 +1627,378 @@ def check_density(stage, info, mat_path, art_root, prof, model):
                 if 'metrics_with_exempt_pages' in res else {}))
 
 
+# ------------------------------------------------------------------------------------------------------ unit profiles
+# A unit profile ("unit_profiles" in the profile file, "kind": "unit") lints a skinned unit model (a rider today) with
+# the generic checks above (crc, fixups, dll_read, vertex_limit, wrap16, tangents, winding, materials, texture_budget,
+# the universal texel_density floor) plus the unit checks below; the building facts (orientation, flags, damaged frame,
+# Havok pairing, atlas registries) do not apply. References are MEASURED on vanilla units (--measure-unit-reference).
+UVLIB = REPO / '.claude' / 'skills' / 'blender-organic-uv' / 'scripts' / 'uvlib.py'
+UNIT_SKINNED_LAYOUT = [('Position', 0, 10, 3), ('Normal', 12, 13, 4), ('Tangent', 16, 13, 4), ('DiffuseColor0', 20, 14, 4),
+                       ('TextureCoordinates0', 24, 10, 2), ('BoneWeights', 32, 14, 4), ('BoneIndices', 36, 12, 4)]
+VIS_BARY = np.array([[1 / 3, 1 / 3, 1 / 3], [2 / 3, 1 / 6, 1 / 6], [1 / 6, 2 / 3, 1 / 6], [1 / 6, 1 / 6, 2 / 3]])
+
+
+def _uvlib():
+    """blender-organic-uv's pure-numpy metrics (the evaluator's own density and quantile definitions)"""
+    if 'uvlib' not in _VANILLA:
+        spec = importlib.util.spec_from_file_location('organic_uvlib', str(UVLIB))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        _VANILLA['uvlib'] = mod
+    return _VANILLA['uvlib']
+
+
+def unit_raw(m):
+    """the stored integers of a decoded skinned mesh: weights /255, indices, normal and tangent x127, colour /255"""
+    c = m.get('comps') or {}
+    out = {}
+    for k, s in (('BoneWeights', 255.0), ('Normal', 127.0), ('Tangent', 127.0), ('DiffuseColor0', 255.0)):
+        if k in c:
+            out[k] = np.rint(c[k] * s).astype(np.int64)
+    if 'BoneIndices' in c:
+        out['BoneIndices'] = c['BoneIndices'].astype(np.int64)
+    return out
+
+
+def skeleton_signature(info):
+    """names, parents and a hash of the world rest matrices (5 decimals) of the first skeleton"""
+    names = [b['name'] for b in info['bones']]
+    parents = [int(b['parent']) for b in info['bones']]
+    W = np.round(np.array([b['world'] for b in info['bones']], float), 5) + 0.0
+    return dict(bones=len(names), names=names, parents=parents,
+                world_sha256=hashlib.sha256(W.astype('<f8').tobytes()).hexdigest()[:16])
+
+
+def skinned_meshes(info):
+    return [m for m in info['render'] if 'BoneWeights' in (m.get('comps') or {})]
+
+
+def check_unit_skeleton(stage, info, prof):
+    """the model carries one of the profile's reference skeletons byte for byte (names, order, parents, rest)"""
+    sig = skeleton_signature(info)
+    refs_ = prof.get('_unit_refs') or {}
+    allowed = (prof.get('unit') or {}).get('skeletons') or []
+    hit = [r for r in allowed if (refs_.get(r) or {}).get('skeleton', {}).get('world_sha256') == sig['world_sha256']
+           and refs_[r]['skeleton']['names'] == sig['names'] and refs_[r]['skeleton']['parents'] == sig['parents']]
+    near = {}
+    for r in allowed:
+        s = (refs_.get(r) or {}).get('skeleton') or {}
+        near[r] = dict(bones=s.get('bones'), same_names=s.get('names') == sig['names'],
+                       same_parents=s.get('parents') == sig['parents'])
+    bound = sorted({n for m in info['render'] for n in m['bone_names']} - set(sig['names']))
+    ok = bool(hit) and not bound
+    return R(stage, 'unit_skeleton', ok, f"{sig['bones']} bones, world {sig['world_sha256']}: "
+             + (f"= the reference skeleton of {hit[0]}" if hit else f"matches none of {allowed} {near}")
+             + (f"; bindings name bones not in the skeleton {bound}" if bound else ''), signature=sig, matches=hit)
+
+
+def check_unit_fit(stage, info, prof):
+    """the skinned meshes sit on their skeleton (skeleton_fit.py, INC-251): the vertex-to-dominant-bone distance (p50,
+    p95) and the mesh / weighted-joint height ratio within the limits measured on the 20 DE riders - a model exported at
+    the wrong scale (0.3937x) or offset passes every byte check and fails here"""
+    import skeleton_fit as F
+    lim = dict(F.LIMITS, **((prof.get('unit') or {}).get('fit_limits') or {}))
+    rep = F.fit(*F.from_info(info))
+    bad = F.judge(rep, lim)
+    return R(stage, 'unit_fit', not bad, (f"dist to the dominant bone p50 {rep.get('dist_p50')} (max {lim['dist_p50_max']}), "
+                                          f"p95 {rep.get('dist_p95')} (max {lim['dist_p95_max']}), height ratio "
+                                          f"{rep.get('height_ratio')} ({lim['height_ratio_min']}-{lim['height_ratio_max']})")
+             + (' | ' + ' | '.join(bad) if bad else ''), fit=rep, limits=lim)
+
+
+def check_unit_weights(stage, info, prof):
+    """8-bit weights as vanilla stores them: every vertex sums to 255, descending, no bone twice, at most the cap,
+    unused slots repeat slot 0's index (share >= the measured minimum), weighted bones inside the allowed set"""
+    u = prof.get('unit') or {}
+    cap, allowed = u.get('max_influences', 4), set(u.get('allowed_weighted_bones') or [])
+    slot0_min = u.get('zero_slot_slot0_min', 1.0)
+    rows, bad = [], []
+    for m in skinned_meshes(info):
+        r = unit_raw(m)
+        W, I = r['BoneWeights'], r['BoneIndices']
+        sums = W.sum(1)
+        infl = (W > 0).sum(1)
+        desc = bool((W[:, :-1] >= W[:, 1:]).all())
+        dup = int(sum(len(set(i[w > 0])) != int((w > 0).sum()) for w, i in zip(W, I)))
+        zero = W == 0
+        slot0 = float((I[zero] == np.broadcast_to(I[:, :1], I.shape)[zero]).mean()) if zero.any() else 1.0
+        used = sorted({m['bone_names'][int(i)] for i in np.unique(I[W > 0]) if int(i) < len(m['bone_names'])})
+        outside = sorted(set(used) - allowed) if allowed else []
+        row = dict(mesh=m['name'], vertices=m['nv'], sums_not_255=int((sums != 255).sum()), max_influences=int(infl.max()),
+                   descending=desc, bone_twice=dup, zero_slot_slot0_share=round(slot0, 4), weighted_bones=used,
+                   outside_allowed=outside, index_past_palette=int((I[W > 0] >= len(m['bone_names'])).sum()))
+        rows.append(row)
+        if (row['sums_not_255'] or row['max_influences'] > cap or not desc or dup or slot0 < slot0_min or outside
+                or row['index_past_palette']):
+            bad.append(row)
+    if not rows:
+        return R(stage, 'unit_weights', False, 'no skinned (BoneWeights) mesh bound: not a skinned unit')
+    return R(stage, 'unit_weights', not bad, '; '.join(
+        f"{r['mesh']}: {r['vertices']} v, sums!=255 {r['sums_not_255']}, max infl {r['max_influences']} (cap {cap}), "
+        f"descending {r['descending']}, twice {r['bone_twice']}, slot0 {r['zero_slot_slot0_share']} "
+        f"(min {slot0_min}), {len(r['weighted_bones'])} weighted bones"
+        + (f", OUTSIDE {r['outside_allowed']}" if r['outside_allowed'] else '') for r in rows), meshes=rows)
+
+
+def check_unit_vertex(stage, info, prof):
+    """the vanilla 40-byte skinned vertex and the DE full-LOD fill: colour 255, Normal.w 127, Tangent.w +-127"""
+    rows, bad = [], []
+    for m in info['render']:
+        lay = [tuple(x) for x in m['layout']]
+        r = unit_raw(m)
+        row = dict(mesh=m['name'], layout_vanilla=lay == UNIT_SKINNED_LAYOUT)
+        if row['layout_vanilla']:
+            row.update(colour_not_255=int((r['DiffuseColor0'] != 255).any(1).sum()),
+                       normal_w_not_127=int((r['Normal'][:, 3] != 127).sum()),
+                       tangent_w_not_pm127=int((np.abs(r['Tangent'][:, 3]) != 127).sum()))
+            if row['colour_not_255'] or row['normal_w_not_127'] or row['tangent_w_not_pm127']:
+                bad.append(row)
+        else:
+            row['layout'] = lay
+            bad.append(row)
+        rows.append(row)
+    return R(stage, 'unit_vertex', bool(rows) and not bad,
+             '; '.join(f"{r['mesh']}: " + ('vanilla 40-byte skinned layout, fill: colour!=255 %d, normal.w!=127 %d, '
+                                           'tangent.w!=+-127 %d' % (r['colour_not_255'], r['normal_w_not_127'],
+                                                                    r['tangent_w_not_pm127'])
+                                           if r['layout_vanilla'] else f"layout {r['layout']} is NOT the vanilla one")
+                       for r in rows), meshes=rows)
+
+
+def welded_count(m):
+    """distinct (position rounded 1e-5, every other stored component except Tangent): what a clean export ships"""
+    c = m.get('comps') or {}
+    if not m['nv']:
+        return 0
+    cols = [np.round(c['Position'], 5)] + [v for k, v in sorted(c.items()) if k not in ('Position', 'Tangent')]
+    return int(len(np.unique(np.hstack(cols), axis=0)))
+
+
+def check_unit_budget(stage, info, prof):
+    """triangles and welded vertices of every bound mesh together within the measured vanilla rider maxima"""
+    u = prof.get('unit') or {}
+    tris = int(sum(len(m['tris']) for m in info['render']))
+    welded = int(sum(welded_count(m) for m in info['render']))
+    mt, mw = u.get('max_triangles'), u.get('max_welded_vertices')
+    ok = (mt is None or tris <= mt) and (mw is None or welded <= mw)
+    return R(stage, 'unit_budget', ok, f"{tris} triangles (max {mt}), {welded} welded vertices (max {mw}) over "
+             f"{len(info['render'])} mesh(es)", triangles=tris, welded=welded)
+
+
+def cam_dirs(forward, headings=8, pitch=47.0):
+    """the evaluator's camera directions (blender-organic-uv uv_eval_blender.cam_dirs): z up, heading 0 = forward"""
+    f = np.array(forward, float)
+    f[2] = 0.0
+    f /= max(np.linalg.norm(f), 1e-9)
+    cp, sp = np.cos(np.radians(pitch)), np.sin(np.radians(pitch))
+    out = []
+    for h in range(headings):
+        a = 2 * np.pi * h / headings
+        d = np.array([np.cos(a) * f[0] - np.sin(a) * f[1], np.sin(a) * f[0] + np.cos(a) * f[1], 0.0])
+        out.append(np.array([d[0] * cp, d[1] * cp, sp]))
+    return out
+
+
+def face_visibility(P, F, occP, occF, dirs, chunk=512):
+    """per heading and face, the share of 4 barycentric samples (offset 2e-4 x the occluder diagonal along the face
+    normal) that see the camera direction past every occluder face that FACES the camera (single-sided, back faces
+    do not occlude): a numpy port of blender-organic-uv uv_eval_blender.face_visibility (BVH ray casts there)."""
+    def normals(V, T):
+        n = np.cross(V[T[:, 1]] - V[T[:, 0]], V[T[:, 2]] - V[T[:, 0]])
+        return n / np.maximum(np.linalg.norm(n, axis=1), 1e-30)[:, None]
+    N, NO = normals(P, F), normals(occP, occF)
+    diag = float(np.linalg.norm(occP.max(0) - occP.min(0)))
+    off = 2e-4 * diag
+    A0, E1, E2 = occP[occF[:, 0]], occP[occF[:, 1]] - occP[occF[:, 0]], occP[occF[:, 2]] - occP[occF[:, 0]]
+    vis = np.zeros((len(dirs), len(F)))
+    for h, d in enumerate(dirs):
+        dots = N @ d
+        front = np.nonzero(dots > 1e-6)[0]
+        blockers = NO @ d > 0
+        a0, e1, e2 = A0[blockers], E1[blockers], E2[blockers]
+        pv = np.cross(np.broadcast_to(d, e2.shape), e2)
+        det = (e1 * pv).sum(1)
+        okd = np.abs(det) > 1e-20
+        a0, e1, e2, pv, det = a0[okd], e1[okd], e2[okd], pv[okd], det[okd]
+        inv = 1.0 / det
+        Q = P[F[front]]
+        nn = N[front] * np.sign(dots[front])[:, None]
+        origins = (VIS_BARY @ Q).reshape(-1, 3) + np.repeat(nn, 4, axis=0) * off if len(front) else np.zeros((0, 3))
+        hit = np.zeros(len(origins), bool)
+        for s in range(0, len(origins), chunk):
+            o = origins[s:s + chunk, None, :]
+            tv = o - a0[None]
+            u = (tv * pv[None]).sum(2) * inv[None]
+            qv = np.cross(tv, e1[None])
+            v = (qv * d).sum(2) * inv[None]
+            t = (qv * e2[None]).sum(2) * inv[None]
+            hit[s:s + chunk] = ((u >= 0) & (v >= 0) & (u + v <= 1) & (t > 1e-9 * diag)).any(1)
+        vis[h, front] = (~hit).reshape(-1, 4).mean(1) if len(front) else 0.0
+    return vis
+
+
+def unit_page(info, mat_path):
+    """the faces on the unit's page: render faces grouped by the BaseColor of their submaterial (the material name
+    when the .material is missing); the page = the group with the most 3D area. -> (page name, [(mesh, face rows)])"""
+    try:
+        subs = {str(s['name']).lower(): s for s in read_material(mat_path)} if mat_path and Path(mat_path).exists() else {}
+    except Exception:
+        subs = {}
+    groups = defaultdict(list)
+    for m in info['render']:
+        for mi, first, count in m['groups']:
+            name = m['mats'][mi] if 0 <= mi < len(m['mats']) else None
+            bc = ((subs.get(str(name).lower()) or {}).get('textures') or {}).get('BaseColor') or f'({name})'
+            groups[bc].append((m, np.arange(first, first + count)))
+    if not groups:
+        return None, []
+
+    def area(items):
+        tot = 0.0
+        for m, rows in items:
+            T = m['pos'][m['tris'][rows]]
+            tot += 0.5 * np.linalg.norm(np.cross(T[:, 1] - T[:, 0], T[:, 2] - T[:, 0]), axis=1).sum()
+        return tot
+    page = max(groups, key=lambda k: area(groups[k]))
+    return page, groups[page]
+
+
+def unit_density(info, mat_path, page_size, pose=None, headings=8, pitch=47.0):
+    """texel density of the unit page as blender-organic-uv's evaluator reports it: per face page x sqrt(A_uv / A_3d)
+    (t/u = t/m with 1 unit = 1 m), area-weighted p10/p50/p90 over every face, and - with a pose NPZ - weighted by
+    area x the mean visibility over the camera headings (texel_density.visible_weighted)"""
+    U = _uvlib()
+    page, items = unit_page(info, mat_path)
+    if not items:
+        return dict(page=None)
+    P = [m['pos'][m['tris'][rows]] for m, rows in items]
+    UV = [m['uv'][m['tris'][rows]][:, :, :2] for m, rows in items]
+    Pt, UVt = np.concatenate(P), np.concatenate(UV)
+    F = np.arange(3 * len(Pt)).reshape(-1, 3)
+    fm = U.face_metrics(Pt.reshape(-1, 3), F, UVt, page_size)
+    dens, A3 = fm['density'], fm['area3d']
+    q = U.wquantile(dens, A3, [0.1, 0.5, 0.9])
+    out = dict(page=page, faces=int(len(F)), meshes=sorted({m['name'] for m, _ in items}),
+               all={'p10': round(q[0], 1), 'p50': round(q[1], 1), 'p90': round(q[2], 1)})
+    if pose is not None:
+        Z = pose
+        missing = [m['name'] for m in info['render'] if 'pose__' + m['name'] not in Z]
+        if missing:
+            out['visible_error'] = f'pose NPZ lacks pose__ arrays for {missing}'
+            return out
+        posed = {m['name']: np.asarray(Z['pose__' + m['name']], float) for m in info['render']}
+        bad = [n for n, m in ((m['name'], m) for m in info['render']) if posed[n].shape != (m['nv'], 3)]
+        if bad:
+            out['visible_error'] = f'pose arrays of {bad} do not match the vertex counts'
+            return out
+        Pe = np.concatenate([posed[m['name']][m['tris'][rows]] for m, rows in items]).reshape(-1, 3)
+        occP, occF, base = [], [], 0
+        for m in info['render']:                               # every mesh of the model occludes, the page ones too
+            occP.append(posed[m['name']])
+            occF.append(m['tris'] + base)
+            base += m['nv']
+        if 'occluder_P' in Z and 'occluder_F' in Z:
+            occP.append(np.asarray(Z['occluder_P'], float))
+            occF.append(np.asarray(Z['occluder_F'], np.int64) + base)
+        fwd = np.asarray(Z['forward'], float) if 'forward' in Z else np.array([0.0, -1.0, 0.0])
+        vis = face_visibility(Pe, F, np.vstack(occP), np.vstack(occF), cam_dirs(fwd, headings, pitch))
+        w = vis.mean(0)
+        qv = U.wquantile(dens, A3 * w, [0.1, 0.5, 0.9])
+        out['visible_weighted'] = {'p10': round(qv[0], 1), 'p50': round(qv[1], 1), 'p90': round(qv[2], 1),
+                                   'never_visible_area_share': round(float(A3[vis.max(0) == 0].sum() / A3.sum()), 4)}
+        out['camera'] = dict(headings=headings, pitch=pitch, forward=np.round(fwd, 4).tolist())
+    return out
+
+
+def load_pose(path):
+    if not path:
+        return None
+    with np.load(path) as z:
+        return {k: z[k].copy() for k in z.files}
+
+
+def uv_density_limits(prof):
+    """the hard minima of the unit profile's density checks, read from the organic UV gate profile it names"""
+    cfg = prof.get('uv_density') or {}
+    p, _ = profile_path(prof, cfg.get('profile'))
+    if p is None or not Path(p).is_file():
+        raise FileNotFoundError(f"uv_density.profile {cfg.get('profile')} not found")
+    doc = json.loads(Path(p).read_text(encoding='utf-8'))
+    checks = {c['id']: c for c in doc['checks']}
+    return {cid: checks[cid] for cid in cfg.get('checks') or []}, doc.get('name'), str(p)
+
+
+def check_unit_density(stage, info, mat_path, prof, pose):
+    """the unit page's texel density against the organic UV gate profile's hard minima - a higher, unit-specific target
+    ON TOP of the universal floor (check texel_density runs for units too: INC-253): texel_density.all.p50 always,
+    texel_density.visible_weighted.p10 with a seated pose NPZ (--pose-npz); without one that part is SKIP (not proven)"""
+    try:
+        lim, pname, ppath = uv_density_limits(prof)
+    except Exception as e:                                    # a limit that cannot be read is never a pass
+        return R(stage, 'unit_density', False, f'uv density limits unavailable ({type(e).__name__}: {e})')
+    u = prof.get('unit') or {}
+    d = unit_density(info, mat_path, u.get('page', 1024), pose, u.get('headings', 8), u.get('pitch', 47.0))
+    if not d.get('page'):
+        return R(stage, 'unit_density', False, 'no bound faces')
+    parts, ok, skip = [], True, False
+    for cid, c in lim.items():
+        metric = c['metric']
+        if metric == 'texel_density.all.p50':
+            val = d['all']['p50']
+        elif metric == 'texel_density.visible_weighted.p10':
+            val = (d.get('visible_weighted') or {}).get('p10')
+        else:
+            val = None
+        hard = (c.get('hard') or {}).get('min')
+        if val is None:
+            skip = True
+            parts.append(f"{cid} not measured ({d.get('visible_error') or 'no --pose-npz: the seated pose is needed'})")
+            continue
+        good = hard is None or val >= hard
+        ok &= good
+        parts.append(f"{cid} {val} (hard min {hard}){'' if good else ' BELOW'}")
+    status = False if not ok else (None if skip else True)
+    return R(stage, 'unit_density', status, f"page {d['page']} ({d['faces']} faces of {', '.join(d['meshes'])}) at "
+             f"{u.get('page', 1024)}: " + '; '.join(parts) + f" [limits: {pname}]", density=d, profile=ppath)
+
+
+def check_unit_texture_budget(stage, mat_path, art_root, prof, model, **union):
+    """texture_budget with the unit classes; a model the profile lists as a vanilla REFERENCE with no own texture file
+    has nothing to count (PASS, not applicable) - every other model runs the full check (an unconfirmed class FAILs)"""
+    if model in (prof.get('references') or []) and mat_path and Path(mat_path).exists():
+        try:
+            subs = read_material(mat_path)
+            pages, files, unknown = own_pages(subs, [], art_root)
+        except Exception as e:
+            return R(stage, 'texture_budget', False, f'{Path(mat_path).name} cannot be read ({type(e).__name__}: {e})')
+        if not pages and not unknown:
+            return R(stage, 'texture_budget', True, f"{model}: vanilla reference of this profile, 0 own texture files "
+                     '(its pages are the game\'s): the unit class does not apply', model=model, counted=0)
+    return check_texture_budget(stage, mat_path, art_root, prof, model, **union)
+
+
+def measure_unit_reference(path, mat_path=None, pose_npz=None, page_size=1024):
+    """the numbers a unit profile's references entry holds, measured on a vanilla file (read-only, raw files)"""
+    info = read_raw(path)
+    sk = [m for m in skinned_meshes(info)]
+    weighted, slot0, infl = set(), [], 0
+    for m in sk:
+        r = unit_raw(m)
+        W, I = r['BoneWeights'], r['BoneIndices']
+        weighted |= {m['bone_names'][int(i)] for i in np.unique(I[W > 0])}
+        zero = W == 0
+        if zero.any():
+            slot0.append(float((I[zero] == np.broadcast_to(I[:, :1], I.shape)[zero]).mean()))
+        infl = max(infl, int((W > 0).sum(1).max()))
+    d = unit_density(info, mat_path, page_size, load_pose(pose_npz))
+    return dict(file=Path(path).name, skeleton=skeleton_signature(info), weighted_bones=sorted(weighted),
+                max_influences=infl, zero_slot_slot0_share_min=round(min(slot0), 4) if slot0 else None,
+                triangles=int(sum(len(m['tris']) for m in info['render'])),
+                welded=int(sum(welded_count(m) for m in info['render'])),
+                layouts_vanilla=[[tuple(x) for x in m['layout']] == UNIT_SKINNED_LAYOUT for m in info['render']],
+                density=d)
+
+
 # -------------------------------------------------------------------------------------------------------- driving
 def load_profiles(path=PROFILES):
     """a profile file. "extends" names a profile file next to this script: its tools come in key by key (the file's
@@ -1628,12 +2012,15 @@ def load_profiles(path=PROFILES):
         base_path = HERE / str(base_name)
         if Path(str(base_name)).name != base_name or not base_path.is_file() or base_path == path:
             raise ValueError(f'{path.name}: extends {base_name!r} is not another profile file next to gr2_lint.py')
-        if 'texture_budget' in doc:
+        if 'texture_budget' in doc or 'unit_texture_budget' in doc:
             raise ValueError(f'{path.name}: an extending profile file cannot redefine the owner\'s texture_budget')
         base = json.loads(base_path.read_text(encoding='utf-8'))
         doc['tools'] = {**(base.get('tools') or {}), **(doc.get('tools') or {})}
         doc['texture_budget'] = base.get('texture_budget') or {}
+        doc['unit_texture_budget'] = base.get('unit_texture_budget') or {}
         doc.setdefault('references', base.get('references') or {})
+        doc.setdefault('unit_references', base.get('unit_references') or {})
+        doc['unit_profiles'] = {**(base.get('unit_profiles') or {}), **(doc.get('unit_profiles') or {})}
     doc['_root'] = str(next((d for d in path.parents if (d / '.git').exists()), path.parent))
     return doc
 
@@ -1648,6 +2035,15 @@ def profile_path(prof, text):
 
 
 def resolve_profile(profiles, name):
+    if name not in profiles.get('profiles', {}) and name in (profiles.get('unit_profiles') or {}):
+        p = dict(profiles['unit_profiles'][name])              # a unit profile: unit classes and unit references
+        p['name'], p['kind'] = name, 'unit'
+        p['_texture_budget'] = profiles.get('unit_texture_budget') or {}
+        p['_unit_refs'] = profiles.get('unit_references') or {}
+        p['_tools'] = profiles.get('tools') or {}
+        if profiles.get('_root'):
+            p['_root'] = profiles['_root']
+        return p
     if name not in profiles.get('profiles', {}):
         raise KeyError(f"no lint profile {name!r} in gr2_lint_profiles.json (every building folder has one; a model "
                        "without a profile is not cleared)")
@@ -1712,8 +2108,9 @@ def art_root_of(folder):
 
 
 def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damaged_material=None, animfile=None,
-         tools=None, use_dll=True, art_root=None, workdir=None):
-    """-> list of check results. Files left None are not checked."""
+         tools=None, use_dll=True, art_root=None, workdir=None, pose=None):
+    """-> list of check results. Files left None are not checked. pose: a loaded pose NPZ (unit profiles only: the
+    seated pose of the visible-weighted density)."""
     results = []
     own_tmp = None
     if workdir is None:
@@ -1747,6 +2144,15 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             results += check_limits(stage, info, prof)
             results.append(check_tangents(stage, info))
             results.append(check_winding(stage, info))
+            if prof.get('kind') == 'unit':                    # a skinned unit: the unit checks, no building facts
+                results += [check_unit_skeleton(stage, info, prof), check_unit_fit(stage, info, prof),
+                            check_unit_weights(stage, info, prof),
+                            check_unit_vertex(stage, info, prof), check_unit_budget(stage, info, prof),
+                            check_materials(stage, info, mat, art_root),
+                            check_unit_texture_budget(stage, mat, art_root, prof, model, **union),
+                            check_density(stage, info, mat, art_root, prof, model),    # the universal floor (INC-253)
+                            check_unit_density(stage, info, mat, prof, pose)]
+                continue
             if prof.get('rest_contract'):
                 results += check_ground_supports(stage, info, prof)
                 if stage == 'damaged':
@@ -1847,9 +2253,18 @@ def main(argv=None):
                     help='exit 0 despite SKIPs (local iteration only; never for the game-test gate)')
     ap.add_argument('--json', help='write the full report here')
     ap.add_argument('--measure-reference', metavar='GR2', help='print profile numbers of a vanilla model and exit')
+    ap.add_argument('--measure-unit-reference', metavar='GR2',
+                    help='print unit profile numbers of a vanilla unit (with --material and --pose-npz) and exit')
+    ap.add_argument('--material', help='--measure-unit-reference: the model\'s .material (the page of its density)')
+    ap.add_argument('--pose-npz', help='unit profiles: the seated pose NPZ of the visible-weighted density (posed '
+                    'positions pose__<mesh> in the gr2 vertex order, gr2-handed z-up frame, occluder_P/F = the horse, '
+                    'forward); without it that part of unit_density is SKIP')
     a = ap.parse_args(argv)
     if a.measure_reference:
         print(json.dumps(measure_reference(a.measure_reference), indent=1))
+        return 0
+    if a.measure_unit_reference:
+        print(json.dumps(measure_unit_reference(a.measure_unit_reference, a.material, a.pose_npz), indent=1))
         return 0
     if not a.profile:
         ap.error('--profile is required')
@@ -1874,8 +2289,10 @@ def main(argv=None):
     for key, stage in (('intact_material', 'intact'), ('damaged_material', 'damaged')):
         if not files[key] and files[stage]:                       # a generic profile: the .material next to the model
             files[key] = str(Path(files[stage]).with_suffix('.material'))
+    if a.pose_npz and prof.get('kind') != 'unit':
+        ap.error('--pose-npz applies to unit profiles only')
     res = lint(prof, **files, tools=find_tools(profiles), use_dll=not a.no_dll,
-               art_root=art_root_of(folder) if folder else None)
+               art_root=art_root_of(folder) if folder else None, pose=load_pose(a.pose_npz))
     if prof.get('uv_gate'):                                  # the Korean TC: the UV lineage gate clears it too (INC-002)
         res.append(check_uv_gate(uv_gate_path(profiles, prof)))
     if a.only:

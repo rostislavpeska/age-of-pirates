@@ -114,11 +114,13 @@ trip where the game install and a Blender are found.
 - Pose extremes of death clips, and whether `rider_death_havoc_a/b` needs physics data in the model.
 - Granny's exact B-spline index alignment (`clip_decode.py` infers it; the LSLib reading moves the attack_a extremes
   by up to 2 deg and the strike timing by about one key).
-- Route B: whether the converter accepts a `rig_table.py --skinned` GXO, at which scale, and whether the result draws
-  and shades like vanilla (the G0 round trip settles it).
+- Route B: proven offline 2026-10-11 through the donor-preserving `skinned_gr2.py` (the converter route fails the
+  ladder: no tangents, not the vanilla layout; [export routes](references/export-routes.md), section 6); the writer
+  refuses a wrong-scale GXO and donor geometry handed back through a re-export (repair round, same section); one game
+  bench of the specimen is still open.
 - The rigid attachment route through the donor-preserving writer (layout match inferred, one bench test needed).
-- A unit profile and an owner-confirmed unit texture class in the consumer's export lint (none in AoP as of
-  2026-10-11).
+- The owner's confirmation of the PROPOSED unit lint profile `unit_rider_1024` and its texture class
+  `unit_human_1024` in AoP's `gr2_lint` (2026-10-11).
 - Masks values, BaseColor saturation under the player-colour mask and UV stacking: their 2026-10-10 scripts were not
   kept; re-measure before relying on them.
 

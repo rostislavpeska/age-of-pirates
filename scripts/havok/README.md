@@ -16,6 +16,13 @@ and waits for the file). The owner's converter-specific skill (`gxo-convert`, gi
 - `gr2_pose.py`      static-pose anim vs rest skeleton (delta rotations, scale/shear) - how the Fuchuan furls
 - `gr2_addbones.py`  append bones in place from a GXO `b` table (absolute transforms; chains; existing parents)
 - `gr2_splitmesh.py` cut labelled triangles into new rigid meshes on other bones, vertex bytes verbatim
+- `skinned_gr2.py`   NEW skinned unit geometry: a new gr2 around a donor (skeleton byte for byte, the vanilla 40-byte
+  skinned vertex, MikkTSpace tangents through background Blender on the final data), verify + `--prove-clean` (no donor
+  mesh/vertex/index/UV/texture data left: bytes, near positions, UVs, welded topology); refuses a wrong-scale GXO
+  (joints within 1e-3 of the donor's, skeleton fit) before writing; writes OUT.partial, renamed only when every check
+  passed; input = `rig_table.py --skinned --quantize` GXO at scale 1
+- `skeleton_fit.py`  do skinned meshes sit on their skeleton (vertex-to-dominant-bone distance, mesh/joint height ratio;
+  limits measured on 20 DE riders): the scale gate of skinned_gr2 and of gr2_lint's unit_fit
 - `fbx_check.py`     Blender: compare a model's FBX with the vanilla FBX (positions/normals/UVs) + renders
 - `fbx_preview.py`   Blender: render an FBX with one colour per mesh
 - `rig_table.py`     Blender: bone table + sail_* mesh vertices of a rig scene in GXO form (no converter needed)

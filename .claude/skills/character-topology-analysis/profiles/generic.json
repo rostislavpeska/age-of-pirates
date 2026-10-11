@@ -1,0 +1,6 @@
+{
+  "schema": "cta-profile/1",
+  "name": "generic",
+  "note": "The calibrated thresholds of references/rules.json as they are (calibration.md). No game numbers: budget (D1), head-first share (F5), region shares (D2), hand share (X1) and ring sides (D3) are reported until a game profile (profiles/template_game.json, filled by profile_from_survey.py) is passed.",
+  "thresholds": {}
+}

@@ -484,5 +484,342 @@
     "status": "proposed, owner to confirm"
    }
   }
+ },
+ "unit_texture_budget": {
+  "_doc": "PROPOSED for the owner (2026-10-11), NOT confirmed: the texture ceiling of human UNITS, kept apart from the owner's building classes (texture_budget above, m334-m336), which are unchanged. gr2_lint's texture_budget check runs these classes for unit profiles exactly as for buildings: every own texture file counted, a class without confirmed_by FAILS ('class not confirmed by the owner'). The quote below was relayed to the export workflow on 2026-10-11; the owner message store (tools.owner_messages) holds no 2026-10-11 message, so it confirms nothing until his message is recorded there and the unit profile's texture_budget names it in confirmed_by. An extending profile file cannot redefine these classes.",
+  "owner_quote": "human unuts should have 1x 1024 texture, let's hold it",
+  "owner_quote_date": "2026-10-11",
+  "classes": {
+   "unit_human_1024": {
+    "ceiling": [
+     1024
+    ],
+    "_doc": "PROPOSED: one 1024 set (BaseColor, Normals, Masks, Details) for a human unit's body and any weapon skinned into it; an attachment model (a helmet, a bow) is a separate gr2 with its own .material, linted on its own"
+   }
+  },
+  "count_shared_vanilla": false
+ },
+ "unit_references": {
+  "_doc": "Numbers MEASURED on vanilla units (python scripts/havok/gr2_lint.py --measure-unit-reference <vanilla.gr2> --material <its .material> --pose-npz <seated idle pose>; files read from a scratch extraction, never the repo), 2026-10-11. density = blender-organic-uv's evaluator definitions (uvlib.face_metrics, wquantile); visibility = gr2_lint.face_visibility, a numpy port of uv_eval_blender.face_visibility that reproduces the evaluator's iron_rider_0 run (VAN_iron_rider_0_body) exactly: visible-weighted p10/p50/p90 313.4/342.2/400.3, never-visible area 0.3182. Pose NPZ from aoe3de-unit-animation pose_sim (rider clip on the posed vanilla horse, rider origin = bone_attachpoint), camera pitch 47, 8 headings, single-sided.",
+  "iron_rider_0": {
+   "file": "iron_rider_0.gr2",
+   "skeleton": {
+    "bones": 32,
+    "names": [
+     "Bip01_Root",
+     "Bip01_Pelvis",
+     "Bip01_Spine",
+     "Bip01_L_Thigh",
+     "Bip01_L_Calf",
+     "Bip01_R_Thigh",
+     "Bip01_R_Calf",
+     "Bip01_Prop1",
+     "bip01_attach_rt",
+     "bone_handle",
+     "bone_link1",
+     "bone_link2",
+     "bone_link3",
+     "Bip01_Spine1",
+     "Bip01_Neck",
+     "Bip01_R_Clavicle",
+     "Bip01_L_Clavicle",
+     "Bip01_L_UpperArm",
+     "Bip01_R_UpperArm",
+     "Bip01_L_ForeArm",
+     "Bip01_R_ForeArm",
+     "Bip01_Prop2",
+     "Bip01_R_Foot",
+     "Bip01_L_Foot",
+     "bone_tip",
+     "Bip01_L_Hand",
+     "Bip01_R_Hand",
+     "Bip01_Head",
+     "Bip01_Ponytail1",
+     "Bip01_R_Toe0",
+     "Bip01_L_Toe0",
+     "Bip01_Ponytail11"
+    ],
+    "parents": [
+     -1,
+     0,
+     1,
+     2,
+     3,
+     2,
+     5,
+     0,
+     7,
+     8,
+     9,
+     10,
+     11,
+     2,
+     13,
+     14,
+     14,
+     16,
+     15,
+     17,
+     18,
+     0,
+     6,
+     4,
+     12,
+     19,
+     20,
+     14,
+     27,
+     22,
+     23,
+     28
+    ],
+    "world_sha256": "94b6e281c0c565a5"
+   },
+   "weighted_bones": [
+    "Bip01_Head",
+    "Bip01_L_Calf",
+    "Bip01_L_Clavicle",
+    "Bip01_L_Foot",
+    "Bip01_L_ForeArm",
+    "Bip01_L_Hand",
+    "Bip01_L_Thigh",
+    "Bip01_L_UpperArm",
+    "Bip01_Pelvis",
+    "Bip01_R_Calf",
+    "Bip01_R_Clavicle",
+    "Bip01_R_Foot",
+    "Bip01_R_ForeArm",
+    "Bip01_R_Hand",
+    "Bip01_R_Thigh",
+    "Bip01_R_UpperArm",
+    "Bip01_Spine",
+    "Bip01_Spine1",
+    "bone_handle",
+    "bone_link1",
+    "bone_link2",
+    "bone_link3",
+    "bone_tip"
+   ],
+   "max_influences": 4,
+   "zero_slot_slot0_share_min": 1.0,
+   "triangles": 1328,
+   "welded": 976,
+   "layouts_vanilla": [
+    true,
+    true
+   ],
+   "density": {
+    "page": "units\\asians\\chinese\\iron_flail\\textures\\iron_rider_0_mata_BaseColor",
+    "faces": 1182,
+    "meshes": [
+     "iron_rider_0Shape"
+    ],
+    "all": {
+     "p10": 313.7,
+     "p50": 343.4,
+     "p90": 371.5
+    },
+    "visible_weighted": {
+     "p10": 313.4,
+     "p50": 342.2,
+     "p90": 400.3,
+     "never_visible_area_share": 0.3182
+    },
+    "pose": "oprichnik_idle1 key 0 on horse_idle_a key 0, iron_flail_horse_0 (the Idle/0 pair of the iron flail animfiles)",
+    "camera": {
+     "pitch": 47.0,
+     "headings": 8
+    }
+   }
+  },
+  "keshik_rider_rank01": {
+   "file": "keshik_rider_rank01.gr2",
+   "skeleton": {
+    "bones": 28,
+    "names": [
+     "Bip01_Root",
+     "Bip01_Pelvis",
+     "Bip01_Spine",
+     "Bip01_R_Thigh",
+     "Bip01_R_Calf",
+     "Bip01_R_Foot",
+     "Bip01_R_Toe0",
+     "Bip01_Prop1",
+     "Bip01_Prop2",
+     "Bip01_R_Toe0Nub",
+     "Bip01_L_Thigh",
+     "Bip01_L_Calf",
+     "Bip01_Spine1",
+     "Bip01_Neck",
+     "Bip01_R_Clavicle",
+     "Bip01_L_Clavicle",
+     "Bip01_R_UpperArm",
+     "Bip01_L_UpperArm",
+     "Bip01_L_ForeArm",
+     "Bip01_R_ForeArm",
+     "Bip01_Head",
+     "Bip01_Ponytail1",
+     "Bip01_L_Foot",
+     "Bip01_L_Hand",
+     "Bip01_R_Hand",
+     "Bip01_Ponytail11",
+     "Bip01_L_Toe0",
+     "Bip01_L_Toe0Nub"
+    ],
+    "parents": [
+     -1,
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     0,
+     0,
+     6,
+     2,
+     10,
+     2,
+     12,
+     13,
+     13,
+     14,
+     15,
+     17,
+     16,
+     13,
+     20,
+     11,
+     18,
+     19,
+     21,
+     22,
+     26
+    ],
+    "world_sha256": "0584bb376d5e24cf"
+   },
+   "weighted_bones": [
+    "Bip01_Head",
+    "Bip01_L_Calf",
+    "Bip01_L_Clavicle",
+    "Bip01_L_Foot",
+    "Bip01_L_ForeArm",
+    "Bip01_L_Hand",
+    "Bip01_L_Thigh",
+    "Bip01_L_UpperArm",
+    "Bip01_Pelvis",
+    "Bip01_R_Calf",
+    "Bip01_R_Clavicle",
+    "Bip01_R_Foot",
+    "Bip01_R_ForeArm",
+    "Bip01_R_Hand",
+    "Bip01_R_Thigh",
+    "Bip01_R_UpperArm",
+    "Bip01_Spine",
+    "Bip01_Spine1"
+   ],
+   "max_influences": 3,
+   "zero_slot_slot0_share_min": 1.0,
+   "triangles": 1278,
+   "welded": 981,
+   "layouts_vanilla": [
+    true
+   ],
+   "density": {
+    "page": "units\\asians\\chinese\\keshik\\textures\\keshik_rider_rank01_mata_BaseColor",
+    "faces": 1278,
+    "meshes": [
+     "keshik_rider_rank01Shape"
+    ],
+    "all": {
+     "p10": 342.2,
+     "p50": 358.4,
+     "p90": 380.9
+    },
+    "visible_weighted": {
+     "p10": 332.2,
+     "p50": 358.5,
+     "p90": 390.9,
+     "never_visible_area_share": 0.3686
+    },
+    "pose": "sword_idle_A key 0 on horse_idle_A key 0, keshik_horse_rank01 (the Idle/0 pair of the keshik animfiles)",
+    "camera": {
+     "pitch": 47.0,
+     "headings": 8
+    }
+   }
+  }
+ },
+ "unit_profiles": {
+  "unit_rider_1024": {
+   "kind": "unit",
+   "status": "profile confirmed by the owner 2026-10-11; texture class per model pending (INC-033)",
+   "_doc": "OWNER 2026-10-11: confirmed this rider profile in principle - his answer 'Yes, confirm it (Recommended)' to 'Confirm the proposed rider check profile unit_rider_1024 (the gate every unit must pass before a game test)?' (one 1024 texture per human unit, limits measured on vanilla riders, the universal UV density floor on top). The unit texture class still FAILS per model until confirmed_by points at his own message in the owner store naming the class and the model (INC-033), recorded when the first unit model exists. The export lint of a new skinned RIDER whose body (and any weapon skinned into it) shares one 1024 page. Generic checks: crc, fixups, dll_read, vertex_limit, wrap16, tangents, winding, materials. Unit checks: unit_skeleton (one reference skeleton byte for byte: names, order, parents, rest matrices), unit_weights (8-bit sums 255, descending, no bone twice, cap 4, unused slots repeat slot 0, weighted bones inside the measured set), unit_vertex (the vanilla 40-byte skinned layout and DE fill), unit_budget (triangles and welded vertices within the measured vanilla rider maxima), texture_budget (unit class unit_human_1024, PROPOSED: FAILS until the owner confirms), unit_density (the organic UV gate profile's density minima instead of the building density floor; the visible-weighted part needs --pose-npz). The vanilla references iron_rider_0 and keshik_rider_rank01 pass it (scripts/havok/tests/test_gr2_lint_unit.py). Not covered yet: LowPoly (_lp) models, rigid attachment models, infantry.",
+   "names": [
+    "rider",
+    "human unit",
+    "human units"
+   ],
+   "references": [
+    "iron_rider_0",
+    "keshik_rider_rank01"
+   ],
+   "unit": {
+    "skeletons": [
+     "iron_rider_0",
+     "keshik_rider_rank01"
+    ],
+    "_skeletons_doc": "a new rider takes a donor skeleton byte for byte (aoe3de-unit-model rider-skeleton.md section 8); add a donor here only with its measured unit_references entry",
+    "allowed_weighted_bones": [
+     "Bip01_Head",
+     "Bip01_L_Calf",
+     "Bip01_L_Clavicle",
+     "Bip01_L_Foot",
+     "Bip01_L_ForeArm",
+     "Bip01_L_Hand",
+     "Bip01_L_Thigh",
+     "Bip01_L_UpperArm",
+     "Bip01_Pelvis",
+     "Bip01_R_Calf",
+     "Bip01_R_Clavicle",
+     "Bip01_R_Foot",
+     "Bip01_R_ForeArm",
+     "Bip01_R_Hand",
+     "Bip01_R_Thigh",
+     "Bip01_R_UpperArm",
+     "Bip01_Spine",
+     "Bip01_Spine1",
+     "bone_handle",
+     "bone_link1",
+     "bone_link2",
+     "bone_link3",
+     "bone_tip"
+    ],
+    "_allowed_doc": "the union of the bones the references weight (iron_rider_0: the 18 body bones + the 5 flail chain bones; keshik: the 18 body bones); Neck, Root, Prop, Toe, Ponytail, Nub and attach bones are never weighted",
+    "max_influences": 4,
+    "zero_slot_slot0_min": 1.0,
+    "_zero_slot_doc": "measured 1.0 on both references (unused index slots repeat slot 0's index; 97.5-100 % over the DE full-LOD meshes)",
+    "max_triangles": 1504,
+    "max_welded_vertices": 1061,
+    "_budget_doc": "the maxima over the 20 referenced DE full-LOD riders (steppe_rider_2: 1504 triangles, 1061 welded vertices; aoe3de-unit-model vanilla-unit-measurements.md, measure_units.py); references: iron_rider_0 1328 / 976, keshik_rider_rank01 1278 / 981",
+    "page": 1024,
+    "pitch": 47.0,
+    "headings": 8
+   },
+   "uv_density": {
+    "profile": ".claude/skills/aoe3de-unit-model/profiles/organic_uv_unit_body_1024.json",
+    "checks": [
+     "density_p50",
+     "density_visible_p10"
+    ],
+    "_doc": "the hard minima of the organic UV gate profile (one source with the UV step's uv_gates.py); measured on the references: iron_rider_0 p50 343.4 / visible p10 313.4, keshik_rider_rank01 358.4 / 332.2. The visible-weighted density needs the unit's seated idle pose (--pose-npz: its Idle variant 0 rider clip key 0 on its horse's Idle variant 0 clip key 0)."
+   },
+   "texture_budget": {
+    "class": "unit_human_1024",
+    "status": "proposed, owner to confirm",
+    "owner_quote": "human unuts should have 1x 1024 texture, let's hold it",
+    "_doc": "relayed 2026-10-11, not in the owner message store: no confirmed_by, so texture_budget FAILS for every unit model except a listed vanilla reference with no own texture file"
+   }
+  }
  }
 }

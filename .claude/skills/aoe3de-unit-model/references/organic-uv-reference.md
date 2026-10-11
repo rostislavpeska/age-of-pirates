@@ -121,7 +121,7 @@ what the H1 recipe reached on a 1.1k-triangle rider (body + skinned flail on one
 | Page border px (page) | >= 4 | >= 8 | iron_rider_0 15 | 11.25 |
 | L2 / Linf stretch (page) | <= 1.06 / 3.75 | <= 1.03 / 2.0 | iron_rider_0 1.052 / 3.75 | 1.026 / 1.81 |
 | Angle stretch mean / p90 (page) | <= 1.20 / 1.45 | <= 1.15 / 1.35 | iron_rider_0 1.149 / 1.40; DE 1.12-1.25 | 1.123 / 1.298 |
-| Density p50 / visible-weighted p10 t/m (page) | >= 343 / 314 | >= 360 / 350 | iron_rider_0 343 / 313; DE p50 343-477 | 372 / 345 |
+| Density p50 / visible-weighted p10 t/m (page) | >= 343 / 313 | >= 360 / 350 | iron_rider_0 343.4 / 313.4, keshik_rider_rank01 358.4 / 332.2; DE p50 343-477 | 372 / 345 |
 | Texel coverage (page) | >= 55 % | >= 60 % | DE 58-72 % | 60.3 % |
 | GPU vertices, every UV layer (page) | <= 1,050 | <= 950 | vanilla welded 628-1061 | 899 |
 | Upright islands (page) | >= 70 % | >= 95 % | iron_rider_0 72 %; DE 46-73 % | 100 % |
@@ -132,8 +132,12 @@ what the H1 recipe reached on a 1.1k-triangle rider (body + skinned flail on one
 | Body islands / tiny (body) | <= 20 / <= 2 | 10-16 / 0 | DE 9-37 | 15 / 0 |
 | Head/torso, bone regions (body) | owner decision | 1.25-1.35 | iron_rider_0 1.30; changdao 1.22; ashigaru 1.37; keshik 1.47; yabusame 0.97; musketeer 1.02 | 1.119 (1.271 visible faces) |
 
-The 1,050 vertex ceiling is the unit contract's (vanilla welded maximum 1061). The universal building density floor
-(90 / 54 t/u) is not an organic gate: unit bodies sit at 350-480 t/u.
+The visible-weighted p10 hard minimum is the floor of the lowest vanilla reference (iron_rider_0 313.4, reproduced exactly by `gr2_lint`'s numpy port of the evaluator's visibility, 2026-10-11); it was 314 until the export review found that value failed iron_rider_0 itself. AoP's export lint applies these two density minima (profile `unit_rider_1024` in `scripts/havok/gr2_lint_profiles.json`, PROPOSED) on top of the universal density floor, which runs for every model, units included.
+
+The 1,050 vertex ceiling is the unit contract's (vanilla welded maximum 1061). The universal density floor (90 / 54
+t/u, blender-architecture-texturing uv-density-floor.md) is not one of the organic gate's own checks, but it applies to
+every model at export (AoP `gr2_lint` check `texel_density`): unit bodies sit at 350-480 t/u and pass it by far
+(iron_rider_0, keshik_rider_rank01 and the Pyeongon specimen: 0 % below 54 t/u, 0 % collapsed).
 
 ## 7. Open AoE3 items for the UV step
 
