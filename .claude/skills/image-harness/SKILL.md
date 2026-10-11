@@ -1,14 +1,30 @@
 ---
 name: image-harness
-description: CLAUDE ONLY - GPT, Codex, Astra and Gemini agents must NOT use this skill; they generate images natively and this harness is paid per image. Generate or edit images from Claude Code through the owner's n8n workflow "Claude Image Harness (Webhook)" - OpenAI gpt-image by default, Gemini instruction/reference edits (OpenAI masked edits disabled since INC-203). Two uses - (1) stand-alone images: texture sources, tiles, decals, icon art, portraits, references; (2) AI-PAINTED MODEL TEXTURES: paint a model's own UV layout / unrolled layout sheet (props such as barrels, crates, wheels, beams; masonry walls) with a vanilla texture as style reference, gate it and map it back onto the atlas - see "Paint a model's textures from its UV layout". Use when Claude needs an image or custom painted textures: "generate a texture", "custom GPT or Gemini textures", "paint the UV map", "textures from the UV layout", "make an image", "edit this image", "image prompt".
+description: Generate texture sources and paint geometry-locked UV or unrolled layout sheets, then validate and map them onto existing atlases. GPT/Codex/Astra use their native image-generation tool; Claude Code alone may use the billed webhook/CLI. Use for custom material images, ornaments, decals, or model textures generated from a layout.
 ---
 
-# Image harness (Claude only)
+# Image generation and geometry-locked texture painting
 
-**Gate.** Only Claude Code uses this. GPT/Codex/Astra/Gemini agents make images natively
-and must never call it: every call is billed to the owner's API accounts (AGENTS.md rule 10).
-The client enforces it technically as well: it refuses unless `CLAUDECODE=1` (set only in
-Claude Code shells).
+## Choose the provider before generating
+
+Owner clarification, 12 October 2026: the texture-painting method also applies to GPT using native generation.
+
+- **GPT/Codex/Astra:** use the available native image-generation tool and its imagegen instructions. Do not run
+  this package's webhook client, probe its credentials, set `CLAUDECODE`, or switch to a separately billed API.
+- **Claude Code:** use the existing CLI/webhook route below. Its technical Claude-only guard stays enabled.
+- **Other agents:** use an explicitly available native generator; otherwise report it unavailable. No implicit
+  permission to use the billed Claude route.
+
+Both routes follow the layout, structure, scope and map-back checks below. A generated bitmap is a source,
+not a certified atlas, normal, AO, alpha or player-colour mask. Keep those geometry/semantic-derived channels.
+For native results save the original output, exact prompt, input roles and hashes, output hash/dimensions,
+provider route, call count and the gate results with the external checkpoint. Record unknown usage/cost as
+unknown; do not fabricate a provider receipt. Copy the output into the project asset package before handoff.
+
+## Claude-only CLI/webhook
+
+The remaining CLI commands are for Claude Code only. Every webhook call is billed to the owner's API accounts
+(AGENTS.md rule 10). The client refuses unless `CLAUDECODE=1`, set by Claude Code itself.
 
 ## Secrets (the repo is PUBLIC)
 
@@ -56,7 +72,8 @@ compose rules: [masonry-texturing](../masonry-texturing/SKILL.md) section 7 and 
    measured from the vanilla counterpart, joints and openings drawn, flat 0.5 grey outside, plus every detail the paint
    must carry (rivets, nail heads, bung hole, rope twist). Props: lay the charts out like a vanilla prop atlas (barrel
    staves side by side, heads as discs, long strips stacked as rows). Packed fragments of a building do not work.
-2. **One Gemini edit per sheet:** `--image LAYOUT.png --image STYLE_REF.png --provider gemini --image-size 1K` with the
+2. **One native or Claude edit per sheet.** GPT uses its native tool with the layout as the edit target and the
+   appearance image as reference only. Claude uses `--image LAYOUT.png --image STYLE_REF.png --provider gemini --image-size 1K` with the
    vanilla counterpart as the "style reference only" image (barrel: `TNT_Barrel_matb`, wheel: `organ_gun_wheel_matA`,
    crates: `nat_wood_crates_small_b_mata`). 1K is enough when the sheet's px/m exceeds the page's texels/m.
 3. **Gate before use.** Masonry: the joint F1 gate. **Wood:** grain cracks are dark lines too, so a correct wood painting
@@ -95,6 +112,47 @@ compose) and `props_sheet_apply.py` (map back, relief, edge generators).
 
 **Re-posing a character for 3D** (a Gemini edit that puts a design into a skeleton's bind pose before TRELLIS): the
 separate `image-to-3d-reference` skill holds the wording, the 2D check and the route.
+
+## Edit one UV island with any generator (GPT native included)
+
+Owner, 12 October 2026: "Astra can't use the harness ... the edit image based on UV island ... The feature is great!
+Should work also for GPT native image generation (without harness)". `scripts/uv_island_paint.py` prepares the
+edit and applies the result. It never calls a generator, so GPT/Codex/Astra use their native image editing, Claude
+may use the harness, and a manual edit works too.
+
+1. **Extract (free, local):**
+
+   ```bash
+   python .claude/skills/image-harness/scripts/uv_island_paint.py extract --page X_BaseColor.png --gr2 X.gr2 --mat mata --at U,V --out DIR
+   ```
+
+   - Islands: `--at u,v` (page fraction, repeatable), `--island N`, or `--all`.
+   - Raw GR2 UVs are page image coordinates.
+   - Writes `EDIT_INPUT.png`: the island crop on a neutral grey canvas of a generator aspect (1:1, 2:3, 3:2).
+   - Writes `EDIT_MASK.png`: alpha 0 = the island = editable.
+   - Writes `GUIDE.png` (magenta outlines) and `ISLAND.json`, which holds a prompt template.
+2. **Paint, with one call per island set:**
+   - **GPT native:** edit `EDIT_INPUT.png` and attach `EDIT_MASK.png` if the tool takes a mask. Use the template
+     from `ISLAND.json`: keep every edge, joint and opening in place; flat light; no text; no new objects.
+   - **Claude:** `generate.py --image EDIT_INPUT.png --provider gemini`.
+   - Save the result as `PAINTED.png`. Save the exact prompt, too.
+3. **Apply (free, local):**
+
+   ```bash
+   python .claude/skills/image-harness/scripts/uv_island_paint.py apply --dir DIR --painted PAINTED.png --route native-gpt --prompt-file PROMPT.txt --out-page NEW.png [--ddt X.ddt --ddt-out NEW.ddt]
+   ```
+
+   - Any returned size works: it is resized to the canvas, and the crop is taken back from its placement.
+   - **Gate:** the edge correlation inside the island must be ≥ 0.35. Pass `--restyle` only when a new structure was
+     asked for. A random image scores 0.00; a faithful repaint scores 0.997.
+   - Only island texels change. Alpha is never repainted.
+   - `APPLY.json` records the route, prompt, call count, hashes and cost. Cost is `unknown` unless known; never a
+     made-up receipt.
+   - `--ddt` patches the game DDT block-wise.
+
+Use it for a part repaint on an existing page, such as one post, one sign or one door. For whole models, follow
+"Paint a model's textures from its UV layout" above. The same rule applies: a generated bitmap is a colour source,
+not a normal, AO, alpha or player-colour map.
 
 ## Edit (harness v2)
 
