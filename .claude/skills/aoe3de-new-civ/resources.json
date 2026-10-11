@@ -15,7 +15,8 @@
     "ai-edit",
     "icon-forge",
     "image-harness",
-    "workflow-journal"
+    "workflow-journal",
+    "aoe3de-multi-mod"
   ],
   "external": [
     {

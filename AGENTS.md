@@ -142,9 +142,11 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    orders the merge, new Korean work goes there; AoP keeps only the generic skills and tools.
    Exception (owner 2026-10-09): `zpKoreanBombard` is AoP gameplay and stays in AoP, with the Korean soldier voices it
    uses (`sound/korean/`, the `Korean_Soldier_*` soundsets).
-   Exception (owner 2026-10-10): AoP's own `art/buildings/asian_civs/castle/castle.xml` carries the Korean castle branch
-   (inert without the add-on; models in the add-on, which ships no castle.xml). Refresh it only with the add-on's
-   `python tools/korean_visuals.py --write-aop`; never delete it.
+   Exception (owner 2026-10-10 castle, 2026-10-11 "follow pattern" for every building): an animfile AoP overrides
+   (today `art/buildings/asian_civs/castle/castle.xml` and `consulate/consulate.xml`) carries the Korean branch itself,
+   because AoP has mod priority 1 and an add-on copy would never show (inert without the add-on; models in the add-on,
+   which ships no copy; `xmlcheck.py` `COMPANION_ART`). Refresh them only with the add-on's
+   `python tools/korean_visuals.py --write-aop`; never delete them. Skill: `aoe3de-multi-mod`.
 
 ## Where things are
 

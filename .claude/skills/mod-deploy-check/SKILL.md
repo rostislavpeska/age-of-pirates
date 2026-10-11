@@ -74,6 +74,10 @@ an estimate from that ratio.
    Adding a rewrite = one line in English + fourteen fragment lines, once, then never again.
 3. **Run the check.** Fix blocking items in the FOLDERS (delete strays, move
    backups out of the game dirs), never by editing the zip. Re-run until clean.
+3b. **Mods that run together** (a civ add-on, the St Paul's home city): run
+   `aoe3de-multi-mod/scripts/mod_overlap.py --fail` over exactly those mods. A path two of
+   them ship is decided by mod priority, so the lower-priority copy never reaches the game
+   (the Korean Consulate, 2026-10-11).
 4. **Zip the five folders at the archive root** - `art data game sound randmaps`
    directly inside the zip, no wrapper folder, nothing else. Write the zip
    OUTSIDE the game folders (the mod root is fine; `*.zip` is gitignored).

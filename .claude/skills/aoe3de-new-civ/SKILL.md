@@ -81,10 +81,12 @@ Distilled 2026-10-11 from journal records 2026-10-08-claude-28..41, 2026-10-09-c
 - The civ's look on a shared building proto is a branch in the vanilla animfile, keyed on a civ marker tech that only
   the add-on's civ researches; the add-on's build merges its own logic-free animfile into the vanilla text and can strip
   it back byte-identically (**aoe-xml** art XML; Koreans `tools/korean_visuals.py`).
-- **Check first whether the base mod overrides that animfile.** An add-on copy loses to a base-mod override whenever
-  the base mod stands above the add-on in mod priority: the vanilla castle showed in game (2026-10-10). Either the base
-  mod hosts the inert branch itself (it never fires without the add-on's marker tech; a check fails when the base
-  mod's file drifts from the add-on source), or the add-on merges onto the base mod's override, never onto vanilla.
+- **Check first whether the base mod overrides that animfile** (**aoe3de-multi-mod**, `mod_overlap.py`). An add-on
+  copy loses to a base-mod override whenever the base mod stands above the add-on in mod priority: the Japanese castle
+  (2026-10-10) and the Japanese consulate (2026-10-11) showed in game although the add-on's merged copies were correct.
+  The base mod then hosts the inert branch itself (it never fires without the add-on's marker tech; the add-on's build
+  check fails when the base mod's file drifts from the add-on source) and the add-on ships no copy; an add-on test
+  fails on any shadowed file.
 - Every building model ships with its test bed (**aoe3de-model-test-unit**), its construction and damaged states
   (**aoe3de-building-states**) and the lint profile of its texture class (**aoe-building-pipeline**).
 
