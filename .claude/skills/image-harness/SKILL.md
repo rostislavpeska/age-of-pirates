@@ -81,6 +81,9 @@ compose rules: [masonry-texturing](../masonry-texturing/SKILL.md) section 7 and 
 Reference implementation (Korean props, outside AoP): `korean-market-dock/recipes/props_ai_sheet.py` (layout, gates,
 compose) and `props_sheet_apply.py` (map back, relief, edge generators).
 
+**Re-posing a character for 3D** (a Gemini edit that puts a design into a skeleton's bind pose before TRELLIS): the
+separate `image-to-3d-reference` skill holds the wording, the 2D check and the route.
+
 ## Edit (harness v2)
 
 Change an existing picture instead of starting from nothing: fill a placeholder region, repaint one

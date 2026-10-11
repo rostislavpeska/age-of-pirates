@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/route.md",
+    "references/prompting.md",
+    "references/measurement.md",
+    "references/fitting.md",
+    "scripts/README.md",
+    "scripts/glb_scene.py",
+    "scripts/preview_glb.py",
+    "scripts/render_ortho.py",
+    "scripts/mesh_stats.py",
+    "scripts/grid.py",
+    "scripts/pose_angles.py",
+    "tests/make_fixture_model.py",
+    "tests/test_blender_tools.py",
+    "tests/test_pose_angles.py",
+    "tests/test_grid_and_cli.py"
+  ],
+  "skills": [
+    "image-harness",
+    "blender-organic-modeling",
+    "workflow-journal",
+    "blender-mcp-safety"
+  ],
+  "external": [
+    {
+      "id": "generate-3d-pipeline",
+      "kind": "capability",
+      "requiredFor": [
+        "generate"
+      ],
+      "optional": false,
+      "note": "The owner's Blendify MCP server (tools generate_3d, wait_for_3d_job, import_canonical_model) posting to his n8n workflow '3D Model Generator', which calls fal TRELLIS-2 (and OpenRouter in text mode). Paid per job. Image mode needs the workflow's 'Has Input Image?' branch and a server restarted on the image-mode code. Webhook base and key live only in the MCP server's environment: never in a tracked file, the repo is public."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "preview",
+        "ortho",
+        "mesh-stats",
+        "tests"
+      ],
+      "optional": false,
+      "commands": [
+        "blender"
+      ],
+      "environment": "BLENDER",
+      "modules": [
+        "bpy",
+        "bmesh",
+        "mathutils"
+      ],
+      "note": "Background Blender (blender -b --factory-startup) runs preview_glb.py, render_ortho.py and mesh_stats.py and builds the test figure; found through the companion skill's blender_env.py (--blender-exe, --local-config tools.blender.path, BLENDER, PATH, standard folder). Tested on Blender 5.1.2. No live session is used."
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "preview",
+        "ortho",
+        "mesh-stats",
+        "grid",
+        "pose",
+        "tests"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "note": "Host Python 3.9+ launches the Blender tools and runs grid.py and pose_angles.py."
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "pose",
+        "mesh-stats",
+        "ortho",
+        "tests"
+      ],
+      "optional": false,
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ],
+      "note": "Host numpy for pose_angles.py; inside Blender the tools use Blender's bundled numpy."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "grid",
+        "pose",
+        "tests"
+      ],
+      "optional": false,
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ],
+      "note": "grid.py always; pose_angles.py only for --centre-limbs, --overlay-dir and a hip_rule without ground_y."
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
+      ],
+      "note": "Runs tests/; the Blender suite skips when no Blender is found, the host suites run anywhere."
+    }
+  ]
+}
