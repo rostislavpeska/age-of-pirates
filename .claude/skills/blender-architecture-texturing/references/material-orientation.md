@@ -59,6 +59,26 @@ incompatible directions on the same texels, identify that conflict explicitly;
 a global texture rotation cannot repair both. Keep the prior version and list
 any affected bake/atlas work before a scoped sharing change.
 
+## Declare grain intent per role, then per part
+
+Give every directional role a grain **intent**, not a frame recipe alone:
+`member` (along the part's own long axis, from a principal-component fit of its
+connected component), `fall` (down the roof slope) or `up` (world up projected
+into the face). The source declares its grain axis in image U or V; the frame
+generator must honour it (a V-grain tile under a U-along-member frame needs a
+quarter turn). A "courses" frame on a V-grain board source yields vertical boards
+on every fascia, balcony board and beam (Market r1, owner 2026-10-11). Exceptions
+are part-level overrides matched on a narrow semantic name (gable board closures
+are `up`); a broad prefix such as a whole gable assembly also captures its verge
+timbers.
+
+Build the owner and reader maps from the **whole face**: one least-squares affine
+map per face over all its corners, in an in-plane orthonormal basis. A map from
+the first three loops depends on loop order; on a tapered quad an owner and its
+stacked reader then use different halves of the face and the carried grain tilts
+20-50 degrees although the stacking is exact. Run a positive control (a
+deliberately rotated owner must fail) before trusting a pass.
+
 ## Reject collapsed source projections
 
 Test the mapping actually supplied to the image sampler, before modulo/repeat,
@@ -108,3 +128,10 @@ rule was missed when its material recipe was reused on military meshes.
 Numeric color, coverage and normal-length checks did not test these directions.
 The r47 audit records geometric observations and separate visual review; neither
 claims production acceptance or verifies an unobserved live revision.
+
+Korean Market r1, 2026-10-11: plank and timber roles used a courses frame with a
+V-grain source, so every board ran vertically (owner screenshot of a balcony
+fascia). Member-frame intents, a `.BoardClosure` override and per-reader
+observations validated by `check_material_direction.py` at 15 degrees repaired it
+(1,524 faces checked). The first QA used three-loop triangles and reported 13
+false failures on tapered ridge tips; whole-face affine maps removed them.
