@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/bundle-schema.md",
+    "references/headless-gpu.md",
+    "references/shader-model.md",
+    "scripts/av_common.py",
+    "scripts/server.py",
+    "scripts/headless.py",
+    "scripts/material.py",
+    "scripts/ddt.py",
+    "scripts/lighting.py",
+    "scripts/vfs.py",
+    "scripts/proto_resolve.py",
+    "scripts/animfile.py",
+    "scripts/tactics.py",
+    "scripts/gr2_model.py",
+    "scripts/gr2_curves.py",
+    "scripts/bundle.py",
+    "scripts/anim_viewer.py",
+    "scripts/crosscheck.py",
+    "scripts/ui_shot.py",
+    "scripts/sheets.py",
+    "scripts/video.py",
+    "scripts/metrics.py",
+    "viewer/lib/s3tc.js",
+    "viewer/lib/gl.js",
+    "viewer/lib/host.js",
+    "viewer/lib/bundle.js",
+    "viewer/lib/skeleton.js",
+    "viewer/lib/rig.js",
+    "viewer/lib/camera.js",
+    "viewer/lib/skin.js",
+    "viewer/lib/render.js",
+    "viewer/shading/model.js",
+    "viewer/shading/glsl.js",
+    "viewer/shading/renderer.js",
+    "viewer/shading/panel.js",
+    "viewer/shading/hook.js",
+    "viewer/shading/selftest.html",
+    "viewer/shading/selftest.js",
+    "viewer/package.json",
+    "viewer/m0/index.html",
+    "viewer/m0/m0.js",
+    "viewer/m0/textures.js",
+    "viewer/app/index.html",
+    "viewer/app/app.js",
+    "viewer/timeline/model.js",
+    "viewer/timeline/footprint.js",
+    "viewer/timeline/dom.js",
+    "viewer/timeline/timeline.js",
+    "viewer/timeline/picker.js",
+    "viewer/timeline/mount.js",
+    "viewer/timeline/timeline.css",
+    "viewer/panels/data.js",
+    "viewer/panels/panels.js",
+    "viewer/export/plan.js",
+    "viewer/export/geometry.js",
+    "viewer/export/job.js",
+    "tests/test_av_common.py",
+    "tests/test_server.py",
+    "tests/test_headless.py",
+    "tests/test_viewer_js.py",
+    "tests/test_material.py",
+    "tests/test_ddt.py",
+    "tests/test_lighting.py",
+    "tests/test_look_local.py",
+    "tests/av_fixtures.py",
+    "tests/test_vfs.py",
+    "tests/test_proto_resolve.py",
+    "tests/test_animfile.py",
+    "tests/test_tactics.py",
+    "tests/test_data_local.py",
+    "tests/gr2_synth.py",
+    "tests/test_gr2_model.py",
+    "tests/test_gr2_curves.py",
+    "tests/av_unit_fixture.py",
+    "tests/test_bundle.py",
+    "tests/test_parity_js.py",
+    "tests/test_viewer_local.py",
+    "tests/test_timeline_panels.py",
+    "tests/test_timeline_local.py",
+    "tests/test_ui_shot.py",
+    "tests/shading_ref.py",
+    "tests/test_shading.py",
+    "tests/test_shading_gpu.py",
+    "tests/test_shading_local.py",
+    "tests/test_export.py",
+    "tests/test_export_local.py",
+    "tests/js/s3tc.test.mjs",
+    "tests/js/gl.test.mjs",
+    "tests/js/bundle.test.mjs",
+    "tests/js/skeleton.test.mjs",
+    "tests/js/camera.test.mjs",
+    "tests/js/timeline.test.mjs",
+    "tests/js/panels.test.mjs",
+    "tests/js/parity/disk.mjs",
+    "tests/js/parity/bspline.test.mjs",
+    "tests/js/parity/pose.test.mjs",
+    "tests/js/m4/bundle_m4.test.mjs",
+    "tests/js/shading.test.mjs",
+    "tests/js/export.test.mjs"
+  ],
+  "skills": [
+    "aoe3de-bar-archives",
+    "aoe3-texture-weathering",
+    "aoe3de-unit-model",
+    "aoe3de-unit-animation"
+  ],
+  "external": [
+    {
+      "id": "chrome",
+      "kind": "executable",
+      "commands": [
+        "chrome",
+        "google-chrome",
+        "google-chrome-stable",
+        "chromium",
+        "chromium-browser"
+      ],
+      "requiredFor": [
+        "headless"
+      ],
+      "optional": false,
+      "note": "Chrome or Chromium, run only headless (--headless=new) with a throwaway profile under the cache; found through AOP_ANIM_VIEWER_BROWSER, the consumer's config/tool-paths.local.json (tools.chrome.path) or PATH. Never installed or updated by this skill.",
+      "environment": "AOP_ANIM_VIEWER_BROWSER"
+    },
+    {
+      "id": "edge",
+      "kind": "executable",
+      "commands": [
+        "msedge",
+        "microsoft-edge"
+      ],
+      "requiredFor": [
+        "headless"
+      ],
+      "optional": true,
+      "note": "Microsoft Edge, used only when named (--browser edge): on 2026-10-11 its launcher with a pending update opened a visible window on the owner's own profile (INC-237). Found through config/tool-paths.local.json (tools.edge.path) or PATH."
+    },
+    {
+      "id": "node",
+      "kind": "executable",
+      "commands": [
+        "node"
+      ],
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "note": "Node 18 or newer runs tests/js/*.test.mjs with the built-in node --test (tests/test_viewer_js.py skips without it). No npm packages."
+    },
+    {
+      "id": "blender",
+      "kind": "executable",
+      "commands": [
+        "blender"
+      ],
+      "requiredFor": [
+        "crosscheck"
+      ],
+      "optional": true,
+      "note": "Background Blender (blender -b, no window) for the pose_sim side of scripts/crosscheck.py, through aoe3de-unit-animation's render_obj.py (tested 5.1); found through the consumer's config/tool-paths.local.json (tools.blender.path) or --blender. Without it the crosscheck renders the viewer side only."
+    },
+    {
+      "id": "game-archives",
+      "kind": "directory",
+      "requiredFor": [
+        "bundle"
+      ],
+      "optional": false,
+      "note": "The retail AoE3 DE install read in place through aoe3de-bar-archives (never extracted into a repository); auto-detected, or AOE3DE_GAME.",
+      "environment": "AOE3DE_GAME"
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "bundle",
+        "tests"
+      ],
+      "optional": false,
+      "note": "Binary buffer views (av_common.BufferWriter, read_view) and the reference decoders in the tests.",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ]
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "crosscheck",
+        "export",
+        "tests"
+      ],
+      "optional": true,
+      "note": "Reads the readback PNGs in the tests and composes the crosscheck sheet (scripts/crosscheck.py); the DDT PNG fallback goes through it too (ddt.py). M5: sheets (sheets.py), the video overlay and animated WebP (video.py).",
+      "distribution": "pillow",
+      "modules": [
+        "PIL"
+      ]
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "note": "Runs tests/*.py; the consumer's local marker deselects the owner-machine cases in CI.",
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
+      ]
+    },
+    {
+      "id": "ffmpeg",
+      "kind": "executable",
+      "commands": [
+        "ffmpeg"
+      ],
+      "requiredFor": [
+        "video"
+      ],
+      "optional": true,
+      "note": "MP4 encoding of anim_viewer.py video (libx264, yuv420p, +faststart; ffprobe beside it, when present, verifies the file). Found ONLY through the consumer's config/tool-paths.local.json (tools.ffmpeg.path) or --ffmpeg; never searched on PATH, installed or downloaded. Without it: a clear error, or --no-mp4 (frames and --webp only)."
+    }
+  ]
+}
