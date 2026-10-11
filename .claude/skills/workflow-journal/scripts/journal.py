@@ -51,7 +51,8 @@ def add(agent, stage, kind, skills, lesson, evidence, cost='', project='', repea
     if repeats and repeats not in {r['id'] for r in rows}:
         raise ValueError(f'--repeats {repeats} is not a journal id')
     date = date or datetime.date.today().isoformat()
-    n = 1 + sum(1 for r in rows if r['date'] == date and r['agent'] == agent)
+    prefix = f'{date}-{agent}-'                     # next free number: an agent may have continued numbering across dates
+    n = 1 + max([int(r['id'][len(prefix):]) for r in rows if r.get('id', '').startswith(prefix) and r['id'][len(prefix):].isdigit()], default=0)
     rec = dict(id=f'{date}-{agent}-{n:02d}', date=date, agent=agent, project=project, stage=stage, kind=kind,
                skills=skills, lesson=lesson.strip(), evidence=evidence.strip(), cost=cost.strip(),
                repeats=repeats, status='open', distilled_into='', note='')
