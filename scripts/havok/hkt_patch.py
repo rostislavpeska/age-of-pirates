@@ -9,6 +9,10 @@ Usage:
   python hkt_patch.py IN OUT --prop KEY=VAL [REGEX]  set an hkSimpleProperty value (KEY hex/dec)
   python hkt_patch.py IN OUT --velocity X,Y,Z [REGEX] initial linear velocity on matching bodies
   python hkt_patch.py IN OUT --mass FACTOR [REGEX]   scale mass (inverse mass /= FACTOR)
+  python hkt_patch.py IN OUT --unfreeze DENSITY [REGEX]  keyframed geometry pieces (sim 4) -> dynamic (sim 3): they FALL
+                                                     (mass = DENSITY x own hull volume, box inertia; motion settings copied
+                                                     from the file's own dynamic pieces). Korean Rice Paddy 2026-10-12, owner:
+                                                     "The chipped faces simply disappear INSTANTLY" (keyframed roof pieces)
 REGEX (optional, last) restricts the change to bodies whose name matches.
 """
 import re, struct, sys
@@ -79,6 +83,36 @@ class Patcher:
             mo, _ = self.member(ti, 'collidable.broadPhaseHandle.objectQualityType'); self.w('<b', off + mo, 1)
             print(f'  froze [{k}] {name}')
 
+    def unfreeze(self, density, rx):
+        """keyframed (sim 4) render pieces (type 0 stage / 1 on-death) -> dynamic (sim 3), the inverse of freeze"""
+        import numpy as np
+        from scipy.spatial import ConvexHull
+        ref = None
+        for k, name, ti, off, rb in self.bodies():                       # a dynamic piece of this file: its motion settings
+            pr = {key: val for key, val, _ in self.props(rb)}
+            if pr.get(PROP_SIM) == 3 and rb['motion']['inertiaAndMassInv'][3] > 0:
+                ref = rb; break
+        assert ref is not None, 'no dynamic reference body in this file'
+        for k, name, ti, off, rb in self.bodies():
+            if rx and not re.search(rx, name): continue
+            props = {key: (val, poff) for key, val, poff in self.props(rb)}
+            if props.get(PROP_SIM, (None,))[0] != 4 or props.get(PROP_TYPE, (None,))[0] not in (0, 1): continue
+            sh = self.tf.read_item(rb['collidable']['shape'][1])[0]
+            if 'rotatedVertices' not in sh: continue
+            ti_, _f, off_, cnt = self.tf.items[sh['rotatedVertices'][1]]
+            pts = np.frombuffer(bytes(self.tf.data[self.base + off_:self.base + off_ + cnt * 48]), '<f4').reshape(cnt, 3, 4).transpose(0, 2, 1).reshape(-1, 3)[:sh['numVertices']].astype(float)
+            ext = np.maximum(pts.max(0) - pts.min(0), 1e-3)
+            try: vol = float(ConvexHull(pts).volume)
+            except Exception: vol = float(np.prod(ext))
+            mass = max(density * vol, 1e-3); I = mass / 12 * np.array([ext[1]**2 + ext[2]**2, ext[0]**2 + ext[2]**2, ext[0]**2 + ext[1]**2])
+            self.w('<q', props[PROP_SIM][1], 3)
+            mo, _ = self.member(ti, 'motion.type');                          self.w('<B', off + mo, ref['motion']['type'])
+            mo, _ = self.member(ti, 'motion.deactivationNumInactiveFrames'); self.w('<HH', off + mo, *ref['motion']['deactivationNumInactiveFrames'])
+            mo, _ = self.member(ti, 'motion.motionState.deactivationClass'); self.w('<B', off + mo, ref['motion']['motionState']['deactivationClass'])
+            mo, _ = self.member(ti, 'motion.inertiaAndMassInv');             self.w('<4f', off + mo, *(1 / I), 1 / mass)
+            mo, _ = self.member(ti, 'collidable.broadPhaseHandle.objectQualityType'); self.w('<b', off + mo, ref['collidable']['broadPhaseHandle']['objectQualityType'])
+            print(f'  unfroze [{k}] {name}: mass {mass:.3f} (hull {vol:.4f} m3)')
+
     def set_prop(self, key, val, rx):
         for k, name, ti, off, rb in self.bodies():
             if rx and not re.search(rx, name): continue
@@ -117,6 +151,8 @@ if __name__ == '__main__':
         key, val = rest[0].split('='); p.set_prop(int(key, 0), int(val, 0), rest[1] if len(rest) > 1 else None)
     elif op == '--velocity':
         p.velocity(tuple(float(x) for x in rest[0].split(',')), rest[1] if len(rest) > 1 else None)
+    elif op == '--unfreeze':
+        p.unfreeze(float(rest[0]), rest[1] if len(rest) > 1 else None)
     elif op == '--mass':
         p.mass(float(rest[0]), rest[1] if len(rest) > 1 else None)
     else:
