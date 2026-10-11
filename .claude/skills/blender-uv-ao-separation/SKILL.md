@@ -81,6 +81,10 @@ for the owner first ([pipeline order](../blender-architecture-texturing/referenc
   false full-dark roof samples through sub-millimetre self-hits; increasing the
   ray offset hides the defect and is not its fix. Cache identity includes the
   triangulation and recipe, not merely the original polygon list.
+- **Evaluated transforms only:** update every scene's view layers before reading `matrix_world`
+  (both scripts do); a command-line load evaluates only the window's scene, so c4r9's lantern parts
+  sat at the origin and baked AO 0.0. Viewport-disabled or excluded-collection objects stay stale.
+  Regression: `scripts/check_world_matrix_blender.py`.
 - Deliver a pilot map/heatmap before whole-model separation; deliver each model's
   resulting UV sheet before the next edit batch. Follow the workflow's partial
   gates, and label samples versus final owner/reference bakes explicitly.

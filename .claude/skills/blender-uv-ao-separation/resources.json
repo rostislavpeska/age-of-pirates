@@ -9,6 +9,7 @@
     "scripts/bake_owner_ao.py",
     "scripts/test_ao_evidence.py",
     "scripts/check_triangulation_blender.py",
+    "scripts/check_world_matrix_blender.py",
     "scripts/neutralize_ao.py",
     "scripts/test_neutralize_ao.py"
   ],

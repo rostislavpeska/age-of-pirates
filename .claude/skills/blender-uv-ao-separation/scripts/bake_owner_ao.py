@@ -16,6 +16,11 @@ import bpy, bmesh, json, sys
 from pathlib import Path
 
 cfg = json.load(open(sys.argv[sys.argv.index('--') + 1]))
+# A command-line load evaluates only the window's scene; objects elsewhere keep the stored
+# matrix_world, stale under a parent moved by script (c4r9 lanterns baked black at the origin).
+for sc in bpy.data.scenes:
+    for vl in sc.view_layers:
+        vl.update()
 plan = json.load(open(cfg['plan']))['faces']
 pages = cfg.get('pages', {'P': 4096}); UV = cfg.get('uv_name', 'UV_Final'); out = Path(cfg['out_dir'])
 bs = bpy.data.scenes.new('Bake_owner_ao'); bpy.context.window.scene = bs

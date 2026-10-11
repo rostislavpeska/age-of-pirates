@@ -16,6 +16,11 @@ import bpy, json, math, random, sys
 from mathutils.bvhtree import BVHTree
 
 cfg = json.load(open(sys.argv[sys.argv.index('--') + 1]))
+# A command-line load evaluates only the window's scene; objects elsewhere keep the stored
+# matrix_world, stale under a parent moved by script (c4r9 lanterns sampled at the origin).
+for sc in bpy.data.scenes:
+    for vl in sc.view_layers:
+        vl.update()
 R = float(cfg.get('radius', .5)); NR = int(cfg.get('rays', 256)); G = float(cfg.get('grid', 12)); NL = int(cfg.get('lattice', 3))
 verts, polys = [], []
 for n in cfg['occluders']:
