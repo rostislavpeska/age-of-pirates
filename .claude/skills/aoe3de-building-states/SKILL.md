@@ -64,10 +64,17 @@ test; record the asset's export frame next to its recipe.
 
 - Keep: foundations, platforms, finished lower walls, posts, gates, masonry boundary walls, built-in stall
   partitions - same geometry, UVs, material slots and own pages.
-- Windows and doors (owner 2026-10-11: "con model shouldn't have windows and doors if these are separate shapes and
-  not baked to texture, if baked like Town center, they must stay"): baked into the wall texture -> they stay with the
-  wall; modelled as separate shapes (frames, lattices, paper, door leaves, shutters) -> removed, the wall keeps its rough
-  opening. A frame kept without its wall hangs in the air (Korean Dock r2: 96 of 102 frame pieces floating).
+- Windows and doors are removed; the frame and the wall stay. Owner 2026-10-11, morning: "con model shouldn't have
+  windows and doors if these are separate shapes and not baked to texture, if baked like Town center, they must stay".
+  Evening, after reviewing every construction model, he withdrew the Town Center exception: "TownCenterCon -> strip
+  all the wooden pannels and leave only the beams", "Barracks and  stables construction - strip windows and doors,
+  houses too".
+  - Removed: separate window and door shapes (frames, lattices, paper, door leaves, shutters), and wooden door and window
+    panels that are faces of their own, even when their art is painted on (the Korean TC plank doors and lattice
+    windows), with the interior backing directly behind them.
+  - Stays: posts, sills, headers and plaster wall panels; the wall keeps its rough opening.
+  - Art painted onto a continuous wall face that also carries the wall cannot go without new geometry: ask the owner.
+  - A frame kept without its wall hangs in the air (Korean Dock r2: 96 of 102 frame pieces floating).
 - Remove: props and furnishings (weapons, racks, pots, barrels, hay, mangers, hitching posts, mounting blocks),
   timber fences and yard enclosures, flags/masts/finials, finished roofing. Declared exclusion list by part
   prefix; a renamed part must fail the build.
