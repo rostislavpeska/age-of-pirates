@@ -78,7 +78,10 @@ Blender `bpy` is required for scene access. These helpers do not install softwar
 
 Run `scripts/logic_qa.py` in the builder before saving and fail the build on any finding. It checks door free area
 and support, window clearance, stair headroom, roof poke/embed, member pierce, protrusion beyond declared joints,
-floating parts and z-fighting faces. Every finding is fixed in the generator or declared as a joint with a maximum
+floating parts, z-fighting faces and run continuity (two pieces of one linear run - clay cap/ridge, rail, band, beam,
+board - whose ends do not meet: a visible flat end beside the next piece of its kind; real carpentry and tiling make them
+ONE shape, a node joint or a flush butt corner; owner 2026-10-11 on a paljak corner: "These are not aligned and maybe
+should be one shape"). Every finding is fixed in the generator or declared as a joint with a maximum
 depth; never widen a tolerance to pass. It also lists advisory inspection topics (attachment, junction_proud, frame_proud, opening_band, near_gap); review
 those, fix the real ones, and accept that some are false positives. Read [logic QA method, sources and pitfalls](references/logic-qa.md). Keep
 project part vocabulary in the project and pass it with `configure()`. A clean report does not replace step 6 and

@@ -80,3 +80,27 @@ this file. Name-based exclusion without a depth limit hides drift, as warned in 
   The defect must appear. Also inject a known-bad opening into every build and assert that it is reported.
 - A clean report is necessary, not sufficient. Still do the agent visual check (Gate 2, step 6) and the owner
   review in the live session.
+
+
+## Run continuity (2026-10-11)
+
+Defect: a paljak (hip-and-gable) corner built from two clay caps that never met. The descending ridge (naerimmaru) ran
+down the gable edge .085 m inside it and stopped with a flat end; the hip ridge (chunyeomaru) began at the hip crease's
+gable point 8.5 cm beside it. Every per-part check passed (each cap was seated on the roof, nothing penetrated, no gap
+to the roof), and a junction answer key that only pairs trims with the surface they rest on cannot see it: the defect is
+between two trims of the same run. The owner saw it in the viewport.
+
+`continuity` (strict): for every linear member (PCA length >= 3 x section, section <= .5 m) and each of its ends, the
+end faces are sampled; a sample is buried when a ray along the face normal from 2 mm outside meets a part's back face
+(inside it) or its front face within 6 mm - judged per part, because a tie between two parts' hits hid a lintel end
+buried in a post (the post's far face coincided with the next lintel's end face). An end >= 50 % exposed is a BREAK
+when another member of the same run (same dominant material, same `run_family()` - the name's type token, with
+Cap/Hip/Ridge as one clay ridge line - section within x1.8) has an end within max(2.5 sections, .15 m) that faces it
+(other end ahead, tangents opposed, lateral offset <= 2 sections) and is not coincident (> 5 mm). Accepted joints: both
+ends >= 25 % buried in the same third part (a node: caps dying into a ridge block, rails into a post) and a flush butt
+corner (the end face lies in a face plane of the other member within 3 mm: eave boards at a corner).
+
+Fix by construction: ONE sweep for the run (hip crease -> fillet -> descending ridge), never two pieces aligned by eye.
+Regression: blender_test_logic_qa.py case 12 (break, continuous, node, flush butt). Measured on the Korean Market: r1o
+7 findings (4 corner breaks + 3 hall eave-board corners whose height steps leave 47 % of an end exposed), r1p 3 (the
+corner ridges are one run each; the eave-board corners remain for review).

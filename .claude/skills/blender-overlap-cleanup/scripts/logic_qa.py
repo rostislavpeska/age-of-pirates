@@ -22,6 +22,11 @@ hard clash with a depth tolerance, IfcOpenShell protrusion and pierce, Solibri-s
                    to the datum (ground z<=0 for land roles, seabed z < -1 for water roles)
   zfight           coincident same-facing faces of two parts (triangle centroid within .5 mm of the other part,
                    normals within 2.5 deg); faces pointing down (nz < -.7) are back-facing from a fixed RTS pitch
+  continuity       a linear member (PCA length >= 3 x section) whose end face is >= 50 % exposed next to an end of the same
+                   run (same material, same run_family(): name type token, clay Cap/Hip/Ridge = one ridge line; section
+                   within x1.8), the ends facing each other within max(2.5 sections, .15) but not coincident (> 5 mm), with
+                   no common node both ends die into and no flush butt corner: two pieces that should be ONE shape (a
+                   descending ridge stopping 8.5 cm beside the hip cap it should turn into; owner 2026-10-11)
   open_shells      meshes with an edge used by an odd number of faces: containment is undefined (listed, not tested)
 
 Advisory inspection topics (R['inspect'], never a gate; expect some false positives):
@@ -428,9 +433,136 @@ def joint_limit(a, b, joints):
     return (lim, 'family default') if lim is not None else (.01, 'no joint')
 
 
+# ------------------------------------------------------------------------------------------------ continuity (2026-10-11)
+# Owner, on a paljak gable corner where the descending ridge cap stopped with a flat end 8.5 cm beside the start of the
+# hip cap: "These are not aligned and maybe should be one shape. Find things like these which are against real world
+# logic". A run of one kind of linear member (clay caps / ridges, rails, bands, beams, boards) is continuous: where a
+# piece ends it continues into the next piece of the run (end sections coincide), dies into another part (its end face
+# is buried in / pressed against it), meets the other piece at a flush butt corner, or is a free termination far from
+# any piece of its kind. A visible flat end next to an end of the same kind is a BREAK.
+CONT = {'min_ratio': 3.0, 'max_section': .5, 'reach_sections': 2.5, 'reach_min': .15, 'coincide': .005, 'lateral_sections': 2.0,
+        'section_ratio': 1.8, 'exposed': .5, 'node_buried': .25, 'flush': .003}
+RUN_ALIASES = [('Cap', 'cap_run'), ('Hip', 'cap_run'), ('Ridge', 'cap_run')]   # a descending ridge turning into a hip ridge is one ridge line
+RUN_TOKEN = re.compile(r'^(?:[XYZ]-?\d+(?:\.\d+)?|-?\d+|[A-Z]{1,2})$')
+
+
+def run_family(name):
+    """member type from the name: last token that is not a coordinate, index or side letter, with RUN_ALIASES applied"""
+    toks = [t for t in name.split('.') if not RUN_TOKEN.match(t)]
+    t = toks[-1] if toks else name
+    for k, v in RUN_ALIASES:
+        if k in t:
+            return v
+    return re.sub(r'\d+$', '', t)
+
+
+def _member_ends(nm, part):
+    """ends of an elongated part: centre, outward tangent, end faces (world), section; [] when not elongated"""
+    o = bpy.data.objects[nm]; mw3 = o.matrix_world.to_3x3(); me = o.data; V = part.V
+    if len(V) < 4:
+        return []
+    C = V - V.mean(0); w_, U = np.linalg.eigh(C.T @ C); ax = U[:, 2]; s = V @ ax
+    ext = [np.ptp(V @ U[:, k]) for k in range(3)]; L = ext[2]; sec = max(ext[0], ext[1], 1e-4)
+    if L < CONT['min_ratio'] * sec or sec > CONT['max_section']:
+        return []
+    polys = [(list(p.vertices), (mw3 @ p.normal).normalized(), p.area) for p in me.polygons]
+    out = []
+    for sg in (-1, 1):
+        d = ((s.max() if sg > 0 else s.min()) - s) * sg
+        band = d <= max(.6 * sec, .004); back = (d >= 2.5 * sec) & (d <= 4 * sec)
+        if not back.any():
+            back = (d >= .1 * L) & (d <= .2 * L)
+        c_end = V[band].mean(0); c_back = V[back].mean(0) if back.any() else V.mean(0)
+        t = c_end - c_back; t = t / (np.linalg.norm(t) or 1)
+        bs = set(np.nonzero(band)[0].tolist())
+        faces = [(vs, n, ar) for vs, n, ar in polys if all(v in bs for v in vs) and Vector(t).dot(n) > .5]
+        if faces:
+            A = sum(ar for _, _, ar in faces); cf = sum(V[vs].mean(0) * ar for vs, _, ar in faces) / max(A, 1e-12)
+            pts = V[[v for vs, _, _ in faces for v in vs]]; esec = max(float(np.ptp(pts - np.outer((pts - cf) @ t, t), axis=0).max()), 1e-4)
+        else:
+            cf, esec = c_end, sec
+        out.append({'sign': sg, 'centre': cf, 'tangent': t, 'faces': faces, 'section': esec})
+    return out
+
+
+def _buried_fraction(part_v, end, others):
+    """share of end-face samples inside another part (its own first hit along the face normal is a back face) or pressed
+    against it (front face within 6 mm), judged PER PART: a tie between two parts' hits must not hide containment (a
+    lintel end inside a post whose far face coincides with the next lintel's end face)"""
+    smp = []
+    for vs, n, ar in end['faces']:
+        cen = part_v[vs].mean(0); smp.append((cen, n)); smp += [(cen + (part_v[v] - cen) * .7, n) for v in vs]
+    if not smp:
+        return 1.0, {}
+    by = defaultdict(int); hit = 0
+    for c, n in smp:
+        org = Vector(np.array(c) + np.array(n) * .002); got = False
+        for q in others:
+            h = q.bvh.ray_cast(org, Vector(n), 2.0)
+            if h[0] is not None and (Vector(n).dot(h[1]) > 0 or h[3] <= .006):
+                by[q.name] += 1; got = True
+        hit += got
+    return hit / len(smp), {k: v / len(smp) for k, v in by.items()}
+
+
+def continuity(parts, names):
+    """BREAK rows: exposed end of a linear member next to an end of the same run (same material, same run_family,
+    section within x1.8), the two ends facing each other within reach, not coincident, not a node joint, not flush"""
+    mats = {}
+    for nm in names:
+        me = bpy.data.objects[nm].data; acc = defaultdict(float)
+        for p in me.polygons:
+            m = me.materials[p.material_index] if p.material_index < len(me.materials) else None
+            acc[m.name if m else '?'] += p.area
+        mats[nm] = max(acc, key=acc.get) if acc else '?'
+    ends = {nm: _member_ends(nm, parts[nm]) for nm in names}
+    rfam = {nm: run_family(nm) for nm in names}
+
+    def near(c, r, skip):
+        return [parts[q] for q in names if q != skip and np.all(parts[q].lo - r <= c) and np.all(c <= parts[q].hi + r)]
+    for nm in names:
+        for e in ends[nm]:
+            frac, by = _buried_fraction(parts[nm].V, e, near(e['centre'], .05 + e['section'], nm))
+            e['exposed'] = 1 - frac; e['buried_by'] = by
+    rows = []; seen = set()
+    for nm in names:
+        for e in ends[nm]:
+            if e['exposed'] < CONT['exposed']:
+                continue
+            reach = max(CONT['reach_sections'] * e['section'], CONT['reach_min'])
+            for Q in near(e['centre'], reach, nm):
+                q = Q.name
+                if not ends[q] or mats[q] != mats[nm] or rfam[q] != rfam[nm]:
+                    continue
+                qe = min(ends[q], key=lambda f: np.linalg.norm(f['centre'] - e['centre']))
+                if not (1 / CONT['section_ratio'] <= qe['section'] / e['section'] <= CONT['section_ratio']):
+                    continue
+                rel = qe['centre'] - e['centre']; dq = float(np.linalg.norm(rel)); t = e['tangent']
+                lat = float(np.linalg.norm(rel - (rel @ t) * t))
+                if dq > reach or dq <= CONT['coincide']:
+                    continue
+                if rel @ t < -e['section'] or float(t @ qe['tangent']) > .2 or lat > CONT['lateral_sections'] * max(e['section'], qe['section']):
+                    continue                                  # side by side, crossing or pointing the same way: not one run
+                if any(qe.get('buried_by', {}).get(x, 0) >= CONT['node_buried'] and v >= CONT['node_buried'] for x, v in e['buried_by'].items()):
+                    continue                                  # both ends die into the same node (a ridge block, a post)
+                bo = bpy.data.objects[q]; mw = bo.matrix_world; mw3 = mw.to_3x3()
+                n_end = sum((np.array(n) * ar for _, n, ar in e['faces']), np.zeros(3)); n_end = n_end / (np.linalg.norm(n_end) or 1)
+                if any(Vector(n_end).dot((mw3 @ p.normal).normalized()) > .99 and abs(Vector(n_end).dot(mw @ p.center) - float(n_end @ e['centre'])) < CONT['flush']
+                       for p in bo.data.polygons):
+                    continue                                  # flush butt corner: the end grain lies in the other member's face
+                key = tuple(sorted((nm, q)))
+                if key in seen:
+                    continue
+                seen.add(key)
+                rows.append({'part': nm, 'other': q, 'run': rfam[nm], 'gap': round(dq, 4), 'lateral_offset': round(lat, 4),
+                             'angle': round(math.degrees(math.acos(max(-1.0, min(1.0, float(-t @ qe['tangent']))))), 1),
+                             'exposed': [round(e['exposed'], 2), round(qe.get('exposed', -1), 2)], 'end_centre': [round(float(x), 3) for x in e['centre']]})
+    return sorted(rows, key=lambda r: (-r['lateral_offset'] - r['gap'], r['part']))
+
+
 def run(roles, openings, roots, land_roles=('Market',), out=None, extra_openings=(), joints=(), only=None):
     res = {'version': 2, 'tolerances': {'roof_embed': .015, 'roof_poke': .03, 'contact': CONTACT, 'penetration_default': .01, 'door_box': [.9, 1.8],
-                                        'window': .35, 'headroom': 1.85, 'zfight_plane': 5e-4},
+                                        'window': .35, 'headroom': 1.85, 'zfight_plane': 5e-4, 'continuity': dict(CONT)},
            'joint_defaults': {' x '.join(sorted(k)) if len(k) > 1 else next(iter(k)) + ' x ' + next(iter(k)): v for k, v in sorted(JOINTS.items(), key=lambda kv: sorted(kv[0]))},
            'roles': {}}
     for role, coll in roles.items():
@@ -601,6 +733,7 @@ def run(roles, openings, roots, land_roles=('Market',), out=None, extra_openings
                             'worst': [list(t) for t in sorted(pen, key=lambda t: (-t[2], t[0], t[1]))[:60]]}
         R['zfight'] = sorted(R['zfight'], key=lambda z: (-z['faces'], z['a']))
         R['pierce'] = sorted(R['pierce'], key=lambda z: (-z['length'], z['part']))
+        R['continuity'] = continuity(parts, names)
         R['summary'] = {k: (len(v) if isinstance(v, list) else v['pairs']) for k, v in R.items() if k != 'open_shells'}
         R['summary']['open_shells'] = len(R['open_shells'])
         I = inspect(role, parts, names, scene_bvh, owner, [x for x in openings if x['role'] == role] + [x for x in extra_openings if x['role'] == role], M, adj)

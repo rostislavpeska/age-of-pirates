@@ -180,6 +180,29 @@ try:
     box(c, 'T.Frame.Bay.Lintel.0', (2.2, -.07, 2.0), (2.9, .09, 2.18))      # within the post's faces
     r = run(c, root)
     check('inspect: the clean specimen raises no topic', not any(r['inspect_summary'].values()), str(r['inspect_summary']))
+
+    # 12. continuity (owner 2026-10-11, Market hall gable corners): a descending ridge cap that stops with a flat end
+    #     8.5 cm beside the start of the hip cap it should turn into = BREAK. A continuous joint, two caps dying into one
+    #     node block and a flush butt corner of two eave boards are correct carpentry and must pass.
+    def prism(coll, name, start, d, w, h):
+        d = Vector(d).normalized(); n = Vector((-d.y, d.x, 0)); S = Vector(start)
+        vs = [S + n * sx * w / 2 + Vector((0, 0, z)) + d * l for l in (0, 1.0) for sx in (-1, 1) for z in (0, h)]
+        me = bpy.data.meshes.new(name); me.from_pydata([tuple(v) for v in vs], [], [(0, 1, 3, 2), (4, 6, 7, 5), (0, 4, 5, 1), (2, 3, 7, 6), (0, 2, 6, 4), (1, 5, 7, 3)])
+        bm = bmesh.new(); bm.from_mesh(me); bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces)); bm.to_mesh(me); bm.free()
+        o = bpy.data.objects.new(name, me); coll.objects.link(o); return o
+    c, root = scene('continuity-break')
+    box(c, 'T.Roof.Hall.VergeCap.N.A', (0, 0, 2.0), (1.2, .15, 2.12))                   # ends at x = 1.2, centre y .075
+    prism(c, 'T.Roof.Hall.RoundedHip.NP', (1.2, .16, 2.0), (.7071, .7071, 0), .15, .12)  # starts 8.5 cm beside it, 45 degrees
+    r = run(c, root)
+    check('continuity: a ridge cap stopping beside the hip cap it should turn into is a BREAK',
+          any({x['part'], x['other']} == {'T.Roof.Hall.VergeCap.N.A', 'T.Roof.Hall.RoundedHip.NP'} for x in r['continuity']), str(r['continuity']))
+    c, root = scene('continuity-clean')
+    box(c, 'T.Roof.Hall.Cap.A', (0, 0, 2.0), (1.0, .15, 2.12)); box(c, 'T.Roof.Hall.Cap.B', (1.0, 0, 2.0), (2.0, .15, 2.12))   # continuous
+    box(c, 'T.Roof.Porch.VergeCap.L', (-1.0, 3.0, 2.0), (-.05, 3.15, 2.12)); box(c, 'T.Roof.Porch.VergeCap.R', (.05, 3.0, 2.0), (1.0, 3.15, 2.12))
+    box(c, 'T.Roof.Porch.Block', (-.05, 2.95, 1.9), (.05, 3.2, 2.03))                     # both caps die into one node
+    box(c, 'T.Attic.Hall.Side.0', (0, 6.0, 2.0), (1.0, 6.12, 2.22)); box(c, 'T.Attic.Hall.Side.1', (.88, 6.12, 2.0), (1.0, 7.0, 2.22))  # flush butt corner
+    r = run(c, root)
+    check('continuity: continuous, node and flush butt joints pass', not r['continuity'], str(r['continuity']))
 except Exception:
     traceback.print_exc(); FAILS.append('exception')
 
