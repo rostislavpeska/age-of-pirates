@@ -30,6 +30,19 @@ below `--hole`, and scales edges by their local plateau. The report must show `i
 Mask out a surface the owner asked to keep weaker before running it. Evidence: the Korean Dock gable motif was
 authored at 0.9; the lift made 93 % of painted texels full, and the rest are anti-aliased edges and 405 flake holes.
 
+### Full overlay vs targeted masks
+
+Owner, 2026-10-11, on a reskinned banner: "sometimes we simply need full player color overlay and not targeted based on
+shape. So full player color except the circle and 100% overlay".
+
+Choose the mask mode per object before painting:
+- **Full overlay:** flags, banners, pennants, sails, a cloth field. The whole cloth region is Details R = 255, except
+  the named emblem or medallion, on an even light base (about 220 grey with only a trace of the cloth's shading).
+- **Targeted:** building trim, bands, motifs. Use the shape or part masks in this skill.
+
+Never gate a cloth field by luminance or texture shape. The first Korean castle banner kept the vanilla cloth's mottling
+out of the mask and read washed and patchy in the viewer.
+
 ## The BaseColor under the mask: the decision rule
 
 The multiply means the base under the mask sets the player colour's brightness and hue. A saturated or dark base
