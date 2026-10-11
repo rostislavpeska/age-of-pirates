@@ -1,6 +1,6 @@
 ---
 name: aoe3de-building-states
-description: The state contract of an Age of Empires III DE building - construction stages (BuildingCompletion p0/p33/p66/p100, vanilla scaffold stages, our last-construction model), intact, damaged/destruction and death - and the rules every state model must keep - same frame as the intact model, per-state attachments and flags, construction content (no props, fences or flags; connected frame; one wall-seated ladder), donor-bound destruction with hidden framing evidence, export gates. Ships state_frame_check.py (a construction/damaged GR2 must sit in the intact model's frame). Use when adding or wiring construction or destruction states, when "the construction model is rotated / offset", "the building appears immediately built", "a flag floats over the construction", or before handing a building to a game test. Tested port of the AoE Buildings method docs (korean-buildings-blender docs/methods, 2026-10-08).
+description: The state contract of an Age of Empires III DE building - construction stages (BuildingCompletion p0/p33/p66/p100, vanilla scaffold stages, our last-construction model), intact, damaged/destruction and death - and the rules every state model must keep - same frame as the intact model, per-state attachments and flags, construction content (no props, fences or flags; connected frame; one wall-seated ladder), donor-bound destruction with hidden framing evidence, export gates (logic_qa floating = 0 on every construction model). Ships state_frame_check.py (a construction/damaged GR2 must sit in the intact model's frame). Use when authoring or exporting a construction (_con, last-stage) or damaged model - read s.4 before the first part is kept or removed - and when adding or wiring construction or destruction states, when "the construction model is rotated / offset", "the building appears immediately built", "a flag floats over the construction", or before handing a building to a game test. Tested port of the AoE Buildings method docs (korean-buildings-blender docs/methods, 2026-10-08).
 ---
 
 # AoE III DE building states
@@ -62,8 +62,12 @@ test; record the asset's export frame next to its recipe.
 
 ## 4. Construction model content (project policy)
 
-- Keep: foundations, platforms, finished lower walls, posts, windows, doors, gates, masonry boundary walls,
-  built-in stall partitions - same geometry, UVs, material slots and own pages.
+- Keep: foundations, platforms, finished lower walls, posts, gates, masonry boundary walls, built-in stall
+  partitions - same geometry, UVs, material slots and own pages.
+- Windows and doors (owner 2026-10-11: "con model shouldn't have windows and doors if these are separate shapes and
+  not baked to texture, if baked like Town center, they must stay"): baked into the wall texture -> they stay with the
+  wall; modelled as separate shapes (frames, lattices, paper, door leaves, shutters) -> removed, the wall keeps its rough
+  opening. A frame kept without its wall hangs in the air (Korean Dock r2: 96 of 102 frame pieces floating).
 - Remove: props and furnishings (weapons, racks, pots, barrels, hay, mangers, hitching posts, mounting blocks),
   timber fences and yard enclosures, flags/masts/finials, finished roofing. Declared exclusion list by part
   prefix; a renamed part must fail the build.
@@ -75,6 +79,12 @@ test; record the asset's export frame next to its recipe.
 - `BONE_HITPOINTBAR` at the finished model's position on every stage. A donor skeleton brings the donor's:
   the Korean TC stage had the Barracks bar at 9.05 m instead of the TC's (2.3284, 11.6993, -0.3933) until r73.
 - Count textures and material groups in the serialized model, not Blender slots.
+- **Gate the authored scene with `logic_qa.py`** (**blender-overlap-cleanup** and its logic-QA reference): run it from
+  the construction recipe on the kept + added parts in world space; `floating` must be empty (every part reaches the
+  ground datum through the contact graph). `gr2_lint` has no floating-part check: the Korean Dock construction r2 passed
+  gr2_lint 16/0/0 and `state_frame_check` while 96 of 102 window/door frame pieces hung in the air (journal
+  2026-10-11-claude-09). The recipe exits non-zero on any finding and the build chain stops on that exit code (`set -e`
+  or `&&`), never on printed text: a recipe that printed "QA FAIL" and exited 0 let the next step install the model.
 
 ## 5. Destruction is a separate derivative of the intact model
 
@@ -96,7 +106,7 @@ test; record the asset's export frame next to its recipe.
 | Gate | Evidence |
 |---|---|
 | Before geometry | state/attachment table, donor hashes, exclusion list, source revision |
-| Authoring | saved/reopened rest comparison, contact graph, ground probes, UV sheets, front/back/interior views |
+| Authoring | saved/reopened rest comparison, `logic_qa.py` (floating = 0, exit code), ground probes, UV sheets, front/back/interior views with non-model geometry (scaffold, donor, reference) in a labelled colour |
 | Export | DLL read, `gr2_lint` (bindings, UV contract, budget), `state_frame_check.py` for every state, `attachment_check.py` |
 | Game | slow construction through every stage boundary and completion, flags/horses/props, first damage to final debris |
 | Handoff | per-state files and hashes; candidate / installed / owner-accepted kept separate |
@@ -128,4 +138,5 @@ Do not launch the game without authorization; offline gates never prove physics 
 Tests: `tests/test_state_frame.py` (synthetic + the TC regression, marked `local`: needs this repo's history;
 the DLL route or the raw damaged twin as reference).
 Related: **aoe3de-model-attachments**, **aoe-building-pipeline**, **aoe3de-destructible-building**,
-**havok-destruction**, **unit-bones**, **aoe-xml**, **rm-unit-bench**.
+**havok-destruction**, **unit-bones**, **aoe-xml**, **rm-unit-bench**, **blender-overlap-cleanup** (logic QA),
+**aoe3de-model-test-unit** (every state ships with its bench).

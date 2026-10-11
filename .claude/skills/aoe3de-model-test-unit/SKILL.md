@@ -1,6 +1,6 @@
 ---
 name: aoe3de-model-test-unit
-description: Make a test unit ("bench") to check a new or changed Age of Empires III DE building or unit model in the scenario editor and in a game - a separate zzTEST proto per variant that loads the SAME GR2/HKT/material files through a bench animfile without civ, age, tech or Variation logic, distinct editor names, StartEnabled, a test builder for the construction stages, the production proto untouched. Use when the owner wants to "test destruction in the editor", "create a test unit / test model", when the editor shows another look than the new model (age-1 placeholder, other culture), when one variant of a random Variation must be tested on purpose, or before an owner game test of new building art.
+description: Make a test unit ("bench") to check a new or changed Age of Empires III DE building or unit model in the scenario editor and in a game - a separate zzTEST proto per variant that loads the SAME GR2/HKT/material files through a bench animfile without civ, age, tech or Variation logic, distinct editor names, StartEnabled, a test builder for the construction stages, the production proto untouched. Use when the owner wants to "test destruction in the editor", "create a test unit / test model", when the editor shows another look than the new model (age-1 placeholder, other culture), when one variant of a random Variation must be tested on purpose, before an owner game test of new building art, and in every change that installs or changes a building model (the bench ships with the model, never later).
 ---
 
 # Test unit for a model (bench proto)
@@ -17,6 +17,15 @@ cannot be tested on purpose. A bench is a second proto that shows exactly one mo
 | Names | new `displaynameid` / `editornameid` strings, distinct from the production unit and from vanilla (the editor lists by name: "zzTEST <Model> A (destruction bench)") |
 | Builder | a test builder (e.g. a wagon) with `<train row page column>` buttons for the benches and a `Build` tactic rate for `Building`, so the construction stages (p0..p66) can be watched in a game |
 | Block | all bench protos in one marked `BEGIN zzTEST ... END zzTEST` block of protomods ("strip before release"); the guard test that pins the production unit set ignores `zzTEST*` |
+
+**A bench is part of every model delivery** (owner 2026-10-11: "test bed must always be part of the package"). Add or
+update it in the same change that installs or changes the model, never as a follow-up, and pin the rule with a repo
+test: every building the mod routes to a new model has a bench; every bench's animfile and referenced GR2s exist; every
+bench sits on the test builder. When the model already has its own animfile without civ/age/tech logic (a civ add-on
+merges it into the vanilla animfile), the bench may load that file directly instead of a generated `zbench_` copy. Copy
+the production proto's placement and physics: a dock bench keeps `placementfile`, `physicsinfo`, `TieToWaterSurface`
+and `SnapPlacement`, or it cannot be placed on water (Korean Dock 2026-10-11: the export shipped without a bench and the
+owner had to ask for it; journal 2026-10-11-claude-13).
 
 ## Steps
 

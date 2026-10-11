@@ -1,6 +1,6 @@
 ---
 name: aoe3de-player-colour
-description: Apply player colour to Age of Empires III DE buildings through the material's 4th texture (Details, R = player-colour weight). Covers the engine formula, building the mask from face selections or by segmenting painted fields in the existing BaseColor, the rule for the BaseColor under the mask (light objects keep it; saturated or dark fields are lightened, or gold x blue turns dark navy), the Blender preview, the DDT and material lines, and the checks. Use when a building, ship or prop needs player colour, a Details map, a "player color band", or when the player colour looks dark, muddy or wrongly tinted.
+description: Apply player colour to Age of Empires III DE buildings through the material's 4th texture (Details, R = player-colour weight). Covers the engine formula, the 100 % default strength (Details 255 unless the owner asks for less), building the mask from face selections or by segmenting painted fields in the existing BaseColor, the rule for the BaseColor under the mask (light objects keep it; saturated or dark fields are lightened, or gold x blue turns dark navy), the Blender preview, the DDT and material lines, and the checks. Use when a building, ship or prop needs player colour, a Details map, a "player color band", or when the player colour looks dark, muddy or wrongly tinted.
 ---
 # AoE3 DE player colour (Details map)
 
@@ -18,6 +18,17 @@ Every building materialdef (default, cutout, doublesided, destructible, parallax
   `<texture name="Details" override="...">` line in the submaterial, and the same line in the damaged material.
   Recipe in [details_export.md](references/details_export.md); shader and vanilla evidence in
   [engine-and-vanilla.md](references/engine-and-vanilla.md).
+
+## Strength: 100 % by default
+
+Owner rule (2026-10-11): "player color 100% opacity - edit the guidelines. 100% default if not requested less".
+Every player-colour surface is Details R = 255. A weaker surface needs the owner's own request for that surface, with
+his words recorded beside it. Only the anti-aliased chart edge (1-2 texels) and deliberate flake holes in the paint may
+be below 255; never a whole field, band or motif at 0.9 or 0.55. Before every export, run
+`scripts/details_full_strength.py IN OUT --report R.json`. It sets every interior texel to 1.0, keeps flake holes
+below `--hole`, and scales edges by their local plateau. The report must show `interior_partial_after: 0`.
+Mask out a surface the owner asked to keep weaker before running it. Evidence: the Korean Dock gable motif was
+authored at 0.9; the lift made 93 % of painted texels full, and the rest are anti-aliased edges and 405 flake holes.
 
 ## The BaseColor under the mask: the decision rule
 

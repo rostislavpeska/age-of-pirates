@@ -47,6 +47,21 @@ The shipped Korean TC fails both gates. It has a third set (matc 512, the hidden
 For Painter work use [substance-painter-remote](../substance-painter-remote/SKILL.md).
 For player colour (Details map, lighter BaseColor under the mask) use [aoe3de-player-colour](../aoe3de-player-colour/SKILL.md).
 
+**State models.** What a construction or damaged model keeps, removes and adds is decided by
+[aoe3de-building-states](../aoe3de-building-states/SKILL.md) s.4-5, not by an export recipe. Read it before the
+first part is kept or removed: copying an earlier building's export recipe does not carry those rules (Korean Dock
+2026-10-11: window frames kept without their walls, no roof frame; journal 2026-10-11-claude-09). Gate every
+construction model with `logic_qa.py` (floating = 0) from
+[blender-overlap-cleanup](../blender-overlap-cleanup/SKILL.md); `gr2_lint` does not check floating parts.
+
+**Every check exits non-zero on failure, and the chain stops on that exit code** (`set -e` or `&&`; never `;`, never
+a grep for printed text). A QA step that prints FAIL and exits 0 lets the next step publish or install the failed
+model (journal 2026-10-11-claude-10, 2026-10-10-claude-civic-pair-06, 2026-10-09-claude-10).
+
+**Every model delivery ships its test bed** in the same change
+([aoe3de-model-test-unit](../aoe3de-model-test-unit/SKILL.md); owner 2026-10-11: "test bed must always be part of
+the package").
+
 For new destructible architecture, use
 [aoe3de-destructible-building](../aoe3de-destructible-building/SKILL.md) for the
 upfront modeling constraints and intact/fractured handoff.

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md"
+  ],
+  "skills": [
+    "aoe-xml",
+    "aoe3de-reference",
+    "aoe3de-soundsets",
+    "aoe-game-text",
+    "aoe3de-bar-archives",
+    "aoe3de-model-test-unit",
+    "aoe3de-building-states",
+    "aoe-building-pipeline",
+    "ai-edit",
+    "icon-forge",
+    "image-harness",
+    "workflow-journal"
+  ],
+  "external": [
+    {
+      "id": "consuming-mod-build",
+      "kind": "capability",
+      "requiredFor": [
+        "xmb-twins",
+        "mod-tests"
+      ],
+      "optional": false,
+      "note": "The add-on's own build step (XMB twins for data and every language, merged animfiles) and its tests; the skill bundles no scripts."
+    }
+  ]
+}

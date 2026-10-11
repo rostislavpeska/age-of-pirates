@@ -75,6 +75,14 @@ feedback so the pipeline does not rely only on determinism; the workflow must ru
 - Independent inspectors, then voting; a jury across model families is less correlated than more runs of one model.
 - Planted positive control in every batch and a clean control: an inspector that cannot find the planted defect proves
   nothing by reporting none; one that reports on the clean image over-reports.
+- **Every number in a brief carries its unit and what it measures** (stage, object, statistic), or the inspector judges
+  the wrong quantity: a brief that carried the roof k-means seeding line "cell area median 2.68 max 17.73" produced the
+  finding "roof cells up to 17.7 m2 may stay lying on the ruin"; the real pieces after the cut were at most 3.07 m2
+  (Korean Dock destruction r2, journal 2026-10-11-claude-12). Leave out numbers the question does not need.
+- **Identify every object before anything is described.** Render geometry that is not the inspected model (scaffold,
+  donor, reference, ground decal) in its own colour and name it in the burned legend; the main agent lists the scene's
+  objects before writing one sentence about a render. Describing a vanilla scaffold attached to a construction model as
+  the model's "exposed faces" was a false report (owner: "you hallucinate"; journal 2026-10-11-claude-11).
 
 ## Limits and costs (measured 2026-10-10)
 

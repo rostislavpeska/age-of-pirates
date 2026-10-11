@@ -85,6 +85,11 @@ Write one sentence per variant about what *you see* at 1:1 before reporting. If 
 the report cannot say "visible". Send the owner the 1:1 view next to the zoom, labelled with the renderer; never only a
 zoom, and never a soft-preview picture presented as the game.
 
+Before that sentence, **know what every object in the picture is**: list the scene's objects (or the game's units in
+view) and match each visible shape to one. Review renders give non-model geometry (scaffold, donor, reference, decal) a
+distinct labelled colour. A shape you cannot match is reported as unidentified, never described as part of the model
+(a vanilla scaffold was once described as a model's "exposed faces"; journal 2026-10-11-claude-11).
+
 ## 5. Owner adjustment rounds
 
 - For "a bit more subtle" or "thinner", change **one or two parameters by ~20-30 %**. First find the cue that makes the
@@ -97,6 +102,7 @@ zoom, and never a soft-preview picture presented as the game.
 
 - [ ] Version on screen proven (game start time later than the install).
 - [ ] Measured at the on-screen scale against BASE; a non-empty footprint for every "visible" claim.
+- [ ] Every object in the picture identified; non-model geometry labelled.
 - [ ] Sheet looked at; one sentence per variant, consistent with the metrics.
 - [ ] Renderer named; any preview-versus-game calibration gap stated.
 

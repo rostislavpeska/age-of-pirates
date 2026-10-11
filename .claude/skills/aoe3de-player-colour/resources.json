@@ -14,7 +14,8 @@
     "scripts/details_review.py",
     "scripts/test_player_colour.py",
     "scripts/check_role_coverage.py",
-    "scripts/test_role_coverage.py"
+    "scripts/test_role_coverage.py",
+    "scripts/details_full_strength.py"
   ],
   "skills": [],
   "external": [
@@ -35,6 +36,15 @@
       "note": "check_state.py decodes 16-bit maps with OpenCV when present and falls back to Pillow.",
       "distribution": "opencv-python",
       "modules": ["cv2"]
+    },
+    {
+      "id": "scipy",
+      "kind": "python-package",
+      "requiredFor": ["full-strength"],
+      "optional": true,
+      "note": "details_full_strength.py labels painted regions and measures edge plateaus with scipy.ndimage (plus NumPy and Pillow).",
+      "distribution": "scipy",
+      "modules": ["scipy"]
     },
     {
       "id": "pytest",

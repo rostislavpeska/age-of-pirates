@@ -13,7 +13,9 @@
     "unit-bones",
     "aoe-xml",
     "rm-unit-bench",
-    "aoe3de-bar-archives"
+    "aoe3de-bar-archives",
+    "blender-overlap-cleanup",
+    "aoe3de-model-test-unit"
   ],
   "external": [
     {
