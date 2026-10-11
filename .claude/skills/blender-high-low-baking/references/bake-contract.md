@@ -62,7 +62,9 @@ existence, ray coverage, final filtering or appearance.
 
 Extraction carries stable original FACE/CORNER IDs through BMesh deletion, transfers
 the original split corner normals to the owned receiver and checks equality within
-vector distance `1e-4` (Blender's custom-normal representation is quantized). Triangle
+vector distance `1e-4` (Blender's custom-normal representation is quantized). Drift at or below the storage
+step (`2e-4`) is accepted without restoration and reported as `accepted_below_quantization` (INC-233: smooth
+roof shells drift 1.06e-4 after deletion and cannot be restored more precisely). Triangle
 loop membership and winding must also match the original destination. An arbitrary
 subset is permitted when these invariants hold. The original LOW is never changed
 to make a receiver pass. The report retains the actual face order and the normal

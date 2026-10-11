@@ -93,12 +93,15 @@ def check_contract(cfg, current):
             raise ValueError('LOW geometry/normals/triangles differ from input_contract; restore or review and record a new contract.')
 
 
-def keep_faces(ob, indices, normal_tolerance=1e-4):
+def keep_faces(ob, indices, normal_tolerance=1e-4, quantization=2e-4):
     """Extract faces on an owned copy, preserving original per-corner shading normals.
 
     Stable CORNER/FACE integer attributes survive BMesh deletion; order is verified
     rather than assumed. Source/destination triangle winding is compared in original
     loop coordinates. The passed object is mutated, never its authoring source.
+    Drift at or below `quantization` (Blender's custom-normal storage step) is accepted without restoration: the
+    restored normals cannot be stored more precisely than that (civic Monastery hip shells: 1.06e-4 before and after
+    restoration, INC-233). Larger drift is restored and must then meet `normal_tolerance`.
     """
     import bpy
     import bmesh
@@ -130,19 +133,23 @@ def keep_faces(ob, indices, normal_tolerance=1e-4):
         raise ValueError('Receiver extraction lost/duplicated original faces.')
     wanted = [normals[i] for i in loop_ids]
     before = max((v.vector - n).length for v, n in zip(me.corner_normals, wanted))
-    # Avoid quantizing an already correct shading frame just to copy it back.
-    if before > normal_tolerance:
+    # Avoid quantizing an already correct shading frame just to copy it back; drift below the storage step cannot
+    # be restored more precisely, so it is accepted and reported (INC-233).
+    restored = before > normal_tolerance and before > quantization
+    if restored:
         me.normals_split_custom_set(wanted)
     for n in names: me.attributes.remove(me.attributes[n])
     me.update(); me.calc_loop_triangles()
     after = max((v.vector - n).length for v, n in zip(me.corner_normals, wanted))
-    if after > normal_tolerance:
-        raise ValueError(f'Receiver corner normals changed by vector length {after:g} (limit {normal_tolerance:g}).')
+    limit = normal_tolerance if restored else max(normal_tolerance, quantization)
+    if after > limit:
+        raise ValueError(f'Receiver corner normals changed by vector length {after:g} (limit {limit:g}).')
     got = {cyclic(loop_ids[l] for l in t.loops) for t in me.loop_triangles}
     if got != triangles:
         raise ValueError('Receiver extraction changed destination triangulation/winding.')
     return dict(face_ids=face_ids, loops=len(loop_ids), normal_error_before=before,
-                normal_error_after=after, normal_tolerance=normal_tolerance, triangles_equal=True)
+                normal_error_after=after, normal_tolerance=normal_tolerance, restored=restored, quantization_step=quantization,
+                accepted_below_quantization=(not restored and before > normal_tolerance), triangles_equal=True)
 
 
 if __name__ == '__main__':

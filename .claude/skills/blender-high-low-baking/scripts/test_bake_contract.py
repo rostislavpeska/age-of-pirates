@@ -69,7 +69,17 @@ assert gate.fingerprint(['Bent'])['combined']==base['combined'],'Authoring mesh 
 # A valid explicit partial pilot is allowed; its shading frame is preserved despite deletion.
 whole=bpy.data.objects.new('Whole',me.copy());bpy.context.scene.collection.objects.link(whole)
 whole_result=gate.keep_faces(whole,{0,1});assert whole_result['normal_error_after']<=1e-4
-print('CONTRACT_TEST_PASS',json.dumps({'partial_receiver':result,'full_receiver':whole_result,'seconds':time.perf_counter()-t0}))
+# INC-233: drift between the tolerance and the custom-normal storage step is accepted unrestored and reported;
+# larger drift is still restored and checked at 1e-4 (the partial receiver above).
+fm=bpy.data.meshes.new('NearFlat');fm.from_pydata([(0,0,0),(1,0,0),(2,0,3e-4),(0,1,0),(1,1,0),(2,1,3e-4)],[],[(0,1,4,3),(1,2,5,4)])
+for p in fm.polygons:p.use_smooth=True
+fm.update();near=bpy.data.objects.new('NearFlat',fm);bpy.context.scene.collection.objects.link(near)
+near_result=gate.keep_faces(near,{0})
+assert 1e-4<near_result['normal_error_before']<=2e-4,near_result
+assert not near_result['restored'] and near_result['accepted_below_quantization'],near_result
+assert near_result['normal_error_after']<=near_result['quantization_step'],near_result
+assert result['restored'] and not result['accepted_below_quantization'],result
+print('CONTRACT_TEST_PASS',json.dumps({'partial_receiver':result,'full_receiver':whole_result,'near_flat_receiver':near_result,'seconds':time.perf_counter()-t0}))
 '''
 
 
