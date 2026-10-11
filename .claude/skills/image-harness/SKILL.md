@@ -66,6 +66,17 @@ compose rules: [masonry-texturing](../masonry-texturing/SKILL.md) section 7 and 
    0.85; 0.6 plus layout-mean luminance washed a good keg painting grey), joints from the layout; every page texel samples
    the sheet through the same layout coordinates. Normals: structure from the layout, surface detail from the painting
    (masonry-texturing `paint_relief.py`). Then edge wear, rust and dirt generators from the bake's EDGE/CAV masks.
+   **Map-back rules (Korean Market 2026-10-11):** re-express the sheet's normal xy in each island's UV tangent frame (islands
+   are rotated or mirrored on the page; writing sheet-frame normals lights the relief from the wrong side); box-prefilter the
+   sheet to the page texel footprint before sampling (a 400-1500 px/m sheet point-sampled at ~105 texels/m aliases); compose
+   gated paintings only, after the role-based finish pass (onto the final maps), and make a compose that reads its tone
+   target from the maps it writes a no-op on maps it already composed.
+5. **Register, then gate what was asked.** Gemini returns its own aspect (21:9 asked, 33:14 returned): register the painted
+   board by its bounding box against the flat grey surround instead of stretching the canvas (a 1 % drift cost 0.05 glyph IoU).
+   A best shift on the edge of the search window is no optimum. Gate the property the owner asked for, measured on the
+   painting: thatch courses "in different directions" = the structure-tensor straw angle of every course within 6 degrees of
+   its layout angle and alternating (a painting that ignored the slants failed; one that followed +-4..8 degree slants passed
+   but did not read - draw the requested property boldly enough to be seen).
 
 Reference implementation (Korean props, outside AoP): `korean-market-dock/recipes/props_ai_sheet.py` (layout, gates,
 compose) and `props_sheet_apply.py` (map back, relief, edge generators).
