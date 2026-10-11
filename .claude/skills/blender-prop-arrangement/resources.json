@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/research.md",
+    "scripts/arrange_props.py",
+    "scripts/diff_blend_nonprops.py",
+    "scripts/prop_layout_metrics.py",
+    "scripts/prop_metrics.py",
+    "scripts/refresh_view_layers.py",
+    "scripts/settle_props.py",
+    "scripts/test_prop_layout_metrics.py"
+  ],
+  "skills": [
+    "blender-overlap-cleanup"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "metrics-tests"
+      ],
+      "optional": false,
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "note": "prop_layout_metrics.py and its tests are pure Python (standard library only)."
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "arrange",
+        "settle",
+        "gate"
+      ],
+      "optional": false,
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy",
+        "bmesh",
+        "mathutils"
+      ],
+      "note": "Background runs (-b --factory-startup). Rigid-body results are deterministic for one Blender build; store the final transforms (the saved file), not the simulation."
+    }
+  ]
+}
