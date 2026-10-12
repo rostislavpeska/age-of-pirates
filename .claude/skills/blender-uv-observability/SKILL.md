@@ -27,6 +27,10 @@ This accepts the operator layout, not unfinished UVs, textures or runtime fit.
 
 ## Required visible result
 
+For an operator on another device, use the `remote-image-delivery` skill for
+requested preview pictures. Local paths and successful cloud API readback do not
+prove visible delivery; send verified direct web image links alongside embeds.
+
 Keep all copies visible TOGETHER in one Blender scene and UV Editing workspace.
 Buttons select, frame and inspect; they must not replace simultaneous copies with
 mutually exclusive scenes. For EACH model show:

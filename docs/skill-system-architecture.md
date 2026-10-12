@@ -41,6 +41,12 @@ checkout; the maintainer imports reviewed contributions into AoP before re-expor
 
 ## Repositories and ownership
 
+Owner-requested global Codex discovery (2026-10-12): `remote-image-delivery`
+is maintained here and linked individually into `$CODEX_HOME/skills` (default
+`~/.codex/skills`). The device-local directory link exposes the same source to
+other projects; it is not a second editable skill copy. Verify file identity
+after installation. This exception does not globally install the whole library.
+
 | Repository / sync target | Purpose | Currently exported packages |
 | --- | --- | --- |
 | Age of Pirates | Complete authoring suite, mod policy, private workflows and examples | Canonical source; not a public skill pack |

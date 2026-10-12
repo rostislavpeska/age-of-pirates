@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remote Image Delivery"
+  short_description: "Show verified preview images on another device"
+  default_prompt: "Use $remote-image-delivery to show the requested existing previews through verified web image links."
