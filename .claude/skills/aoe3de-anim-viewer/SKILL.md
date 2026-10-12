@@ -162,6 +162,14 @@ Until then compare renders with each other, never with the game's absolute look.
 
 ## Measured (2026-10-11)
 
+Bound-mesh correction, 2026-10-12 (INC-279): the model reader follows
+`Models.MeshBindings` by pointer. Unreferenced file-table meshes are excluded and
+reported. Append-style exports can retain an unused donor mesh in `Meshes`;
+drawing the entire table superimposed Japanese donor parts on the Korean castle.
+Regression fixtures include same-named bound/unbound meshes and empty bindings.
+Built submodels behind a construction wrapper still need an explicit diagnostic
+selection; this does not certify engine routing or physics.
+
 Static-building render regressions fixed, 2026-10-12 (INC-270/271):
 `render --anim Idle --time 0` renders one rest pose when the component has no
 GrannyAnim variants; `--variant all` also renders it once, without inventing a

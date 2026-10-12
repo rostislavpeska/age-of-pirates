@@ -224,8 +224,9 @@ VERTEX_DATA = Type(m('Vertices', REF_TO_VARIANT_ARRAY), m('VertexComponentNames'
 MESH = Type(m('Name', STRING), m('PrimaryVertexData', REF, 0, VERTEX_DATA), m('MorphTargets', REF_TO_ARRAY, 0, INT32_ELEM),
             m('PrimaryTopology', REF, 0, TOPOLOGY), m('MaterialBindings', REF_TO_ARRAY, 0, MATERIAL_BINDING),
             m('BoneBindings', REF_TO_ARRAY, 0, BONE_BINDING), m('ExtendedData', VARIANT_REF))
+MESH_BINDING = Type(m('Mesh', REF, 0, MESH))
 MODEL = Type(m('Name', STRING), m('Skeleton', REF, 0, SKELETON), m('InitialPlacement', TRANSFORM),
-             m('MeshBindings', REF_TO_ARRAY, 0, INT32_ELEM), m('ExtendedData', VARIANT_REF))
+             m('MeshBindings', REF_TO_ARRAY, 0, MESH_BINDING), m('ExtendedData', VARIANT_REF))
 CURVE_HEADER = Type(m('Format', UINT8), m('Degree', UINT8))
 CURVE_K32F = Type(m('CurveDataHeader_DaK32fC32f', INLINE, 0, CURVE_HEADER), m('Padding', INT16),
                   m('Knots', REF_TO_ARRAY, 0, REAL32_ELEM), m('Controls', REF_TO_ARRAY, 0, REAL32_ELEM))
@@ -334,7 +335,7 @@ def pack_vertices(members, columns):
 
 # ------------------------------------------------------------------------------------------------ files
 def build_model(bones, meshes, *, art_tool=VANILLA_ART_TOOL, compression=0, magic=MAGIC64, skeleton='Bip01_Root',
-                extra_skeletons=0):
+                extra_skeletons=0, mesh_bindings=None):
     """a model gr2. bones: [{name, parent, transform (17-tuple), inverse_world (16) or None = from compose()}];
     meshes: [{name, members [(name, gr2 type, count)], columns {name: array}, indices [ints], indices16 bool,
     groups [(material index, first, count)], materials [names], bone_names [names]}]."""
@@ -370,7 +371,9 @@ def build_model(bones, meshes, *, art_tool=VANILLA_ART_TOOL, compression=0, magi
                                       'MaterialBindings': mb,
                                       'BoneBindings': [{'BoneName': b, 'OBBMin': [0, 0, 0], 'OBBMax': [0, 0, 0]}
                                                        for b in me['bone_names']]}))
-    model = w.obj(MODEL, {'Name': skeleton, 'Skeleton': skels[0], 'InitialPlacement': transform(flags=0)})
+    bound = range(len(mesh_offs)) if mesh_bindings is None else mesh_bindings
+    model = w.obj(MODEL, {'Name': skeleton, 'Skeleton': skels[0], 'InitialPlacement': transform(flags=0),
+                         'MeshBindings': [{'Mesh': mesh_offs[i]} for i in bound]})
     root_vals = {'FromFileName': 'synthetic.mb', 'Materials': list(materials.values()), 'Skeletons': skels,
                  'Meshes': mesh_offs, 'Models': [model], 'Animations': []}
     if art_tool:

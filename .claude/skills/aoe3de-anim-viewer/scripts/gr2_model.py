@@ -293,7 +293,23 @@ class Gr2Model:
             self.bones.append({'name': b['Name'], 'parent': int(b['ParentIndex'][0]), 'flags': int(t[0]),
                                'rest': transform(t), 'raw': raw_transform(t),
                                'inverse_world': [float(x) for x in b['InverseWorldTransform'][:16]]})
-        self.meshes = [Gr2Mesh(um_mesh, rec, g) for um_mesh, (rec, _) in zip(um.meshes, refs(g, r.get('Meshes')))]
+        # The file mesh table may retain an unused donor mesh after an append
+        # export. Only meshes referenced by Models.MeshBindings are drawable.
+        bound = set()
+        for model, _ in refs(g, r.get('Models')):
+            bindings = model.get('MeshBindings')
+            if not bindings:
+                continue
+            if bindings[0] == 'array':
+                locations = [x['Mesh'][1] for x in g.array(bindings)]
+            elif bindings[0] == 'refarray':
+                locations = [x['Mesh'][1] if 'Mesh' in x else loc for x, loc in refs(g, bindings)]
+            else:
+                raise ValueError('unsupported Models.MeshBindings representation: %s' % bindings[0])
+            bound.update(tuple(loc) for loc in locations if loc)
+        mesh_rows = list(zip(um.meshes, refs(g, r.get('Meshes'))))
+        self.meshes = [Gr2Mesh(um_mesh, rec, g) for um_mesh, (rec, loc) in mesh_rows if tuple(loc) in bound]
+        self.unbound_meshes = [rec['Name'] for _, (rec, loc) in mesh_rows if tuple(loc) not in bound]
         self.bone_lookup = {}
         for i, b in enumerate(self.bones):
             self.bone_lookup.setdefault(U.nm(b['name']), i)
@@ -361,6 +377,10 @@ def record_from_model(m, writer, *, model_id, provenance=None, material_file=Non
     (av_common.BufferWriter). material_file: the logical id of the .material whose submaterials the mesh material
     bindings name (`<material_file>#<binding>`); None leaves `material` null (the material module fills it)."""
     warnings = []
+    if m.unbound_meshes:
+        warnings.append(warning('gr2-unbound-meshes-excluded', model_id,
+                                'File-table meshes not referenced by any Model.MeshBindings: '
+                                + ', '.join(m.unbound_meshes), layer))
     if not m.crc_ok:
         warnings.append(warning('gr2-crc-mismatch', model_id, 'the header CRC does not match the file (the '
                                 'engine\'s reaction is unknown)', layer))

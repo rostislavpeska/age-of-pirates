@@ -98,6 +98,24 @@ def record(data, **kw):
     return rec, warnings, w
 
 
+def test_unbound_donor_mesh_is_excluded_by_pointer_not_name():
+    donor = skinned_mesh(name='sameShape')
+    owned = skinned_mesh(name='sameShape')
+    donor['columns']['Position'] += 1000
+    data = build(meshes=[donor, owned], mesh_bindings=[1])
+    rec, warnings, writer = record(data)
+    assert len(rec['meshes']) == 1
+    assert rec['bounds']['max'][0] < 10
+    assert any(w['code'] == 'gr2-unbound-meshes-excluded' for w in warnings)
+    pos = rec['meshes'][0]['streams']['Position']['view']
+    np.testing.assert_array_equal(C.read_view(writer.data(), pos), owned['columns']['Position'])
+
+
+def test_explicitly_empty_mesh_bindings_draw_nothing():
+    rec, warnings, writer = record(build(mesh_bindings=[]))
+    assert rec['meshes'] == [] and rec['bounds'] is None
+
+
 # ---------------------------------------------------------------- header sniffing and unavailable files
 def test_sniff_reads_pointer_size_format_and_compression():
     info = GM.sniff(build())
