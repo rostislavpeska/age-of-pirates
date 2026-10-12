@@ -76,6 +76,33 @@ The fold scored .87 and 1.26, which passes. Keep the strand-direction QA as well
   measure the opaque fraction of each fringe region at every mip level of the encoded DDT. If a fringe vanishes at game
   distance, preserve the coverage when building the alpha mips. This has not yet been verified on the project encoder.
 
+Use [`scripts/alpha_mip_coverage.py`](scripts/alpha_mip_coverage.py) with decoded
+compressed mip images, the immutable source alpha and geometry-derived region masks.
+Declare one region per independent strip/island: a healthy whole-page average can
+hide a vanished small strip. Check both shrinkage and gap filling. The helper also
+reports silhouette IoU, lost opaque samples and filled cutout samples. Do not use a
+mask inferred from the tested alpha: it would exclude the holes being checked.
+
+The JSON configuration names `source`, `threshold` (normally 0.5), `regions`
+(`name`, `mask`) and `mips` (`level`, `image`). Bounds are explicit per mip:
+`min_retention`, `max_retention`, and `max_empty_coverage` for deliberately removed
+surfaces. PNGs must contain alpha or be L-mode alpha images. Masks use the same
+dimensions/orientation as the source. Run:
+
+```
+python scripts/alpha_mip_coverage.py config.json --out report.json
+python -m unittest discover -s scripts -p test_alpha_mip_coverage.py
+```
+
+Exit 0 passes only declared gates; exit 1 reports failures; exit 2 means invalid
+input or a diagnostic with no acceptance bounds. Ungated mips stay labelled
+DIAGNOSTIC. Keep actual-size camera renders alongside the measurements: bilinear
+samples at fixed source UVs do not certify projected, trilinear or anisotropic
+game rendering. Do not raise alpha globally to fix a strip: doing so can close
+other cutouts or resurrect intentionally removed faces. No automatic encoder or
+atlas mutation is performed by this helper. It needs NumPy and Pillow; the
+destination-engine adapter supplies decoded mip images.
+
 ## 6. Normals on a folded parameterisation
 
 Sample the relief height through the same fold, then differentiate it in **page space**. Page space is already the UV
