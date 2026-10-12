@@ -1,6 +1,6 @@
 ---
 name: blender-ao-postproduction
-description: Resolve and verify baked AO for shared architectural UVs using explicit texel owners, reference correspondence and localized neutral masks. Use after AO conflict analysis and before texture generators, channel packing or final UV handoff.
+description: Resolve and verify baked AO for shared architectural UVs, including stale contact shadows after moving or deleting geometry. Use after AO conflict analysis, for local post-edit shadow repair, and before texture generators or channel packing.
 ---
 
 # AO postproduction for shared UVs
@@ -11,6 +11,11 @@ after [AO separation](../blender-uv-ao-separation/SKILL.md), coordinated by
 [the UV workflow](../blender-uv-workflow/SKILL.md). It does not unwrap or silently
 add pages. All trials run in background; follow the
 [operator boundary](../blender-uv-observability/SKILL.md).
+
+For moved doors, windows, props or removed parts, use
+[post-edit AO repair](references/post-edit-repair.md). Check the vacated receiver,
+the moved part and the new receiver separately; a geometry edit does not remove
+the old baked contact shadow.
 
 ## Select the treatment from measured evidence
 
