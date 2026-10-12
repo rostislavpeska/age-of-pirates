@@ -21,6 +21,8 @@ page <= 0.38 (TC 0.26 + props r6.2 0.38, Dock 0.30, Market 0.16 + props 0.26, Mo
 Barracks 0.03, Stable 0.02). The gate 0.5 m2 per page separates the reported bug from the rest.
 """
 import importlib.util
+import hashlib
+import math
 from pathlib import Path
 import numpy as np
 
@@ -88,6 +90,31 @@ def measure(info, masks_of):
                 top=[dict(at=list(k), m2=round(v, 4)) for k, v in top])
 
 
+def page_limit(path, prof):
+    """Apply an existing owner acceptance only to its exact named texture bytes.
+
+    An accepted shared dependency must not raise the ceiling for new own pages.
+    Missing provenance or a changed hash is an error, not a fallback acceptance.
+    """
+    base = float(prof.get('ao_shared_uv_max_m2', .5))
+    entries = prof.get('ao_shared_uv_accepted_pages', [])
+    matches = [e for e in entries if e.get('file') == Path(path).name]
+    if not matches:
+        return base, None
+    if len(matches) != 1:
+        raise ValueError('duplicate AO page acceptance: ' + Path(path).name)
+    e = matches[0]
+    required = ('sha256', 'max_m2', 'owner_quote', 'date', 'source_acceptance')
+    if any(not e.get(k) for k in required):
+        raise ValueError('incomplete owner AO acceptance: ' + Path(path).name)
+    if hashlib.sha256(Path(path).read_bytes()).hexdigest() != e['sha256']:
+        raise ValueError('accepted AO page hash changed: ' + Path(path).name)
+    limit = float(e['max_m2'])
+    if not math.isfinite(limit) or limit < 0:
+        raise ValueError('invalid accepted AO limit')
+    return limit, {k: e[k] for k in ('owner_quote', 'date', 'source_acceptance', 'sha256')}
+
+
 def check(stage, info, mat_path, art_root, prof, read_material, resolve_texture, R):
     """gr2_lint entry: R(stage, 'ao_shared_uv', ok, summary, **data)"""
     try:
@@ -109,16 +136,23 @@ def check(stage, info, mat_path, art_root, prof, read_material, resolve_texture,
             pages.setdefault(f, []).append(nm)
     if not pages:
         return R(stage, 'ao_shared_uv', None, 'no mod Masks page bound')
-    lim = float(prof.get('ao_shared_uv_max_m2', .5)); per = {}
+    lim = float(prof.get('ao_shared_uv_max_m2', .5)); per = {}; limits = {}; acceptances = {}
     try:
         for f, mats in pages.items():                     # per page: one bake, one verdict
+            limit, acceptance = page_limit(f, prof)
+            limits[Path(f).stem] = limit
+            if acceptance:
+                acceptances[Path(f).stem] = acceptance
             per[Path(f).stem] = measure(info, lambda n, f=f, mats=mats: f if n in mats else None)
+    except ValueError as e:
+        return R(stage, 'ao_shared_uv', False, f'invalid AO page acceptance ({e})')
     except Exception as e:                                # never crash the lint; an unmeasured AO is not a pass
         return R(stage, 'ao_shared_uv', None, f'not measured ({type(e).__name__}: {e})')
-    bad = {k: v for k, v in per.items() if v['conflict_m2'] > lim}
+    bad = {k: v for k, v in per.items() if v['conflict_m2'] > limits[k]}
     worst = max(per.items(), key=lambda kv: kv[1]['conflict_m2'])
     where = '; '.join(f"{t_['m2']} m2 at {t_['at']}" for t_ in worst[1]['top'][:3])
     return R(stage, 'ao_shared_uv', not bad, f"open faces carrying another instance's baked AO (shared UV islands, Masks.R), max {lim} m2 per "
              f"page: " + ', '.join(f"{k} {v['conflict_m2']}" for k, v in sorted(per.items(), key=lambda kv: -kv[1]['conflict_m2']))
-             + (f" | worst at {where}" if where and worst[1]['conflict_m2'] > 0 else ''),
-             pages={k: dict(conflict_m2=v['conflict_m2'], top=v['top']) for k, v in per.items()})
+             + (f" | worst at {where}" if where and worst[1]['conflict_m2'] > 0 else '')
+             + (f" | hash-pinned owner acceptances: " + ', '.join(f'{k} <= {limits[k]}' for k in acceptances) if acceptances else ''),
+             pages={k: dict(conflict_m2=v['conflict_m2'], max_m2=limits[k], top=v['top'], acceptance=acceptances.get(k)) for k, v in per.items()})

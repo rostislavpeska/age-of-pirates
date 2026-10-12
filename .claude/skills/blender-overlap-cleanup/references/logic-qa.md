@@ -57,6 +57,10 @@ this file. Name-based exclusion without a depth limit hides drift, as warned in 
   whose top follows a sagging roof underside produced false 3-4 cm embeds. Use triangle centroids.
 - **Touching is not crossing.** BVH `overlap()` reports touching faces and misses coplanar overlaps and fully
   contained parts. Decide contact with a 4 mm normal-inflated BVH, and decide clashes by depth.
+  At an open shell boundary inflation may stay tangent and miss two exactly adjoining courses. Also test
+  bidirectional vertex-to-surface distance at the existing 0.2 mm on-surface epsilon. This establishes contact,
+  not penetration or structural strength. Positive/negative open-course fixtures cover zero gap and a real gap.
+  Exact declared joint depths allow 1 micrometre of float32 serialization error; geometric joint limits stay fixed.
 - **Pierce needs the member axis plus a surround test.** A raw edge test flags boards seated lengthwise in a wall top.
   An edge depth-ratio test misses a baluster through a rail, because its edges run 5 mm from the rail's sides. An axis
   test without the surround check flags a post whose axis runs through a bracket tenon inside it.

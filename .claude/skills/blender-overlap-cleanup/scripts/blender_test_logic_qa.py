@@ -203,6 +203,23 @@ try:
     box(c, 'T.Attic.Hall.Side.0', (0, 6.0, 2.0), (1.0, 6.12, 2.22)); box(c, 'T.Attic.Hall.Side.1', (.88, 6.12, 2.0), (1.0, 7.0, 2.22))  # flush butt corner
     r = run(c, root)
     check('continuity: continuous, node and flush butt joints pass', not r['continuity'], str(r['continuity']))
+    # 13. Open adjoining courses share a coplanar edge; normal inflation is
+    # tangent to that edge and overlap() can miss actual zero-distance contact.
+    def vertical_shell(coll, name, z0, z1):
+        me = bpy.data.meshes.new(name)
+        me.from_pydata([(0, 0, z0), (1, 0, z0), (1, 0, z1), (0, 0, z1)], [], [(0, 1, 2, 3)])
+        ob = bpy.data.objects.new(name, me); coll.objects.link(ob); return ob
+    c, root = scene('open-course-touch')
+    lower = vertical_shell(c, 'T.Course.Lower', 0, 1)
+    upper = vertical_shell(c, 'T.Course.Upper', 1, 2)
+    r = run(c, root)
+    check('coplanar open courses touching at an edge are grounded', not r['floating'], str(r['floating']))
+    check('surface contact does not invent penetration', r['penetration']['pairs'] == 0, str(r['penetration']))
+    c, root = scene('open-course-gap')
+    vertical_shell(c, 'T.Course.LowerGap', 0, 1)
+    vertical_shell(c, 'T.Course.UpperGap', 1.01, 2)
+    r = run(c, root)
+    check('a real gap between open courses stays floating', 'T.Course.UpperGap' in r['floating'], str(r['floating']))
 except Exception:
     traceback.print_exc(); FAILS.append('exception')
 

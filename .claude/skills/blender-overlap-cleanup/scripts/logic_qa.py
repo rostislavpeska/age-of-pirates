@@ -446,6 +446,24 @@ RUN_ALIASES = [('Cap', 'cap_run'), ('Hip', 'cap_run'), ('Ridge', 'cap_run')]   #
 RUN_TOKEN = re.compile(r'^(?:[XYZ]-?\d+(?:\.\d+)?|-?\d+|[A-Z]{1,2})$')
 
 
+def coincident_surface_contact(a, b):
+    """Exact boundary contact missed by triangle overlap on coplanar open shells.
+
+    Normal inflation moves tangentially at an uncapped shell's boundary and can
+    miss an adjoining course. Test both vertex-to-surface directions at the
+    existing on-surface epsilon; do not inflate a gap to create support.
+    This establishes contact only, never penetration or structural strength.
+    """
+    for source, target in ((a, b), (b, a)):
+        for p in source.V:
+            if np.any(p < target.lo - EPS_ON) or np.any(p > target.hi + EPS_ON):
+                continue
+            hit = target.bvh.find_nearest(Vector(p), EPS_ON)
+            if hit[0] is not None and hit[3] <= EPS_ON:
+                return True
+    return False
+
+
 def run_family(name):
     """member type from the name: last token that is not a coordinate, index or side letter, with RUN_ALIASES applied"""
     toks = [t for t in name.split('.') if not RUN_TOKEN.match(t)]
@@ -682,7 +700,8 @@ def run(roles, openings, roots, land_roles=('Market',), out=None, extra_openings
                         gaps.append({'a': a, 'b': b, 'gap': g_[0], 'samples': g_[1]})
                     continue
                 crossing = bool(A.bvh.overlap(Bp.bvh))
-                touching = crossing or bool(A.infl.overlap(Bp.bvh)) or bool(A.bvh.overlap(Bp.infl))
+                touching = (crossing or bool(A.infl.overlap(Bp.bvh)) or bool(A.bvh.overlap(Bp.infl))
+                            or coincident_surface_contact(A, Bp))
                 if not touching:
                     small, big = (A, Bp) if np.prod(A.hi - A.lo + 1e-9) <= np.prod(Bp.hi - Bp.lo + 1e-9) else (Bp, A)
                     if big.closed and np.all(small.lo >= big.lo) and np.all(small.hi <= big.hi) and abs(winding(small.V[:1], big)[0]) > .5:
@@ -702,7 +721,7 @@ def run(roles, openings, roots, land_roles=('Market',), out=None, extra_openings
                     depth = max(protrusion(A, Bp), protrusion(Bp, A))
                     if depth > .01:
                         lim, kind = joint_limit(a, b, joints)
-                        if depth > lim:
+                        if depth > lim + 1e-6:  # float32 Blender coordinates at an exact declared limit
                             pen.append((a, b, round(depth, 3), lim, kind))
                         else:
                             joint_hits[kind] += 1
