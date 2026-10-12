@@ -46,6 +46,13 @@ It separates documented practice, project decisions and measured specimen result
    `bake_owner_maps.py`. Test the curved slope, its eave turn, round tile ends and UV alignment together;
    see [roof-transition evidence](references/process.md#roof-transition-specimens).
    Fit complete motifs inside the receiver and stop relief at structural edges.
+   Before repeating a tube/tile HIGH, fit its integer count, pitch and phase to
+   the usable physical span. Inspect the first and last visible course and both
+   side boundaries: blind clipping must not leave tiny terminal fragments.
+   Measure boundary visibility after ridge/trim occlusion, keep pitch within the
+   approved reference range, and retain the fit parameters with the bake recipe.
+   A legacy specimen the owner explicitly leaves unchanged is recorded as such;
+   this preflight rule does not authorize changing its geometry, UVs or pattern.
    For vertical eaves, check the shell cross-section, hard-normal/UV break and
    corner terminations before repeating the bake. Raised hip and ridge covers
    remain geometry where they affect the silhouette or conceal roof joints.
