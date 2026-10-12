@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "files": ["SKILL.md", "references/native-workflow.md", "scripts/armorpaint_batch.py", "scripts/armorpaint_mcp.py", "scripts/smoke_test.py", "scripts/test_armorpaint_batch.py"],
+  "skills": [],
+  "external": [
+    {"id":"armorpaint","kind":"application","requiredFor":["run","export","smoke-test"],"optional":false,"note":"Pinned native scripting build with its adjacent assets. Path in consumer local configuration."},
+    {"id":"pillow","kind":"python-package","distribution":"Pillow","modules":["PIL"],"requiredFor":["run","export","smoke-test"],"optional":false,"note":"Decode and validate output PNGs."},
+    {"id":"mcp","kind":"python-package","distribution":"mcp","modules":["mcp"],"requiredFor":["mcp"],"optional":false,"note":"Optional stdio server only; not required for CLI."}
+  ]
+}
