@@ -71,6 +71,7 @@ def mod_has(*cands):
 # doesn't exist in AoP. That's fine. The case civ=korea simply never happen when you don't have the mod installed").
 # 2026-10-11: the same for consulate.xml (owner: "follow pattern" - every animfile AoP overrides hosts the branch).
 COMPANION_ART = {'buildings/korean_castle/': 'age-of-pirates-koreans',
+                 'buildings/korean_castle_industrial/': 'age-of-pirates-koreans',
                  'buildings/korean_consulate/': 'age-of-pirates-koreans'}
 
 
