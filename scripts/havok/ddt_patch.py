@@ -3,13 +3,16 @@ change mask touches are re-encoded, on every mip; every other byte stays identic
 would add one more generation of block loss to every texel). For owner fine-tuning of shipped pages (Korean player
 colour, 2026-10-11: "strip player color from the masionry", "ALPHA COLORED RAILING FULLY IN PLAYER COLOR", "fix all").
 
-    python ddt_patch.py IN.ddt NEW.png MASK.png OUT.ddt
+    python ddt_patch.py IN.ddt NEW.png MASK.png OUT.ddt [--cutout-threshold 128]
       NEW.png  the edited mip 0 (RGBA, page size); only its texels under MASK matter
       MASK.png white = changed texels (page size)
 
 Mip i of the new page = Lanczos downsample of (NEW where MASK else the decoded original mip 0) - the same filter the
 project encoders use; blocks of mip i overlapping the mask's footprint (dilated by one block) are re-encoded with
 ddt_dxt1.encode_dxt1 / encode_alpha. Prints the changed block counts per mip.
+Optional --cutout-threshold preserves each changed texel's classification at that
+integer alpha-test cutoff after compression. It does not preserve coverage lost
+or gained by the mip filter, and must not be used for blended opacity.
 """
 import io, struct, sys
 from pathlib import Path
@@ -36,7 +39,7 @@ def decode_mip0(b, H):
     return np.asarray(im.convert('RGBA'))
 
 
-def patch(src, new_png, mask_png, out):
+def patch(src, new_png, mask_png, out, *, cutout_threshold=None):
     b = bytearray(Path(src).read_bytes()); H = header(b); W, Hh = H['w'], H['h']
     base = decode_mip0(bytes(b), H)
     new = np.asarray(Image.open(new_png).convert('RGBA')); mask = np.asarray(Image.open(mask_png).convert('L')) > 127
@@ -56,7 +59,7 @@ def patch(src, new_png, mask_png, out):
         for by, bx in zip(ys, xs):
             blk = np.ascontiguousarray(level[by * 4:by * 4 + 4, bx * 4:bx * 4 + 4])
             col = encode_dxt1(np.ascontiguousarray(blk[..., :3]))
-            data = col if H['fmt'] == 4 else bytes(encode_alpha(np.ascontiguousarray(blk[..., 3])).tobytes()) + col
+            data = col if H['fmt'] == 4 else bytes(encode_alpha(np.ascontiguousarray(blk[..., 3]), cutout_threshold=cutout_threshold).tobytes()) + col
             assert len(data) == bpb
             o = off + (by * bw + bx) * bpb; b[o:o + bpb] = data
         report.append((i, int(m.sum()), bw * bh))
@@ -65,6 +68,11 @@ def patch(src, new_png, mask_png, out):
 
 
 if __name__ == '__main__':
-    src, new_png, mask_png, out = sys.argv[1:5]
-    rep = patch(src, new_png, mask_png, out)
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    for name in ('src', 'new_png', 'mask_png', 'out'):
+        ap.add_argument(name)
+    ap.add_argument('--cutout-threshold', type=int, choices=range(1, 256), metavar='1..255')
+    a = ap.parse_args()
+    rep = patch(a.src, a.new_png, a.mask_png, a.out, cutout_threshold=a.cutout_threshold)
     print('DDT_PATCH', ' '.join(f'mip{i}:{c}/{t}' for i, c, t in rep))

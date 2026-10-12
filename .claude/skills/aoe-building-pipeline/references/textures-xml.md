@@ -16,3 +16,16 @@ The session used Resource Manager `Ddt.FromPicture` through PowerShell 7; Window
 - Art/material and `_snds` files remain plain editable **CRLF** XML. LF-only XML produced an invisible placeable model in the Tower of London incident. Run `python <consumer-root>/scripts/tools/check_art_eol.py` before a game test (`<consumer-root>` is this AoP checkout). Data-XMB rules do not authorize art/sound twins.
 - A Great Basilica proto clone retains the requested techs, abilities, commands, costs, behavior and sound events. Allocate unique ids/names and check referenced tech targets. Consult [shared XML reference](../../aoe3de-reference/references/data_xml_guide.md) and string synchronization tools for data definitions.
 - Use `.claude/skills/mod-deploy-check/SKILL.md` for packaging and `.claude/skills/game-startup/SKILL.md` for game testing. Keep BLEND/PSD/FBX, logs, scripts and backups outside runtime distributions.
+# Cutout compression check
+
+When patching an existing DXT5 cutout page, derive the cutoff from the assigned
+material. `scripts/havok/ddt_patch.py --cutout-threshold 128` preserves the side
+of a 0.5 cutoff when selecting compressed alpha indices. Use this only for an
+alpha-tested material. It does not change the source silhouette and does not
+correct coverage changes caused by downsampling. Compare decoded mip alpha with
+the intended mip, then check each independent fringe's coverage and actual-size
+renders using `alpha-cutout-texturing`. Unchanged compressed blocks stay exact.
+
+Measured regression: nearest-alpha quantization flipped 31 Colonial castle roof
+edge pixels during staging; cutoff-constrained indices removed every mismatch.
+The encoder fixtures cover mixed alpha blocks, mip levels and an exact no-op.

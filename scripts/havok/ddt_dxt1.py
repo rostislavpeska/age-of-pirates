@@ -58,8 +58,14 @@ def encode_dxt1(img):
     return out.tobytes()
 
 
-def encode_alpha(a):
-    """a: HxW uint8 -> DXT5 alpha blocks (8 bytes each): endpoints max/min, 8-level interpolation, 3-bit indices"""
+def encode_alpha(a, *, cutout_threshold=None):
+    """Encode DXT5 alpha; optionally preserve each texel's alpha-test classification.
+
+    The threshold is an integer in [1, 255]. This constrains index selection, not
+    the source alpha or block endpoints, and is not intended for blended opacity.
+    """
+    if cutout_threshold is not None and not (isinstance(cutout_threshold, int) and 1 <= cutout_threshold <= 255):
+        raise ValueError('cutout_threshold must be an integer from 1 to 255')
     h, w = a.shape
     if h < 4 or w < 4:
         pad = np.zeros((max(h, 4), max(w, 4)), np.uint8); pad[:h, :w] = a
@@ -69,7 +75,14 @@ def encode_alpha(a):
     k = np.arange(8)
     w0 = np.array([7, 0, 6, 5, 4, 3, 2, 1]); w1 = 7 - w0                                # index -> weights of a0, a1
     pal = (w0[None, :] * a0[:, None] + w1[None, :] * a1[:, None]) / 7.0                   # b x 8
-    idx = np.abs(B[:, :, None] - pal[:, None, :]).argmin(axis=-1)                          # b x 16
+    distance = np.abs(B[:, :, None] - pal[:, None, :])
+    if cutout_threshold is not None:
+        # DXT5 integer interpolation truncates. A nearest palette entry on the
+        # other side of the shader cutoff can erase/add a silhouette pixel.
+        wrong_side = ((np.floor(pal)[:, None, :] >= cutout_threshold)
+                      != (B[:, :, None] >= cutout_threshold))
+        distance[wrong_side] = np.inf
+    idx = distance.argmin(axis=-1)                                                      # b x 16
     idx[a0 == a1] = 0
     bits = np.zeros(len(B), dtype=np.uint64)
     for i in range(16): bits |= (idx[:, i].astype(np.uint64) & np.uint64(7)) << np.uint64(3 * i)
