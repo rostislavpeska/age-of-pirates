@@ -132,6 +132,14 @@ may use the harness, and a manual edit works too.
      JSON is `{origin:"top-left", source_id:"blend-hash:object:page", uv_layer:"name", triangles:[[[u,1-v],...],...]}`.
      Export selected faces of the intended page only; triangulation is a read-only view of Blender's loop triangles.
      The helper records the JSON hash. Never export a temporary game model just to extract a paint island.
+     The read-only Blender helper exports the actual named UV layer and optional page/owner filters:
+
+     ```bash
+     blender -b source.blend --python-exit-code 2 --python .claude/skills/image-harness/scripts/blender_uv_to_json.py -- --object MeshName --uv UVMap --out selected_uv.json --resource-attribute uv_resource --resource 1 --owner-attribute share_role
+     ```
+
+     Repeat `--object` for multiple source meshes. Attribute names and resource values come from the
+     consumer contract; omit those filters for a unique prop layout. No source scene is saved or changed.
    - Writes `EDIT_INPUT.png`: the island crop on a neutral grey canvas of a generator aspect (1:1, 2:3, 3:2).
    - Writes `EDIT_MASK.png`: alpha 0 = the island = editable.
    - Writes `GUIDE.png` (magenta outlines) and `ISLAND.json`, which holds a prompt template.
@@ -156,6 +164,8 @@ may use the harness, and a manual edit works too.
      asked for. A random image scores 0.00; a faithful repaint scores 0.997.
    - Only island texels change. Alpha is never repainted.
      `APPLY.json` explicitly reports zero changed protected texels and zero changed alpha texels.
+     Those checks prove edit scope, not painted-face or relief registration. Inspect the mapped object
+     from front and oblique views, including small repeated instances, before calling it aligned.
    - `APPLY.json` records the route, prompt, call count, hashes and cost. Cost is `unknown` unless known; never a
      made-up receipt.
    - `--ddt` patches the game DDT block-wise.
