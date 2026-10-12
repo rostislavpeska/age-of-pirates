@@ -39,3 +39,14 @@ sets any colour, and `set_strength(0)` switches the tint off. `controls()` retur
    different merge hides or adds unrelated elements, and the owner reads that as a regression.
 
 Texture-space sanity check without Blender: `pc_common.ingame_albedo(bc8, R, player)` gives the same albedo per texel.
+
+After changing player colour, verify the rendered target actually changes. A scene
+can retain unused legacy colour nodes while the visible material uses a constant
+blue input. Follow links from the material assigned to the rendered object, then
+compare matched blue/red images in independently declared target rectangles:
+`scripts/check_render_response.py BLUE.png RED.png --regions regions.json --out result.json`.
+Regions are `{ "gable": [x0,y0,x1,y1] }` in image pixels. Check each requested
+target separately: a changing lower band cannot prove that the gable responds.
+The check measures responsiveness only; material linkage, source identity and
+engine validation remain required. Regression fixtures are in
+`scripts/test_render_response.py` (INC-277, Korean castle decoration r13).
