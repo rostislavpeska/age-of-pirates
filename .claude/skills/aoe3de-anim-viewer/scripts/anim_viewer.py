@@ -305,7 +305,9 @@ def render_job(m, a, lighting):
     at = parse_at(a.at) if a.at else ({'all': 'keys', 'tags': 'tags'}[a.keys] if a.keys else None)
     frames = []
     for anim in anims:
-        n = len(main_anims(m)[anim]['variants'])
+        # Static building anims name a component but have no GrannyAnim clips.
+        # Render their rest pose once, including when --variant all is requested.
+        n = max(1, len(main_anims(m)[anim]['variants']))
         variants = range(n) if a.variant == 'all' else [int(a.variant) % n]
         for vi in variants:
             for lab, cam in cams:

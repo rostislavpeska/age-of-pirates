@@ -37,12 +37,11 @@ const GL_TYPE = { f32: 'FLOAT', f16: 'HALF_FLOAT', i8: 'BYTE', u8: 'UNSIGNED_BYT
 const INDEX_BYTES = { u16: 2, u32: 4 };
 
 export class MeshSkin {
-  constructor(gl, geoBuffer, mesh, view) {
+  constructor(gl, bufferFor, mesh, view) {
     this.gl = gl;
     this.mesh = mesh;
     this.vao = gl.createVertexArray();
     gl.bindVertexArray(this.vao);
-    gl.bindBuffer(gl.ARRAY_BUFFER, geoBuffer);
     this.bound = [];
     for (const [name, loc] of Object.entries(ATTRIB)) {
       const s = mesh.streams[name];
@@ -55,6 +54,7 @@ export class MeshSkin {
         continue;
       }
       gl.enableVertexAttribArray(loc);
+      gl.bindBuffer(gl.ARRAY_BUFFER, bufferFor(v.buffer));
       const type = gl[GL_TYPE[v.dtype]];
       if (name === 'BoneIndices') gl.vertexAttribIPointer(loc, Math.min(v.components, 4), type, 0, v.byteOffset);
       else gl.vertexAttribPointer(loc, Math.min(v.components, 4), type, !!v.normalized, 0, v.byteOffset);

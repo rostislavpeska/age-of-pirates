@@ -330,8 +330,8 @@ export class GameRenderer extends Renderer {
     if (m.tangentBound === undefined) {
       const s = meshRec.streams && meshRec.streams.Tangent;
       gl.bindVertexArray(m.vao);
-      gl.bindBuffer(gl.ARRAY_BUFFER, this.geoBuffer);
       if (s && s.view && GL_TYPE[s.view.dtype]) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.arrayBuffer(s.view.buffer));
         gl.enableVertexAttribArray(TANGENT_LOC);
         gl.vertexAttribPointer(TANGENT_LOC, Math.min(s.view.components, 4), gl[GL_TYPE[s.view.dtype]], !!s.view.normalized,
           0, s.view.byteOffset);

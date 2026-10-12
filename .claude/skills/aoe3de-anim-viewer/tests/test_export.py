@@ -347,6 +347,21 @@ def test_cameras_at_and_anim_helpers():
     assert AV.main_duration(m, 'Attack_melee', 1) == 1.25 and AV.main_duration(m, 'Attack_melee', 3) == 1.25
 
 
+@pytest.mark.parametrize('variant', ['0', 'all', '7'])
+def test_render_static_component_without_animation_clips(variant):
+    m = fake_manifest()
+    m['animfiles']['u/u.xml']['anims'] = {'Idle': {'variants': []}}
+    m['clips'] = {}
+    a = AV.parser().parse_args(['render', '--bundle', m['bundle_id'], '--anim', 'Idle',
+                                '--variant', variant, '--time', '0', '--cam', 'game,side'])
+    job, at, cams = AV.render_job(m, a, None)
+    assert at is None
+    assert [(f['anim'], f['variant'], f['time'], f['_cam']) for f in job['frames']] == [
+        ('Idle', 0, 0.0, 'game'), ('Idle', 0, 0.0, 'side')]
+    assert m['animfiles']['u/u.xml']['anims']['Idle']['variants'] == []
+    assert m['clips'] == {}, 'a static render must not fabricate a clip'
+
+
 def test_render_job_expands_in_the_page_with_one_geometry_camera():
     m = fake_manifest()
     a = AV.parser().parse_args(['render', '--bundle', '0123456789abcdef', '--anim', 'Attack_melee', '--variant', 'all',

@@ -162,6 +162,15 @@ Until then compare renders with each other, never with the game's absolute look.
 
 ## Measured (2026-10-11)
 
+Static-building render regressions fixed, 2026-10-12 (INC-270/271):
+`render --anim Idle --time 0` renders one rest pose when the component has no
+GrannyAnim variants; `--variant all` also renders it once, without inventing a
+clip. Vertex and tangent streams bind their declared buffer ids, including
+mixed-buffer bundles. The CLI and GPU-binding regression tests cover both cases.
+An explicitly converted Blender diagnostic bundle remains an approximation of
+the exported geometry/frame/tangents; it is not a GR2 or an engine export pass.
+Label its provenance and retain the lighting/calibration limitations above.
+
 - Bundle (ypIronFlail): 5 animfiles, 9 models, 64 clips (62 decodable K32fC32f; the 2 quantized whip clips kept as
   unavailable - the whip is declared but never attached), 9 materials, 22 textures, about 21 MB, 2.6 s.
 - Parity: B-spline within 1e-15 of Python; world matrices = gr2_model + gr2_curves = pose_sim (1e-15), CPU-skinned

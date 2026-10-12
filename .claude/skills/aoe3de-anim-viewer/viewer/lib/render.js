@@ -99,11 +99,8 @@ export class Renderer {
       this.u[name] = gl.getUniformLocation(this.prog, name);
     }
     this.lu = { u_viewProj: gl.getUniformLocation(this.lineProg, 'u_viewProj') };
-    // one ARRAY_BUFFER holds the whole geo buffer; each stream is a view into it
-    const geo = bundle.buffers.geo;
-    this.geoBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.geoBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, geo ? new Uint8Array(geo) : new Uint8Array(16), gl.STATIC_DRAW);
+    // A stream names its buffer; custom bundles may use several geometry buffers.
+    this.arrayBuffers = new Map();
     this.meshes = new Map();         // `${model id}#${mesh index}` -> MeshSkin
     this.textures = new Map();       // `${texture id}|${srgb}` -> {tex, path} | null
     this.textureLog = [];
@@ -131,11 +128,24 @@ export class Renderer {
     this.pc = pc && pc.rgb ? pc.rgb.map((v) => srgbToLinear(v / 255)) : [0.2, 0.3, 0.9];
   }
 
+  arrayBuffer(id) {
+    if (!this.arrayBuffers.has(id)) {
+      const data = this.bundle.buffers[id];
+      if (!data) throw new Error('missing vertex buffer ' + id);
+      const gl = this.gl;
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Uint8Array(data), gl.STATIC_DRAW);
+      this.arrayBuffers.set(id, buffer);
+    }
+    return this.arrayBuffers.get(id);
+  }
+
   mesh(model, mi) {
     const key = model.id + '#' + mi;
     let m = this.meshes.get(key);
     if (!m) {
-      m = new MeshSkin(this.gl, this.geoBuffer, model.meshes[mi], this.bundle.view);
+      m = new MeshSkin(this.gl, (id) => this.arrayBuffer(id), model.meshes[mi], this.bundle.view);
       this.meshes.set(key, m);
     }
     return m;
