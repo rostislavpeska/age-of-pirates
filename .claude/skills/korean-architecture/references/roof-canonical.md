@@ -1,7 +1,11 @@
 # Korean roof appearance: the Town Center canon (roof_canon v1)
 
-Every Korean roof's tile field, clay caps and eave-end clay is derived from the canonical Town Center through
-`scripts/roof_canon.py`. Roof look code in a building recipe is forbidden. The method and its sources are in
+Every Korean roof's tile field, clay caps and eave-end clay derives original material samples from the canonical Town Center through
+`scripts/roof_canon.py`. Ad-hoc building-specific looks are forbidden; explicit
+owner-approved age profiles may grade those samples. Start at the consuming
+project's `patterns/korean/roof_workflow.md` and portable `roof_profiles.json`.
+The shared method belongs at Korean parent level, finish profiles at the age
+level, and exact geometry/UV identity in the individual building handoff. The method and its sources are in
 [canonical derivation](../../blender-architecture-texturing/references/canonical-derivation.md).
 
 ## The canon pack (v1)
@@ -10,7 +14,8 @@ Every Korean roof's tile field, clay caps and eave-end clay is derived from the 
   (`art/buildings/korean_tc/textures`), decoded to mip0. It is the exact player-visible appearance.
 - **Tile inputs:** the TC roof tile banks (`tile_R*`, `cov_R*`, class maps) from the Wanja r2 roof snapshot. TC UVs have
   not changed since (Walls R3 SOURCE_IDENTITY).
-- **Location and records:** pack at `C:/work/korean-roof-canon/v1/` (move it into the library when the owner says so).
+- **Location and records:** immutable parent-level Korean `roof-canon/versions/v1-tc-r70f`
+  package, resolved through the project's `roof_profiles.json` and local OneDrive root.
   `tc/DECODE.json` records every source hash; `EXEMPLAR.json` records the exemplar hashes and quantiles.
 - **Build:** `python roof_canon.py build --pack DIR`, then `python roof_canon.py profile --pack DIR`.
 - **Canonical field profile:**
@@ -21,6 +26,11 @@ Every Korean roof's tile field, clay caps and eave-end clay is derived from the 
   - tangent slope p50/p75/p90 21.7/42.7/50.2 deg.
 
 ## Per roof part
+
+Semantic IDs must distinguish actual ceramic from flat backing. For example,
+the castle cap bake uses B=.2 for backing and B>.5 for ceramic. Treating all cap
+object texels as tiles flattened two backing islands in r11; preserve backing
+samples separately. Do not assume one building's encoding applies to another.
 
 | Part | Source in the canon | Method |
 | --- | --- | --- |

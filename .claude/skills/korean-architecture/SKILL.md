@@ -45,6 +45,14 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 
 ## Choose the feature
 
+For **every roof task**, first open the consuming Korean project's
+`patterns/korean/roof_workflow.md` and `roof_profiles.json`. The parent Korean
+project owns the shared construction/source workflow; Colonial and Industrial
+cards own finish definitions and canonical references. Wonders explicitly choose
+a named profile. This skill supplies mechanics, not an alternative age selector.
+An owner-accepted roof remains locked; later gable/prop work preserves its texels.
+A later narrow finish exception must not be treated as permission for general retuning.
+
 | Work | Read |
 |---|---|
 | Shared matc atlas, TC prop textures, decals and asset dependencies | Korean project `patterns/korean/shared_materials.md` and `shared_assets.json`; resolve the project root through `recipes.json`/the current handoff |
