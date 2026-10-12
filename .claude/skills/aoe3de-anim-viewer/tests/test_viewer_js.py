@@ -50,6 +50,7 @@ def write_fixture(folder):
 
 @pytest.mark.skipif(not NODE, reason='node not on PATH')
 def test_js_suite_under_node(tmp_path):
+    """Includes INC-271 GPU stream buffer selection regression in buffer_streams.test.mjs."""
     if node_major() < 18:
         pytest.skip('node --test needs Node 18 or newer')
     write_fixture(tmp_path)

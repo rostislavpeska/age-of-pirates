@@ -349,6 +349,7 @@ def test_cameras_at_and_anim_helpers():
 
 @pytest.mark.parametrize('variant', ['0', 'all', '7'])
 def test_render_static_component_without_animation_clips(variant):
+    """INC-270: static building components render once without modulo-zero or invented clips."""
     m = fake_manifest()
     m['animfiles']['u/u.xml']['anims'] = {'Idle': {'variants': []}}
     m['clips'] = {}
