@@ -238,6 +238,14 @@ and new interior UVs; a baked intact model does not certify fractured shading.
 | Inflated/inverted relief | Normal axis convention, texture decoding and incorrect image transforms |
 | Dark shared patches | Overlapping bake writes, wrong occluders or duplicate AO multiplication |
 | Nice close-up, unreadable game view | Feature width, texel allocation and compressed mip evidence |
+| Raised runs fade flat before their ends | Sample HIGH cross-sections near the terminal edge; check for an artificial relief-height taper before changing cages, LOW topology or normal strength |
+
+For a run intended to stay rounded to its end, preserve that cross-section in the
+HIGH. Do not flatten it merely to meet a planar end receiver. First compare a
+bounded rebake on the unchanged LOW at the available texture resolution and target
+display size. Keep the end-card/silhouette limitation explicit: continuous normal
+shading cannot supply missing geometry. A lower numerical seam score does not
+justify a result that looks worse than the baseline in the fixed views.
 
 Stop repeating the same bake after two unsuccessful visual attempts; inspect the
 mesh/UV/cage data and change one demonstrated cause. Keep failed evidence separate
