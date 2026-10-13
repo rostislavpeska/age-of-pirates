@@ -51,6 +51,14 @@ the last event, and recent failed/blocked/unknown commands. Match job ID and rem
 with Painter's own logs or a process exit before calling an event a confirmed crash. Logs
 cannot reconstruct uninstrumented commands executed before installation.
 
+If a historical event stores only a script hash, search the original authorized
+invocation record before guessing its controls or repeating a bake. Retain only
+the relevant command/configuration, verify its exact UTF-8 body length and hash
+against the audit event, and archive that selected evidence. Do not copy a whole
+private conversation or secrets. A recovered invocation closes source identity;
+it does not prove a fresh native replay. Historical endpoint/output literals must
+be replaced by discovery and fresh scratch paths in any subsequent execution.
+
 ## Concurrency and recovery
 
 A nonblocking OS lease covers a complete queued job, including its completion condition.
