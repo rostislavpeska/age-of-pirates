@@ -1,3 +1,4 @@
+"""Audit: 2026-10-13-codex-roof-civic-readers-01; fixed-page regression."""
 import unittest
 import numpy as np
 from alpha_reader_gate import measure
@@ -38,6 +39,33 @@ class ReaderGateTests(unittest.TestCase):
         with self.assertRaises(ValueError): measure(d)
         d = self.data(); d['pixel'][0, 0] = 4
         with self.assertRaises(ValueError): measure(d)
+
+    def test_impossible_sharing_reports_independent_witness_pair(self):
+        d = self.data(); d['expected'][1] = False
+        r = measure(d)
+        self.assertEqual(r['minimum_unavoidable_sample_errors'], 1)
+        self.assertEqual(r['conflict_witnesses'], [{
+            'pixel': [1, 1], 'opaque_sample': 0, 'cut_sample': 1,
+            'opaque_reader': 'front', 'cut_reader': 'back'}])
+
+    def test_fixed_protected_page_blocks_compatible_own_contour(self):
+        d = self.data()
+        self.assertEqual(measure(d)['status'], 'PASS')
+        fixed = np.full((4, 4), 255, np.uint8)
+        r = measure(d, fixed_alpha=fixed)
+        self.assertEqual(r['status'], 'FAIL')
+        self.assertEqual(r['conflicting_texels'], 0)
+        self.assertEqual(r['fixed_alpha_mismatch'], 2)
+        self.assertEqual(r['minimum_unavoidable_sample_errors'], 2)
+        self.assertEqual(r['fixed_alpha_mismatch_texels'], 1)
+        self.assertEqual(r['fixed_alpha_witnesses'][0]['reader'], 'front')
+        fixed[2, 2] = 0
+        self.assertEqual(measure(d, fixed_alpha=fixed)['status'], 'PASS')
+
+    def test_fixed_alpha_boundary_tolerance_and_dimension_validation(self):
+        d = self.data(); d['interior'][2:] = False
+        self.assertEqual(measure(d, fixed_alpha=np.full((4, 4), 255))['status'], 'PASS')
+        with self.assertRaises(ValueError): measure(d, fixed_alpha=np.zeros((3, 3)))
 
 
 if __name__ == '__main__': unittest.main()

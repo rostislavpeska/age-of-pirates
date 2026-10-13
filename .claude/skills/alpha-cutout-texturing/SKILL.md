@@ -72,6 +72,15 @@ and report the incompatibility; taking the minimum/maximum alpha only moves the
 defect to another face. Shared protected pages need a separate required-cut report.
 An opaque back face may be exempted only with exterior visibility evidence for all
 consuming states, not from its name, normal direction, or an owner-only mask.
+For an immutable protected page, supply its independently decoded installed alpha
+with `--fixed-alpha PAGE.png`. The gate then treats it as a fixed constraint and
+fails on any interior mismatch even when the proposed readers agree with each
+other. Reports include exact totals and up to 16 texel/reader witness pairs; their
+sample indices link back to the geometry adapter's NPZ. A failure proves the
+**supplied contour** incompatible with the stated samples and freezes. It does
+not establish that every possible contour is impossible, nor grant permission to
+edit the protected page. Project adapters must use actual per-page dimensions,
+resolve current material bindings, and keep nonzero boundary samples in inventory.
 Regression: one candidate passed 75,416 owner samples but failed 3,633 reused
 reader samples. The expanded all-face fixture exposes 3,343 contradictory texels.
 Run `python -m unittest discover -s scripts -p test_alpha_reader_gate.py`.
