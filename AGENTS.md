@@ -184,6 +184,18 @@ Blender work through the MCP follows `.claude/skills/blender-mcp-safety` (log fi
 
 ## Self-improvement journal (3D work)
 
+**Mandatory process audit (owner, 13 October 2026): EVERY OpenAI/Codex/GPT and
+Claude agent doing 3D work follows
+`.claude/skills/workflow-journal/references/process-audit.md`, without exception.**
+Before any new script, including scratch or inline helpers, log the existing-tool
+search, the exact missing capability and why reuse/extension cannot suffice.
+Record every failure, retry, discarded implementation, duplicate work and tool
+discovery/access gap immediately through the existing task incidents and shared
+journal. Each new script carries its audit record ID and each handoff includes
+the audit. Never invent token counts or cost: use measured usage with provenance,
+or explicit unknown; keep owner-reported monetary loss separate. This applies
+to interactive work, night runs, coordinators and subagents alike.
+
 **Partial UV review gates:** every bounded UV editing batch (including mirrored
 sharing repairs and each model's AO separation) is saved and checked, then its
 actual UV maps are embedded in chat before the next dependent edit. Follow

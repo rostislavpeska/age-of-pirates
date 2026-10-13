@@ -5,6 +5,13 @@ description: Shared self-improvement journal for every agent (Claude, GPT Astra,
 
 # Workflow journal: record now, distil later
 
+**Every 3D agent, without exception:** follow the
+[failure, tool-gap and process audit](references/process-audit.md). Search and
+record reuse before writing any new script, including scratch/inline code. Log
+every failed, repeated or discarded attempt and explicitly account for unknown
+usage. This is required in interactive and unattended work for OpenAI and Claude
+agents; a private note or end-of-run apology is not the record.
+
 The owner's rule (2026-09-28): the 3D workflow must improve itself. Agents record what they
 learn **while working**, in one shared file both agents read, and skills are improved later
 by distilling those records - not from memory of a long session that has since been summarised.
