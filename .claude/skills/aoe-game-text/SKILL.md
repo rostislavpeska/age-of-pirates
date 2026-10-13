@@ -49,22 +49,25 @@ The lint fails a team tech without it.
 
 ## Unit upgrade names
 
-Three tiers, one word each, placed before the unit name ("Guard Musketeer"):
+Three tiers, one word each, placed before the unit name ("Guard Musketeer", "Honored Qiang Pikeman"). Each culture family keeps its own words. The ages below are the standard research ages for that row.
 
-| Culture | Fortress | Industrial | Imperial | Vanilla example |
+**Speech.** Veteran, Guard and Imperial are the European words and the owner's shorthand for tier 1, tier 2 and tier 3. They are not text to copy onto another family. An Asian tier 1 is **Disciplined**, tier 2 **Honored**, tier 3 **Exalted**. Outlaw natives do not use either ladder: their titles are **Bloodthirsty**, **Notorious** and **Legendary**, kept with that unit's own noun (Bloodthirsty Buccaneer, Notorious Corsair, Legendary Wokou Archer). Owner, 2026-10-13: "When I say Veteran I mean Disciplined"; outlaw natives keep Bloodthirsty / Notorious / Legendary.
+
+| Culture | Tier 1 | Tier 2 | Tier 3 | Vanilla example |
 |---|---|---|---|---|
-| European | Veteran | Guard | Imperial | Musketeer |
-| Asian | Disciplined | Honored | Exalted | Qiang Pikeman |
-| Native American civs, African civs | Elite | Champion | Legendary | Aenna; Gascenya, Shotel Warrior (Ethiopia); Maigadi (Hausa) |
-| Minor natives | Champion | Legendary | - | "Champion Zapotec" |
+| European (Colonial / Fortress / Industrial) | Veteran | Guard | Imperial | Musketeer |
+| Asian (Colonial / Fortress / Industrial) | Disciplined | Honored | Exalted | Qiang Pikeman |
+| Native American civs, African civs (Colonial / Fortress / Industrial) | Elite | Champion | Legendary | Aenna; Gascenya, Shotel Warrior (Ethiopia); Maigadi (Hausa) |
+| Minor natives (Fortress / Industrial; no Colonial tier) | Champion | Legendary | — | "Champion Zapotec" |
 
-Outlaw and special natives replace the tier word with a rising title and keep the unit noun - the model for new
-outlaw-based natives:
+Outlaw and special natives replace the culture word with a rising title and keep that unit's own noun. A new outlaw line copies this pattern, not Veteran or Disciplined.
 
-| Native | Fortress | Industrial | Imperial |
+| Native | Tier 1 | Tier 2 | Tier 3 |
 |---|---|---|---|
-| Pirates (zpNatPirate, Corsair, Wokou pirate) | Bloodthirsty Buccaneer | Notorious Buccaneer | Legendary Buccaneer |
-| Parliament lords (zpNatLord) | Lord Commander | Lord Lieutenant | Lord General |
+| Buccaneer (`zpNatPirate`) | Bloodthirsty Buccaneer | Notorious Buccaneer | Legendary Buccaneer |
+| Corsair | Bloodthirsty Corsair | Notorious Corsair | Legendary Corsair |
+| Wokou and other pirate lines | Bloodthirsty + the unit noun | Notorious + the unit noun | Legendary + the unit noun |
+| Parliament lords (`zpNatLord`) | Lord Commander | Lord Lieutenant | Lord General |
 | Christmas units | Hardy | Seasoned | Storied |
 
 Build a new native's ladder by copying an existing one's three techs (e.g. `zpNatDisciplinedPirate`,

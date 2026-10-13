@@ -198,4 +198,12 @@
   </zpconsulateparliamentinchiquin>
   <zpconsulateparliamentmyddelton portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/myddelton.png">
   </zpconsulateparliamentmyddelton>
+  <zpbigconsulatespcchina portraitfilename="ui\ingame\politicians\consulate_chinese" portraitfilenamewpf="resources/images/icons/politicians/consulate_chinese.png">
+  </zpbigconsulatespcchina>
+  <zpbigconsulatespcchinaclone portraitfilename="ui\ingame\politicians\consulate_chinese" portraitfilenamewpf="resources/images/icons/politicians/consulate_chinese.png">
+  </zpbigconsulatespcchinaclone>
+  <zpbigconsulateamericans portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/usa_president.png">
+  </zpbigconsulateamericans>
+  <zpbigconsulateamericansclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/usa_president.png">
+  </zpbigconsulateamericansclone>
 </politicianmods>

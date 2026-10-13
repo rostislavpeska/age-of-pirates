@@ -36,7 +36,7 @@ not the hole.
 
 | Switcher | Fire Events |
 |---|---|
-| Asian civ consulates (Japan / China / India / Khmer) | `Cheat_Returner` |
+| Asian civ consulates (Japan / China / India / Khmer / Korea) | `Cheat_Returner` |
 | Faction big buttons (Orthodox / Tortuga / Sultanate / Cossacks / Venice / Maltese) | `Italian_Vilager_Balance` + `Italian_Gondola_Balance` + `Cheat_Returner` |
 
 Asian swaps do not touch the shipments, so they only need the returner.
@@ -105,7 +105,12 @@ Asian variants add a second condition `ZP Player Civilization` and gate on
 
 `Active(true)`, condition `ZP PLAYER Human` MyBool **true**. Grants
 `cTechzpIsPirateMap`, then one `Fire Event` per `Activate_*` trigger. **A new
-switcher is dead until you add its Fire Event here.**
+switcher is dead until you add its Fire Event here.** `zpIsPirateMap` also
+hides the vanilla `ypBigConsulate*` buttons. A new Asian ally whose Age0
+enables a vanilla button (campaign `ypBigConsulateSPCChina` was the miss)
+must be added to that hide list, or the dialog shows the vanilla card and
+Accept does nothing. The clone shape and the portrait are in
+`native-politician`.
 
 ## Combining two patron systems is safe
 

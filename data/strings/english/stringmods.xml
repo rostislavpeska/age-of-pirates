@@ -3892,6 +3892,31 @@ Natives: Colonial Estate, Haudenosaunee, Pirates</string>
       <string _locid="400288">United States of America</string>
       <string _locid="400289">You declared the Independence of the United States of America!</string>
       <string _locid="400290">%s has declared Independence!</string>
+      <string _locid="503619">United States</string>
+      <string _locid="503620">Allied with the United States. The consulate ships the American expedition. American infantry and cavalry gain hitpoints and damage.</string>
+      <string _locid="503621">Chinese Allies</string>
+      <string _locid="503622">Allied with China. Villagers gather faster. The consulate trains Chinese armies and ships Chinese buildings and Flying Crows.</string>
+      <string _locid="503623">Chinese Company</string>
+      <string _locid="503624">ZP Consulate Chinese Company</string>
+      <string _locid="503625">Trains Chu Ko Nu and Steppe Riders.</string>
+      <string _locid="503626">Chinese Force</string>
+      <string _locid="503627">ZP Consulate Chinese Force</string>
+      <string _locid="503628">Trains Manchu and Hand Mortars.</string>
+      <string _locid="503629">Chinese Army</string>
+      <string _locid="503630">ZP Consulate Chinese Army</string>
+      <string _locid="503631">Trains Iron Troops and Changdao.</string>
+      <string _locid="503632">Rice Paddy</string>
+      <string _locid="503633">ZP Consulate Chinese Rice Paddy</string>
+      <string _locid="503634">Ships a Rice Paddy Wagon.</string>
+      <string _locid="503635">Castle Wagon</string>
+      <string _locid="503636">ZP Consulate Chinese Castle Wagon</string>
+      <string _locid="503637">Ships a Castle Wagon.</string>
+      <string _locid="503638">Flying Crow</string>
+      <string _locid="503639">ZP Consulate Chinese Flying Crow</string>
+      <string _locid="503640">Ships a Flying Crow.</string>
+      <string _locid="503641">Flying Crow Battery</string>
+      <string _locid="503642">ZP Consulate Chinese Flying Crow Battery</string>
+      <string _locid="503643">Ships Flying Crows.</string>
     </language>
   </stringtable>
 </stringmods>

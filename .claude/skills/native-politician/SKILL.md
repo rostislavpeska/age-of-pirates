@@ -1,6 +1,6 @@
 ---
 name: native-politician
-description: "Add or repair an AoP native or Royal House politician choice. Use for Trading Post ally choices, their tech effects and button integration."
+description: "Add or repair an AoP native, Royal House, or Asian consulate ally. Use for Trading Post politicians and for zpBigConsulate flag cards. An Asian ally needs a politicianmods portrait and the dance-clone shape, or the Choose an Ally card is missing or Accept does nothing."
 ---
 
 # Adding a consulate politician
@@ -41,6 +41,19 @@ lowercased:
 
 The wpf png is what the card shows (the `portraitfilename` is the legacy
 fallback every entry shares). No registration anywhere else.
+
+**Asian consulate allies are a second shape.** A flag card is `zpBigConsulate*`,
+not `zpConsulate*`. Copy a working sibling such as `zpBigConsulateRussiansClone`,
+including `NativeDance`, `researchpoints` 1 on the AoP clone, `DoNotQueue`,
+and a closing `unobtainable` of `zpPickConsulateTechAvailable`. Do not put
+`<sequestertech>` or `YPSequesterTech` on the ally. The ally sets its
+`zpBigSequester*` `unobtainable` and then `obtainable`. Register it in
+`politicianmods.xml` under the tech name lowercased. `zpIsPirateMap` must
+`unobtainable` the vanilla `ypBigConsulate*` original. Leaving the original
+obtainable shows its base-game portrait, and Accept does nothing: that shadow
+already removed `ypPickConsulateTech`, and campaign `ypBigConsulateSPCChina`
+has no `NativeDance`. Clone that ally twice (standard map + AoP). The full
+rule is section 7.
 
 **The set** - which cards a player gets to choose from. A set is a
 `zpTurnConsulateOn/Off<Set>` shadow tech (`YPInfiniteTech`) that flips every
@@ -182,6 +195,51 @@ Order matters; every layer below was needed, and the spec covers each.
   shape per file, every shared list identical, every set names the
   politician, placement, map switch + root==repo, twin freshness. Run it red,
   build, run it green, then the game.
+
+## 7. Asian consulate ally (`zpBigConsulate*`)
+
+The Choose an Ally dialog on an AoP map is `ZP Pick Consulate Tech`. It is not
+the Trading Post politician list, and it is not the vanilla consulate button.
+`test_politician_portraits.py` used to scan only `zpConsulate*`, so a new Asian
+clone with no portrait passed the test and the card never appeared (Korea,
+2026-10-13).
+
+Copy the vanilla ally shape (`ypBigConsulateRussians`, `ypBigConsulateJapanese`):
+`NativeDance`, `YPConsulateTech`, `YPInfiniteTech`, `DoNotQueue`. The ally's
+effects set its own `zpBigSequester*` obtainable. That is what shows End Relations.
+
+Do not put `YPSequesterTech` or `<sequestertech>` on the ally button. Those
+belong on the end-relations tech. On the ally, that element re-enables the
+undo tech and the ally effects do not run, so the consulate big button stays.
+A used end-relations tech ignores a later `obtainable`. Every accept must set
+that `zpBigSequester*` `unobtainable` and then `obtainable`, and the sequester
+carries `<researchlimit>99</researchlimit>`. Otherwise the second alliance
+cannot be broken. One ally tech is enough. A second copy of the same partner
+shows as another card.
+
+- AoP clone: `researchpoints` 1, and the last effect
+  `unobtainable` `zpPickConsulateTechAvailable`
+- standard-map twin: `researchpoints` 10, `NativeDance`
+- `politicianmods.xml` element named after the tech, lowercased.
+  `portraitfilename="ui\ingame\politicians\consulate_<cloth>"` is the archive
+  cloth the dialog actually draws when the wpf png is absent (Russia, China).
+  A cloth the archives do not have needs a real png under
+  `data/wpfg/resources/images/icons/politicians/`
+- `obtainable` in its own `zpTurnConsulateOn*` set, `unobtainable` in every
+  other set
+
+`zpIsPirateMap` runs before the dialog. It `unobtainable`s the standard button
+and `obtainable`s the AoP clone, the same swap it does for the vanilla
+`ypBigConsulate*` buttons. Every other civ's `zpTurnConsulateOn*` then
+`unobtainable`s that clone. `ypBigConsulateSPCChina` was missing from that list.
+The civ Age0 shadow had made it obtainable, the base game still has its
+portrait, and Accept researched nothing. Never enable that original. The Korean China ally is the new column
+(banner armies, rice paddy, castle, Flying Crow, battery). Do not copy the
+campaign effects, do not enable `ypConsulateArmySPCChinese*`, and do not use
+string 68623. The Age0
+shadow enables the standard twin. `zpIsPirateMap` and the AoP turn-on both
+`unobtainable` the original and the standard twin, and the turn-on enables
+only the clone.
 
 ## Known traps (all hit once)
 

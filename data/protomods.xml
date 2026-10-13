@@ -76930,6 +76930,187 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
+  <unit id="21207" name="zpConsulateArmyChinese1">
+    <dbid>21207</dbid>
+    <displaynameid>503623</displaynameid>
+    <editornameid>503624</editornameid>
+    <populationcount>8</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\infantry_ranged\grenadier\grenadier.xml</animfile>
+    <icon>resources\art\units\asians\chinese\chu_ko_nu\chu_ko_nu_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\chinese\chu_ko_nu\chu_ko_nu_icon_portrait.png</portraiticon>
+    <rollovertextid>503625</rollovertextid>
+    <shortrollovertextid>503625</shortrollovertextid>
+    <initialhitpoints>400.0000</initialhitpoints>
+    <maxhitpoints>400.0000</maxhitpoints>
+    <los>9.0000</los>
+    <trainpoints>20.0000</trainpoints>
+    <bounty>40.0000</bounty>
+    <buildbounty>40.0000</buildbounty>
+    <cost resourcetype="Trade">400.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractConsulateUnit</unittype>
+    <unittype>AbstractBannerArmy</unittype>
+    <unittype>AbstractConsulateUnitColonial</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>AllowOverPopCap</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>bannerArmy.tactics</tactics>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+  </unit>
+  <unit id="21208" name="zpConsulateArmyChinese2">
+    <dbid>21208</dbid>
+    <displaynameid>503626</displaynameid>
+    <editornameid>503627</editornameid>
+    <populationcount>15</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\infantry_ranged\grenadier\grenadier.xml</animfile>
+    <icon>resources\art\units\mercenaries\manchurian_archer\manchurian_archer_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\mercenaries\manchurian_archer\manchurian_archer_icon_64x64.png</portraiticon>
+    <rollovertextid>503628</rollovertextid>
+    <shortrollovertextid>503628</shortrollovertextid>
+    <initialhitpoints>800.0000</initialhitpoints>
+    <maxhitpoints>800.0000</maxhitpoints>
+    <los>9.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>80.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Trade">800.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractConsulateUnit</unittype>
+    <unittype>AbstractBannerArmy</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>AllowOverPopCap</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>bannerArmy.tactics</tactics>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+  </unit>
+  <unit id="21209" name="zpConsulateArmyChinese3">
+    <dbid>21209</dbid>
+    <displaynameid>503629</displaynameid>
+    <editornameid>503630</editornameid>
+    <populationcount>18</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\infantry_ranged\grenadier\grenadier.xml</animfile>
+    <icon>resources\art\units\asians\mercenaries\iron_troop\iron_troop_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\mercenaries\iron_troop\iron_troop_icon_portrait.png</portraiticon>
+    <rollovertextid>503631</rollovertextid>
+    <shortrollovertextid>503631</shortrollovertextid>
+    <initialhitpoints>1600.0000</initialhitpoints>
+    <maxhitpoints>1600.0000</maxhitpoints>
+    <los>9.0000</los>
+    <trainpoints>40.0000</trainpoints>
+    <bounty>160.0000</bounty>
+    <buildbounty>160.0000</buildbounty>
+    <cost resourcetype="Trade">1600.0000</cost>
+    <allowedage>3</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractConsulateUnit</unittype>
+    <unittype>AbstractBannerArmy</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>AllowOverPopCap</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>bannerArmy.tactics</tactics>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+  </unit>
 
 
 <!--TEST AND TEMPORARY CONTENT-->

@@ -20,7 +20,7 @@ import sys
 # DEShipItalianFishingBoat and must repay them. See SKILL.md Rule 0.
 RETURNER = 'Cheat_Returner'
 ITALIAN = ['Italian_Vilager_Balance', 'Italian_Gondola_Balance']
-ASIAN_MARKERS = ('Japan', 'China', 'India', 'Khmer', 'Chinese', 'Japanese', 'Indians')
+ASIAN_MARKERS = ('Japan', 'China', 'India', 'Khmer', 'Chinese', 'Japanese', 'Indians', 'Korea', 'Koreans')
 
 
 def norm(name):

@@ -281,7 +281,7 @@ class TestTechs:
         assert [c for c in CARDS if 'status="obtainable">%s<' % c in own] == list(CARDS)
         assert own.count('status="obtainable"') == 3
         others = [n for n in t if re.match(r"zpTurnConsulateO", n) and n != SET]
-        assert len(others) == 38
+        assert len(others) == 39  # includes zpTurnConsulateOnKorean
         for n in others:
             for c in CARDS:
                 assert 'status="unobtainable">%s<' % c in t[n], (n, c)
