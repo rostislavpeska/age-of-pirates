@@ -88,15 +88,30 @@ not a proof of a globally optimal packing. Consumer scripts must additionally
 verify UV/member correspondence, real density, chart orientation and live copies.
 Use a finite scale list/time budget and retain the best validated parent on failure.
 
-Current limitation: `pack_masks.py` starts with an empty page and has no pinned
-external-reader input. It cannot safely repack around frozen dependencies merely
-by omitting those dependencies from its owners. A diagnostic adapter must retain
-the complete current state/material reader union, including degenerate readers,
-and perform exact geometry checks after raster search. Record rotation/translation
-domain and rejected placements; a bounded failure is not universal infeasibility.
-Reclaim an old footprint only after every reader there is identified and moved
-or proven unaffected. An interior-only correspondence does not release boundary
-readers. Generic pinned-obstacle integration remains unimplemented.
+For frozen dependencies, opt into `pack_masks.py` with `spec.obstacles`, a list
+of `{id, polygons}` groups in page pixels. Optional JSON provenance is included
+in the returned protected identities. These groups never move and may overlap
+each other or touch the page border. Pinned mode requires scale 1; only declared
+quarter turns are permitted. Candidate-to-reader distance is twice `padding_px`,
+with exact geometry validation after raster proposals; even zero padding rejects
+intersection. Without the `obstacles` key, existing empty-page behavior remains.
+
+The caller supplies the complete current state/material reader inventory.
+Degenerate point/line readers fail closed: represent them with an explicitly
+justified area footprint or keep the operation held, never omit them. Reclaim an
+old footprint only after every reader is identified and moved or proven unaffected.
+An interior-only correspondence does not release boundary readers. Preserve the
+returned obstacle identities and check source UVs, actual density and compressed
+mips separately. Tests are in `tests/test_pinned_pack.py`; fixture validation is
+not proof of an actual asset layout or global packing feasibility.
+
+Before testing whether exact unfolding narrows a bent strip, measure its
+planarity. The NumPy core `master_unwrap.unfold_face` in
+[high-low baking](../blender-high-low-baking/SKILL.md) preserves intrinsic edge
+lengths: a planar strip retains its physical upsweep under isometry. Do not rerun
+packing when the outline is unchanged. A narrower non-isometric parameterization
+needs explicit distortion, both density axes, winding, continuity and overlap
+proof; no general continuous strip-straightening solver is currently provided.
 
 ## Accept a candidate only with evidence
 
