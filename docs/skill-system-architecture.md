@@ -74,6 +74,37 @@ include a new package just because it exists in `.claude/skills/`.
 
 ## Portable workflows and AoP policy
 
+### Capability, project and set ownership
+
+The mandatory authoring procedure is
+[capability-authoring](../.claude/skills/capability-authoring/SKILL.md). Agents use
+it automatically before new implementations and after confirmed tool gaps,
+failures or owner corrections. Search and extend first; create a new skill only
+for a distinct reusable capability. Record unimplemented requirements honestly.
+
+| Layer | Maintained source | Roof example |
+| --- | --- | --- |
+| Generic capability | AoP `.claude/skills/` | `blender-roof-baking`: geometric ridge/hip/valley identification and construction, bake/continuity contract for any roof |
+| Project style | Consuming project's guidelines | Korean roof/ridge/valley form and canonical references |
+| Concrete set | Consuming project's subproject profile | Colonial/Industrial/Imperial colour, glaze, weathering and ridge finish |
+| Asset instance | Project recipe and handoff | Exact source hashes, dimensions, masks, permissions and installed revision |
+
+Profiles inherit mechanics and specialize declared parameters; they cannot
+waive geometry/UV/reader correctness or silently replace accepted baselines.
+Keep pattern generation, material sourcing, effects and encoding independently
+versioned and tunable. A successful result is a quality floor, not a ceiling.
+Promote improvements only with the approval required by that task.
+
+No duplicate full instruction trees: use links/forwarders when migrating.
+Project-specific effects and example parameters do not become universal defaults.
+Do not install Japanese/Chinese style copies just because Korean roof mechanics
+could later serve them. Reuse needs evidence and a distinct style profile.
+
+Documentation completeness, runnable implementation, source-closed replay,
+visual acceptance and runtime validation are separate readiness claims. The
+new roof entrypoint documents missing discovery/continuity implementations; it
+does not certify them by listing them.
+
 Use a reusable package for common mechanics and an AoP entry skill for mod-specific
 policy and evidence. For example:
 

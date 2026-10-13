@@ -1,5 +1,11 @@
 # Korean roof appearance: the Town Center canon (roof_canon v1)
 
+Current project rules are authoritative: `<consumer-project>/patterns/korean/roof_workflow.md`
+and its set profiles. Owner clarification, 13 October: TC's old pattern will be
+replaced too; preserve its finish evidence separately. Current military quality
+is a floor, and better methods may be approved. The legacy tool contract below
+does not prohibit a versioned, owner-approved improvement or select an old mesh.
+
 Every Korean roof's tile field, clay caps and eave-end clay derives original material samples from the canonical Town Center through
 `scripts/roof_canon.py`. Ad-hoc building-specific looks are forbidden; explicit
 owner-approved age profiles may grade those samples. Start at the consuming

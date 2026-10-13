@@ -1,14 +1,16 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
-    "references/continuity.md",
     "references/ai-paint-gate.md",
+    "references/continuity.md",
     "references/sources.md",
-    "scripts/masonry_lib.py",
-    "scripts/test_masonry_lib.py",
     "scripts/masonry_floor.py",
-    "scripts/test_masonry_floor.py"
+    "scripts/masonry_lib.py",
+    "scripts/paint_relief.py",
+    "scripts/test_masonry_floor.py",
+    "scripts/test_masonry_lib.py",
+    "scripts/test_paint_relief.py",
+    "SKILL.md"
   ],
   "skills": [
     "aoe3-texture-weathering",

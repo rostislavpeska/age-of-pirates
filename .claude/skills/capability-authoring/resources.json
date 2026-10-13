@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "files": ["SKILL.md"],
+  "skills": ["workflow-journal", "skill-library-audit"],
+  "external": []
+}

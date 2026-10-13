@@ -1,16 +1,20 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
     "references/workflow-v2.md",
+    "scripts/blender_uv_to_json.py",
     "scripts/generate.py",
     "scripts/make_mask.py",
     "scripts/make_seamless.py",
     "scripts/test_generate_client.py",
-    "scripts/test_no_secrets.py"
+    "scripts/test_no_secrets.py",
+    "scripts/test_uv_island_paint.py",
+    "scripts/uv_island_paint.py",
+    "SKILL.md"
   ],
   "skills": [
-    "blender-architecture-texturing"
+    "blender-architecture-texturing",
+    "masonry-texturing"
   ],
   "external": [
     {
@@ -36,6 +40,18 @@
         "python",
         "python3"
       ]
+    },
+    {
+      "id": "consumer-ddt-patch",
+      "kind": "capability",
+      "modules": [
+        "ddt_patch"
+      ],
+      "requiredFor": [
+        "uv-paint-ddt-patch"
+      ],
+      "optional": false,
+      "note": "Only when uv_island_paint apply requests --ddt. Consumer provides scripts/havok/ddt_patch.py and its tested decoder/encoder dependencies; source PNG painting does not require it."
     }
   ]
 }

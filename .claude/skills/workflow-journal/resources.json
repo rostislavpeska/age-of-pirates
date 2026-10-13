@@ -1,9 +1,10 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
+    "references/process-audit.md",
     "scripts/journal.py",
-    "scripts/test_journal.py"
+    "scripts/test_journal.py",
+    "SKILL.md"
   ],
   "skills": [],
   "external": [

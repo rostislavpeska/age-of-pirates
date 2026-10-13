@@ -1,73 +1,105 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
-    "references/engine-and-vanilla.md",
+    "references/aop-korean-tc-evidence.md",
     "references/details_export.md",
+    "references/engine-and-vanilla.md",
     "references/mask-sources.md",
     "references/review-preview.md",
-    "references/aop-korean-tc-evidence.md",
-    "scripts/pc_common.py",
-    "scripts/details_mask.py",
-    "scripts/lighten_under_mask.py",
-    "scripts/check_state.py",
-    "scripts/details_review.py",
-    "scripts/test_player_colour.py",
+    "scripts/check_render_response.py",
     "scripts/check_role_coverage.py",
+    "scripts/check_state.py",
+    "scripts/details_full_strength.py",
+    "scripts/details_mask.py",
+    "scripts/details_review.py",
+    "scripts/lighten_under_mask.py",
+    "scripts/pc_common.py",
+    "scripts/test_player_colour.py",
+    "scripts/test_render_response.py",
     "scripts/test_role_coverage.py",
-    "scripts/details_full_strength.py"
+    "SKILL.md"
   ],
   "skills": [],
   "external": [
     {
       "id": "python",
       "kind": "executable",
-      "requiredFor": ["mask", "lighten", "check"],
+      "requiredFor": [
+        "mask",
+        "lighten",
+        "check"
+      ],
       "optional": false,
       "note": "details_mask, lighten_under_mask and check_state need NumPy and Pillow (OpenCV optional for 16-bit map compares; pytest for the tests).",
-      "commands": ["python", "python3"],
-      "modules": ["numpy", "PIL"]
+      "commands": [
+        "python",
+        "python3"
+      ],
+      "modules": [
+        "numpy",
+        "PIL"
+      ]
     },
     {
       "id": "opencv",
       "kind": "python-package",
-      "requiredFor": ["check"],
+      "requiredFor": [
+        "check"
+      ],
       "optional": true,
       "note": "check_state.py decodes 16-bit maps with OpenCV when present and falls back to Pillow.",
       "distribution": "opencv-python",
-      "modules": ["cv2"]
+      "modules": [
+        "cv2"
+      ]
     },
     {
       "id": "scipy",
       "kind": "python-package",
-      "requiredFor": ["full-strength"],
+      "requiredFor": [
+        "full-strength"
+      ],
       "optional": true,
       "note": "details_full_strength.py labels painted regions and measures edge plateaus with scipy.ndimage (plus NumPy and Pillow).",
       "distribution": "scipy",
-      "modules": ["scipy"]
+      "modules": [
+        "scipy"
+      ]
     },
     {
       "id": "pytest",
       "kind": "python-package",
-      "requiredFor": ["tests"],
+      "requiredFor": [
+        "tests"
+      ],
       "optional": true,
       "note": "Runs the synthetic-specimen tests in scripts/test_player_colour.py.",
       "distribution": "pytest",
-      "modules": ["pytest"]
+      "modules": [
+        "pytest"
+      ]
     },
     {
       "id": "blender",
       "kind": "application",
-      "requiredFor": ["preview"],
+      "requiredFor": [
+        "preview"
+      ],
       "optional": true,
       "note": "details_review.py runs inside Blender (bpy, 4.x node-group interface API). A live scene is driven through the consuming project's MCP safety procedure; verification runs in background on a copy.",
-      "commands": ["blender"],
-      "modules": ["bpy"]
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
     },
     {
       "id": "ddt-writer",
       "kind": "application",
-      "requiredFor": ["export"],
+      "requiredFor": [
+        "export"
+      ],
       "optional": true,
       "note": "Any writer of the vanilla DXT1 DDT profile (RTS3 fmt 4, full mips). Age of Pirates uses scripts/havok/ddt_dxt1.py in the mod repository, which is not part of this package.",
       "commands": []

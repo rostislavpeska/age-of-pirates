@@ -19,7 +19,7 @@ The session used Resource Manager `Ddt.FromPicture` through PowerShell 7; Window
 # Cutout compression check
 
 When patching an existing DXT5 cutout page, derive the cutoff from the assigned
-material. `scripts/havok/ddt_patch.py --cutout-threshold 128` preserves the side
+material. `<consumer-root>/scripts/havok/ddt_patch.py --cutout-threshold 128` preserves the side
 of a 0.5 cutoff when selecting compressed alpha indices. Use this only for an
 alpha-tested material. It does not change the source silhouette and does not
 correct coverage changes caused by downsampling. Compare decoded mip alpha with

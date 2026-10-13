@@ -49,6 +49,11 @@ A good record:
 
 ## Distil (only when the owner asks, or in a skill maintenance pass)
 
+The owner's 13 October automatic-upkeep rule also authorizes scoped maintenance
+when a confirmed gap/failure/correction is encountered during work. Apply
+`capability-authoring` to update the owning rule and discovery links in that work;
+retain the original journal evidence. Do not wait for the same defect to recur.
+
 1. `python .claude/skills/workflow-journal/scripts/journal.py digest` - open records grouped
    by skill; `DISTILL CANDIDATE` marks skills with an owner correction or a repeated lesson.
 2. For each candidate, make the smallest rule change in that skill's `SKILL.md` or reference,

@@ -6,14 +6,16 @@ description: "Reuse the Korean building set's specific art recipes: simple woode
 # Korean architecture recipe library
 
 Generic UV stages follow [blender-uv-workflow](../blender-uv-workflow/SKILL.md).
-Keep Korean appearance recipes here; checkpoint logic, numeric gates and source
-identity belong to the shared workflow, not a second Korean implementation.
+For roofs, [blender-roof-baking](../blender-roof-baking/SKILL.md) owns generic
+geometry, junction and bake mechanics. Korean form/style lives in the consuming
+project's `patterns/korean/`; set finish lives in its `sets/<set>/` profiles.
+Follow [capability-authoring](../capability-authoring/SKILL.md) for automatic
+upkeep. Historical helper/reference locations below remain compatibility
+dependencies, not permission to create another Korean style source here.
 
-This is the dedicated space for methods developed for the Korean set. It records
-the owner's art direction, reproducible recipe inputs and demonstrated limits.
-It is not another general Blender workflow. Keep recipes here when they describe
-a Korean feature; keep tool safety, UV algorithms and engine serialization in
-their existing shared skills.
+This entry routes existing Korean feature tooling. The consuming project's
+current guidelines and selectors own art direction and accepted recipe inputs.
+Keep tool safety, UV algorithms and engine serialization in their shared skills.
 
 ## Step 0 — inspect the model's functional reference before blockout
 
@@ -45,7 +47,7 @@ pole bodies. The r11 repair and `gr2_lint` physical_mount check address that fai
 
 ## Choose the feature
 
-For **every roof task**, first open the consuming Korean project's
+For **every roof task**, load the generic roof capability, then open the consuming Korean project's
 `patterns/korean/roof_workflow.md` and `roof_profiles.json`. The parent Korean
 project owns the shared construction/source workflow; Colonial and Industrial
 cards own finish definitions and canonical references. Wonders explicitly choose
@@ -61,7 +63,7 @@ A later narrow finish exception must not be treated as permission for general re
 | **ANY roof appearance (field, caps, eave-end clay, edges): sampled from the canonical TC, never re-implemented** | [Roof canon](references/roof-canonical.md) + `scripts/roof_canon.py` (gate) + `scripts/roof_lookdev.py` (TC vs building, same rig) |
 | Roof tiles, color variation, moss, exposed clay | [Roof surface finish](references/roof-color.md) |
 | Tile laps or shadows appear to face uphill; verify the full bake/export chain | [Roof tile direction QA](../roof-tile-direction-qa/SKILL.md), then the Korean roof recipe |
-| **Two roofs meet (valley, 회첨골: an L/T plan, an entry wing)**. Missed on the Consulate until the owner flagged it on 2026-10-11, because this table had no row and the plan's "texture-only valley" step named no implementation | Project pattern `KR-ROOF-VALLEY-01` (korean-buildings-blender `patterns/korean/roof_valleys.md`; House B r15h parameters accepted in game; no new tuning). Place it by 3D distance to the junction geometry (the valley line), never by atlas position and never by distance to "the other slope family", because convex gable verges face it too. Frame-gate first: the roof texels must lie on the roof surface. The Consulate r8d gutter landed 6.4 m off the junction because of a copied offset, and the owner had to flag the valley twice. Where one roof's valley texels are UV readers, lay the full strip on the owner side (civic pair `recipes/civic_roof_valley*.py`; failure modes in the rule card) |
+| Two roofs meet: valley, hip, L/T or cross-gable | Generic roof capability for physical detection/construction; project `patterns/korean/roof_valleys.md` for the Korean treatment. BOTH matching faces must be covered. The one-sided Consulate workaround is owner-rejected (13 October). Report incompatible shared readers; do not silently omit a side or alter UVs. New valley style needs the task's manual approval. |
 | A long timber member (mast, ridge beam, lintel) longer than its tileable wood source | It repeats the tile (Consulate mast: 3.76x a 2.03 m tile). Run the D11 gate (`qa_detectors.member_repeat_check`; civic driver `recipes/member_repeat_gate.py`) and de-repeat (`recipes/civic_member_derepeat.py`) |
 | A gable / board decoration (medallion, emblem) | Whole on every face sharing its texels, or a mirrored pair, or none. See [aoe3de-player-colour](../aoe3de-player-colour/SKILL.md) "A motif is whole" |
 | ANY roof bake or roof specimen: the whole roof bakes as one assembly (field + eave fronts + underlip + caps; soffit/timber ridge declared) | [One roof = one bake](references/roof-ends.md#one-roof--one-bake-owner-9-october-2026) + [roof_assembly_spec.json](references/roof_assembly_spec.json); the bake tool's assembly gate refuses a partial roof |

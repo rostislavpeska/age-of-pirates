@@ -1,7 +1,6 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
     "references/building-set-consistency.md",
     "references/canonical-derivation.md",
     "references/chart-joining.md",
@@ -23,16 +22,19 @@
     "scripts/check_tile.py",
     "scripts/density_floor.py",
     "scripts/handoff.py",
+    "scripts/plank_direction_audit.py",
     "scripts/surface_projection.py",
     "scripts/test_density_floor.py",
     "scripts/test_edit_scope.py",
     "scripts/test_handoff_delivery.py",
     "scripts/test_handoff_wip.py",
     "scripts/test_material_direction.py",
+    "scripts/test_plank_direction_audit.py",
     "scripts/test_surface_projection.py",
     "scripts/test_uv_metrics.py",
     "scripts/uv_metrics.py",
-    "scripts/validate_uv.py"
+    "scripts/validate_uv.py",
+    "SKILL.md"
   ],
   "skills": [
     "aoe-uv-atlas-export",
@@ -44,6 +46,7 @@
     "blender-uv-observability",
     "blender-uv-reuse",
     "blender-uv-workflow",
+    "korean-architecture",
     "skill-library-audit"
   ],
   "external": [

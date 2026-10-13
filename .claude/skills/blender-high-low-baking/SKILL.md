@@ -4,6 +4,11 @@ description: Authors and validates high-poly to low-poly architectural normal/AO
 ---
 # Architectural high/low baking
 
+For roofs, start with [blender-roof-baking](../blender-roof-baking/SKILL.md) for
+geometry/junction scope and the split between generic mechanics, project style
+and set finish. This package remains the sole bake implementation; the roof
+entrypoint does not duplicate it.
+
 Use the workflow's [bake dependency table](../blender-uv-workflow/references/bakes-and-recovery.md)
 to distinguish measurement AO, pilots, reusable masters and runtime bakes. Masters
 may precede final packing after the relevant geometry/detail contract is stable;

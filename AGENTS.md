@@ -213,6 +213,15 @@ distilling open records (`journal.py digest`), on the owner's request; agent-pri
 
 ## Universal skill source
 
+**Automatic capability upkeep:** before writing a new workflow implementation,
+and after a confirmed gap, failure or owner correction, apply
+`.claude/skills/capability-authoring/SKILL.md` without waiting for another request.
+Generic mechanics belong in AoP skills, project forms in that project's guides,
+and set-specific appearance in its subproject profiles. Extend existing owners,
+update discovery links and preserve failure evidence in the same work. Do not
+claim an unimplemented or unreplayed capability is production-ready. For any
+roof work start with `blender-roof-baking`, then the project and set profile.
+
 When maintaining the skill system, read [its architecture](docs/skill-system-architecture.md).
 It describes AoP ownership, both public repositories, sync boundaries and verification.
 

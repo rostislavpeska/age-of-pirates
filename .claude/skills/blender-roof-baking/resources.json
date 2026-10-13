@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "files": ["SKILL.md", "references/geometry-contract.md"],
+  "skills": ["capability-authoring", "blender-high-low-baking", "junction-testbed", "texture-corner-seams", "alpha-cutout-texturing", "roof-tile-direction-qa"],
+  "external": []
+}

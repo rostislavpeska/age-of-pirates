@@ -1,8 +1,9 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
+    "references/post-edit-repair.md",
     "scripts/resolve_ao.py",
+    "SKILL.md",
     "tests/test_resolve_ao.py"
   ],
   "skills": [

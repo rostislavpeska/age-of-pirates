@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md",
     "recipes.json",
     "references/lattice-hanji.md",
     "references/palette-ages.md",
     "references/plaster-weathering.md",
+    "references/roof_assembly_spec.json",
     "references/roof-canonical.md",
     "references/roof-color.md",
     "references/roof-ends.md",
-    "references/roof_assembly_spec.json",
+    "references/roof-texture-from-tc.md",
     "references/stone-and-grain.md",
     "references/town-center.md",
     "scripts/check_alpha_chain.py",
@@ -20,16 +20,19 @@
     "scripts/test_alpha_chain.py",
     "scripts/test_alpha_clearance.py",
     "scripts/test_eave_contract.py",
-    "scripts/test_roof_canon.py"
+    "scripts/test_roof_canon.py",
+    "SKILL.md"
   ],
   "skills": [
     "aoe-building-pipeline",
+    "aoe3-texture-weathering",
     "aoe3de-player-colour",
     "blender-architecture-texturing",
     "blender-high-low-baking",
+    "blender-roof-baking",
     "blender-uv-workflow",
-    "roof-tile-direction-qa",
-    "aoe3-texture-weathering"
+    "capability-authoring",
+    "roof-tile-direction-qa"
   ],
   "external": [
     {

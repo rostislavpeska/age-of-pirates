@@ -28,7 +28,7 @@ Causes, largest first:
 
 1. **The reference is the INSTALLED TC: its gr2 and all of its DDTs.**
    - Sha-check the DDTs against the version folder.
-   - Load the gr2 with AoP `scripts/havok/gr2_lint.py` (`load`, `display`).
+   - Load the gr2 with AoP `<consumer-root>/scripts/havok/gr2_lint.py` (`load`, `display`).
    - Render it under the same light and camera as the candidate, with mata, matb and the shared matc all bound.
 2. **Find a feature's TC texels with a UV-readout render.** Emission = (u, v, material id) from the same camera; read the
    pixels on the feature. This is how the TC caps were found on matb.
