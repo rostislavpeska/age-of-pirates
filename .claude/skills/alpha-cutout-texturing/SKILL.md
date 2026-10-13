@@ -67,6 +67,15 @@ is documented in the script. Record the complete reader inventory from the LOW,
 never from candidate alpha. Boundary tolerance is measured in the destination
 texel footprint; do not remove failing faces from the inventory.
 
+A real face may touch texel cells while containing no texel centre. Keep it in
+the geometric inventory and use polygon/cell intersections plus a separate
+continuous expected-alpha bound. Never convert an empty sample list into a
+visibility exemption or drop it from a positive release. A constant projection
+frame makes depth affine over a triangle: vertex extrema can certify its whole
+depth range. This narrow proof does not generalize to varying frames or contours.
+The current centre-sample gate does not yet consume such independent certificates;
+retain that integration hold rather than forging samples or claiming full coverage.
+
 Conflicting interior requirements fail before texture work. Keep the frozen source
 and report the incompatibility; taking the minimum/maximum alpha only moves the
 defect to another face. Shared protected pages need a separate required-cut report.

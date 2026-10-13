@@ -91,3 +91,21 @@ substitute a new method or accumulate adjustments on previously derived output.
 Validate package closure with [skill-library-audit](../skill-library-audit/SKILL.md).
 Static package checks, successful execution, visual acceptance and deployment
 are different evidence. Public export remains separately authorized.
+
+## Efficiency without weakening quality
+
+Measure computation, tool/discovery overhead, waiting and review separately.
+Materialize compressed array inputs once before per-face loops; use bulk native
+attribute reads where supported. Enforce the declared deadline in code, not only
+in prose. Verify optimized output against the preserved baseline before claiming
+a gain; one fast diagnostic does not establish a whole-pipeline speedup.
+
+Reuse stage outputs only when every relevant input identity matches: geometry,
+UVs, normals/tangents, bindings, resolution, cage, parameters, seed and tool/code
+version as applicable. Appearance-only changes can reuse unchanged structural
+maps; geometry/UV/cage changes invalidate the affected maps and downstream work.
+Keep alpha/readers, state parity, compressed mips and visual checks. Batch source
+discovery and publication per useful deliverable; do not repeat a full-library
+verification while another verified coordinator-owned check already covers it.
+No new generic cache controller is implied by these rules: report its actual
+implementation and replay status in the consuming workflow.
