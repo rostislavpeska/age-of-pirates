@@ -29,3 +29,15 @@ renders using `alpha-cutout-texturing`. Unchanged compressed blocks stay exact.
 Measured regression: nearest-alpha quantization flipped 31 Colonial castle roof
 edge pixels during staging; cutoff-constrained indices removed every mismatch.
 The encoder fixtures cover mixed alpha blocks, mip levels and an exact no-op.
+
+For an effects-only DXT5 patch, `ddt_patch.py --preserve-alpha` copies every
+original alpha block at every mip. `--green-only` also preserves endpoint R/B
+bits, colour selectors/order and alpha; it verifies decoded R/B/A and untouched
+blocks. Fixed selectors limit attainable green values. These modes cannot be
+combined with `--cutout-threshold`; use the actual material channel contract.
+
+For another effects revision, compute its increment against the previous native
+final, then apply that increment to the decoded **current** DDT. Subtracting the
+pre-effect source applies the previous effect twice. Compare decoded before/after
+images at equal compression and retain protected-channel and untouched-block
+receipts before runtime promotion.

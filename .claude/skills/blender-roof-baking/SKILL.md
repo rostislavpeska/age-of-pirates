@@ -19,6 +19,12 @@ The [geometry and continuity contract](references/geometry-contract.md) specifie
 their required behaviour. Treat uncovered operations as tracked gaps, never as
 checks that have passed. A declared-junction test is not automatic discovery.
 
+Use the tested [paired-surface probes](references/paired-surface-probes.md) for
+frozen triangle arrays: match exact spatial edges across split UVs, sample both
+sides and compare triangle-frame normals. These are declared-pair diagnostics,
+not automatic roof discovery or complete engine tangent validation. Combine
+writers and readers when testing UV sharing; owner-only samples are insufficient.
+
 ## Inputs and stages
 
 1. Resolve the current asset and allowed edits: mesh/triangles, evaluated

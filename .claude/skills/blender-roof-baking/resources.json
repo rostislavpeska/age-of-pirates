@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "files": ["SKILL.md", "references/geometry-contract.md"],
+  "files": ["SKILL.md", "references/geometry-contract.md", "references/paired-surface-probes.md", "scripts/paired_surface.py", "scripts/test_paired_surface.py"],
   "skills": ["capability-authoring", "blender-high-low-baking", "junction-testbed", "texture-corner-seams", "alpha-cutout-texturing", "roof-tile-direction-qa"],
   "external": []
 }
