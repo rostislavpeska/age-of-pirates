@@ -73,6 +73,31 @@ buildings whose player colour was out of scope byte-identical.
 
 ## QA checks (independent scripts, numbers + evidence images)
 
+### Parameter-only finish on existing encoded maps
+
+Keep normal amplitude and roughness independent from structural bake, BaseColor,
+alpha and weathering masks. Pin semantic tube/pan IDs and named moss/dust masks;
+never infer moss from roughness. Calibrate normal tangent gain against measured
+source slope when matching a reference. An end-only page inherits its parent
+field's gain; absence of field samples is not a failed material.
+
+Check the actual compressed mip chain. Packed roughness edits must preserve
+decoded AO/other mask channels; unchanged alpha does not prove correct contour
+alignment after a new pattern. Protect shared compression blocks conservatively
+and report retained partial blocks. Reopen and inspect the decoded maps on the
+frozen model, then verify live delivery separately. Record a deterministic replay
+and source hashes. Do not claim a shader-only preview is an installed texture.
+
+Windows adapters must parse JSON with explicit UTF-8. Keep native verification
+profiles at their repository-relative evidence root, or resolve that root
+explicitly. A missing authorization file or corrupted quote is a verifier input
+failure, not permission to remove its check. Preserve the failed specimen.
+
+Measured Korean14October recipe: source-dependent tangent gain, green-only BC
+patching,136independent mip comparisons and byte-identical Barracks replay.
+Asset paths/values and remaining alpha holds belong in the consuming project's
+`ZEN_FINISH_ROLLOUT_R1.md`, not in this generic method.
+
 1. alpha identical; 2. untouched roof texels identical, overlays only; 3. protected regions; 4. every
 changed texel inside a claim, composite reproducible; 5. Details R-only and coverage; 6. mip halos
 (box and the encoder's Lanczos, mips 1-4); 7. stacked-cell repetition (centred marks on stacked faces);
