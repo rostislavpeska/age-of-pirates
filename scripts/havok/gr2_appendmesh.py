@@ -15,6 +15,7 @@ mesh's material under --material (its maps are shared), so the .material file gi
 import argparse, struct, sys
 from pathlib import Path
 import numpy as np
+import zlib
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gr2_read import Gr2                              # noqa: E402
@@ -65,8 +66,11 @@ def append(target, source, out, material, bone, name):
     ioff = B.alloc(isec, stris.astype('<i4').tobytes(), 4)
     grp = B.alloc(0, struct.pack('<3i', 0, 0, len(stris)))
     tpo = B.alloc(0, bytes(132)); B.i32(0, tpo, 1); B.ptr(0, tpo + 4, (0, grp)); B.i32(0, tpo + 12, 3 * len(stris)); B.ptr(0, tpo + 16, (isec, ioff))
-    bbo = B.alloc(0, bytes(44)); B.ptr(0, bbo, B.string(bone)); struct.pack_into('<6f', B.sec[0], bbo + 8, *pos.min(0), *pos.max(0))
-    assert bone in [b['Name'] for sk, _ in refs(g, r['Skeletons']) for b in g.array(sk['Bones'])], f'no bone {bone}'
+    bones = {b['Name']: b for sk, _ in refs(g, r['Skeletons']) for b in g.array(sk['Bones'])}
+    assert bone in bones, f'no bone {bone}'
+    inverse = np.asarray(bones[bone]['InverseWorldTransform']).reshape(4, 4)
+    local = (np.c_[pos, np.ones(len(pos))] @ inverse)[:, :3]
+    bbo = B.alloc(0, bytes(44)); B.ptr(0, bbo, B.string(bone)); struct.pack_into('<6f', B.sec[0], bbo + 8, *local.min(0), *local.max(0))
     # material: clone of the template mesh's first material under the new name
     mat_t = r['Materials'][3]
     assert dict(zip(['Name', 'Maps', 'Texture', 'ExtendedData'], member_offsets(g, mat_t, ['Name', 'Maps', 'Texture', 'ExtendedData']))) == {'Name': 0, 'Maps': 8, 'Texture': 20, 'ExtendedData': 28} and g.struct_size(*mat_t) == 44
@@ -93,7 +97,11 @@ def append(target, source, out, material, bone, name):
         ptrs = [g.deref(old[2][0], old[2][1] + i * P) for i in range(old[1])] + new_ptrs
         arr = B.alloc(0, bytes(P * len(ptrs)))
         for i, tp in enumerate(ptrs): B.ptr(0, arr + i * P, tp)
-        B.i32(field_sec, field_off, len(ptrs)); B.repoint(field_sec, field_off + 4, (0, arr))
+        B.i32(field_sec, field_off, len(ptrs))
+        if g.deref(field_sec, field_off + 4) is None:
+            B.ptr(field_sec, field_off + 4, (0, arr))
+        else:
+            B.repoint(field_sec, field_off + 4, (0, arr))
     RM, RT, RV, RMAT = member_offsets(g, (g.root_type_sec, g.root_type_off), ['Meshes', 'TriTopologies', 'VertexDatas', 'Materials'])
     refarray(g.root_sec, g.root_off + RMAT, r['Materials'], [(0, mo)])
     refarray(g.root_sec, g.root_off + RM, r['Meshes'], [(0, me)])
@@ -103,6 +111,17 @@ def append(target, source, out, material, bone, name):
     for i, tp in enumerate(new_bound): B.ptr(0, mbs + i * P, tp)
     B.i32(model_loc[0], model_loc[1] + MODEL_MB, len(new_bound)); B.repoint(model_loc[0], model_loc[1] + MODEL_MB + 4, (0, mbs))
     B.write(str(out))
+    # Granny's native 64->32 conversion needs a marshalling record for the new
+    # packed vertex array, even when every pointer fixup is reachable (INC-290).
+    # Without it Wine can succeed while native layouts crash or read past data.
+    packed = bytearray(Path(out).read_bytes()); temp = Gr2(str(out)); section = temp.sections[vsec]
+    prior = packed[section['marsh_off']:section['marsh_off'] + 16 * section['marsh_count']]
+    offset = len(packed)
+    packed.extend(prior + struct.pack('<4I', len(v), voff, *tva[1]))
+    struct.pack_into('<II', packed, temp.sec_table + 44 * vsec + 36, offset, section['marsh_count'] + 1)
+    struct.pack_into('<I', packed, 36, len(packed))
+    struct.pack_into('<I', packed, 40, zlib.crc32(packed[temp.sec_table:]) & 0xffffffff)
+    Path(out).write_bytes(packed)
     # re-pointed root arrays leave their old arrays' fixups behind: orphans crash / mis-convert in the game's 32-bit DLL
     # (INC-187) - scrub them, every reachable byte stays identical
     from gr2_fixups import orphan_fixups, scrub
