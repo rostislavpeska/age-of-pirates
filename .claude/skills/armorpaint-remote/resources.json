@@ -7,10 +7,30 @@
     "scripts/armorpaint_mcp.py",
     "scripts/smoke_test.py",
     "scripts/test_armorpaint_batch.py",
+    "scripts/composite_delta.py",
+    "scripts/test_composite_delta.py",
     "patches/explicit-texture-resolution.patch"
   ],
   "skills": [],
   "external": [
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "distribution": "numpy",
+      "modules": ["numpy"],
+      "requiredFor": ["composite-delta"],
+      "optional": false,
+      "note": "Native baseline-delta channel arithmetic."
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "distribution": "pytest",
+      "modules": ["pytest"],
+      "requiredFor": ["composite-delta-tests"],
+      "optional": false,
+      "note": "Small deterministic compositor regressions."
+    },
     {
       "id": "armorpaint",
       "kind": "application",
@@ -32,7 +52,8 @@
       "requiredFor": [
         "run",
         "export",
-        "smoke-test"
+        "smoke-test",
+        "composite-delta"
       ],
       "optional": false,
       "note": "Decode and validate output PNGs."

@@ -53,6 +53,23 @@ native script execution and five-map PNG export, not every application feature.
 
 ## MCP and checks
 
+### Replay the frozen-atlas composition
+
+`python scripts/composite_delta.py --recipe RECIPE.json --root INPUT_ROOT --out NEW_OUTPUT`
+replays an already exported native effect without starting ArmorPaint. The recipe
+names a binary grayscale scope and map rows with source, native before/after,
+selected destination channels and reference PNG paths relative to INPUT_ROOT.
+Rows without channel changes copy the source. Optional `--source-dir` chains
+the preceding replay output. Outputs must be new. The receipt records input,
+tool and recipe hashes, protected-pixel counts and exact reference comparisons.
+
+Supported: uint8 maps, explicit channel mapping, clipped signed deltas and exact
+preservation outside the binary scope. This proves composition only; cached
+native exports do not prove replay of native layers, masks or upstream baking.
+The consuming project owns its recipe and accepted reference identities.
+`python -m pytest scripts/test_composite_delta.py -q` checks channel/scope
+preservation, clipping and dimensional refusals.
+
 The optional [stdio server](scripts/armorpaint_mcp.py) exposes the same verified
 batch operations. Configure its command as `python <absolute path to server>`
 and `ARMORPAINT_EXE` in the client's local environment. No automatic edits to
