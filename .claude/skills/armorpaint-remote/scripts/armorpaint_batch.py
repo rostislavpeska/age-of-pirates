@@ -124,12 +124,32 @@ def execute(exe, args, out, expected, marker, inputs=(), timeout=120, png_size=N
         (out/'RUN.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
+def validate_save_targets(code, expected):
+    """Reject stale/dynamic project paths before native code can overwrite a source.
+
+    This guards the supported project-save API, not arbitrary trusted C file IO.
+    """
+    calls = re.findall(r'project_filepath_set\s*\(\s*("(?:[^"\\]|\\.)*")\s*\)', code)
+    if len(calls) != len(re.findall(r'\bproject_filepath_set\s*\(', code)):
+        raise ValueError('Project save paths must be literal strings for preflight')
+    if re.search(r'\bproject_save\s*\(', code) and not calls:
+        raise ValueError('Project save needs an explicit declared output path')
+    allowed = {Path(p).resolve() for p in expected}
+    for literal in calls:
+        target = Path(json.loads(literal)).resolve()
+        if target not in allowed:
+            raise ValueError(f'Native project save is not an expected output: {target}')
+        if target.exists():
+            raise FileExistsError(f'Refusing native project overwrite: {target}')
+
+
 def run_script(exe, input_path, script_path, out_dir, expected, marker, timeout=120):
     if not expected or not marker or not marker.strip():
         raise ValueError('Script runs require expected outputs and a completion marker')
     source, script = Path(input_path).resolve(), Path(script_path).resolve()
     for p in (source, script):
         if not p.is_file(): raise FileNotFoundError(p)
+    validate_save_targets(script.read_text(encoding='utf-8'), expected)
     out = prepare_directory(out_dir)
     return execute(exe, [source, '--script', script], out, expected, marker, [source, script], timeout)
 

@@ -2,9 +2,24 @@ import tempfile
 import unittest
 from pathlib import Path
 from PIL import Image
-from armorpaint_batch import check_evidence, prepare_directory, runtime, run_script, resize_script
+from armorpaint_batch import check_evidence, prepare_directory, runtime, run_script, resize_script, validate_save_targets
 
 class EvidenceTests(unittest.TestCase):
+    def test_stale_native_path_is_rejected_before_launch(self):
+        import json
+        with tempfile.TemporaryDirectory() as d:
+            old=Path(d)/'old.arm';old.write_bytes(b'preserve source')
+            new=Path(d)/'new.arm'
+            code='project_filepath_set('+json.dumps(str(old))+');project_save(0);'
+            with self.assertRaises(ValueError):validate_save_targets(code,[new])
+            self.assertEqual(old.read_bytes(),b'preserve source')
+            validate_save_targets(code.replace(json.dumps(str(old)),json.dumps(str(new))),[new])
+            with self.assertRaises(FileExistsError):validate_save_targets(code,[old])
+
+    def test_implicit_and_dynamic_save_targets_rejected(self):
+        for code in ['project_save(0);','project_filepath_set(target);project_save(0);']:
+            with self.assertRaises(ValueError):validate_save_targets(code,['new.arm'])
+
     def test_resolution_validation(self):
         for value in [0, 63, 1000, 32768, True, 1024.0]:
             with self.assertRaises(ValueError): resize_script(value, 'result.arm')
