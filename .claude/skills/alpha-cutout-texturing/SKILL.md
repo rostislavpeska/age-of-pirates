@@ -58,6 +58,24 @@ top hides it; check the low review view anyway.
 
 ## 4. Seam QA (fails the run)
 
+Before a new bake, project the independent silhouette onto **every face reading
+the affected pixels**, including mirrored/reused back and underside faces. An
+atlas-owner mask can pass while another reader at a different depth needs the
+opposite alpha. Run `scripts/alpha_reader_gate.py samples.npz --out preflight.json`
+before the bake and add `--alpha decoded_runtime.png` afterward. Its input schema
+is documented in the script. Record the complete reader inventory from the LOW,
+never from candidate alpha. Boundary tolerance is measured in the destination
+texel footprint; do not remove failing faces from the inventory.
+
+Conflicting interior requirements fail before texture work. Keep the frozen source
+and report the incompatibility; taking the minimum/maximum alpha only moves the
+defect to another face. Shared protected pages need a separate required-cut report.
+An opaque back face may be exempted only with exterior visibility evidence for all
+consuming states, not from its name, normal direction, or an owner-only mask.
+Regression: one candidate passed 75,416 owner samples but failed 3,633 reused
+reader samples. The expanded all-face fixture exposes 3,343 contradictory texels.
+Run `python -m unittest discover -s scripts -p test_alpha_reader_gate.py`.
+
 `slab_fold.py qa --profile PROFILE_MAP.json --basecolor PAGE_BaseColor.png` compares the colour step across every shared
 edge with the same-distance step inside the two faces: bilinear sampling, 6 and 18 mm inside each face, only where all
 four samples are opaque. Pass: each edge ≤ 2.0×, mean ≤ 1.3×.
