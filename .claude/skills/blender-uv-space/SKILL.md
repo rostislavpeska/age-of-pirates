@@ -88,6 +88,16 @@ not a proof of a globally optimal packing. Consumer scripts must additionally
 verify UV/member correspondence, real density, chart orientation and live copies.
 Use a finite scale list/time budget and retain the best validated parent on failure.
 
+Current limitation: `pack_masks.py` starts with an empty page and has no pinned
+external-reader input. It cannot safely repack around frozen dependencies merely
+by omitting those dependencies from its owners. A diagnostic adapter must retain
+the complete current state/material reader union, including degenerate readers,
+and perform exact geometry checks after raster search. Record rotation/translation
+domain and rejected placements; a bounded failure is not universal infeasibility.
+Reclaim an old footprint only after every reader there is identified and moved
+or proven unaffected. An interior-only correspondence does not release boundary
+readers. Generic pinned-obstacle integration remains unimplemented.
+
 ## Accept a candidate only with evidence
 
 Before a dependent edit: save, reread actual UVs, remeasure useful content and

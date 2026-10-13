@@ -55,6 +55,11 @@ writers and readers when testing UV sharing; owner-only samples are insufficient
    consuming engine adapter for compressed mips and export gates. Report which
    requirements are tested and which remain unimplemented.
 
+For multi-state engine assets, consume the engine adapter's serialized reader
+census before a new layout or texture write. The AoE adapter provides
+[runtime reader inventory](../aoe3de-building-states/SKILL.md#6-gates). Authoring
+face IDs alone do not cover fractured, construction or other material readers.
+
 ## Reuse map — capabilities and limits
 
 | Operation | Existing owner | Boundary |

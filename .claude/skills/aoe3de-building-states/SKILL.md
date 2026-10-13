@@ -115,6 +115,30 @@ test; record the asset's export frame next to its recipe.
 
 ## 6. Gates
 
+Before allocating texture space or changing a shared state atlas, inventory its
+actual serialized readers with [runtime_reader_census.py](scripts/runtime_reader_census.py):
+
+```text
+python scripts/runtime_reader_census.py --model MODEL.gr2 --material MODEL.material --art-root MOD/art --out NEW_SCRATCH
+```
+
+Run once per selected intact/damaged/construction model. The NPZ preserves every
+bound triangle's positions, raw GR2 UVs, material, mesh/triangle indices and
+dominant corner bone indices; JSON identifies bindings, texture hashes and source
+hashes. Material-group indices are resolved explicitly and missing/duplicate
+coverage fails. Compressed input requires `--allow-native` and the configured
+headless DLL route; no substitution of another state. Five synthetic tests cover
+multi-material order and rejected incomplete readers. A census is not routing,
+visibility, blended skinning or complete frame/correspondence proof.
+
+Pair the actual state branch selection with this inventory before declaring a
+destination unused. A source file named RUNTIME_GEOM does not establish runtime
+identity. Quantized damaged UVs can collapse to points or lines: retain their
+readers and sampling protection, rather than dropping them to make packing pass.
+Geometric fragment intersections can also create numerical boundary slivers.
+Keep strict failures and explicit boundary uncertainty separate from interior
+correspondence; a tolerance-qualified interior pass is not exact edge proof.
+
 | Gate | Evidence |
 |---|---|
 | Before geometry | state/attachment table, donor hashes, exclusion list, source revision |
