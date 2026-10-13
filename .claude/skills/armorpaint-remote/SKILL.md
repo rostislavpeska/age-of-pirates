@@ -1,6 +1,6 @@
 ---
 name: armorpaint-remote
-description: Run ArmorPaint native scripts headlessly to create editable layers, procedural masks and material effects from existing mesh maps, save/reopen projects and verify texture exports. Includes a bounded Windows CLI and stdio MCP adapter; does not require GUI driving or rebaking.
+description: Run ArmorPaint native scripts through the tested Windows batch adapter to create layers, save/reopen projects and verify exports. Reuse existing mesh maps; no GUI driving or rebake is required.
 ---
 
 # ArmorPaint native automation
@@ -37,6 +37,18 @@ against the accepted output, not a software-name quality claim. For disconnected
 roof body/end islands, consume the shared physical mapping in
 [roof baking](../blender-roof-baking/references/geometry-contract.md#body-to-end-mapping-implementation-contract).
 Independent per-island planar effects and UV-edge wear do not prove continuity.
+
+The consuming recipe owns layer order, explicit resolution, parameters with
+units, seeds, map conventions and each input mask's identity and meaning. Retain
+native baseline, isolated effects and combined exports so the composition can be
+replayed independently. Record whether a mask is measured, retained or a proxy;
+never substitute roughness for semantic moss without a reviewed recipe change.
+Equal strengths with different inputs are not a replay of the same finish.
+
+Report native script execution, reopen/export, cached delta composition and
+visual acceptance as separate evidence. None proves automatic region selection,
+upstream map creation or runtime quality. Provider failures remain scoped to
+that operation; they do not silently switch the task to another application.
 
 1. Preserve the original mesh, UVs, maps and masks. Work on an authoring copy with
    correct material/face ownership. Reuse current curvature, AO, position and

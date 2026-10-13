@@ -1,6 +1,6 @@
 ---
 name: texture-patching
-description: Fix a small visible flaw on a finished, baked or painted atlas page with a minimal clone patch instead of a re-bake or re-UV. Start from the shipped maps, mask only the flaw, copy the page's own texels from a pattern-aligned offset (colour, normal and AO together), and prove every changed texel is inside the mask. Use when the owner points at a local artifact on a texture already in game (a dark slit, a stain, a seam line, an unpainted rim) and the rest of the page is accepted.
+description: Repair a localized flaw on an accepted texture atlas using a masked, pattern-aligned patch. Preserve existing UVs and prove that pixels and channels outside the repair remain unchanged.
 ---
 
 # Texture patching: minimal, contained, provable
@@ -13,6 +13,26 @@ fix!!!", "More reasoning. How to patch minimally invasively", "Without roof text
 
 **A patch changes only the flaw, and proves it.** Repainting whole surfaces, running broad automatic passes or
 re-baking to fix one visible spot puts the accepted rest of the page at risk.
+
+## Saved scope and repeated execution
+
+Consume the current asset recipe: source hashes, selected physical faces/edges,
+their actual UV/material/page mapping, all shared readers, the repair mask and
+authorized channels. The generic `apply` tool consumes a supplied mask; it does
+not discover a defect or generate a two-sided junction mask automatically. For
+roof junctions use [the local repair route](../blender-roof-baking/references/workflows.md#local-repair-on-existing-uvs).
+
+Before composing, inspect the selection on the current 3D model and atlas. A
+disconnected island is not a reason to move it. Keep both sides of a junction
+and every other user of changed pixels in scope verification. If their desired
+values conflict, report those readers and a compatible bounded alternative;
+do not silently enlarge the patch, relocate UVs or omit a side.
+
+Save the command, offset/period, mask hash, channel choices, source identities
+and protected-output comparisons in the existing recipe. Re-run from the pinned
+baseline into fresh output, never by repeatedly patching the last candidate.
+Normal copying requires compatible tangent frames; an arbitrary rotated or
+mirrored transfer is not implemented by the fixed-offset clone operation.
 
 ## Method
 

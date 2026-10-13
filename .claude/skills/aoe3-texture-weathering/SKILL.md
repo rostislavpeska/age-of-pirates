@@ -1,6 +1,6 @@
 ---
 name: aoe3-texture-weathering
-description: Give an existing Age of Empires III DE building atlas a premium, illustrative AoE3 look by texture-only weathering - measure vanilla JP/CN references, build a per-texel mask kit from the model, paint per-feature recipes (two-coat plaster relief, rising damp, rips, hanji, iron-fitted doors, lacquer wear, stone, roof moss overlays, a player-colour budget), compose with relief normals and gutter refresh, and judge with an art critic, a senior-artist judge and QA before encoding. Use when textures look "too clean / too perfect / too geometric / generic", when asked for imperfection, mould, damage, AoE3 essence or premium look on an existing UV-frozen building, or when player colour looks artificial.
+description: Adjust grain, wear, moss and material finish on existing AoE3 building textures. Use for texture-only weathering or relief while preserving frozen UVs, valid bakes and protected channels.
 ---
 
 # AoE3 texture weathering (texture-only, UV-frozen atlases)
@@ -9,6 +9,22 @@ Built on the Korean Barracks/Stable/Town Center night run of 2026-10-08 (r70a ->
 senior-artist judge moved from "generic" to vanilla level on doors, hanji, lacquer and coping in three
 rounds. Owner rules that shaped it: texture-only (no UV reorganisation), Painter is never upgraded,
 no Blender procedural shader materials for the look, paper darker than walls, roof bake protected.
+
+## Choose finish work, not structural work
+
+This skill coordinates finish recipes; it does not replace a roof pattern or
+repair UV layout. Use [roof workflows](../blender-roof-baking/references/workflows.md)
+to distinguish local repair, finish-only adjustment and structural rebaking.
+Consume the project's chosen provider. [ArmorPaint automation](../armorpaint-remote/SKILL.md)
+owns its native execution and delta composition; custom scripts can supply named
+maps and effects. Historical Painter maps remain valid identified inputs, not
+an instruction to launch Painter for every asset.
+
+For repeated work, use the [effect recipe contract](references/recipe-contract.md#repeatable-effect-stages).
+Pin grain, curvature, AO, semantic moss and pattern inputs independently; keep
+their stage order and sampling explicit. Transfer the verified method, then bind
+it to measured density and the set profile. Equal numeric strengths alone do
+not establish equivalent finish. Always start from pinned original inputs.
 
 ## 1. Measure the target, do not guess it
 
@@ -41,8 +57,9 @@ and for player colour a `__Details`; outside its claim it is byte-identical. Har
   over 30-60 px with noise: a mask stepping over 3 rows printed a straight seam on all 21 faces of a
   stacked cell.
 - **Plaster:** the owner's Elector recipe - lighter cream top-coat islands over a warmer, darker
-  under-coat, island edges feathered in BaseColor and raised in the normal map. Source the islands from
-  the Painter white-coat Dirt run ([white-coat Dirt relief](../substance-painter-remote/references/whitedirt-relief-9.1.2.md)).
+  under-coat, island edges feathered in BaseColor and raised in the normal map. The historical
+  [white-coat Dirt relief](../substance-painter-remote/references/whitedirt-relief-9.1.2.md)
+  is one pinned source recipe; reuse its retained masks where selected. It does not require a new Painter session.
 - **Rips:** exposed rubble 25-40 L darker than plaster, shadow only on the upper/inner edge, a light
   chipped lip, crumbs; never a closed dark contour; only at wall feet and corners.
 - **Paper:** clearly darker and warmer than the adjacent plaster (gap >= 25 L), tea stains, grime halo
@@ -67,10 +84,12 @@ the codec reproduces the installed DDT byte-for-byte before encoding new maps.
 
 ## 5. Judge before shipping
 
-Render matched views under the game's own lightset (read the map's `.lgt`: sun colour/inclination/
-rotation, fill, hemisphere top/bottom, shadow colour, exposure) and at game zoom (600-900 px building
-height). Run three independent reviewers: an art-direction critic (per feature, parameter-level fixes),
-a strict "senior AoE3 environment artist" judge (scores + five notes with accept criteria), and QA
-(alpha identity, protected regions, claims, Details scope, mip halos, stacked repetition, normal sign
-against an independent gradient, DDT dry run). Iterate on the ranked notes; keep each round time-boxed.
-An agent result is never owner acceptance; publish as a candidate.
+Render matched close and target-size views against the project's canonical
+reference. Use recorded game-light parameters where available; identify a
+Blender approximation as such. Check art direction and reference fidelity
+alongside technical QA: alpha identity, protected regions, claims, Details scope,
+mip halos, stacked repetition, normal sign against an independent gradient and
+DDT dry run. These are review responsibilities, not permission to launch three
+agents; use independent reviewers only within the owner's authorized arrangement.
+Iterate on bounded findings. An agent result is never owner acceptance; publish
+as a candidate with live readback when the owner requests it in Blender.

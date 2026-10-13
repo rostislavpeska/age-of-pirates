@@ -1,9 +1,28 @@
 ---
 name: blender-uv-observability
-description: Publish the binding simultaneous Blender UV review layout, standard checker, black resource isolations, painting subtypes and real sharing colours. Required companion for architectural UV work; not an unwrap algorithm.
+description: Prepare and publish Blender reviews showing actual UVs, texture resources and sharing. Use for UV inspection or mapped texture repairs; verify live readback before claiming delivery.
 ---
 
 # Binding UV operator contract
+
+## Declare the review outcome
+
+Name the requested result before preparing the view: diagnostic selection,
+candidate texture repair, UV proposal or finished model. Report those outcomes
+separately. Coordinates or a fitting layout do not satisfy a request for a
+repaired model in Blender. Reuse a valid existing workspace rather than rebuilding
+unchanged review evidence.
+
+For a local mapped defect, show its physical faces and CURRENT atlas locations
+together, with matching labels for both sides and other shared readers. Arbitrary
+chart colours are not proof of sharing or a new material. A hypothetical layout
+must be explicitly labelled as a proposal and is never substituted for current
+UV inspection. Preparing a diagnostic view does not authorize UV edits.
+
+Before asking for art approval, show baseline and candidate at matching close
+and target-size views, name the changed channels and preserve the baseline.
+Use the existing publication/readback contract below. Keep numeric QA, delivered
+version and owner acceptance separate in the handoff and progress report.
 
 ## Operator boundary: background work, contract-only presentation
 

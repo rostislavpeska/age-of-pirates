@@ -1,6 +1,6 @@
 ---
 name: capability-authoring
-description: Maintain reusable capabilities and route knowledge between generic skills, project rules and set profiles. Use before a new workflow implementation, after a confirmed tool gap or owner correction, and when making a workflow repeatable across assets or agents.
+description: Create or extend reusable workflows after a tool gap, correction or repeatability request. Assign generic mechanics, project style, set parameters and asset recipes to their existing owners.
 ---
 
 # Capability ownership and automatic upkeep
@@ -55,6 +55,54 @@ mechanics, with separate project profiles.
    agent instruction now exists.
 
 ## Repeatable and tunable
+
+### A workflow must name its deliverable
+
+Choose the smallest operation that satisfies the request. Record allowed edits,
+the affected asset/stage, the executable steps and the visible output expected.
+A diagnostic can finish without finishing an asset. A failed method does not
+authorize changing UVs, geometry, providers or the assignment. Show the specific
+conflict and a bounded alternative before expanding the requested scope.
+
+Keep the following in the consuming asset's existing recipe/handoff, rather than
+introducing another tracking format:
+
+- Input identities: mesh, UVs, normals, bindings, maps, masks and current approval.
+- Scope: selected physical regions and all affected readers; allowed channels;
+  protected pixels, geometry and states.
+- Execution: actual commands, ordered stages, tool/code versions, parameters with
+  units, seeds, coordinate frames, sampling and colour/normal conventions.
+- Outputs: fresh destinations, hashes, stage receipts and dependent stages to
+  invalidate when a relevant input changes.
+- Evidence: required checks, comparison views, known failures and the exact
+  acceptance/delivery condition. Reuse the existing handoff schema where present.
+
+Manual selection can be a reproducible input: save its face/edge identities and
+physical correspondence against the source fingerprint. Do not require automatic
+discovery before a bounded manual workflow can be demonstrated.
+
+Report evidence separately: **implemented**, **fixture-tested**, **executed on a
+real asset**, **replayed from pinned inputs**, **transferred to a second asset**,
+**visually accepted**, **delivered**, and **runtime-verified**. Each claim names
+its specimen and scope; these are not interchangeable or a new universal enum.
+An end-to-end repeatability claim requires a complete scoped replay and a second
+specimen using the same interface. Do not rerun unchanged proofs merely to raise
+test counts. Documentation describes requirements; it does not enforce them.
+
+### Skill discovery and description quality
+
+Extend the existing owning skill when the operation and inputs already fit it.
+Create a new skill only for a distinct reusable operation with a clear boundary,
+callable implementation and demonstrated need. Keep the default route short;
+load detailed procedures only for the selected mode. Asset-specific recipes and
+failure histories stay with their project, with links rather than copied rules.
+
+A description should state the operation and when it applies in one or two clear
+sentences. Include a boundary only when it prevents likely misrouting. Move tool
+inventories, examples, historical stories and detailed parameters into the body
+or a relevant reference. Describe implemented capability accurately: a declared
+edge mapper is not automatic valley discovery, and a diagnostic is not a repair.
+Preserve existing names and discovery paths unless a rename is necessary.
 
 Scope each blocker to named artifacts and dependent stages. A metadata failure
 blocks the affected publication; a bake failure blocks that bake's consumers;

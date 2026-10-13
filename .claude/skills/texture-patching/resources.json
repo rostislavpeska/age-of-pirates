@@ -5,7 +5,8 @@
     "scripts/texture_patch.py"
   ],
   "skills": [
-    "texture-corner-seams"
+    "texture-corner-seams",
+    "blender-roof-baking"
   ],
   "external": [
     {

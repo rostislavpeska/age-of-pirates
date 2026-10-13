@@ -1,8 +1,36 @@
-# Mask kit, recipe contract, compose and review (Korean r70 implementation)
+# Effect recipe contract and historical implementation
+
+## Repeatable effect stages
+
+Use the asset's existing recipe/handoff to bind these stages. This is a data
+contract for existing tools, not a new recipe parser. Project/set profiles supply
+appearance targets; the generic provider executes the declared operation.
+
+| Stage | Required inputs and controls | Scope to preserve |
+| --- | --- | --- |
+| Material/grain transfer | Original source identity, destination pattern IDs, density, sampling kernel, colour space, scale and seed | Pattern rhythm, alpha and unrelated channels |
+| Sharpening | Pinned unsharpened input, radius with units, strength, threshold and mask | No repeated sharpening of derived candidates; inspect halos at ends |
+| Wear/cavity | Identified curvature/AO source, physical boundary masks, layer order and strengths | Distinguish physical edges from arbitrary UV/chart borders |
+| Moss/imperfections | Named semantic masks, source method, piece IDs, seed and physical scale | Retain placement through later grading; roughness is not a moss label |
+| Set colour/glaze | Set profile, channel mapping, clean-clay/moss masks and ordered grade | Matte moss and protected materials; no structural rebake |
+| Composition/encoding | Native before/after or script outputs, owned channels, padding, codec and normal convention | Exact protected source pixels before encoding; bounded codec effects afterward |
+
+Record measured, retained and proxy masks distinctly. Replacing one with another
+changes the recipe even if strengths remain equal. Scale effects using physical
+or pattern coordinates and measured texel density; do not reuse a pixel radius
+blindly across atlas resolutions. Keep each useful intermediate and its mask so
+one effect can be compared or rerun without rebuilding unrelated stages.
+
+Replay into fresh output and compare against the pinned specimen. Apply the same
+interface to a second building before claiming set-wide transfer. Art approval,
+live delivery and runtime validation remain separate from exact image replay.
+
+## Historical Korean r70 implementation
 
 The full working implementation (kit builder, seven recipes in three rounds, compose, game-light rig,
 QA scripts) is archived in the Korean `r70*` 2d-asset packages of the AoE Buildings library under
 `sources/`. Reuse it rather than rewriting; adapt the feature table per building.
+Dimensions, units and timings below describe that specimen, not universal defaults.
 
 ## Mask kit (per atlas, 2048, float16 npz, row 0 = top, x = u*W, y = (1-v)*H)
 

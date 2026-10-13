@@ -1,6 +1,6 @@
 ---
 name: blender-roof-baking
-description: Coordinate geometry-derived roof patterns, ridge/hip/valley construction and high-to-low baking for any architectural roof, including European and Asian roofs. Owns physical junction and cross-UV continuity contracts; consumes project style and set finish profiles, reusing the existing baker and QA tools.
+description: Coordinate roof-pattern bakes, local junction repairs and effects-only changes. Use for tile layout, eave continuity or ridge/valley defects; automatic junction discovery is not implemented.
 ---
 
 # Generic roof construction and baking
@@ -11,6 +11,21 @@ profile supplies colour, glaze, moss and other finish decisions. No universal
 Korean tube pattern, timber ridge, palette or engine channel packing is implied.
 Use [capability-authoring](../capability-authoring/SKILL.md) when extending this
 capability. Keep algorithm, style and source selectors separate.
+
+## Choose the requested operation
+
+Read [bounded roof workflows](references/workflows.md) for the selected route:
+
+- **Local defect on existing UVs:** locate both physical sides, save their current
+  UV correspondence and affected readers, then use `texture-patching`.
+- **Finish adjustment:** reuse valid bakes; use `aoe3-texture-weathering` with the
+  selected provider and explicit grain, moss, wear and glaze inputs.
+- **Structural pattern change:** fit the pattern and run only the affected stages
+  of `blender-high-low-baking`, then the established finish and release checks.
+
+A texture-only request does not authorize UV placement or geometry experiments.
+Before a requested local repair, show the affected region on the current model
+and atlas. A hypothetical destination layout is a different deliverable.
 
 **Implementation status:** existing bake/QA tools below are available. A complete
 automatic geometric ridge detector, parameterized junction constructor and

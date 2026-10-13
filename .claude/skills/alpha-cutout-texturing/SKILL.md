@@ -1,6 +1,6 @@
 ---
 name: alpha-cutout-texturing
-description: Alpha cut-out surfaces on game building atlases - ragged thatch, straw and reed eaves, tile-eave scallops, fringes, lattice and railing holes, leaf cards. Covers what the engine actually draws (cutout material defs, single-sided), analytic silhouettes, thick slabs cut THROUGH with one folded parameterisation (no leftover rim, seams that match by construction), colour under alpha, gutters and mips, hidden surfaces behind cuts, the single-sided review and variant review. Use when an alpha edge shows a leftover rim, edge or "redundant corner", when seams on a thick alpha slab do not match, when a cut shows the wrong thing through it, or before texturing any new cut-out.
+description: Build and verify texture cutouts on game assets, including eaves, fringes and openings. Use for leftover rims, mismatched cuts, shared-pixel conflicts or cutouts that fail in compressed mipmaps.
 ---
 
 # Alpha cut-out texturing
@@ -57,6 +57,18 @@ At grazing angles a slab cut through can look hollow: you see its far side's bac
 top hides it; check the low review view anyway.
 
 ## 4. Seam QA (fails the run)
+
+Scope the result to the supplied asset, contour, readers and stage. Consume the
+same source identities and selected regions as the composing recipe. A failed
+contour blocks its dependent bake/release; it does not authorize UV relocation
+or prove every texture-only solution impossible. Record inherited defects
+separately from new regressions. For a colour-only patch, first prove alpha
+identity; do not invent a new silhouette merely to perform the check.
+
+Keep evidence-tool completion separate from the nested asset verdict. Report
+the actual page/reader failures even when the command itself exits successfully.
+Fixture tests, real-asset adapter execution and release checks are distinct
+proofs; do not report their aggregate as a finished model.
 
 Before a new bake, project the independent silhouette onto **every face reading
 the affected pixels**, including mirrored/reused back and underside faces. An
@@ -133,8 +145,9 @@ The fold scored .87 and 1.26, which passes. Keep the strand-direction QA as well
 
 - Cut texels keep the material colour sampled just inside the cut, never the painting's background. Bilinear filtering
   and mips average across the cut, and a grey or dark background grows a halo round every strand tip.
-- Extend each island's colour into its gutter. Refresh gutters at least ~48 px out before a Lanczos mip writer
-  ([aoe3de-building-export](../aoe3de-building-export/references/textures-xml.md), gutters before mips).
+- Extend island colour only into its declared, unoccupied gutter territory before mip generation
+  ([aoe3de-building-export](../aoe3de-building-export/references/textures-xml.md)). A historical 48 px dilation
+  is valid only where reserved space permits it; never overwrite another chart to meet that number.
 - Alpha-tested fringes thin out in lower mips, because averaging moves texels below the threshold. Before shipping,
   measure the opaque fraction of each fringe region at every mip level of the encoded DDT. If a fringe vanishes at game
   distance, preserve the coverage when building the alpha mips. This has not yet been verified on the project encoder.

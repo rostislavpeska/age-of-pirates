@@ -12,7 +12,9 @@
     "substance-painter-remote",
     "aoe3de-player-colour",
     "aoe3de-building-export",
-    "korean-architecture"
+    "korean-architecture",
+    "blender-roof-baking",
+    "armorpaint-remote"
   ],
   "external": [
     {
