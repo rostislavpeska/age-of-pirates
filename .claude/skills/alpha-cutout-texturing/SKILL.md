@@ -73,8 +73,35 @@ continuous expected-alpha bound. Never convert an empty sample list into a
 visibility exemption or drop it from a positive release. A constant projection
 frame makes depth affine over a triangle: vertex extrema can certify its whole
 depth range. This narrow proof does not generalize to varying frames or contours.
-The current centre-sample gate does not yet consume such independent certificates;
-retain that integration hold rather than forging samples or claiming full coverage.
+The Python `measure(..., certificates=..., certificate_inputs=...)` API now
+consumes the narrow `constant-station-opaque-v1` certificate described in
+`verify_certificates` in that script. It rehashes current mesh/frame/contour/page
+sources, matches exact reader/triangle/UV/page identities, rejects duplicate or
+missing triangle certificates, recalculates positive-area cell intersections and
+the absence of centres, and evaluates the source-identified contour against the
+affine vertex-depth bound. Cells remain separate constraints; sample counts stay
+unchanged and conflicts with other readers or fixed alpha still fail.
+
+The independent geometry adapter must supply every triangle of each missing
+reader and establish its correspondence to those sources and material bindings.
+Never build `certificate_inputs` by copying certificate assertions. The generic
+gate verifies the mathematical proof and identities, not a project's extraction
+or inventory completeness. A PASS string in an input is not evidence. Only
+constant lateral stations, whole-triangle opacity and bounded in-page triangles
+are supported; varying frames, transparent proofs and shader filter footprints
+remain outside this contract.
+
+Verification: 20 unit tests (8 existing plus 12 certificate tests), and one
+source-checked saved Market fixture: 0 centres, 2 cell constraints, missing matc
+reader restored to the inventory while 16,444 shared conflicts and 22,841 fixed
+mismatches remain unchanged. The consuming civic CLI now reconstructs current
+independent inputs and exercises this API: 16 adapter tests pass; one fresh
+real-source command accounts for all 1,396 readers in 29.562 seconds. Four invalid
+proof controls are rejected and all 16 strict negative witnesses are preserved.
+The contour still FAILS; command exit 0 means evidence generation completed,
+not asset release. No runtime or Blender asset was changed by these checks.
+The generic CLI itself still accepts sample arrays; certificate bundle ingestion
+belongs to the consuming adapter, whose R2 receipt records this integration.
 
 Conflicting interior requirements fail before texture work. Keep the frozen source
 and report the incompatibility; taking the minimum/maximum alpha only moves the
