@@ -1,0 +1,44 @@
+diff --git a/paint/sources/functions.h b/paint/sources/functions.h
+index 764a6c7..4e53cfe 100644
+--- a/paint/sources/functions.h
++++ b/paint/sources/functions.h
+@@ -1285,3 +1285,5 @@ void              mesh_math_node_init();
+ void              mesh_vector_node_init();
+ void              mesh_output_node_init();
+ void              edit_uvmap_update();
++
++bool script_set_texture_resolution(i32 size);
+diff --git a/paint/sources/minic_api_list.h b/paint/sources/minic_api_list.h
+index 47c2515..723b2f6 100644
+--- a/paint/sources/minic_api_list.h
++++ b/paint/sources/minic_api_list.h
+@@ -497,6 +497,7 @@ X0(project_basepath_get, "p:char()", p)
+ X1(project_filepath_set, "v(p:char s)", v, p)
+ X0(script_get_context, "p:context_t()", p)
+ X0(script_get_config, "p:config_t()", p)
++X1(script_set_texture_resolution, "b(i size)", b, i)
+ X0(script_get_project, "p:project_t()", p)
+ X1(script_get_object, "p:object_t(p:char s)", p, p)
+ X1(script_get_material, "p:slot_material_t(p:char s)", p, p)
+diff --git a/paint/sources/minic_impl.c b/paint/sources/minic_impl.c
+index b3b8c6a..9f03408 100644
+--- a/paint/sources/minic_impl.c
++++ b/paint/sources/minic_impl.c
+@@ -332,6 +332,17 @@ void project_filepath_set(char *s) {
+ context_t *script_get_context() {
+ 	return g_context;
+ }
++// Explicit square project resolution for headless scripting. The queued resize
++// must be followed by script-owned frames before save/export.
++bool script_set_texture_resolution(i32 size) {
++    if (size < 64 || size > 16384 || (size & (size - 1)) != 0) return false;
++    base_res = config_get_texture_res_pos(size);
++    base_res_x = (f32)size;
++    base_res_y = (f32)size;
++    layers_on_resized();
++    return true;
++}
++
+ config_t *script_get_config() {
+ 	return g_config;
+ }

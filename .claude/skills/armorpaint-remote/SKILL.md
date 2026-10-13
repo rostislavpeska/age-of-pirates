@@ -63,6 +63,10 @@ python -m unittest discover -s scripts -p test_armorpaint_batch.py -v
 python scripts/smoke_test.py --exe EXE --out-dir FRESH_SMOKE
 ```
 
+For smaller project pages, read the explicit-resolution extension in the linked
+workflow. Export resolution is an assertion; the separate `resize` command saves
+a new project and verifies it without changing the source.
+
 The native smoke launches owned hidden processes. It is not a bake or a game
 validation. Public MCP projects targeting older ArmorPaint revisions may need
 native patches; do not assume tool-name compatibility with this build.

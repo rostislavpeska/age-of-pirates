@@ -2,9 +2,16 @@ import tempfile
 import unittest
 from pathlib import Path
 from PIL import Image
-from armorpaint_batch import check_evidence, prepare_directory, runtime, run_script
+from armorpaint_batch import check_evidence, prepare_directory, runtime, run_script, resize_script
 
 class EvidenceTests(unittest.TestCase):
+    def test_resolution_validation(self):
+        for value in [0, 63, 1000, 32768, True, 1024.0]:
+            with self.assertRaises(ValueError): resize_script(value, 'result.arm')
+        script = resize_script(1024, 'result.arm')
+        self.assertIn('script_set_texture_resolution(1024)', script)
+        self.assertIn('frame==5', script)
+
     def test_no_unobservable_script_run(self):
         with self.assertRaises(ValueError):
             run_script(None,'missing','missing','missing',[],'DONE')

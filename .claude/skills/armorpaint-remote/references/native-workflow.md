@@ -71,3 +71,31 @@ checking detects a mutation; it is not a sandbox or rollback mechanism.
 Texture projection, UV changes, all blend modes, mesh baking, arbitrary node
 types, unattended GUI actions and exact engine lighting are not certified by
 these tests. Follow the consuming project's texture budget and publication gates.
+
+## Explicit page resolution (INC-288)
+
+The stock native script API lacks project-resolution control. `export --size`
+validates existing project dimensions; it does **not** resize. A 1024 request on
+a default 2048 project correctly failed and its maps were not consumed.
+
+The optional [14-line source extension](../patches/explicit-texture-resolution.patch)
+applies to upstream `2ad9c473b2911c93bb755607f7951517976e9e64`. It exposes
+`script_set_texture_resolution(size)`, returning false for invalid values.
+It calls the application's existing queued layer resize and fill regeneration.
+Square powers of two from64 through16384 are accepted; 512,1024 and2048 are the
+measured paths, not a guarantee of device capacity at the largest values.
+Preserve an unmodified build and build the extension as a separate executable.
+The source patch is recorded as local commit
+`88d0cf5caf7fb1646fea9da1ee8734977c073c98`.
+
+Use `resize --input SOURCE.arm --out-dir NEW_DIR --size 1024` with this extended
+runtime. It saves a **new** packed project, reopens it in another process and
+checks all five exported dimensions. The stdio equivalent is
+`armorpaint_resize_project`. No silent PNG downsampling or source overwrite.
+For fresh authoring, call the native setter on frame1 and leave frames for its
+queued resize before layer creation/save. The provided wrapper saves on frame5
+and keeps the process alive through frame9.
+
+Measured1024 smoke retained centreRGB `[224,192,128]` from the2048 original.
+The castle's1024 native effect/baseline project exports also pass. Existing2048
+fill scripts continue to pass. Consumer pixel/alpha/frozen-map tests still apply.

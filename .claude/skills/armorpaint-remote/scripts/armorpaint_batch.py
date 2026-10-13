@@ -143,22 +143,54 @@ def export(exe, input_path, out_dir, size=2048, timeout=120):
     return execute(exe, [source, '--export-textures','png','generic',out,'--script',drain],
                    out, names, 'EXPORT_DRAIN_COMPLETE', [source], timeout, (size,size))
 
+def resize_script(size, destination):
+    if not isinstance(size, int) or isinstance(size, bool) or size < 64 or size > 16384 or size & (size-1):
+        raise ValueError('Resolution must be a square power of two from 64 through 16384')
+    target = json.dumps(str(Path(destination).resolve()))
+    return (f'int frame=0;void tick(){{frame=frame+1;if(frame==1){{'
+            f'bool ok=script_set_texture_resolution({size});'
+            'console_info(string("RESIZE_ACCEPTED=%d",ok));}'
+            f'if(frame==5){{script_set_pack_assets(1);project_filepath_set({target});project_save(0);}}'
+            'if(frame<9)script_notify_on_next_frame(tick);else console_info("RESIZE_COMPLETE");}'
+            'void main(){script_notify_on_next_frame(tick);}')
+
+def resize(exe, input_path, out_dir, size, timeout=120):
+    """Requires the pinned resolution extension; never rewrites the source project."""
+    source = Path(input_path).resolve()
+    if not source.is_file() or source.suffix.lower() != '.arm':
+        raise ValueError('Resize requires an existing .arm project')
+    out = Path(out_dir).resolve()
+    target = out/f'{source.stem}_{size}.arm'
+    code = resize_script(size, target)
+    prepare_directory(out)
+    script = out/'resize.c'; script.write_text(code, encoding='utf-8')
+    report = execute(exe, [source,'--script',script], out, [target],
+                     'RESIZE_COMPLETE', [source], timeout)
+    if report['ok']:
+        report['export_verification'] = export(exe, target, out/'verified-export', size, timeout)
+        if not report['export_verification']['ok']:
+            report['ok'] = False
+            report['errors'].append('Resized project failed reopened export validation')
+        (out/'RUN.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    return report
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--exe'); parser.add_argument('--local-config')
     sub = parser.add_subparsers(dest='operation', required=True)
-    for name in ['run','export']:
+    for name in ['run','export','resize']:
         p = sub.add_parser(name); p.add_argument('--input', required=True)
         p.add_argument('--out-dir', required=True); p.add_argument('--timeout', type=float, default=120)
         if name == 'run':
             p.add_argument('--script', required=True); p.add_argument('--expect', action='append', required=True)
             p.add_argument('--marker', required=True)
-        else: p.add_argument('--size', type=int, default=2048)
+        else: p.add_argument('--size', type=int, default=2048,
+                            help='Project resolution; export validates but does not resize')
     a = parser.parse_args()
     try:
         exe = runtime(a.exe, a.local_config)
         result = (run_script(exe,a.input,a.script,a.out_dir,a.expect,a.marker,a.timeout) if a.operation=='run'
-                  else export(exe,a.input,a.out_dir,a.size,a.timeout))
+                  else (resize if a.operation=='resize' else export)(exe,a.input,a.out_dir,a.size,a.timeout))
     except Exception as exc:
         result = {'ok':False, 'errors':[f'{type(exc).__name__}: {exc}']}
     print(json.dumps(result, indent=2))
