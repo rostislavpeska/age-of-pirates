@@ -70,6 +70,11 @@ records tool/version, source and code hashes, complete parameters and units,
 seeds, processing order, resampling, colour spaces, normal conventions, scope,
 protected readers, compression and known limitations.
 
+Snapshot/hash the executable source before launching concurrent work. A copy
+made after the run may contain another worker's edits; compare its hash with
+the execution receipt before calling it replay provenance. Retain a mismatch
+as a source-closure gap without discarding independently verified outputs.
+
 Replay into an empty output location against a pinned accepted specimen before
 claiming reproducibility. Require exact output identity where deterministic;
 declare justified tolerances before running otherwise. Reopening or re-exporting
