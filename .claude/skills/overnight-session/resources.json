@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "files": ["SKILL.md", "scripts/pause_gate.py", "tests/test_pause_gate.py"],
+  "skills": [],
+  "external": []
+}

@@ -56,6 +56,14 @@ mechanics, with separate project profiles.
 
 ## Repeatable and tunable
 
+Scope each blocker to named artifacts and dependent stages. A metadata failure
+blocks the affected publication; a bake failure blocks that bake's consumers;
+an approval hold blocks promotion of that candidate. Record independent useful
+work separately and continue it where authorized. Do not interpret a local hold
+as permission to waive it, or as a global stop. Before pausing an unattended run,
+account for every remaining authorized task and use the overnight-session pause
+gate. An unknown task state is not evidence that no useful work remains.
+
 Separate structural pattern, base material transfer, surface effects and runtime
 encoding. Keep each stage's inputs, masks and outputs identifiable. A method
 records tool/version, source and code hashes, complete parameters and units,
