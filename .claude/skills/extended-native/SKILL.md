@@ -1,6 +1,6 @@
 ---
 name: extended-native
-description: Build an extended native / extended Royal House (extended Habsburgs, extended Inuits, extended Phanar) - a second personality for a subciv that a map unlocks, adding an expansion big button on the Trading Post plus its own techs, and optionally shrinking the native's 2x2 ability to a small button. Use when asked to extend a Royal House or native, add an expansion big button, add techs behind an expansion, or wire the shadow tech that a map flips. Covers both cases - natives WITH an ability to transform and natives WITHOUT one. Triggers on "extended Habsburgs", "extended Royal House", "extend Phanar", "expansion big button", "new native techs", "unlock extended native".
+description: "Add an AoP extended native or Royal House expansion with its unlocks and techs. Use for expansion big buttons and map-controlled native personalities."
 ---
 
 # Extending a native / Royal House

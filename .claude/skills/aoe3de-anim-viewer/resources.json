@@ -100,7 +100,8 @@
     "tests/js/parity/pose.test.mjs",
     "tests/js/m4/bundle_m4.test.mjs",
     "tests/js/shading.test.mjs",
-    "tests/js/export.test.mjs"
+    "tests/js/export.test.mjs",
+    "tests/js/buffer_streams.test.mjs"
   ],
   "skills": [
     "aoe3de-bar-archives",

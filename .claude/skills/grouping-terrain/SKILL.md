@@ -1,6 +1,6 @@
 ---
 name: grouping-terrain
-description: Map and edit the terrain baked into a random-map grouping XML (game/randmaps/groupings) - cliff groups (ZP City / ZP Bridge ...), shoreline tilegroups, plateau heights, unit positions. Use when a cliff piece under a bridge, quay or wall shows the wrong cliff type, when a grouping's island/plateau must be raised or lowered, when units must be nudged by metres or a socket must become the last unit, or whenever the user asks "which tile is this", "map the grouping", "show me the cliffs". Triggers on cliffgroup, ZP Bridge, ZP City, grouping heights, bridge faces, move units in grouping, socket last.
+description: "Inspect and edit terrain, heights and placement in AoP grouping XML. Use for wrong cliff types, raised quays, shifted units or socket ordering."
 ---
 
 # Grouping terrain: map it, then edit by tile coordinates

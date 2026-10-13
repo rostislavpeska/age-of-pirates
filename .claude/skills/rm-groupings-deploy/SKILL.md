@@ -1,6 +1,6 @@
 ---
 name: rm-groupings-deploy
-description: Groupings on random maps - the three copies (the repo's game/randmaps/groupings is the source of truth AND what the game reads; the profile folder is an optional mirror, synced only on request; Steam Game\RandMaps\groupings is vanilla-only), the one-way flow, the process-start indexing rule, the grouping XML anatomy (units, tilegroup base terrain, flattener line, variation index, socket-last), and how to prove a grouping spawned. Use when a grouping does not spawn, when editing or cloning a grouping, when two copies differ, or when repainting a grouping's ground. Triggers on "grouping", "rmCreateGrouping", "village does not spawn", "deploy the grouping", "tilegroup", "ground flattener", "variation", "socket last".
+description: "Edit, deploy and verify AoP random-map groupings from the canonical copy. Use for missing groupings, stale duplicates or terrain and variant changes."
 ---
 
 # rm-groupings-deploy

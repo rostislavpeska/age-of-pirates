@@ -1,6 +1,6 @@
 ---
 name: map-politician-triggers
-description: Add or repair the consulate / Trading Post politician switcher triggers in a random map, including the Activate_Faction and Human_Check_Plr family that swaps politician lists after native big-button research or for Asian civilizations. Use when a map is missing politicians for a native it places, a consulate page is empty after allying, or two patron systems must coexist.
+description: "Add or repair AoP native and consulate politician-switching triggers. Use when alliance or expansion choices show the wrong or empty politician list."
 ---
 
 # Map politician switcher triggers

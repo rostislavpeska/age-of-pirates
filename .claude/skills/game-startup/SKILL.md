@@ -1,6 +1,6 @@
 ---
 name: game-startup
-description: Start Age of Empires III DE for automated testing - Steam launch, intro-video skip, home-menu recognition, and the crash-relaunch policy. Triggers on "start the game", "game crashed, restart", "renew the game", "launch AoE3", "is the game up".
+description: "Start Age of Empires III DE for automated testing - Steam launch, intro-video skip, home-menu recognition, and the crash-relaunch policy. Triggers on \"start the game\", \"game crashed, restart\", \"renew the game\", \"launch AoE3\", \"is the game up\"."
 ---
 
 # Starting the game for automated testing

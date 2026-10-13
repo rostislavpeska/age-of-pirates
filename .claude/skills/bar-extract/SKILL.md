@@ -1,6 +1,6 @@
 ---
 name: bar-extract
-description: AoP entry point for archive lookup, extraction and XMB rebuilding. Start here in Age of Pirates; applies this mod's policies, then uses aoe3de-bar-archives for the shared tools and commands.
+description: "AoP entry point for archive lookup, extraction and XMB rebuilding. Start here in Age of Pirates; applies this mod's policies, then uses aoe3de-bar-archives for the shared tools and commands."
 ---
 
 # AoP archive and XMB conventions

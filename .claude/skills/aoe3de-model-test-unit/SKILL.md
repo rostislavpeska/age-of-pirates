@@ -1,6 +1,6 @@
 ---
 name: aoe3de-model-test-unit
-description: Make a test unit ("bench") to check a new or changed Age of Empires III DE building or unit model in the scenario editor and in a game - a separate zzTEST proto per variant that loads the SAME GR2/HKT/material files through a bench animfile without civ, age, tech or Variation logic, distinct editor names, StartEnabled, a test builder for the construction stages, the production proto untouched. Use when the owner wants to "test destruction in the editor", "create a test unit / test model", when the editor shows another look than the new model (age-1 placeholder, other culture), when one variant of a random Variation must be tested on purpose, before an owner game test of new building art, and in every change that installs or changes a building model (the bench ships with the model, never later).
+description: "Create an AoE3 DE editor test unit that uses the candidate's actual models and materials. Use when installing new art or isolating construction, damage or variant behavior."
 ---
 
 # Test unit for a model (bench proto)

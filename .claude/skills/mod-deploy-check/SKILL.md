@@ -1,6 +1,6 @@
 ---
 name: mod-deploy-check
-description: Pre-zip audit, deployment protocol and the zip builder for the Age of Pirates mod portal. Use before every zip/upload, when asked to "compile/export prod", "production zip", "beta zip", "strip <map> from the release", "is the mod folder clean", "check before I zip", "deployment protocol", "how do I publish/update the mod", or after a session that touched data/*.xml (stale XMB twins). Deployment is from LOCAL FILES, never from git.
+description: "Audit and package the local AoP mod for release, including compiled-data freshness. Use before a production or beta archive and portal deployment."
 ---
 
 # Deploying Age of Pirates - protocol and pre-zip check

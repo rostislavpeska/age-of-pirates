@@ -78,6 +78,7 @@ sandbox/census/samples/regen/
 /.claude/hooks/LAUNCH_GATE_OFF
 # Agent lesson journal: owner quotes, local paths and session details, possibly personal data - never pushed (public repo)
 /.claude/skills/JOURNAL.jsonl
+/config/skill-local-packages.json
 
 # minimap twin output when --out points into the repo (twin.py defaults to a fresh temporary folder)
 scripts/mapview/out/

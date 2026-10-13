@@ -1,6 +1,6 @@
 ---
 name: rm-resource-balance
-description: Balance the resources of a random map by COUNTING them - what every grouping carries, what the script places, how both sides and each player come out for every lobby size, and whether a saved generation really spawned it evenly. No absolute targets (each map is different); a counting method, one script, reference points and the traps that made counts lie. Use when setting or changing mine / hunt / berry counts, when one side seems richer, when "resources spawn unevenly", or before proposing a resource formula. Triggers on "balance resources", "how many mines", "resources per player", "uneven resources", "one side has more", "count the mines", "resource formula".
+description: "Measure random-map resources per player and team across supported sizes. Use to evaluate mine, hunt and other resource balance from actual placements."
 ---
 
 # rm-resource-balance: count, then decide

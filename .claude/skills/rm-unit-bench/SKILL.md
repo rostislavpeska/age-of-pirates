@@ -1,6 +1,6 @@
 ---
 name: rm-unit-bench
-description: Visual test of ONE unit (a new building, ship, prop, native unit) - or a VARIANT GRID of several candidate fixes in one generation instead of one restart each - on the most basic map that cannot crash - frozen spine template, offline pre-flight of the proto's animfile/model/material/textures/CRLF, a vanilla control unit beside the subject, editor generation with the crash oracle, then census = spawned, screenshot = renders. Use when a new model must be seen in game, when "the unit does not appear", when a minimal test map crashed before, or before any play test of new art. Triggers on "unit bench", "test the model in game", "single unit map", "does it render", "minimal map with one unit", "visual test", "variant grid", "which version renders", "test several fixes at once".
+description: "Prepare an isolated AoE3 DE map for an authorized visual test of models or variants. Use to distinguish successful spawning from correct rendering."
 ---
 
 # rm-unit-bench: see one unit in game without a crash

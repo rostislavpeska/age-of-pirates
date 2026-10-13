@@ -1,6 +1,6 @@
 ---
 name: aoe-uv-atlas-export
-description: FOUNDATION (in progress) - turn conjoined, AO-separated UV families into final runtime texture pages for AoE3DE, e.g. one 2048 and one 1024 map, split by material (alpha eaves, ridges and roof on the small map) at ONE uniform texel density maximised by bisection, with runtime gutters; write the final UV layer and page materials and bake AO into the real pages. Use after blender-uv-ao-separation when preparing the final atlas/UV map for export, choosing page sizes, or balancing materials across textures.
+description: "Prepare AoE3 runtime atlases from approved UV families using the selected density, page and material budgets. Use at the final atlas/export stage; check documented implementation limits."
 ---
 
 # Final UV atlas: pages at one density (foundation)

@@ -1,6 +1,6 @@
 ---
 name: aoe3de-soundsets
-description: How unit and building sounds work in Age of Empires III DE and how to add or wire them - the two layers (soundset definitions in Sound/soundsets*.xml and the mod's additive soundsetsde.mods.xml; per-proto sound files sound/<proto>_snds.xml with variationlogic / targetlogic / civlogic / techlogic), per-civ voices on a shared proto, the WAV format, importing voices from Age of Empires II (wiki downloads, ffmpeg), and the checks. Use when a unit is silent, speaks the wrong language, needs new voice lines, a new civ needs its own villager or soldier voices, or when asked to "define soundsets", "add sounds", "voice lines", "settler sounds", "_snds", "soundset".
+description: "Wire and diagnose AoE3 DE soundsets, per-unit sounds and civilization voices. Use for silent units, wrong voices or importing and checking new sound assets."
 ---
 
 # AoE3DE soundsets and unit sounds

@@ -1,6 +1,6 @@
 ---
 name: rm-trigger-testing
-description: Test a random map's trigger system offline first, then read the game's compiled trigger script after ONE user-requested generation. Covers the workflow ladder (S6, pytest pins, the trigger simulator, trigtemp.xs, census), the compiled rule shape, the unit INDEX law, the engine's trigger dynamics (Fire Event, ping-pong, Socket Build on water, process-stale data) and the trigtemp_check.py checker. Triggers on "trigger does not fire", "only the last one works", "persistent flare", "socket build places nothing", "read trigtemp", "test triggers offline", "ping-pong", "trigger loops". The in-game generation is done ONLY when the user asks for it.
+description: "Test AoP map triggers offline and inspect compiled runtime evidence from an authorized generation. Use for missing, repeated or incorrectly targeted trigger effects."
 ---
 
 # rm-trigger-testing: separate compilation, targeting and runtime effects

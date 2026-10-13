@@ -1,6 +1,6 @@
 ---
 name: aoe3de-destructible-building
-description: Plan and export new Age of Empires III DE destructible buildings using an already proven donor body graph. Covers intact shells, capped fractured geometry, rigid bindings, collision refits and human game validation. Use for a new building such as the Korean Town Center; use havok-destruction for inspecting or editing an existing destruction asset.
+description: "Build a new AoE3 DE destructible building from a verified donor body graph. Use for fracture planning, bindings and collision adaptation; existing-asset inspection uses havok-destruction."
 ---
 
 # New destructible buildings from a proven donor

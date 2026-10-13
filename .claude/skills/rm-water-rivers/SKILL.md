@@ -1,6 +1,6 @@
 ---
 name: rm-water-rivers
-description: Water on random maps - sea level and sea type, the water-body definition chain (data/waterbodies*.xml over the vanilla snapshots), the beach formula (bank/outerbank), why a body without banks cannot drive a river, river width and waypoints on rectangular maps, lakes and ice water types, and which water names the catalog accepts. Use when choosing or cloning a water body, when a river builds nothing, when beaches appear or fail to appear, or when a shore terraces. Triggers on "sea type", "water body", "river", "rmRiverCreate", "beach", "shoreline", "lake", "ice water", "waterbodies".
+description: "Configure and diagnose AoE3 DE map water, banks, rivers and shorelines. Use for water-type selection or missing and malformed river or beach geometry."
 ---
 
 # rm-water-rivers

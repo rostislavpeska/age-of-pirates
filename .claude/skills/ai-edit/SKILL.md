@@ -1,6 +1,6 @@
 ---
 name: ai-edit
-description: The entry point for ANY change under game/ai (the XS AI scripts) - the owner's approval gate for gameplay-scope changes (what the AI contests - sockets, Trading Posts, natives, bridges, objectives, forward bases, targets, defences), the done-rule (stop when the requirement is met), how the AI's rules fit together, the compile order and declare-before-use, the map-specific guard pattern (gIsLondon) and its validation tests, the XS constructs the engine rejected, the automated in-game test process (driver, criteria, one hypothesis per run, report) and the findings of the London campaign, with the AOE3 AI Scripting Guide as the reference. Use before editing aipiraterules.xs, aibuildings.xs, aiglobals.xs or any core AI file, before an AI test run, and when reading AI per-player logs. Triggers on "AI", "aipiraterules", "the AI does not", "AI builds", "AI attacks", "AI test", "night run", "placement failed", "xs error", "compile error dialog".
+description: "Edit AoP XS AI scripts with the required gameplay-scope approval and compile/test checks. Use before changing AI behavior or diagnosing AI script failures."
 ---
 
 # ai-edit: change the AI without changing the game

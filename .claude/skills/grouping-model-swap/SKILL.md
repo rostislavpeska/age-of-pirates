@@ -1,6 +1,6 @@
 ---
 name: grouping-model-swap
-description: Replace one proto by another inside random-map groupings while keeping the exact same model on screen (mesh + texture), when the two protos use different animfiles and different Variation lists - e.g. swap a walkable prop house for its solid twin, or a decal-less variant for the one with a decal. Use when a grouping unit must change proto "but look identical", when props are not solid / units walk through houses, when asked which model a variation number spawns, or to build a side-by-side validation grouping for the editor. Triggers on "same model different proto", "solid variant", "keep the appearance", "which variation is this model", "house B to house E", "model for model", "variation index".
+description: "Change a grouping's proto while preserving its exact visible model variant. Use for solid/walkable replacements or matching appearances across different animfiles."
 ---
 
 # Model-for-model proto swap in groupings

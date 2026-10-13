@@ -1,6 +1,6 @@
 ---
 name: lobby-minimap
-description: Make a map's lobby minimap images (<map>_mini.png with the NEW / REWORKED ribbon, <map>_mini2.png plain) the way the finished AoP maps were made - a passive-AI skirmish, the map revealed by cheat, two captures of the extended in-game minimap, the disc cut clean, and the owner's Photoshop template (gold border for normal maps, silver for historical ones). Also the loading-screen screenshots (<map>_01..03.png: camera on the settlements, HUD-free crop, the parchment frame only). Use when a map needs its lobby / picker image or loading screenshots, when asked for "the minimap image", "the lobby minimap", "the NEW ribbon", "map screenshots", or when a map still borrows another map's images.
+description: "Create AoP lobby minimap images and loading screenshots using the approved capture and framing workflow. Use when a map needs picker artwork or replacement screenshots."
 ---
 
 # Lobby minimap images

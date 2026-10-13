@@ -1,6 +1,6 @@
 ---
 name: aoe3de-building-states
-description: The state contract of an Age of Empires III DE building - construction stages (BuildingCompletion p0/p33/p66/p100, vanilla scaffold stages, our last-construction model), intact, damaged/destruction and death - and the rules every state model must keep - same frame as the intact model, per-state attachments and flags, construction content (no props, fences or flags; connected frame; one wall-seated ladder), donor-bound destruction with hidden framing evidence, export gates (logic_qa floating = 0 on every construction model). Ships state_frame_check.py (a construction/damaged GR2 must sit in the intact model's frame). Use when authoring or exporting a construction (_con, last-stage) or damaged model - read s.4 before the first part is kept or removed - and when adding or wiring construction or destruction states, when "the construction model is rotated / offset", "the building appears immediately built", "a flag floats over the construction", or before handing a building to a game test. Tested port of the AoE Buildings method docs (korean-buildings-blender docs/methods, 2026-10-08).
+description: "Validate AoE3 DE construction, intact and damaged building states for matching frames, bindings and attachments. Use when authoring, exporting or diagnosing building-state transitions."
 ---
 
 # AoE III DE building states

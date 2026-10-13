@@ -1,6 +1,0 @@
-{
-  "schemaVersion": 1,
-  "files": ["SKILL.md", "references/workflows.md", "references/geometry-contract.md", "references/paired-surface-probes.md", "scripts/paired_surface.py", "scripts/test_paired_surface.py"],
-  "skills": ["capability-authoring", "blender-high-low-baking", "junction-testbed", "texture-corner-seams", "alpha-cutout-texturing", "roof-tile-direction-qa", "texture-patching", "aoe3-texture-weathering", "armorpaint-remote", "blender-uv-observability", "aoe3de-building-states"],
-  "external": []
-}

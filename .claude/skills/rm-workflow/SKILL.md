@@ -1,6 +1,6 @@
 ---
 name: rm-workflow
-description: The random-map creation and change workflow for Age of Pirates - phases with an offline gate and (only where placement matters) an in-game gate, which rm-* skill covers each phase, the sync-by-copy rule, and what "verified" means (mapcheck --live, census, screenshot). Use when starting a new map, planning a map change, deciding what to test after an edit, or when asked "how do we build/test maps here". Triggers on "map workflow", "new random map", "how to test the map", "map phases", "what do I run after editing the map", "ship the map".
+description: "Coordinate AoP random-map creation, validation and deployment. Use to choose the next map-editing phase and the evidence needed for completion."
 ---
 
 # rm-workflow: phases and gates

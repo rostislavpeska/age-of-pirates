@@ -1,6 +1,6 @@
 ---
 name: rm-objects-herds
-description: Placing objects on random maps - object defs, herds, InArea versus AtLoc versus AtPoint, min/max distance semantics, constraint distances in metres, the tiered fallback with rmGetNumberUnitsPlaced so a placement always lands, fixed positions from a measured unit vector, and what to census afterwards. Use when adding resources, herds, treasures, fishing holes, props or any single unit to a map, when "only one of six spawned", or when a placement must be exact. Triggers on "place a unit", "herd", "object def", "rmPlaceObjectDef", "only one spawned", "fixed position", "next to the water", "avoid all".
+description: "Place and verify objects, herds and resources in AoE3 DE random maps. Use for exact placement, incomplete spawns or constraint and fallback behavior."
 ---
 
 # rm-objects-herds

@@ -1,6 +1,6 @@
 ---
 name: rm-areas
-description: Area rules for random maps - shape (skeleton influence segments + coherence, ask less than the enclosure, never box-and-over-ask), paint-only overlays clipped to an existing area, cliffs (height, ramps, blockLand), elevation stamping, the unmeasured smoothing apron, class and constraint distances in metres. Use when building or reshaping islands, plateaus, patches, cliffs or overlays, when an area floods to its fences, when paint must sit exactly on another area, or when a shoreline placement fails. Triggers on "rmCreateArea", "area shape", "cliff", "ramp", "paint the island", "overlay", "coherence", "influence segment", "smooth distance".
+description: "Create and diagnose AoE3 DE random-map areas, cliffs, ramps and paint overlays. Use for area shape, containment, elevation and placement failures."
 ---
 
 # rm-areas

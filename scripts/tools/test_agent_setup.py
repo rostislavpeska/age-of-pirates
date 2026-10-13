@@ -16,7 +16,7 @@ class AgentSetupTests(unittest.TestCase):
             root = Path(tmp)
             source = root / '.claude/skills'
             (source / 'initial').mkdir(parents=True)
-            (source / 'initial/SKILL.md').write_text('initial')
+            (source / 'initial/SKILL.md').write_text('---\nname: initial\ndescription: Fixture skill\n---\ninitial')
             alias = root / '.agents/skills'
             with self.assertRaises(SystemExit):
                 setup(root, check=True)
@@ -25,11 +25,11 @@ class AgentSetupTests(unittest.TestCase):
             try:
                 setup(root)
                 (alias / 'new-skill').mkdir()
-                (alias / 'new-skill/SKILL.md').write_text('created through Codex')
+                (alias / 'new-skill/SKILL.md').write_text('---\nname: new-skill\ndescription: Fixture skill\n---\ncreated through Codex')
                 actual = source / 'new-skill/SKILL.md'
-                self.assertEqual(actual.read_text(), 'created through Codex')
-                actual.write_text('edited through Claude')
-                self.assertEqual((alias / 'new-skill/SKILL.md').read_text(), 'edited through Claude')
+                self.assertEqual(actual.read_text(), '---\nname: new-skill\ndescription: Fixture skill\n---\ncreated through Codex')
+                actual.write_text('---\nname: new-skill\ndescription: Fixture skill\n---\nedited through Claude')
+                self.assertEqual((alias / 'new-skill/SKILL.md').read_text(), '---\nname: new-skill\ndescription: Fixture skill\n---\nedited through Claude')
                 self.assertTrue(os.path.samefile(actual, alias / 'new-skill/SKILL.md'))
                 setup(root, check=True)
             finally:
@@ -40,7 +40,7 @@ class AgentSetupTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / '.claude/skills/demo').mkdir(parents=True)
-            (root / '.claude/skills/demo/SKILL.md').write_text('source')
+            (root / '.claude/skills/demo/SKILL.md').write_text('---\nname: demo\ndescription: Fixture skill\n---\nsource')
             conflict = root / '.agents/skills/demo'
             conflict.mkdir(parents=True)
             (conflict / 'SKILL.md').write_text('preserve')

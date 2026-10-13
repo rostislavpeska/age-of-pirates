@@ -1,6 +1,6 @@
 ---
 name: grouping-centering
-description: Detect and fix out-centred city block groupings (EU_ / IT_ / IS_ blocks and lots in game/randmaps/groupings) whose units were displaced against their own ground by a Scenario Editor re-export - street poles off the block edge in one or two directions. Whole-metre fixes (+1 / +2 m only), evidence from edge poles, EU/IT/IS twins and edge units; a verification set of test maps on flat Great Plains ground with every grouping at least 20 m apart; apply only after the user approved in game. Triggers on "outcentered", "out-centred block", "poles off the edge", "grouping not centered", "block shifted", "center the groupings", "fix the city blocks".
+description: "Diagnose and repair displaced AoP city-block groupings against their terrain. Use for shifted blocks or street poles; require the documented visual approval before applying offsets."
 ---
 
 # grouping-centering: whole-metre fixes, verified in game before they land

@@ -1,6 +1,6 @@
 ---
 name: aoe3de-player-colour
-description: Apply player colour to Age of Empires III DE buildings through the material's 4th texture (Details, R = player-colour weight). Covers the engine formula, the 100 % default strength (Details 255 unless the owner asks for less), building the mask from face selections or by segmenting painted fields in the existing BaseColor, the rule for the BaseColor under the mask (light objects keep it; saturated or dark fields are lightened, or gold x blue turns dark navy), the Blender preview, the DDT and material lines, and the checks. Use when a building, ship or prop needs player colour, a Details map, a "player color band", or when the player colour looks dark, muddy or wrongly tinted.
+description: "Create and verify AoE3 DE player-colour masks and BaseColor preparation. Use for player-colour fields, Details maps or dark and muddy colour responses."
 ---
 # AoE3 DE player colour (Details map)
 

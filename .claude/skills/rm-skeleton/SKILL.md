@@ -1,6 +1,6 @@
 ---
 name: rm-skeleton
-description: Start or repair a random map script from the mandatory spine - the includes, chooseMercs(), map size, sea level, terrain init, map types, player placement and Town Centers that every generating map has - plus the .xml metadata, where the files live (repo vs Steam Game\RandMaps editor twin vs profile), the sync-by-copy rule and CRLF. Use when creating a new map, when a map crashes at generation, when a test map is needed, or when two copies of a map exist. Triggers on "new map", "map skeleton", "minimal map", "map crashes on generate", "which copy does the game load", "sync the map", "template map".
+description: "Create or repair an AoP random map from the required script and metadata structure. Use for new maps, minimal tests and generation failures."
 ---
 
 # rm-skeleton: the spine every map must keep

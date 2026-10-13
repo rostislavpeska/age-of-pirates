@@ -1,6 +1,6 @@
 ---
 name: aoe3de-multi-mod
-description: How Age of Empires III DE combines several enabled mods (a base mod plus civ add-ons, compatibility packs, home-city packs) and how to keep them from silently shadowing each other - mod priority in age3-mod-status.json (the lower Priority wins), which files merge across mods (the additive *mods.xml data files) and which replace whole (animfiles, sound files, tactics, materials, textures), a collision audit of the enabled mods (mod_overlap.py), and the hosting pattern for an add-on that needs a change in a file another mod overrides (an inert branch keyed on the add-on's tech or civ, a drift check in the add-on, companion references allowed in the host's checker). Use when "the new model / voice / change does not show in game although the files are installed", before an add-on ships a copy of any non-additive file, when adding, enabling or reordering mods, and before releasing mods that run together.
+description: "Diagnose AoE3 DE mod priority, merging and file shadowing. Use when installed content is hidden by another mod or when coordinating a base mod and add-on."
 ---
 
 # Several mods at once: priority, merging and hosting

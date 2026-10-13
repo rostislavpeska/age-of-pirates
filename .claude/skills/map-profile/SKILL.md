@@ -1,6 +1,6 @@
 ---
 name: map-profile
-description: Author or edit a map profile at scripts/maps/MAP_STEM.json, the source of truth for one map's verified water-depth overrides, terrain-class expectations, template test instances and known-issue suppressions. Use when recording in-game verification, suppressing a false-positive mapcheck finding or adding map-specific tests.
+description: "Maintain one map's verified test profile, terrain expectations and issue suppressions. Use when recording map evidence or adding scoped map checks."
 ---
 
 # map-profile: one JSON per map, evidence first

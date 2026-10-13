@@ -1,6 +1,6 @@
 ---
 name: unit-bones
-description: Add bones to a vanilla Age of Empires III DE model without re-exporting it - garrison flag, civ flag / banner points, cannon muzzles (bone_muzzleL/R##), projectile impact points (boneimpact##), attachment bones - into the intact model AND its damaged/destruction model, so the mod's animfile, .dmg damage templates and attachments find them. Uses the Granny-level appender (scripts/havok/gr2_addbones.py) with a bone table from a Blender rig (rig_table.py), from a GXO dump of a model that has the bones, or written by hand. Also the rule for an attach bone in a converter-built (GXO -> gr2) model: a child of the one root, never a second root (that model is not drawn at all). Triggers on "add a bone", "garrison flag bone", "muzzle bones", "impact points", "attachment bone", "bone_prop", "the model vanished after adding a bone", "the damaged model is missing bones", "cannons fire from the wrong place".
+description: "Add AoE3 DE attachment bones without a full model re-export. Use for flags, muzzles and effect anchors, including matching damaged-state bones."
 ---
 
 # Adding bones to vanilla models

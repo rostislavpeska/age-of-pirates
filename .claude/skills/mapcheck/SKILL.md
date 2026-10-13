@@ -1,6 +1,6 @@
 ---
 name: mapcheck
-description: Run and read the automatic map test suite (scripts/mapcheck) for random map scripts - static validity, name catalogs, terrain-grid playability, per-map profile tests. Use when asked to "test a map", "check a map", "validate map names", diagnose spawn/crash issues on a map, or before shipping map changes. Triggers on "mapcheck", "test the map", "map findings", "is the map playable".
+description: "Run and interpret AoP random-map static, naming and terrain checks. Use to validate map changes or investigate generation and placement defects."
 ---
 
 # mapcheck: automatic map testing

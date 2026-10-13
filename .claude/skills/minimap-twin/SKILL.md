@@ -1,6 +1,6 @@
 ---
 name: minimap-twin
-description: One world coordinate for the map script, the saved generation, the minimap and the in-game camera (scripts/mapview + scripts/gameio). Use to calibrate a screen's minimap from its drawn disc, check it (explorer stars or the map's edges), build the twin of a map (mapsim's expected objects joined with the census of an editor save - key objects, grouping votes, owners, MISSING/moved lists), aim the camera at a world point and photograph or record it, or convert metres / fractions / minimap pixels either way. Triggers on "minimap pixel", "where on the minimap", "photograph the enemy base", "record at the bridge", "spawn check", "did the grouping spawn", "twin", "calibrate the minimap", "world coordinate", "census positions".
+description: "Relate AoE3 world, minimap and camera coordinates and compare expected placements with a saved scenario. Use for coordinate calibration, placement checks or targeted captures."
 ---
 
 # The minimap digital twin (`scripts/mapview`, input through `scripts/gameio`)

@@ -132,11 +132,12 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
 15. **One source of truth: no duplicates of separate mods in AoP.** A separate mod or project (the Koreans add-on
    `../age-of-pirates-koreans`, any future civ add-on) lives only in its own repository. Never create a copy, mirror,
    source folder, export pipeline or second version of it inside AoP unless the owner explicitly requests a merge
-   and confirms it. A duplicate you find is reported (rule 14), not followed. **Skills are the exception and always
-   live here:** every skill goes into AoP's `.claude/skills/`, even one created while working in the separate repo;
-   a skill holds the generic method only. **Project-specific documentation stays in the project's own repo**
+   and confirms it. A duplicate you find is reported (rule 14), not followed. **Skills have registered owners:** generic skills live in private Blendify;
+   AoE3 adapters and AoP policy live here; project entries live in their project.
+   Consumer discovery links expose those sources without copying them. **Project-specific documentation stays in the project's own repo**
    (Korean plan, audit, design and research stay in the Korean repositories, never in AoP). Owner, 2026-10-08:
-   "One source of truth!!! NEVER TWO!!!", "skills always into Age of Pirates", "Korean specific documentation stays
+   "One source of truth!!! NEVER TWO!!!". The earlier all-skills-in-AoP placement was superseded by the owner's
+   13 October Blendify split; "Korean specific documentation stays
    in korean repo" (INC-170).
    **Temporary (owner 2026-10-09): ALL Korean content lives in `../age-of-pirates-koreans`, AoP keeps none** -
    civ records AND the Korean building models, textures, 3D test benches, their sounds and test maps. Owner: "It
@@ -216,7 +217,7 @@ distilling open records (`journal.py digest`), on the owner's request; agent-pri
 **Automatic capability upkeep:** before writing a new workflow implementation,
 and after a confirmed gap, failure or owner correction, apply
 `.claude/skills/capability-authoring/SKILL.md` without waiting for another request.
-Generic mechanics belong in AoP skills, project forms in that project's guides,
+Generic mechanics belong in Blendify skills, project forms in that project's guides,
 and set-specific appearance in its subproject profiles. Extend existing owners,
 update discovery links and preserve failure evidence in the same work. Do not
 claim an unimplemented or unreplayed capability is production-ready. For any
@@ -225,22 +226,25 @@ roof work start with `blender-roof-baking`, then the project and set profile.
 When maintaining the skill system, read [its architecture](docs/skill-system-architecture.md).
 It describes AoP ownership, both public repositories, sync boundaries and verification.
 
-All skills are authored in `.claude/skills/`, including the original AoP skills, Blender authoring,
-reusable AoE3DE tooling and public export/import. Read and edit that directory directly.
-Choose relevant packages from `.claude/skills/*/SKILL.md` by their names and frontmatter
-descriptions, then read their instructions before acting. Load only relevant skills
-and references; do not load the entire suite into context. This applies to every agent.
+Generic skills are authored in private Blendify; AoE3 adapters and AoP mod skills
+are authored here. Korean forms and set profiles remain in the Korean project.
+The current catalog is scanned from registered physical sources, not a static index.
+Set `BLENDIFY_REPO` in ignored `config/aop.local.env` and run
+`python scripts/tools/setup_agent_skill_link.py`; `--check` verifies file identity,
+`--search roof --json` discovers matching live instructions and dependencies.
+At first skill use in a session, agents run --check and refresh if required;
+the owner should not have to maintain links or a skill list manually. Report
+missing repositories or conflicting copies rather than switching to old sources.
 
-Claude Code reads the physical, tracked `.claude/skills/` library directly.
-Codex, Cursor, Gemini CLI and VS Code Copilot use the single ignored `.agents/skills`
-directory link to it. Creating or editing a skill through either path changes the
-same source, including new skill directories. There are no generated skill bodies,
-plugins or synchronization between agents. No top-level `skills/` tree remains.
-After a fresh clone or worktree, run `python scripts/tools/setup_agent_skill_link.py`;
-add `--check` for read-only file-identity verification. Never replace a conflicting
-directory automatically. Do not add extra `.codex`, `.cursor` or `.gemini` skill mirrors.
-Perform Git operations on canonical `.claude/skills` paths. Never recursively delete
-through `.agents/skills`; remove only the verified link entry when repairing setup.
+Claude reads the assembled `.claude/skills` directory. Codex and Cursor read its
+ignored `.agents/skills` link. Imported packages are ignored per-skill links to the
+registered owner. Edit the resolved canonical source; do not create private skill
+copies here. New generic packages must be created in Blendify, not through an
+unowned name in the consumer directory. Refresh after additions or reorganizations;
+skill edits themselves are immediately visible. Follow the ownership architecture
+in Blendify `docs/skill-system.md` and this repo's `docs/skill-system-architecture.md`.
+Never recursively delete through a discovery link. Setup removes only its verified
+managed link entries and refuses conflicting real directories or unexpected links.
 
 `CLAUDE.md` and `GEMINI.md` import this file; Codex and Cursor read it directly.
 Discovery paths do not configure MCP connections, permissions or installed tools.
@@ -267,4 +271,9 @@ through that configuration. Do not duplicate private binaries into public skill 
 
 Keep source assets outside runtime folders, preserve unrelated changes, and keep art and
 `_snds` XML editable without introducing XMB twins. All agent-specific wrappers refer here;
-maintain shared rules in this file.
+maintain AoP policy in this file and generic rules at their Blendify owner.
+
+For modelling versus harness-development roles and bounded repair attempts,
+also follow the configured Blendify `AGENTS.md` work-role section. Modellers may
+improve canonical skills. Keep the existing task list and shared diary; do not
+rebuild orchestration inside an asset assignment. AoP runtime gates still apply.

@@ -1,6 +1,6 @@
 ---
 name: aoe3de-new-civ
-description: Add a new civilization to Age of Empires III DE as a separate add-on of a base mod, cloned from a vanilla civ. Covers the repository layout (one source of truth, base mod free of the civ's names), the civ entry and villager switch, setup and Shadow techs that actually fire, build-menu and tech-panel slots, new house types and the base mod's house rules, occupied-building attacks, explorer swaps, home-city cards, English-only strings, voices on shared protos, routing the civ's building models through vanilla animfiles the base mod may override, AI limits, and the add-on tests that catch each. Use when creating or extending a civ add-on, or for these symptoms - "the new building sits alone in the top row", "the civ tech never fires", "the house never shoots", "cards still ship the old villager", "the vanilla building shows instead of ours" - and before wiring a civ's buildings into vanilla animfiles.
+description: "Create or extend an AoE3 DE civilization add-on and validate its data, UI and asset integration. Use with the consuming mod's policy and repository layout."
 ---
 
 # New civilization as an add-on

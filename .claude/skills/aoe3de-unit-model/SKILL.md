@@ -1,6 +1,6 @@
 ---
 name: aoe3de-unit-model
-description: Age of Empires III DE facts for a new or changed unit model (infantry, rider, later horse) - measured vanilla budgets and bone sets, rider skeleton donors chosen by clip coverage, scale and the working-scale scene, the LowPoly (_lp) LOD logic, unit materials, the G0 export round trip, the pose-test route and the checks before a bench test, with scripts that re-measure vanilla units. Use with blender-organic-modeling when building an AoE3 unit; animation timing and rig binding stay in aoe3de-unit-animation.
+description: "Apply AoE3 DE unit-model budgets, skeleton, material and export requirements. Use alongside generic character authoring; animation timing belongs to aoe3de-unit-animation."
 ---
 
 # AoE3 DE unit models: the game facts

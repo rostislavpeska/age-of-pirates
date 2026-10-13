@@ -1,6 +1,6 @@
 ---
 name: ship-sails
-description: >-
+description: "Gives an Age of Empires III DE ship furling sails on both intact and destruction models using idle/walk poses, sail bones, mast animtrans parenting, Granny model builds and animfile wiring. Use for sail animation, furling sails, damaged-model sails and falling masts that retain their sails."
   Gives an Age of Empires III DE ship furling sails on both intact and destruction models using idle/walk poses, sail bones, mast animtrans parenting, Granny model builds and animfile wiring. Use for sail animation, furling sails, damaged-model sails and falling masts that retain their sails.
 ---
 

@@ -58,7 +58,7 @@ class SkillLayoutTests(unittest.TestCase):
             root = Path(directory)
             source = root / '.claude/skills'
             (source / 'example').mkdir(parents=True)
-            (source / 'example/SKILL.md').write_text('example', encoding='utf-8')
+            (source / 'example/SKILL.md').write_text('---\nname: example\ndescription: Fixture skill\n---\nexample', encoding='utf-8')
             legacy = root / '.agents/skills'
             legacy.mkdir(parents=True)
             sentinel = legacy / 'SKILL.md'
@@ -73,7 +73,7 @@ class SkillLayoutTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / '.claude/skills/example').mkdir(parents=True)
-            (root / '.claude/skills/example/SKILL.md').write_text('example', encoding='utf-8')
+            (root / '.claude/skills/example/SKILL.md').write_text('---\nname: example\ndescription: Fixture skill\n---\nexample', encoding='utf-8')
             with self.assertRaises(SystemExit):
                 setup(root, check=True)
             self.assertFalse((root / '.agents').exists())
@@ -85,15 +85,15 @@ class SkillLayoutTests(unittest.TestCase):
             root = Path(directory)
             source = root / '.claude/skills'
             (source / 'initial').mkdir(parents=True)
-            (source / 'initial/SKILL.md').write_text('initial')
+            (source / 'initial/SKILL.md').write_text('---\nname: initial\ndescription: Fixture skill\n---\ninitial')
             setup(root)
             alias = root / '.agents/skills'
             try:
                 (alias / 'codex-created').mkdir()
-                (alias / 'codex-created/SKILL.md').write_text('created via Codex')
-                self.assertEqual((source / 'codex-created/SKILL.md').read_text(), 'created via Codex')
-                (source / 'codex-created/SKILL.md').write_text('edited via Claude')
-                self.assertEqual((alias / 'codex-created/SKILL.md').read_text(), 'edited via Claude')
+                (alias / 'codex-created/SKILL.md').write_text('---\nname: codex-created\ndescription: Fixture skill\n---\ncreated via Codex')
+                self.assertEqual((source / 'codex-created/SKILL.md').read_text(), '---\nname: codex-created\ndescription: Fixture skill\n---\ncreated via Codex')
+                (source / 'codex-created/SKILL.md').write_text('---\nname: codex-created\ndescription: Fixture skill\n---\nedited via Claude')
+                self.assertEqual((alias / 'codex-created/SKILL.md').read_text(), '---\nname: codex-created\ndescription: Fixture skill\n---\nedited via Claude')
                 self.assertTrue(os.path.samefile(alias / 'codex-created/SKILL.md', source / 'codex-created/SKILL.md'))
                 setup(root, check=True)
             finally:

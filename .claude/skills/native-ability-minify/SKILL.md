@@ -1,6 +1,6 @@
 ---
 name: native-ability-minify
-description: Shrink a native civ's big 2x2 ability button on the Trading Post down to a normal 1x1 grid button, so an extended-civ big button (Inuit Expansion, Habsburg Expansion, native influence/dance techs) can occupy the slot without overlapping. Use when a native ability button overlaps the unit-upgrade big button, when adding an expansion big button to a subciv that already has an ability, when asked to make an ability button smaller/minify/shrink a native power, or when a small ability button appears but casting does nothing. Triggers on "big button overlap", "ability button too big", "2x2 button", "minify ability", "shrink native ability", "small variant of the ability".
+description: "Convert an AoP native expansion ability from a large button to a compact slot. Use to resolve expansion-button overlap while preserving the ability's behavior."
 ---
 
 # Shrinking a native ability button

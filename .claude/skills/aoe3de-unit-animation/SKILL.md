@@ -1,6 +1,6 @@
 ---
 name: aoe3de-unit-animation
-description: How Age of Empires III DE units are animated and how to change it safely - animfile anims a unit's tactics need, mounted units (horse animfile including a rider, matched horse/rider pairs, projectile release on the horse's Attack tag), how animations bind to bones (by name, keys local to the model's parent, root/model names), putting an infantry body on a rider skeleton (gr2_reskeleton.py), and previewing a pose without the game (pose_sim.py on GXO models, clips decoded from the gr2). Use when a unit "stands still while building", "floats above the horse", "shoots before the bow is drawn", "has no pickup/build/knockout animation", when borrowing animations from another unit, mounting a foot model, or before an owner game test of a unit's animations.
+description: "Inspect and adapt AoE3 DE unit animation bindings, required clips and event timing. Use for static units, mounted alignment, skeleton reuse or mistimed actions."
 ---
 
 # Unit animation (animfiles, rigs, timing)
@@ -44,7 +44,7 @@ are what fixed them, each with its guard.
   differs: the Shaolin Disciple (spine under the root, thighs under the pelvis, root `Bip01`, no neck) floated about
   1 m above the saddle with the cavalry idle; the yabusame rider (spine under the pelvis, thighs under the spine, root
   `Bip01_Root`) sits.
-- Fix without touching a mesh byte: `scripts/havok/gr2_reskeleton.py DONOR TARGET OUT` gives the target the donor's
+- Fix without touching a mesh byte: the AoP adapter command scripts/havok/gr2_reskeleton.py DONOR TARGET OUT gives the target the donor's
   skeleton and names; it refuses missing bound bones or joints that differ. Then `skinned-model-check` and a bench.
 
 ## 4. Preview a pose without the game

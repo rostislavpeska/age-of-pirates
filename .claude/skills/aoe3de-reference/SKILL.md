@@ -1,6 +1,6 @@
 ---
 name: aoe3de-reference
-description: Look up AoE3DE data XML fields, random-map commands, XS/AI signatures and UI commands from bundled reference texts. Use for exact syntax lookup; verify version-sensitive behavior against the installed game.
+description: "Look up AoE3DE data XML fields, random-map commands, XS/AI signatures and UI commands from bundled reference texts. Use for exact syntax lookup; verify version-sensitive behavior against the installed game."
 ---
 
 # AoE3DE reference library

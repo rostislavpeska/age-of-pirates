@@ -1,6 +1,6 @@
 ---
 name: icon-forge
-description: Composite artwork into Age of Empires III DE icon frames - tech, unit, ability, building and team-tech borders, the big-button frame, and borderless portraits. Use when adding or replacing any icon, iconwpf, portraiticon or big button for a new tech, unit, building or native, when generated or hand-painted art needs the game's gold border applied, when a disabled/greyed variant is wanted, and BEFORE generating icon art: what an icon should show and how it should look (visual language, prompt template, set review sheet). Triggers on "player colour dark/black in icon or portrait", "unit portrait recipe", "make an icon", "add the border", "icon for this tech", "icon style", "icon prompt", "icons look wrong", "big button image", "unit portrait", "greyed out icon", "512 portrait".
+description: "Prepare and composite AoE3 DE icons and portraits using the appropriate visual recipe and frame. Use before generating icon art or adding borders and disabled variants."
 ---
 
 # Icons: art direction, border, set review

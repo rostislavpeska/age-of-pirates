@@ -1,6 +1,6 @@
 ---
 name: aoe-building-pipeline
-description: AoP entry point for building export, materials and deployment. Start here in Age of Pirates; applies this mod's profile and St Pauls/Basilica evidence, then uses aoe3de-building-export for the shared workflow.
+description: "AoP entry point for building export, materials and deployment. Start here in Age of Pirates; applies this mod's profile and St Pauls/Basilica evidence, then uses aoe3de-building-export for the shared workflow."
 ---
 
 # AoP building profile

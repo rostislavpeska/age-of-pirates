@@ -1,6 +1,6 @@
 ---
 name: native-politician
-description: Add a consulate politician (Choose a Foreign Ally card) for a native, Royal House, faction or pirate captain, including the consulate tech, portrait, politician set, AI choice and supported unit/tech/stat/alliance variants. Use for new politicians, pirate captains, foreign allies, consulate options and map-bonus politicians.
+description: "Add or repair an AoP native or Royal House politician choice. Use for Trading Post ally choices, their tech effects and button integration."
 ---
 
 # Adding a consulate politician

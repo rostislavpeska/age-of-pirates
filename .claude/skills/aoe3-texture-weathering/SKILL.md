@@ -1,6 +1,6 @@
 ---
 name: aoe3-texture-weathering
-description: Adjust grain, wear, moss and material finish on existing AoE3 building textures. Use for texture-only weathering or relief while preserving frozen UVs, valid bakes and protected channels.
+description: "Adjust grain, wear, moss and material finish on existing AoE3 building textures. Use for texture-only weathering or relief while preserving frozen UVs, valid bakes and protected channels."
 ---
 
 # AoE3 texture weathering (texture-only, UV-frozen atlases)

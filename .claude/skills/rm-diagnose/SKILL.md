@@ -1,6 +1,6 @@
 ---
 name: rm-diagnose
-description: The ordered checklist for "it does not work in game" on a random map or its data - which file the game actually loads, whether the compiled twin is fresh and its identifier text clean, whether a name exists in the CURRENT build, whether the process restarted, what the dump can and cannot prove - pinned BEFORE any theory. Use whenever a map feature silently does nothing, spawns the wrong thing, falls back to a default, or "worked yesterday". Triggers on "not working", "silently", "falls back", "nothing spawns", "still the old", "why does it", "blocked", "does not appear".
+description: "Diagnose silent AoE3 DE map/data failures from the loaded files, compiled data and current names. Use when changes do nothing, regress or fall back unexpectedly."
 ---
 
 # rm-diagnose: pin the symptom, then walk the ladder

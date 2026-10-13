@@ -1,6 +1,6 @@
 ---
 name: rm-census
-description: The universal observation skill for random maps - which artifact proves what (trigtemp.xs, the RM dump, a saved .age3Yscn, a screenshot), ground truth for "did it spawn" by parsing a saved generation into protos, indices and positions, spawn criteria, and the measured Scenario Editor sequence the screen drivers use (generate, watch the load bar, save), with their guards and the monitor-independent gamewin.py helper. The drivers run ONLY on the user's explicit request. Triggers on "census", "did it spawn", "how many spawned", "count the units", "spawn criteria", "verify the placement", "not spawning", "which index", "save the scenario", "generate in the editor", "dry run the driver".
+description: "Verify what an AoE3 DE map actually generated using saved-scenario and script evidence. Use for spawn counts and placement checks; GUI generation requires explicit authorization."
 ---
 
 # rm-census: observe the game through its artifacts

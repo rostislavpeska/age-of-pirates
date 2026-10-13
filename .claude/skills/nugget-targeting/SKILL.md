@@ -1,6 +1,6 @@
 ---
 name: nugget-targeting
-description: Target nuggets and grouping units by unit id in RM trigger code ("Nugget Is Collectable", Unit Action Suspend, Convert Units in Area, Units Owned). Use when wiring or debugging ANY conversion/capture system - trade sockets, capturable factories/menageries/forts, pirate camps - or whenever a trigger that references a unit id silently never fires. Triggers on "nugget is collectable", "convert trigger doesn't fire", "targets the wrong unit", "unit id shifted", "AutoConvert suspend", "capturable building", "only the last one works".
+description: "Target the intended treasures and units from AoP random-map triggers. Use for nugget effects and grouping-unit selections that require verified runtime indices."
 ---
 
 # Targeting nuggets and grouping units in RM triggers

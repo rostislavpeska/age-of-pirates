@@ -1,6 +1,6 @@
 ---
 name: rm-name-catalogs
-description: Finding the exact names a random map may use - protos, terrain subtypes and their editor palette names, terrain mixes, water bodies, cliff types, trade route types, groupings, lighting sets - from the CURRENT game archives and the mod's own data, and why the repo snapshot is not the authority (it lags every DLC; mapcheck --live fixes the false positives). Use before writing any name into a map, when mapcheck reports an unknown name, when the editor palette shows a name you need in code, or when a DLC proto is "unknown". Triggers on "what is the name of", "proto name", "mix name", "terrain name", "water type name", "cliff type", "unknown proto", "did you mean", "palette name".
+description: "Find exact map asset names from the installed AoE3 DE build and mod data. Use for unknown protos, terrain, water, cliffs, routes or grouping names."
 ---
 
 # rm-name-catalogs: read names, never guess them

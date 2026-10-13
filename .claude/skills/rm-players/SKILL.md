@@ -1,6 +1,6 @@
 ---
 name: rm-players
-description: Player placement on random maps - rmPlacePlayersCircular / rmPlacePlayersLine, placement sections and team arcs, the ring angle convention, Town Centers and starting units at the measured player location, and what the G-checks of mapcheck assert. Use when players spawn in the wrong place, fall back to a default ring, start without a Town Center, or when a team map's sides are swapped. Triggers on "player placement", "rmPlacePlayers", "starting units", "team islands", "players fall back", "placement section", "Town Center missing".
+description: "Configure and validate AoE3 DE random-map player starts and team layouts. Use for misplaced starts, missing Town Centers or incorrect starting units."
 ---
 
 # rm-players

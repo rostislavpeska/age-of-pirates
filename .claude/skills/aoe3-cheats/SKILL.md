@@ -1,6 +1,6 @@
 ---
 name: aoe3-cheats
-description: Cheat codes in Age of Empires III DE for testing - how to enter them (by hand and by the harness), the full list with effects and where each comes from, which are verified in this project, and what a cheat costs (single player only, blocks challenges). Use when a test needs the map revealed or without fog, resources, speed, an instant win, or any cheat unit; when capturing a minimap; or when asked "is there a cheat for X". Triggers on "cheat", "reveal the map", "X marks the spot", "mercator", "mircator", "fog of war", "give me resources in the test".
+description: "Look up AoE3 DE cheats for an authorized game test. Use when a test needs map visibility, resources, speed or a cheat unit."
 ---
 
 # AoE3 DE cheat codes

@@ -1,6 +1,6 @@
 ---
 name: aoe-game-text
-description: Write player-facing English text for Age of Pirates in the vanilla AoE3 DE voice - Home City card and tech names and descriptions, team techs, native unit upgrade names, politician descriptions, nugget strings (format strings - a wrong placeholder crashes the game), colour tags, and the rare vanilla string rewrite. Measured rules, a lint script that stringsync.py --build runs. Use before adding or changing any string in data/strings/english/stringmods.xml. Triggers on "description", "rollover", "card text", "tech name", "tooltip", "name the card", "politician text", "nugget text", "upgrade names", "rewrite a vanilla string".
+description: "Write and validate AoP player-facing English strings in the AoE3 DE style. Use for names, tooltips, card text and formatted rollover messages."
 ---
 
 # Player-facing text in the vanilla voice

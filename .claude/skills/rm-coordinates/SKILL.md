@@ -1,6 +1,6 @@
 ---
 name: rm-coordinates
-description: Coordinates on random maps - map fractions versus metres versus tiles, the 45-degree minimap rotation (visual left = code low-x/high-z), the world-circle drop radius, measured positions from placed units, negative offsets without negative arguments, and the XS integer-times-float truncation. Use before placing anything by number, when reading a minimap or screenshot into code coordinates, when units land in the wrong quadrant or at the map corner, or when a computed grid collapses onto one point. Triggers on "coordinates", "map fraction", "tiles to fraction", "minimap rotation", "world circle", "wrong quadrant", "measure the position".
+description: "Convert and verify AoE3 DE random-map coordinates, units and minimap orientation. Use before numeric placement or when objects land in the wrong location."
 ---
 
 # rm-coordinates

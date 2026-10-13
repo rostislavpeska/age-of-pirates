@@ -1,6 +1,6 @@
 ---
 name: gr2-granny-edit
-description: Read, inspect and edit Age of Empires III DE Granny .gr2 models at byte level with the repo's own tools (scripts/havok/gr2_*.py) - dump skeletons/meshes/animations, append bones (with parent chains, from a bone table), cut triangles out of a mesh into new rigid meshes bound to other bones, and verify a built file before it ever reaches the game (reader CRC, optional loader test, then Blender geometry comparison). Also covers the GXO text format the tools use as interchange. Use whenever a vanilla model needs extra bones or a mesh split and its vertex data must stay byte-identical.
+description: "Inspect or edit AoE3 DE GR2 skeletons and mesh structures while preserving protected vertex data. Use for precise bone additions, mesh splits and binary-level verification."
 ---
 
 # Granny-level .gr2 editing

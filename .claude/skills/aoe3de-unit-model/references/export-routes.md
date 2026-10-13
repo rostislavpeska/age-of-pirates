@@ -219,7 +219,7 @@ Blender and the game file must agree on mesh count, triangle count, bone list an
 ## 9. Consumer export gates
 
 A consuming mod may gate game tests on its own lint. AoP (2026-10-11): `gr2_lint --profile unit_rider_1024`
-(`unit_profiles` in `<consumer-root>/scripts/havok/gr2_lint_profiles.json`), **PROPOSED for the owner**: skeleton,
+(`unit_profiles` in the consumer's scripts/havok/gr2_lint_profiles.json), **PROPOSED for the owner**: skeleton,
 skeleton fit (`unit_fit`, the scale gate), weights, vertex layout and budget against references measured on
 iron_rider_0 and keshik_rider_rank01 (both pass 16/16), the UNIVERSAL UV density floor (`texel_density`, as for every
 model: no unit exemption) with the organic UV gate profile's higher density minima on top (`unit_density`,

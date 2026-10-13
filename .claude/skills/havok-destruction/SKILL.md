@@ -1,6 +1,6 @@
 ---
 name: havok-destruction
-description: Inspect and adapt Age of Empires III DE destruction assets - fractured building geometry, donor Havok body graphs and collision hulls, per-piece GR2 bindings, damage templates and animation XML. Includes the in-game-confirmed Korean Town Center donor adaptation and the animated ship animtrans pattern. Use for damaged models, HKT files, progressive damage, falling pieces, simskeleton and destruction export failures.
+description: "Inspect and adapt AoE3 DE Havok destruction graphs, collision and damaged-mesh bindings. Use for HKT, progressive damage and falling-piece failures."
 ---
 
 # Destruction models (.hkt / _damaged.gr2) and animated damage stages

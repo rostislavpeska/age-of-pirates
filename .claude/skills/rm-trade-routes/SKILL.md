@@ -1,6 +1,6 @@
 ---
 name: rm-trade-routes
-description: Trade routes on random maps - route type = the traderoutedefs record name (land vs nautical, the DLC's arctic chains), upgrade chains in traderoutes.xml, the ONE-LINE record rule for the compiled twin, sockets at waypoints, build order versus cliffs, and the "falls back to the base route" diagnosis. Use when adding or changing a trade route, switching a route type, when trade units are wrong or missing, when a route renders as dirt, or when the Trading Post upgrades look wrong. Triggers on "trade route", "rmBuildTradeRoute", "route type", "arctic route", "trade units", "falls back to dirt", "traderoutedefs".
+description: "Create and diagnose AoE3 DE map trade routes, sockets and upgrades. Use for missing routes, wrong trade units or route-type fallbacks."
 ---
 
 # rm-trade-routes

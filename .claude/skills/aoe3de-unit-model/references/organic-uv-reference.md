@@ -132,7 +132,7 @@ what the H1 recipe reached on a 1.1k-triangle rider (body + skinned flail on one
 | Body islands / tiny (body) | <= 20 / <= 2 | 10-16 / 0 | DE 9-37 | 15 / 0 |
 | Head/torso, bone regions (body) | owner decision | 1.25-1.35 | iron_rider_0 1.30; changdao 1.22; ashigaru 1.37; keshik 1.47; yabusame 0.97; musketeer 1.02 | 1.119 (1.271 visible faces) |
 
-The visible-weighted p10 hard minimum is the floor of the lowest vanilla reference (iron_rider_0 313.4, reproduced exactly by `gr2_lint`'s numpy port of the evaluator's visibility, 2026-10-11); it was 314 until the export review found that value failed iron_rider_0 itself. AoP's export lint applies these two density minima (profile `unit_rider_1024` in `scripts/havok/gr2_lint_profiles.json`, PROPOSED) on top of the universal density floor, which runs for every model, units included.
+The visible-weighted p10 hard minimum is the floor of the lowest vanilla reference (iron_rider_0 313.4, reproduced exactly by `gr2_lint`'s numpy port of the evaluator's visibility, 2026-10-11); it was 314 until the export review found that value failed iron_rider_0 itself. AoP's export lint applies these two density minima (profile `unit_rider_1024` in the consumer adapter scripts/havok/gr2_lint_profiles.json, PROPOSED) on top of the universal density floor, which runs for every model, units included.
 
 The 1,050 vertex ceiling is the unit contract's (vanilla welded maximum 1061). The universal density floor (90 / 54
 t/u, blender-architecture-texturing uv-density-floor.md) is not one of the organic gate's own checks, but it applies to

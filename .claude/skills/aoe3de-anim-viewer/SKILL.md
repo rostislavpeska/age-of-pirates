@@ -1,6 +1,6 @@
 ---
 name: aoe3de-anim-viewer
-description: Age of Empires III DE animation viewer (M0-M5 done, 2026-10-11; camera/lighting calibration still open). Plays a unit's animfile anims and variants with the game's own material and lighting maths (materialdefault + lightingpass port, tonemap LUT), a timeline of every clip, key and tag (attack, footsteps, sounds), ROF/tactics timing values and M/A/U/H fidelity flags, in a local page the owner opens in his own browser. Headless exports for agents (no window) - PNGs and contact sheets at tags / keys / N fps with a JSON sidecar per cell, MP4 / WebP videos with a burned-in timeline, and a compare mode (two units on one clock with rider-horse penetration and hoof height at footstep tags). Use to look at, render, film or compare a unit's animations, to check a pose/seat/attachment/tag timing, to build or read the unit bundle (references/bundle-schema.md), or to extend this viewer.
+description: "Preview and compare AoE3 DE animations, attachments and event timing in the local viewer or headless captures. Use for animation inspection; game-lighting fidelity remains separately qualified."
 ---
 
 # AoE3 DE animation viewer

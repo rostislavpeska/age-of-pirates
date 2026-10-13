@@ -1,6 +1,6 @@
 ---
 name: rm-triggers
-description: The HUB for random-map triggers in Age of Pirates - where a trigger task goes, the reference files, the anatomy of a trigger, the general laws that apply to every trigger (cost, tech execution, names, unit indices, order, gaia, what proves an effect), and the setup-tech convention for historical maps. Routes to the specialised skills (nugget-targeting, map-politician-triggers, rm-trigger-testing) instead of repeating them. Use before writing or changing ANY trigger or starting-tech code in a map. Triggers on "trigger", "starting techs", "setup tech", "ZP Set Tech Status", "rmCreateTrigger", "fire the tech", "tech does not activate", "gaia tech", "trigger guidelines".
+description: "Select and apply AoP random-map trigger and starting-tech conventions. Use before trigger edits; delegate specialized targets and tests to their owning skills."
 ---
 
 # rm-triggers: the hub for map triggers

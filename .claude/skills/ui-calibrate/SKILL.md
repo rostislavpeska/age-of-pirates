@@ -1,6 +1,6 @@
 ---
 name: ui-calibrate
-description: Calibrate the test driver's game-UI coordinates for a new device, monitor, or resolution - manual hover-and-Enter through the coordinate table, producing a tracked resolution-keyed sheet plus the gitignored local selector. Triggers on "different monitor", "coordinates wrong", "driver misclicks", "calibrate the UI", "new resolution", "whichsheet".
+description: "Calibrate AoP test-driver coordinates for the current display and game window. Use after resolution changes or when automated clicks miss their targets."
 ---
 
 # Calibrating the driver's UI coordinates

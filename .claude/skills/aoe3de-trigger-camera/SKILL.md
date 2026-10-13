@@ -1,6 +1,6 @@
 ---
 name: aoe3de-trigger-camera
-description: Point the Age of Empires III DE camera with triggers and inspect a model in game from scripted views - the Camera Cut value format (measured in the game binary and in game), the world frame and the model-to-world mapping of a placed building, aiming at attachment bones, and the Scenario Editor Playtest automation (scripts/aitest/camera_bench.py - generate the test map, pick it in the editor, Playtest, one still per view, back to the editor). Use to look at attachments, horses, flags, props, construction or destruction states in game, when asked to "set up a camera", "camera trigger", "camera cut", "look at it from the side", "screenshot from a fixed angle", "test in the editor", "inspect the model in game", or before telling the owner a visual fix works.
+description: "Configure fixed AoE3 DE trigger-camera views for an authorized visual test. Use for model, attachment or building-state inspection in game."
 ---
 
 # Trigger camera: inspect a model in game

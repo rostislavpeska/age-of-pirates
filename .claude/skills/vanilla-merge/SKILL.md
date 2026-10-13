@@ -1,6 +1,6 @@
 ---
 name: vanilla-merge
-description: Reconcile Age of Pirates overrides against a patched or new-DLC game build - find which mod files silently drop records the patch added (soundsets, unittypes, tactics, transforms, particlesets) and re-add them without disturbing the mod's own changes. Use after any AoE3DE game update, DLC or beta build, when units go silent, when a tech or effect stops resolving, or when asked what a patch broke, which mod files are stale, what the mod overrides, or to merge/reconcile/update overrides against vanilla. Triggers on "new DLC broke", "game patch", "merge with vanilla", "what did the update change", "which files are out of date", "mod overrides".
+description: "Compare AoP overrides with an updated AoE3 DE build and reconcile lost upstream records. Use after game updates or when overrides suppress new content."
 ---
 
 # Reconciling mod overrides after a game patch

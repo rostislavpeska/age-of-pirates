@@ -1,6 +1,6 @@
 ---
 name: rm-eye-candy
-description: Optional touches that give a random map a premium look - trees on cliff plateaus, bridge docks level with the bridge, vegetation density (forest size and spacing, scattered single trees in the forests' own species), and where each recipe lives. Not required for a map to work; collected from the owner's remarks so every map can use them. Use when a map "looks too grassy / bare / empty", when a bridge or dock "looks creepy", when dressing settlements or plateaus, when finishing a premium map, or when the owner gives a new look tip to record. Triggers on "eye candy", "premium look", "more vegetation", "too grassy", "more trees", "trees on the cliffs", "bridge looks creepy", "dock lower than the bridge".
+description: "Apply established AoP map-dressing recipes for vegetation, docks and settlements. Use for visual polish after map functionality is verified."
 ---
 
 # Eye candy for random maps

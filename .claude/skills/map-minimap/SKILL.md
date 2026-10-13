@@ -1,6 +1,6 @@
 ---
 name: map-minimap
-description: Generate a random map in the live Scenario Editor and photograph its minimap, for visual validation before a play test is spent on it. Use when asked to "show me the map", "send the minimap", "load it and screenshot", "does the terrain look right", or to confirm a map edit actually changed the terrain. Triggers on "minimap", "load the map", "generate it in the editor", "visual check".
+description: "Capture a generated AoE3 DE map's minimap for an explicitly requested visual check. Use to inspect terrain changes before a full play test."
 ---
 
 # map-minimap: see the terrain before testing it

@@ -1,6 +1,6 @@
 ---
 name: skinned-model-check
-description: Check a skinned (rigged) unit or character model before and after any edit - bones, skin weights, influence limits, mesh binding - and prove against the untouched original what an edit changed (dropped meshes, moved vertices) and that it kept the skeleton and every vertex's weights. Converts AoE3 DE .gr2 through the GR2 converter under Wine in WSL, checks in background Blender, renders clay views. Use before an in-place GR2 edit of a unit (shaved head, removed part), after any unit/rider/animal model change, when a retextured or edited unit "deforms wrongly", "loses its arm", "stretches in animation", and as the evidence step before an owner game test.
+description: "Compare AoE3 DE skinned models before and after edits, including bones, bindings and vertex weights. Use for deformation regressions and protected-data verification through the configured converter."
 ---
 
 # Skinned model check
