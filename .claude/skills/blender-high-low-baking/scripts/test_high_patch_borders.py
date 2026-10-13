@@ -1,3 +1,4 @@
+"""INC-295: internal HIGH patch overscan must not create self-occluding double surfaces."""
 import unittest
 from high_patch_borders import edge_inventory,padding
 
