@@ -3,6 +3,7 @@
 Default: %TEMP%/painter-connector/<endpoint>/events.jsonl.
 Set SP_CONNECTOR_LOG or call configure(log_path=..., project=...) before connecting.
 """
+# Endpoint retention: audit 2026-10-13-codex-painter-endpoint-01 (INC-330).
 import argparse
 import contextlib
 import contextvars
@@ -108,7 +109,7 @@ class Operation:
         return self
 
     def mark(self, phase, **fields):
-        event(phase, self.name, self.id, **fields)
+        event(phase, self.name, self.id, **{**self.fields, **fields})
 
     def finish(self, outcome='done', **fields):
         self.outcome = outcome
@@ -128,7 +129,9 @@ class Operation:
         else:
             outcome = self.outcome or 'done'
             fields = getattr(self, 'finish_fields', {})
-        event(outcome, self.name, self.id, duration_s=round(time.monotonic() - self.start, 4), **fields)
+        event(outcome, self.name, self.id, **{
+            **self.fields, **fields,
+            'duration_s': round(time.monotonic() - self.start, 4)})
         return False
 
 

@@ -10,6 +10,7 @@ Protocol (verified on Painter 9.1.2): POST http://localhost:60041/run.json with
 only for a single expression, so py() wraps any code into one expression that exec()s it and
 returns the variable RESULT (JSON-serialisable). Errors come back as {"error": {...}}.
 """
+# Endpoint identity: audit 2026-10-13-codex-painter-endpoint-01 (INC-330).
 import base64
 import http.client
 import json
@@ -50,11 +51,13 @@ def guard_instance():
 def _post(kind, code, timeout=3600, *, operation=None, mutating=True, script_name=None):
     if mutating:
         guard_instance()
+    host, port = HOST, PORT
     with audit.Operation(operation or ('remote.' + kind), mutating=mutating,
+                         endpoint='http://%s:%s/run.json' % (host, port),
                          script=audit.script_info(code, script_name), timeout_s=timeout) as trace:
-        with audit.endpoint_lock(HOST, PORT):
+        with audit.endpoint_lock(host, port):
             body = json.dumps({kind: base64.b64encode(code.encode('utf-8')).decode('ascii')})
-            conn = http.client.HTTPConnection(HOST, PORT, timeout=timeout)
+            conn = http.client.HTTPConnection(host, port, timeout=timeout)
             try:
                 # Durable begin above precedes the first byte sent to Painter.
                 conn.request('POST', '/run.json', body, {'Content-type': 'application/json', 'Accept': 'application/json'})
@@ -162,9 +165,12 @@ def later(code, until=IDLE, poll=2.0, timeout=3600, *, operation='remote.job',
     if poll < 0 or timeout <= 0:
         raise ValueError('poll must be nonnegative and timeout positive')
     job_id = uuid.uuid4().hex
+    host, port = HOST, PORT
+    endpoint = 'http://%s:%s/run.json' % (host, port)
     with audit.Operation(operation, mutating=mutating, job_id=job_id,
+                         endpoint=endpoint,
                          script=audit.script_info(code, script_name), timeout_s=timeout) as trace:
-        with audit.endpoint_lock(HOST, PORT):
+        with audit.endpoint_lock(host, port):
             deadline = time.monotonic() + timeout
             def remaining():
                 value = deadline - time.monotonic()
@@ -174,7 +180,7 @@ def later(code, until=IDLE, poll=2.0, timeout=3600, *, operation='remote.job',
             py(_LATER, timeout=remaining(), operation='job.install_queue', mutating=False)
             metadata = {'schema': 1, 'operation': operation, 'operation_id': trace.id,
                         'parent_id': trace.id, 'client_pid': os.getpid(),
-                        'endpoint': 'http://%s:%s/run.json' % (HOST, PORT),
+                        'endpoint': endpoint,
                         'script': audit.script_info(code, script_name)}
             accepted = py('import builtins\nRESULT = builtins._sp_later(%r, %r, %r, %r)' %
                           (code, job_id, str(audit.log_path()), metadata),

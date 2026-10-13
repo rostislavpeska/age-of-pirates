@@ -1,4 +1,5 @@
 """Offline failure simulations only. No Painter instance or socket is contacted."""
+# Endpoint regressions: audit 2026-10-13-codex-painter-endpoint-01 (INC-330).
 import builtins
 import contextlib
 import json
@@ -24,7 +25,8 @@ class FakeHTTP:
     begin_before_request = False
     status = 200
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, host, port, **kwargs):
+        self.endpoint = 'http://%s:%s/run.json' % (host, port)
         self.closed = False
         type(self).instance = self
 
@@ -53,6 +55,9 @@ class Harness(unittest.TestCase):
         self.env_patch.start()
         os.environ.pop('PAINTER_EXPECT_PID',None)
         self.addCleanup(self.env_patch.stop)
+        self.identity_patch = patch.dict(audit._identity)
+        self.identity_patch.start()
+        self.addCleanup(self.identity_patch.stop)
         self.temp = tempfile.TemporaryDirectory(prefix='painter-audit-test-')
         self.root = Path(self.temp.name)
         audit.configure(log_path=self.root/'events.jsonl', project='offline-test', remote_pid=0)
@@ -115,6 +120,56 @@ class Harness(unittest.TestCase):
         self.assertTrue(FakeHTTP.instance.closed)
         self.assertNotIn('TEST_SCRIPT_SECRET', audit.log_path().read_text())
         self.assertEqual(self.rows()[-1]['phase'], 'done')
+
+    def test_transport_endpoint_follows_default_and_post_import_changes(self):
+        with patch.object(sp.http.client, 'HTTPConnection', FakeHTTP), \
+                patch.object(sp, 'HOST', 'localhost'), patch.object(sp, 'PORT', 60041):
+            for host, port in [('localhost', 60041), ('127.0.0.1', 60042),
+                               ('localhost', 60043)]:
+                with self.subTest(host=host, port=port):
+                    sp.HOST, sp.PORT = host, port
+                    start = len(self.rows()) if audit.log_path().exists() else 0
+                    sp.js('read_only()', mutating=False)
+                    rows = self.rows()[start:]
+                    self.assertEqual([row['phase'] for row in rows],
+                                     ['begin', 'response', 'done'])
+                    self.assertEqual(FakeHTTP.instance.endpoint,
+                                     'http://%s:%s/run.json' % (host, port))
+                    self.assertTrue(all(row['endpoint'] == FakeHTTP.instance.endpoint
+                                        for row in rows))
+
+    def test_endpoint_fields_survive_interleaved_identity_updates(self):
+        outer_endpoint = 'http://127.0.0.1:60042/run.json'
+        with audit.Operation('outer', endpoint=outer_endpoint) as outer:
+            audit.configure(endpoint='http://other-client:60044/run.json')
+            with audit.Operation('inner', endpoint='http://localhost:60041/run.json'):
+                outer.mark('response', http_status=200)
+            outer.finish(result_type='dict')
+        rows = [row for row in self.rows() if row['operation_id'] == outer.id]
+        self.assertEqual([row['phase'] for row in rows], ['begin', 'response', 'done'])
+        self.assertTrue(all(row['endpoint'] == outer_endpoint for row in rows))
+        self.assertEqual(rows[1]['http_status'], 200)
+        self.assertEqual(rows[-1]['result_type'], 'dict')
+
+    def test_transport_failure_keeps_actual_endpoint(self):
+        FakeHTTP.error = ConnectionResetError('offline reset')
+        with patch.object(sp.http.client, 'HTTPConnection', FakeHTTP), \
+                patch.object(sp, 'HOST', '127.0.0.1'), patch.object(sp, 'PORT', 60042):
+            with self.assertRaises(ConnectionResetError):
+                sp.js('read_only()', mutating=False)
+        self.assertEqual([row['phase'] for row in self.rows()],
+                         ['begin', 'connection_failure', 'unknown'])
+        self.assertTrue(all(row['endpoint'] == FakeHTTP.instance.endpoint
+                            for row in self.rows()))
+
+    def test_job_and_connector_wrappers_use_current_endpoint(self):
+        endpoint = 'http://127.0.0.1:60042/run.json'
+        with patch.object(sp, 'HOST', '127.0.0.1'), patch.object(sp, 'PORT', 60042), \
+                self.remote():
+            with self.connector().operation('offline', mutating=False):
+                self.assertEqual(sp.later('RESULT=42', poll=0, timeout=2,
+                                          mutating=False), 42)
+        self.assertTrue(all(row['endpoint'] == endpoint for row in self.rows()))
 
     def test_transport_reset_is_unknown_not_confirmed_crash(self):
         FakeHTTP.error = ConnectionResetError('reset')

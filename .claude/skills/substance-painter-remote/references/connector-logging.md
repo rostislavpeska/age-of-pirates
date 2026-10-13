@@ -17,6 +17,16 @@ their actual remote PID. This distinguishes an app manually opened without remot
 scripting from the process owning the endpoint. Scripts are represented by name, length,
 and SHA-256, not their bodies. Credentials in keyed arguments are redacted.
 
+Each transport call captures its current `sp_remote.HOST`/`PORT` for the audit,
+endpoint lease and HTTP connection. Queued jobs and semantic connector operations
+also carry their endpoint through every mark and terminal event. Changes made
+after module import apply to the next operation; another operation's global audit
+identity cannot overwrite that captured endpoint. INC-330 exposed stale default
+labels on alternate ports; preserve historical logs and corroborate them with
+backend PID/project evidence. The default log filename above remains unchanged,
+so use an explicit log path when separating endpoint histories. Do not change
+the client's global HOST/PORT while a queued job is running.
+
 Queued jobs carry unique IDs and write `queued`, `running`, `done`/`failed` from inside
 Painter. Thus a Painter crash after starting a command leaves a durable `running` record.
 The client records `accepted`, observed state transitions, and its final outcome. Even a
@@ -90,3 +100,8 @@ preflight, resource/save/export logging, redaction, and truncated-log recovery. 
 queue code is executed against a fake Qt event loop. A live read-only smoke check and a
 normal authorized save remain appropriate before adopting a new Painter version. This
 suite validates instrumentation and guarding, not the safety of undocumented Qt controls.
+
+Endpoint regressions also compare the mocked dispatched connection with all
+begin/response/done records for the default endpoint and post-import host/port
+changes, plus uncertain failures, interleaved audit identities and job wrappers.
+These checks are offline; they make no live Painter request.

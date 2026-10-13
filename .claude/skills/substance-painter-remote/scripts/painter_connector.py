@@ -3,6 +3,7 @@
 python painter_connector.py --project FILE.spp --request operation.json
 Import Connector for a multi-step recipe; all writes use the same project guard.
 """
+# Endpoint identity: audit 2026-10-13-codex-painter-endpoint-01 (INC-330).
 import argparse
 from contextlib import contextmanager
 import json
@@ -32,8 +33,11 @@ class Connector:
 
     @contextmanager
     def operation(self, name, request=None, mutating=True):
-        with audit.Operation('connector.'+name, mutating=mutating, arguments=audit.summary(request)) as trace:
-            with audit.endpoint_lock(sp.HOST, sp.PORT):
+        host, port = sp.HOST, sp.PORT
+        with audit.Operation('connector.'+name, mutating=mutating,
+                             endpoint='http://%s:%s/run.json' % (host, port),
+                             arguments=audit.summary(request)) as trace:
+            with audit.endpoint_lock(host, port):
                 yield trace
 
     def guard(self):
