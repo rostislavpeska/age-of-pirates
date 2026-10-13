@@ -51,6 +51,12 @@ It separates documented practice, project decisions and measured specimen result
    side boundaries: blind clipping must not leave tiny terminal fragments.
    Measure boundary visibility after ridge/trim occlusion, keep pitch within the
    approved reference range, and retain the fit parameters with the bake recipe.
+   When HIGH is sampled per LOW quad, overscan only the group's exterior boundary.
+   Padding each internal patch creates overlapping HIGH faces and false baked AO.
+   Use `scripts/high_patch_borders.py` to inventory shared edges and compute padding;
+   its regression demonstrates the former 70 mm overlap. Replace obsolete local
+   detail AO when replacing a tile pattern; do not multiply in shadows from the
+   previous pattern. Keep separately owned building-contact AO distinct.
    A legacy specimen the owner explicitly leaves unchanged is recorded as such;
    this preflight rule does not authorize changing its geometry, UVs or pattern.
    For vertical eaves, check the shell cross-section, hard-normal/UV break and
