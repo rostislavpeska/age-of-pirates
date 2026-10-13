@@ -29,6 +29,15 @@ It terminates only the process it owns. Inspect failed evidence before retrying.
 
 ## Material workflow
 
+ArmorPaint and custom scripts can consume externally derived, named masks through
+this workflow. A historical Painter-generated map is reusable evidence, not a
+requirement to start Painter for each asset. Keep the provider/tool identity and
+source masks in the recipe; a change of provider requires a bounded comparison
+against the accepted output, not a software-name quality claim. For disconnected
+roof body/end islands, consume the shared physical mapping in
+[roof baking](../blender-roof-baking/references/geometry-contract.md#body-to-end-mapping-implementation-contract).
+Independent per-island planar effects and UV-edge wear do not prove continuity.
+
 1. Preserve the original mesh, UVs, maps and masks. Work on an authoring copy with
    correct material/face ownership. Reuse current curvature, AO, position and
    normal maps when available; do not rebake without the task's authorization.

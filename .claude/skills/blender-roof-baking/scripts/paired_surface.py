@@ -4,9 +4,105 @@ Audit: 2026-10-13-roof-consulate-valley-03 (KTC-377).
 This is a bounded probe helper, not automatic ridge/valley discovery or a release
 gate. Triangles and corner normals must already share one physical frame.
 Pixel sampling belongs to texture-corner-seams/seam_monitor.py.
+
+Declared boundary registration: audit 2026-10-13-codex-roof-pattern-104.
+This adds geometric correspondence, not atlas painting or automatic discovery.
 """
 from collections import defaultdict
 import numpy as np
+
+
+def register_boundary(path, edges, edge_uv, *, tolerance):
+    """Register one side of a declared seam to a shared 3D polyline.
+
+    Inputs are path[M,3], physical edges[N,2,3], and their UVs[N,2,2].
+    Top and end-strip callers use the SAME path and units, independently.
+    Split vertices, reversed edges and unequal subdivisions are supported.
+    Every physical edge must lie on the path and the side must cover it once.
+    Tolerance is a caller-declared physical distance, not a UV snap radius.
+    No nearest-surface fallback: ambiguous projection, gaps and overlaps fail.
+    Page/material identities remain the consuming adapter's responsibility.
+    """
+    path, edges, edge_uv = (np.asarray(v, dtype=float) for v in (path, edges, edge_uv))
+    if (path.ndim != 2 or path.shape[1:] != (3,) or len(path) < 2
+            or edges.ndim != 3 or edges.shape[1:] != (2, 3) or not len(edges)
+            or edge_uv.shape != (len(edges), 2, 2)
+            or not all(np.isfinite(v).all() for v in (path, edges, edge_uv))
+            or not np.isfinite(tolerance) or tolerance <= 0):
+        raise ValueError('Invalid boundary arrays or physical tolerance')
+    delta = np.diff(path, axis=0)
+    length = np.linalg.norm(delta, axis=1)
+    if np.any(length <= tolerance):
+        raise ValueError('Degenerate or unresolved path segment')
+    path_s = np.r_[0., np.cumsum(length)]
+    edge_s = np.empty((len(edges), 2))
+    worst = 0.
+    for ei, edge in enumerate(edges):
+        for vi, point in enumerate(edge):
+            t = np.clip(np.sum((point - path[:-1]) * delta, axis=1) / length**2, 0, 1)
+            distance = np.linalg.norm(path[:-1] + t[:, None] * delta - point, axis=1)
+            near = distance <= tolerance
+            if not near.any():
+                raise ValueError('Boundary endpoint is off the declared path')
+            candidates = path_s[:-1][near] + t[near] * length[near]
+            if np.ptp(candidates) > 2 * tolerance:
+                raise ValueError('Ambiguous boundary projection')
+            best = np.argmin(distance)
+            edge_s[ei, vi] = path_s[best] + t[best] * length[best]
+            worst = max(worst, float(distance[best]))
+        a, b = sorted(edge_s[ei])
+        physical_length = np.linalg.norm(edge[1] - edge[0])
+        if b - a <= tolerance or physical_length <= tolerance:
+            raise ValueError('Degenerate boundary edge')
+        # Endpoint agreement alone would admit a straight chord across a bend.
+        inside = path[(path_s > a) & (path_s < b)]
+        if len(inside):
+            v = edge[1] - edge[0]
+            t = np.clip((inside - edge[0]) @ v / (v @ v), 0, 1)
+            error = np.linalg.norm(inside - edge[0] - t[:, None] * v, axis=1)
+            if np.max(error) > tolerance:
+                raise ValueError('Boundary edge cuts across a path bend')
+            worst = max(worst, float(np.max(error)))
+        if abs((b - a) - physical_length) > 2 * tolerance:
+            raise ValueError('Boundary arclength and physical length disagree')
+        if np.linalg.norm(edge_uv[ei, 1] - edge_uv[ei, 0]) < 1e-12:
+            raise ValueError('Collapsed boundary UV edge')
+    spans = np.sort(edge_s, axis=1)
+    order = np.argsort(spans[:, 0])
+    spans = spans[order]
+    if abs(spans[0, 0]) > tolerance or abs(spans[-1, 1] - path_s[-1]) > tolerance:
+        raise ValueError('Boundary does not cover both path endpoints')
+    joins = spans[1:, 0] - spans[:-1, 1]
+    if np.any(joins > tolerance):
+        raise ValueError('Gap in boundary coverage')
+    if np.any(joins < -tolerance):
+        raise ValueError('Overlapping boundary coverage')
+    return dict(path=path.copy(), path_s=path_s, edge_s=edge_s,
+                edge_uv=edge_uv.copy(), tolerance=float(tolerance),
+                maximum_residual=worst)
+
+
+def boundary_uv(binding, arclength):
+    """Map shared physical arclengths independently into this side's UVs.
+
+    Returns sample index, local edge index, UV. All endpoint readers are kept:
+    a UV split within one side can give TWO results for one physical location.
+    Consumers must check both, not average or silently choose one. This is
+    mathematical edge correspondence; filtered texel footprints are separate.
+    """
+    s = np.asarray(arclength, float)
+    end = binding['path_s'][-1]
+    tol = binding['tolerance']
+    if s.ndim != 1 or not len(s) or not np.isfinite(s).all() or np.any(s < 0) or np.any(s > end):
+        raise ValueError('Probe arclength outside declared path')
+    edge_s = binding['edge_s']
+    lo, hi = edge_s.min(1), edge_s.max(1)
+    sample, edge = np.nonzero((s[:, None] >= lo - tol) & (s[:, None] <= hi + tol))
+    if len(np.unique(sample)) != len(s):
+        raise ValueError('Probe falls in an uncovered interval')
+    t = np.clip((s[sample] - edge_s[edge, 0]) / np.diff(edge_s, axis=1)[edge, 0], 0, 1)
+    uv = binding['edge_uv'][edge]
+    return dict(sample=sample, edge=edge, uv=uv[:, 0] * (1-t[:, None]) + uv[:, 1] * t[:, None])
 
 
 def exact_edge_pairs(co, uv, selected=None, decimals=6):

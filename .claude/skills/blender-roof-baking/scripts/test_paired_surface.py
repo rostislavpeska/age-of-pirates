@@ -1,7 +1,8 @@
 """Audit: 2026-10-13-roof-consulate-valley-03. Physical probe controls."""
 import unittest
 import numpy as np
-from paired_surface import exact_edge_pairs, edge_probes, normal_to_physical
+from paired_surface import (exact_edge_pairs, edge_probes, normal_to_physical,
+                            register_boundary, boundary_uv)
 
 
 class TestPairedSurface(unittest.TestCase):
@@ -41,5 +42,66 @@ class TestPairedSurface(unittest.TestCase):
     def test_degenerate_uv_rejected(self):
         with self.assertRaises(ValueError):
             normal_to_physical(self.co, np.zeros((3,2)), self.n, self.w, [[.5,.5,1]])
+
+class TestBoundaryRegistration(unittest.TestCase):
+    """Audit 2026-10-13-codex-roof-pattern-104; independently known seam fixtures."""
+
+    def setUp(self):
+        self.path = np.array([[0., 0, 0], [1, 0, 0], [2, 0, 0]])
+        self.edges = np.array([[[1., 0, 0], [0, 0, 0]], [[2., 0, 0], [1, 0, 0]]])
+        self.uv = np.array([[[.8, .9], [.8, .1]], [[.2, .1], [.2, .9]]])
+
+    def bind(self, edges=None, uv=None, path=None):
+        return register_boundary(self.path if path is None else path,
+                                 self.edges if edges is None else edges,
+                                 self.uv if uv is None else uv, tolerance=1e-6)
+
+    def test_separate_rotated_mirrored_charts_unequal_subdivision(self):
+        # One roof edge versus two reversed end edges on separate rotated charts.
+        roof = self.bind(edges=np.array([[[0., 0, 0], [2, 0, 0]]]),
+                         uv=np.array([[[.1, .2], [.9, .2]]]))
+        strip = self.bind()
+        p = [.5, 1.5]
+        np.testing.assert_allclose(boundary_uv(roof, p)['uv'], [[.3, .2], [.7, .2]])
+        np.testing.assert_allclose(boundary_uv(strip, p)['uv'], [[.8, .5], [.2, .5]])
+        self.assertEqual(strip['maximum_residual'], 0)
+        # A UV join internal to the strip retains both exact endpoint readers.
+        split = boundary_uv(strip, [1.])
+        np.testing.assert_array_equal(split['sample'], [0, 0])
+        np.testing.assert_allclose(split['uv'], [[.8, .9], [.2, .9]])
+
+    def test_bent_path_uses_arclength_and_rejects_chord(self):
+        path = np.array([[0., 0, 0], [1, 0, 0], [1, 1, 0]])
+        edges = np.array([path[:2], path[1:]])
+        result = self.bind(path=path, edges=edges)
+        np.testing.assert_allclose(result['edge_s'], [[0, 1], [1, 2]])
+        with self.assertRaisesRegex(ValueError, 'bend'):
+            self.bind(path=path, edges=path[[0, 2]][None], uv=self.uv[:1])
+
+    def test_gap_overlap_and_missing_terminal_fail(self):
+        gap = self.edges.copy(); gap[0, 0, 0] = .9
+        with self.assertRaisesRegex(ValueError, 'Gap'): self.bind(edges=gap)
+        overlap = self.edges.copy(); overlap[0, 0, 0] = 1.1
+        with self.assertRaisesRegex(ValueError, 'Overlapping'): self.bind(edges=overlap)
+        missing = self.edges.copy(); missing[1, 0, 0] = 1.9
+        with self.assertRaisesRegex(ValueError, 'endpoints'): self.bind(edges=missing)
+
+    def test_nearby_wrong_surface_is_not_silently_attached(self):
+        wrong = self.edges.copy(); wrong[:, :, 2] += .01
+        with self.assertRaisesRegex(ValueError, 'off the declared path'): self.bind(edges=wrong)
+
+    def test_repeated_path_is_ambiguous(self):
+        path = np.array([[0., 0, 0], [2, 0, 0], [0, 0, 0]])
+        with self.assertRaisesRegex(ValueError, 'Ambiguous'): self.bind(path=path)
+
+    def test_invalid_uv_geometry_and_probe_are_rejected(self):
+        for bad_uv in (np.zeros_like(self.uv), np.full_like(self.uv, np.nan)):
+            with self.assertRaises(ValueError): self.bind(uv=bad_uv)
+        bad_path = self.path.copy(); bad_path[1] = bad_path[0]
+        with self.assertRaises(ValueError): self.bind(path=bad_path)
+        binding = self.bind()
+        for bad_probe in ([-.01], [2.01], [np.nan], []):
+            with self.assertRaises(ValueError): boundary_uv(binding, bad_probe)
+
 
 if __name__ == '__main__':unittest.main()

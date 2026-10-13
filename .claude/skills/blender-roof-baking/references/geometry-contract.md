@@ -53,6 +53,45 @@ an incompatible shared-texel contract by itself.
 
 ## Verify continuity across UV breaks
 
+### Body-to-end mapping implementation contract
+
+Keep authoring coordinates separate from stored UVs. For every destination texel,
+resolve its actual triangle and barycentric weights, reconstruct the physical
+point, and evaluate the SAME fitted pattern used by the neighbouring surface.
+Never fit the body and end independently to their island bounding boxes.
+
+1. Declare the shared rim and its two receiving sides. Register the sides through
+   `paired_surface.register_boundary` where its supported conditions hold. Match
+   endpoints, direction and partial edge subdivisions; refuse ambiguous attachment.
+2. Attach the existing pattern's coordinates/IDs to that rim. Arclength identifies
+   the physical seam; it does not automatically replace the existing pattern's
+   lateral coordinate or change its pitch. Interpolate the approved pattern's
+   coordinate along the rim, then continue it onto both receiving surfaces.
+3. Evaluate body and cap from the same piece identity, centreline, course phase,
+   cross-section and deterministic material seed. Use surface-local depth/radial
+   coordinates for cap relief. The cap need not carry the body's longitudinal
+   grain in the same direction, but rim colour/moss/material must agree.
+4. Derive the alpha silhouette from that same physical profile. Project through
+   all front/back/underlip/cap readers. Do not generate a separate circle grid or
+   paste a resized 2D body row into the end island. A too-thin receiver or a shared
+   texel needing opposite alpha is a measured compatibility failure, not something
+   that greater mapping precision can solve.
+5. Evaluate effects in physical/piece coordinates and rasterize them separately
+   into the existing islands. Distinguish true exposed rim wear from UV boundaries.
+   Keep structural normal, semantic IDs, curvature, AO, moss protection and alpha
+   as named inputs; roughness is not a replacement for a moss mask.
+6. Convert each sampled physical normal into the destination's own tangent frame
+   with the exporter/runtime convention. Preserve the intended turn between body
+   and cap; do not force equal tangent RGB or physical normals at a hard corner.
+   The existing triangle-frame diagnostic is not an exact engine tangent baker.
+
+Validate rim position and piece/phase coverage, then per-channel continuity and
+compressed filtering at actual resolution. Geometry correspondence can be exact
+while rasterized colour still differs through quantization, filtering or shared
+readers. Never promise perfect pixels from a registration-only test. Reuse valid
+structural bakes for effects-only work; if a structural map is demonstrably wrong,
+mark only its dependent stage invalid and retain the original source.
+
 For a continuous surface, pair samples by 3D location on both sides, then map
 them independently into their actual UV triangles/pages. Compare:
 

@@ -19,9 +19,34 @@ texture sampling and colour-seam metrics. It does not replace the complete
   tangent recalculation. Runtime green flips must already be decoded.
 
 Run `python -m unittest discover -s .claude/skills/blender-roof-baking/scripts
--p test_paired_surface.py -v`. Five controls cover a duplicated split boundary,
+-p test_paired_surface.py -v`. The original five controls cover a duplicated split boundary,
 an ambiguous three-sided edge, interior/exterior probes, rotated/mirrored
 normal frames (including the wrong-sign negative), and degenerate UV rejection.
+
+## Declared boundary registration across separate islands
+
+`register_boundary(path, edges, edge_uv, tolerance=...)` adds a common physical
+arclength for a DECLARED open seam. Call it separately for the roof body and end
+strip using the same polyline, frame and units. It supports reversed edges and
+unequal subdivision: one long edge can correspond to several collinear edges.
+It refuses off-path points, chords across bends, ambiguous projections, missing
+endpoints, gaps, overlapping coverage and collapsed UV edges. It changes no UVs.
+
+`boundary_uv(binding, arclength)` returns the independent UV coordinates for
+each side. A seam endpoint inside a split chart retains all readers rather than
+averaging their UVs. Material/page/triangle IDs and source hashes must be retained
+by the caller. Use barycentric projection for points inside the receiving faces.
+Do not equate two atlas coordinates merely because they are near each other.
+
+Six additional controls cover reversed/rotated/mirrored disconnected charts,
+unequal subdivisions, both UV readers at a split, bends versus chords, gaps,
+overlap, offset surfaces and ambiguous/invalid input. All eleven controls pass.
+Evidence: audit `2026-10-13-codex-roof-pattern-104`.
+
+This is tested mathematical correspondence only. It does NOT discover the seam,
+create a surface coordinate field, infer tube IDs, resample maps, inspect filtered
+mips, or prove registration on a production building. No automatic rollout is
+implied. Physical tolerance must be derived from the current asset and resolution.
 
 ## Reader completeness
 

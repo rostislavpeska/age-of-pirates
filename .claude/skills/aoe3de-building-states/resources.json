@@ -3,7 +3,9 @@
   "files": [
     "SKILL.md",
     "scripts/state_frame_check.py",
-    "tests/test_state_frame.py"
+    "tests/test_state_frame.py",
+    "scripts/runtime_reader_census.py",
+    "tests/test_runtime_reader_census.py"
   ],
   "skills": [
     "aoe3de-model-attachments",

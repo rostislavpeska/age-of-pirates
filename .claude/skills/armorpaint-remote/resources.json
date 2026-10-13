@@ -11,7 +11,7 @@
     "scripts/test_composite_delta.py",
     "patches/explicit-texture-resolution.patch"
   ],
-  "skills": [],
+  "skills": ["blender-roof-baking"],
   "external": [
     {
       "id": "numpy",
