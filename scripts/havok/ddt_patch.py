@@ -109,8 +109,12 @@ def alpha_selectors(old, target, changed, threshold=None):
     loss=abs(palette[:,None,:]-target[:,:,None]).astype(float)
     if threshold is not None:
         allowed=(palette[:,None,:]>=threshold)==(target[:,:,None]>=threshold)
-        if np.any(changed & ~allowed.any(2)):
-            raise ValueError('fixed alpha palette cannot represent requested cutout class')
+        invalid=changed & ~allowed.any(2)
+        if np.any(invalid):
+            block,pixel=np.argwhere(invalid)[0]
+            raise ValueError('fixed alpha palette cannot represent requested cutout class: '
+                             f'block={block}, pixel={pixel}, target={target[block,pixel]}, '
+                             f'palette={palette[block].tolist()}, invalid_pixels={int(invalid.sum())}')
         loss[~allowed]=np.inf
     best=loss.argmin(2)
     # Preserve equivalent selectors and every non-target pixel.
@@ -162,7 +166,10 @@ def patch(src, new_png, mask_png, out, *, cutout_threshold=None,
                     target=np.clip(original_level+delta,0,255)
                     def as_blocks(x):return x.reshape(bh,4,bw,4).transpose(0,2,1,3).reshape(-1,16)
                     active=as_blocks(delta!=0);touched=active.any(1)
-                    blocks[:,:8]=alpha_selectors(oldblocks[:,:8],as_blocks(target),active,cutout_threshold)
+                    try:
+                        blocks[:,:8]=alpha_selectors(oldblocks[:,:8],as_blocks(target),active,cutout_threshold)
+                    except ValueError as exc:
+                        raise ValueError(f'mip={i}, width={w}: {exc}') from exc
                     m=touched.reshape(bh,bw)
                 else:
                     encoded = encode_alpha(np.ascontiguousarray(level[:, :, 3]), cutout_threshold=cutout_threshold)
