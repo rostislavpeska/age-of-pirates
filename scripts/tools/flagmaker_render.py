@@ -1,9 +1,11 @@
 """Replay an AoE3DE Flag Maker PSD template with a new flag image, without Photoshop.
 
 Each template = cached raster layers (base, darkener, lightener, frame) + one 'Flag' smart object placed
-with Trnf (quad) and optionally a 4x4 custom envelope warp, composited with Photoshop blend modes.
+with Trnf (quad) and optionally a warp, composited with Photoshop blend modes.
 We re-render only the Flag smart object from a new flat flag image and reuse every other layer's
-cached pixels.
+cached pixels. A 4x4 custom envelope lives on `warp`. The Consulate & Age Up cloth stores its folds
+in `quiltWarp` (Photoshop 2020; the legacy `warp` key on that file is warpNone) and is rendered as
+bicubic patches.
 
   python flagmaker_render.py TEMPLATE.psd FLAG.png OUT.png [--validate]
 
@@ -44,9 +46,90 @@ def bern3(t):
     return np.concatenate([(1 - t) ** 3, 3 * t * (1 - t) ** 2, 3 * t ** 2 * (1 - t), t ** 3], axis=-1)
 
 
+def _bilinear_quad(s, t, q):
+    """Unit-square (s, t) onto quad q = TL TR BR BL. s, t broadcast."""
+    return ((1 - s) * (1 - t) * q[0, 0] + s * (1 - t) * q[1, 0] + s * t * q[2, 0] + (1 - s) * t * q[3, 0],
+            (1 - s) * (1 - t) * q[0, 1] + s * (1 - t) * q[1, 1] + s * t * q[2, 1] + (1 - s) * t * q[3, 1])
+
+
+def _sample(content, u, v):
+    """Bilinear sample of RGBA float image at u, v in 0..1. u, v are 2D arrays."""
+    h, w = content.shape[:2]
+    x = np.clip(u, 0, 1) * (w - 1)
+    y = np.clip(v, 0, 1) * (h - 1)
+    x0 = np.floor(x).astype(np.int64)
+    y0 = np.floor(y).astype(np.int64)
+    x1 = np.clip(x0 + 1, 0, w - 1)
+    y1 = np.clip(y0 + 1, 0, h - 1)
+    fx = (x - x0)[..., None]
+    fy = (y - y0)[..., None]
+    c00, c10 = content[y0, x0], content[y0, x1]
+    c01, c11 = content[y1, x0], content[y1, x1]
+    return c00 * (1 - fx) * (1 - fy) + c10 * fx * (1 - fy) + c01 * (1 - fx) * fy + c11 * fx * fy
+
+
+def render_quilt(layer, content, canvas_wh, ss=6):
+    """Photoshop 2020 quilt warp (the Consulate & Age Up cloth). The legacy `warp` key on that
+    template is warpNone; the folds live in quiltWarp, a grid of bicubic patches."""
+    d = so_data(layer)
+    q = np.array(d[b'Trnf'], dtype=np.float64).reshape(4, 2)
+    qw = d[b'quiltWarp']
+    cew = qw[b'customEnvelopeWarp']
+    cols, rows = int(qw[b'deformNumCols']), int(qw[b'deformNumRows'])
+    mp = cew[b'meshPoints']
+    hx = np.array(list(mp[b'Hrzn']), dtype=np.float64).reshape(rows, cols)
+    vy = np.array(list(mp[b'Vrtc']), dtype=np.float64).reshape(rows, cols)
+    sx = np.array(list(cew[b'quiltSliceX'][b'quiltSliceX']), dtype=np.float64)
+    sy = np.array(list(cew[b'quiltSliceY'][b'quiltSliceY']), dtype=np.float64)
+    su = (sx - sx[0]) / (sx[-1] - sx[0])
+    sv = (sy - sy[0]) / (sy[-1] - sy[0])
+    npx, npy = (cols - 1) // 3, (rows - 1) // 3
+    W, H = canvas_wh
+    ci = np.asarray(content, dtype=np.float64) / 255.0
+    acc = np.zeros((H, W, 4))
+    cnt = np.zeros((H, W))
+    # a patch spans roughly the quad's edges divided by the patch count
+    ex = max(np.linalg.norm(q[1] - q[0]), np.linalg.norm(q[2] - q[3])) / npx
+    ey = max(np.linalg.norm(q[3] - q[0]), np.linalg.norm(q[2] - q[1])) / npy
+    nu, nv = int(ex * ss) + 2, int(ey * ss) + 2
+    lu = (np.arange(nu) + 0.5) / nu
+    lv = (np.arange(nv) + 0.5) / nv
+    Bu, Bv = bern3(lu), bern3(lv)
+    for j in range(npy):
+        for i in range(npx):
+            Px = hx[j * 3:j * 3 + 4, i * 3:i * 3 + 4]
+            Py = vy[j * 3:j * 3 + 4, i * 3:i * 3 + 4]
+            mx = np.einsum('vj,ji,ui->vu', Bv, Px, Bu)
+            my = np.einsum('vj,ji,ui->vu', Bv, Py, Bu)
+            s = (mx - sx[0]) / (sx[-1] - sx[0])
+            t = (my - sy[0]) / (sy[-1] - sy[0])
+            X, Y = _bilinear_quad(s, t, q)
+            uu = su[i] + lu[None, :] * (su[i + 1] - su[i])
+            vv = sv[j] + lv[:, None] * (sv[j + 1] - sv[j])
+            col = _sample(ci, np.broadcast_to(uu, (nv, nu)), np.broadcast_to(vv, (nv, nu)))
+            xi = np.floor(X).astype(np.int64)
+            yi = np.floor(Y).astype(np.int64)
+            ok = (xi >= 0) & (xi < W) & (yi >= 0) & (yi < H)
+            idx = yi[ok] * W + xi[ok]
+            a = col[..., 3][ok]
+            for c in range(3):
+                np.add.at(acc[..., c].reshape(-1), idx, col[..., c][ok] * a)
+            np.add.at(acc[..., 3].reshape(-1), idx, a)
+            np.add.at(cnt.reshape(-1), idx, 1.0)
+    out = np.zeros((H, W, 4))
+    nz = acc[..., 3] > 0
+    out[..., :3][nz] = acc[..., :3][nz] / acc[..., 3][nz][:, None]
+    expect = np.median(cnt[cnt > 0]) if (cnt > 0).any() else 1
+    out[..., 3] = np.clip(acc[..., 3] / expect, 0, 1)
+    return out
+
+
 def render_so(layer, content, canvas_wh, ss=4):
     """Rasterise smart object `layer` with replacement `content` (PIL RGBA) onto a canvas. -> HxWx4 float"""
     d = so_data(layer)
+    qw = d.get(b'quiltWarp')
+    if qw is not None and int(qw[b'deformNumCols']) * int(qw[b'deformNumRows']) > 16:
+        return render_quilt(layer, content, canvas_wh, ss=max(ss, 6))
     q = np.array(d[b'Trnf'], dtype=np.float64).reshape(4, 2)  # TL TR BR BL in canvas px
     w = d[b'warp']
     b = w[b'bounds']
@@ -216,7 +299,11 @@ def render(psd_path, flag=None, log=print):
         if kind == 'smartobject' and layer.name.startswith('Flag'):
             content = flag if flag is not None else so_content(layer)
             src = render_so(layer, content, (W, H))
-            log('  flag SO', layer.name, so_data(layer)[b'warp'][b'warpStyle'].enum)
+            wstyle = so_data(layer)[b'warp'][b'warpStyle'].enum
+            qw = so_data(layer).get(b'quiltWarp')
+            if qw is not None and int(qw[b'deformNumCols']) * int(qw[b'deformNumRows']) > 16:
+                wstyle = b'quiltWarp'
+            log('  flag SO', layer.name, wstyle)
         else:
             src = layer_pixels(layer, (W, H))
         if layer.has_mask():

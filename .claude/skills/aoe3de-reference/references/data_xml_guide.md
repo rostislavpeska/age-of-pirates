@@ -1349,7 +1349,7 @@ regardless of whether or not there are any _EmpireWarsStartingUnit_ entries set.
 ## Definitive Edition
 
 - - **RevolutionCiv:** Defines the revolution civilization to be used for Revolution option technologies.
-    - **SequesterTech:** For Consulate option technologies, defines the sequester/undo alliance technology to be re-enabled, once that particular consulate relation is chosen at the second time.
+    - **SequesterTech:** For Consulate option technologies, defines the sequester/undo alliance technology to be re-enabled, once that particular consulate relation is chosen at the second time. The card, the set, the portrait and the map trigger around it are [the consulate system](../../../../docs/consulate-system.md).
     - **ValueText:** Value text to be displayed over technologies, akin to the ones used in protoUnitCommands. Supports the same data fetchers as the ones supported by protoUnitCommands. Requires the technology flag _DEUsesValueText_ to be set for proper functionality.
     - **DynamicCostKBStat:** KB Stat to be used as a reference for technology cost escalation.
     - **KBStatFactorCap:** Maximum factor for KB Stat based cost escalation.

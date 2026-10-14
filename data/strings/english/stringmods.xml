@@ -3613,6 +3613,25 @@
       <string _locid="503616">Danube</string>
       <string _locid="503617">Land map on the Danube Bend. The river closes the land inside the bend on three sides: only the bridges lead to the castles of the Prince Electors and the rich mines there.\n\nSettlements: Prince Electors, Hussites, Orthodox, Jesuits</string>
       <string _locid="503618">Only the bridges lead into the bend. Hold them to claim the Electors' castles and the rich mines.</string>
+      <string _locid="503619">United States Allies</string>
+      <string _locid="503620">Chinese Allies</string>
+      <string _locid="503621">Allied with the United States. The consulate ships the American expedition. American infantry and cavalry gain hitpoints and damage.</string>
+      <string _locid="503622">Allied with China. Villagers gather faster. The consulate trains Chinese armies and ships Chinese buildings and Flying Crows.</string>
+      <string _locid="503632">Rice Paddy</string>
+      <string _locid="503633">ZP Consulate Chinese Rice Paddy</string>
+      <string _locid="503634">Ships a Rice Paddy Wagon.</string>
+      <string _locid="503635">Castle Wagon</string>
+      <string _locid="503636">ZP Consulate Chinese Castle Wagon</string>
+      <string _locid="503637">Ships a Castle Wagon.</string>
+      <string _locid="503638">Flying Crow</string>
+      <string _locid="503639">ZP Consulate Chinese Flying Crow</string>
+      <string _locid="503640">Ships a Flying Crow.</string>
+      <string _locid="503641">Flying Crow Battery</string>
+      <string _locid="503642">ZP Consulate Chinese Flying Crow Battery</string>
+      <string _locid="503643">Ships Flying Crows.</string>
+      <string _locid="503644">Japanese Allies</string>
+      <string _locid="503645">ZP Consulate Japanese Allies</string>
+      <string _locid="503646">Allied with Japan. Land military and villagers deal more damage. The consulate trains Yamabushi, Shinobi, Ninja and Ronin.</string>
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->
