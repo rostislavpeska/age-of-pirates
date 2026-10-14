@@ -47,6 +47,13 @@ dependent step; do not install, upgrade or silently substitute them during prefl
 7. Validate material and animation XML against a working target asset, then apply the consuming mod's line-ending, XMB and reference rules.
 8. Report Blender validation, conversion validation and in-game validation separately.
 
+For a runtime-to-Blender review, GR2 quantized normals need not have unit length.
+Preserve their raw arrays as evidence, normalize both vectors for angular
+comparison, and state the measured tolerance. Do not interpret Blender's unit
+length conversion as a runtime normal edit. The13-building14October review
+measured source lengths0.994..1.006 and maximum direction difference0.381degrees;
+positions/UVs and original runtime normal bytes remained unchanged.
+
 **Raw UV export boundary (INC-133):** a direct Blender-to-GR2 writer must store
 `(u, 1-v)`, with tangents computed from those final raw UVs. Do not also flip the
 DDT image rows. Establish the convention against a working asset; compare every
