@@ -17,6 +17,11 @@ or gained by the mip filter, and must not be used for blended opacity.
 --preserve-alpha copies original DXT5 alpha blocks at every mip (RGB edit only).
 --green-only fits only green endpoint bits with fixed selectors/order, preserving
 decoded R/B/A and untouched blocks exactly. It implies alpha preservation.
+--alpha-only changes DXT5 alpha blocks while retaining every RGB block byte.
+--alpha-selectors additionally locks alpha endpoints and untouched pixel selectors;
+stored mip alpha receives only the filtered edit delta. An unavailable cutout
+classification fails instead of changing endpoints. No reader approval is implied.
+This does not certify shared-reader compatibility or mip silhouette quality.
 Audit: 2026-10-13-codex-castle-delivery-01; port of tested stage_castles.py mechanics.
 """
 import io, struct, sys
@@ -91,10 +96,41 @@ def green_only(old, target, *, force_four=False):
     return c
 
 
+def alpha_selectors(old, target, changed, threshold=None):
+    """Audit2026-10-14-codex-zen-rollout-44: keep BC3 endpoints/other pixels exact."""
+    blocks=old.copy();a=old[:,0].astype(int);b=old[:,1].astype(int)
+    palette=np.empty((len(old),8),int);palette[:,0]=a;palette[:,1]=b
+    for j in range(2,8):
+        palette[:,j]=np.where(a>b,((8-j)*a+(j-1)*b)//7,
+                             ((6-j)*a+(j-1)*b)//5 if j<6 else 0 if j==6 else 255)
+    bits=sum(old[:,j+2].astype(np.uint64) << np.uint64(8*j) for j in range(6))
+    shifts=np.arange(16,dtype=np.uint64)*3
+    prior=((bits[:,None]>>shifts)&7).astype(int)
+    loss=abs(palette[:,None,:]-target[:,:,None]).astype(float)
+    if threshold is not None:
+        allowed=(palette[:,None,:]>=threshold)==(target[:,:,None]>=threshold)
+        if np.any(changed & ~allowed.any(2)):
+            raise ValueError('fixed alpha palette cannot represent requested cutout class')
+        loss[~allowed]=np.inf
+    best=loss.argmin(2)
+    # Preserve equivalent selectors and every non-target pixel.
+    prior_loss=np.take_along_axis(loss,prior[:,:,None],2)[:,:,0]
+    best=np.where(changed & (loss.min(2)<prior_loss),best,prior)
+    packed=np.sum(best.astype(np.uint64)<<shifts,axis=1,dtype=np.uint64)
+    for j in range(6):blocks[:,j+2]=((packed>>np.uint64(8*j))&255).astype(np.uint8)
+    return blocks
+
+
 def patch(src, new_png, mask_png, out, *, cutout_threshold=None,
-          preserve_alpha=False, green_only_mode=False):
+          preserve_alpha=False, green_only_mode=False, alpha_only=False,
+          alpha_selectors_mode=False):
     b = bytearray(Path(src).read_bytes()); H = header(b); W, Hh = H['w'], H['h']
     source = bytes(b)
+    if alpha_selectors_mode and not alpha_only:
+        raise ValueError('alpha-selectors requires alpha-only')
+    # audit2026-10-14-codex-zen-rollout-40 / INC366: bounded padding repair.
+    if alpha_only and (H['fmt'] != 9 or preserve_alpha or green_only_mode):
+        raise ValueError('alpha-only requires DXT5 and excludes other channel modes')
     if cutout_threshold is not None and (preserve_alpha or green_only_mode):
         raise ValueError('cutout-threshold and protected-channel modes are mutually exclusive')
     if preserve_alpha and H['fmt'] != 9:
@@ -105,6 +141,7 @@ def patch(src, new_png, mask_png, out, *, cutout_threshold=None,
     full = base.copy(); full[mask] = new[mask]
     bpb = 8 if H['fmt'] == 4 else 16; report = []
     rgb_img = Image.fromarray(np.ascontiguousarray(full[..., :3]), 'RGB'); a_img = Image.fromarray(np.ascontiguousarray(full[..., 3]), 'L')
+    original_alpha=Image.fromarray(np.ascontiguousarray(base[:,:,3]))
     for i, (off, size) in enumerate(H['mips']):
         w, h = max(W >> i, 4), max(Hh >> i, 4)
         # colour and alpha resized apart: an RGBA resize premultiplies and turns the colour under alpha 0 black (ddt_dxt1)
@@ -113,11 +150,24 @@ def patch(src, new_png, mask_png, out, *, cutout_threshold=None,
         m = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((bw, bh), Image.BOX)) > 0
         m = m | np.pad(m, 1)[2:, 1:-1] | np.pad(m, 1)[:-2, 1:-1] | np.pad(m, 1)[1:-1, 2:] | np.pad(m, 1)[1:-1, :-2]
         assert size == bw * bh * bpb, (i, size, bw, bh)
-        if preserve_alpha or green_only_mode:
+        if preserve_alpha or green_only_mode or alpha_only:
             touched = m.ravel()
             oldblocks = np.frombuffer(source[off:off+size], np.uint8).reshape(-1, bpb)
             blocks = oldblocks.copy()
-            if green_only_mode:
+            if alpha_only:
+                if alpha_selectors_mode:
+                    original_level=decode_level(source,H,i)[:,:,3].astype(int)
+                    prior_filter=base[:,:,3] if i==0 else np.asarray(original_alpha.resize((w,h),Image.LANCZOS))
+                    delta=level[:,:,3].astype(int)-prior_filter.astype(int)
+                    target=np.clip(original_level+delta,0,255)
+                    def as_blocks(x):return x.reshape(bh,4,bw,4).transpose(0,2,1,3).reshape(-1,16)
+                    active=as_blocks(delta!=0);touched=active.any(1)
+                    blocks[:,:8]=alpha_selectors(oldblocks[:,:8],as_blocks(target),active,cutout_threshold)
+                    m=touched.reshape(bh,bw)
+                else:
+                    encoded = encode_alpha(np.ascontiguousarray(level[:, :, 3]), cutout_threshold=cutout_threshold)
+                    blocks[touched, :8] = np.asarray(encoded, dtype=np.uint8).reshape(-1, 8)[touched]
+            elif green_only_mode:
                 target = level[:, :, 1].reshape(bh, 4, bw, 4).transpose(0, 2, 1, 3).reshape(-1, 16).astype(float)
                 blocks[touched, bpb-8:] = green_only(oldblocks[touched, bpb-8:], target[touched], force_four=H['fmt'] == 9)
             else:
@@ -125,7 +175,7 @@ def patch(src, new_png, mask_png, out, *, cutout_threshold=None,
                 blocks[touched, bpb-8:] = encoded[touched]
             b[off:off+size] = blocks.tobytes()
             before = decode_level(source, H, i); after = decode_level(bytes(b), H, i)
-            protected = [0, 2, 3] if green_only_mode else [3]
+            protected = [0, 1, 2] if alpha_only else [0, 2, 3] if green_only_mode else [3]
             assert np.array_equal(before[:, :, protected], after[:, :, protected]), 'protected channel drift'
             assert np.array_equal(oldblocks[~touched], blocks[~touched]), 'untouched block drift'
             report.append((i, int(m.sum()), bw * bh))
@@ -150,7 +200,10 @@ if __name__ == '__main__':
     ap.add_argument('--cutout-threshold', type=int, choices=range(1, 256), metavar='1..255')
     ap.add_argument('--preserve-alpha', action='store_true')
     ap.add_argument('--green-only', action='store_true')
+    ap.add_argument('--alpha-only', action='store_true')
+    ap.add_argument('--alpha-selectors', action='store_true')
     a = ap.parse_args()
     rep = patch(a.src, a.new_png, a.mask_png, a.out, cutout_threshold=a.cutout_threshold,
-                preserve_alpha=a.preserve_alpha, green_only_mode=a.green_only)
+                preserve_alpha=a.preserve_alpha, green_only_mode=a.green_only, alpha_only=a.alpha_only,
+                alpha_selectors_mode=a.alpha_selectors)
     print('DDT_PATCH', ' '.join(f'mip{i}:{c}/{t}' for i, c, t in rep))

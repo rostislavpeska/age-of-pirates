@@ -10,6 +10,65 @@ from ddt_dxt1 import write_ddt
 from ddt_patch import header, decode_level, patch
 
 
+def test_alpha_selectors_preserve_other_texels_and_endpoints(tmp_path):
+    # Audit44: neighboring pixels in a changed block must remain exactly decoded.
+    original=np.zeros((32,32,4),np.uint8);original[:,:,:3]=[100,150,200]
+    original[:,:,3]=np.where(np.indices((32,32))[1]%2,255,0)
+    src=tmp_path/'in.ddt';out=tmp_path/'out.ddt'
+    write_ddt(Image.fromarray(original),src,dxt5=True)
+    raw=src.read_bytes();h=header(raw);new=decode_level(raw,h,0).copy()
+    mask=np.zeros((32,32),np.uint8);mask[13,13]=255;new[13,13,3]=0
+    npng=tmp_path/'new.png';mpng=tmp_path/'mask.png'
+    Image.fromarray(new).save(npng);Image.fromarray(mask).save(mpng)
+    patch(src,npng,mpng,out,alpha_only=True,alpha_selectors_mode=True,cutout_threshold=128)
+    result=out.read_bytes();got=decode_level(result,h,0);expected=decode_level(raw,h,0).copy();expected[13,13,3]=0
+    assert np.array_equal(got,expected)
+    for i,(off,size) in enumerate(h['mips']):
+        a=np.frombuffer(raw[off:off+size],np.uint8).reshape(-1,16)
+        b=np.frombuffer(result[off:off+size],np.uint8).reshape(-1,16)
+        assert np.array_equal(a[:,:2],b[:,:2]);assert np.array_equal(a[:,8:],b[:,8:])
+    Image.fromarray(np.zeros_like(mask)).save(mpng)
+    patch(src,npng,mpng,out,alpha_only=True,alpha_selectors_mode=True)
+    assert out.read_bytes()==raw
+
+
+def test_alpha_selectors_fail_closed_on_unavailable_class():
+    from ddt_patch import alpha_selectors
+    old=np.array([[240,200,0,0,0,0,0,0]],np.uint8)
+    with pytest.raises(ValueError,match='cannot represent'):
+        alpha_selectors(old,np.zeros((1,16)),np.ones((1,16),bool),128)
+
+
+def test_alpha_only_preserves_all_rgb_bytes_and_empty_mask(tmp_path):
+    # audit2026-10-14-codex-zen-rollout-40: alpha edit cannot degrade accepted colour.
+    rng = np.random.default_rng(9)
+    original = rng.integers(0, 256, (32, 32, 4), dtype=np.uint8); original[:,:,3] = 255
+    src, out = tmp_path/'in.ddt', tmp_path/'out.ddt'
+    write_ddt(Image.fromarray(original), src, dxt5=True)
+    before = src.read_bytes(); h = header(before); new = decode_level(before,h,0).copy()
+    new[:,:,0:3] = 0; new[8:16,8:16,3] = 0
+    mask = np.zeros((32,32),np.uint8); mask[8:16,8:16] = 255
+    npng, mpng = tmp_path/'new.png', tmp_path/'mask.png'
+    Image.fromarray(new).save(npng); Image.fromarray(mask).save(mpng)
+    patch(src,npng,mpng,out,alpha_only=True,cutout_threshold=128)
+    after = out.read_bytes(); assert header(after) == h
+    for i,(offset,size) in enumerate(h['mips']):
+        a=np.frombuffer(before[offset:offset+size],np.uint8).reshape(-1,16)
+        b=np.frombuffer(after[offset:offset+size],np.uint8).reshape(-1,16)
+        assert np.array_equal(a[:,8:],b[:,8:])
+        assert np.array_equal(decode_level(before,h,i)[:,:,:3],decode_level(after,h,i)[:,:,:3])
+    assert (decode_level(after,h,0)[8:16,8:16,3] < 128).all()
+    Image.fromarray(np.zeros_like(mask)).save(mpng); patch(src,npng,mpng,out,alpha_only=True)
+    assert out.read_bytes() == before
+    for kwargs in ({'preserve_alpha':True},{'green_only_mode':True}):
+        with pytest.raises(ValueError): patch(src,npng,mpng,out,alpha_only=True,**kwargs)
+
+
+def test_alpha_only_rejects_dxt1(tmp_path):
+    src=tmp_path/'in.ddt'; write_ddt(Image.new('RGB',(8,8)),src,dxt5=False)
+    with pytest.raises(ValueError): patch(src,'unused','unused',tmp_path/'out.ddt',alpha_only=True)
+
+
 @pytest.mark.parametrize('dxt5,green', [(True, False), (True, True), (False, True)])
 def test_protected_channels_and_untouched_blocks_at_every_mip(tmp_path, dxt5, green):
     rng = np.random.default_rng(42)

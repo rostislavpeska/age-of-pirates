@@ -73,3 +73,13 @@ Editor test entries must have distinct localized names from both the vanilla
 donor and any comparison clone. Verify the compiled string tables, not only XML.
 
 After a failure, retain the artifacts and test one falsifiable hypothesis. A repeated failure with the same recipe requires inspection of the actual FBX/GR2/XML evidence before another export.
+
+For a localized DXT5 cutout repair, the consumer's `scripts/havok/ddt_patch.py`
+supports `--alpha-only` (all RGB bytes retained) and `--alpha-selectors`
+(also locks alpha endpoints and unaffected pixel selectors). The latter requires
+`--alpha-only`; with a cutout threshold it refuses palettes that cannot represent
+the requested classification. Filtered mip deltas preserve stored mip content
+outside the edit's influence. These are compression controls, not permission to
+edit a shared alpha page: independent all-state/filter/mip reader checks and
+visual review remain required. A palette refusal is evidence, never a reason to
+silently drop the cutout threshold or broaden the affected readers.
