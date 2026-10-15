@@ -41289,21 +41289,9 @@
         <target type="ProtoUnit">zpNatConGatlingGun</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanCompany</effect>
-      <effect type="CommandAdd" tech="zpConsulateAmericanCompany" page="21" column="0">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanForce</effect>
-      <effect type="CommandAdd" tech="zpConsulateAmericanForce" page="21" column="1">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanArmy</effect>
-      <effect type="CommandAdd" tech="zpConsulateAmericanArmy" page="21" column="2">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanFleet</effect>
-      <effect type="CommandAdd" tech="zpConsulateAmericanFleet" page="21" column="3">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterAmericansClone</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
       <effect civ="DEAmericans" type="Data" amount="0.00" subtype="SetCivRelation" relativity="Absolute">
@@ -41372,21 +41360,9 @@
         <target type="ProtoUnit">zpNatConGatlingGun</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateAmericanCompany</effect>
-      <effect type="CommandRemove" tech="zpConsulateAmericanCompany">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateAmericanForce</effect>
-      <effect type="CommandRemove" tech="zpConsulateAmericanForce">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateAmericanArmy</effect>
-      <effect type="CommandRemove" tech="zpConsulateAmericanArmy">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateAmericanFleet</effect>
-      <effect type="CommandRemove" tech="zpConsulateAmericanFleet">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxRemove</effect>
       <effect civ="none" type="Data" amount="0.00" subtype="SetCivRelation" relativity="Absolute">
@@ -41482,31 +41458,10 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="CommandAdd" command="zpConsulateArmyChinese1" page="19" column="1">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandAdd" command="zpConsulateArmyChinese2" page="19" column="2">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandAdd" command="zpConsulateArmyChinese3" page="19" column="3">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateChineseRicePaddy</effect>
-      <effect type="CommandAdd" tech="zpConsulateChineseRicePaddy" page="21" column="0">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateChineseCastle</effect>
-      <effect type="CommandAdd" tech="zpConsulateChineseCastle" page="21" column="1">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateChineseFlyingCrow</effect>
-      <effect type="CommandAdd" tech="zpConsulateChineseFlyingCrow" page="21" column="2">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateChineseTerracedPaddies</effect>
-      <effect type="CommandAdd" tech="zpConsulateChineseTerracedPaddies" page="21" column="3">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="deTorpBush2" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -41539,31 +41494,10 @@
       <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpConsulateArmyChinese3</target>
       </effect>
-      <effect type="CommandRemove" command="zpConsulateArmyChinese1">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandRemove" command="zpConsulateArmyChinese2">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandRemove" command="zpConsulateArmyChinese3">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateChineseRicePaddy</effect>
-      <effect type="CommandRemove" tech="zpConsulateChineseRicePaddy">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateChineseCastle</effect>
-      <effect type="CommandRemove" tech="zpConsulateChineseCastle">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateChineseFlyingCrow</effect>
-      <effect type="CommandRemove" tech="zpConsulateChineseFlyingCrow">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateChineseTerracedPaddies</effect>
-      <effect type="CommandRemove" tech="zpConsulateChineseTerracedPaddies">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
       <effect type="TechStatus" status="active">ypBigSequesterInitialFrench</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxRemove</effect>

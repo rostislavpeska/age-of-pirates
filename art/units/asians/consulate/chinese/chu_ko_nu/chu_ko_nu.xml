@@ -32,25 +32,22 @@
     <anim>Idle<component>hat2</component>
     </anim>
   </attachment>
-  <component>ModelComp<logic type="Tech">
-      <none>
-        <logic type="LowPoly">
-          <normal>
-            <assetreference type="GrannyModel">
-              <file>units\asians\chinese\chu_ko_nu\chokonu_age3</file>
-            </assetreference>
-            <attach a="hat2" frombone="bone_hat" tobone="Bip01 Head" syncanims="0" />
-            <attach a="crossbows" frombone="bone_crossbow" tobone="BIP01 PROP1" syncanims="0" />
-          </normal>
-          <lowpoly>
-            <assetreference type="GrannyModel">
-              <file>units\asians\chinese\chu_ko_nu\lp_chokonu_age3</file>
-            </assetreference>
-            <attach a="hat2" frombone="bone_hat" tobone="Bip01 Head" syncanims="0" />
-            <attach a="crossbows" frombone="bone_crossbow" tobone="BIP01 PROP1" syncanims="0" />
-          </lowpoly>
-        </logic>
-      </none>
+  <component>ModelComp
+    <logic type="LowPoly">
+      <normal>
+        <assetreference type="GrannyModel">
+          <file>units\asians\chinese\chu_ko_nu\chokonu_age1</file>
+        </assetreference>
+        <attach a="hat" frombone="bone_hat" tobone="Bip01 Head" syncanims="0" />
+        <attach a="crossbows" frombone="bone_crossbow" tobone="BIP01 PROP1" syncanims="0" />
+      </normal>
+      <lowpoly>
+        <assetreference type="GrannyModel">
+          <file>units\asians\chinese\chu_ko_nu\lp_chokonu_age1</file>
+        </assetreference>
+        <attach a="hat" frombone="bone_hat" tobone="Bip01 Head" syncanims="0" />
+        <attach a="crossbows" frombone="bone_crossbow" tobone="BIP01 PROP1" syncanims="0" />
+      </lowpoly>
     </logic>
     <decal>
       <effecttype>default</effecttype>

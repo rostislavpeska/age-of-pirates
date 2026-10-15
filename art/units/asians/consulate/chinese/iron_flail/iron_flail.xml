@@ -5,28 +5,25 @@
   <definebone>HS Bone Hoof Back Rt</definebone>
   <attachment>RiderAttachment<include>units\asians\consulate\chinese\iron_flail\iron_flail_rider.xml</include>
   </attachment>
-  <component>ModelComp<logic type="Tech">
-      <none>
-        <logic type="LowPoly">
-          <normal>
-            <assetreference type="GrannyModel">
-              <file>units\asians\chinese\iron_flail\iron_flail_horse_1</file>
-            </assetreference>
-          </normal>
-          <lowpoly>
-            <assetreference type="GrannyModel">
-              <file>units\asians\chinese\iron_flail\iron_flail_horse_1</file>
-            </assetreference>
-          </lowpoly>
-        </logic>
-      </none>
+  <component>ModelComp
+    <logic type="LowPoly">
+      <normal>
+        <assetreference type="GrannyModel">
+          <file>units\asians\chinese\iron_flail\iron_flail_horse_0</file>
+        </assetreference>
+      </normal>
+      <lowpoly>
+        <assetreference type="GrannyModel">
+          <file>units\asians\chinese\iron_flail\iron_flail_horse_0</file>
+        </assetreference>
+      </lowpoly>
     </logic>
     <decal>
       <effecttype>default</effecttype>
       <texture isfakeshadow="1">shadows_selections\shadow_consulate_64x64</texture>
       <selectedtexture>shadows_selections\selection_consulate_64x64</selectedtexture>
-      <width>1.50</width>
-      <height>3.00</height>
+      <width>1.5</width>
+      <height>3.0</height>
     </decal>
     <attach a="RiderAttachment" frombone="hotspot" tobone="ATTACHPOINT" syncanims="1" />
   </component>

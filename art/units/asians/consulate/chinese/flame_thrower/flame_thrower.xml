@@ -14,38 +14,28 @@
   </attachment>
   <attachment>driver<include>units\asians\chinese\flame_thrower\driver.xml</include>
   </attachment>
-  <component>falconet<logic type="Tech">
-      <none>
-        <logic type="LowPoly">
-          <normal>
-            <assetreference type="GrannyModel">
-              <file>units\asians\chinese\flame_thrower\flameThrower_cannon_1</file>
-              <materialvariant index="1" />
-            </assetreference>
-            <attach a="driver" frombone="hotspot" tobone="bone_master" syncanims="1" />
-          </normal>
-          <lowpoly>
-            <assetreference type="GrannyModel">
-              <file>units\asians\chinese\flame_thrower\flameThrower_cannon_1</file>
-              <materialvariant index="1" />
-            </assetreference>
-            <attach a="driver" frombone="hotspot" tobone="bone_master" syncanims="1" />
-          </lowpoly>
-        </logic>
-      </none>
+  <component>falconet
+    <logic type="LowPoly">
+      <normal>
+        <assetreference type="GrannyModel">
+          <file>units\asians\chinese\flame_thrower\flameThrower_cannon_0</file>
+        </assetreference>
+        <attach a="driver" frombone="ROOT" tobone="bone_master" syncanims="1" />
+      </normal>
+      <lowpoly>
+        <assetreference type="GrannyModel">
+          <file>units\asians\chinese\flame_thrower\flameThrower_cannon_0</file>
+        </assetreference>
+        <attach a="driver" frombone="hotspot" tobone="bone_master" syncanims="1" />
+      </lowpoly>
     </logic>
     <decal>
       <effecttype>default</effecttype>
       <texture isfakeshadow="1">shadows_selections\shadow_consulate_64x64</texture>
       <selectedtexture>shadows_selections\selection_consulate_64x64</selectedtexture>
-      <width>2.00</width>
-      <height>4.00</height>
+      <width>2.0</width>
+      <height>4.0</height>
     </decal>
-    <watersplash>
-      <texture>units\artillery\cannon\wheel_B</texture>
-      <width>1.75</width>
-      <height>2.00</height>
-    </watersplash>
   </component>
   <anim>Walk<assetreference type="GrannyAnim">
       <file>units\asians\chinese\flame_thrower\flameThrower_cannon_walk00</file>

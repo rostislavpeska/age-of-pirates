@@ -3634,15 +3634,15 @@
       <string _locid="503646">Bonus: +7% Land Military and Villager Damage\n\nTrains: Yamabushi, Shinobi, Ninja, Ronin\n\nShipments: Military enhancements, Osaka Ronin</string>
       <string _locid="503647">Chinese Expeditionary Company</string>
       <string _locid="503648">ZP Consulate Army Chinese Company</string>
-      <string _locid="503649">An army of Chu Ko Nu.\n5 Chu Ko Nu: archaic archers good against infantry.</string>
+      <string _locid="503649">An army of Liannu Arbalests.\n5 Liannu Arbalests: archaic archers good against infantry.</string>
       <string _locid="503650">Archer, good against heavy infantry</string>
       <string _locid="503651">Chinese Expeditionary Force</string>
       <string _locid="503652">ZP Consulate Army Chinese Force</string>
-      <string _locid="503653">An army of Chu Ko Nu and Iron Flails.\n3 Chu Ko Nu: archaic archers good against infantry.\n2 Iron Flails: heavy cavalry good against archers, skirmishers, and artillery.</string>
+      <string _locid="503653">An army of Liannu Arbalests and Iron Pagodas.\n3 Liannu Arbalests: archaic archers good against infantry.\n2 Iron Pagodas: heavy cavalry good against archers, skirmishers, and artillery.</string>
       <string _locid="503654">Archer, good against heavy infantry / heavy cavalry, good against archers, skirmishers, and artillery</string>
       <string _locid="503655">Chinese Expeditionary Army</string>
       <string _locid="503656">ZP Consulate Army Chinese Army</string>
-      <string _locid="503657">An army of Iron Flails and Flamethrowers.\n2 Iron Flails: heavy cavalry good against archers, skirmishers, and artillery.\n1 Flamethrower: light artillery good against infantry.</string>
+      <string _locid="503657">An army of Iron Pagodas and Shenji Siphons.\n2 Iron Pagodas: heavy cavalry good against archers, skirmishers, and artillery.\n1 Shenji Siphon: light artillery good against infantry.</string>
       <string _locid="503658">Heavy cavalry, good against archers, skirmishers, and artillery / light artillery, good against infantry</string>
       <string _locid="503659">Terraced Paddies</string>
       <string _locid="503660">ZP Consulate Chinese Terraced Paddies</string>
@@ -3659,6 +3659,12 @@
       <string _locid="503671">American Expeditionary Fleet</string>
       <string _locid="503672">ZP Consulate American Fleet</string>
       <string _locid="503673">Ships a Dispatch Vessel with Regulars.</string>
+      <string _locid="503674">Liannu Arbalest</string>
+      <string _locid="503675">ZP CON Liannu Arbalest</string>
+      <string _locid="503676">Iron Pagoda</string>
+      <string _locid="503677">ZP CON Iron Pagoda</string>
+      <string _locid="503678">Shenji Siphon</string>
+      <string _locid="503679">ZP CON Shenji Siphon</string>
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->

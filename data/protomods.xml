@@ -2663,6 +2663,19 @@
     <tech row="0" page="20" column="2">zpBigSequesterAmericansClone</tech>
     <tech row="0" page="20" column="2">zpBigSequesterSPCChinaClone</tech>
     <tech row="0" page="20" column="2">zpBigSequesterJapaneseAlliesKorea</tech>
+    <tech row="0" page="20" column="2">zpBigSequesterJapaneseAllies</tech>
+    <train row="0" page="19" column="1">zpConsulateArmyChinese1</train>
+    <train row="0" page="19" column="2">zpConsulateArmyChinese2</train>
+    <train row="0" page="19" column="3">zpConsulateArmyChinese3</train>
+    <tech row="0" page="21" column="0">zpConsulateChineseRicePaddy</tech>
+    <tech row="0" page="21" column="1">zpConsulateChineseCastle</tech>
+    <tech row="0" page="21" column="2">zpConsulateChineseFlyingCrow</tech>
+    <tech row="0" page="21" column="3">zpConsulateChineseTerracedPaddies</tech>
+    <tech row="0" page="21" column="3">zpConsulateOsakaRonin</tech>
+    <tech row="0" page="21" column="0">zpConsulateAmericanCompany</tech>
+    <tech row="0" page="21" column="1">zpConsulateAmericanForce</tech>
+    <tech row="0" page="21" column="2">zpConsulateAmericanArmy</tech>
+    <tech row="0" page="21" column="3">zpConsulateAmericanFleet</tech>
   </unit>
   <unit name="NativeEmbassy">
     <!-- Christmas units and techs Added by AssertiveWall-->
@@ -30171,7 +30184,7 @@
     <buildbounty>35.0000</buildbounty>
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">250.0000</cost>
-    <allowedage>2</allowedage>
+    <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
@@ -76977,7 +76990,6 @@
     <unittype>LogicalTypeScout</unittype>
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>AbstractConsulateUnit</unittype>
-    <unittype>AbstractBannerArmy</unittype>
     <unittype>AbstractConsulateUnitColonial</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
@@ -77007,7 +77019,6 @@
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
-    <flag>AllowOverPopCap</flag>
     <flag>NotPlayerPlaceable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -77152,7 +77163,6 @@
     <unittype>AbstractCavalry</unittype>
     <unittype>AbstractLightCavalry</unittype>
     <unittype>AbstractConsulateUnit</unittype>
-    <unittype>AbstractBannerArmy</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -77162,7 +77172,6 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
-    <flag>AllowOverPopCap</flag>
     <flag>NotPlayerPlaceable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -77235,7 +77244,7 @@
     <bounty>35.0000</bounty>
     <buildbounty>35.0000</buildbounty>
     <cost resourcetype="Trade">350.0000</cost>
-    <allowedage>2</allowedage>
+    <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
@@ -77258,7 +77267,6 @@
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>AbstractConsulateUnit</unittype>
-    <unittype>AbstractBannerArmy</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -77269,7 +77277,6 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
-    <flag>AllowOverPopCap</flag>
     <flag>NotPlayerPlaceable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -77314,11 +77321,11 @@
   </unit>
 
 
-  <!-- Chinese consulate clones. Honored skin by default. Age stats come from the consulate abstracts. -->
+  <!-- Chinese consulate clones. Base models with consulate selection decals. Stats come from the consulate abstracts. -->
   <unit id="21210" name="zpConsulateChuKoNu">
     <dbid>21210</dbid>
-    <displaynameid>60152</displaynameid>
-    <editornameid>60153</editornameid>
+    <displaynameid>503674</displaynameid>
+    <editornameid>503675</editornameid>
     <populationcount>1</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -77481,8 +77488,8 @@
   </unit>
   <unit id="21211" name="zpConsulateIronFlail">
     <dbid>21211</dbid>
-    <displaynameid>60176</displaynameid>
-    <editornameid>60177</editornameid>
+    <displaynameid>503676</displaynameid>
+    <editornameid>503677</editornameid>
     <populationcount>2</populationcount>
     <obstructionradiusx>0.7900</obstructionradiusx>
     <obstructionradiusz>0.7900</obstructionradiusz>
@@ -77596,8 +77603,8 @@
   </unit>
   <unit id="21212" name="zpConsulateFlameThrower">
     <dbid>21212</dbid>
-    <displaynameid>60333</displaynameid>
-    <editornameid>60334</editornameid>
+    <displaynameid>503678</displaynameid>
+    <editornameid>503679</editornameid>
     <populationcount>3</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
