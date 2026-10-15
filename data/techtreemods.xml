@@ -15375,7 +15375,7 @@
     <flag>YPCheckPopCap</flag>
     <flag>AlwaysShowButton</flag>
     <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
+      <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatConUSCavalry" relativity="Absolute">
@@ -15398,7 +15398,7 @@
     <flag>YPCheckPopCap</flag>
     <flag>AlwaysShowButton</flag>
     <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpNatConUSCavalry" relativity="Absolute">
@@ -41248,32 +41248,27 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConUSCavalry</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatConRegular" page="19" column="0">
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConGatlingGun</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConRegularProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConUSCavalryProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConGatlingGunProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConRegularProxy" page="19" column="0">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatConUSCavalry" page="19" column="1">
+      <effect type="CommandAdd" proto="zpNatConUSCavalryProxy" page="19" column="1">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatConAmericanCompany" page="21" column="0">
+      <effect type="CommandAdd" proto="zpNatConGatlingGunProxy" page="19" column="2">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatConAmericanForce" page="21" column="1">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatConAmericanArmy" page="21" column="2">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatConAmericanArmyBig" page="19" column="4">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpAmericanExpeditionaryFleet" page="21" column="3">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">zpNatConAmericanCompany</effect>
-      <effect type="TechStatus" status="obtainable">zpNatConAmericanForce</effect>
-      <effect type="TechStatus" status="obtainable">zpNatConAmericanArmy</effect>
-      <effect type="TechStatus" status="obtainable">zpNatConAmericanArmyBig</effect>
-      <effect type="TechStatus" status="obtainable">zpAmericanExpeditionaryFleet</effect>
       <effect type="TechStatus" status="active">ypBigSequesterRemove</effect>
       <effect type="Data" amount="1.10" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatConRegular</target>
@@ -41286,6 +41281,28 @@
       </effect>
       <effect type="Data" amount="1.10" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConGatlingGun</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConGatlingGun</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateAmericanCompany</effect>
+      <effect type="CommandAdd" tech="zpConsulateAmericanCompany" page="21" column="0">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateAmericanForce</effect>
+      <effect type="CommandAdd" tech="zpConsulateAmericanForce" page="21" column="1">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateAmericanArmy</effect>
+      <effect type="CommandAdd" tech="zpConsulateAmericanArmy" page="21" column="2">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateAmericanFleet</effect>
+      <effect type="CommandAdd" tech="zpConsulateAmericanFleet" page="21" column="3">
+        <target type="ProtoUnit">ypConsulate</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterAmericansClone</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -41315,32 +41332,27 @@
       <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConUSCavalry</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatConRegular">
+      <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConGatlingGun</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConRegularProxy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConUSCavalryProxy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConGatlingGunProxy</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatConRegularProxy">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatConUSCavalry">
+      <effect type="CommandRemove" proto="zpNatConUSCavalryProxy">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="CommandRemove" tech="zpNatConAmericanCompany">
+      <effect type="CommandRemove" proto="zpNatConGatlingGunProxy">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="CommandRemove" tech="zpNatConAmericanForce">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpNatConAmericanArmy">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpNatConAmericanArmyBig">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpAmericanExpeditionaryFleet">
-        <target type="ProtoUnit">ypConsulate</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpNatConAmericanCompany</effect>
-      <effect type="TechStatus" status="unobtainable">zpNatConAmericanForce</effect>
-      <effect type="TechStatus" status="unobtainable">zpNatConAmericanArmy</effect>
-      <effect type="TechStatus" status="unobtainable">zpNatConAmericanArmyBig</effect>
-      <effect type="TechStatus" status="unobtainable">zpAmericanExpeditionaryFleet</effect>
       <effect type="Data" amount="0.9091" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatConRegular</target>
       </effect>
@@ -41352,6 +41364,28 @@
       </effect>
       <effect type="Data" amount="0.9091" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+      <effect type="Data" amount="0.9091" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConGatlingGun</target>
+      </effect>
+      <effect type="Data" amount="0.9091" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConGatlingGun</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateAmericanCompany</effect>
+      <effect type="CommandRemove" tech="zpConsulateAmericanCompany">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateAmericanForce</effect>
+      <effect type="CommandRemove" tech="zpConsulateAmericanForce">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateAmericanArmy</effect>
+      <effect type="CommandRemove" tech="zpConsulateAmericanArmy">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateAmericanFleet</effect>
+      <effect type="CommandRemove" tech="zpConsulateAmericanFleet">
+        <target type="ProtoUnit">ypConsulate</target>
       </effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxRemove</effect>
@@ -41469,8 +41503,8 @@
       <effect type="CommandAdd" tech="zpConsulateChineseFlyingCrow" page="21" column="2">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">zpConsulateChineseBattery</effect>
-      <effect type="CommandAdd" tech="zpConsulateChineseBattery" page="19" column="4">
+      <effect type="TechStatus" status="obtainable">zpConsulateChineseTerracedPaddies</effect>
+      <effect type="CommandAdd" tech="zpConsulateChineseTerracedPaddies" page="21" column="3">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="deTorpBush2" relativity="BasePercent">
@@ -41526,8 +41560,8 @@
       <effect type="CommandRemove" tech="zpConsulateChineseFlyingCrow">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateChineseBattery</effect>
-      <effect type="CommandRemove" tech="zpConsulateChineseBattery">
+      <effect type="TechStatus" status="unobtainable">zpConsulateChineseTerracedPaddies</effect>
+      <effect type="CommandRemove" tech="zpConsulateChineseTerracedPaddies">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
       <effect type="TechStatus" status="active">ypBigSequesterInitialFrench</effect>
@@ -41780,11 +41814,11 @@
       <effect type="TechStatus" status="obtainable">ypConsulateJapaneseMasterTraining</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateJapaneseMilitaryRickshaw</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateJapaneseKoujou</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateOsakaRonin</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateRonin</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterJapaneseAlliesKorea</effect>
-      <effect type="TechStatus" status="obtainable">ypConsulateJapaneseMeijiRestoration</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateYamabushi</target>
@@ -41832,6 +41866,7 @@
       <effect type="TechStatus" status="unobtainable">ypConsulateJapaneseMeijiRestoration</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="TechStatus" status="unobtainable">ypConsulateJapaneseKoujou</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOsakaRonin</effect>
       <effect type="Data" amount="-1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateYamabushi</target>
       </effect>
@@ -41851,6 +41886,192 @@
         <target type="ProtoUnit">LogicalTypeAffectedByVillagerUpgrades</target>
       </effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateChineseTerracedPaddies" type="Normal">
+    <dbid>50093</dbid>
+    <displaynameid>503659</displaynameid>
+    <editornameid>503660</editornameid>
+    <rollovertextid>503661</rollovertextid>
+    <cost resourcetype="Trade">1600.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\terraced_paddies.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNeverObtainableAfterUse</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>ypConsulateImprovementImperial</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRicePaddy</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="YPRicePaddyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.40" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.40" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.40" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.40" subtype="WorkRateSpecific" resource="Gold" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.40" subtype="WorkRateSpecific" resource="Food" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.40" subtype="WorkRateSpecific" resource="Gold" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.40" subtype="WorkRateSpecific" resource="Food" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.40" subtype="WorkRateSpecific" resource="Gold" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">deHacienda</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deHacienda</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.40" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateAmericanCompany" type="Normal">
+    <dbid>50094</dbid>
+    <displaynameid>503662</displaynameid>
+    <editornameid>503663</editornameid>
+    <rollovertextid>503664</rollovertextid>
+    <cost resourcetype="Trade">840.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\us_consulate_company.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNeverObtainableAfterUse</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>YPConsulateImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatConRegular" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+
+  <tech name="zpConsulateAmericanForce" type="Normal">
+    <dbid>50095</dbid>
+    <displaynameid>503665</displaynameid>
+    <editornameid>503666</editornameid>
+    <rollovertextid>503667</rollovertextid>
+    <cost resourcetype="Trade">1280.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\us_consulate_force.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNeverObtainableAfterUse</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>YPConsulateImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatConUSCavalry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+
+  <tech name="zpConsulateAmericanArmy" type="Normal">
+    <dbid>50096</dbid>
+    <displaynameid>503668</displaynameid>
+    <editornameid>503669</editornameid>
+    <rollovertextid>503670</rollovertextid>
+    <cost resourcetype="Trade">2690.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\us_consulate_army.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNeverObtainableAfterUse</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>YPConsulateImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatConRegular" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatConUSCavalry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpNatConGatlingGun" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+
+  <tech name="zpConsulateAmericanFleet" type="Normal">
+    <dbid>50097</dbid>
+    <displaynameid>503671</displaynameid>
+    <editornameid>503672</editornameid>
+    <rollovertextid>503673</rollovertextid>
+    <cost resourcetype="Trade">2260.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\us_consulate_fleet.png</icon>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNeverObtainableAfterUse</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>YPConsulateImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="12.00" subtype="FreeHomeCityUnitShipped" unittype="zpDispatchVessel" unittype2="zpNatConRegular" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <!-- Appended to vanilla Meiji. That tech only locks ypBigSequesterJapanese.
+       The live End Relations buttons are made obtainable by the Japan cards
+       above, so the lock names those sequesters on Meiji itself. -->
+  <tech name="ypConsulateJapaneseMeijiRestoration">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="unobtainable">zpBigSequesterJapaneseClone</effect>
+      <effect mergemode="add" type="CommandRemove" tech="zpBigSequesterJapaneseClone">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect mergemode="add" type="TechStatus" status="unobtainable">zpBigSequesterJapaneseAlliesKorea</effect>
+      <effect mergemode="add" type="CommandRemove" tech="zpBigSequesterJapaneseAlliesKorea">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
+      <effect mergemode="add" type="TechStatus" status="unobtainable">zpBigSequesterJapaneseAllies</effect>
+      <effect mergemode="add" type="CommandRemove" tech="zpBigSequesterJapaneseAllies">
+        <target type="ProtoUnit">ypConsulate</target>
+      </effect>
     </effects>
   </tech>
 

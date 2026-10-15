@@ -3615,8 +3615,8 @@
       <string _locid="503618">Only the bridges lead into the bend. Hold them to claim the Electors' castles and the rich mines.</string>
       <string _locid="503619">United States Allies</string>
       <string _locid="503620">Chinese Allies</string>
-      <string _locid="503621">Allied with the United States. The consulate ships the American expedition. American infantry and cavalry gain hitpoints and damage.</string>
-      <string _locid="503622">Allied with China. Villagers gather faster. The consulate trains Chinese armies and ships Chinese buildings and Flying Crows.</string>
+      <string _locid="503621">Bonus: +10% Hitpoints and Damage\n\nTrains: Regulars, US Cavalry, Volley Guns\n\nShipments: Regulars, US Cavalry, Volley Guns, Dispatch Vessel</string>
+      <string _locid="503622">Bonus: +5% Gather Rate\n\nTrains: Chu Ko Nu, Iron Flails, Flamethrowers\n\nShipments: Rice Paddies, Castles, Flying Crows, Terraced Paddies</string>
       <string _locid="503632">Rice Paddy</string>
       <string _locid="503633">ZP Consulate Chinese Rice Paddy</string>
       <string _locid="503634">Ships a Rice Paddy Wagon.</string>
@@ -3631,7 +3631,34 @@
       <string _locid="503643">Ships Flying Crows.</string>
       <string _locid="503644">Japanese Allies</string>
       <string _locid="503645">ZP Consulate Japanese Allies</string>
-      <string _locid="503646">Allied with Japan. Land military and villagers deal more damage. The consulate trains Yamabushi, Shinobi, Ninja and Ronin.</string>
+      <string _locid="503646">Bonus: +7% Land Military and Villager Damage\n\nTrains: Yamabushi, Shinobi, Ninja, Ronin\n\nShipments: Military enhancements, Osaka Ronin</string>
+      <string _locid="503647">Chinese Expeditionary Company</string>
+      <string _locid="503648">ZP Consulate Army Chinese Company</string>
+      <string _locid="503649">An army of Chu Ko Nu.\n5 Chu Ko Nu: archaic archers good against infantry.</string>
+      <string _locid="503650">Archer, good against heavy infantry</string>
+      <string _locid="503651">Chinese Expeditionary Force</string>
+      <string _locid="503652">ZP Consulate Army Chinese Force</string>
+      <string _locid="503653">An army of Chu Ko Nu and Iron Flails.\n3 Chu Ko Nu: archaic archers good against infantry.\n2 Iron Flails: heavy cavalry good against archers, skirmishers, and artillery.</string>
+      <string _locid="503654">Archer, good against heavy infantry / heavy cavalry, good against archers, skirmishers, and artillery</string>
+      <string _locid="503655">Chinese Expeditionary Army</string>
+      <string _locid="503656">ZP Consulate Army Chinese Army</string>
+      <string _locid="503657">An army of Iron Flails and Flamethrowers.\n2 Iron Flails: heavy cavalry good against archers, skirmishers, and artillery.\n1 Flamethrower: light artillery good against infantry.</string>
+      <string _locid="503658">Heavy cavalry, good against archers, skirmishers, and artillery / light artillery, good against infantry</string>
+      <string _locid="503659">Terraced Paddies</string>
+      <string _locid="503660">ZP Consulate Chinese Terraced Paddies</string>
+      <string _locid="503661">Ships Rice Paddy Wagons. Villagers gather more Food and Coin from farms, rice paddies and fields.</string>
+      <string _locid="503662">American Expeditionary Company</string>
+      <string _locid="503663">ZP Consulate American Company</string>
+      <string _locid="503664">Ships Regulars.</string>
+      <string _locid="503665">American Expeditionary Force</string>
+      <string _locid="503666">ZP Consulate American Force</string>
+      <string _locid="503667">Ships US Cavalry.</string>
+      <string _locid="503668">American Expeditionary Army</string>
+      <string _locid="503669">ZP Consulate American Army</string>
+      <string _locid="503670">Ships Regulars, US Cavalry and Volley Guns.</string>
+      <string _locid="503671">American Expeditionary Fleet</string>
+      <string _locid="503672">ZP Consulate American Fleet</string>
+      <string _locid="503673">Ships a Dispatch Vessel with Regulars.</string>
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->

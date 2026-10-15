@@ -130,7 +130,7 @@ The bug is reported, not patched here.
 
 The two Korea buttons are the Isolation effect list (the four unit types, the
 damage bonus on land military, villagers, and villagers' other upgrades, plus Rickshaw,
-Master Training, Koujou and Meiji). The title is Japanese Allies. Each has its
+Master Training, Koujou and Osaka Ronin). The Osaka Ronin record lives in the Korean mod. Meiji Restoration stays off them. The title is Japanese Allies. Each has its
 own sequester, so ending one alliance does not end the other and does not end
 Japan's Isolation.
 
@@ -144,8 +144,9 @@ Japan's Isolation.
 4. One `obtainable` line in the set that should show it.
 5. One `unobtainable` line in every other `zpTurnConsulate*` set, beside the
    other big-consulate lines.
-6. Rebuild `techtreemods.xml.xmb` and `politicianmods.xml.xmb`.
-7. The map trigger only if this civilization did not already have a switcher.
+6. Put the sequester on `ypConsulate` in `data/protomods.xml`, the same slot as the other undo buttons: `<tech row="0" page="20" column="2">`. Obtainable is not enough. A sequester with no button there never appears. Rebuild `protomods.xml.xmb`.
+7. Rebuild `techtreemods.xml.xmb` and `politicianmods.xml.xmb`.
+8. The map trigger only if this civilization did not already have a switcher.
    Copy `Activate Consulate Japan` on that map, including `Human_Check`.
 
 A standard-map button for a civilization that lives in another mod goes in that
