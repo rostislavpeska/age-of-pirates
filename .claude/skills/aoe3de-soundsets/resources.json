@@ -1,10 +1,13 @@
 {
   "schemaVersion": 1,
   "files": [
-    "SKILL.md"
+    "SKILL.md",
+    "scripts/inspect_wav.py",
+    "scripts/test_inspect_wav.py"
   ],
   "skills": [
     "aoe-xml",
+    "artifact-page",
     "bar-extract",
     "vanilla-merge"
   ],

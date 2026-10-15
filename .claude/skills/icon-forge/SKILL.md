@@ -145,3 +145,13 @@ lets the player colour glow (owner: "background must be consistent" - vanilla sh
 Look at the 128px output, not the source. Art that reads well at 1254px often
 turns to texture at icon size — the test is whether one shape carries it. If
 nothing does, the fix is simpler source art, not different compositing.
+
+A charge on a field (a weapon on a flag, a tool on a cloth) is whole. The stone
+frame never slices it. After compositing, check the icon against the field:
+
+```bash
+python .claude/skills/icon-forge/scripts/cutcheck.py <icon.png> --field <field.png>
+```
+
+Exit 1 means added pixels sit in the frame or in the margin inside the content
+window: the charge is cut. Shrink it and place it again. Do not ship the file.
