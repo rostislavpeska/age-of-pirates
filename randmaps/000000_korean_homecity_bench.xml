@@ -1,0 +1,5 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo displayName = "000000 Korean Home City Lighting Test" detailsText = "Test bench for Korean Home City and Backdrop lighting sets."
+    imagepath = "ui\random_map\atols\atols_mini" cannotReplace = "" loadBackground = "ui\random_map\atols\atols_map">
+   <loadss>ui\random_map\atols\atols_01</loadss>
+</mapinfo>

@@ -121,3 +121,6 @@ scripts/mapview/out/
 !/.claude/skills/**/*.bmp
 !/.claude/skills/**/*.gif
 !/.claude/skills/**/*.webp
+
+.local/
+
