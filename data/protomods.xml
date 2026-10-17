@@ -77689,7 +77689,7 @@
       <damagebonus type="deMalteseGun">0.500000</damagebonus>
     </protoaction>
   </unit>
-  <!-- Chinese consulate banner armies. zpKoreans spawns the clones. -->
+  <!-- Chinese consulate banner armies. The Korean add-on spawns the clones. -->
   <unit id="21213" name="zpConsulateArmyChinese1">
     <dbid>21213</dbid>
     <displaynameid>503647</displaynameid>
