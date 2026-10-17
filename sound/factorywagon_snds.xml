@@ -165,10 +165,6 @@
           <soundset name="PolishSettlerMaleSelect">
           </soundset>
         </choice>
-        <choice name="zpKoreans">
-          <soundset name="RussianSettlerMaleSelect">
-          </soundset>
-        </choice>
       </civlogic>
     </soundtype>
     <soundtype name="Grunt">
@@ -345,10 +341,6 @@
         </choice>
         <choice name="DEPolish">
           <soundset name="PolishSettlerMaleAcknowledge">
-          </soundset>
-        </choice>
-        <choice name="zpKoreans">
-          <soundset name="RussianSettlerMaleAcknowledge">
           </soundset>
         </choice>
       </civlogic>

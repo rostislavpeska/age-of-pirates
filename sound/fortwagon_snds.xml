@@ -180,10 +180,6 @@
           <soundset name="BritishSettlerMaleSelect">
           </soundset>
         </choice>
-        <choice name="zpKoreans">
-          <soundset name="RussianSettlerMaleSelect">
-          </soundset>
-        </choice>
       </civlogic>
     </soundtype>
     <soundtype name="Grunt">
@@ -376,10 +372,6 @@
         </choice>
         <choice name="SPCCanadians">
           <soundset name="BritishSettlerMaleAcknowledge">
-          </soundset>
-        </choice>
-        <choice name="zpKoreans">
-          <soundset name="RussianSettlerMaleAcknowledge">
           </soundset>
         </choice>
       </civlogic>
