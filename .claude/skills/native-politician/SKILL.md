@@ -120,7 +120,7 @@ steamers are different protos).
 Order matters; every layer below was needed, and the spec covers each.
 
 1. **Ship** `zpSPC<Ship>` = clone `zpSPCBlackPearl` (2660): new id/dbid in the
-   real sequence (21160+, NOT the 3xxxx test range), animfile, icon
+   real sequence (the highest real id in data/protomods.xml + 1, NOT the 3xxxx test range), animfile, icon
    (`<icon>` = the *_icon.png, `<portraiticon>` = the big png), displayname,
    editorname, own rollover; drop the `<train>` lines if no pirate training;
    keep `frigate.tactics`, `<buildlimit>1`, `sharedbuildlimitunit
@@ -213,4 +213,4 @@ the four files actually owns each piece, is `docs/consulate-system.md`.
 - A second description section on the card overflows; use the Barbarossa
   layout.
 - Ids 30042+ and empty `id=""` are the test units; real content continues
-  21160+.
+  from the highest real id + 1 (read it from data/protomods.xml; 21160 itself is zpSPCBonhommeRichard).

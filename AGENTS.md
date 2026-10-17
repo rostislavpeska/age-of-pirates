@@ -33,7 +33,8 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    (`python .claude/skills/aoe3de-bar-archives/scripts/xmbc.py check|build data/<file>.xml`); commit both.
    Art and sound XML stay plain - no twins there.
 5. **New records go at the end of real content**, directly above the file's first long TEST/commented
-   section, ids continuing the real sequence (protomods 21160+).
+   section, ids continuing the real sequence (protomods: the highest id in use + 1, read from the file;
+   never a number copied from a doc - "21160+" stood here and 21160 was reused, CI red 2026-10-17).
 6. **Backslashes in the Bash tool collapse** (`\\` loses a level even in quoted heredocs). Write scripts that
    contain Windows paths with the Write tool and build the character from `chr(92)`.
 
