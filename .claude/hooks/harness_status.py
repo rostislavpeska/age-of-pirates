@@ -48,22 +48,35 @@ def _commands(block):
     return {h.get('command') for g in block or [] for h in g.get('hooks', []) if isinstance(h, dict)}
 
 
+def _pairs(block):
+    """{(matcher, command)}: a command counts only under its entry's matcher (INC-384: a widened matcher must not read
+    as registered while settings.json still holds the old one)"""
+    return {(g.get('matcher'), h.get('command')) for g in block or [] for h in g.get('hooks', []) if isinstance(h, dict)}
+
+
 def registration(settings, entries):
-    """{event: True/False} - every entry command of the event is present in settings (any group)"""
+    """{event: True/False} - every entry command of the event is present in settings (any group) with its matcher"""
     have = (settings or {}).get('hooks', {})
-    return {ev: _commands(groups) <= _commands(have.get(ev)) for ev, groups in entries['hooks'].items()}
+    return {ev: _pairs(groups) <= _pairs(have.get(ev)) for ev, groups in entries['hooks'].items()}
 
 
 def merged(settings, entries):
-    """settings with the missing entry groups appended; existing groups untouched, nothing duplicated"""
+    """settings with the missing entry groups appended and a stale matcher of a group with exactly the entry's commands
+    updated; other groups untouched, nothing duplicated"""
     out = json.loads(json.dumps(settings or {}))
     hooks = out.setdefault('hooks', {})
     for ev, groups in entries['hooks'].items():
         cur = hooks.setdefault(ev, [])
-        have = _commands(cur)
         for g in groups:
-            if not _commands([g]) <= have:
-                cur.append(g)
+            if _pairs([g]) <= _pairs(cur):
+                continue
+            same = [x for x in cur if _commands([x]) == _commands([g])]
+            if not same:
+                cur.append(json.loads(json.dumps(g)))     # a copy: editing the result never edits the entries
+            elif 'matcher' in g:
+                same[0]['matcher'] = g['matcher']
+            else:
+                same[0].pop('matcher', None)
     return out
 
 
@@ -198,7 +211,7 @@ def status(settings_path):
     core_ok = all(registration(settings, core).values())
     st['pending'] = sorted({h.get('command', '').split('/.claude/hooks/')[-1].split('"')[0]
                             for ev, groups in entries['hooks'].items() for g in groups for h in g.get('hooks', [])
-                            if h.get('command') not in _commands(settings.get('hooks', {}).get(ev))})
+                            if (g.get('matcher'), h.get('command')) not in _pairs(settings.get('hooks', {}).get(ev))})
     st['live'] = core_ok and bool(st['gate_seen_live']) and bool(st['inbox_seen_live'])
     st['approved_idle'] = approved_idle()
     st['background'] = background()

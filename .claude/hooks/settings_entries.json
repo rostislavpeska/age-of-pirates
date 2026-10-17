@@ -6,7 +6,8 @@
     "The inbox command reads runs.json with bash builtins only: while nothing is bound Python never starts (cost = the bash start).",
     "The inbox command finds the task store with bash builtins too: AOP_TASKS_DIR from the environment, else its line in config/aop.local.env (the device's local environment, scripts/tools/local_env.py); neither = no inbox, Python never starts.",
     "launch_gate always exits 0 (it denies through JSON); inbox_hook's exit 2 on SubagentStop is deliberate and passes through exec.",
-    "tool_guard (R1 raw image repoint in Blender MCP code, R2 blender_gate.py piped, R3 endless loop in a background Bash / PowerShell or Monitor command, or in a foreground command that detaches: INC-027, INC-037): Python starts only when the input names blender_gate, the Blender tool, run_in_background true, the Monitor tool, nohup / disown / setsid / Start-Job / Start-Process, or (a Bash call) a lone `&`. The input is read with the `read` builtin (no fork, INC-038: `b=$(cat)` cost ~200 ms per call), so a foreground call costs the bash start alone; deny through JSON, exit 0.",
+    "tool_guard (R1 raw image repoint in Blender MCP code, R2 blender_gate.py piped, R3 endless loop in a background Bash / PowerShell or Monitor command, or in a foreground command that detaches: INC-027, INC-037): Python starts only when the input names blender_gate, a Blender execute tool, run_in_background true, the Monitor tool, nohup / disown / setsid / Start-Job / Start-Process, or (a Bash call) a lone `&`. The input is read with the `read` builtin (no fork, INC-038: `b=$(cat)` cost ~200 ms per call), so a foreground call costs the bash start alone; deny through JSON, exit 0.",
+    "tool_guard matcher (INC-384): it holds regex characters, so Claude Code reads it as a regular expression; its Blender alternative is tool_guard.BLENDER_TOOL, every Blender MCP execute tool (execute_blender_code of the blender and blender-official-mcp servers, and the _for_cli variants). A changed matcher reaches .claude/settings.json only through harness_status.py --write-proposed, which updates the matcher of a group already registered with the same command.",
     "turn_end_guard (Stop, INC-027): blocks a turn end once per item while a watch.py watch outlived its job or a process of the session runs an endless loop outside watch.py; always exit 0, fails open."
   ],
   "hooks": {
@@ -22,7 +23,7 @@
         ]
       },
       {
-        "matcher": "Bash|PowerShell|Monitor|mcp__blender__execute_blender_code",
+        "matcher": "Bash|PowerShell|Monitor|mcp__blender[\\w-]*__execute_blender_code\\w*",
         "hooks": [
           {
             "type": "command",
