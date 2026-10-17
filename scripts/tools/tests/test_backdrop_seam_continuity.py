@@ -32,9 +32,13 @@ KOREAN_MOD_TEXTURE_DIR = os.path.abspath(
     )
 )
 
-SCRATCH_DIR = os.path.abspath(
-    r'C:\Users\TIGO\.gemini\antigravity\brain\4fade9ad-f24f-4bb6-8d3a-1bd3b1d8c3eb\scratch'
-)
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import local_env  # noqa: E402
+
+# the backdrop working folder: AOP_HC_BACKDROP_SCRATCH of this device's local environment (scripts/tools/local_env.py:
+# the environment, else config/aop.local.env); None = not on this device, the pixel test skips
+SCRATCH = local_env.value('AOP_HC_BACKDROP_SCRATCH')
+SCRATCH_DIR = os.path.abspath(SCRATCH) if SCRATCH else None
 
 BLENDER_PORT = 9876
 
@@ -81,6 +85,9 @@ def test_game_mod_ddt_assets():
 
 def test_texture_seam_pixel_continuity():
     """Verify that adjacent sliced panels have continuous colors across their seams."""
+    if not SCRATCH_DIR:
+        pytest.skip("AOP_HC_BACKDROP_SCRATCH not set on this device (config/aop.local.env; "
+                    "python scripts/tools/local_env.py)")
     slices_dir = os.path.join(SCRATCH_DIR, 'slices_soft_80')
     if not os.path.exists(slices_dir):
         pytest.skip(f"Slices dir {slices_dir} not found")

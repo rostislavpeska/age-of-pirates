@@ -7,6 +7,9 @@ and writes directly to korean_background.gr2.
 
 Usage:
     python scripts/tools/export_live_blender_backdrop.py
+
+The template china_hc_background.gr2 sits in AOP_HC_BACKDROP_SCRATCH of this device's local environment
+(scripts/tools/local_env.py: the environment, else config/aop.local.env).
 """
 
 import os
@@ -21,13 +24,16 @@ import numpy as np
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent.parent
 sys.path.append(str(REPO_ROOT / "scripts" / "havok"))
+sys.path.append(str(REPO_ROOT / "scripts" / "tools"))
 
 from gr2_read import Gr2
 from gr2_splitmesh import Builder
 import gr2_dump
+import local_env
 
 DEFAULT_PORT = 9876
-SRC_GR2 = Path(r"C:\Users\TIGO\.gemini\antigravity\brain\4fade9ad-f24f-4bb6-8d3a-1bd3b1d8c3eb\scratch\china_hc_background.gr2")
+SCRATCH = local_env.value("AOP_HC_BACKDROP_SCRATCH")     # None: not set on this device
+SRC_GR2 = Path(SCRATCH) / "china_hc_background.gr2" if SCRATCH else None
 TARGET_GR2 = REPO_ROOT.parent / "age-of-pirates-koreans" / "art" / "homecity" / "korean" / "korean_background" / "korean_background.gr2"
 
 
@@ -77,6 +83,11 @@ else:
 
 
 def export_backdrop():
+    if SRC_GR2 is None or not SRC_GR2.is_file():
+        print(f"ERROR: template GR2 not found ({SRC_GR2 or 'AOP_HC_BACKDROP_SCRATCH not set on this device'}): "
+              "set AOP_HC_BACKDROP_SCRATCH in config/aop.local.env (python scripts/tools/local_env.py).")
+        sys.exit(1)
+
     print("1. Fetching live vertices from Blender...")
     b_data = get_blender_world_vertices()
     w_verts = np.array(b_data["verts"], dtype=np.float32)
