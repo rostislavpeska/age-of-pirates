@@ -160,7 +160,8 @@
     </anim>
   </submodel>
   <submodel>korean_consulate_built
-  <!--Korean Consulate, Colonial and later. Age 0 stays the shared Japanese age-1 body.-->
+  <!--Korean Consulate (Discovery Age, korean-civic-pair export r1): intact + destruction on the vanilla Japanese
+      consulate age 1 donor body graph; props on the shared Korean props page (korean-props props-r6.1).-->
     <attachment>collapse_smoke<component>collapse_smoke<assetreference type="ParticleSystem">
           <file>effects\smoke\collapse_smoke_a.particle</file>
         </assetreference>
@@ -247,7 +248,7 @@
         <zpbigsequesterchinaeu><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age1_construction_stage_03"></submodelref></p66><p100><submodelref ref="japanchina_consulate_age1"></submodelref></p100></logic></zpbigsequesterchinaeu>
       </logic>
      </none>
-    <japanese><logic type="Tech"><none><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age1_construction_stage_03"></submodelref></p66><p100><submodelref ref="japanchina_consulate_age1"></submodelref></p100></logic></none><colonialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age2_construction_stage_03"></submodelref></p66><p100><submodelref ref="japan_consulate_age2"></submodelref></p100></logic></colonialize><industrialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age4_construction_stage_03"></submodelref></p66><p100><submodelref ref="japan_consulate_age4"></submodelref></p100></logic></industrialize>    <zpkoreanvisuals><logic type="Tech"><none><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age1_construction_stage_03"></submodelref></p66><p100><submodelref ref="japanchina_consulate_age1"></submodelref></p100></logic></none><colonialize><logic type="BuildingCompletion">
+    <japanese><logic type="Tech"><none><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age1_construction_stage_03"></submodelref></p66><p100><submodelref ref="japanchina_consulate_age1"></submodelref></p100></logic></none><colonialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age2_construction_stage_03"></submodelref></p66><p100><submodelref ref="japan_consulate_age2"></submodelref></p100></logic></colonialize><industrialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age4_construction_stage_03"></submodelref></p66><p100><submodelref ref="japan_consulate_age4"></submodelref></p100></logic></industrialize>    <zpkoreanvisuals><logic type="Tech"><none><logic type="BuildingCompletion">
       <p0>
         <submodelref ref="korean_consulate_construction_stage_01" />
       </p0>
@@ -260,20 +261,7 @@
       <p100>
         <submodelref ref="korean_consulate_built" />
       </p100>
-    </logic></colonialize><industrialize><logic type="BuildingCompletion">
-      <p0>
-        <submodelref ref="korean_consulate_construction_stage_01" />
-      </p0>
-      <p33>
-        <submodelref ref="korean_consulate_construction_stage_02" />
-      </p33>
-      <p66>
-        <submodelref ref="korean_consulate_construction_stage_03" />
-      </p66>
-      <p100>
-        <submodelref ref="korean_consulate_built" />
-      </p100>
-    </logic></industrialize></logic></zpkoreanvisuals></logic></japanese>
+    </logic></none></logic></zpkoreanvisuals></logic></japanese>
     <chinese><logic type="Tech"><none><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="japan_consulate_age1_construction_stage_03"></submodelref></p66><p100><submodelref ref="japanchina_consulate_age1"></submodelref></p100></logic></none><colonialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="china_consulate_age2_construction_stage_03"></submodelref></p66><p100><submodelref ref="chinese_consulate_age2"></submodelref></p100></logic></colonialize><industrialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="china_consulate_age4_construction_stage_03"></submodelref></p66><p100><submodelref ref="chinese_consulate_age4"></submodelref></p100></logic></industrialize></logic></chinese>
     <indian><logic type="Tech"><none><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="india_consulate_age1_construction_stage_03"></submodelref></p66><p100><submodelref ref="indian_consulate_age1"></submodelref></p100></logic></none><colonialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="india_consulate_age2_construction_stage_03"></submodelref></p66><p100><submodelref ref="indian_consulate_age2"></submodelref></p100></logic></colonialize><industrialize><logic type="BuildingCompletion"><p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="india_consulate_age4_construction_stage_03"></submodelref></p66><p100><submodelref ref="indian_consulate_age4"></submodelref></p100></logic></industrialize></logic></indian>
   </logic></component>
