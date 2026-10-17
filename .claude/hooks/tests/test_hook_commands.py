@@ -225,6 +225,71 @@ def test_merge_keeps_existing_hooks_and_is_idempotent():
             assert m[k] == cur[k]
 
 
+def inbox_at(block):
+    return [i for i, g in enumerate(block) if 'inbox_hook.py' in json.dumps(g)]
+
+
+def without_inbox(block):
+    return [g for g in block if 'inbox_hook.py' not in json.dumps(g)]
+
+
+OLD_INBOX = ('f="${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/inbox_hook.py"; r="${AOP_TASKS_DIR:-$HOME/old/tasks}/inbox/'
+             'runs.json"; b=; [ -f "$f" ] && [ -f "$r" ] && IFS= read -r -d \'\' b < "$r"; case "$b" in *\'"\'*) exec '
+             'python "$f";; esac; exit 0')
+
+
+def test_merge_gives_the_real_settings_one_inbox_group_per_event():
+    """INC-399: the tracked settings.json runs inbox_hook.py with an older command than settings_entries.json; the
+    merge gives that group the entry's hook in place instead of adding a second inbox group (inbox_hook.py would run
+    twice per tool call and per SubagentStop), leaves the other groups as they are, and is idempotent"""
+    hs = load_status()
+    cur = json.loads((REPO / '.claude' / 'settings.json').read_text(encoding='utf-8'))
+    m = hs.merged(cur, ENTRIES)
+    for ev in ('PostToolUse', 'SubagentStop'):
+        assert len(inbox_at(m['hooks'][ev])) == 1
+        assert inbox_at(m['hooks'][ev]) == inbox_at(cur['hooks'][ev])        # the old group's position
+        assert m['hooks'][ev][inbox_at(m['hooks'][ev])[0]] == ENTRIES['hooks'][ev][0]
+        assert without_inbox(m['hooks'][ev]) == without_inbox(cur['hooks'][ev])   # hook_art_eol / sync_local_maps
+    assert m['hooks']['PreToolUse'][0] == cur['hooks']['PreToolUse'][0]      # the launch gate group, untouched
+    assert all(hs.registration(m, ENTRIES).values()) and hs.merged(m, ENTRIES) == m
+
+
+def test_stale_hook_command_is_pending_and_merges_once(tmp_path, monkeypatch):
+    """INC-399: a group running inbox_hook.py with an older command is not registered and names inbox_hook.py as
+    pending, also when the current command sits next to it (an applied proposal of the old merge); the merge leaves one
+    inbox group per event and keeps groups of other scripts, a custom .claude/hooks script included"""
+    hs = load_status()
+    monkeypatch.setenv('AOP_HARNESS_LOG', str(tmp_path / 'log.jsonl'))
+    monkeypatch.setenv('AOP_TURN_END_SCAN', 'off')
+    custom = {'hooks': [{'type': 'command', 'command': 'python "${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/custom.py"'}]}
+    other = {'matcher': 'Write', 'hooks': [{'type': 'command', 'command': 'python scripts/tools/hook_art_eol.py'}]}
+    fresh = hs.merged({}, ENTRIES)
+    stale = json.loads(json.dumps(fresh))
+    for ev in ('PostToolUse', 'SubagentStop'):
+        [i] = inbox_at(stale['hooks'][ev])
+        stale['hooks'][ev][i]['hooks'][0]['command'] = OLD_INBOX
+        stale['hooks'][ev][i:i] = [other]
+        stale['hooks'][ev].append(custom)
+    both = json.loads(json.dumps(stale))
+    for ev in ('PostToolUse', 'SubagentStop'):
+        both['hooks'][ev].append(json.loads(json.dumps(ENTRIES['hooks'][ev][0])))
+    sp = tmp_path / 'settings.json'
+    for case in (stale, both):
+        reg = hs.registration(case, ENTRIES)
+        assert reg['PostToolUse'] is False and reg['SubagentStop'] is False and reg['PreToolUse'] is True
+        sp.write_text(json.dumps(case), encoding='utf-8')
+        assert hs.status(sp)['pending'] == ['inbox_hook.py']
+        m = hs.merged(case, ENTRIES)
+        for ev in ('PostToolUse', 'SubagentStop'):
+            assert [m['hooks'][ev][i] for i in inbox_at(m['hooks'][ev])] == [ENTRIES['hooks'][ev][0]]
+            assert without_inbox(m['hooks'][ev]) == [other, custom]
+            assert OLD_INBOX not in {h['command'] for g in m['hooks'][ev] for h in g['hooks']}
+        assert m['hooks']['PreToolUse'] == fresh['hooks']['PreToolUse']
+        assert all(hs.registration(m, ENTRIES).values()) and hs.merged(m, ENTRIES) == m
+        sp.write_text(json.dumps(m), encoding='utf-8')
+        assert hs.status(sp)['pending'] == []
+
+
 def test_status_reports_not_live_until_registered_and_seen(tmp_path, monkeypatch):
     hs = load_status()
     log = tmp_path / 'log.jsonl'
