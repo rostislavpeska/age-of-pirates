@@ -14,13 +14,15 @@ plan.json:
  "bones": [{"name": "bone_main", "parent": -1, "pos": [0, 0, 0]}, {"name": "bone_flag_civ", "parent": 0, "pos": [x, y, z]}],   # optional skeleton rewrite
  "uv": [[vertex, u, v], ...], "retangent": [tri, ...], "drop": [tri, ...],
  "new": [{"name": "...", "bone": "bone_main", "material": "matb" (optional: own material record, cloned),
+          "use_material": "mate" (optional: bind to an EXISTING material record of the file instead),
           "groups": [{"R": [[..3x3..]], "t": [x, y, z], "tris": [tri, ...], "flip": false}, ...],   # flip = back-face copy
           "extra_verts": [{"src": vertex, "pos": [x, y, z], "uv": [u, v], "nrm": [x, y, z]}, ...], "extra_tris": [[a, b, c], ...]}]}
 Coordinates in the plan are the SOURCE mesh space (before bake/scale). Extra verts are welded by index only.
 
 usage: python gr2_editmesh.py vanilla.gr2 plan.json out.gr2
 """
-import sys, json, struct
+import sys, json, struct, zlib
+from pathlib import Path
 import numpy as np
 from gr2_read import Gr2
 from gr2_dump import refs
@@ -90,7 +92,9 @@ def main():
     assert idx[0] == 'array' and idx[1] and top['Indices16'][1] == 0
     isec, ibase = idx[2]
     tris = np.frombuffer(bytes(g.payload[isec][ibase:ibase + 4 * idx[1]]), dtype='<i4').reshape(-1, 3).copy()
-    groups = g.array(top['Groups']); assert len(groups) == 1 and groups[0]['TriCount'][0] == len(tris)
+    groups = g.array(top['Groups'])
+    if plan.get('drop'):                                  # the replacement topology below has ONE material group
+        assert len(groups) == 1 and groups[0]['TriCount'][0] == len(tris), 'drop needs a single-group source mesh'
 
     B = Builder(g)
     raw, pos, nrm, tan, uv = unpack(B.sec[vsec][vbase:vbase + nverts * STRIDE])
@@ -103,7 +107,7 @@ def main():
     MESH = dict(zip(['Name', 'PrimaryVertexData', 'PrimaryTopology', 'MaterialBindings', 'BoneBindings', 'ExtendedData'],
                     member_offsets(g, mesh_t, ['Name', 'PrimaryVertexData', 'PrimaryTopology', 'MaterialBindings', 'BoneBindings', 'ExtendedData'])))
     assert MESH == {'Name': 0, 'PrimaryVertexData': 8, 'PrimaryTopology': 28, 'MaterialBindings': 36, 'BoneBindings': 48, 'ExtendedData': 60}
-    new_topo_ptrs = []; new_mesh_ptrs = []; new_vd_ptrs = []; report = []
+    new_topo_ptrs = []; new_mesh_ptrs = []; new_vd_ptrs = []; new_varrays = []; report = []
     if drop:
         ioff = B.alloc(isec, keep.tobytes(), 4)
         grp = B.alloc(0, struct.pack('<3i', 0, 0, len(keep)))
@@ -133,6 +137,7 @@ def main():
                 B.ptr(0, marr + k * msz + off_, g.deref(maps[2][0], maps[2][1] + k * msz + off_))
         mo = B.alloc(0, bytes(44)); B.ptr(0, mo, B.string(name)); B.i32(0, mo + 8, maps[1]); B.ptr(0, mo + 12, (0, marr))
         mats[name] = (0, mo); new_mat_ptrs.append((0, mo)); return mats[name]
+    existing_mats = {rec['Name']: tuple(loc) for rec, loc in refs(g, r['Materials'])}
     for nm in plan.get('new', []):
         vb = []; vpos = []; vnrm = []; vtan = []; vuv = []; ltris = []
         for grp_ in nm.get('groups', []):
@@ -181,14 +186,20 @@ def main():
             src_off = mb[2][1] + k * mb_size
             for m_, off_ in g.layout(*mb[3])[0]:
                 if m_['name'] == 'Material':
-                    B.ptr(0, mb_arr + k * mb_size + off_, material_named(nm['material']) if nm.get('material') else g.deref(mb[2][0], src_off + off_))
+                    if nm.get('use_material'):
+                        ref = existing_mats[nm['use_material']]
+                    elif nm.get('material'):
+                        ref = material_named(nm['material'])
+                    else:
+                        ref = g.deref(mb[2][0], src_off + off_)
+                    B.ptr(0, mb_arr + k * mb_size + off_, ref)
         B.i32(0, mo + 36, mb[1]); B.ptr(0, mo + 40, (0, mb_arr))
         B.i32(0, mo + 48, 1); B.ptr(0, mo + 52, (0, bbo))
         ext = mrec['ExtendedData']
         if ext and ext[0] == 'variant' and ext[1]:
             esz = g.struct_size(*ext[1]); eo = B.alloc(0, bytes(g.payload[ext[2][0]][ext[2][1]:ext[2][1] + esz]))
             B.ptr(0, mo + 60, ext[1]); B.ptr(0, mo + 68, (0, eo))
-        new_mesh_ptrs.append((0, mo)); new_topo_ptrs.append((0, tpo)); new_vd_ptrs.append((0, vdo))
+        new_mesh_ptrs.append((0, mo)); new_topo_ptrs.append((0, tpo)); new_vd_ptrs.append((0, vdo)); new_varrays.append((len(vb), voff))
         report.append((nm['name'], len(vb), len(ltris)))
     # 5. the source mesh: baked vertex bytes in place, OBB
     bp, bn, bt = bake(pos, nrm, tan)
@@ -236,7 +247,11 @@ def main():
         n = old[1]; ptrs = [g.deref(old[2][0], old[2][1] + i * P) for i in range(n)] + new_ptrs
         arr = B.alloc(0, bytes(P * len(ptrs)))
         for i, tp in enumerate(ptrs): B.ptr(0, arr + i * P, tp)
-        B.i32(field_sec, field_off, len(ptrs)); B.repoint(field_sec, field_off + 4, (0, arr))
+        B.i32(field_sec, field_off, len(ptrs))
+        if g.deref(field_sec, field_off + 4) is None:     # an empty root array has no pointer to re-point (as appendmesh)
+            B.ptr(field_sec, field_off + 4, (0, arr))
+        else:
+            B.repoint(field_sec, field_off + 4, (0, arr))
         return ptrs
     if new_mat_ptrs:
         ROOT_MATS = member_offsets(g, (g.root_type_sec, g.root_type_off), ['Materials'])[0]
@@ -250,6 +265,21 @@ def main():
         for i, tp in enumerate(all_meshes): B.ptr(0, mbs + i * P, tp)
         B.i32(model_loc[0], model_loc[1] + MODEL_MB, len(all_meshes)); B.repoint(model_loc[0], model_loc[1] + MODEL_MB + 4, (0, mbs))
     B.write(outp)
+    # Granny's native 64->32 conversion needs a marshalling record per appended packed vertex array (INC-290, as
+    # gr2_appendmesh): without them Wine converts the file while the native DLL crashes (Korean HC lanterns 2026-10-17)
+    if new_varrays:
+        packed = bytearray(Path(outp).read_bytes()); temp = Gr2(outp); section = temp.sections[vsec]
+        prior = packed[section['marsh_off']:section['marsh_off'] + 16 * section['marsh_count']]
+        moff = len(packed)
+        packed.extend(prior + b''.join(struct.pack('<4I', n, off, *vtype) for n, off in new_varrays))
+        struct.pack_into('<II', packed, temp.sec_table + 44 * vsec + 36, moff, section['marsh_count'] + len(new_varrays))
+        struct.pack_into('<I', packed, 36, len(packed))
+        struct.pack_into('<I', packed, 40, zlib.crc32(packed[temp.sec_table:]) & 0xffffffff)
+        Path(outp).write_bytes(packed)
+    # the arrays re-pointed above leave their old fixups behind: orphans crash / mis-convert in the DLL (INC-187)
+    from gr2_fixups import orphan_fixups, scrub
+    if orphan_fixups(outp)['orphans']:
+        tmp = outp + '.tmp'; Path(outp).replace(tmp); scrub(tmp, outp); Path(tmp).unlink()
     # obb() above wrote MODEL-space boxes; the stored box is bone-local (gr2_bounds.py, exact on vanilla) - refresh every
     # mesh this plan edited or added, so a mesh on an offset bone never keeps a box away from its vertices
     import gr2_bounds
