@@ -684,6 +684,10 @@
       <param name="Ignore" dispname="$$22405$$Ignore Event on Abort" vartype="bool">false</param>
       <param name="Seconds" dispname="$$22293$$Milliseconds" vartype="long">1</param>
       <command>trSoundPlayDialogue("%StringID%", %EventID%, %Ignore%, %Seconds%);</command>
+      <param name="Player" dispname="Player" vartype="player">-1</param>
+      <param name="CharacterStrID" dispname="Character" vartype="stringid"></param>
+      <param name="PortraitStrID" dispname="Portrait" vartype="stringid"></param>
+      <param name="Sound" dispname="Sound" vartype="soundsimple"></param>
     </effect>
     <effect name="Music Mood">
       <param name="MoodID" dispname="$$22407$$Mood ID" vartype="long">0</param>
@@ -2266,7 +2270,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpMalteseCross)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffMaltese, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -3851,7 +3855,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodox, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -3959,7 +3963,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpWesternAgeUp)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWestern, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4000,7 +4004,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpPenalColonyRevolt)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPenalColony, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4041,7 +4045,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpXMassExpansion)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffXMass, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4082,7 +4086,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodoxSouth, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4127,7 +4131,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpHussiteExpansion)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffHussites, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4168,7 +4172,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpSPCKingOfBohemia)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffKingOfBohemia, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4390,7 +4394,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpPrinceElectorElect)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPrinceElector, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4712,6 +4716,118 @@
       <command>}</command>
       <command>}</command>
       <command>rule ewnuhgerbask active { if (true) { xsDisableSelf();</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Cossacks">
+      <command>}}</command>
+      <command>rule Cossack_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int CossackFaction=-1;</command>
+      <command>if (CossackFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomCossackFaction", 0, 2);</command>
+      <command>CossackFaction = trQuestVarGet("RandomCossackFaction");</command>
+      <command>}</command>
+      <command>if (CossackFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateCossackBohdan, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (CossackFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateCossackMazepa, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (CossackFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateCossackPetro, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Cossack Expansion is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpCossackExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffCossacks, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hfdrgfbfgbh8491 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Sultanate">
+      <command>}}</command>
+      <command>rule Sultanate_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int SultanateFaction=-1;</command>
+      <command>if (SultanateFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomSultanateFaction", 0, 2);</command>
+      <command>SultanateFaction = trQuestVarGet("RandomSultanateFaction");</command>
+      <command>}</command>
+      <command>if (SultanateFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateSultanatePhanar, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (SultanateFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateSultanateSufi, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (SultanateFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateSultanateCorsairs, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpSultanateExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffSultanate, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule reosedsefwfrege96 active { if (true) { //</command>
+    </effect>
+    <effect name="Unit: Set Variation">
+      <param name="SrcObject" dispname="Units" vartype="unit">default</param>
+      <param name="Variation" dispname="Variation" vartype="long">0</param>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
+      <command>trUnitSetVariation(%Variation%);</command>
+    </effect>
+    <effect name="Player: Set Global Yield">
+      <param name="Player" dispname="Player" vartype="player">1</param>
+      <param name="Yield" dispname="Yield Rate" vartype="float">1</param>
+      <command>trPlayerSetGlobalYield(%Player%, %Yield%);</command>
+    </effect>
+    <effect name="Scenario: Enable Revolutions">
+      <param name="Enable" dispname="Enable" vartype="bool">true</param>
+      <command>trEnableRevolutions(%Enable%);</command>
+    </effect>
+    <effect name="Protounit: Set Unit Type">
+      <param name="PlayerID" dispname="Player" vartype="player">1</param>
+      <param name="ProtoUnit" dispname="Unit Type" vartype="unittype">Villager</param>
+      <param name="UnitType" dispname="Unit Type" vartype="abstractunittype"></param>
+      <param name="Set" dispname="Set" vartype="bool">true</param>
+      <command>trProtoUnitSetUnitType(%PlayerID%, "%ProtoUnit%", "%UnitType%", %Set%);</command>
+    </effect>
+    <effect name="Protounit: Set Flag">
+      <param name="PlayerID" dispname="Player" vartype="player">1</param>
+      <param name="ProtoUnit" dispname="Unit Type" vartype="unittype">Villager</param>
+      <param name="Flag" dispname="Flag" vartype="protounitflag"></param>
+      <param name="Set" dispname="Set" vartype="bool">true</param>
+      <command>trProtoUnitSetFlag(%PlayerID%, "%ProtoUnit%", "%Flag%", %Set%);</command>
     </effect>
   </effects>
 </trigger>

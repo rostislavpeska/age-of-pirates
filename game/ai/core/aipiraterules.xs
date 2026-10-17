@@ -15,10 +15,56 @@
 // Interval set long to avoid interfering with setup.xs
 //==============================================================================
 
+//==============================================================================
+// LONDON globals (docs/briefs/2026-09-23-london-ai-plan.md) - declared before the first rule (declare-before-use);
+// the London rules are the LONDON section at the end of this file.
+//==============================================================================
+extern bool gLondonTestMode = true;             // round-1 diagnostics on; false for release (mod-deploy-check will assert it)
+extern vector gLondonBridgeVec = cInvalidVector;   // the player's own zpAILondonBridge marker = the bridge middle
+extern int gLondonPortSocket = -1;              // zpSPCPortSocket on the deck: the post that owns the bridge
+extern int gLondonGateA = -1;                   // the two bridge gates (gaia SPCFortGate within 25 m of the marker)
+extern int gLondonGateB = -1;
+extern int gLondonGateOurs = -1;                // the gate closer to our town centre
+extern int gLondonKeepNear = -1;                // gaia zpSPCTowerOfLondon the pathfinder reaches from our town centre
+extern int gLondonKeepFar = -1;
+extern int gLondonDiagPass = 0;
+// round 2 (2026-09-23): war plan + gate killer. Run 15 measured kbCanPath2 = 1 across both standing gaia bridge
+// gates and one area group for both banks, so the crossing is judged by the gates' state, not by the pathfinder.
+extern int gLondonWarPasses = 0;                // passes held
+extern bool gLondonRetaking = false;           // londonKeepRetake owns the gate killer's reserve while our near Keep is enemy-held
+extern int gLondonGateArr = -1;                 // scratch array for the fresh gate query (londonBlockingGate)
+extern int gLondonBlockCount = 0;               // blocking gates the last londonBlockingGate call found
+extern int gLondonGatePlan = -1;                // the gate killer's reserve, pri 90 (Paris cityGateKiller)
+extern int gLondonGateKind = 0;                 // the current target: 1 near Keep gate, 2 our bridge gate, 3 far bridge gate, 4 far Keep gate
+extern int gLondonArmyFloor = 20;               // units in the reserve before any order; londonSetup sets 8 in test mode
+// round 3 (2026-09-23): the Keep garrisons (istanbulPalaceHold on each Keep)
+extern int gLondonKeepGarrison = 10;            // units per Keep garrison, pri 101; londonSetup sets 6 in test mode
+extern int gLondonHoldPlanNear = -1;
+extern int gLondonHoldPlanFar = -1;
+// ISOLATION (owner 2026-09-24: 'completely isolated'): every mod AI global lives here, none in aiglobals.xs; the stock
+// files are the adopted core (0b2c6aab) byte for byte. Mod paths replace stock rules / handlers from this file only.
+extern bool gAITestDiag = true;                 // AIDIAG echo once a minute on EVERY map - echo only, no behaviour; false for release
+extern int gPlacementFailures = 0;              // building placement failures (every building type), counted by the mod handlers
+extern int gPlacementFailuresDock = 0;          // ... of them docks
+extern int gPlacementFailuresTC = 0;            // ... of them Town Centers
+extern bool gIsLondon = false;                  // set by initializePirateRules on the map name
+extern int gLondonWarState = 0;                 // London war plan: 0 not started, 1 held (crossing closed), 2 released (crossing open)
+extern vector gLondonFieldVec = cInvalidVector; // London: the countryside point behind our own city wall gate (londonCountrysidePoint)
+extern int gLondonFieldGate = -1;               // ... the wall gate it was taken from (re-found when it dies)
+extern int gLondonPlaceEcho = -60000;           // LONDONPLACE echo throttle
+extern bool gPirateForwardBaseMap = false;      // London / Paris: the forward base goes to the enemy construction block
+
 rule initializePirateRules
 active
 minInterval 1
 {
+   // AI test campaign: the echo-only diagnostic on every map (aiTestDiag at the end of this file)
+   if (gAITestDiag == true)
+   {
+      xsEnableRule("aiTestDiag");
+      aiSetHandler("aiTestPlacementFailedHandler", cXSBuildingPlacementFailedHandler);   // counts, then the stock handler
+   }
+
    // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Age of Pirates maps that we want to count as Starting on Different Islands
    if (cRandomMapName == "zpburma_b" ||
@@ -60,7 +106,8 @@ minInterval 1
    // AssertiveWall: Naval, but not starting on different islands
    if (cRandomMapName == "zphawaii" ||
        cRandomMapName == "zpcivilwar" ||
-       cRandomMapName == "zpelbe")
+       cRandomMapName == "zpelbe" ||
+       cRandomMapName == "zpistanbulb")
    {
       gIsPirateMap = true;
       gNavyMap = true;
@@ -184,6 +231,142 @@ minInterval 1
       xsEnableRule("tasmaniaStart");
    }
 
+   // Istanbul Maps %%%%%%%%%%%%%%%%%%%%%%%
+   // A map class of its own, detected by OBJECT and not by name. Istanbul
+   // ships under three names - zpistanbulb in the mod for Skirmish,
+   // 0000_istanbul and 0000_Istanbul_beach in the game root for the editor.
+   // Only zpistanbulb was ever in the naval name list above, so the two
+   // editor copies ran with no gIsPirateMap and no gNavyMap at all. Both
+   // forts carry IstanbulVictoryObject, so the map identifies itself and no
+   // list has to be kept in step with every copy and rename - the same idiom
+   // the native blocks below already use.
+   //
+   // Kept separate from the zpKingsHillNaval block so caribbeanwars and
+   // blacksea keep the single-hill behaviour they were tuned for.
+   if (getGaiaUnitCount(cUnitTypeIstanbulVictoryObject) > 0)
+   {
+      gIsIstanbulMap = true;
+
+      // The pirate/naval flags this map never got under its editor names.
+      // These MUST be set before the "if (gIsPirateMap == true)" block below,
+      // which is what actually turns the pirate rules on - it is, this rule
+      // runs top to bottom in one pass.
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      // THE NAVAL MASTER SWITCH. gStartOnDifferentIslands is not driven by the
+      // map lists above - aisetup.xs:1167 auto-detects it by testing
+      //    kbAreAreaGroupsPassableByLand(ourStart, otherPlayerStart) == false
+      // for every player. Istanbul's two shores are land-connected around the
+      // rim, so that test says "same island", the flag stays false, and the whole
+      // naval economy stays switched off. It is read in 120 places:
+      //   aibuildings 26, aiassertivewall 25, aihccards 17, aimilitary 16,
+      //   aitechs 7, aiexploration 6, aicore 6, aieconomy 4.
+      // False concretely means: dock priority 60 instead of 90/70 (aibuildings
+      // 3014-3023), NO Age-3/Age-4 dock clauses at all (aiassertivewall
+      // 9979-9980), naval Home City cards skipped, naval techs skipped, fishing
+      // boats not prioritised. Istanbul is a naval map whose entire contest is at
+      // sea, so it wants every one of those.
+      gStartOnDifferentIslands = true;
+
+      // aisetup.xs:1197 makes this call for island maps - "On these maps we want
+      // to transport" - but that setup code has ALREADY run by the time this rule
+      // fires, so it must be repeated here or the engine never learns it.
+      // aiSetWaterMap: "Tells the AI if this is a water map or not."
+      aiSetWaterMap(true);
+
+      // NO WALLS. dockWallOne walls the shoreline beside every dock
+      // (aiassertivewall.xs 5262) - on a strait map that fences off the very
+      // coast the next dock needs. gPirateBlockWalls is the switch the mod
+      // already has for this: it stops aicore.xs:2343 enabling dockWallOne at
+      // the age-2 transition, and stops the general wall builder at
+      // aiassertivewall.xs:5608. Set here, so it lands before either runs.
+      gPirateBlockWalls = true;
+
+      // Every start here is a BACK position: the player's own sea lies behind
+      // them at the map edge and the centre is a strait to pass through, not
+      // ground to hold. The forts are taken by fleet, never by landing.
+
+      // native and trade missions come faster, as on every other pirate map
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000;
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000;
+      }
+      gClaimTradeMissionInterval = 4 * 60 * 1000;
+
+      // The pirate natives need no switch of their own here: the generic gate
+      // further down keys on the pirate SOCKET, which every Istanbul pirate camp
+      // carries (zpSocketPirates - owner 2026-09-25).
+
+      // DOCKS ARE STOCK. Istanbul used to carry seven rules that fought or
+      // diagnosed the engine's dock logic - its own first-dock build order, two
+      // competing siting rules, its own dock count, and three probes. They are
+      // gone: this map now builds docks the way every other naval map does.
+      // What remains is the naval CLASSIFICATION above - gNavyMap,
+      // gStartOnDifferentIslands, aiSetWaterMap - which is what gives a naval
+      // map its normal dock priority and its Age-3/Age-4 dock clauses. Those
+      // are not overrides; without them Istanbul would build FEWER docks than
+      // other maps, not the same.
+
+      // ON - the two-fort victory condition
+      xsEnableRule("istanbulAttackKOTH");
+      xsEnableRule("istanbulGuardianKiller");
+      xsEnableRule("istanbulDefendKOTH");
+      xsEnableRule("istanbulFortRaid");
+      xsEnableRule("istanbulPalaceMission");
+      xsEnableRule("istanbulPalaceHomeKiller");
+      xsEnableRule("istanbulPalaceHold");
+      // ON - THE FLEET SPLIT (owner 2026-09-25, restored: 'Pirate ships should attack the Naval Guns, because they have
+      // bonus against them (same monitors) and other ships should guard the Naval Forts'). Pirate hulls and monitors go
+      // to the gun fleet and attack the enemy's zpAntiShipGun; every other warship stays with the fort rules above.
+      // Deleted by 570d65a2 (2026-08-27) without the owner's word - a regression; see
+      // docs/briefs/2026-09-25-istanbul-fleet-split-restore.md.
+      xsEnableRule("istanbulGunFleet");
+      xsEnableRule("istanbulGunRaid");
+      xsEnableRule("istanbulMonitorMaintain");
+      // the gun REBUILD - see buildPirateSocketTowers; the map already
+      // grants zpSPCIstanbulSocketsAI and waits for the proxy
+      xsEnableRule("buildPirateSocketTowers");
+      // The landing is the STOCK AssertiveWall amphibious assault (user directive 2026-08-27). The custom landing
+      // (istanbulLanding) and its gate (istanbulAmphibiousGate, 'a fixed gun must die first') were deleted by 570d65a2:
+      // the stock landing runs ungated (run 14, 2026-09-25: stage 0 landings from 08:47).
+      xsEnableRule("istanbulAreaRecalc");   // one-shot KB rebuild at ~90s
+      // the first dock from the starting Dock Builder (owner 2026-10-05); stands down by itself, docks 2+ stay stock
+      xsEnableRule("istanbulFirstDockBuilder");
+   }
+
+   // London %%%%%%%%%%%%%%%%%%%%%%%
+   // Detected by the player's OWN bridge marker (zpAILondonBridge, one per player at the bridge middle, zplondon.xs) -
+   // by unit, never by map name (owner 2026-09-24). The London rules are the LONDON section at the end of this file
+   // (docs/briefs/2026-09-23-london-ai-plan.md); the stock handler is replaced from here, never edited.
+   if (kbUnitCount(cMyID, cUnitTypezpAILondonBridge, cUnitStateAny) > 0)
+   {
+      gIsPirateMap = true;
+      gIsLondon = true;
+      xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
+      xsEnableRule("londonSetup");
+      xsEnableRule("londonPlanPlacer");
+      aiSetHandler("londonBuildingPlacementFailedHandler", cXSBuildingPlacementFailedHandler);
+      aiEcho("LONDON p" + cMyID + " build r13 2026-09-25 - marker found, London rules on");
+   }
+
+   // Forward base at the enemy construction block %%%%%%%%%%%%%%%%%%%%%%%
+   // Any map whose script gives the player construction block markers (zpAILondonConstrMarker: London 12.11, Paris,
+   // Istanbul's landing beaches) -
+   // by unit (owner 2026-09-24: 'forwarded base - if player has such unit'); the stock forward-base rules are swapped
+   // for the copies by pirateForwardBaseWatch (Istanbul's pattern)
+   if (kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny) > 0)
+   {
+      gPirateForwardBaseMap = true;
+      xsEnableRule("pirateForwardBaseWatch");
+      aiEcho("PIRATEFB p" + cMyID + " build r13 2026-09-25 - " + kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny)
+             + " construction markers, forward base at the enemy construction block");
+   }
+
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (getGaiaUnitCount(cUnitTypezpKingsHillNaval) > 0)
    {
@@ -227,7 +410,10 @@ minInterval 1
       xsEnableRule("underwaterOperations");
       xsEnableRule("zpDiverTechMonitor");
    }
-   if ((getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0) || (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0))
+   // the pirate natives: keyed on the SOCKET (owner 2026-09-25: 'should be dependent on presence of pirate socket or
+   // pirate city state socket'), not on a house proto - the camps use several house protos (zpNativeHousePirateNoDecal
+   // on Istanbul, zpNativeHousePirateSmallFlat / zpNativeHousePirateCity on London) that a house gate never counted
+   if ((getGaiaUnitCount(cUnitTypezpSocketPirates) > 0) || (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0))
    {
       xsEnableRule("MaintainPirateShips");
       xsEnableRule("PirateTechMonitor");
@@ -372,6 +558,18 @@ minInterval 1
    if (kbUnitCount(cMyID, cUnitTypezpSPCGermanCathedralCon0, cUnitStateAlive) > 0)
    {
       xsEnableRule("zpCathedralConstructionMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeCossackChurch) > 0)
+   {
+      xsEnableRule("zpCossackTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseHansaBig) > 0)
+   {
+      xsEnableRule("zpHansaTechMonitor");
+      xsEnableRule("MaintainHansaShips");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("TeutonicFortManager");
    }
     
    xsDisableSelf();
@@ -1035,6 +1233,26 @@ minInterval 30
          {
             aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
             return; // return here so we only build one at a time
+         }
+      }
+
+      // ISTANBUL. Same step for zpSocketAntiShipGun: if our socket has no gun
+      // standing on it, train the proxy and let the map's ASGun_ON trigger do
+      // the Socket Build. zpSPCIstanbulSocketsAI CommandAdds this very proxy
+      // onto that socket, so it is the same proxy, not a new one. The gun
+      // costs 100w/600g like zpSPCFixedGun, so the gate above already fits.
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSocketAntiShipGun, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypezpAntiShipGun, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
+            return; // one at a time, as above
          }
       }
    }
@@ -2183,8 +2401,16 @@ rule tasmaniaFailsafe
 inactive
 minInterval 20
 {
+   int tcWagon = getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
+
    if (kbUnitCount(cMyID, cUnitTypeCoveredWagon, cUnitStateAlive) > 0)
    {
+      //if (aiPlanGetActive(gTCBuildPlanID) == false)
+      //{
+         aiPlanDestroy(gTCBuildPlanID);
+         aiTaskUnitMove(tcWagon, getRandomPoint(gTCSearchVector, 10));
+         //aiChat(1, "Moving tcWagon");
+      //}
       init();
    }
    else
@@ -3605,6 +3831,11 @@ mininterval 60
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypePrivateer, cUnitStateABQ) >= 3); },
       cUnitTypeTradingPost);
 
+      // Breaching Shot
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatBreachingShot,
+      []() -> bool { return ((kbTechGetStatus(cTechzpPirateGunners) == cTechStatusActive) && ( kbGetAge() >= cAge1 )); },
+      cUnitTypeTradingPost);
+
       // Black Caesar Special Upgrade
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCorsairRevolt,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackCaesar) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
@@ -3999,6 +4230,228 @@ minInterval 30
 }
 
 //==============================================================================
+// Teutonic Fort
+//==============================================================================
+
+rule TeutonicFortManager
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   int fortUnitID = -1;
+   int buildingQuery = -1;
+   int numberFound = 0;
+   int numberMilitaryBuildings = 0;
+   int buildingID = -1;
+   int availableFortWagon = findWagonToBuild(cUnitTypezpTeutonicFortWagon);
+
+   // We have a Fort Wagon but also already have a forward base, default the Fort position.
+   if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
+   {
+      createSimpleBuildPlan(cUnitTypezpTeutonicFort, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      return;
+   }
+
+   switch (gForwardBaseState)
+   {
+      case cForwardBaseStateNone:
+      {
+         // We don't have a forward base, if we have a suitable Wagon we can start the chain.
+         vector location = cInvalidVector;
+         if (availableFortWagon > 0) // AssertiveWall: changed from >=0
+         {
+            // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
+            //vector location = cInvalidVector;  AssertiveWall: moved up above
+   
+            if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            {
+               location = selectForwardBaseLocation();
+            }
+   
+            if (location == cInvalidVector)
+            {
+               createSimpleBuildPlan(cUnitTypezpTeutonicFort, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+               return;
+            }
+   
+            gForwardBaseLocation = location;
+            gForwardBaseBuildPlan = aiPlanCreate("Fort build plan ", cPlanBuild);
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanBuildingTypeID, 0, cUnitTypezpTeutonicFort);
+            aiPlanSetDesiredPriority(gForwardBaseBuildPlan, 87);
+            aiPlanAddUnitType(gForwardBaseBuildPlan, cUnitTypeFortWagon, 1, 1, 1);
+   
+            // Instead of base ID or areas, use a center position.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   
+            // Weigh it to stay very close to center point.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionDistance, 0, 50.0); // 100m range.
+            // 100 Points for center.
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionValue, 0, 100.0); 
+            // Linear slope falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); 
+   
+            // Add position influence for nearby Forts.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypezpTeutonicFort); 
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 50.0);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, -200.0); // -200 points per fort
+            // Cliff falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); 
+   
+            // AssertiveWall: Add position influence for forts building near docks on island maps
+            if (gStartOnDifferentIslands == true)
+            {
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, gDockUnit); 
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 30.0);
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, 20.0); // 20 points per dock
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); 
+            }
+
+            aiPlanSetActive(gForwardBaseBuildPlan);
+   
+            // Chat to my allies.
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
+   
+            gForwardBaseState = cForwardBaseStateBuilding;
+            debugBuildings("");
+            debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
+            debugBuildings("PLANNED LOCATION IS " + gForwardBaseLocation);
+            debugBuildings("");
+   
+            if (gDefenseReflex == false)
+            {
+               endDefenseReflex(); // Causes it to move to the new location.
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateBuilding:
+      {
+         fortUnitID = getUnitByLocation(cUnitTypezpTeutonicFort, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         if (fortUnitID >= 0)
+         { // Building exists and is complete, go to state Active.
+            if (kbUnitGetBaseID(fortUnitID) >= 0)
+            { // Base has been created for it.
+               // AssertiveWall: Now build wall
+               if (gStartOnDifferentIslands == false && gPirateBlockWalls == false)
+               {
+                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+               }
+               gForwardBaseState = cForwardBaseStateActive;
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
+               gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
+               gForwardBaseUpTime = xsGetTime();
+               gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypezpTeutonicFort);
+               debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
+                  gForwardBaseID + ", Unit ID is " + fortUnitID);
+               debugBuildings("");
+               debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
+               debugBuildings("");
+            }
+            else
+            {
+               debugBuildings("");
+               debugBuildings("FORT COMPLETE, WAITING FOR FORWARD BASE ID");
+               debugBuildings("");
+            }
+         }
+         else // Check if plan still exists. If not, go back to state 'none'.
+         {
+            if (aiPlanGetState(gForwardBaseBuildPlan) < 0)
+            { // It failed?
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseID = -1;
+               gForwardBaseBuildPlan = -1;
+               gForwardBaseShouldDefend = false;
+               debugBuildings("");
+               debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateActive:
+      { // Normal state. If fort is destroyed and base overrun, bail.
+         fortUnitID = getUnitByLocation(cUnitTypezpTeutonicFort, cMyID, cUnitStateAlive, gForwardBaseLocation, 50.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         if (fortUnitID < 0)
+         {
+            // Fort is missing, is base still OK?
+            if (((gDefenseReflexBaseID == gForwardBaseID) && (gDefenseReflexPaused == true)) ||
+               (kbBaseGetNumberUnits(cMyID, gForwardBaseID, cPlayerRelationSelf, cUnitTypeBuilding) < 1)) 
+            {  // No, not OK. Get outa Dodge.
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseID = -1;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseShouldDefend = false;
+
+               endDefenseReflex();
+               debugBuildings("");
+               debugBuildings("ABANDONING FORWARD BASE, RETREATING TO MAIN BASE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+   }
+}
+
+//==============================================================================
 // Native Wagon Monitor
 //==============================================================================
 rule nativeWagonMonitor
@@ -4112,6 +4565,14 @@ minInterval 15
          case cUnitTypezpBourbonSummerPalaceWagon:
          {
             buildingType = cUnitTypezpBourbonSummerPalace;
+         }
+         case cUnitTypezpCossackStableWagon:
+         {
+            buildingType = cUnitTypezpCossackStable;
+         }
+         case cUnitTypezpHansaEmbassyWagon:
+         {
+            buildingType = cUnitTypezpHansaEmbassy;
          }
       }
 
@@ -4421,7 +4882,7 @@ rule zpInuitTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketInuits, cUnitStateAny) == 0)
+   if (kbUnitCount(cMyID, cUnitTypedeSocketInuit, cUnitStateAny) == 0)
       {
       return; // Player has no Inuit socket.
       }
@@ -4768,6 +5229,129 @@ minInterval 60
       canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceExpeditionaryFleet,
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
       cUnitTypezpVeniceEmbassy);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Maintain Proxies in Hansa Trading Posts
+//==============================================================================
+
+rule MaintainHansaShips
+inactive
+minInterval 30
+{
+  const int list_size = 2;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketHansaKontor, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketHansaKontorCitystate, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketHansaColony, cUnitStateAny) == 0))
+   {
+      return;
+   }
+
+  if (proxy_list == -1)
+  {
+    proxy_list = xsArrayCreateInt(list_size, -1, "List of Hansa Proxies");
+    ship_list = xsArrayCreateInt(list_size, -1, "List of Hansa Ships");
+
+    xsArraySetInt(proxy_list, 0, cUnitTypezpHanseaticWarshipProxy);
+    xsArraySetInt(ship_list, 0, cUnitTypezpHanseaticWarship);
+
+    xsArraySetInt(proxy_list, 1, cUnitTypezpHanseaticFluytProxy);
+    xsArraySetInt(ship_list, 1, cUnitTypezpHanseaticFluyt);
+
+  }
+
+  for(i = 0; < xsArrayGetSize(proxy_list))
+  {
+    int proxy = xsArrayGetInt(proxy_list, i);
+    int ship = xsArrayGetInt(ship_list, i);
+    
+    int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+    if (maintain_plan == -1)
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+        aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+        aiPlanSetActive(maintain_plan, true);
+      }
+    }
+    else
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+      }
+      else
+      {
+        aiPlanDestroy(maintain_plan);
+      }
+    }
+  }
+}
+
+//==============================================================================
+// Hansa Tech Monitor
+//==============================================================================
+rule HansaTechMonitor
+inactive
+minInterval 60
+{
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketHansaKontor, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketHansaKontorCitystate, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketHansaColony, cUnitStateAny) == 0))
+      {
+      return; // Player has no hansa socket.
+      }
+
+
+      // Upgrade Ships and Cannons
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpHansaArsenal,
+      []() -> bool { return ( kbGetAge() >= cAge1 ); },
+      cUnitTypeTradingPost);
+
+      // Western Faction
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpHansaBattleship,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateHansaWestern) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Hansa Central
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatHansaEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateHansaCentral) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Eastern faction
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatTeutonicFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateHansaEast) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Embassy Teutonic Knights
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTeutonicArmySmall,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatHansaEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpHansaEmbassy);
+
+      // Embassy Bank
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpHansaBanking,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatHansaEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpHansaEmbassy);
+
+      // Embassy Fleet
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpHansaColonisationFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatHansaEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpHansaEmbassy);
+
+      // Teutonic Fort Army
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTeutonicArmySmall,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatTeutonicFort, cUnitStateABQ) >= 1); },
+      cUnitTypezpTeutonicFort);
 
    if (canDisableSelf == true)
    {
@@ -5519,6 +6103,36 @@ mininterval 60
 }
 
 //==============================================================================
+// ZP Cossack Tech Monitor
+//==============================================================================
+rule zpCossackTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketCossacks, cUnitStateAny) == 0)
+      {
+      return; // Player has no Cossack socket.
+      }
+
+      // Cossack Bohdan
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatCossackStable,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateCossackBohdan) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Cossacks Mazepa
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCossackNobility,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateCossackMazepa) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
 // maintain Sansculotte Coreurss
 //==============================================================================
 rule zpMaintainSansculotteCoreurs
@@ -6149,5 +6763,3793 @@ minInterval 1
             aiTaskUnitMove(tradeCogID, newDockLoc);
          }
       }
+   }
+}
+
+//==============================================================================
+// getIstanbulKothTarget
+// Istanbul carries TWO victory forts - the Black Sea fort and the Mediterranean
+// fort - both tagged IstanbulVictoryObject. The stock naval KOTH rule assumes a
+// single hill (getUnit + attack-or-defend), which cannot express "take both".
+//
+// Returns the fort worth going for: one our team does NOT already hold, nearest
+// to our Home City water spawn flag. That flag is the right anchor because every
+// player has one on a water map (aisetup.xs sets gWaterSpawnFlagID from
+// cUnitTypeHomeCityWaterSpawnFlag), unlike the pirate camp flag which a player
+// may never capture. Returns -1 when we already hold everything.
+//==============================================================================
+int getIstanbulKothTarget(void)
+{
+   int fortQuery = createSimpleUnitQuery(cUnitTypeIstanbulVictoryObject, cPlayerRelationAny, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(fortQuery);
+   if (numberFound <= 0)
+   {
+      return(-1);
+   }
+
+   vector anchorLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (gWaterSpawnFlagID >= 0)
+   {
+      anchorLoc = kbUnitGetPosition(gWaterSpawnFlagID);
+   }
+
+   int bestFort = -1;
+   int bestDist = 99999;
+   int fortUnit = -1;
+   int fortDist = 0;
+   for (i = 0; < numberFound)
+   {
+      fortUnit = kbUnitQueryGetResult(fortQuery, i);
+      // Skip only forts a REAL ally holds - those belong to the defend rule.
+      // The owner check must exclude gaia: forts start gaia-owned (player 0),
+      // and if kbGetPlayerTeam(0) happens to match a live team's id then every
+      // AI on that team silently skips every unclaimed fort and never attacks.
+      // The rest of the AI guards this with cPlayerRelationEnemyNotGaia.
+      int fortOwner = kbUnitGetPlayerID(fortUnit);
+      if (fortOwner > 0)
+      {
+         if (kbGetPlayerTeam(fortOwner) == kbGetPlayerTeam(cMyID))
+         {
+            continue;
+         }
+      }
+      fortDist = distance(kbUnitGetPosition(fortUnit), anchorLoc);
+      if (fortDist < bestDist)
+      {
+         bestDist = fortDist;
+         bestFort = fortUnit;
+      }
+   }
+   return(bestFort);
+}
+
+//==============================================================================
+// istanbulGuardiansAlive
+// A fort stays locked until its guardian corsair galleys are dead - only then
+// does the treasure become collectable and the flag convertible. So the first
+// objective at a fort is the escorts, not the fort itself.
+//==============================================================================
+bool istanbulGuardiansAlive(int fortUnit = -1)
+{
+   if (fortUnit < 0)
+   {
+      return(false);
+   }
+   int guardQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny,
+                                          cUnitStateAlive, kbUnitGetPosition(fortUnit), 40.0);
+   if (kbUnitQueryExecute(guardQuery) > 0)
+   {
+      return(true);
+   }
+   return(false);
+}
+
+//==============================================================================
+// istanbulAttackKOTH
+// Modelled on waterAttackKOTH, with the two differences Istanbul needs:
+//   1. it picks between TWO forts instead of assuming one
+//   2. if the target still has guardians, the attack goes at the guardians
+// No landing is involved: the gate sets cForbidAmphibiousAssault, and the forts
+// are taken by holding warships alongside.
+//==============================================================================
+rule istanbulAttackKOTH
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 1)
+   {
+      return;   // no fleet, no fort
+   }
+   if (gNavyAttackPlan >= 0)
+   {
+      return;   // one attack plan at a time, as waterAttackKOTH does
+   }
+
+   int targetFort = getIstanbulKothTarget();
+   gIstanbulKothTarget = targetFort;
+   if (targetFort < 0)
+   {
+      return;   // we already hold every fort - nothing to attack
+   }
+
+   vector targetLoc = kbUnitGetPosition(targetFort);
+   if (istanbulGuardiansAlive(targetFort) == true)
+   {
+      debugMilitary("Istanbul KOTH: guardians still alive, clearing escorts first");
+   }
+
+   // plan block cloned from waterAttackKOTH (aipiraterules.xs 6237-6248)
+   int navalTargetPlayer = kbUnitGetPlayerID(targetFort);
+   int shipMin = 3;
+   int shipDesired = 6;
+   if (cDifficultyCurrent >= cDifficultyHard)
+   {
+      shipMin = 5;
+      shipDesired = 10;
+   }
+
+   gNavyAttackPlan = aiPlanCreate("ISTANBUL KOTH fort: " + targetFort, cPlanCombat);
+   aiPlanAddUnitType(gNavyAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+   aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanTargetPoint, 0, targetLoc);
+   aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+   aiPlanSetVariableFloat(gNavyAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+   aiPlanSetDesiredPriority(gNavyAttackPlan, 60);
+   aiPlanSetVariableBool(gNavyAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
+   aiPlanSetActive(gNavyAttackPlan);
+
+   gLastNavalAttackTime = xsGetTime();
+   debugMilitary("Istanbul KOTH: attacking fort " + targetFort + " at " + targetLoc);
+}
+
+//==============================================================================
+// istanbulGuardianKiller
+//
+// A combat plan can only target a Base or a Point - there is no
+// cCombatPlanTargetModeUnit. So istanbulAttackKOTH sails the fleet to the fort
+// and stops: the guardian galleys are passive gaia and never strike first, so
+// nobody starts the fight and the fort stays locked forever.
+//
+// This is the "Gate Killer Plan" pattern from this same file (849-884): hold the
+// ships in a reserve plan, find the gaia unit with getClosestGaiaUnit, and task
+// each ship onto it with aiTaskUnitWork. That is the only way to make the AI
+// open fire on a specific neutral unit.
+//
+// Runs on a short interval because ships that finish a target must be re-tasked
+// onto the next guardian, or they drift back to idle.
+//==============================================================================
+// how many warships the killer masses before it will engage the guardians
+int gIstanbulKillerFleet = 6;
+int gIstanbulGuardianPlan = -1;
+
+rule istanbulGuardianKiller
+inactive
+minInterval 8
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 1)
+   {
+      return;
+   }
+
+   int targetFort = getIstanbulKothTarget();
+   if (targetFort < 0)
+   {
+      return;   // every fort is ours already
+   }
+   vector fortLoc = kbUnitGetPosition(targetFort);
+
+   // CAPTURE RULE, from the map (FortConvN_Plr): >=1 of OUR AbstractWarShip
+   // within 25 of the fort marker, and ZERO enemy warships within 25. There is
+   // no timer - it converts the instant both hold. So after the guardians die
+   // the ships must simply STAY. Returning here left them in a reserve plan
+   // with no orders, which is why they drifted off and never took the fort.
+   // ONE target for the whole fleet. gatherNavalNuggets 1253-1270 picks a
+   // single currentGuardianID and re-tasks every ship onto it each pass;
+   // letting each ship choose its own nearest galley split the fleet across
+   // both guardians and killed neither quickly. cUnitTypeGuardian is the
+   // engine treasure-guardian type, so this does not ride on a proto name.
+   int guardianCount = getUnitCountByLocation(cUnitTypeGuardian, cPlayerRelationAny,
+                                              cUnitStateAlive, fortLoc, 45.0);
+   int guardian = getUnitByLocation(cUnitTypeGuardian, cPlayerRelationAny,
+                                    cUnitStateAlive, fortLoc, 45.0);
+   bool guardsLeft = (guardianCount > 0);
+
+   if (gIstanbulGuardianPlan < 0)
+   {
+      gIstanbulGuardianPlan = aiPlanCreate("Istanbul Guardian Killer", cPlanReserve);
+      // exactly 100: see gIstanbulGarrisonPlan.
+      aiPlanSetDesiredPriority(gIstanbulGuardianPlan, 100);
+      aiPlanSetActive(gIstanbulGuardianPlan);
+   }
+
+   // THIS is what was missing, and it is why the guardians were ignored.
+   // aiPlanAddUnitType only DECLARES a need. The unit manager fills that for
+   // land military, but not for warships - every naval plan here follows it
+   // with addWarshipsToPlan (aiwaterrules.xs:322), which walks our own ships
+   // and aiPlanAddUnit s each one in: gWaterNuggetPlan 1089, gEndlessWaterRaid
+   // 1035, gFirstWaterAttack 594. Without the call the plan stays EMPTY, the
+   // loop below runs zero times, and the rule is a silent no-op.
+   //
+   // pri must BEAT the plan already holding a ship - addWarshipsToPlan skips
+   // anything at >= pri. The istanbulAttackKOTH combat plan sits at 60, so
+   // its ships are free to take; the fort garrison sits at 95 and is not.
+   //
+   // min 0 on purpose: addWarshipsToPlan DESTROYS the plan when it cannot
+   // reach min, and having no free ships early on is normal, not a failure.
+   // Cap 24 with the refill sized to what is actually missing. aiPlanAddUnit
+   // fails once a plan is at its cap and addWarshipsToPlan reacts to that by
+   // DESTROYING the plan - a blind "add 8 more" against a cap of 12 could tear
+   // the fleet down and rebuild it mid-fight.
+   int shipsHeld = aiPlanGetNumberUnits(gIstanbulGuardianPlan, cUnitTypeAbstractWarShip);
+   if (shipsHeld < gIstanbulKillerFleet)
+   {
+      aiPlanAddUnitType(gIstanbulGuardianPlan, cUnitTypeAbstractWarShip, 0, gIstanbulKillerFleet, 24);
+      aiPlanSetNoMoreUnits(gIstanbulGuardianPlan, true);
+      if (addWarshipsToPlan(gIstanbulGuardianPlan, 0, gIstanbulKillerFleet - shipsHeld, 100) == false)
+      {
+         gIstanbulGuardianPlan = -1;   // the helper destroyed it
+         return;
+      }
+      shipsHeld = aiPlanGetNumberUnits(gIstanbulGuardianPlan, cUnitTypeAbstractWarShip);
+   }
+
+   if (shipsHeld < 1)
+   {
+      aiEcho("GUARD p" + cMyID + " plan EMPTY - no free ship below pri 90");
+      return;
+   }
+
+   // STRENGTH GATE - "Don't bother unless there's a good chance of winning",
+   // gatherNavalNuggets 1214-1218. Ships arriving one at a time feed the
+   // galleys instead of killing them, which is what made this unreliable.
+   // Only ships within 75 of the lead count, so stragglers still crossing the
+   // map do not inflate the total into a premature commitment.
+   if (guardsLeft == true)
+   {
+      int guardHP = 0;
+      int guardQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny,
+                                             cUnitStateAlive, fortLoc, 45.0);
+      int guardFound = kbUnitQueryExecute(guardQuery);
+      for (i = 0; < guardFound)
+      {
+         guardHP = guardHP + kbUnitGetCurrentHitpoints(kbUnitQueryGetResult(guardQuery, i));
+      }
+
+      int fleetHP = 0;
+      int massShip = -1;
+      vector leadLoc = kbUnitGetPosition(aiPlanGetUnitByIndex(gIstanbulGuardianPlan, 0));
+      for (i = 0; < shipsHeld)
+      {
+         massShip = aiPlanGetUnitByIndex(gIstanbulGuardianPlan, i);
+         if (distance(kbUnitGetPosition(massShip), leadLoc) < 75)
+         {
+            fleetHP = fleetHP + kbUnitGetCurrentHitpoints(massShip);
+         }
+      }
+
+      if (fleetHP < 1.5 * guardHP)
+      {
+         xsSetRuleMinIntervalSelf(8);   // still massing - no need to look often
+         return;
+      }
+      xsSetRuleMinIntervalSelf(3);      // committed - react at nugget-rule speed
+   }
+   else
+   {
+      xsSetRuleMinIntervalSelf(8);
+   }
+
+   int tempUnit = -1;
+   int tasked = 0;
+   for (i = 0; < aiPlanGetNumberUnits(gIstanbulGuardianPlan, cUnitTypeAbstractWarShip))
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulGuardianPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (guardsLeft == true)
+      {
+         // every ship onto the SAME guardian, re-issued each pass - the engine
+         // is happy to take a repeat order, gatherNavalNuggets 1266-1270 does
+         // exactly this at a 3s interval.
+         if (guardian > 0)
+         {
+            aiTaskUnitWork(tempUnit, guardian);
+            tasked = tasked + 1;
+         }
+      }
+      else
+      {
+         // Guardians dead: SIT ON THE FORT. Spread inside 15 so the whole
+         // fleet stays well inside the 25 the capture trigger needs, without
+         // every ship stacking on one point.
+         if (distance(kbUnitGetPosition(tempUnit), fortLoc) > 15)
+         {
+            aiTaskUnitMove(tempUnit, getRandomPoint(fortLoc, 12));
+            tasked = tasked + 1;
+         }
+      }
+   }
+
+   if (tasked > 0)
+   {
+      if (guardsLeft == true)
+      {
+         aiEcho("GUARD p" + cMyID + " " + tasked + " ships onto guardians");
+      }
+      else
+      {
+         aiEcho("HOLD p" + cMyID + " " + tasked + " ships onto fort (capture needs <=25)");
+      }
+   }
+}
+
+//==============================================================================
+// istanbulDefendKOTH
+//
+// Victory needs BOTH forts held at the same time, and the map converts a fort
+// the instant one enemy warship is inside 25 with none of ours. So a fort we
+// took is lost the moment the fleet leaves - which is what happens once
+// getIstanbulKothTarget points the assault at the OTHER fort.
+//
+// This keeps a small garrison parked on every fort our team already owns, so
+// the assault fleet is free to go after the second one.
+//==============================================================================
+int gIstanbulGarrisonPlan = -1;
+
+rule istanbulDefendKOTH
+inactive
+minInterval 10
+{
+   int fortQuery = createSimpleUnitQuery(cUnitTypeIstanbulVictoryObject, cPlayerRelationAny, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(fortQuery);
+   if (numberFound <= 0)
+   {
+      return;
+   }
+
+   // find a fort THIS team owns - gaia is never ours, same guard as the picker
+   int ourFort = -1;
+   int fortUnit = -1;
+   int fortOwner = -1;
+   for (i = 0; < numberFound)
+   {
+      fortUnit = kbUnitQueryGetResult(fortQuery, i);
+      fortOwner = kbUnitGetPlayerID(fortUnit);
+      if (fortOwner > 0)
+      {
+         if (kbGetPlayerTeam(fortOwner) == kbGetPlayerTeam(cMyID))
+         {
+            ourFort = fortUnit;
+         }
+      }
+   }
+   if (ourFort < 0)
+   {
+      return;   // nothing of ours to defend yet
+   }
+   vector fortLoc = kbUnitGetPosition(ourFort);
+
+   if (gIstanbulGarrisonPlan < 0)
+   {
+      gIstanbulGarrisonPlan = aiPlanCreate("Istanbul Fort Garrison", cPlanReserve);
+      // deliberately small: 2 ships hold the fort, the rest stay free for the
+      // assault on the second fort. Priority ABOVE the guardian killer (90):
+      // addWarshipsToPlan skips any ship already in a plan of >= its pri, so a
+      // garrison below 90 would be emptied again by the killer sweep and the
+      // fort we just took would flip straight back.
+      // exactly 100: stock gatherNavy skips 24/25/99/100 only - 101 would NOT
+      // be skipped for warships.
+      aiPlanSetDesiredPriority(gIstanbulGarrisonPlan, 100);
+      aiPlanSetActive(gIstanbulGarrisonPlan);
+   }
+
+   // same missing call as the guardian killer - see the note there
+   if (aiPlanGetNumberUnits(gIstanbulGarrisonPlan, cUnitTypeAbstractWarShip) < 2)
+   {
+      aiPlanAddUnitType(gIstanbulGarrisonPlan, cUnitTypeAbstractWarShip, 0, 2, 2);
+      aiPlanSetNoMoreUnits(gIstanbulGarrisonPlan, true);
+      if (addWarshipsToPlan(gIstanbulGarrisonPlan, 0, 2, 100) == false)
+      {
+         gIstanbulGarrisonPlan = -1;   // the helper destroyed it
+         return;
+      }
+   }
+
+   int tempUnit = -1;
+   int held = 0;
+   for (i = 0; < aiPlanGetNumberUnits(gIstanbulGarrisonPlan, cUnitTypeAbstractWarShip))
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulGarrisonPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempUnit), fortLoc) > 15)
+      {
+         aiTaskUnitMove(tempUnit, getRandomPoint(fortLoc, 10));
+      }
+      held = held + 1;
+   }
+
+   if (held > 0)
+   {
+      aiEcho("GARRISON p" + cMyID + " " + held + " ships holding our fort");
+   }
+}
+
+//==============================================================================
+// istanbulFortRaid
+//
+// Ambition rule: once our team HOLDS a fort, push through the Bosporus and take
+// the enemy one. Victory needs both at the same time, so sitting on one is a
+// draw at best.
+//
+// Never launches without a real fleet. "Galleon class or better" is measured
+// the way the AI already grades ships everywhere else - wood + gold + influence:
+//     Caravel / Galley / War Junk  400      Privateer   500
+//     GALLEON                      600  <-- the bar
+//     Monitor 800   Frigate 1000   Ironclad 1100   Fuchuan 1200
+// Cost rather than a unittype so modded hulls grade themselves: zpCorsairGalley
+// and zpVeniceGalley are 400 and are correctly left out of a raid.
+//
+// Ships are tasked directly rather than through a combat plan, because a plan
+// takes a unit TYPE and would sweep up every galley in the fleet.
+//==============================================================================
+// Highest number of fixed guns seen alive so far. The guns are spawned from
+// zpSocketAntiShipGun by MAP TRIGGERS, so the count is 0 for the first
+// seconds of a match - tracking the peak (not the first sample) is what makes
+// "one of them died" detectable regardless of when they appear.
+
+//==============================================================================
+// istanbulGunFleet   -   the standing Fixed-Gun-killer pool (THE FLEET SPLIT)
+//
+// Owner 2026-09-25: 'Pirate ships should attack the Naval Guns, because they have bonus against them (same monitors)
+// and other ships should guard the Naval Forts.' Restored from 893135a4 after 570d65a2 deleted it (2026-08-27).
+//
+// Gun-fleet membership has ONE definition, istanbulIsGunFleetHull below: pirate hulls (the gun's 0.5 malus plus the
+// Breaching Shot bonus) and the per-civ monitor-class (the building bonus). Every other warship is the fort rules'.
+//
+// PRIORITY 100, not the original 96. Since 570d65a2 the stock landing runs here, and stock gatherNavy
+// (aiassertivewall.xs 7406) drains every warship whose plan's DESIRED priority is not exactly 24, 25, 99 or 100 into
+// gAmphibiousAssaultPlan - a 96 pool would be emptied at the first landing. At 100 the fort keepers
+// (addWarshipsToPlan at pri 100 skips >= 100), istanbulFortRaid (skips >= 99) and the KOTH combat plan (60) cannot take
+// a pool hull either. The pool itself TAKES pirate and monitor hulls out of the two fort keepers (gIstanbulGuardianPlan,
+// gIstanbulGarrisonPlan - the owner's run 14 screenshot: pirate ships parked at a Naval Fort) and out of anything
+// below 99; it leaves the stock landing (99) and transports alone. gIstanbulGunFleetMin is the FLOOR: fewer hulls than
+// this never engage a gun - one ship against a gun is a gift.
+//==============================================================================
+int gIstanbulGunFleetPlan = -1;
+int gIstanbulGunFleetMin = 2;    // FLOOR: never attack a gun with fewer
+
+// The single definition of gun-fleet membership - every rule asks this.
+bool istanbulIsGunFleetHull(int unitID = -1)
+{
+   if (kbUnitIsType(unitID, cUnitTypeAbstractPirateShip) == true)
+   {
+      return (true);
+   }
+   if (kbUnitGetProtoUnitID(unitID) == gMonitorUnit)
+   {
+      return (true);
+   }
+   return (false);
+}
+
+rule istanbulGunFleet
+inactive
+minInterval 10
+{
+   // ONE query over all warships, filtered by the membership predicate - two
+   // interleaved simple queries would share the single static query object
+   int fleetQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int fleetCount = kbUnitQueryExecute(fleetQuery);
+   if (fleetCount <= 0)
+   {
+      return;
+   }
+   if (gIstanbulGunFleetPlan < 0)
+   {
+      gIstanbulGunFleetPlan = aiPlanCreate("Istanbul Gun Fleet", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip, 0, 0, 24);
+      aiPlanSetNoMoreUnits(gIstanbulGunFleetPlan, true);
+      aiPlanSetDesiredPriority(gIstanbulGunFleetPlan, 100);   // exactly 100: see the header
+      aiPlanSetActive(gIstanbulGunFleetPlan);
+   }
+   if (aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip) >= 24)
+   {
+      return;   // at the plan cap - aiPlanAddUnit would fail silently
+   }
+   int collected = 0;
+   int tempUnit = -1;
+   int tempPlan = -1;
+   for (i = 0; < fleetCount)
+   {
+      tempUnit = kbUnitQueryGetResult(fleetQuery, i);
+      if (istanbulIsGunFleetHull(tempUnit) == false)
+      {
+         continue;
+      }
+      tempPlan = kbUnitGetPlanID(tempUnit);
+      if (tempPlan == gIstanbulGunFleetPlan)
+      {
+         continue;   // already ours
+      }
+      if (tempPlan >= 0 && tempPlan != gIstanbulGuardianPlan && tempPlan != gIstanbulGarrisonPlan)
+      {
+         if (aiPlanGetType(tempPlan) == cPlanTransport)
+         {
+            continue;   // a transport keeps its ship
+         }
+         if (aiPlanGetActualPriority(tempPlan) >= 99)
+         {
+            continue;   // the stock landing (gAmphibiousAssaultPlan, 99) keeps its ships
+         }
+      }
+      aiPlanAddUnit(gIstanbulGunFleetPlan, tempUnit);
+      collected = collected + 1;
+   }
+   if (collected > 0)
+   {
+      aiEcho("GUNFLEET p" + cMyID + " +" + collected + " hulls, "
+                + aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip) + " held");
+   }
+}
+
+//==============================================================================
+// istanbulMonitorMaintain - monitors are otherwise NEVER trained here:
+// navyManager rewrites gMonitorMaintain's quantity to the count of EXISTING
+// monitors (0) every 30 s (aimilitary.xs:2385-2392), so the stock plan can
+// never bootstrap. Own global, stock recipe (donor aimilitary.xs:2025),
+// gated on availability + a live dock. Trained monitors join the gun fleet
+// (pri 100) automatically. Restored from 893135a4 (owner 2026-09-25).
+//==============================================================================
+int gIstanbulMonitorMaintain = -1;
+
+rule istanbulMonitorMaintain
+inactive
+minInterval 30
+{
+   if (gIstanbulMonitorMaintain >= 0)
+   {
+      xsDisableSelf();
+      return;
+   }
+   if (kbProtoUnitAvailable(gMonitorUnit) == false)
+   {
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypeAbstractDock, cUnitStateAlive) < 1)
+   {
+      return;
+   }
+   gIstanbulMonitorMaintain = createSimpleMaintainPlan(gMonitorUnit, 2, false, kbBaseGetMainID(cMyID), 1);
+   aiEcho("MONITORMAINT p" + cMyID + " maintain up - 2 monitor-class hulls");
+   xsDisableSelf();
+}
+
+//==============================================================================
+// THE PALACE CHAIN - the other half of the victory condition
+//
+// Victory needs 4 flags held (2 water forts + 2 palaces); every older rule
+// chases only the forts. Each palace: 8 gaia deGuardianJanissary (engine
+// cUnitTypeGuardian) guard the forecourt; killing them arms a 12 m
+// persistent AutoConvert on the Cossack flag; standing flips it, and an
+// unguarded flag defects to the first enemy who walks up.
+//
+// Doctrine (forensics of EsteGringo + AssertiveWall): the OBJECTIVE lives in
+// globals and a periodic rule, plans are disposable, and the force roster is
+// re-derived from GEOGRAPHY every tick - a land unit that cannot walk home
+// is expedition force, whoever it once belonged to. Troops are never
+// released into the void: the landing hands its wave over BEFORE destroying
+// the army plan, and the adoption sweep retro-captures any stray survivor.
+//==============================================================================
+int gIstanbulPalaceMissionPlan = -1;   // overseas expedition force, pri 99
+int gIstanbulPalaceHomePlan = -1;      // home-palace strike squad, pri 90
+int gIstanbulPalaceHoldPlan = -1;      // home-side flag garrison, pri 95
+// STABLE guardian targets - run_011: getUnitByLocation re-rolls its pick
+// every pass (380/2844/2568/5246... in consecutive passes), so focus fire
+// never accumulated and no janissary ever died. Cache; re-pick on death.
+int gIstanbulPalaceMissionTarget = -1;
+int gIstanbulPalaceHomeTarget = -1;
+
+// Adopt one land unit into the mission reserve, creating it on demand.
+void istanbulPalaceAdopt(int unitID = -1)
+{
+   if (gIstanbulPalaceMissionPlan < 0)
+   {
+      gIstanbulPalaceMissionPlan = aiPlanCreate("Istanbul Palace Mission", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulPalaceMissionPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 60);
+      aiPlanSetNoMoreUnits(gIstanbulPalaceMissionPlan, true);
+      // 101, not 99: adoption pulls units out of stock gAmphibiousArmyPlan,
+   // which is ALSO 99 - equal-priority ties are undocumented.
+   aiPlanSetDesiredPriority(gIstanbulPalaceMissionPlan, 101);
+      aiPlanSetActive(gIstanbulPalaceMissionPlan);
+   }
+   aiPlanAddUnit(gIstanbulPalaceMissionPlan, unitID);
+}
+
+// The two palaces, split by DISTANCE: nearest to our main base = HOME, the
+// other = OVERSEAS. This replaced a KB-passability split after the KB's
+// area-group holes returned -1 for whole teams (the "no land-reachable
+// palace (KB group)" echoes, manual match 2026-08-24). Each team's palace
+// stands on its own island, so geometry decides correctly and has no holes.
+// GivesLOSToAll makes both palaces queryable from 0:00. Runs the shared
+// simple query - callers finish their own queries first.
+int istanbulGetPalace(bool overseas = false)
+{
+   // Find the palace by the FLAG, with the lookup the FORT code uses - the
+   // one construct proven to work on this map (zpKingsHillNaval, 6219):
+   //   getUnit(type, cPlayerRelationAny, cUnitStateAny)
+   // The old createSimpleUnitQuery(..., cUnitStateAlive) is knowledge-base
+   // limited, so players who never scouted the far shore - and, as run_003
+   // showed, the whole north team - got ZERO palaces and the rule exited
+   // before doing anything ("no palace exists in the KB" x10 per player).
+   //
+   // HOME vs OVERSEAS is the transport question, so ask it directly:
+   // walkable == home (march), not walkable == overseas (needs the landing).
+   // Distance alone cannot answer it - the countryside spawns sit only
+   // 1.1x closer to their own palace than to the enemy's.
+   int flagQuery = createSimpleUnitQuery(cUnitTypedeSPCCapturableFlagCossack,
+                                         cPlayerRelationAny, cUnitStateAny);
+   int flagCount = kbUnitQueryExecute(flagQuery);
+   vector myStart = kbGetPlayerStartingPosition(cMyID);
+   int myGroup = kbAreaGroupGetIDByPosition(myStart);
+   int homeFlag = -1;
+   int awayFlag = -1;
+   int tempFlag = -1;
+   for (i = 0; < flagCount)
+   {
+      tempFlag = kbUnitQueryGetResult(flagQuery, i);
+      if (kbAreAreaGroupsPassableByLand(myGroup,
+             kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempFlag))) == true)
+      {
+         homeFlag = tempFlag;
+      }
+      else
+      {
+         awayFlag = tempFlag;
+      }
+   }
+   aiEcho("PALTRACE p" + cMyID + " GETPALACE flags=" + flagCount
+          + " home=" + homeFlag + " away=" + awayFlag);
+   if (overseas == true)
+   {
+      return (awayFlag);
+   }
+   return (homeFlag);
+}
+
+// The capture anchor: the Cossack flag ~7 m into the forecourt. Its owner is
+// the authoritative capture state; its position is where troops must stand
+// (12 m AutoConvert). Falls back to the palace itself if not found.
+int istanbulGetPalaceFlag(vector palaceLoc = cInvalidVector)
+{
+   return (getUnitByLocation(cUnitTypedeSPCCapturableFlagCossack, cPlayerRelationAny,
+                             cUnitStateAlive, palaceLoc, 20.0));
+}
+
+//==============================================================================
+// istanbulPalaceMission - the ashore brain (overseas palace)
+//==============================================================================
+rule istanbulPalaceMission
+inactive
+minInterval 10
+{
+   // GEOGRAPHY-KEYED ADOPTION (EsteGringo ainavalnew.xs:493-503): any own
+   // land unit that cannot walk home is expedition force. Skips >= 99 so
+   // boarding waves and the landing army keep their troops; ejected and
+   // stranded survivors are planless or low-pri and get captured here.
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int homeGroup = kbAreaGroupGetIDByPosition(homeBase);
+   int landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+   int landCount = kbUnitQueryExecute(landQuery);
+   int adopted = 0;
+   int tempUnit = -1;
+   for (i = 0; < landCount)
+   {
+      tempUnit = kbUnitQueryGetResult(landQuery, i);
+      if (kbAreAreaGroupsPassableByLand(homeGroup, kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit))) == true)
+      {
+         continue;   // can walk home - not expedition force
+      }
+      if (kbUnitGetPlanID(tempUnit) == gIstanbulPalaceMissionPlan)
+      {
+         continue;   // already ours
+      }
+      // STILL ABOARD? The old test was "priority >= 99", which worked only
+      // because the custom landing handed its wave over before destroying its
+      // own pri-99 plan. The STOCK system has no handover: gAmphibiousArmyPlan
+      // is also 99 and is destroyed only on retreat/abort, never on a
+      // successful landing - so a priority test would skip every soldier stock
+      // ferries across, permanently, and this rule would never adopt anyone.
+      // Ask the real question: is he still at sea? A garrisoned unit reports
+      // its transport's position.
+      if (kbAreaGetType(kbAreaGetIDByPosition(kbUnitGetPosition(tempUnit))) == cAreaTypeWater)
+      {
+         continue;   // aboard - the transport keeps its cargo
+      }
+      istanbulPalaceAdopt(tempUnit);
+      adopted = adopted + 1;
+   }
+   int missionHeld = 0;
+   if (gIstanbulPalaceMissionPlan >= 0)
+   {
+      missionHeld = aiPlanGetNumberUnits(gIstanbulPalaceMissionPlan, cUnitTypeLogicalTypeLandMilitary);
+   }
+   if (adopted > 0)
+   {
+      aiEcho("PALACE p" + cMyID + " adopted " + adopted + " ashore, force " + missionHeld);
+   }
+   if (missionHeld < 1)
+   {
+      return;
+   }
+
+   int palace = istanbulGetPalace(true);
+   if (palace < 0)
+   {
+      // F3: this exit was SILENT - it hid the real bug for two full test
+      // runs while the mission adopted troops and then did nothing.
+      aiEcho("PALACE p" + cMyID + " no overseas palace - mission idle");
+      xsSetRuleMinIntervalSelf(20);
+      return;
+   }
+   vector palaceLoc = kbUnitGetPosition(palace);
+   int flag = istanbulGetPalaceFlag(palaceLoc);
+   vector flagLoc = palaceLoc;
+   int flagOwner = kbUnitGetPlayerID(palace);
+   if (flag > 0)
+   {
+      flagLoc = kbUnitGetPosition(flag);
+      flagOwner = kbUnitGetPlayerID(flag);
+   }
+
+   // OBSESSIVE TRACE - overseas mission, same contract as the home trace
+   int mTraceLead = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, 0);
+   float mTraceDist = -1.0;
+   if (mTraceLead >= 0)
+   {
+      mTraceDist = distance(kbUnitGetPosition(mTraceLead), flagLoc);
+   }
+   string aPalSide = "SOUTH";
+   if (xsVectorGetZ(palaceLoc) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      aPalSide = "NORTH";
+   }
+   string aMySide = "SOUTH";
+   if (xsVectorGetZ(kbGetPlayerStartingPosition(cMyID)) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      aMySide = "NORTH";
+   }
+   aiEcho("PALTRACE p" + cMyID + " AWAY target=" + aPalSide + " me=" + aMySide
+          + " palace=" + palace + " z=" + xsVectorGetZ(palaceLoc)
+          + " force=" + missionHeld + " guard=" + gIstanbulPalaceMissionTarget
+          + " flag=" + flag + " flagOwn=" + flagOwner + " dFlag=" + mTraceDist);
+
+   // 1) guardians first - ONE shared target, orders re-issued every pass
+   //    (the house guardian-killer pattern; passive gaia never fights back
+   //    unprovoked, so the direct task is what starts the fight)
+   if (gIstanbulPalaceMissionTarget >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gIstanbulPalaceMissionTarget) <= 0)
+      {
+         gIstanbulPalaceMissionTarget = -1;   // dead - next one
+      }
+   }
+   if (gIstanbulPalaceMissionTarget < 0)
+   {
+      gIstanbulPalaceMissionTarget = getUnitByLocation(cUnitTypezpPalaceJanissary, cPlayerRelationAny,
+                                                       cUnitStateAlive, palaceLoc, 45.0);
+   }
+   int guardian = gIstanbulPalaceMissionTarget;
+   int tasked = 0;
+   int tempSoldier = -1;
+   if (guardian > 0 && missionHeld < 4)
+   {
+      // ENGAGE FLOOR - run_011: 'force 1' charged 8 janissaries alone and
+      // achieved nothing. Mass first, exactly like the naval strength gate.
+      aiEcho("PALACE p" + cMyID + " massing " + missionHeld + "/4 before the guardians");
+      return;
+   }
+   if (guardian > 0)
+   {
+      for (i = 0; < missionHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         aiTaskUnitWork(tempSoldier, guardian);
+         tasked = tasked + 1;
+      }
+      aiEcho("PALACE p" + cMyID + " " + tasked + " troops onto guardian " + guardian);
+      xsSetRuleMinIntervalSelf(4);
+      return;
+   }
+
+   // 2) flag not ours: stand INSIDE the 12 m AutoConvert ring
+   bool oursTeam = false;
+   if (flagOwner > 0)
+   {
+      if (kbGetPlayerTeam(flagOwner) == kbGetPlayerTeam(cMyID))
+      {
+         oursTeam = true;
+      }
+   }
+   if (oursTeam == false)
+   {
+      for (i = 0; < missionHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 8)
+         {
+            aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 6));
+            tasked = tasked + 1;
+         }
+      }
+      aiEcho("PALACE p" + cMyID + " " + tasked + " moving to flag, capture pending");
+      xsSetRuleMinIntervalSelf(4);
+      return;
+   }
+
+   // 3) flag ours: 4 hold the ring, the rest raid the nearest enemy
+   //    building - re-derived every tick, so the raid never runs dry
+   xsSetRuleMinIntervalSelf(10);
+   int enemyBld = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+                                    cUnitStateAlive, palaceLoc, 200.0);
+   int holdCount = 0;
+   int raidCount = 0;
+   for (i = 0; < missionHeld)
+   {
+      tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, i);
+      if (tempSoldier < 0)
+      {
+         continue;
+      }
+      if (holdCount < 4)
+      {
+         holdCount = holdCount + 1;
+         if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 10)
+         {
+            aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 8));
+         }
+         continue;
+      }
+      if (enemyBld > 0)
+      {
+         aiTaskUnitWork(tempSoldier, enemyBld);
+         raidCount = raidCount + 1;
+      }
+      else if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 15)
+      {
+         aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 12));
+      }
+   }
+   aiEcho("PALACEHOLD p" + cMyID + " flag ours - " + holdCount + " holding, "
+             + raidCount + " raiding " + enemyBld);
+}
+
+//==============================================================================
+// istanbulPalaceHomeKiller - the free flag: no ship needed at home
+//==============================================================================
+rule istanbulPalaceHomeKiller
+inactive
+minInterval 8
+{
+   int palace = istanbulGetPalace(false);
+   if (palace < 0)
+   {
+      // forensics F3: this exit was silent and indistinguishable from the
+      // massing stall; a KB area-group hole (documented on this map) can
+      // put us here until istanbulAreaRecalc heals it
+      aiEcho("PALACEHOME p" + cMyID + " no palace exists in the KB");
+      xsSetRuleMinIntervalSelf(30);
+      return;
+   }
+   xsSetRuleMinIntervalSelf(8);
+   vector palaceLoc = kbUnitGetPosition(palace);
+   int flag = istanbulGetPalaceFlag(palaceLoc);
+   vector flagLoc = palaceLoc;
+   int flagOwner = kbUnitGetPlayerID(palace);
+   if (flag > 0)
+   {
+      flagLoc = kbUnitGetPosition(flag);
+      flagOwner = kbUnitGetPlayerID(flag);
+   }
+   if (flagOwner > 0)
+   {
+      if (kbGetPlayerTeam(flagOwner) == kbGetPlayerTeam(cMyID))
+      {
+         // ours: this squad's war is over - the hold rule garrisons
+         if (gIstanbulPalaceHomePlan >= 0)
+         {
+            aiPlanDestroy(gIstanbulPalaceHomePlan);
+            gIstanbulPalaceHomePlan = -1;
+         }
+         return;
+      }
+   }
+
+   if (gIstanbulPalaceHomeTarget >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gIstanbulPalaceHomeTarget) <= 0)
+      {
+         gIstanbulPalaceHomeTarget = -1;   // dead - next one
+      }
+   }
+   if (gIstanbulPalaceHomeTarget < 0)
+   {
+      gIstanbulPalaceHomeTarget = getUnitByLocation(cUnitTypezpPalaceJanissary, cPlayerRelationAny,
+                                                    cUnitStateAlive, palaceLoc, 45.0);
+   }
+   int guardian = gIstanbulPalaceHomeTarget;
+
+   if (gIstanbulPalaceHomePlan < 0)
+   {
+      gIstanbulPalaceHomePlan = aiPlanCreate("Istanbul Home Palace Squad", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 12);
+      aiPlanSetNoMoreUnits(gIstanbulPalaceHomePlan, true);
+      // 101: ABOVE the army plans (forwardArmy/forcedAttack 100,
+      // amphibious 99). At 90 this squad could never recruit - every
+      // land soldier is owned at 99-100, so the filter below rejected
+      // all of them (run_001: 499 'squad empty' refusals, palace never
+      // taken, and the landing rule deadlocked waiting for the rescue).
+      // Capped at 10 units, so the theft from the main army is bounded.
+      aiPlanSetDesiredPriority(gIstanbulPalaceHomePlan, 101);
+      aiPlanSetActive(gIstanbulPalaceHomePlan);
+   }
+
+   // recruit walk-capable land military below pri 90 - the landing recruit
+   // shape, home-island only by geography
+   int squadHeld = aiPlanGetNumberUnits(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary);
+   int tempUnit = -1;
+   if (squadHeld < 10)
+   {
+      int homeGroup = kbAreaGroupGetIDByPosition(palaceLoc);
+      int landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      int landCount = kbUnitQueryExecute(landQuery);
+      for (i = 0; < landCount)
+      {
+         tempUnit = kbUnitQueryGetResult(landQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 101)
+         {
+            continue;
+         }
+         if (kbAreAreaGroupsPassableByLand(homeGroup, kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit))) == false)
+         {
+            continue;   // cannot walk to this palace
+         }
+         aiPlanAddUnit(gIstanbulPalaceHomePlan, tempUnit);
+         squadHeld = squadHeld + 1;
+         if (squadHeld >= 10)
+         {
+            break;
+         }
+      }
+   }
+   // F2: aiPlanAddUnit does not populate the plan this tick, so the
+   // hand-incremented squadHeld over-counted and the engage floor opened
+   // with fewer real troops than it claimed (observed: "massing 2/4" then
+   // an attack with 2). Re-read the plan - it is the only truth.
+   squadHeld = aiPlanGetNumberUnits(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary);
+   if (squadHeld < 1)
+   {
+      // 17:39 test: "clearing defender ... with 0" - the rescue had no
+      // troops and said nothing. Now it says so.
+      aiEcho("PALACEHOME p" + cMyID + " squad empty - all land military owned at >= 101");
+      xsSetRuleMinIntervalSelf(20);
+      return;
+   }
+
+   // OBSESSIVE TRACE: one complete state line per pass. Testing is the
+   // expensive resource - a single match must answer every question, so
+   // every decision input is printed, not just the branch taken.
+   //   palace/z  WHICH palace (north and south differ by z)
+   //   walk      1 = land-reachable from our start (so: our island)
+   //   squad     real plan strength / cap      guard = current target
+   //   flagOwn   flag owner id (0 = gaia, ours = captured)
+   //   dFlag     metres from the first squad member to the flag ring
+   int traceLead = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, 0);
+   float traceDist = -1.0;
+   if (traceLead >= 0)
+   {
+      traceDist = distance(kbUnitGetPosition(traceLead), flagLoc);
+   }
+   int traceWalk = 0;
+   if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(cMyID)),
+                                     kbAreaGroupGetIDByPosition(palaceLoc)) == true)
+   {
+      traceWalk = 1;
+   }
+   // NORTH/SOUTH spelled out: the two islands differ by z, so compare
+   // against map centre. Raw z stays in the line as ground truth, so a
+   // wrong label can never hide the real position.
+   string hPalSide = "SOUTH";
+   if (xsVectorGetZ(palaceLoc) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      hPalSide = "NORTH";
+   }
+   string hMySide = "SOUTH";
+   if (xsVectorGetZ(kbGetPlayerStartingPosition(cMyID)) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      hMySide = "NORTH";
+   }
+   aiEcho("PALTRACE p" + cMyID + " HOME target=" + hPalSide + " me=" + hMySide
+          + " palace=" + palace + " z=" + xsVectorGetZ(palaceLoc)
+          + " walk=" + traceWalk + " squad=" + squadHeld + " guard=" + guardian
+          + " flag=" + flag + " flagOwn=" + flagOwner + " dFlag=" + traceDist);
+
+   // ENGAGE FLOOR - the mission rule's proven gate: run_012 showed 5-6
+   // troops clear every guardian by focus fire. The old 1.5x HP gate was
+   // tuned for fleets and never opened for a 10-man land squad (forensics
+   // RC1: it was THE 15-minute home stall).
+   int tempSoldier = -1;
+   if (guardian > 0 && squadHeld < 4)
+   {
+      aiEcho("PALACEHOME p" + cMyID + " massing " + squadHeld + "/4 before the guardians");
+      return;
+   }
+   if (guardian > 0)
+   {
+      int tasked = 0;
+      for (i = 0; < squadHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         aiTaskUnitWork(tempSoldier, guardian);
+         tasked = tasked + 1;
+      }
+      aiEcho("PALACEHOME p" + cMyID + " " + tasked + " troops onto guardian " + guardian
+                + " (palace " + palace + " z=" + xsVectorGetZ(palaceLoc) + ")");
+      xsSetRuleMinIntervalSelf(3);
+      return;
+   }
+
+   // CONTESTED FLAG (forensics RC3): an enemy garrison inside the ring must
+   // die first - standing beside it is a permanent "capture pending"
+   int defender = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+                                    cUnitStateAlive, flagLoc, 14.0);
+   if (defender > 0)
+   {
+      int cleared = 0;
+      for (i = 0; < squadHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         aiTaskUnitWork(tempSoldier, defender);
+         cleared = cleared + 1;
+      }
+      aiEcho("PALACEHOME p" + cMyID + " clearing defender " + defender + " with " + cleared);
+      xsSetRuleMinIntervalSelf(4);
+      return;
+   }
+
+   // guardians dead, flag not ours: stand the ring
+   xsSetRuleMinIntervalSelf(8);
+   int moved = 0;
+   for (i = 0; < squadHeld)
+   {
+      tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, i);
+      if (tempSoldier < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 8)
+      {
+         aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 6));
+         moved = moved + 1;
+      }
+   }
+   aiEcho("PALACEHOME p" + cMyID + " " + moved + " standing at flag, capture pending");
+}
+
+//==============================================================================
+// istanbulPalaceHold - garrison every home-side flag the team owns
+// (the overseas flag is garrisoned by the mission rule's hold state)
+//==============================================================================
+rule istanbulPalaceHold
+inactive
+minInterval 10
+{
+   int palace = istanbulGetPalace(false);
+   if (palace < 0)
+   {
+      return;
+   }
+   vector palaceLoc = kbUnitGetPosition(palace);
+   int flag = istanbulGetPalaceFlag(palaceLoc);
+   vector flagLoc = palaceLoc;
+   int flagOwner = kbUnitGetPlayerID(palace);
+   if (flag > 0)
+   {
+      flagLoc = kbUnitGetPosition(flag);
+      flagOwner = kbUnitGetPlayerID(flag);
+   }
+   bool oursTeam = false;
+   if (flagOwner > 0)
+   {
+      if (kbGetPlayerTeam(flagOwner) == kbGetPlayerTeam(cMyID))
+      {
+         oursTeam = true;
+      }
+   }
+   if (oursTeam == false)
+   {
+      return;   // nothing of ours to hold - the killer rules do their work
+   }
+
+   if (gIstanbulPalaceHoldPlan < 0)
+   {
+      gIstanbulPalaceHoldPlan = aiPlanCreate("Istanbul Palace Garrison", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulPalaceHoldPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 3);
+      aiPlanSetNoMoreUnits(gIstanbulPalaceHoldPlan, true);
+      // 101, not 95: stock gatherArmy skips only >= 99, so a 95 garrison
+      // is emptied into gAmphibiousArmyPlan and the flag defects. Cap 3.
+      aiPlanSetDesiredPriority(gIstanbulPalaceHoldPlan, 101);
+      aiPlanSetActive(gIstanbulPalaceHoldPlan);
+   }
+   int held = aiPlanGetNumberUnits(gIstanbulPalaceHoldPlan, cUnitTypeLogicalTypeLandMilitary);
+   int tempUnit = -1;
+   if (held < 3)
+   {
+      int flagGroup = kbAreaGroupGetIDByPosition(flagLoc);
+      int landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      int landCount = kbUnitQueryExecute(landQuery);
+      for (i = 0; < landCount)
+      {
+         tempUnit = kbUnitQueryGetResult(landQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 101)
+         {
+            continue;
+         }
+         if (kbAreAreaGroupsPassableByLand(flagGroup, kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit))) == false)
+         {
+            continue;
+         }
+         aiPlanAddUnit(gIstanbulPalaceHoldPlan, tempUnit);
+         held = held + 1;
+         if (held >= 3)
+         {
+            break;
+         }
+      }
+   }
+   int parked = 0;
+   for (i = 0; < held)
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulPalaceHoldPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempUnit), flagLoc) > 10)
+      {
+         aiTaskUnitMove(tempUnit, getRandomPoint(flagLoc, 8));
+      }
+      parked = parked + 1;
+   }
+   if (parked > 0)
+   {
+      aiEcho("PALACEGARRISON p" + cMyID + " " + parked + " holding our flag");
+   }
+}
+
+int gIstanbulRaidShipMin = 3;      // never raid with fewer than this
+int gIstanbulRaidCostMin = 600;    // Galleon class
+
+rule istanbulFortRaid
+inactive
+minInterval 15
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   int fortQuery = createSimpleUnitQuery(cUnitTypeIstanbulVictoryObject, cPlayerRelationAny, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(fortQuery);
+   if (numberFound <= 0)
+   {
+      return;
+   }
+
+   // AMBITION GATE: only once one fort is already ours.
+   bool haveOwn = false;
+   int fortUnit = -1;
+   int fortOwner = -1;
+   for (i = 0; < numberFound)
+   {
+      fortUnit = kbUnitQueryGetResult(fortQuery, i);
+      fortOwner = kbUnitGetPlayerID(fortUnit);
+      if (fortOwner > 0)
+      {
+         if (kbGetPlayerTeam(fortOwner) == kbGetPlayerTeam(cMyID))
+         {
+            haveOwn = true;
+         }
+      }
+   }
+   if (haveOwn == false)
+   {
+      return;   // secure our own fort first
+   }
+
+   int targetFort = getIstanbulKothTarget();
+   if (targetFort < 0)
+   {
+      return;   // both forts already ours
+   }
+   vector targetLoc = kbUnitGetPosition(targetFort);
+
+   // count the heavy hulls before committing to anything
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int shipCount = kbUnitQueryExecute(shipQuery);
+   int strongCount = 0;
+   int tempUnit = -1;
+   int puid = -1;
+   int shipCost = 0;
+   for (i = 0; < shipCount)
+   {
+      tempUnit = kbUnitQueryGetResult(shipQuery, i);
+      // RESERVED HULLS (same guard as the send loop below): skip anything the
+      // stock amphibious system or a fort keeper owns, so the raid strength
+      // count does not include hulls it may not actually task.
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 99)
+      {
+         continue;
+      }
+      puid = kbUnitGetProtoUnitID(tempUnit);
+      shipCost = kbUnitCostPerResource(puid, cResourceWood)
+                 + kbUnitCostPerResource(puid, cResourceGold)
+                 + kbUnitCostPerResource(puid, cResourceInfluence);
+      if (shipCost >= gIstanbulRaidCostMin)
+      {
+         strongCount = strongCount + 1;
+      }
+   }
+
+   if (strongCount < gIstanbulRaidShipMin)
+   {
+      return;   // not a fleet yet - keep building
+   }
+
+   // send ONLY the heavy hulls through the strait; the light ships stay home
+   int sent = 0;
+   for (i = 0; < shipCount)
+   {
+      tempUnit = kbUnitQueryGetResult(shipQuery, i);
+      // RESERVED HULLS. The stock amphibious system is live on this map now:
+      // gAmphibiousAssaultPlan is pri 99 and gAmphibiousTransportPlan 100, and
+      // this loop has no other ownership test - without this guard it would
+      // drag the loaded stock transport through the strait mid-crossing.
+      // Also protects the two fort keepers, now at 100.
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 99)
+      {
+         continue;
+      }
+      puid = kbUnitGetProtoUnitID(tempUnit);
+      shipCost = kbUnitCostPerResource(puid, cResourceWood)
+                 + kbUnitCostPerResource(puid, cResourceGold)
+                 + kbUnitCostPerResource(puid, cResourceInfluence);
+      if (shipCost < gIstanbulRaidCostMin)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempUnit), targetLoc) > 15)
+      {
+         aiTaskUnitMove(tempUnit, getRandomPoint(targetLoc, 12));
+         sent = sent + 1;
+      }
+   }
+
+   if (sent > 0)
+   {
+      aiEcho("RAID p" + cMyID + " " + sent + "/" + strongCount
+                + " galleon-class through the Bosporus at enemy fort");
+   }
+}
+
+//==============================================================================
+// istanbulGunRaid   -   break the fixed guns once there is a fleet for it
+//
+// The anti-ship guns are what stop a fleet reaching anything, so this rule does
+// NOT wait for a fort of our own the way istanbulFortRaid does.
+//
+// WHICH HULLS: the FLEET SPLIT (owner 2026-09-25). Gun killers are whatever
+// istanbulIsGunFleetHull admits - pirate hulls and the per-civ monitor-class -
+// held by istanbulGunFleet at pri 100 so no KOTH rule can steal them. Every
+// other warship guards the Naval Forts.
+//
+// Restored from 893135a4 without two parts of the original:
+//  - the FALLBACK (>= 4 warships of any kind onto a gun when the pool is empty)
+//    sent non-pirate ships at the guns - against the owner's split; an open
+//    owner question in the brief, not code;
+//  - gIstanbulGunPriority, the beach gun of the deleted custom landing.
+//==============================================================================
+int gIstanbulGunRaidEcho = -60000;   // last 'waiting' echo (ms)
+
+rule istanbulGunRaid
+inactive
+minInterval 15
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   if (gIstanbulGunFleetPlan < 0)
+   {
+      return;   // no pool yet
+   }
+
+   int gunQuery = createSimpleUnitQuery(cUnitTypezpAntiShipGun, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   int gunCount = kbUnitQueryExecute(gunQuery);
+   if (gunCount <= 0)
+   {
+      return;
+   }
+
+   // the enemy gun nearest to our base; resolved before any other query runs
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int targetGun = -1;
+   float bestDist = 100000.0;
+   float gunDist = 0.0;
+   int tempUnit = -1;
+   for (i = 0; < gunCount)
+   {
+      tempUnit = kbUnitQueryGetResult(gunQuery, i);
+      gunDist = distance(kbUnitGetPosition(tempUnit), homeBase);
+      if (gunDist < bestDist)
+      {
+         bestDist = gunDist;
+         targetGun = tempUnit;
+      }
+   }
+   if (targetGun < 0)
+   {
+      return;
+   }
+
+   // stale-roster guard (17:39 test, August: "fleet 7/2 -> 0 hulls" - dead ships
+   // counted as held): only hulls that still belong to us count
+   int gunHeld = 0;
+   int rosterN = aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip);
+   for (i = 0; < rosterN)
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (kbUnitGetPlayerID(tempUnit) != cMyID)
+      {
+         continue;
+      }
+      gunHeld = gunHeld + 1;
+   }
+   if (gunHeld < gIstanbulGunFleetMin)
+   {
+      // not a gun fleet yet - one ship against a gun is a gift; the refusal is echoed once a minute
+      if (xsGetTime() - gIstanbulGunRaidEcho >= 60000)
+      {
+         gIstanbulGunRaidEcho = xsGetTime();
+         aiEcho("GUNRAID p" + cMyID + " waiting: gun fleet " + gunHeld + "/" + gIstanbulGunFleetMin + ", " + gunCount
+                + " enemy guns");
+      }
+      return;
+   }
+
+   int sent = 0;
+   for (i = 0; < rosterN)
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (kbUnitGetPlayerID(tempUnit) != cMyID)
+      {
+         continue;   // stale roster entry
+      }
+      aiTaskUnitWork(tempUnit, targetGun);
+      sent = sent + 1;
+   }
+   aiEcho("GUNRAID p" + cMyID + " fleet " + gunHeld + "/" + gIstanbulGunFleetMin
+             + " -> " + sent + " gun-fleet hulls onto gun " + targetGun);
+}
+
+//==============================================================================
+// istanbulAreaRecalc   -   one-shot KB rebuild, the areaRebuild question answered
+//
+// This map's KB was measured with holes: kbArea reported type -1 under two of
+// the four town centres (docs/ai_technical_debt.md era), and both landing
+// beaches tested land-group-unreachable while a human walked units off them.
+// The removed istanbulAreaRebuild rule existed to ask whether re-running
+// kbAreaCalculate() heals the graph; it was deleted with the dock family
+// before the answer was recorded. This asks it again, once, at ~90 seconds.
+// Vanilla already ran kbAreaCalculate at load (aiMain), so the doc's "DO THIS
+// BEFORE ANYTHING ELSE" ordering warning is satisfied; the stale-cached-id
+// risk is small here because the Istanbul rules deliberately hold no plans.
+// If the recalc heals the graph, every kbArea consumer on this map benefits.
+//==============================================================================
+rule istanbulAreaRecalc
+inactive
+minInterval 90
+{
+   kbAreaCalculate();
+   aiEcho("AREARECALC p" + cMyID + " kbAreaCalculate re-run complete");
+   xsDisableSelf();
+}
+
+//==============================================================================
+// istanbulFirstDockBuilder - the FIRST dock comes from the starting Dock Builder
+//
+// Owner 2026-10-05: 'are we able to set up the rule so the dock builder builds the dock as the game started with NO
+// guaranteed impact on anything else - later dock build in the game?!' + 'and also do the Istanbul AI change';
+// 2026-10-06: 'How can we make the dock build rule more reliable?'
+// The map floats one zpDockBuilder near every player's own water flag (zpistanbulb.xs placeWaterFlagInZone). The stock
+// siting aims a dock between the main base and the navy point (aibuildings.xs 1374), which fails on this coast
+// (AIDOCKFAIL, run 14: 12-15 failures per AI, one AI never got a dock). This rule makes the first dock plan itself, with
+// the boat as its builder: the stock wagon idiom (aibuildings.xs wagonMonitor) with the two dock points the
+// archipelago code sets (aiarchibelagoeconomy.xs 2684).
+// The aim (2026-10-06 game, 00:14): a plan aimed 25-36 m from the boat built its dock in 13-19 s; aimed 53-141 m
+// away (one ray toward the town) it vanished within 2 s. So: 16 rays from the boat, the NEAREST shore whose land
+// connects to the town (kbAreAreaGroupsPassableByLand, as at 1618), the water point 10 m off that shore; a vanished
+// plan is followed by the next-nearest shore, up to 5 tries.
+// No impact on anything else:
+//  - it stands down for good when a dock already exists, the stock already has a dock plan, or the boat is gone;
+//  - it never touches a stock rule or priority and never builds docks 2+ - those stay entirely stock;
+//  - 180 s after its first try it destroys its plan and stops, so the stock dock logic is never blocked (the stock
+//    placement-failure handler ignores docks, aibuildings.xs 123).
+//==============================================================================
+int gIstanbulFirstDockPlan = -1;
+int gIstanbulFirstDockTime = -1;
+int gIstanbulFirstDockTries = 0;
+float gIstanbulFirstDockLastDist = -1.0;
+
+// the 16 compass directions, 22.5 degrees apart - literal unit vectors, no trigonometry
+vector istanbulFirstDockDir(int i = 0)
+{
+   if (i == 1) { return (xsVectorSet(0.924, 0.0, 0.383)); }
+   if (i == 2) { return (xsVectorSet(0.707, 0.0, 0.707)); }
+   if (i == 3) { return (xsVectorSet(0.383, 0.0, 0.924)); }
+   if (i == 4) { return (xsVectorSet(0.0, 0.0, 1.0)); }
+   if (i == 5) { return (xsVectorSet(-0.383, 0.0, 0.924)); }
+   if (i == 6) { return (xsVectorSet(-0.707, 0.0, 0.707)); }
+   if (i == 7) { return (xsVectorSet(-0.924, 0.0, 0.383)); }
+   if (i == 8) { return (xsVectorSet(-1.0, 0.0, 0.0)); }
+   if (i == 9) { return (xsVectorSet(-0.924, 0.0, -0.383)); }
+   if (i == 10) { return (xsVectorSet(-0.707, 0.0, -0.707)); }
+   if (i == 11) { return (xsVectorSet(-0.383, 0.0, -0.924)); }
+   if (i == 12) { return (xsVectorSet(0.0, 0.0, -1.0)); }
+   if (i == 13) { return (xsVectorSet(0.383, 0.0, -0.924)); }
+   if (i == 14) { return (xsVectorSet(0.707, 0.0, -0.707)); }
+   if (i == 15) { return (xsVectorSet(0.924, 0.0, -0.383)); }
+   return (xsVectorSet(1.0, 0.0, 0.0));
+}
+
+rule istanbulFirstDockBuilder
+inactive
+minInterval 2
+{
+   int fdDocks = kbUnitCount(cMyID, gDockUnit, cUnitStateABQ);
+   int fdAge = 0;
+   int fdAnyPlan = -1;
+   int fdBoat = -1;
+   int fdTownGroup = -1;
+   int fdShoreGroup = -1;
+   int fdPlan = -1;
+   float fdLen = -1.0;
+   float fdBest = 9999.0;
+   vector fdBoatPos = cInvalidVector;
+   vector fdTown = cInvalidVector;
+   vector fdDir = cInvalidVector;
+   vector fdPos = cInvalidVector;
+   vector fdBestShore = cInvalidVector;
+   vector fdBestDir = cInvalidVector;
+   vector fdWater = cInvalidVector;
+
+   if (fdDocks > 0)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " dock stands after " + gIstanbulFirstDockTries + " tries - done");
+      xsDisableSelf();
+      return;
+   }
+
+   // a plan of ours is out: wait for it (180 s cap from the first try), or note that it vanished
+   if (gIstanbulFirstDockPlan >= 0)
+   {
+      if (aiPlanGetState(gIstanbulFirstDockPlan) != -1)
+      {
+         fdAge = xsGetTime() - gIstanbulFirstDockTime;
+         if (fdAge > 180000)
+         {
+            aiEcho("FIRSTDOCKB p" + cMyID + " no dock after 180 s - plan " + gIstanbulFirstDockPlan
+                   + " destroyed, the stock docks take over");
+            aiPlanDestroy(gIstanbulFirstDockPlan);
+            xsDisableSelf();
+         }
+         return;
+      }
+      aiEcho("FIRSTDOCKB p" + cMyID + " try " + gIstanbulFirstDockTries + " plan " + gIstanbulFirstDockPlan
+             + " gone without a dock");
+      gIstanbulFirstDockPlan = -1;
+   }
+
+   // stand down for good: the stock already plans a dock, the tries or the time are used up, the boat is gone
+   fdAnyPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+   if (fdAnyPlan >= 0)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " the stock plans a dock - stands down");
+      xsDisableSelf();
+      return;
+   }
+   if (gIstanbulFirstDockTries >= 5)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " 5 tries without a dock - the stock docks take over");
+      xsDisableSelf();
+      return;
+   }
+   if (gIstanbulFirstDockTime >= 0)
+   {
+      fdAge = xsGetTime() - gIstanbulFirstDockTime;
+      if (fdAge > 180000)
+      {
+         aiEcho("FIRSTDOCKB p" + cMyID + " 180 s used up - the stock docks take over");
+         xsDisableSelf();
+         return;
+      }
+   }
+   fdBoat = getUnit(cUnitTypezpDockBuilder, cMyID, cUnitStateAlive);
+   if (fdBoat < 0)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " no Dock Builder - stands down");
+      xsDisableSelf();
+      return;
+   }
+   fdBoatPos = kbUnitGetPosition(fdBoat);
+   fdTown = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (fdTown == cInvalidVector)
+   {
+      fdTown = kbGetPlayerStartingPosition(cMyID);
+   }
+   if (fdBoatPos == cInvalidVector || fdTown == cInvalidVector)
+   {
+      return;   // the base is not set up yet - next pass
+   }
+   fdTownGroup = kbAreaGroupGetIDByPosition(fdTown);
+
+   // 16 rays from the boat: the first point that is not water, up to 90 m; keep the nearest whose land connects to
+   // the town and that lies farther than the shore the last try used
+   for (fdRay = 0; < 16)
+   {
+      fdDir = istanbulFirstDockDir(fdRay);
+      fdPos = fdBoatPos;
+      fdLen = -1.0;
+      for (fdStep = 1; <= 90)
+      {
+         fdPos = fdPos + fdDir;
+         if (kbAreaGetType(kbAreaGetIDByPosition(fdPos)) != cAreaTypeWater)
+         {
+            fdLen = fdStep;
+            break;
+         }
+      }
+      if (fdLen < 0.0)
+      {
+         continue;   // open water this way
+      }
+      if (fdLen <= gIstanbulFirstDockLastDist)
+      {
+         continue;   // an earlier try used this distance
+      }
+      fdShoreGroup = kbAreaGroupGetIDByPosition(fdPos);
+      if (kbAreAreaGroupsPassableByLand(fdShoreGroup, fdTownGroup) == false)
+      {
+         continue;   // not our land: another island, the far bank, a cliff
+      }
+      if (fdLen < fdBest)
+      {
+         fdBest = fdLen;
+         fdBestShore = fdPos;
+         fdBestDir = fdDir;
+      }
+   }
+   if (fdBestShore == cInvalidVector)
+   {
+      aiEcho("FIRSTDOCKB p" + cMyID + " no shore of our land within 90 m of the boat after " + gIstanbulFirstDockTries
+             + " tries - the stock docks take over");
+      xsDisableSelf();
+      return;
+   }
+
+   // the water point 10 m off that shore, back along the ray (the boat itself when the shore is that close)
+   fdWater = fdBoatPos;
+   if (fdBest > 12.0)
+   {
+      fdWater = fdBestShore - fdBestDir * 10.0;
+   }
+
+   fdPlan = createSimpleBuildPlan(gDockUnit, 1, 75, true, -1, kbBaseGetMainID(cMyID), 0, -1, true);
+   if (fdPlan < 0)
+   {
+      return;   // building is off for now (cvOkToBuild) - next pass
+   }
+   aiPlanAddUnitType(fdPlan, cUnitTypezpDockBuilder, 1, 1, 1);
+   aiPlanAddUnit(fdPlan, fdBoat);
+   aiPlanSetVariableVector(fdPlan, cBuildPlanDockPlacementPoint, 0, fdBestShore);
+   aiPlanSetVariableVector(fdPlan, cBuildPlanDockPlacementPoint, 1, fdWater);
+   gIstanbulFirstDockPlan = fdPlan;
+   gIstanbulFirstDockTries = gIstanbulFirstDockTries + 1;
+   gIstanbulFirstDockLastDist = fdBest;
+   if (gIstanbulFirstDockTime < 0)
+   {
+      gIstanbulFirstDockTime = xsGetTime();
+   }
+   aiEcho("FIRSTDOCKB p" + cMyID + " try " + gIstanbulFirstDockTries + " plan " + fdPlan
+          + " boat " + xsVectorGetX(fdBoatPos) + "/" + xsVectorGetZ(fdBoatPos)
+          + " shore " + xsVectorGetX(fdBestShore) + "/" + xsVectorGetZ(fdBestShore) + " at " + fdBest + " m");
+}
+
+//==============================================================================
+// LONDON placement (2026-09-23, moved here from aibuildings.xs 2026-09-24 - isolation). London's city blocks leave
+// little room inside the 40 m main base: economic buildings go to the countryside behind our own city wall (owner
+// 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations / mills / Folwarks'), a Town
+// Center that failed twice goes there (londonPlanPlacer), and the base may grow over any area up to 120 m
+// (londonBuildingPlacementFailedHandler).
+//==============================================================================
+
+//==============================================================================
+// londonCountrysidePoint - 40 m beyond our own city wall gate nearest the main base (the side away from the river),
+// cached while that gate stands; cInvalidVector when the walls are not ours or an ally's (non-2-team lobbies: gaia)
+//==============================================================================
+vector londonCountrysidePoint(void)
+{
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int best = -1;
+   float bestDist = 100000.0;
+   float side = 1.0;
+   float d = 0.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gLondonFieldVec != cInvalidVector && gLondonFieldGate >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gLondonFieldGate) > 0.0)
+      {
+         return (gLondonFieldVec);
+      }
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   // the river runs along x (zplondon.xs 4): our bank is the side of the bridge middle our base is on
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 300.0);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      // the city wall stands beyond the seats, away from the river; the Keeps' and the bridge's gates are riverward
+      // (plain steps: XS rejects '(a - b) * c < ...' in a condition - Error 0308, run 19)
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
+      {
+         continue;
+      }
+      d = distance(gateVec, tcVec);
+      if (d < bestDist)
+      {
+         bestDist = d;
+         best = gate;
+      }
+   }
+   if (best < 0)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " no own city wall gate within 300 m - default placement");
+      return (cInvalidVector);
+   }
+   gateVec = kbUnitGetPosition(best);
+   gLondonFieldGate = best;
+   gLondonFieldVec = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
+   aiEcho("LONDONPLACE p" + cMyID + " countryside " + xsVectorGetX(gLondonFieldVec) + "/" + xsVectorGetZ(gLondonFieldVec)
+          + " behind gate " + best + " (" + bestDist + " m from the base)");
+   return (gLondonFieldVec);
+}
+
+//==============================================================================
+// londonFieldPoint - London: the countryside point for the NEXT economic building - 40 m beyond whichever of our own
+// city wall gates (the side away from the river) has the fewest buildings within 50 m; distance to the base breaks
+// ties. Run 21: one point per player filled up (Plantation / Mill placement failures up to 27 each after ~7 fields).
+//==============================================================================
+vector londonFieldPoint(void)
+{
+   static int gateArr = -1;
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int n = 0;
+   int crowd = 0;
+   int bestGate = -1;
+   int bestCrowd = 0;
+   float side = 1.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
+   float score = 0.0;
+   float bestScore = 1000000.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+   vector point = cInvalidVector;
+   vector bestPoint = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gateArr < 0)
+   {
+      gateArr = xsArrayCreateInt(8, -1, "London field gates");
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   // the gates first, into the array (one shared query object: read it before any other query runs)
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 160.0);   // only the gates behind our own seat (owner 2026-09-24: estates were built far away)
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
+      {
+         continue;
+      }
+      if (n < 8)
+      {
+         xsArraySetInt(gateArr, n, gate);
+         n = n + 1;
+      }
+   }
+   for (k = 0; < n)
+   {
+      gate = xsArrayGetInt(gateArr, k);
+      gateVec = kbUnitGetPosition(gate);
+      point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
+      crowd = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateABQ, point, 50.0);
+      // the nearest gate wins; the next nearest only once it holds 4+ buildings (was: crowd x 30 + distance / 10 - a gate
+      // 300 m away cost as much as one building, so the estates drifted to the far end of the bank)
+      score = distance(point, tcVec);
+      if (crowd >= 4)
+      {
+         score = score + 1000.0;
+      }
+      if (score < bestScore)
+      {
+         bestScore = score;
+         bestGate = gate;
+         bestCrowd = crowd;
+         bestPoint = point;
+      }
+   }
+   if (bestGate < 0)
+   {
+      return (londonCountrysidePoint());
+   }
+   if (xsGetTime() - gLondonPlaceEcho >= 30000)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " field point behind gate " + bestGate + " of " + n + " gates, " + bestCrowd
+             + " buildings there");
+   }
+   return (bestPoint);
+}
+
+//==============================================================================
+// londonSelectFieldPosition - London: the economic buildings (Mill / Farm / Plantation / Hacienda / Folwark / rice
+// paddy) at the countryside point, the Town Center's centre-position placement; false = not handled (default path)
+//==============================================================================
+bool londonSelectFieldPosition(int planID = -1, int puid = -1)
+{
+   vector point = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (false);
+   }
+   if (puid != gFarmUnit && puid != gPlantationUnit && puid != cUnitTypeMill && puid != cUnitTypePlantation &&
+       puid != cUnitTypeFarm && puid != cUnitTypedeHacienda && puid != cUnitTypedeFolwark &&
+       puid != cUnitTypedeFolwarkFarm && puid != cUnitTypeypRicePaddy)
+   {
+      return (false);
+   }
+   point = londonFieldPoint();
+   if (point == cInvalidVector)
+   {
+      return (false);
+   }
+   aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, point);
+   aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 60.0);
+   aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
+          + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " dist " + distance(point, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))));
+   return (true);
+}
+
+//==============================================================================
+// londonBuildingPlacementFailedHandler - London's building-placement-failed handler, registered in place of the stock
+// one by initializePirateRules (aiSetHandler) on London only: the stock body (aibuildings.xs) plus the London growth -
+// no area refused (the river, the wall hills and the countryside are separate land groups in the KB; run 19 froze
+// every base at 100 m), capped at 120 m so the base stays on its bank - and the AIDIAG counters.
+//==============================================================================
+void londonBuildingPlacementFailedHandler(int baseID = -1, int puid = -1)
+{
+   gPlacementFailures = gPlacementFailures + 1;   // AI test campaign counter (aiTestDiag), no behaviour
+   if (puid == cUnitTypeTownCenter)
+   {
+      gPlacementFailuresTC = gPlacementFailuresTC + 1;
+   }
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
+   {
+      gPlacementFailuresDock = gPlacementFailuresDock + 1;   // AI test campaign counter (aiTestDiag), no behaviour
+      return;
+   }
+   if ((puid == cUnitTypedeTorp) && (cMyCiv == cCivDESwedish))
+   {
+      int last = xsArrayGetSize(gTorpPositionsToAvoid);
+      xsArrayResizeVector(gTorpPositionsToAvoid, last + 1);
+      xsArraySetVector(gTorpPositionsToAvoid, last - 1, gTorpPosition);
+      // Queue up a torp again.
+      xsEnableRule("delayTorpMonitor");
+      return;
+   }
+   if (puid == cUnitTypedeField)
+   {
+      int numberFullGranaries = xsArrayGetSize(gFullGranaries);
+      for (i = 0; < numberFullGranaries)
+      {
+         int granaryID = xsArrayGetInt(gFullGranaries, i);
+         if (granaryID == gFieldGranaryID)
+         {
+            break;
+         }
+         if (granaryID >= 0 && kbUnitGetPlayerID(granaryID) == cMyID)
+         {
+            continue;
+         }
+         xsArraySetInt(gFullGranaries, i, gFieldGranaryID);
+         break;
+      }
+   }
+   if (baseID < 0)
+   {
+      // Assuming main base.
+      baseID = kbBaseGetMainID(cMyID);
+   }
+
+   static int basesToAvoid = -1;
+   static int lastExpansionTime = 0;
+   bool expand = true;
+
+   if (basesToAvoid < 0)
+   {
+      basesToAvoid = xsArrayCreateInt(5, -1, "Bases to avoid expanding");
+   }
+
+   for (i = 0; < 5)
+   {
+      if (xsArrayGetInt(basesToAvoid, i) == baseID)
+      {
+         expand = false;
+         break;
+      }
+   }
+
+   float newDistance = 0.0;
+   if (expand == true)
+   {
+      vector baseLocation = kbBaseGetLocation(cMyID, baseID);
+      int baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
+      int numberAreas = kbAreaGetNumber();
+      // AssertiveWall: expand more aggressively based on strategy. Old value was +10
+      int expansionInterval = 1 * 60 * 1000;
+      if (gStrategy == cStrategyGreed || gGetGreedy == true)
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 30.0;
+         expansionInterval = 20 * 1000;
+      }
+      else
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 20.0;
+         expansionInterval = 40 * 1000;
+      }
+
+      
+      // AssertiveWall Shrink the wall radius on Island Maps
+      /*if ((puid == cUnitTypeBuilding && puid != cUnitTypeLogicalTypeBuildingsNotWalls) &&
+         gStartOnDifferentIslands == true)
+      {
+         newDistance = newDistance - 50.0;
+      }*/
+
+      // Make sure new areas we cover are in the same area group.
+      // AssertiveWall: Except on Archipelago maps, then allow different area groups
+         for (i = 0; < numberAreas)
+         {
+            vector location = kbAreaGetCenter(i);
+            if (distance(location, baseLocation) > newDistance)
+            {
+               continue;
+            }
+            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup && gIsArchipelagoMap == false)
+            {
+               continue;
+            }
+            // LONDON: nothing here is 'another island' - the river, the wall hills, and the countryside behind the city
+            // wall, which the knowledge base keeps as its own land group (run 19: every base froze at 100 m on 'area
+            // type -1 group 5/6/7' while its Plantations stood out there). The 120 m cap below keeps the base on its bank.
+            if (gIsLondon == true)
+            {
+               continue;
+            }
+            for (j = 0; < 5)
+            {
+               if (xsArrayGetInt(basesToAvoid, j) == -1)
+               {
+                  xsArraySetInt(basesToAvoid, baseID);
+                  break;
+               }
+            }
+            expand = false;
+            break;
+         }
+   }
+
+   if (expand == false)
+   {
+      return;
+   }
+
+   // LONDON: the base stays on its own bank - the river is 120 m and more from the seats (zplondon.xs 12.2)
+   if (gIsLondon == true && newDistance > 120.0)
+   {
+      return;
+   }
+
+   int time = xsGetTime();
+   if ((time - lastExpansionTime) > expansionInterval) // AssertiveWall: old expansionInterval = 60 sec
+   {
+      debugBuildings("Expanding base " + baseID + " to " + newDistance);
+      if (gIsLondon == true)
+      {
+         aiEcho("LONDONPLACE p" + cMyID + " base " + baseID + " grows to " + newDistance + " m after a " + kbGetProtoUnitName(puid) + " failure");
+      }
+      kbBaseSetPositionAndDistance(cMyID, baseID, baseLocation, newDistance);
+      lastExpansionTime = time;
+   }
+}
+
+//==============================================================================
+// aiTestPlacementFailedHandler - the AIDIAG counters on every map (echo only): count, then the stock handler unchanged
+//==============================================================================
+void aiTestPlacementFailedHandler(int baseID = -1, int puid = -1)
+{
+   gPlacementFailures = gPlacementFailures + 1;
+   if (puid == cUnitTypeTownCenter)
+   {
+      gPlacementFailuresTC = gPlacementFailuresTC + 1;
+   }
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
+   {
+      gPlacementFailuresDock = gPlacementFailuresDock + 1;
+      // where the dock plan searched (echo only, 2026-09-25: Istanbul run 14 - every dock failure 'placement failed',
+      // 12-15 per AI, one AI never got a dock): the plan's two placement points (aibuildings.xs 1374: main base,
+      // navy point) and gNavyVec
+      int dockFailPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, puid);
+      vector dockFailP0 = cInvalidVector;
+      vector dockFailP1 = cInvalidVector;
+      if (dockFailPlan >= 0)
+      {
+         dockFailP0 = aiPlanGetVariableVector(dockFailPlan, cBuildPlanDockPlacementPoint, 0);
+         dockFailP1 = aiPlanGetVariableVector(dockFailPlan, cBuildPlanDockPlacementPoint, 1);
+      }
+      aiEcho("AIDOCKFAIL p" + cMyID + " #" + gPlacementFailuresDock + " plan " + dockFailPlan
+             + " point0 " + xsVectorGetX(dockFailP0) + "/" + xsVectorGetZ(dockFailP0)
+             + " point1 " + xsVectorGetX(dockFailP1) + "/" + xsVectorGetZ(dockFailP1)
+             + " navyvec " + xsVectorGetX(gNavyVec) + "/" + xsVectorGetZ(gNavyVec));
+   }
+   buildingPlacementFailedHandler(baseID, puid);
+}
+
+//==============================================================================
+// pirateOnConstructionBlock - true when pos is within 30 m of one of our construction block markers
+//==============================================================================
+bool pirateOnConstructionBlock(vector pos = cInvalidVector)
+{
+   if (pos == cInvalidVector)
+   {
+      return (false);
+   }
+   return (getUnitCountByLocation(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny, pos, 30.0) > 0);
+}
+
+//==============================================================================
+// pirateForwardBasePoint - London and Paris (owner 2026-09-24): the forward base on the construction block nearest the
+// enemy we attack, on the other shore - found by the zpAILondonConstrMarker the map places on every construction block
+// (one per player per block, owned by us: the AI's own query sees it). London waits until its war plan has opened the
+// crossing (gLondonWarState 2). cInvalidVector = not now; the rule asks again later.
+//==============================================================================
+vector pirateForwardBasePoint(void)
+{
+   static int lastEcho = -60000;
+   string tag = "PIRATEPLACE";
+   int q = -1;
+   int n = 0;
+   int unit = -1;
+   int enemy = aiGetMostHatedPlayerID();
+   float d = 0.0;
+   float ours = 0.0;
+   float bestD = 100000.0;
+   vector v = cInvalidVector;
+   vector best = cInvalidVector;
+   vector enemyVec = cInvalidVector;
+   vector ourVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   if (gPirateForwardBaseMap == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gIsLondon == true)
+   {
+      tag = "LONDONPLACE";
+      if (gLondonWarState != 2)
+      {
+         if (xsGetTime() - lastEcho >= 60000)
+         {
+            lastEcho = xsGetTime();
+            aiEcho(tag + " p" + cMyID + " forward base asked, crossing still closed (war state " + gLondonWarState + ") - later");
+         }
+         return (cInvalidVector);
+      }
+   }
+   enemyVec = kbGetPlayerStartingPosition(enemy);
+   q = createSimpleUnitQuery(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny);
+   n = kbUnitQueryExecute(q);
+   for (i = 0; < n)
+   {
+      unit = kbUnitQueryGetResult(q, i);
+      v = kbUnitGetPosition(unit);
+      d = distance(v, enemyVec);
+      ours = distance(v, ourVec);
+      // the other shore only: a block nearer the enemy than our own base
+      if (d >= ours)
+      {
+         continue;
+      }
+      if (d < bestD)
+      {
+         bestD = d;
+         best = v;
+      }
+   }
+   if (xsGetTime() - lastEcho >= 60000)
+   {
+      lastEcho = xsGetTime();
+      if (best == cInvalidVector)
+      {
+         aiEcho(tag + " p" + cMyID + " forward base asked, no construction block on the enemy side among " + n + " markers (enemy " + enemy + ") - later");
+      }
+      else
+      {
+         aiEcho(tag + " p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(best) + "/" + xsVectorGetZ(best)
+                + " (enemy construction block, enemy " + enemy + ", " + n + " markers)");
+      }
+   }
+   return (best);
+}
+
+//==============================================================================
+// LONDON - round 1 (2026-09-23): setup + diagnostics. Plan, criteria and the next rounds:
+// docs/briefs/2026-09-23-london-ai-plan.md. Echo vocabulary: LONDON / LONDONSETUP / LONDONDIAG.
+//==============================================================================
+
+//==============================================================================
+// londonSetup - one shot: the bridge geometry from the player's own marker
+//==============================================================================
+rule londonSetup
+inactive
+minInterval 10
+{
+   int marker = -1;
+   int tc = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int keepQuery = -1;
+   int keepCount = 0;
+   int swap = -1;
+   int nearPath = 0;
+   int farPath = 0;
+   vector tcVec = cInvalidVector;
+   vector sortFrom = cInvalidVector;
+
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0)
+   {
+      aiEcho("LONDONSETUP p" + cMyID + " marker not found yet");
+      return;
+   }
+   gLondonBridgeVec = kbUnitGetPosition(marker);
+   gLondonPortSocket = getClosestGaiaUnit(cUnitTypezpSPCPortSocket, gLondonBridgeVec, 40.0);
+
+   // the two bridge gates: gaia SPCFortGate within 25 m of the marker (the export: 13 m and 10 m off the middle)
+   gateQuery = createAdvancedGaiaUnitQuery(cUnitTypeSPCFortGate, cUnitStateAlive, gLondonBridgeVec, 25.0, true);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   if (gateCount > 0)
+   {
+      gLondonGateA = kbUnitQueryGetResult(gateQuery, 0);
+   }
+   if (gateCount > 1)
+   {
+      gLondonGateB = kbUnitQueryGetResult(gateQuery, 1);
+   }
+
+   // our side = the gate closer to our town centre
+   tc = getUnit(cUnitTypeTownCenter, cMyID, cUnitStateAlive);
+   if (tc >= 0)
+   {
+      tcVec = kbUnitGetPosition(tc);
+   }
+   gLondonGateOurs = gLondonGateA;
+   if (gLondonGateB >= 0 && tc >= 0)
+   {
+      if (distance(kbUnitGetPosition(gLondonGateB), tcVec) < distance(kbUnitGetPosition(gLondonGateA), tcVec))
+      {
+         gLondonGateOurs = gLondonGateB;
+      }
+   }
+
+   // the Keeps: gaia zpSPCTowerOfLondon, sorted by distance from our town centre (the marker when no centre yet);
+   // the pathfinder overrides the straight line when it reaches only the farther one
+   sortFrom = gLondonBridgeVec;
+   if (tc >= 0)
+   {
+      sortFrom = tcVec;
+   }
+   keepQuery = createAdvancedGaiaUnitQuery(cUnitTypezpSPCTowerOfLondon, cUnitStateAlive, sortFrom, -1.0, true);
+   keepCount = kbUnitQueryExecute(keepQuery);
+   if (keepCount > 0)
+   {
+      gLondonKeepNear = kbUnitQueryGetResult(keepQuery, 0);
+   }
+   if (keepCount > 1)
+   {
+      gLondonKeepFar = kbUnitQueryGetResult(keepQuery, 1);
+   }
+   if (tc >= 0 && gLondonKeepNear >= 0)
+   {
+      if (kbCanPath2(tcVec, kbUnitGetPosition(gLondonKeepNear), cUnitTypeMusketeer, 0.0) == true)
+      {
+         nearPath = 1;
+      }
+   }
+   if (tc >= 0 && gLondonKeepFar >= 0)
+   {
+      if (kbCanPath2(tcVec, kbUnitGetPosition(gLondonKeepFar), cUnitTypeMusketeer, 0.0) == true)
+      {
+         farPath = 1;
+      }
+   }
+   if (nearPath == 0 && farPath == 1)
+   {
+      swap = gLondonKeepNear;
+      gLondonKeepNear = gLondonKeepFar;
+      gLondonKeepFar = swap;
+   }
+   aiEcho("LONDONSETUP p" + cMyID + " marker " + xsVectorGetX(gLondonBridgeVec) + "/" + xsVectorGetZ(gLondonBridgeVec) + " socket " + gLondonPortSocket + " gates " + gLondonGateA + " " + gLondonGateB
+          + " ours " + gLondonGateOurs + " keepNear " + gLondonKeepNear + " keepFar " + gLondonKeepFar + " pathNear " + nearPath + " pathFar " + farPath
+          + " gates found " + gateCount + " keeps found " + keepCount + " tc " + tc);
+   if (gLondonTestMode == true)
+   {
+      xsEnableRule("londonDiag");
+      gLondonArmyFloor = 8;
+      gLondonKeepGarrison = 6;
+   }
+   xsEnableRule("londonWarPlan");
+   xsEnableRule("londonKeepHold");
+   xsEnableRule("londonKeepRetake");
+   xsEnableRule("londonGateKiller");
+   xsDisableSelf();
+}
+
+//==============================================================================
+// londonDiag - test mode only: the knowledge base's view of London once a minute; kbAreaCalculate re-run on pass 2
+// (Istanbul's cure for its holes, istanbulAreaRecalc) so pass 3 can be compared with pass 1. Data for round 2, not a rule.
+//==============================================================================
+rule londonDiag
+inactive
+minInterval 60
+{
+   int tc = -1;
+   int enemyTc = -1;
+   int groups = 0;
+   int myGroup = -1;
+   int bridgeGroup = -1;
+   int farGroup = -1;
+   int enemyGroup = -1;
+   int pathNear = 0;
+   int pathBridge = 0;
+   int pathFar = 0;
+   int pathEnemy = 0;
+   int exploreState = -1;
+   vector tcVec = cInvalidVector;
+   vector farVec = cInvalidVector;
+
+   gLondonDiagPass = gLondonDiagPass + 1;
+   tc = getUnit(cUnitTypeTownCenter, cMyID, cUnitStateAlive);
+   if (tc < 0)
+   {
+      aiEcho("LONDONDIAG p" + cMyID + " pass " + gLondonDiagPass + " no town centre");
+      return;
+   }
+   tcVec = kbUnitGetPosition(tc);
+   groups = kbAreaGroupGetNumber();
+   myGroup = kbAreaGroupGetIDByPosition(tcVec);
+   bridgeGroup = kbAreaGroupGetIDByPosition(gLondonBridgeVec);
+   if (gLondonKeepFar >= 0)
+   {
+      farVec = kbUnitGetPosition(gLondonKeepFar);
+      farGroup = kbAreaGroupGetIDByPosition(farVec);
+      if (kbCanPath2(tcVec, farVec, cUnitTypeMusketeer, 0.0) == true)
+      {
+         pathFar = 1;
+      }
+   }
+   if (gLondonKeepNear >= 0)
+   {
+      if (kbCanPath2(tcVec, kbUnitGetPosition(gLondonKeepNear), cUnitTypeMusketeer, 0.0) == true)
+      {
+         pathNear = 1;
+      }
+   }
+   if (kbCanPath2(tcVec, gLondonBridgeVec, cUnitTypeMusketeer, 0.0) == true)
+   {
+      pathBridge = 1;
+   }
+   // the enemy's centre, when the knowledge base has seen one
+   enemyTc = getUnit(cUnitTypeTownCenter, cPlayerRelationEnemy, cUnitStateAlive);
+   if (enemyTc >= 0)
+   {
+      enemyGroup = kbAreaGroupGetIDByPosition(kbUnitGetPosition(enemyTc));
+      if (kbCanPath2(tcVec, kbUnitGetPosition(enemyTc), cUnitTypeMusketeer, 0.0) == true)
+      {
+         pathEnemy = 1;
+      }
+   }
+   if (gLandExplorePlan >= 0)
+   {
+      exploreState = aiPlanGetState(gLandExplorePlan);
+   }
+   aiEcho("LONDONDIAG p" + cMyID + " pass " + gLondonDiagPass + " groups " + groups + " myGroup " + myGroup + " bridgeGroup " + bridgeGroup
+          + " farKeepGroup " + farGroup + " enemyTc " + enemyTc + " enemyGroup " + enemyGroup + " path near " + pathNear + " bridge " + pathBridge
+          + " farKeep " + pathFar + " enemy " + pathEnemy + " explorePlan " + gLandExplorePlan + " state " + exploreState);
+   if (gLondonDiagPass == 2)
+   {
+      kbAreaCalculate();
+      aiEcho("LONDONDIAG p" + cMyID + " kbAreaCalculate re-run - compare pass 3 with pass 1");
+   }
+   if (gLondonDiagPass >= 8)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// LONDON - round 2 (2026-09-23): the war plan and the gate killer. Echo vocabulary: LONDONWAR / LONDONGATE.
+// Run 15 (round 1) measured kbCanPath2 = 1 from the town centre to the bridge, the far Keep and the enemy centre
+// while both gaia bridge gates stood, and both banks in one area group: the pathfinder query does not see gates,
+// so the crossing is judged by the gates themselves (the brief's reading of 'path bridge 1').
+//==============================================================================
+
+//==============================================================================
+// londonGateBlocks - true while a gate stands in our way: alive and neither ours nor an ally's
+//==============================================================================
+bool londonGateBlocks(int gate = -1)
+{
+   int owner = -1;
+
+   if (gate < 0)
+   {
+      return (false);
+   }
+   if (kbUnitGetCurrentHitpoints(gate) <= 0.0)
+   {
+      return (false);
+   }
+   owner = kbUnitGetPlayerID(gate);
+   if (owner == cMyID)
+   {
+      return (false);
+   }
+   if (owner > 0)
+   {
+      if (kbIsPlayerAlly(owner) == true)
+      {
+         return (false);
+      }
+   }
+   return (true);
+}
+
+//==============================================================================
+// londonFarBridgeGate - the bridge gate on the enemy's side
+//==============================================================================
+int londonFarBridgeGate(void)
+{
+   if (gLondonGateOurs == gLondonGateA)
+   {
+      return (gLondonGateB);
+   }
+   return (gLondonGateA);
+}
+
+//==============================================================================
+// londonBlockingGate - the blocking SPCFortGate closest to our town centre within radius of pos, FRESH every call, any
+// owner: gaia or an enemy's gate blocks, ours or an ally's does not (londonGateBlocks). Never by a remembered id: the
+// map converts the bridge gates to whoever holds the bridge post and REBUILDS a destroyed gate from its socket as a new
+// unit (zplondon.xs 13.5) - run 31: every AI tracked the setup ids 207 / 232, saw both die, released, and a rebuilt
+// red gate then stood unseen on the bridge while the armies idled at it (owner 2026-09-24, 'eliminate the between
+// states'). bridge == false skips the bridge's own gates (within 25 m of the marker). Sets gLondonBlockCount.
+//==============================================================================
+int londonBlockingGate(vector pos = cInvalidVector, float radius = 25.0, bool bridge = true)
+{
+   int q = -1;
+   int n = 0;
+   int gate = -1;
+   int best = -1;
+   float d = 0.0;
+   float bestD = 100000.0;
+   vector tcVec = cInvalidVector;
+
+   gLondonBlockCount = 0;
+   if (pos == cInvalidVector)
+   {
+      return (-1);
+   }
+   if (gLondonGateArr < 0)
+   {
+      gLondonGateArr = xsArrayCreateInt(16, -1, "London gate scratch");
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   // the shared query object: copy the results out before anything else queries
+   q = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAny, cUnitStateAlive, pos, radius);
+   n = kbUnitQueryExecute(q);
+   if (n > 16)
+   {
+      n = 16;
+   }
+   for (i = 0; < n)
+   {
+      xsArraySetInt(gLondonGateArr, i, kbUnitQueryGetResult(q, i));
+   }
+   for (i = 0; < n)
+   {
+      gate = xsArrayGetInt(gLondonGateArr, i);
+      if (bridge == false && gLondonBridgeVec != cInvalidVector)
+      {
+         if (distance(kbUnitGetPosition(gate), gLondonBridgeVec) < 25.0)
+         {
+            continue;
+         }
+      }
+      if (londonGateBlocks(gate) == false)
+      {
+         continue;
+      }
+      gLondonBlockCount = gLondonBlockCount + 1;
+      d = distance(kbUnitGetPosition(gate), tcVec);
+      if (d < bestD)
+      {
+         bestD = d;
+         best = gate;
+      }
+   }
+   return (best);
+}
+
+//==============================================================================
+// londonKeepGate - the blocking gate of a Keep's walls (within 40 m: the export's gates stand 13.4 m off the building,
+// 13.3's sweep is 40 m), fresh and any owner (a captured Keep's gates are converted with it), never a bridge gate
+//==============================================================================
+int londonKeepGate(int keep = -1)
+{
+   if (keep < 0)
+   {
+      return (-1);
+   }
+   return (londonBlockingGate(kbUnitGetPosition(keep), 40.0, false));
+}
+
+//==============================================================================
+// londonGateTarget - the ordered target list: the near Keep's gates, our bridge gate, the far bridge gate, and the
+// far Keep's gates only after the war plan released; sets gLondonGateKind
+//==============================================================================
+int londonGateTarget(void)
+{
+   int gate = -1;
+
+   gLondonGateKind = 0;
+   gate = londonKeepGate(gLondonKeepNear);
+   if (gate >= 0)
+   {
+      gLondonGateKind = 1;
+      return (gate);
+   }
+   // the bridge: whatever gate blocks there now (the rebuilt / converted one included), our side first
+   gate = londonBlockingGate(gLondonBridgeVec, 25.0, true);
+   if (gate >= 0)
+   {
+      gLondonGateKind = 3;
+      if (distance(kbUnitGetPosition(gate), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))) <
+          distance(gLondonBridgeVec, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))))
+      {
+         gLondonGateKind = 2;
+      }
+      return (gate);
+   }
+   if (gLondonWarState == 2)
+   {
+      gate = londonKeepGate(gLondonKeepFar);
+      if (gate >= 0)
+      {
+         gLondonGateKind = 4;
+         return (gate);
+      }
+   }
+   return (-1);
+}
+
+string londonGateKindName(int kind = 0)
+{
+   if (kind == 1)
+   {
+      return ("nearKeep");
+   }
+   if (kind == 2)
+   {
+      return ("bridgeOurs");
+   }
+   if (kind == 3)
+   {
+      return ("bridgeFar");
+   }
+   if (kind == 4)
+   {
+      return ("farKeep");
+   }
+   return ("none");
+}
+
+//==============================================================================
+// londonWarPlan - holds the stock attack rules and the attack permission while a bridge gate blocks the crossing,
+// releases them when both are down or ours; takes them back if the crossing closes again. The stock enables
+// (aicore.xs 2478-2490, the Age II transition) run only while cvOkToAttack is true, so the release enables the
+// three rules itself.
+//==============================================================================
+rule londonWarPlan
+inactive
+minInterval 10
+{
+   static int lastBeat = -60000;
+   bool crossingOpen = true;
+   int farGate = londonBlockingGate(gLondonBridgeVec, 25.0, true);   // the blocking bridge gate closest to us, fresh
+   int blockers = gLondonBlockCount;
+
+   if (farGate >= 0)
+   {
+      crossingOpen = false;
+   }
+
+   if (crossingOpen == false)
+   {
+      gLondonWarPasses = gLondonWarPasses + 1;
+      cvOkToAttack = false;
+      if (xsIsRuleEnabled("attackManager") == true)
+      {
+         xsDisableRule("attackManager");
+      }
+      if (xsIsRuleEnabled("raidEnabler") == true)
+      {
+         xsDisableRule("raidEnabler");
+      }
+      if (gLondonWarState != 1)
+      {
+         gLondonWarState = 1;
+         lastBeat = xsGetTime();
+         aiEcho("LONDONWAR p" + cMyID + " held - crossing closed, " + blockers + " blocking bridge gate(s), nearest " + farGate
+                + " hp " + kbUnitGetCurrentHitpoints(farGate) + " owner " + kbUnitGetPlayerID(farGate));
+         return;
+      }
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONWAR p" + cMyID + " path closed, held " + gLondonWarPasses + " passes, " + blockers + " blocking bridge gate(s), nearest " + farGate
+                + " hp " + kbUnitGetCurrentHitpoints(farGate) + " owner " + kbUnitGetPlayerID(farGate) + " age " + kbGetAge());
+      }
+      return;
+   }
+
+   if (gLondonWarState != 2)
+   {
+      gLondonWarState = 2;
+      lastBeat = xsGetTime();
+      cvOkToAttack = true;
+      xsEnableRule("mostHatedEnemy");
+      xsEnableRule("attackManager");
+      xsEnableRule("raidEnabler");
+      aiEcho("LONDONWAR p" + cMyID + " released - crossing open after " + gLondonWarPasses + " held passes, no blocking gate at the bridge");
+      return;
+   }
+   if (xsGetTime() - lastBeat >= 60000)
+   {
+      lastBeat = xsGetTime();
+      if (xsIsRuleEnabled("attackManager") == true)
+      {
+         aiEcho("LONDONWAR p" + cMyID + " open, attacks on, attackManager on");
+      }
+      else
+      {
+         aiEcho("LONDONWAR p" + cMyID + " open, attacks on, attackManager off");
+      }
+   }
+}
+
+//==============================================================================
+// londonGateKiller - Paris cityGateKiller's mechanics (reserve at 90, guardians first, 1.5 strength ratio) on the
+// ordered London list; a mass floor before any order; every target path-checked from the reserve before an order
+// (unreachable = a skip echo, never a task). Ends when the list is empty; the stock attack takes over.
+//==============================================================================
+rule londonGateKiller
+inactive
+minInterval 5
+{
+   static int lastTarget = -1;
+   static int lastKind = 0;
+   static int lastBeat = -60000;
+   int target = -1;
+   int count = 0;
+   int unit = -1;
+   int guard = -1;
+   float friendlyStrength = 0.0;
+   float enemyStrength = 0.0;
+   vector targetLoc = cInvalidVector;
+   vector fromLoc = cInvalidVector;
+
+   // the retake (londonKeepRetake) owns the reserve while our near Keep is enemy-held
+   if (gLondonRetaking == true)
+   {
+      return;
+   }
+   target = londonGateTarget();
+   if (lastTarget >= 0 && target != lastTarget)
+   {
+      if (londonGateBlocks(lastTarget) == false)
+      {
+         aiEcho("LONDONGATE p" + cMyID + " gate " + lastTarget + " down kind " + londonGateKindName(lastKind) + " hp " + kbUnitGetCurrentHitpoints(lastTarget)
+                + " owner " + kbUnitGetPlayerID(lastTarget) + " next " + target + " " + londonGateKindName(gLondonGateKind));
+      }
+      else
+      {
+         aiEcho("LONDONGATE p" + cMyID + " retarget " + lastTarget + " -> " + target + " " + londonGateKindName(gLondonGateKind));
+      }
+   }
+   lastTarget = target;
+   lastKind = gLondonGateKind;
+
+   if (target < 0)
+   {
+      if (gLondonWarState == 2)
+      {
+         if (gLondonGatePlan >= 0)
+         {
+            aiEcho("LONDONGATE p" + cMyID + " no gate left - reserve released to the stock attack; watching for a rebuilt or converted gate");
+            aiPlanDestroy(gLondonGatePlan);
+            gLondonGatePlan = -1;
+         }
+         else if (xsGetTime() - lastBeat >= 60000)
+         {
+            lastBeat = xsGetTime();
+            aiEcho("LONDONGATE p" + cMyID + " idle - no blocking gate");
+         }
+         return;
+      }
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " no target, war state " + gLondonWarState);
+      }
+      return;
+   }
+
+   if (gLondonGatePlan < 0 && gLondonWarState == 2)
+   {
+      aiEcho("LONDONGATE p" + cMyID + " gate " + target + " reappeared kind " + londonGateKindName(gLondonGateKind) + " owner "
+             + kbUnitGetPlayerID(target) + " hp " + kbUnitGetCurrentHitpoints(target) + " - reserve again");
+   }
+   if (gLondonGatePlan < 0)
+   {
+      gLondonGatePlan = aiPlanCreate("London Gate Killer", cPlanReserve);
+      aiPlanAddUnitType(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary, 0, 100, 200);
+      aiPlanSetDesiredPriority(gLondonGatePlan, 90);
+      aiPlanSetActive(gLondonGatePlan);
+      aiEcho("LONDONGATE p" + cMyID + " reserve " + gLondonGatePlan + " created, floor " + gLondonArmyFloor + " first target " + target + " " + londonGateKindName(gLondonGateKind));
+   }
+
+   count = aiPlanGetNumberUnits(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary);
+   targetLoc = kbUnitGetPosition(target);
+   if (count < gLondonArmyFloor)
+   {
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " gathering " + count + "/" + gLondonArmyFloor + " target " + target + " " + londonGateKindName(gLondonGateKind));
+      }
+      return;
+   }
+
+   fromLoc = kbUnitGetPosition(aiPlanGetUnitByIndex(gLondonGatePlan, 0));
+   if (kbCanPath2(fromLoc, targetLoc, cUnitTypeMusketeer, 12.0) == false)
+   {
+      if (xsGetTime() - lastBeat >= 30000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " skip " + target + " unreachable " + londonGateKindName(gLondonGateKind) + " from " + xsVectorGetX(fromLoc) + "/" + xsVectorGetZ(fromLoc));
+      }
+      return;
+   }
+
+   friendlyStrength = getFriendlyArmyValue(gLondonGatePlan);
+   enemyStrength = getAreaStrength(targetLoc, 30, cPlayerRelationEnemy);
+   if (friendlyStrength <= 1.5 * enemyStrength)
+   {
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " waiting, strength " + friendlyStrength + " vs " + enemyStrength + " at " + target + " " + londonGateKindName(gLondonGateKind) + " units " + count);
+      }
+      return;
+   }
+
+   guard = getClosestGaiaUnit(cUnitTypeLogicalTypeLandMilitary, targetLoc, 30.0);
+   for (i = 0; < count)
+   {
+      unit = aiPlanGetUnitByIndex(gLondonGatePlan, i);
+      if (guard >= 0)
+      {
+         aiTaskUnitWork(unit, guard);
+      }
+      else
+      {
+         aiTaskUnitWork(unit, target);
+      }
+   }
+   if (xsGetTime() - lastBeat >= 30000)
+   {
+      lastBeat = xsGetTime();
+      aiEcho("LONDONGATE p" + cMyID + " tasked " + count + " on " + target + " " + londonGateKindName(gLondonGateKind) + " guard " + guard + " hp " + kbUnitGetCurrentHitpoints(target)
+             + " strength " + friendlyStrength + " vs " + enemyStrength);
+   }
+}
+
+//==============================================================================
+// LONDON - round 3 (2026-09-23): the Keep hold. Echo vocabulary: LONDONKEEP / LONDONHOLD.
+// Run 16 (round 2) measured the capture itself: the gate killer's reserve, standing at each Keep's second gate,
+// took both Keeps' flags (gate 1000 at 7:54 and gate 1844 at 16:34 came back owned by p2), so the separate capture
+// mission of the plan is not built; this round adds only what run 16 lacked, a garrison that keeps the flags.
+//==============================================================================
+
+//==============================================================================
+// londonKeepFlagOwner - the owner of a Keep's capturable flag (the building's when the flag is not seen)
+//==============================================================================
+int londonKeepFlagOwner(int keep = -1)
+{
+   int flag = -1;
+
+   if (keep < 0)
+   {
+      return (-1);
+   }
+   flag = getClosestUnitByLocation(cUnitTypezpSPCCapturableFlagNoIcon, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(keep), 40.0);
+   if (flag >= 0)
+   {
+      return (kbUnitGetPlayerID(flag));
+   }
+   return (kbUnitGetPlayerID(keep));
+}
+
+//==============================================================================
+// londonKeepFlagLoc - where the garrison stands: the flag, else the building
+//==============================================================================
+vector londonKeepFlagLoc(int keep = -1)
+{
+   int flag = -1;
+
+   flag = getClosestUnitByLocation(cUnitTypezpSPCCapturableFlagNoIcon, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(keep), 40.0);
+   if (flag >= 0)
+   {
+      return (kbUnitGetPosition(flag));
+   }
+   return (kbUnitGetPosition(keep));
+}
+
+//==============================================================================
+// londonHoldKeep - istanbulPalaceHold's garrison (reserve at 101, filled by hand, capped) on one Keep; the plan is
+// made the first time the Keep is ours and kept after a loss, so the same garrison walks back to retake the flag
+//==============================================================================
+int londonHoldKeep(int keep = -1, int plan = -1, string side = "")
+{
+   int owner = -1;
+   bool oursTeam = false;
+   int held = 0;
+   int tempUnit = -1;
+   int landQuery = -1;
+   int landCount = 0;
+   int parked = 0;
+   vector flagLoc = cInvalidVector;
+
+   if (keep < 0)
+   {
+      return (plan);
+   }
+   owner = londonKeepFlagOwner(keep);
+   if (owner > 0)
+   {
+      if (kbGetPlayerTeam(owner) == kbGetPlayerTeam(cMyID))
+      {
+         oursTeam = true;
+      }
+   }
+   if (oursTeam == false && plan < 0)
+   {
+      return (plan);   // never ours yet - the gate killer does the taking
+   }
+   flagLoc = londonKeepFlagLoc(keep);
+
+   if (plan < 0)
+   {
+      plan = aiPlanCreate("London Keep Garrison " + side, cPlanReserve);
+      aiPlanAddUnitType(plan, cUnitTypeLogicalTypeLandMilitary, 0, 0, gLondonKeepGarrison);
+      aiPlanSetNoMoreUnits(plan, true);
+      aiPlanSetDesiredPriority(plan, 101);   // Istanbul: stock gatherArmy skips only >= 99
+      aiPlanSetActive(plan);
+      aiEcho("LONDONKEEP p" + cMyID + " flag ours keep " + keep + " " + side + " owner " + owner + " garrison plan " + plan + " cap " + gLondonKeepGarrison);
+   }
+
+   held = aiPlanGetNumberUnits(plan, cUnitTypeLogicalTypeLandMilitary);
+   if (held < gLondonKeepGarrison)
+   {
+      landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      landCount = kbUnitQueryExecute(landQuery);
+      for (i = 0; < landCount)
+      {
+         tempUnit = kbUnitQueryGetResult(landQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 101)
+         {
+            continue;
+         }
+         aiPlanAddUnit(plan, tempUnit);
+         held = held + 1;
+         if (held >= gLondonKeepGarrison)
+         {
+            break;
+         }
+      }
+   }
+
+   for (i = 0; < held)
+   {
+      tempUnit = aiPlanGetUnitByIndex(plan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempUnit), flagLoc) > 10)
+      {
+         aiTaskUnitMove(tempUnit, getRandomPoint(flagLoc, 8));
+      }
+      parked = parked + 1;
+   }
+   if (oursTeam == true)
+   {
+      aiEcho("LONDONHOLD p" + cMyID + " " + parked + " holding keep " + keep + " " + side + " owner " + owner);
+   }
+   else
+   {
+      aiEcho("LONDONHOLD p" + cMyID + " " + parked + " retaking keep " + keep + " " + side + " owner " + owner);
+   }
+   return (plan);
+}
+
+//==============================================================================
+// londonKeepHold - both Keeps every 30 s (the heartbeat L8 reads)
+//==============================================================================
+rule londonKeepHold
+inactive
+minInterval 30
+{
+   gLondonHoldPlanNear = londonHoldKeep(gLondonKeepNear, gLondonHoldPlanNear, "near");
+   gLondonHoldPlanFar = londonHoldKeep(gLondonKeepFar, gLondonHoldPlanFar, "far");
+}
+
+//==============================================================================
+// AI TEST DIAG (2026-09-23) - the regression floor of the AI test campaign: one echo a minute on every map, read by
+// scripts/aitest/criteria_baseline.py and criteria_london.py. Echo only: it creates no plan, tasks no unit and
+// changes no variable any other rule reads. Enabled by gAITestDiag (aiglobals.xs), false for release.
+//==============================================================================
+rule aiTestDiag
+inactive
+minInterval 60
+{
+   int mainBase = kbBaseGetMainID(cMyID);
+   float baseRadius = -1.0;
+   int score = aiGetScore(cMyID);
+   int london = 0;
+   int dockPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+   int dockState = -1;
+   int navyMap = 0;
+   int fishMap = 0;
+
+   if (dockPlan >= 0)
+   {
+      dockState = aiPlanGetState(dockPlan);
+   }
+   if (gNavyMap == true)
+   {
+      navyMap = 1;
+   }
+   if (gGoodFishingMap == true)
+   {
+      fishMap = 1;
+   }
+
+   if (gIsLondon == true)
+   {
+      london = 1;
+   }
+
+   if (mainBase >= 0)
+   {
+      baseRadius = kbBaseGetDistance(cMyID, mainBase);
+   }
+   aiEcho("AIDIAG p" + cMyID + " age " + kbGetAge() + " score " + score
+          + " vills " + kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive)
+          + " army " + kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive)
+          + " navy " + kbUnitCount(cMyID, cUnitTypeLogicalTypeNavalMilitary, cUnitStateAlive)
+          + " tcs " + kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive)
+          + " houses " + kbUnitCount(cMyID, gHouseUnit, cUnitStateAlive)
+          + " milbldg " + kbUnitCount(cMyID, cUnitTypeMilitaryBuilding, cUnitStateAlive)
+          + " farms " + kbUnitCount(cMyID, gFarmUnit, cUnitStateAlive)
+          + " plant " + kbUnitCount(cMyID, gPlantationUnit, cUnitStateAlive)
+          + " bldg " + kbUnitCount(cMyID, cUnitTypeLogicalTypeBuildingsNotWalls, cUnitStateAlive)
+          + " baseR " + baseRadius + " fails " + gPlacementFailures + " failsTC " + gPlacementFailuresTC
+          + " london " + london + " tps " + kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive)
+          + " docks " + kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) + " dockfails " + gPlacementFailuresDock + " dockplan " + dockPlan + " state " + dockState
+          + " fishers " + kbUnitCount(cMyID, gFishingUnit, cUnitStateAlive) + " navymap " + navyMap + " fishmap " + fishMap);
+}
+
+//==============================================================================
+// londonKeepRetake - owner 2026-09-24 (option 2 after runs 32b / 32c): the AIs now fight over the Keeps (a captured
+// Keep's gates change owner and the other team's gate killer attacks them); when OUR near Keep's flag is enemy-held,
+// the gate killer's reserve (the main army after the gates) marches to that flag instead of chasing far-Keep gates -
+// run 32c: P2's near Keep was enemy-held for 3.5 min while its army attacked the far Keep. The Keep hold garrison
+// (londonKeepHold, pri 101) keeps doing its part. Echo: LONDONKEEP p<N> retaking ... / retake done.
+//==============================================================================
+rule londonKeepRetake
+inactive
+minInterval 5
+{
+   static int lastBeat = -60000;
+   int owner = -1;
+   int count = 0;
+   int unit = -1;
+   bool lost = false;
+   int gate = -1;
+   int foe = -1;
+   vector flagLoc = cInvalidVector;
+
+   if (gLondonKeepNear < 0)
+   {
+      return;
+   }
+   owner = londonKeepFlagOwner(gLondonKeepNear);
+   if (owner > 0)
+   {
+      if (kbGetPlayerTeam(owner) != kbGetPlayerTeam(cMyID))
+      {
+         lost = true;
+      }
+   }
+   if (lost == false)
+   {
+      if (gLondonRetaking == true)
+      {
+         gLondonRetaking = false;
+         aiEcho("LONDONKEEP p" + cMyID + " retake done - near keep " + gLondonKeepNear + " owner " + owner);
+      }
+      return;
+   }
+   if (gLondonRetaking == false)
+   {
+      gLondonRetaking = true;
+      lastBeat = -60000;
+   }
+   if (gLondonGatePlan < 0)
+   {
+      gLondonGatePlan = aiPlanCreate("London Gate Killer", cPlanReserve);
+      aiPlanAddUnitType(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary, 0, 100, 200);
+      aiPlanSetDesiredPriority(gLondonGatePlan, 90);
+      aiPlanSetActive(gLondonGatePlan);
+   }
+   flagLoc = londonKeepFlagLoc(gLondonKeepNear);
+   count = aiPlanGetNumberUnits(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary);
+   // run 33: a move order does not fight, and a captured Keep is shut by its (now enemy) gates - so: the blocking Keep
+   // gate first, then the enemy soldiers at the flag, then onto the flag
+   gate = londonKeepGate(gLondonKeepNear);
+   if (gate < 0)
+   {
+      foe = getClosestUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, flagLoc, 30.0);
+   }
+   for (i = 0; < count)
+   {
+      unit = aiPlanGetUnitByIndex(gLondonGatePlan, i);
+      if (gate >= 0)
+      {
+         aiTaskUnitWork(unit, gate);
+      }
+      else if (foe >= 0)
+      {
+         aiTaskUnitWork(unit, foe);
+      }
+      else
+      {
+         aiTaskUnitMove(unit, getRandomPoint(flagLoc, 8));
+      }
+   }
+   if (xsGetTime() - lastBeat >= 30000)
+   {
+      lastBeat = xsGetTime();
+      aiEcho("LONDONKEEP p" + cMyID + " retaking near keep " + gLondonKeepNear + " owner " + owner + " with " + count + " gate " + gate + " foe " + foe);
+   }
+}
+
+//==============================================================================
+// pirateForwardBeachHead - island maps (Istanbul, owner 2026-09-25): the stock beachhead pick, replaced by the enemy
+// construction marker whenever there is one
+//==============================================================================
+vector pirateForwardBeachHead(void)
+{
+   vector v = pirateForwardBasePoint();
+
+   if (v == cInvalidVector)
+   {
+      return (selectForwardBaseBeachHead());
+   }
+   return (v);
+}
+
+//==============================================================================
+// FORWARD BASE on London, Paris and Istanbul (owner 2026-09-24 / 25) - Istanbul's pattern: the stock forwardBaseManager and
+// forwardTowerBaseManager (switched on by the age monitors in aicore.xs) are switched off by pirateForwardBaseWatch
+// and their copies below run instead. The copies are the stock rules (aibuildings.xs / aiassertivewall.xs of the
+// adopted core 0b2c6aab) with one change each: the location comes from pirateForwardBasePoint.
+//==============================================================================
+rule pirateForwardTowerBaseManager
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   if (gStartOnDifferentIslands == true)
+   {
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+      {
+         return;
+      }
+   }
+
+   int fortUnitID = -1;
+   int buildingQuery = -1;
+   int numberFound = 0;
+   int numberMilitaryBuildings = 0;
+   int buildingID = -1;
+   int availableTowerWagon = findWagonToBuild(gTowerUnit);
+
+   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   if (gStartOnDifferentIslands == true && availableTowerWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      if (amphibiousAssault() == true)
+      {
+         xsDisableSelf();
+      }
+      return;
+   }
+
+   // We have a Fort Wagon but also already have a forward base, default the Fort position.
+   if ((availableTowerWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
+   {
+      //createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, gForwardBaseID, 1);
+      return;
+   }
+
+   switch (gForwardBaseState)
+   {
+      case cForwardBaseStateNone:
+      {
+         // We don't have a forward base, if we have a suitable Wagon we can start the chain.
+         vector location = cInvalidVector;
+         //if (availableTowerWagon >= 0)
+         if (true == true)
+         {
+            // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
+            //vector location = cInvalidVector;  AssertiveWall: moved up above
+   
+            // AssertiveWall: Use the forward island
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false))
+            {
+               location = pirateForwardBeachHead();
+               if (location == cInvalidVector)
+               {  // We never build in base with the tower forward base
+                  return;
+               }
+               else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), 
+                     kbAreaGroupGetIDByPosition(guessEnemyLocation())) == false)
+               {
+                  // Try again if the FB isn't on the same island as the enemy
+                  return;
+               }
+            }
+            else if (cDifficultyCurrent >= cDifficultyModerate)
+            {
+               location = pirateForwardBasePoint();
+            }
+   
+            if (location == cInvalidVector)
+            {  // We never build in base with the tower forward base
+               return;
+            }
+   
+            gForwardBaseLocation = location;
+            gForwardBaseBuildPlan = aiPlanCreate("Forward Tower build plan ", cPlanBuild);
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanBuildingTypeID, 0, gTowerUnit);
+            aiPlanSetDesiredPriority(gForwardBaseBuildPlan, 87);
+            aiPlanAddUnitType(gForwardBaseBuildPlan, gEconUnit, 1, 2, 2);
+   
+            // Instead of base ID or areas, use a center position.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   
+            // Weigh it to stay very close to center point.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionDistance, 0, 50.0); // 100m range.
+            // 100 Points for center.
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionValue, 0, 100.0); 
+            // Linear slope falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); 
+   
+            // Add position influence for nearby Forts.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypeFortFrontier); 
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 50.0);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, -200.0); // -200 points per fort
+            // Cliff falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); 
+
+            aiPlanSetActive(gForwardBaseBuildPlan);
+   
+            // Chat to my allies.
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
+            gForwardBaseState = cForwardBaseStateBuilding;
+            if (gStartOnDifferentIslands == true)
+            {  // This should no longer be used now that we have the amphibious assault rule
+               establishForwardBeachHead(gForwardBaseLocation); 
+            }
+
+            debugBuildings("");
+            debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
+            debugBuildings("PLANNED LOCATION IS " + gForwardBaseLocation);
+            debugBuildings("");
+   
+            if (gDefenseReflex == false)
+            {
+               endDefenseReflex(); // Causes it to move to the new location.
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateBuilding:
+      {
+         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
+         vector fortUnitLoc = kbUnitGetPosition(fortUnitID);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(fortUnitLoc), 
+                                          kbAreaGroupGetIDByPosition(gForwardBaseLocation)) == false)
+         {
+            fortUnitID = -1;
+         }
+
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         
+         if (fortUnitID >= 0)
+         { // Building exists and is complete, go to state Active.
+            if (kbUnitGetBaseID(fortUnitID) >= 0)
+            { // Base has been created for it.
+               // AssertiveWall: Now build wall
+               if (gStartOnDifferentIslands == false)
+               {
+                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+               }
+               gForwardBaseState = cForwardBaseStateActive;
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
+               gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
+               gForwardBaseUpTime = xsGetTime();
+               gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, gTowerUnit);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
+               debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
+                  gForwardBaseID + ", Unit ID is " + fortUnitID);
+               debugBuildings("");
+               debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
+               debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
+            }
+            else
+            {
+               debugBuildings("");
+               debugBuildings("FORT COMPLETE, WAITING FOR FORWARD BASE ID");
+               debugBuildings("");
+            }
+         }
+         
+         // Check if plan still exists. If not, go back to state 'none'.
+         if (fortUnitID < 0 && aiPlanGetState(gForwardBaseBuildPlan) < 0)
+         { // It failed?
+            gForwardBaseState = cForwardBaseStateNone;
+            gForwardBaseLocation = cInvalidVector;
+            gForwardBaseID = -1;
+            gForwardBaseBuildPlan = -1;
+            gForwardBaseShouldDefend = false;
+            debugBuildings("");
+            debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+            debugBuildings("");
+         }
+         break;
+      }
+      case cForwardBaseStateActive:
+      { // Normal state. If fort is destroyed and base overrun, bail.
+         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+
+         if (fortUnitID < 0)
+         {
+            // Fort is missing, is base still OK?
+            if (((gDefenseReflexBaseID == gForwardBaseID) && (gDefenseReflexPaused == true)) ||
+               (kbBaseGetNumberUnits(cMyID, gForwardBaseID, cPlayerRelationSelf, cUnitTypeBuilding) < 1)) 
+            {  // No, not OK. Get outa Dodge.
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseID = -1;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseShouldDefend = false;
+
+               endDefenseReflex();
+               debugBuildings("");
+               debugBuildings("ABANDONING FORWARD BASE, RETREATING TO MAIN BASE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+   }
+}
+
+rule pirateForwardBaseManager
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   // AssertiveWall: On great turkish war, set the forward base and leave it there, ignoring all other logic
+   if ((cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0) || gDefendingObjective == true)
+   {
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseLocation = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = true;
+      gForwardBaseID = kbBaseCreate(cMyID, "turkish defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
+   
+      vector baseFront = xsVectorNormalize(kbGetMapCenter() - kbGetPlayerStartingPosition(cMyID));
+      kbBaseSetFrontVector(cMyID, gForwardBaseID, baseFront);
+      kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+      xsDisableSelf();
+      return;
+   }
+
+   int fortUnitID = -1;
+   int buildingQuery = -1;
+   int numberFound = 0;
+   int numberMilitaryBuildings = 0;
+   int buildingID = -1;
+   int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
+   
+   // AssertiveWall: On island maps, run the amphibious assault
+   if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      // Try calling it individually
+      //forwardTowerBaseManager();
+
+      //if (xsIsRuleEnabled("forwardTowerBaseManager") == false)
+      //{
+      //   xsEnableRule("forwardTowerBaseManager");
+      //}
+      if (amphibiousAssault() == true)
+      {
+         xsDisableSelf();
+      }
+      return;
+   }
+
+   // AssertiveWall: If we don't have a wagon, try running the tower forward base after waiting a while for the cooldown
+   static int lastFBattempt = -1;
+   static int fbCooldown = -1;
+   if (fbCooldown < 0)
+   {
+      // Logic here is that rushing civs more aggressively try to establish forward bases and map control
+      // I'll admit there isn't much sense to these cooldowns, other than trying to avoid excessive attempts
+      // and making things different for the sake of it
+      if (gStrategy == cStrategyRush) { fbCooldown = 120000; } // 2 mins
+      else if (gStrategy == cStrategyNakedFF) { fbCooldown = 180000; } // 3 mins
+      else if (gStrategy == cStrategySafeFF) { fbCooldown = 300000; } // 5 mins
+      else if (gStrategy == cStrategyFastIndustrial) { fbCooldown = 240000; } // 4 mins
+      else { fbCooldown = 180000; } // 3 min default
+   }
+
+   if (gForwardBaseState == cForwardBaseStateNone && 
+       gStartOnDifferentIslands != true && availableFortWagon < 0 && xsGetTime() > (lastFBattempt + fbCooldown))
+   {
+      // individually try making the tower version
+      pirateForwardTowerBaseManager();
+   }
+   
+
+   // We have a Fort Wagon but also already have a forward base, default the Fort position.
+   if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
+   {
+      createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      return;
+   }
+
+   switch (gForwardBaseState)
+   {
+      case cForwardBaseStateNone:
+      {
+         // We don't have a forward base, if we have a suitable Wagon we can start the chain.
+         vector location = cInvalidVector;
+         if (availableFortWagon >= 0)
+         {
+            // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
+            //vector location = cInvalidVector;  AssertiveWall: moved up above
+   
+            // AssertiveWall: Use the forward island
+            // NOTE: never get here now that the amphibiousAssault runs. Leaving active as a note
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
+            {
+               location = pirateForwardBeachHead();
+            }
+            else if ((cDifficultyCurrent >= cDifficultyModerate)) //(btOffenseDefense >= -10.0) && 
+            {
+               location = pirateForwardBasePoint();
+            }
+   
+            if (location == cInvalidVector)
+            {  // AssertiveWall: let the AI try to find a FB location again. No defensive FB's
+               //createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+               return;
+            }
+   
+            gForwardBaseLocation = location;
+            gForwardBaseBuildPlan = aiPlanCreate("Fort build plan ", cPlanBuild);
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanBuildingTypeID, 0, cUnitTypeFortFrontier);
+            aiPlanSetDesiredPriority(gForwardBaseBuildPlan, 87);
+            aiPlanAddUnitType(gForwardBaseBuildPlan, cUnitTypeFortWagon, 1, 1, 1);
+   
+            // Instead of base ID or areas, use a center position.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   
+            // Weigh it to stay very close to center point.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionDistance, 0, 50.0); // 100m range.
+            // 100 Points for center.
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionValue, 0, 100.0); 
+            // Linear slope falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); 
+   
+            // Add position influence for nearby Forts.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypeFortFrontier); 
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 50.0);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, -200.0); // -200 points per fort
+            // Cliff falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); 
+   
+            // AssertiveWall: Add position influence for forts building near docks on island maps
+            if (gStartOnDifferentIslands == true)
+            {
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, gDockUnit); 
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 30.0);
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, 20.0); // 20 points per dock
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); 
+            }
+
+            aiPlanSetActive(gForwardBaseBuildPlan);
+   
+            // Chat to my allies.
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
+   
+            gForwardBaseState = cForwardBaseStateBuilding;
+            debugBuildings("");
+            debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
+            debugBuildings("PLANNED LOCATION IS " + gForwardBaseLocation);
+            debugBuildings("");
+   
+            if (gDefenseReflex == false)
+            {
+               endDefenseReflex(); // Causes it to move to the new location.
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateBuilding:
+      {
+         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0); 
+         // AssertiveWall: down from 100. It has been grabbing the most random things
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 20.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+
+         if (fortUnitID >= 0)
+         { // Building exists and is complete, go to state Active.
+            if (kbUnitGetBaseID(fortUnitID) >= 0)
+            { // Base has been created for it.
+               // AssertiveWall: Now build wall
+               if (gStartOnDifferentIslands == false)
+               {
+                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+               }
+               gForwardBaseState = cForwardBaseStateActive;
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
+               gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
+               gForwardBaseUpTime = xsGetTime();
+               gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeFortFrontier);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
+               debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
+                  gForwardBaseID + ", Unit ID is " + fortUnitID);
+               debugBuildings("");
+               debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
+               debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
+            }
+            else
+            {
+               debugBuildings("");
+               debugBuildings("FORT COMPLETE, WAITING FOR FORWARD BASE ID");
+               debugBuildings("");
+            }
+         }
+         else // Check if plan still exists. If not, go back to state 'none'.
+         {
+            if (aiPlanGetState(gForwardBaseBuildPlan) < 0)
+            { // It failed?
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseID = -1;
+               gForwardBaseBuildPlan = -1;
+               gForwardBaseShouldDefend = false;
+               debugBuildings("");
+               debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateActive:
+      { // Normal state. If fort is destroyed and base overrun, bail.
+         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 50.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         if (fortUnitID < 0)
+         {
+            // Fort is missing, is base still OK?
+            if (((gDefenseReflexBaseID == gForwardBaseID) && (gDefenseReflexPaused == true)) ||
+               (kbBaseGetNumberUnits(cMyID, gForwardBaseID, cPlayerRelationSelf, cUnitTypeBuilding) < 1)) 
+            {  // No, not OK. Get outa Dodge.
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseID = -1;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseShouldDefend = false;
+
+               endDefenseReflex();
+               debugBuildings("");
+               debugBuildings("ABANDONING FORWARD BASE, RETREATING TO MAIN BASE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+   }
+}
+
+//==============================================================================
+// pirateForwardBaseWatch - swaps the stock forward-base rules for the copies whenever a stock monitor enables them;
+// once a minute the forward base state (echo: PIRATEFB)
+//==============================================================================
+rule pirateForwardBaseWatch
+inactive
+minInterval 1
+{
+   static int lastEcho = -60000;
+   int fort = -1;
+   vector point = cInvalidVector;
+
+   // island maps (Istanbul): the stock amphibious assault lands at a coast point near the enemy base (amphibiousAssault
+   // -> selectPickupPoint) and makes the forward base there. While the navy gathers or bombards, the landing is
+   // re-pointed to the enemy construction marker - every later stage re-reads gAmphibiousAssaultTarget.
+   if (gAmphibiousAssaultTarget != cInvalidVector && gAmphibiousAssaultStage <= cBombardCoast)
+   {
+      if (pirateOnConstructionBlock(gAmphibiousAssaultTarget) == false)
+      {
+         point = pirateForwardBasePoint();
+         if (point != cInvalidVector)
+         {
+            aiEcho("PIRATEFB p" + cMyID + " amphibious landing at " + xsVectorGetX(gAmphibiousAssaultTarget) + "/" + xsVectorGetZ(gAmphibiousAssaultTarget)
+                   + " (stage " + gAmphibiousAssaultStage + ") re-pointed to " + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
+            gAmphibiousAssaultTarget = point;
+         }
+      }
+   }
+
+   // the third stock path (run 36, P4 at 12:07 in Age 1): buildingMonitor's 'Forward <building>' plan takes the stock
+   // selectForwardBaseLocation and sets state Building. A forward base being built anywhere but a construction block
+   // is re-pointed to our block, or cancelled while there is none (London: the crossing still closed).
+   if (gForwardBaseState == cForwardBaseStateBuilding && gForwardBaseLocation != cInvalidVector)
+   {
+      if (pirateOnConstructionBlock(gForwardBaseLocation) == false)
+      {
+         point = pirateForwardBasePoint();
+         if (point == cInvalidVector)
+         {
+            aiEcho("PIRATEFB p" + cMyID + " stock forward base at " + xsVectorGetX(gForwardBaseLocation) + "/" + xsVectorGetZ(gForwardBaseLocation)
+                   + " cancelled (plan " + gForwardBaseBuildPlan + ") - no construction block now");
+            if (gForwardBaseBuildPlan >= 0)
+            {
+               aiPlanDestroy(gForwardBaseBuildPlan);
+            }
+            gForwardBaseBuildPlan = -1;
+            gForwardBaseLocation = cInvalidVector;
+            gForwardBaseState = cForwardBaseStateNone;
+         }
+         else
+         {
+            aiEcho("PIRATEFB p" + cMyID + " stock forward base at " + xsVectorGetX(gForwardBaseLocation) + "/" + xsVectorGetZ(gForwardBaseLocation)
+                   + " re-pointed to " + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " (plan " + gForwardBaseBuildPlan + ")");
+            gForwardBaseLocation = point;
+            if (gForwardBaseBuildPlan >= 0)
+            {
+               aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, point);
+               aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, point);
+            }
+         }
+      }
+   }
+
+   if (xsIsRuleEnabled("forwardBaseManager") == true)
+   {
+      xsDisableRule("forwardBaseManager");
+      if (xsIsRuleEnabled("pirateForwardBaseManager") == false)
+      {
+         xsEnableRule("pirateForwardBaseManager");
+         aiEcho("PIRATEFB p" + cMyID + " forwardBaseManager -> pirateForwardBaseManager");
+      }
+   }
+   if (xsIsRuleEnabled("forwardTowerBaseManager") == true)
+   {
+      xsDisableRule("forwardTowerBaseManager");
+      if (xsIsRuleEnabled("pirateForwardTowerBaseManager") == false)
+      {
+         xsEnableRule("pirateForwardTowerBaseManager");
+         aiEcho("PIRATEFB p" + cMyID + " forwardTowerBaseManager -> pirateForwardTowerBaseManager");
+      }
+   }
+   if (xsGetTime() - lastEcho >= 60000)
+   {
+      lastEcho = xsGetTime();
+      if (gForwardBaseLocation != cInvalidVector)
+      {
+         fort = getUnitCountByLocation(cUnitTypeMilitaryBuilding, cMyID, cUnitStateABQ, gForwardBaseLocation, 40.0);
+         aiEcho("PIRATEFB p" + cMyID + " state " + gForwardBaseState + " at " + xsVectorGetX(gForwardBaseLocation) + "/"
+                + xsVectorGetZ(gForwardBaseLocation) + " military buildings there " + fort + " plan " + gForwardBaseBuildPlan);
+      }
+      else
+      {
+         aiEcho("PIRATEFB p" + cMyID + " state " + gForwardBaseState + " no location");
+      }
+   }
+}
+
+//==============================================================================
+// londonPlanPlacer - London (moved out of the stock selectBuildPlanPosition / selectTCBuildPlanPosition, 2026-09-24):
+// every second, our economic build plans get the countryside point behind our own wall (londonSelectFieldPosition),
+// and after two Town Center placement failures a Town Center plan gets the countryside point. A plan is re-pointed
+// again when the stock queue re-positions it. Echo: LONDONPLACE ... field / town center (with the plan state).
+//==============================================================================
+rule londonPlanPlacer
+inactive
+minInterval 1
+{
+   static int planArr = -1;
+   static int vecArr = -1;
+   static int nextSlot = 0;
+   int n = 0;
+   int plan = -1;
+   int puid = -1;
+   int slot = -1;
+   vector point = cInvalidVector;
+   vector centre = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      xsDisableSelf();
+      return;
+   }
+   if (planArr < 0)
+   {
+      planArr = xsArrayCreateInt(64, -1, "London placed plans");
+      vecArr = xsArrayCreateVector(64, cInvalidVector, "London placed points");
+   }
+   n = aiPlanGetNumber(cPlanBuild, -1, true);
+   for (i = 0; < n)
+   {
+      plan = aiPlanGetIDByIndex(cPlanBuild, -1, true, i);
+      puid = aiPlanGetVariableInt(plan, cBuildPlanBuildingTypeID, 0);
+      centre = aiPlanGetVariableVector(plan, cBuildPlanCenterPosition, 0);
+      slot = -1;
+      for (k = 0; < 64)
+      {
+         if (xsArrayGetInt(planArr, k) == plan)
+         {
+            slot = k;
+            break;
+         }
+      }
+      if (slot >= 0)
+      {
+         if (centre == xsArrayGetVector(vecArr, slot))
+         {
+            continue;   // placed by us and untouched since
+         }
+      }
+      if (puid == cUnitTypeTownCenter)
+      {
+         if (gPlacementFailuresTC < 2)
+         {
+            continue;
+         }
+         point = londonCountrysidePoint();
+         if (point == cInvalidVector)
+         {
+            continue;
+         }
+         aiPlanSetVariableVector(plan, cBuildPlanCenterPosition, 0, point);
+         aiEcho("LONDONPLACE p" + cMyID + " town center plan " + plan + " in the countryside after " + gPlacementFailuresTC
+                + " failures, state " + aiPlanGetState(plan));
+      }
+      else
+      {
+         if (londonSelectFieldPosition(plan, puid) == false)
+         {
+            continue;
+         }
+         point = aiPlanGetVariableVector(plan, cBuildPlanCenterPosition, 0);
+      }
+      if (slot < 0)
+      {
+         slot = nextSlot;
+         nextSlot = nextSlot + 1;
+         if (nextSlot >= 64)
+         {
+            nextSlot = 0;
+         }
+      }
+      xsArraySetInt(planArr, slot, plan);
+      xsArraySetVector(vecArr, slot, point);
    }
 }

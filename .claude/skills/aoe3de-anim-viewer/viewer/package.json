@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Marks viewer/*.js as ES modules for node --test (tests/js); the browser loads them as <script type=module>. No dependencies, no build step."
+}

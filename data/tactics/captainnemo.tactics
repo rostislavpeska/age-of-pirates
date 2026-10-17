@@ -12,9 +12,12 @@
     <anim>Build</anim>
     <maxrange>0.2</maxrange>
     <rate type="Building">1.0</rate>
-    <rate type="Dock">3.0</rate>
-    <rate type="dePort">3.0</rate>
-    <rate type="ypDockAsian">3.0</rate>
+    <rate type="Dock">2.0</rate>
+    <rate type="dePort">2.0</rate>
+    <rate type="ypDockAsian">2.0</rate>
+    <typedmaxrange type="YPDockAsian">2.0</typedmaxrange>
+    <typedmaxrange type="Dock">2.0</typedmaxrange>
+    <typedmaxrange type="dePort">2.0</typedmaxrange>
   </action>
   <action>
     <name stringid="38133">MusketAttack</name>

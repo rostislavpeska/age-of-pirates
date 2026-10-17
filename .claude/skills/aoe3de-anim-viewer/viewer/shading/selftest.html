@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shader parity</title>
+<style>
+  html, body { margin: 0; background: #1b1d21; color: #d8dbe0; font: 12px ui-monospace, Consolas, monospace; }
+  #status { padding: 8px; }
+</style>
+</head>
+<body>
+<!-- M3 pixel-parity page: headless only (tests/test_shading_gpu.py), reads a synthetic fixture bundle -->
+<canvas id="view"></canvas>
+<div id="status"></div>
+<script type="module" src="./selftest.js"></script>
+</body>
+</html>

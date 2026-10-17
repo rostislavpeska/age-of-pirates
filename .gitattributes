@@ -1,0 +1,27 @@
+# Every text file is stored LF in git, whatever the device's core.autocrlf (a GitHub download is therefore LF).
+* text=auto
+
+# Files the game reads are CRLF on disk. An LF-only animfile / .material / _snds is silently ignored (unit places,
+# model never renders); LF map scripts load, but one rule keeps copies byte-comparable. Index stays LF, every
+# checkout gets CRLF. Compare copies by content: git hash-object --path=<repo path> <copy> == git rev-parse HEAD:<path>
+*.xml       text eol=crlf
+*.material  text eol=crlf
+*.lgt       text eol=crlf
+*.tactics   text eol=crlf
+*.xs        text eol=crlf
+*.xaml      text eol=crlf
+*.set       text eol=crlf
+
+# Export source/authorization contracts are SHA256-pinned and must be byte-stable on every device.
+config/gr2_uv_contracts/*.json text eol=lf
+
+# binaries - never touch line endings
+*.gr2   binary
+*.ddt   binary
+*.xmb   binary
+*.hkt   binary
+*.png   binary
+*.tga   binary
+*.wav   binary
+*.mp3   binary
+*.pkfx  binary

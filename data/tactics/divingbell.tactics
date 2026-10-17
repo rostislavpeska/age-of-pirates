@@ -25,7 +25,7 @@
     <persistent>1</persistent>
   </action>
   <action>
-    <name stringid="301790">GatherRateBonus</name>
+    <name stringid="501790">GatherRateBonus</name>
     <type>AutoRangedModify</type>
     <maxrange>35</maxrange>
     <active>1</active>
@@ -37,7 +37,7 @@
     <nostackignorepuid>1</nostackignorepuid>
   </action>
   <action>
-    <name stringid="301791">ExtraHPDiver</name>
+    <name stringid="501791">ExtraHPDiver</name>
     <active>1</active>
     <type>AutoRangedModify</type>
     <maxrange>35</maxrange>
@@ -51,7 +51,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>     
   <action>
-    <name stringid="301783">ExtraHPDiverLong</name>
+    <name stringid="501783">ExtraHPDiverLong</name>
     <active>0</active>
     <type>AutoRangedModify</type>
     <maxrange>50</maxrange>
@@ -73,7 +73,7 @@
     <singleuse>1</singleuse>
   </action>
   <action>
-    <name stringid="301782">GatherRateBonusLong</name>
+    <name stringid="501782">GatherRateBonusLong</name>
     <type>AutoRangedModify</type>
     <maxrange>50</maxrange>
     <active>0</active>

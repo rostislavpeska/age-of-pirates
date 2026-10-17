@@ -66,7 +66,7 @@
             <anim>Idle
                 <component>knife</component>
             </anim>
-        </attachment>
+        </attachment><attachment>fishingrod<component>fishingrod<assetreference type="GrannyModel"><file>units\attachments\fishing_rod\fishing_rod</file></assetreference></component><anim>Idle<component>fishingrod</component></anim></attachment><attachment>fishingbasket<component>fishingbasket<assetreference type="GrannyModel"><file>units\attachments\fishing_rod\fishing_basket</file></assetreference></component><anim>Idle<component>fishingbasket</component></anim></attachment>
         <attachment>bowl
             <component>bowl
                 <assetreference type="GrannyModel">
@@ -477,7 +477,7 @@
             </assetreference>
             <component>ModelComp</component>
             <attach a="knife" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
-        </anim>
+        </anim><anim>GatherFish<assetreference type="GrannyAnim"><file>animation_library\villager\villager_gatherfish</file></assetreference><component>ModelComp</component><attach a="fishingrod" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach><attach a="fishingbasket" frombone="MASTER" tobone="bip01" syncanims="0"></attach></anim>
         <anim>GatherCrate
             <assetreference type="GrannyAnim">
                 <file>animation_library\villager\villager_male_gathercrate1</file>
@@ -626,7 +626,7 @@
             <anim>Idle
                 <component>knife</component>
             </anim>
-        </attachment>
+        </attachment><attachment>fishingrod<component>fishingrod<assetreference type="GrannyModel"><file>units\attachments\fishing_rod\fishing_rod</file></assetreference></component><anim>Idle<component>fishingrod</component></anim></attachment><attachment>fishingbasket<component>fishingbasket<assetreference type="GrannyModel"><file>units\attachments\fishing_rod\fishing_basket</file></assetreference></component><anim>Idle<component>fishingbasket</component></anim></attachment>
         <attachment>bowl
             <component>bowl
                 <assetreference type="GrannyModel">
@@ -961,7 +961,7 @@
             </assetreference>
             <component>ModelComp</component>
             <attach a="knife" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
-        </anim>
+        </anim><anim>GatherFish<assetreference type="GrannyAnim"><file>animation_library\villager\villager_gatherfish</file></assetreference><component>ModelComp</component><attach a="fishingrod" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach><attach a="fishingbasket" frombone="MASTER" tobone="bip01" syncanims="0"></attach></anim>
         <anim>GatherCrate
             <assetreference type="GrannyAnim">
                 <file>animation_library\villager\villager_male_gathercrate1</file>

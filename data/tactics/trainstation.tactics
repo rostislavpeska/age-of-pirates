@@ -1,7 +1,7 @@
 <tactics>
   
   <action>
-    <name stringid="300989">SpawnArmoredTrain</name>
+    <name stringid="500989">SpawnArmoredTrain</name>
     <type>Attack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>

@@ -1,0 +1,10 @@
+<mix>
+  <title>Great Plains Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.4" octaves="6" persistence="0.58">
+    <texture weight="2">great_plains\ground8_gp</texture>
+    <texture weight="2">great_plains\ground6_gp</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.85" octaves="3" persistence="0.75" emptyweight="75" posoffset="0.5">
+  </objects>
+</mix>

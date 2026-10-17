@@ -61,10 +61,10 @@
 		<unit variation="1" posx="-0.5552" posz="-5.9823" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="4" posx="-3.4940" posz="-5.9775" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="1" posx="1.5184" posz="-5.9188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
-		<unit variation="12" posx="-8.8325" posz="-5.4622" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="-8.8325" posz="-5.4622" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianG</unit>
 		<unit variation="0" posx="11.5278" posz="-1.3854" orientx="-1.0000" orienty="0.0000" orientz="0.0011">SPCPathBlock3</unit>
 		<unit variation="2" posx="-14.9372" posz="-3.4414" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="0" posx="8.0161" posz="-4.8662" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="8.0161" posz="-4.8662" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianE</unit>
 		<unit variation="0" posx="-11.5645" posz="-0.1634" orientx="-1.0000" orienty="0.0000" orientz="0.0009">SPCPathBlock3</unit>
 		<unit variation="0" posx="-6.0692" posz="-0.7547" orientx="1.0000" orienty="0.0000" orientz="-0.0010">SPCPathBlock3</unit>
 		<unit variation="0" posx="5.5623" posz="-0.7710" orientx="1.0000" orienty="0.0000" orientz="-0.0011">SPCPathBlock3</unit>
@@ -109,6 +109,10 @@
 		<unit variation="0" posx="6.4793" posz="13.8707" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="1" posx="-8.5651" posz="14.6630" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="0" posx="-9.6062" posz="14.8847" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="133" posx="7.7797" posz="-10.4615" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="133" posx="-9.3310" posz="-9.4194" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="133" posx="-9.4283" posz="-1.2418" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="133" posx="7.9104" posz="-0.5200" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="props\east_colony">

@@ -1,0 +1,6 @@
+{
+ "_comment": "Local copies of repo maps on THIS device (scripts/tools/sync_local_maps.py). Copied to config/local-maps.local.json (ignored) on first use; edit that one. repo = the map's stem in the repo (the source of truth), local = its stem in the Steam install's Game/RandMaps (the Scenario Editor lists only that folder). Both .xs and .xml are copied, never .mods.xml.",
+ "maps": [
+  {"repo": "randmaps/zplondon", "local": "00000_zplondon"}
+ ]
+}

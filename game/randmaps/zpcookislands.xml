@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "301741" displayNameID = "301740" loadDetails="301742" largeMapName = "zpcookislands"
+<mapinfo details = "501741" displayNameID = "501740" loadDetails="501742" largeMapName = "zpcookislands"
     imagepath = "ui\random_map\cookislands\cookislands_mini" cannotReplace = "" loadBackground="ui\random_map\cookislands\cookislands_map">
    <loadss>ui\random_map\cookislands\cookislands_01</loadss>
    <loadss>ui\random_map\cookislands\cookislands_02</loadss>

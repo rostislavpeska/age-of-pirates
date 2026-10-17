@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\explorers\teutonic_knight\textures\teutonic_knight_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\explorers\teutonic_knight\textures\teutonic_knight_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\explorers\teutonic_knight\textures\teutonic_knight_mata_masks">
+      </texture>
+      <texture name="Details" override="units\explorers\teutonic_knight\textures\teutonic_knight_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\explorers\teutonic_knight\textures\teutonic_knight_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\explorers\teutonic_knight\textures\teutonic_knight_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\explorers\teutonic_knight\textures\teutonic_knight_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

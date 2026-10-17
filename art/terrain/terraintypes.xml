@@ -367,6 +367,7 @@
     <uiclass uiname="Great Plains">
     </uiclass>
     <uiclass uiname="New England">
+          <subtype impacttype="terraindirt" height_strength="1.0000" texture_scale="18.0470" bump_scale="2.8290" grass_length="0.2860" chroma_key_tolerance="0.8110" chroma_key_color="0.940 0.775 0.050" height_offset="0.0000" grass_lean_strength="1.4390" grass_atlas_begin="0" grass_atlas_end="2" chroma_key_blur="1" chroma_key_contrast="1.5140" chroma_key_offset="-0.0800" cutscene_texture_scale="45.0000" grass_width="0.8150" mapcolor_name="Dirt" uiname="ZP Italian Impassable">new_england\ground_zp_impassable_ne</subtype>
     </uiclass>
     <uiclass uiname="Pampas">
     </uiclass>

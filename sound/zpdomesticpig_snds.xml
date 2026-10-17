@@ -1,0 +1,20 @@
+<protounitsounddef>
+  <protounit name="zpDomesticPig">
+    <soundtype name="Select">
+      <soundset name="PigSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="PigDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="SettlerBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <soundset name="PigMove">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

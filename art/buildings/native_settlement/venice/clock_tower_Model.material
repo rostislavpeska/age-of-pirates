@@ -26,6 +26,14 @@
       <texture name="Masks" override="homecity\italy\italy_harbor\textures\italy_harbor_02_mata_masks">
       </texture>
     </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="buildings\native_settlement\venice\textures\parliament_tower_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\italy\italy_harbor\textures\italy_harbor_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\italy\italy_harbor\textures\italy_harbor_mata_masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matb">
     <materialdef name="default_doublesided_cutout">
@@ -52,6 +60,14 @@
       <texture name="Normals" override="homecity\italy\italy_harbor\textures\italy_harbor_02_mata_normals">
       </texture>
       <texture name="Masks" override="homecity\italy\italy_harbor\textures\italy_harbor_02_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="buildings\native_settlement\venice\textures\parliament_tower_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\italy\italy_harbor\textures\italy_harbor_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\italy\italy_harbor\textures\italy_harbor_mata_masks">
       </texture>
     </parameters>
   </submaterial>

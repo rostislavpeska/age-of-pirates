@@ -1,0 +1,12 @@
+<mix>
+  <title>Pampas Forest Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.4">
+    <texture weight="1">pampas\groundforest_pam</texture>
+    <texture weight="1">pampas\ground1_pam</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.1" octaves="4" persistence="0.7" emptyweight="50" posoffset="1.0">
+    <model weight="2" scalemin="0.5" scalemax="1.0">terrain\great_plains\treegrass01_gp</model>
+    <model weight="2" scalemin="0.5" scalemax="1.0">terrain\great_plains\treegrass_gp</model>
+  </objects>
+</mix>

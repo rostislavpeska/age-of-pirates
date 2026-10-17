@@ -1,0 +1,15 @@
+<mix allowunderwater="true">
+  <title>Lake Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="5" posoffset="0.9">
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="3" scalemin="0.2" scalemax="0.5">terrain\underbrush\underbrush_coast_seaweed1</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="3" scalemin="0.2" scalemax="0.5">terrain\underbrush\underbrush_coast_seaweed2</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="4" scalemin="0.5" scalemax="0.5">terrain\underbrush\underbrush_seaweed_01</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="2" scalemin="0.2" scalemax="0.6">terrain\california\log_a_cal</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="2" scalemin="0.2" scalemax="0.6">terrain\california\log_b_cal</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="2" scalemin="0.2" scalemax="0.6">terrain\new_england\shorelinerocks2_ne</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="2" scalemin="0.2" scalemax="0.6">terrain\new_england\shorelinerocks3_ne</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="2" scalemin="0.2" scalemax="0.6">terrain\new_england\shorelinerocks4_ne</model>
+    <model underwater="true" mindepth="2.1" maxdepth="100" weight="2" scalemin="0.2" scalemax="0.6">terrain\new_england\shorelinerocks5_ne</model>
+  </objects>
+</mix>

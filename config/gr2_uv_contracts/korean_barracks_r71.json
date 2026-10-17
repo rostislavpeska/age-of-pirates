@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "convention": "raw_gr2=(author_u,1-author_v)",
+  "author_checkpoint": "r71c (1024 matc, caps on matc, hidden beams)",
+  "author_blend_sha256": "53c3f44705eb3cdcb28fa2fb779c8167367c7e3c085b4ad8893af7b40beda0c0",
+  "author_payload_sha256": "1469f7fdca16afb8de9bf69145150041c10c8d7f91693700ce97de7a99b87f3b",
+  "provenance": "matc1024_r71: r62 payload -> remap_matc -> beams r69f/r69h -> remap_caps; derived from author payload, not from the candidate GR2",
+  "expected": {
+    "intact": {
+      "mata": {
+        "corners": 27396,
+        "position_f32_sha256": "d4d09f8a38775a11a343d19757bc1b0734727c3d2c2bff3661c00759dff32fb4",
+        "raw_uv_f16_sha256": "5545251d9da205781f377d0e9df5147c1957d72f1ad7179ee89624e8f3cac27d"
+      },
+      "matc": {
+        "corners": 15528,
+        "position_f32_sha256": "d62ddff15ed911061e82b3f19856427c3ab86f9545de3fdcc3f3ae93b19c73be",
+        "raw_uv_f16_sha256": "4958e4e6067d953fbdede8da85ec00ed48de13f692e98eaabdc1c1712b25aaea"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "0bf7ff8b434e7756286071277ba343511ccb771d1838da9c52142cdf21961e58",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    },
+    "damaged": {
+      "matc": {
+        "corners": 58431,
+        "position_f32_sha256": "82c03f7b7371772244e9871dea96cbf29e0fde1087fc3f56da53ce45ce1763a7",
+        "raw_uv_f16_sha256": "47e77952edbe62862e0faa29412f4b31b3fc2247b1f099c1dd256e5190e29755"
+      },
+      "mata": {
+        "corners": 46605,
+        "position_f32_sha256": "fadd8b177b557ade4a277db0b57268a349a40c76da21992ad1a57819468a6cd3",
+        "raw_uv_f16_sha256": "e788d7be496ab82d2883a534d0c5e92f2ba733ef1521d5d144ae1484dab5d971"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "0bf7ff8b434e7756286071277ba343511ccb771d1838da9c52142cdf21961e58",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    }
+  }
+}

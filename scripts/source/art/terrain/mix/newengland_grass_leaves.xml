@@ -1,0 +1,8 @@
+<mix>
+  <title>New England Grass Leaves</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.45" octaves="3" persistence="0.4" emptyweight="0" posoffset="0.1">
+    <model weight="2" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_tutorial_maple01</model>
+    <model weight="2" scalemin="0.8" scalemax="1.1">terrain\underbrush\underbrush_tutorial_maple02</model>
+  </objects>
+</mix>

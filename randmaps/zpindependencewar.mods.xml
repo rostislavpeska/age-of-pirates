@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+            <unit name="zpNativeHouseWesternVillage">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpNativeHouseWesternVillageB">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpTradingPostCaptureNaval">
+                  <obstructionradiusx>4.0000</obstructionradiusx>
+                  <obstructionradiusz>4.0000</obstructionradiusz>
+                  <flag mergemode="remove">TieToWaterSurface</flag>
+            </unit>
+            <unit name="TradingPost">
+                  <placementfile>tradepost_city.xml</placementfile>
+            </unit>
+            <unit name="deField">
+			<placementfile>field_city.xml</placementfile>
+			<flag>InvulnerableIfGaia</flag>
+		</unit>
+            <unit name="ypSMJesuitAccessory">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+            <unit name="zpSPCGoldSmelter">
+                  <protoaction>
+                        <name>Autogather</name>
+                        <rate type="Gold">1.350000</rate>
+                  </protoaction>
+            </unit>
+	</protomods>
+</mods>

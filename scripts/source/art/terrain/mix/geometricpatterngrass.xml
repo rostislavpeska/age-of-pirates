@@ -1,0 +1,15 @@
+<mix>
+  <title>Geometric Pattern Grass</title>
+  <icon>terrain\mix\andes_grassrock_b</icon>
+  <paint mode="turbulence" freq="0.5" octaves="3" persistence=".55">
+    <texture weight="2">araucania\ground10_ara</texture>
+    <texture weight="8">araucania\ground07_ara</texture>
+    <texture weight="6">araucania\ground09_ara</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="3">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_group4</model>
+  </objects>
+</mix>

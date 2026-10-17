@@ -568,7 +568,7 @@ minInterval 60
             case cCivXPIroquois:
             {
                if ((cMyCiv == cCivSpanish) || (cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEEthiopians) ||
-                   (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans))
+                   (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyWeakIroquois);
@@ -621,7 +621,7 @@ minInterval 60
             case cCivDESwedish:
             {
                if ((cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                   (cMyCiv == cCivDEHausa))
+                   (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyWeakSwedes);
@@ -631,7 +631,8 @@ minInterval 60
             }
             case cCivDEAmericans:
             {
-               if ((cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians))
+               if ((cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) || 
+                    cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyWeakAmerican);
@@ -641,7 +642,7 @@ minInterval 60
             }
             case cCivDEEthiopians:
             {
-               if (civIsAfrican() == true)
+               if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyWeakEthiopian);
@@ -651,7 +652,7 @@ minInterval 60
             }
             case cCivDEHausa:
             {
-               if (civIsAfrican() == true)
+               if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyWeakHausa);
@@ -661,10 +662,30 @@ minInterval 60
             }
             case cCivDEMexicans:
             {
-               if (civIsAfrican() == true)
+               if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyWeakMexican);
+                  return;
+               }
+               break;
+            }
+            case cCivDEPolish:
+            {
+               if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+               {
+                  losingEnemyWeak = true;
+                  sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyPoles);
+                  return;
+               }
+               break;
+            }
+            case cCivDEDanish:
+            {
+               if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+               {
+                  losingEnemyWeak = true;
+                  sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyDanes);
                   return;
                }
                break;
@@ -754,7 +775,7 @@ minInterval 60
             case cCivXPIroquois:
             {
                if ((cMyCiv == cCivXPSioux) || (cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEEthiopians) ||
-                   (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans))
+                   (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans)  || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyStrongIroquois);
@@ -807,7 +828,7 @@ minInterval 60
             case cCivDESwedish:
             {
                if ((cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                   (cMyCiv == cCivDEHausa))
+                   (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyStrong = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyStrongSwedes);
@@ -818,7 +839,7 @@ minInterval 60
             case cCivDEAmericans:
             {
                if ((cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                   (cMyCiv == cCivDEHausa))
+                   (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyStrong = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyStrongAmerican);
@@ -828,7 +849,7 @@ minInterval 60
             }
             case cCivDEEthiopians:
             {
-               if (civIsAfrican() == true)
+               if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyStrong = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyStrongEthiopian);
@@ -838,7 +859,7 @@ minInterval 60
             }
             case cCivDEHausa:
             {
-               if (civIsAfrican() == true)
+               if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyStrong = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyStrongHausa);
@@ -848,10 +869,30 @@ minInterval 60
             }
             case cCivDEMexicans:
             {
-               if (civIsAfrican() == true)
+               if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                {
                   losingEnemyWeak = true;
                   sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyStrongMexican);
+                  return;
+               }
+               break;
+            }
+            case cCivDEPolish:
+            {
+               if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+               {
+                  losingEnemyStrong = true;
+                  sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyPoles);
+                  return;
+               }
+               break;
+            }
+            case cCivDEDanish:
+            {
+               if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+               {
+                  losingEnemyStrong = true;
+                  sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingEnemyDanes);
                   return;
                }
                break;
@@ -960,7 +1001,7 @@ minInterval 60
                case cCivXPIroquois:
                {
                   if ((cMyCiv == cCivXPSioux) || (cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEEthiopians) ||
-                     (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans))
+                     (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyWeak = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadIroquois);
@@ -1013,7 +1054,7 @@ minInterval 60
                case cCivDESwedish:
                {
                   if ((cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                      (cMyCiv == cCivDEHausa))
+                      (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      enemyNearlyDead = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadSwedes);
@@ -1024,7 +1065,7 @@ minInterval 60
                case cCivDEAmericans:
                {
                   if ((cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                      (cMyCiv == cCivDEHausa))
+                      (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyStrong = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadAmerican);
@@ -1034,7 +1075,7 @@ minInterval 60
                }
                case cCivDEEthiopians:
                {
-                  if (civIsAfrican() == true)
+                  if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyStrong = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadEthiopian);
@@ -1044,7 +1085,7 @@ minInterval 60
                }
                case cCivDEHausa:
                {
-                  if (civIsAfrican() == true)
+                  if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyStrong = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadHausa);
@@ -1054,10 +1095,30 @@ minInterval 60
                }
                case cCivDEMexicans:
                {
-                  if (civIsAfrican() == true)
+                  if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyWeak = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadMexican);
+                     return;
+                  }
+                  break;
+               }
+               case cCivDEPolish:
+               {
+                  if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+                  {
+                     enemyNearlyDead = true;
+                     sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadPoles);
+                     return;
+                  }
+                  break;
+               }
+               case cCivDEDanish:
+               {
+                  if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+                  {
+                     enemyNearlyDead = true;
+                     sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyNearlyDeadDanes);
                      return;
                   }
                   break;
@@ -1146,7 +1207,7 @@ minInterval 60
                case cCivXPIroquois:
                {
                   if ((cMyCiv == cCivXPSioux) || (cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEEthiopians) ||
-                      (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans))
+                      (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyWeak = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongIroquois);
@@ -1199,7 +1260,7 @@ minInterval 60
                case cCivDESwedish:
                {
                   if ((cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                      (cMyCiv == cCivDEHausa))
+                      (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      enemyNearlyDead = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongSwedes);
@@ -1210,7 +1271,7 @@ minInterval 60
                case cCivDEAmericans:
                {
                   if ((cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEEthiopians) ||
-                      (cMyCiv == cCivDEHausa))
+                      (cMyCiv == cCivDEHausa) || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyStrong = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongAmerican);
@@ -1220,7 +1281,7 @@ minInterval 60
                }
                case cCivDEEthiopians:
                {
-                  if (civIsAfrican() == true)
+                  if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyStrong = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongEthiopian);
@@ -1230,7 +1291,7 @@ minInterval 60
                }
                case cCivDEHausa:
                {
-                  if (civIsAfrican() == true)
+                  if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyStrong = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongHausa);
@@ -1240,10 +1301,30 @@ minInterval 60
                }
                case cCivDEMexicans:
                {
-                  if (civIsAfrican() == true)
+                  if (civIsAfrican() == true || cMyCiv == cCivDEDanish || cMyCiv == cCivDEPolish)
                   {
                      losingEnemyWeak = true;
                      sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongMexican);
+                     return;
+                  }
+                  break;
+               }
+               case cCivDEPolish:
+               {
+                  if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+                  {
+                     enemyStrong = true;
+                     sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongPoles);
+                     return;
+                  }
+                  break;
+               }
+               case cCivDEDanish:
+               {
+                  if (cMyCiv == cCivDEPolish || cMyCiv == cCivDEDanish)
+                  {
+                     enemyStrong = true;
+                     sendStatement(firstHumanAlly, cAICommPromptToAllyEnemyStrongDanes);
                      return;
                   }
                   break;

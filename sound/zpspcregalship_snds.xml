@@ -1,0 +1,904 @@
+<protounitsounddef>
+  <protounit name="zpSPCRegalShip">
+    <soundtype name="Select">
+      <civlogic>
+        <choice name="Nature">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="British">
+          <soundset name="BritishRocketSelect" />
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianMonitorSelect" />
+        </choice>
+        <choice name="Ottomans">
+          <soundset name="OttomanMonitorSelect" />
+        </choice>
+        <choice name="Dutch">
+          <soundset name="DutchMonitorSelect" />
+        </choice>
+        <choice name="Spanish">
+          <soundset name="SpanishMonitorSelect" />
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseMonitorSelect" />
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanMonitorSelect" />
+        </choice>
+        <choice name="Aztecs">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Incas">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Maya">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Seminoles">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Caribs">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Cherokee">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Iroquois">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Cree">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Lakota">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Comanche">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Nootka">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Tupi">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCAct3">
+          <soundset name="BritishRocketSelect" />
+        </choice>
+        <choice name="SPCAct2">
+          <soundset name="BritishRocketSelect" />
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="IroquoisWarCanoeSelect" />
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="SiouxWarCanoeSelect" />
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="AztecWarCanoeSelect" />
+        </choice>
+        <choice name="XPSPC">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Japanese">
+          <soundset name="JapaneseShipsSelect" />
+        </choice>
+        <choice name="Chinese">
+          <soundset name="ChineseShipsSelect" />
+        </choice>
+        <choice name="Indians">
+          <soundset name="IndianShipsSelect" />
+        </choice>
+        <choice name="SPCJapanese">
+          <soundset name="JapaneseShipsSelect" />
+        </choice>
+        <choice name="SPCChinese">
+          <soundset name="ChineseShipsSelect" />
+        </choice>
+        <choice name="SPCIndians">
+          <soundset name="IndianShipsSelect" />
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishMonitorSelect" />
+        </choice>
+        <choice name="DEAmericans">
+          <soundset name="DEAmericanFrigateSelect" />
+        </choice>
+        <choice name="DEHausa">
+          <soundset name="DEHausaCannonBoatSelect" />
+        </choice>
+        <choice name="Pirate">
+          <soundset name="BritishRocketSelect" />
+        </choice>
+        <choice name="DEMexicans">
+          <soundset name="DEMexicanIroncladSelect" />
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianMortarSelect" />
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="DEPolish">
+          <soundset name="PolishHeavyMilitarySelect" />
+        </choice>
+        <choice name="DEDanish">
+          <soundset name="DanishBattleshipSelect" />
+        </choice>
+        <choice name="SPCAct1">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="TheCircle">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="NativeAmerican">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCCompany">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCJapaneseEnemy">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="DEInca">
+          <soundset name="DEIncaRaftSelect" />
+        </choice>
+        <choice name="SPCBarbaryPirates">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCAmericans">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCTatars">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCEthiopians">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCSomalis">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCRenoGang">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCHoleGang">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="XPSPCFalcon">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="XPSPCLakota">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="DEEthiopianCannonBoatSelect" />
+        </choice>
+        <choice name="SPCMoroccans">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCCanadians">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Zapotec">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Huron">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Cheyenne">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Klamath">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Mapuche">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Navajo">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Apache">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Udasi">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Zen">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Shaolin">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Saltpeter">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Bhakti">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Jesuit">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Sufi">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="DESPCBerbers">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Akan">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Yoruba">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Somali">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Sudanese">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Berbers">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="DESPCLenape">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCCityState">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCMilitaryDistrict">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCMarketDistrict">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCArtilleryDistrict">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCReligiousDistrict">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Jagiellon">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Bourbon">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Habsburg">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Hanover">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Oldenburg">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Phanar">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Vasa">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Wettin">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Wittelsbach">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Tengri">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Stuart">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Inuit">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Sami">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Louverture">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Washington">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Hidalgo">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Bonifacio">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Bolivar">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SanMartin">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Santander">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="OHiggins">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="DEImpJapaneseFlag">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="NatPirates">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="PenalColony">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Maltese">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Wokou">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCZen">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCSufi">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Jewish">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpScientists">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="MaoriNatives">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCJesuit">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpVenetians">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpOrthodox">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpXmassVillage">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpWesternVillage">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="AboriginalNatives">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Korowai">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpSansculottes">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="SPCBourbon">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpGrinchVillage">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="Auditore">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpBohemianKing">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpHussites">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpPrinceElector">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpHansaKontor">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpPueblo">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpCossacks">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpSultanate">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpCivPirate">
+          <soundset name="BritishRocketSelect" />
+        </choice>
+        <choice name="SPCVenetians">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpColonialEstate">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+        <choice name="zpParliament">
+          <soundset name="FrenchMonitorSelect" />
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath" />
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth" />
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <civlogic>
+        <choice name="Nature">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="British">
+          <soundset name="BritishBattleshipAcknowledge" />
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianMonitorAcknowledge" />
+        </choice>
+        <choice name="Ottomans">
+          <soundset name="OttomanMonitorAcknowledge" />
+        </choice>
+        <choice name="Dutch">
+          <soundset name="DutchMonitorAcknowledge" />
+        </choice>
+        <choice name="Spanish">
+          <soundset name="SpanishMonitorAcknowledge" />
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseMonitorAcknowledge" />
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanMonitorAcknowledge" />
+        </choice>
+        <choice name="Aztecs">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Incas">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Maya">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Seminoles">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Caribs">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Cherokee">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Iroquois">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Cree">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Lakota">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Comanche">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Nootka">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Tupi">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCAct3">
+          <soundset name="BritishBattleshipAcknowledge" />
+        </choice>
+        <choice name="SPCAct2">
+          <soundset name="BritishBattleshipAcknowledge" />
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="IroquoisWarCanoeAcknowledge" />
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="SiouxWarCanoeAcknowlegde" />
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="AztecWarCanoeAcknowledge" />
+        </choice>
+        <choice name="XPSPC">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Japanese">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="JapaneseShipsAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="JapaneseShipsAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="Chinese">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="ChineseShipsAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="ChineseShipsAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="Indians">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="IndianShipsAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="IndianShipsAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="SPCJapanese">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="JapaneseShipsAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="JapaneseShipsAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="SPCChinese">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="ChineseShipsAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="ChineseShipsAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="SPCIndians">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="IndianShipsAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="IndianShipsAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishMonitorAcknowledge" />
+        </choice>
+        <choice name="DEAmericans">
+          <soundset name="DEAmericanFrigateAcknowledge" />
+        </choice>
+        <choice name="DEHausa">
+          <soundset name="DEHausaCannonBoatAcknowledge" />
+        </choice>
+        <choice name="Pirate">
+          <soundset name="BritishBattleshipAcknowledge" />
+        </choice>
+        <choice name="DEMexicans">
+          <soundset name="DEMexicanIroncladAcknowledge" />
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianMonitorAcknowledge" />
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="DEPolish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="PolishHeavyWarshipAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="PolishHeavyWarshipAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEDanish">
+          <soundset name="DanishBattleshipAcknowledge" />
+        </choice>
+        <choice name="SPCAct1">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="TheCircle">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="NativeAmerican">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCCompany">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCJapaneseEnemy">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="DEInca">
+          <soundset name="DEIncaRaftAcknowledge" />
+        </choice>
+        <choice name="SPCBarbaryPirates">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCAmericans">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCTatars">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCEthiopians">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCSomalis">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCRenoGang">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCHoleGang">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="XPSPCFalcon">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="XPSPCLakota">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="DEEthiopianCannonBoatAcknowledge" />
+        </choice>
+        <choice name="SPCMoroccans">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCCanadians">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Zapotec">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Huron">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Cheyenne">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Klamath">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Mapuche">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Navajo">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Apache">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Udasi">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Zen">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Shaolin">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Saltpeter">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Bhakti">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Jesuit">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Sufi">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="DESPCBerbers">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Akan">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Yoruba">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Somali">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Sudanese">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Berbers">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="DESPCLenape">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCCityState">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCMilitaryDistrict">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCMarketDistrict">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCArtilleryDistrict">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCReligiousDistrict">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Jagiellon">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Bourbon">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Habsburg">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Hanover">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Oldenburg">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Phanar">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Vasa">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Wettin">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Wittelsbach">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Tengri">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Stuart">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Inuit">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Sami">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Louverture">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Washington">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Hidalgo">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Bonifacio">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Bolivar">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SanMartin">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Santander">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="OHiggins">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="DEImpJapaneseFlag">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="NatPirates">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="PenalColony">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Maltese">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Wokou">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCZen">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCSufi">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Jewish">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpScientists">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="MaoriNatives">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCJesuit">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpVenetians">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpOrthodox">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpXmassVillage">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpWesternVillage">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="AboriginalNatives">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Korowai">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpSansculottes">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="SPCBourbon">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpGrinchVillage">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="Auditore">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpBohemianKing">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpHussites">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpPrinceElector">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpHansaKontor">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpPueblo">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpCossacks">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpSultanate">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpCivPirate">
+          <soundset name="BritishBattleshipAcknowledge" />
+        </choice>
+        <choice name="SPCVenetians">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpColonialEstate">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+        <choice name="zpParliament">
+          <soundset name="FrenchMonitorAcknowledge" />
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip" />
+    </soundtype>
+  </protounit>
+</protounitsounddef>

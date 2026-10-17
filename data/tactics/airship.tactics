@@ -1,6 +1,6 @@
 <tactics>
 	<action>
-		<name stringid="300613">AirshipAttack</name>
+		<name stringid="500613">AirshipAttack</name>
 		<type>BroadsideAttack</type>
 		<attackaction>1</attackaction>
 		<rangedlogic>1</rangedlogic>
@@ -30,7 +30,7 @@
 		<hidefromstats>1</hidefromstats>
 	</action>
 	<action>
-		<name stringid="300606">BombAttack</name>
+		<name stringid="500606">BombAttack</name>
 		<type>Attack</type>
 		<active>0</active>
 		<attackaction>1</attackaction>
@@ -51,7 +51,7 @@
       	<minrange>10.000000</minrange>
 	</action>
 	<action>
-		<name stringid="300607">FireBomb</name>
+		<name stringid="500607">FireBomb</name>
 		<type>Attack</type>
 		<active>0</active>
 		<attackaction>1</attackaction>
@@ -72,7 +72,7 @@
 		<minrange>10.000000</minrange>
 	</action>
 	<action>
-		<name stringid="300608">PoisonBomb</name>
+		<name stringid="500608">PoisonBomb</name>
 		<type>Attack</type>
 		<active>0</active>
 		<attackaction>1</attackaction>

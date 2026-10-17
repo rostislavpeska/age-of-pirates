@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_mata_basecolor" />
+      <texture name="Normals" override="buildings\london_basilica\textures\stpauls_mata_normals" />
+      <texture name="Masks" override="buildings\london_basilica\textures\stpauls_mata_masks" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\london_basilica\textures\stpauls_matb_basecolor" />
+      <texture name="Normals" override="buildings\london_basilica\textures\stpauls_matb_normals" />
+      <texture name="Masks" override="buildings\london_basilica\textures\stpauls_matb_masks" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\workshop_props\textures\bells_basecolor" />
+      <texture name="Normals" override="buildings\native_settlement\workshop_props\textures\bells_normals" />
+      <texture name="Masks" override="buildings\native_settlement\workshop_props\textures\bells_masks" />
+    </parameters>
+  </submaterial>
+</material>

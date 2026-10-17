@@ -1,45 +1,75 @@
 <protounitsounddef>
+  <!-- Age of Pirates Mutineer: three crews - Irish (0), British (1), Japanese Ronin (2) - keyed on the model variation of zp_mutineer.xml -->
   <protounit name="zpNatMercMutineer">
     <soundtype name="Select">
-      <soundset name="IrishMilitarySelect">
-      </soundset>
+      <variationlogic>
+        <choice name="0">
+          <soundset name="IrishMilitarySelect" />
+        </choice>
+        <choice name="1">
+          <soundset name="BritishGrenadierSelect" />
+        </choice>
+        <choice name="2">
+          <soundset name="JapaneseRoninSelect" />
+        </choice>
+      </variationlogic>
     </soundtype>
     <soundtype name="Grunt">
-      <soundset name="GenericMaleGrunt">
-      </soundset>
+      <soundset name="GenericMaleGrunt" />
     </soundtype>
     <soundtype name="Death">
-      <soundset name="GenericMaleDeath">
-      </soundset>
+      <soundset name="GenericMaleDeath" />
     </soundtype>
     <soundtype name="Creation">
-      <soundset name="MilitaryBirth">
-      </soundset>
+      <soundset name="MilitaryBirth" />
     </soundtype>
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="IrishMilitaryAcknowledge">
-          </soundset>
+          <variationlogic>
+            <choice name="0">
+              <soundset name="IrishMilitaryAcknowledge" />
+            </choice>
+            <choice name="1">
+              <soundset name="BritishGrenadierAcknowledge" />
+            </choice>
+            <choice name="2">
+              <soundset name="JapaneseRoninAcknowledge" />
+            </choice>
+          </variationlogic>
         </choice>
         <choice name="enemy">
-          <soundset name="IrishMilitaryAttack">
-          </soundset>
+          <variationlogic>
+            <choice name="0">
+              <soundset name="IrishMilitaryAttack" />
+            </choice>
+            <choice name="1">
+              <soundset name="BritishGrenadierAttack" />
+            </choice>
+            <choice name="2">
+              <soundset name="JapaneseRoninAttack" />
+            </choice>
+          </variationlogic>
         </choice>
-        <choice name="build">
-        </choice>
-        <choice name="Huntable">
-        </choice>
+        <choice name="build" />
+        <choice name="Huntable" />
         <choice name="Tree">
+          <variationlogic>
+            <choice name="0">
+              <soundset name="IrishMilitaryAcknowledge" />
+            </choice>
+            <choice name="1">
+              <soundset name="BritishGrenadierAcknowledge" />
+            </choice>
+            <choice name="2">
+              <soundset name="JapaneseRoninAcknowledge" />
+            </choice>
+          </variationlogic>
         </choice>
-        <choice name="AbstractMine">
-        </choice>
-        <choice name="AbstractFarm">
-        </choice>
-        <choice name="AbstractResourceCrate">
-        </choice>
-        <choice name="AbstractFruit">
-        </choice>
+        <choice name="AbstractMine" />
+        <choice name="AbstractFarm" />
+        <choice name="AbstractResourceCrate" />
+        <choice name="AbstractFruit" />
       </targetlogic>
     </soundtype>
   </protounit>

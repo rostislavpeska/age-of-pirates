@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<submodel>
+		RedcoatHalberd
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\redcoats_age2</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\redcoats_age2</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_boredA</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+	</submodel>
+	<submodel>
+		RedcoatMusket
+		<attachment>gun<include>units\asians\japanese\ashigaru\ashigaru_guns.xml</include></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\redcoats_age2</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\redcoats_age2</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_boredA</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach></anim>
+	</submodel>
+	<submodel>
+		WhitecoatHalberd
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\europeans\covenanter\covenanter</file><materialvariant index="1"/></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\europeans\covenanter\covenanter</file><materialvariant index="1"/></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_boredA</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+	</submodel>
+	<submodel>
+		WhitecoatMusket
+		<attachment>gun<include>units\asians\japanese\ashigaru\ashigaru_guns.xml</include></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\europeans\covenanter\covenanter</file><materialvariant index="1"/></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\europeans\covenanter\covenanter</file><materialvariant index="1"/></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_boredA</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach></anim>
+	</submodel>
+	<component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="RedcoatHalberd"/>
+			</data>
+			<data>
+				<submodelref ref="RedcoatMusket"/>
+			</data>
+			<data>
+				<submodelref ref="WhitecoatHalberd"/>
+			</data>
+			<data>
+				<submodelref ref="WhitecoatMusket"/>
+			</data>
+		</logic>
+	</component>
+</animfile>

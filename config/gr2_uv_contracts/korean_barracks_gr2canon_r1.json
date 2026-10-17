@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "convention": "raw_gr2=(author_u,1-author_v)",
+  "author_checkpoint": "gr2-canonical-r1 (installed: gate leaf / horses, destruction caps p10, twins single-owner, orphan fixups scrubbed)",
+  "author_payload_sha256": "69dccba5a39edc4059c13141bd0a2ecd82fac595ae7153b2f13685137a1d4f37",
+  "author_damaged_payload_sha256": "d6f5939bafcf0885eff491c056ff11c4f02b03fc7341411d8a8c8bf56a1f2e30",
+  "provenance": "korean_barracks gr2-canonical-r1 (installed: gate leaf / horses, destruction caps p10, twins single-owner, orphan fixups scrubbed): payloads korean_barracks_intact_payload.json + korean_barracks_damaged_payload.json, derived from the installed GR2s (korean_barracks_physics.gr2 e85dc88936bb, korean_barracks_physics_damaged.gr2 fe2e091002dd) on the owner's instruction ['Barracks and stables - ignore. Use files we have!!!!', 'Explort what we have. Create new canonical version from GR12 or whatever!']; contract from the payloads (from_author), proven equal to from_runtime",
+  "expected": {
+    "intact": {
+      "mata": {
+        "corners": 27396,
+        "position_f32_sha256": "eecf752787698fac23de0e660ee03c237302961b0e44fef8a594bffb1dd3585d",
+        "raw_uv_f16_sha256": "5545251d9da205781f377d0e9df5147c1957d72f1ad7179ee89624e8f3cac27d"
+      },
+      "matc": {
+        "corners": 15528,
+        "position_f32_sha256": "903600db6062dae62a30c0956e4d7e7a33dbe68e3567ad8c43692baad295c13b",
+        "raw_uv_f16_sha256": "4958e4e6067d953fbdede8da85ec00ed48de13f692e98eaabdc1c1712b25aaea"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "0bf7ff8b434e7756286071277ba343511ccb771d1838da9c52142cdf21961e58",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    },
+    "damaged": {
+      "matc": {
+        "corners": 43719,
+        "position_f32_sha256": "f14d91d19e7398ebb965537cabf2d7decb43a40d2653e50680ee95794236ce88",
+        "raw_uv_f16_sha256": "f686f5edb2566b6b66431cd8e39855584cb8bb9cab1879dd173501e52adaf287"
+      },
+      "mata": {
+        "corners": 46602,
+        "position_f32_sha256": "fcd5c2c425d089fd933a5b737c24e7d5c60f36bfda5fb38f2fe49512c27402f9",
+        "raw_uv_f16_sha256": "976e317deba5c96e2d1810ebeb53850c24832eb8a8bf1103eb6a73759ad38a62"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "0bf7ff8b434e7756286071277ba343511ccb771d1838da9c52142cdf21961e58",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      },
+      "matz": {
+        "corners": 14694,
+        "position_f32_sha256": "12175683310af00b612eb1e8cdfe9f019e56c5ab5b2eb239580e86284bb9ade0",
+        "raw_uv_f16_sha256": "7bde8e7a1cfff480db99e8e1af7ffab1500288dff21defb3403723571720954f"
+      }
+    }
+  }
+}

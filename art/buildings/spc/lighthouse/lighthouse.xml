@@ -1,12 +1,31 @@
 <animfile>
-	<component>
-		building
-        <assetreference type="GrannyModel">
-            <file>buildings\spc\lighthouse\lighthouse_Model</file>
-        </assetreference>		    
-	</component>
-	<anim>
-		Idle
-		<component>building</component>
-	</anim>
+  <definebone>lighthouse</definebone>
+  <definebone>light</definebone>
+  <definebone>lamp</definebone>
+  <attachment>lamp<component>lamp<assetreference type="popcornfx">
+        <file>objects\cave\mine_prop_d_light.pkfx</file>
+      </assetreference>
+    </component>
+    <anim>None<component>lamp</component>
+    </anim>
+  </attachment>
+  <attachment>lamp_low<component>lamp_low<assetreference type="popcornfx">
+        <file>objects\city_street_light.pkfx</file>
+      </assetreference>
+    </component>
+    <anim>None<component>lamp_low</component>
+    </anim>
+  </attachment>
+  <component>lighthouse<assetreference type="GrannyModel">
+      <file>buildings\native_settlement\lighthouse\lighthouse</file>
+    </assetreference>
+    <attach a="lamp_low" frombone="ATTACHPOINT" tobone="lamp" syncanims="0" />
+    <attach a="lamp" frombone="ATTACHPOINT" tobone="lamp" syncanims="0" />
+    <attach a="small_lamp" frombone="ATTACHPOINT" tobone="light" syncanims="0" />
+  </component>
+  <anim>Idle<assetreference type="GrannyAnim">
+      <file>buildings\native_settlement\lighthouse\lighthouse_idle</file>
+    </assetreference>
+    <component>lighthouse</component>
+  </anim>
 </animfile>

@@ -1,0 +1,8 @@
+<mix allowunderwater="true">
+  <title>Yucatan Skirmish Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.05" octaves="6" persistence="0.3" emptyweight="0.2" posoffset="0.50">
+    <model underwater="true" mindepth="2.00" maxdepth="3.00" weight="1" scalemin="0.5" scalemax="0.7">terrain\underbrush\underbrush_coast_seaweed1</model>
+    <model underwater="true" mindepth="2.00" maxdepth="3.00" weight="3" scalemin="0.4" scalemax="0.6">terrain\underbrush\underbrush_seaweed_01</model>
+  </objects>
+</mix>

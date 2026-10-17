@@ -1,0 +1,71 @@
+{
+  "_comment": [
+    "AGENTS.md rule 13: the hook entries .claude/settings.json needs (merged next to the existing ones).",
+    "Owner applies them: python .claude/hooks/harness_status.py --write-proposed <file>, check, copy over .claude/settings.json.",
+    "Commands run in Git Bash. A missing script exits 0 (fail open, e.g. a fresh clone where .claude/hooks is not checked out).",
+    "The inbox command reads runs.json with bash builtins only: while nothing is bound Python never starts (cost = the bash start).",
+    "The inbox command finds the task store with bash builtins too: AOP_TASKS_DIR from the environment, else its line in config/aop.local.env (the device's local environment, scripts/tools/local_env.py); neither = no inbox, Python never starts.",
+    "launch_gate always exits 0 (it denies through JSON); inbox_hook's exit 2 on SubagentStop is deliberate and passes through exec.",
+    "tool_guard (R1 raw image repoint in Blender MCP code, R2 blender_gate.py piped, R3 endless loop in a background Bash / PowerShell or Monitor command, or in a foreground command that detaches: INC-027, INC-037): Python starts only when the input names blender_gate, a Blender execute tool, run_in_background true, the Monitor tool, nohup / disown / setsid / Start-Job / Start-Process, or (a Bash call) a lone `&`. The input is read with the `read` builtin (no fork, INC-038: `b=$(cat)` cost ~200 ms per call), so a foreground call costs the bash start alone; deny through JSON, exit 0.",
+    "tool_guard matcher (INC-384): it holds regex characters, so Claude Code reads it as a regular expression; its Blender alternative is tool_guard.BLENDER_TOOL, every Blender MCP execute tool (execute_blender_code of the blender and blender-official-mcp servers, and the _for_cli variants). A changed matcher reaches .claude/settings.json only through harness_status.py --write-proposed, which updates the matcher of a group already registered with the same command.",
+    "A changed command (INC-399) reaches it the same way: --write-proposed gives the entry's hook to the settings group whose single hook runs the same .claude/hooks script (e.g. the old inbox_hook command) and drops further such groups, so no script runs twice; groups running other scripts stay as they are.",
+    "turn_end_guard (Stop, INC-027): blocks a turn end once per item while a watch.py watch outlived its job or a process of the session runs an endless loop outside watch.py; always exit 0, fails open."
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Workflow|Agent|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/launch_gate.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" || true",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell|Monitor|mcp__blender[\\w-]*__execute_blender_code\\w*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/tool_guard.py\"; [ -f \"$f\" ] || exit 0; b=; IFS= read -r -d '' b; case \"$b\" in *blender_gate*|*execute_blender_code*|*'\"run_in_background\":true'*|*'\"run_in_background\": true'*|*'\"tool_name\":\"Monitor\"'*|*'\"tool_name\": \"Monitor\"'*|*nohup*|*disown*|*setsid*|*Start-Job*|*Start-ThreadJob*|*Start-Process*) printf '%s' \"$b\" | python \"$f\" || true;; *'\"tool_name\":\"Bash\"'*|*'\"tool_name\": \"Bash\"'*) case \"$b\" in *[!\\&\\<\\>\\|]\\&[!\\&\\>]*) printf '%s' \"$b\" | python \"$f\" || true;; esac;; esac; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "p=\"${CLAUDE_PROJECT_DIR:-.}\"; f=\"$p/.claude/hooks/inbox_hook.py\"; t=\"$AOP_TASKS_DIR\"; [ -z \"$t\" ] && [ -f \"$p/config/aop.local.env\" ] && while IFS='=' read -r k v || [ -n \"$k\" ]; do [ \"$k\" = AOP_TASKS_DIR ] && t=${v%$'\\r'}; done < \"$p/config/aop.local.env\"; r=\"$t/inbox/runs.json\"; b=; [ -n \"$t\" ] && [ -f \"$f\" ] && [ -f \"$r\" ] && IFS= read -r -d '' b < \"$r\"; case \"$b\" in *'\"'*) exec python \"$f\";; esac; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "p=\"${CLAUDE_PROJECT_DIR:-.}\"; f=\"$p/.claude/hooks/inbox_hook.py\"; t=\"$AOP_TASKS_DIR\"; [ -z \"$t\" ] && [ -f \"$p/config/aop.local.env\" ] && while IFS='=' read -r k v || [ -n \"$k\" ]; do [ \"$k\" = AOP_TASKS_DIR ] && t=${v%$'\\r'}; done < \"$p/config/aop.local.env\"; r=\"$t/inbox/runs.json\"; b=; [ -n \"$t\" ] && [ -f \"$f\" ] && [ -f \"$r\" ] && IFS= read -r -d '' b < \"$r\"; case \"$b\" in *'\"'*) exec python \"$f\";; esac; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/turn_end_guard.py\"; [ -f \"$f\" ] || exit 0; python \"$f\" || true",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

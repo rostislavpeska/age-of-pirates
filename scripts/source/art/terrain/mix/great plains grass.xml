@@ -1,0 +1,15 @@
+<mix>
+  <title>Great Plains Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.4" octaves="2" persistence="0.58">
+    <texture weight="2">great_plains\ground3_gp</texture>
+    <texture weight="1">great_plains\ground6_gp</texture>
+    <texture weight="5">great_plains\ground4_gp</texture>
+    <texture weight="3">great_plains\ground5_gp</texture>
+    <texture weight="1">great_plains\ground6_gp</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.85" octaves="3" persistence="0.75" emptyweight="75" posoffset="0.5">
+    <model weight="2" scalemin="0.75" scalemax="1.0">terrain\great_plains\green_grass01</model>
+    <model weight="3" scalemin="0.75" scalemax="1.0">terrain\great_plains\green_grass02</model>
+  </objects>
+</mix>

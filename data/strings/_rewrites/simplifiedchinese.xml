@@ -1,0 +1,5 @@
+<!-- Rewrites of vanilla string ids for simplifiedchinese. STATIC: keep these in simplifiedchinese, never in English.
+     scripts/tools/stringsync.py splices these lines in place of the English REWRITES block, so this
+     file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
+     64988 vanilla: 选择外国盟友 -->
+<string _locid="64988">选择盟友</string>

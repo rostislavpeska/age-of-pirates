@@ -183,7 +183,7 @@
     <rof>1.000000</rof>
   </action>
   <action>
-    <name stringid="302012">ExtraHitPointsAssassin</name>
+    <name stringid="502012">ExtraHitPointsAssassin</name>
     <type>AutoRangedModify</type>
     <active>1</active>
     <maxrange>25</maxrange>
@@ -198,7 +198,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="300774">PoisonBombWeak</name>
+    <name stringid="500774">PoisonBombWeak</name>
     <type>Attack</type>
     <rangedlogic>1</rangedlogic>
     <maxrange>6</maxrange>

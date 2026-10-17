@@ -919,6 +919,12 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 	rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 	rmAddObjectDefConstraint(TCID, avoidSocketLong);
+	// Fake Frouping to fix the auto-grouping TC bug
+	// (user 2026-09-24) RIGHT BEFORE the first player's start units / start grouping - it prevents the player-selection bug; water is fine (.claude/skills/rm-players)
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock");
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
+
 	rmAddObjectDefConstraint(TCID, avoidWater10);
 
 	for(i=1; <cNumberPlayers) {
@@ -1232,7 +1238,7 @@ void main(void)
 	int electorSocket1 = rmGetUnitPlaced(spawnerID1, 0);
 	int electorSocket2 = rmGetUnitPlaced(spawnerID2, 0);
 
-	int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+	int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0)+1;
 
 	string pirate1ID = ""+(flag1-1);
 
@@ -1282,17 +1288,39 @@ void main(void)
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	// players only - gaia keeps its protos (a setup tech on gaia resets AutoConvert suspensions)
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+	}
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpElbeSetup"); // All in One
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("Trade Route Set Level");
-		rmSetTriggerEffectParamInt("TradeRoute",1);
-		rmSetTriggerEffectParamInt("Level",1);
-		rmAddTriggerEffect("Trade Route Set Level");
-		rmSetTriggerEffectParamInt("TradeRoute",2);
-		rmSetTriggerEffectParamInt("Level",1);
+	}
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",1);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParamInt("Level",1);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("AI Techs"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
+		rmSetTriggerEffectParamInt("Status",2);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2586,75 +2614,73 @@ void main(void)
 	// AI Hansa Leaders
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
-	if (rmGetPlayerTeam(k) == 0) {
-		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
-		rmCreateTrigger("ZP_Execute_Revolution"+k);
-		rmCreateTrigger("ZP_Timer_Revolution"+k);
+	rmCreateTrigger("ZP_Iniciate_Revolution"+k);
+	rmCreateTrigger("ZP_Execute_Revolution"+k);
+	rmCreateTrigger("ZP_Timer_Revolution"+k);
 
-		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
-		rmAddTriggerCondition("ZP PLAYER Human");
-		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("MyBool", "false");
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
-		rmSetTriggerConditionParamInt("Status",2);
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
-		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
-		rmAddTriggerCondition("Timer");
-		rmSetTriggerConditionParamInt("Param1",10);
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
-		rmSetTriggerConditionParamInt("Status",2);
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",10);
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpNativeHansaKontor");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
-		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
-		rmSetTriggerConditionParamInt("Status",2);
+	rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpNativeHansaKontor");
+	rmSetTriggerConditionParamInt("Status",2);
 
-		int revFraction=-1;
-		revFraction = rmRandInt(1,3);
+	int revFraction=-1;
+	revFraction = rmRandInt(1,3);
 
-		if (revFraction==1)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaWestern"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		if (revFraction==2)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaCentral"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		if (revFraction==3)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaEast"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	if (revFraction==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaWestern"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
 	}
+	if (revFraction==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaCentral"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (revFraction==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaEast"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	}
 
 	// AI Hussite Leaders

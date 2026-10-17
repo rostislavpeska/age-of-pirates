@@ -1,0 +1,8 @@
+<mix>
+  <title>Flowers Yellow</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="6" persistence="0.9" emptyweight="0.99" posoffset="0.5">
+    <model weight="100" scalemin="0.5" scalemax="1.5">terrain\great_plains\flower01</model>
+    <model weight="100" scalemin="0.5" scalemax="1.0">terrain\great_plains\flower05</model>
+  </objects>
+</mix>

@@ -1528,6 +1528,10 @@ rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2300,7 +2304,7 @@ if (orthodoxCaptain==3)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxRussians"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxConstantinopole"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 rmSetTriggerPriority(4);

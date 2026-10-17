@@ -1,0 +1,16 @@
+<mix allowunderwater="true">
+  <title>Yucatan Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.3" octaves="5" persistence="0.75" emptyweight="15" posoffset="0.9">
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="2" scalemin="0.1" scalemax="0.8">terrain\underbrush\underbrush_coast_seaweed1</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="2" scalemin="0.1" scalemax="0.8">terrain\underbrush\underbrush_coast_seaweed2</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="2" scalemin="0.1" scalemax="0.4">terrain\underbrush\underbrush_seaweed_01</model>
+    <model underwater="true" mindepth="2.0" maxdepth="3.5" weight="1" scalemin="0.1" scalemax="1.0">units\asians\spc\rock_crate\spc_asian_rock_crate_a</model>
+    <model underwater="true" mindepth="2.0" maxdepth="3.5" weight="1" scalemin="0.1" scalemax="1.0">units\asians\spc\rock_crate\spc_asian_rock_crate_b</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="1" scalemin="0.05" scalemax="0.4">terrain\new_england\shorelinerock_big_ne_1</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="1" scalemin="0.05" scalemax="0.4">terrain\new_england\shorelinerock_big_ne_2</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="1" scalemin="0.05" scalemax="0.4">terrain\new_england\shorelinerock_big_ne_3</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="1" scalemin="0.05" scalemax="0.4">terrain\new_england\shorelinerock_big_ne_4</model>
+    <model underwater="true" mindepth="1.8" maxdepth="3.5" weight="1" scalemin="0.05" scalemax="0.4">terrain\new_england\shorelinerock_big_ne_5</model>
+  </objects>
+</mix>

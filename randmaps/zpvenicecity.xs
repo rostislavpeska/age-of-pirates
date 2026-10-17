@@ -893,9 +893,9 @@ void main(void)
 	rmForbidTradeMonopoly(true);
 
 	// ____________________ MAP OBJECTIVES ____________________
-    rmObjectiveScreenSetTitle(302118);
-    rmObjectiveScreenSetGoal(302119);
-    rmObjectiveAdd(302120, 302121, true, true, true);
+    rmObjectiveScreenSetTitle(502118);
+    rmObjectiveScreenSetGoal(502119);
+    rmObjectiveAdd(502120, 502121, true, true, true);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.80);
@@ -1051,6 +1051,10 @@ void main(void)
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1067,7 +1071,7 @@ void main(void)
 	rmSetTriggerEffectParam("Civilization","zpVenetians");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("StringID","302124");
+	rmSetTriggerEffectParam("StringID","502124");
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParamInt("Level",1);
@@ -1241,8 +1245,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
 		rmAddTriggerEffect("Counter Set Text Team");
         rmSetTriggerEffectParam("Name", "VictoryCounter"+i);
-        rmSetTriggerEffectParam("Msg", "{302138}");
-        rmSetTriggerEffectParam("EnemyMsg", "{302139}");
+        rmSetTriggerEffectParam("Msg", "{502138}");
+        rmSetTriggerEffectParam("EnemyMsg", "{502139}");
         rmSetTriggerEffectParamInt("RefTeamID", i);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
@@ -2980,75 +2984,73 @@ void main(void)
 	// AI Venice Leaders
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
-	if (rmGetPlayerTeam(k) == 0) {
-		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
-		rmCreateTrigger("ZP_Execute_Revolution"+k);
-		rmCreateTrigger("ZP_Timer_Revolution"+k);
+	rmCreateTrigger("ZP_Iniciate_Revolution"+k);
+	rmCreateTrigger("ZP_Execute_Revolution"+k);
+	rmCreateTrigger("ZP_Timer_Revolution"+k);
 
-		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
-		rmAddTriggerCondition("ZP PLAYER Human");
-		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("MyBool", "false");
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
-		rmSetTriggerConditionParamInt("Status",2);
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
-		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
-		rmAddTriggerCondition("Timer");
-		rmSetTriggerConditionParamInt("Param1",10);
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
-		rmSetTriggerConditionParamInt("Status",2);
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",10);
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
-		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
-		rmSetTriggerConditionParamInt("Status",2);
+	rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
+	rmSetTriggerConditionParamInt("Status",2);
 
-		int revFraction=-1;
-		revFraction = rmRandInt(1,3);
+	int revFraction=-1;
+	revFraction = rmRandInt(1,3);
 
-		if (revFraction==1)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceDolphin"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		if (revFraction==2)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceContarini"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		if (revFraction==3)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceCornaro"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	if (revFraction==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceDolphin"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
 	}
+	if (revFraction==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceContarini"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (revFraction==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceCornaro"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	}
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>

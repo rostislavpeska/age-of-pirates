@@ -1,0 +1,17 @@
+<mix>
+  <title>Yukon Snow</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.7">
+    <texture weight="1">great_lakes\ground_snow1_glw</texture>
+    <texture weight="1">great_lakes\ground_snow2_glw</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.6" emptyweight="90" posoffset="0.5">
+    <model weight="4">terrain\underbrush\underbrush_snow_grass1</model>
+    <model weight="4">terrain\underbrush\underbrush_snow_grass2</model>
+    <model weight="5">terrain\underbrush\underbrush_snow_bush3</model>
+    <model weight="5">terrain\underbrush\underbrush_snow_bush2</model>
+    <model weight="3">terrain\underbrush\underbrush_snow_rock1</model>
+    <model weight="3">terrain\underbrush\underbrush_snow_rock2</model>
+    <model weight="6">terrain\underbrush\underbrush_snow_rock4</model>
+  </objects>
+</mix>

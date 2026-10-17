@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "convention": "raw_gr2=(author_u,1-author_v)",
+  "author_checkpoint": "gr2-canonical-r1 (installed: gate leaf / horses, destruction caps p10, twins single-owner, orphan fixups scrubbed)",
+  "author_payload_sha256": "de60780c14bf85fd9debec263136ae11536290a03d96e8496c121887a8f3f44e",
+  "author_damaged_payload_sha256": "d6a9de5459021b22f6f7e25721899c57ad3234fc5b04fdf70512f1fadadeb42c",
+  "provenance": "korean_stable gr2-canonical-r1 (installed: gate leaf / horses, destruction caps p10, twins single-owner, orphan fixups scrubbed): payloads korean_stable_intact_payload.json + korean_stable_damaged_payload.json, derived from the installed GR2s (korean_stable_physics.gr2 21d49c00f471, korean_stable_physics_damaged.gr2 4d130f6eaeb1) on the owner's instruction ['Barracks and stables - ignore. Use files we have!!!!', 'Explort what we have. Create new canonical version from GR12 or whatever!']; contract from the payloads (from_author), proven equal to from_runtime",
+  "expected": {
+    "intact": {
+      "mata": {
+        "corners": 16032,
+        "position_f32_sha256": "afc5457df63fc1665577ee38cba772c2dad1e7155b10bc9152aae01587cbdd3d",
+        "raw_uv_f16_sha256": "6b53d52b173c37f694dc54a54840004f33bfac41a770c3a6cb7f13ef03b1f64c"
+      },
+      "matc": {
+        "corners": 11622,
+        "position_f32_sha256": "fc3a6b1e0de2e28673a54a87b90a7a31223c3331a11d35857ba706a79e38f72f",
+        "raw_uv_f16_sha256": "0881e8a3a0ee92f3abacc99962e6d9542a8397d8c94badbb2de976827c2e973a"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "9682884ddb1f5892622ee300e0aa410672969488fc470993c5bbdf16fa48cea2",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    },
+    "damaged": {
+      "mata": {
+        "corners": 26475,
+        "position_f32_sha256": "eeecaab5a5f0076f1df5dbb694fefd93c1d0ad4b00fa468da63e6689cd2d6e75",
+        "raw_uv_f16_sha256": "5b78a88f031c4df628f6254a7ccce7ae4e154d9c325bd75abb798a4e2487f639"
+      },
+      "matc": {
+        "corners": 26604,
+        "position_f32_sha256": "9a2232ffea23187d2dfd88ec17cbe92787f2407ba4bb267b911bd289ec05143a",
+        "raw_uv_f16_sha256": "c39f24e1e13f821b5717068dae78082fe308e2c93c39c7c1578436c3f2c43dbc"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "9682884ddb1f5892622ee300e0aa410672969488fc470993c5bbdf16fa48cea2",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      },
+      "matz": {
+        "corners": 9135,
+        "position_f32_sha256": "9c0bc5fc9af60acee10d734bcf89f9ea0b5a41b5832e1304aeac8ec29d0a4390",
+        "raw_uv_f16_sha256": "92e1f9c3d1725a13083d593eb3085dc2cff1739b758e431a70238287022cfffd"
+      }
+    }
+  }
+}

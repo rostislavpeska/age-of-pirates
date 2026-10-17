@@ -47,9 +47,9 @@
 		<unit variation="98" posx="4.9276" posz="-10.7552" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeWallFull</unit>
 		<unit variation="98" posx="11.4695" posz="-10.8341" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeWallFull</unit>
 		<unit variation="17" posx="-0.5552" posz="-5.9823" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
-		<unit variation="233" posx="-8.8325" posz="-5.4622" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="-8.8325" posz="-5.4622" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianG</unit>
 		<unit variation="14" posx="-14.9372" posz="-3.4414" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="65" posx="8.0161" posz="-4.8662" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="8.0161" posz="-4.8662" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianE</unit>
 		<unit variation="114" posx="-10.5571" posz="-0.9595" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="48" posx="-0.4869" posz="-1.4587" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainC</unit>
 		<unit variation="253" posx="-7.3436" posz="0.3815" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>

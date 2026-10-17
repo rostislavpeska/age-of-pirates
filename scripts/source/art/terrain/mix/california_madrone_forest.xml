@@ -1,0 +1,16 @@
+<mix>
+  <title>California Madrone Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="1">california\fakecalifgrassmix_cal</texture>
+    <texture weight="2">california\madrone_forest_cal</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="45" posoffset="0.55">
+    <model weight="4">terrain\california\rock_a_cal</model>
+    <model weight="3">terrain\california\rock_b_cal</model>
+    <model weight="2">terrain\california\rock_c_cal</model>
+    <model weight="2">terrain\california\rock_d_cal</model>
+    <model weight="2">terrain\california\rock_e_cal</model>
+    <model weight="3">terrain\california\rock_f_cal</model>
+  </objects>
+</mix>

@@ -1,0 +1,32 @@
+<animfile>
+  <component>castle<logic type="Variation">
+      <variationid0>
+        <assetreference type="GrannyModel">
+          <file>buildings\native_settlement\british_castles\british_castle_tower02</file>
+        </assetreference>
+      </variationid0>
+      <variationid1>
+        <assetreference type="GrannyModel">
+          <file>buildings\native_settlement\british_castles\british_castle_tower03</file>
+        </assetreference>
+      </variationid1>
+      <variationid2>
+        <assetreference type="GrannyModel">
+          <file>buildings\native_settlement\british_castles\british_castle_tower04</file>
+        </assetreference>
+      </variationid2>
+      <variationid3>
+        <assetreference type="GrannyModel">
+          <file>buildings\native_settlement\british_castles\british_castle_house01</file>
+        </assetreference>
+      </variationid3>
+      <variationid4>
+        <assetreference type="GrannyModel">
+          <file>buildings\native_settlement\british_castles\british_castle_house02</file>
+        </assetreference>
+      </variationid4>
+    </logic>
+  </component>
+  <anim>Idle<component>castle</component>
+  </anim>
+</animfile>

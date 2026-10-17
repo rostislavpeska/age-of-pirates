@@ -1,0 +1,112 @@
+# Effect recipe contract and historical implementation
+
+## Repeatable effect stages
+
+Use the asset's existing recipe/handoff to bind these stages. This is a data
+contract for existing tools, not a new recipe parser. Project/set profiles supply
+appearance targets; the generic provider executes the declared operation.
+
+| Stage | Required inputs and controls | Scope to preserve |
+| --- | --- | --- |
+| Material/grain transfer | Original source identity, destination pattern IDs, density, sampling kernel, colour space, scale and seed | Pattern rhythm, alpha and unrelated channels |
+| Sharpening | Pinned unsharpened input, radius with units, strength, threshold and mask | No repeated sharpening of derived candidates; inspect halos at ends |
+| Wear/cavity | Identified curvature/AO source, physical boundary masks, layer order and strengths | Distinguish physical edges from arbitrary UV/chart borders |
+| Moss/imperfections | Named semantic masks, source method, piece IDs, seed and physical scale | Retain placement through later grading; roughness is not a moss label |
+| Set colour/glaze | Set profile, channel mapping, clean-clay/moss masks and ordered grade | Matte moss and protected materials; no structural rebake |
+| Composition/encoding | Native before/after or script outputs, owned channels, padding, codec and normal convention | Exact protected source pixels before encoding; bounded codec effects afterward |
+
+Record measured, retained and proxy masks distinctly. Replacing one with another
+changes the recipe even if strengths remain equal. Scale effects using physical
+or pattern coordinates and measured texel density; do not reuse a pixel radius
+blindly across atlas resolutions. Keep each useful intermediate and its mask so
+one effect can be compared or rerun without rebuilding unrelated stages.
+
+Replay into fresh output and compare against the pinned specimen. Apply the same
+interface to a second building before claiming set-wide transfer. Art approval,
+live delivery and runtime validation remain separate from exact image replay.
+
+## Historical Korean r70 implementation
+
+The full working implementation (kit builder, seven recipes in three rounds, compose, game-light rig,
+QA scripts) is archived in the Korean `r70*` 2d-asset packages of the AoE Buildings library under
+`sources/`. Reuse it rather than rewriting; adapt the feature table per building.
+Dimensions, units and timings below describe that specimen, not universal defaults.
+
+## Mask kit (per atlas, 2048, float16 npz, row 0 = top, x = u*W, y = (1-v)*H)
+
+| array | meaning |
+| --- | --- |
+| feature, feature_bits, cell | resolved feature id (priority on overlaps), all overlaps, chart island id |
+| h_local / h_dom | height inside the face's own vertical extent (0 bottom, 1 top; roofs eave->ridge); h_dom uses only the most-seen orientation so opposite faces do not cancel |
+| up_x, up_y / up_dom_*, up_coh | world-up in pixel space; agreement of stacked faces |
+| dist_down, dist_up, face_h_tx | texels to the panel edge down/up-slope; panel height in texels |
+| edge_dist, edge_norm | distance to the island border; divided by the island inradius |
+| nz, orient | world normal z; orientation class |
+| curv_bake, curv_nrm | Painter curvature bake (owner mesh) and curvature from the normal map (they measure different things) |
+| ao, ao_bake | game AO (Masks.R) and a raw Painter AO |
+| stack, stack_vis, visible, used | faces per texel, visible faces per texel, visibility, used texels |
+
+Weighting: where visible faces cover a texel, only visible faces count, weighted by visibility.
+Provide `directional_trust` (0 where stacked orientations conflict) and fade direction-dependent
+effects (damp, streaks) by it.
+
+## Recipe contract
+
+- Inputs read-only; outputs only in the recipe folder: `<atlas>__BaseColor.png` (RGB 8-bit, byte-
+  identical outside the claim), `<atlas>__claim.png` (L, 255 = owned; at most 4 px dilation into empty
+  gutter, never into another feature), optional `<atlas>__Height.png` (16-bit, 32768 = 0, 1 unit =
+  1/1024 texel), optional `__Details.png` (R only), deterministic script + params, previews.
+- One recipe owns Details for an atlas. Protected texels (roof base colour, alpha, props, eave backing,
+  shared atlases) are never claimed except by overlay recipes that keep untouched texels identical.
+- Each recipe LOOKS at 1:1 and at game zoom and reports measured stats against its targets.
+
+## Compose
+
+Priority order (low to high) used on the Korean set: stone, timber, plaster, hanji, doors, player
+colour/courtyard, roof overlays. Refresh only the declared empty gutter territory nearest to each
+owner; a fixed 48 px dilation can overwrite neighbors on a four-pixel-margin atlas. Preserve other
+owners, measure the actual mip/filter result and report insufficient padding without silently
+changing UVs. Use exact pixel-centre containment for coverage statistics: rounded polygon drawing
+can include outside pixels along every edge. Merge heights -> OpenGL detail normal normalize(-dh/dx, +dh/drow, 1)
+-> RNM into the OpenGL source -> the installed per-atlas transform. Keep player-colour base texels of
+buildings whose player colour was out of scope byte-identical.
+
+## QA checks (independent scripts, numbers + evidence images)
+
+### Parameter-only finish on existing encoded maps
+
+Keep normal amplitude and roughness independent from structural bake, BaseColor,
+alpha and weathering masks. Pin semantic tube/pan IDs and named moss/dust masks;
+never infer moss from roughness. Calibrate normal tangent gain against measured
+source slope when matching a reference. An end-only page inherits its parent
+field's gain; absence of field samples is not a failed material.
+
+Check the actual compressed mip chain. Packed roughness edits must preserve
+decoded AO/other mask channels; unchanged alpha does not prove correct contour
+alignment after a new pattern. Protect shared compression blocks conservatively
+and report retained partial blocks. Reopen and inspect the decoded maps on the
+frozen model, then verify live delivery separately. Record a deterministic replay
+and source hashes. Do not claim a shader-only preview is an installed texture.
+
+Windows adapters must parse JSON with explicit UTF-8. Keep native verification
+profiles at their repository-relative evidence root, or resolve that root
+explicitly. A missing authorization file or corrupted quote is a verifier input
+failure, not permission to remove its check. Preserve the failed specimen.
+
+Measured Korean14October recipe: source-dependent tangent gain, green-only BC
+patching,136independent mip comparisons and byte-identical Barracks replay.
+Asset paths/values and remaining alpha holds belong in the consuming project's
+`ZEN_FINISH_ROLLOUT_R1.md`, not in this generic method.
+
+1. alpha identical; 2. untouched roof texels identical, overlays only; 3. protected regions; 4. every
+changed texel inside a claim, composite reproducible; 5. Details R-only and coverage; 6. mip halos
+(box and the encoder's Lanczos, mips 1-4); 7. stacked-cell repetition (centred marks on stacked faces);
+8. DDT dry run (headers, sizes, round-trip error, cutout mismatch); 9. normals change only where relief
+exists, sign against an independent gradient (height for new relief, AO gradient for installed tiles);
+10. out-of-scope player-colour bases unchanged; 11. stack-weighted player-colour share.
+
+## Review loop that worked
+
+Round 1: seven recipes + compose + art critic + QA (3 h). Round 2: four fix agents on the ranked
+critique + compose + critic + senior-artist judge + QA (1.3 h). Round 3: three fix agents on the judge's
+notes. Time-box rounds; pass critiques as files; keep every round's outputs for comparison sheets.

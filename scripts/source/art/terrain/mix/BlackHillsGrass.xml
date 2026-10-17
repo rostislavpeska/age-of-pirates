@@ -1,0 +1,9 @@
+<mix>
+  <title>BlackHillsGrass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.4" emptyweight="0.5" posoffset="0.1">
+    <model weight="2" scalemin="1.0" scalemax="1.4">terrain\underbrush\underbrush_blackhills_grass_01</model>
+    <model weight="2" scalemin="1.0" scalemax="1.4">terrain\underbrush\underbrush_blackhills_grass_02</model>
+    <model weight="2" scalemin="1.0" scalemax="1.4">terrain\underbrush\underbrush_blackhills_grass_03</model>
+  </objects>
+</mix>

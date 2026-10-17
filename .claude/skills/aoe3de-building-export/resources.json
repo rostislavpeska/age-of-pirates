@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/rig-export.md",
+    "references/textures-xml.md",
+    "scripts/convert_fbx_to_gr2.ps1",
+    "scripts/inspect_static_rig.py",
+    "scripts/validate_opaque_textures.py"
+  ],
+  "skills": [
+    "aoe3de-reference",
+    "skill-library-audit"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "texture-check"
+      ],
+      "optional": false,
+      "note": "Use the selected interpreter; presence does not establish runtime compatibility.",
+      "commands": [
+        "python",
+        "python3"
+      ]
+    },
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "rig-audit"
+      ],
+      "optional": false,
+      "note": "Confirm version, intended scene and a working session or saved-copy inspection route.",
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "texture-check"
+      ],
+      "optional": false,
+      "note": "Required in the standalone helper interpreter.",
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ]
+    },
+    {
+      "id": "powershell",
+      "kind": "executable",
+      "requiredFor": [
+        "conversion"
+      ],
+      "optional": false,
+      "note": "PowerShell for the bundled conversion wrapper.",
+      "commands": [
+        "pwsh",
+        "powershell"
+      ]
+    },
+    {
+      "id": "gr2-converter",
+      "kind": "application",
+      "requiredFor": [
+        "conversion"
+      ],
+      "optional": false,
+      "note": "Explicit local executable compatible with --format=gr2 --bang; verify against known input."
+    },
+    {
+      "id": "gr2-inspector",
+      "kind": "capability",
+      "requiredFor": [
+        "gr2-validation"
+      ],
+      "optional": false,
+      "note": "Must inspect actual meshes, bones, bindings and bounds; header checks are insufficient."
+    },
+    {
+      "id": "photoshop",
+      "kind": "application",
+      "requiredFor": [
+        "photoshop-edit"
+      ],
+      "optional": false,
+      "note": "Required only for the selected Photoshop workflow; confirm layered source and active document."
+    }
+  ]
+}

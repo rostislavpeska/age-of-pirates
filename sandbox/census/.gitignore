@@ -1,0 +1,6 @@
+# Audit screenshots and per-seed generated scenarios are run artifacts,
+# not source. The two hand-picked fixtures (census_tortuga_01,
+# census_elbe_01) and the known-content samples ARE committed.
+run_*.png
+game_shot.png
+samples/census_*_s*.age3Yscn

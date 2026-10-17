@@ -148,6 +148,10 @@
 		<unit variation="0" posx="-9.6062" posz="14.8847" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="107" posx="3.1115" posz="14.9421" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="250" posx="3.9643" posz="15.0466" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="27" posx="-9.7071" posz="-8.9672" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="27" posx="9.1374" posz="-9.8694" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="27" posx="7.9036" posz="7.0532" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="27" posx="-10.3144" posz="8.5544" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="props\east_colony">

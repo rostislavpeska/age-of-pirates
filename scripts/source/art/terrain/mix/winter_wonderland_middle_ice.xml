@@ -1,0 +1,9 @@
+<mix>
+  <title>Winter Wonderland Mid Ice</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="1">great_lakes\ground_ice1_glw</texture>
+    <texture weight="1">great_lakes\ground_ice1_gl</texture>
+    <texture weight="1">great_lakes\ground_ice2_glw</texture>
+  </paint>
+</mix>

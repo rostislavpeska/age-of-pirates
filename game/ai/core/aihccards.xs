@@ -515,6 +515,44 @@ highFrequency // Run every frame until it's disabled.
                      (tech == cTechDEHCUffizi));
                   break;
                }
+               case cCivDEDanish:
+               {
+                  exclude =
+                     // Age2.
+                     ((tech == cTechDEHCTychosObservatory) || (tech == cTechHCShipSettlers2) ||
+                     (tech == cTechDEHCLockbows) || (tech == cTechHCXPAgents) ||
+                     (tech == cTechDEHCTheaters) || (tech == cTechHCAdmirality) ||
+                     (tech == cTechDEHCHireWhalingCrew1) || (tech == cTechHCNativeTreaties) ||
+                     (tech == cTechDEHCRoyalDecreeDanish) ||
+                     // Age3.
+                     (tech == cTechDEHCBornholmMarines) || (tech == cTechDEHCHandMortar) ||
+                     (tech == cTechHCMercenaryLoyalty) || (tech == cTechDEHCHireWhalingCrew2) ||
+                     // Age4.
+                     (tech == cTechHCXPAdvancedBalloon) || (tech == cTechDEHCSchumacherRockets) ||
+                     (tech == cTechDEHCRoyalGuardsDanish) || (tech == cTechHCHeavyFortifications) ||
+                     (tech == cTechHCShipPikemen3Spanish) || (tech == cTechHCShipCrossbowmen5));
+                  break;
+               }
+               case cCivDEPolish:
+               {
+                  exclude = 
+                     // Age2.
+                     ((tech == cTechDEHCRidersApocalypse) || (tech == cTechDEHCRoyalDecreePolish) ||
+                     (tech == cTechHCAdmirality) ||
+                     // Age3.
+                     (tech == cTechHCXPAssassins) || (tech == cTechHCMercenaryLoyalty) ||
+                     // Age4.
+                     (tech == cTechHCXPAdvancedBalloon) || (tech == cTechHCHeavyFortifications) ||
+                     (tech == cTechDEHCAdvancedSejm) || (tech == cTechDEHCScaleSettlers2) ||
+                     (tech == cTechDEHCShipSaltMineWagonPolish));
+                  break;
+               }
+               default: // Fallback, just in case we don't have anything specific to exclude.
+               {
+                  aiEchoWarning("Running deck building logic but the civ isn't specifically handled.");
+                  exclude = false;
+                  break;
+               }
                default: // Fallback, just in case we don't have anything specific to exclude.
                {
                   exclude = false;

@@ -1,0 +1,51 @@
+{
+ "_comment": "In-match HUD minimap crop of sandbox/census/tt_state0.png (2560x1080, 2026-08-15 00:41, an Istanbul match; no save, so no world truth). stars_regression = player_star's answers on this crop (2026-09-24), visually on the drawn stars; regression values, not measured truth.",
+ "image": "ingame_hud_minimap.png",
+ "screen": "ingame",
+ "screen_size": [
+  2560,
+  1080
+ ],
+ "crop_offset": [
+  2237,
+  737
+ ],
+ "disc": {
+  "cx": 2399.32,
+  "cy": 899.31,
+  "r_disc": 147.0,
+  "r_line": 153.35,
+  "full_frame": {
+   "cx": 2399.32,
+   "cy": 899.31,
+   "r_disc": 147.0,
+   "r_line": 153.35
+  }
+ },
+ "look_at": [
+  2448.7,
+  933.2
+ ],
+ "look_at_full_frame": [
+  2448.7,
+  933.2
+ ],
+ "stars_regression": {
+  "P1 blue": [
+   2477.5,
+   961.5
+  ],
+  "P2 red": [
+   2318.5,
+   840.5
+  ],
+  "P3 yellow": [
+   2446.5,
+   990.5
+  ],
+  "P4 purple": [
+   2352.5,
+   810.5
+  ]
+ }
+}

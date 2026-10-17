@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "authority": "owner",
+  "kind": "recorded_owner_chat",
+  "purpose": "shared_mod_dependencies",
+  "source_citation": "Owner messages in the Claude Code post-production session, 2026-10-11 (fine-tuning item 11; no app message id)",
+  "owner_quote": "plus one more - finisted and  damaged TC - add some more props from our prop set",
+  "owner_follow_up": [
+    "Thhe oprops are ours, why you can't add them directly?",
+    "I mean why use attachments?",
+    "but then  we need to reexporrt also the damaged model then. But it's cleaner"
+  ],
+  "models": [
+    "korean_tc",
+    "korean_tc_damaged"
+  ],
+  "source_names": [
+    "Korean shared props r6.2"
+  ]
+}

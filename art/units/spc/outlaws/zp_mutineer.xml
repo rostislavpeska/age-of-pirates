@@ -1,0 +1,555 @@
+<animfile>
+  <!-- Age of Pirates Mutineer: vanilla sailor.xml with a 3-way Variation on the same model - the index only
+       exists so the voice file can pick Irish / British / Japanese lines per unit (variationlogic). -->
+  <definebone>bone_hat</definebone>
+  <definebone>Bip01_AttachRt</definebone>
+  <definebone>Bip01_AttachLt</definebone>
+  <definebone>Bip01_R_Thigh</definebone>
+  <definebone>Bip01_L_Thigh</definebone>
+  <definebone>Bip01_Spine</definebone>
+  <definebone>bone_gun</definebone>
+  <definebone>Bip01 Prop1</definebone>
+  <definebone>Bip01 Prop2</definebone>
+  <definebone>MASTER</definebone>
+  <attachment>shotgun<include>units\attachments\shotgun.xml</include>
+  </attachment>
+  <attachment>gun<component>gun<assetreference type="GrannyModel">
+        <file>units\spc\outlaws\nock_gun</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>gun</component>
+    </anim>
+  </attachment>
+  <attachment>torch<include>effects\projectiles\torch.xml</include>
+  </attachment>
+  <attachment>sword<component>sword<assetreference type="GrannyModel">
+        <file>units\cavalry\light_cavalry\light_cavalry_sword_age03</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>sword</component>
+    </anim>
+  </attachment>
+  <attachment>knife<component>knife<assetreference type="GrannyModel">
+        <file>units\spc\outlaws\sailor_knife</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>knife</component>
+    </anim>
+  </attachment>
+  <attachment>knife_run<component>knife_run<assetreference type="GrannyModel">
+        <file>units\spc\outlaws\sailor_knife_run</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>knife_run</component>
+    </anim>
+  </attachment>
+  <attachment>axe<component>axe<assetreference type="GrannyModel">
+        <file>units\attachments\axe_villager</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>axe</component>
+    </anim>
+  </attachment>
+  <attachment>hammer<component>hammer<assetreference type="GrannyModel">
+        <file>units\attachments\hammer_villager</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>hammer</component>
+    </anim>
+  </attachment>
+  <attachment>measure tape<component>measure tape<assetreference type="GrannyModel">
+        <file>units\attachments\measuring_tape</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>measure tape</component>
+    </anim>
+  </attachment>
+  <attachment>shovel<component>shovel<assetreference type="GrannyModel">
+        <file>units\spc\pirates\attachment_shovel</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>shovel</component>
+    </anim>
+  </attachment>
+  <attachment>attachment_battlefield_smoke<component>battlefield_smoke<assetreference type="popcornFx">
+        <file>units\artillery\cannon\battlefield_smoke_small.pkfx</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>battlefield_smoke</component>
+    </anim>
+  </attachment>
+  <attachment>pickaxe<component>pickaxe<assetreference type="GrannyModel">
+        <file>units\attachments\pickaxe_villager</file>
+      </assetreference>
+    </component>
+    <anim>Idle<component>pickaxe</component>
+    </anim>
+  </attachment>
+  <component>ModelComp<logic type="Variation">
+      <data>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\sailor</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\sailor</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\sailor</file>
+        </assetreference>
+      </data>
+    </logic>
+    <decal>
+      <effecttype>default</effecttype>
+      <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+      <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+      <width>1.0</width>
+      <height>1.0</height>
+    </decal>
+    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0" />
+  </component>
+  <anim>Walk<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\outlaw_shotgun_walk</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.32</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.81</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Jog<assetreference type="GrannyAnim">
+      <file>animation_library\range\run_rifleman_A</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.16</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.74</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Run<assetreference type="GrannyAnim">
+      <file>animation_library\range\run_rifleman_A</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.16</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.76</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Idle<assetreference type="GrannyAnim">
+      <file>animation_library\range\idle_rifleman_A</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Bored<assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_A</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_B</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_C</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\outlaw_shotgun_attack</file>
+      <tag type="Attack">0.46</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.46</tag>
+      <tag type="Particles" particlename="musketshot">0.45</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>RangedAttackSpecial<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\outlaw_shotgun_buckshot_attack</file>
+      <tag type="Attack">0.46</tag>
+      <tag type="Attack">0.46</tag>
+      <tag type="Attack">0.46</tag>
+      <tag type="Attack">0.46</tag>
+      <tag type="Attack">0.46</tag>
+      <tag type="Attack">0.46</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.46</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.46</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.46</tag>
+      <tag type="Particles" particlename="musketshot">0.46</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Reload<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\outlaw_shotgun_reload_b</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\outlaw_shotgun_reload_c</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Death<assetreference type="GrannyAnim">
+      <file>animation_library\shared\death_by_rangeA</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.49</tag>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Death_by_melee<assetreference type="GrannyAnim">
+      <file>animation_library\range\death_standing_rifleman_A</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.53</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\death_standing_rifleman_B</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.19</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\death_standing_rifleman_C</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.72</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Death_by_range<assetreference type="GrannyAnim">
+      <file>animation_library\shared\death_by_rangeA</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.49</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\death_by_rangeB</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.57</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\death_by_rangeC</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.47</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Death_by_havoc<assetreference type="GrannyAnim">
+      <file>animation_library\range\havoc_death</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\havoc_deathB</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\havoc_deathC</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\havoc_deathD</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Death_havoc_flail<assetreference type="GrannyAnim">
+      <file>animation_library\range\havoc_flail</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Cheer<assetreference type="GrannyAnim">
+      <file>animation_library\shared\cheer_A</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\cheer_B</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\cheer_D</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\cheer_E</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Recoil<assetreference type="GrannyAnim">
+      <file>animation_library\shared\recoil_A</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\recoil_C</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\recoil_E</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\recoil_G</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>HC_openDoor<assetreference type="GrannyAnim">
+      <file>animation_library\shared\doorOpen</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>HC_closeDoor<assetreference type="GrannyAnim">
+      <file>animation_library\shared\doorClose</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>Raze_idle<assetreference type="GrannyAnim">
+      <file>animation_library\shared\torch_throw_idle</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0" />
+  </anim>
+  <anim>Raze_attack<assetreference type="GrannyAnim">
+      <file>animation_library\shared\torch_throwA</file>
+      <tag type="Attack">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="TorchSwing">0.50</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\torch_throwB</file>
+      <tag type="Attack">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="TorchSwing">0.43</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0" />
+  </anim>
+  <anim>Charge_idle<assetreference type="GrannyAnim">
+      <file>animation_library\range\charge\longbow_charge_idle</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="MASTER" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Charge_bored<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\outlaw_pistol_bored</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\shared\cheer_C</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_A</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_B</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_C</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="sword" frombone="MASTER" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="gun" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Charge_attack<assetreference type="GrannyAnim">
+      <file>animation_library\range\defend\longbow_defend_melee_A</file>
+      <tag type="Attack">0.52</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\defend\longbow_defend_melee_B</file>
+      <tag type="Attack">0.27</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.21</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.56</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="MASTER" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Charge_walk<assetreference type="GrannyAnim">
+      <file>animation_library\range\charge\longbow_charge_walk</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.60</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.08</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="MASTER" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Charge_jog<assetreference type="GrannyAnim">
+      <file>animation_library\range\charge\longbow_charge_jog</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.69</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="MASTER" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>Charge_run<assetreference type="GrannyAnim">
+      <file>animation_library\range\charge\longbow_charge_run</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.68</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.13</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="MASTER" tobone="Bip01 Prop1" syncanims="1" />
+    <attach a="sword" frombone="ATTACHPOINT" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>GatherMine<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_gathermine1</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="GatherCoin">0.86</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="pickaxe" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0" />
+  </anim>
+  <anim>GatherCrate<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_gathercrate1</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>GatherCrateAttack<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_gathercrate1</file>
+      <tag type="Attack">0.47</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Pickup<assetreference type="GrannyAnim">
+      <file>animation_library\natives\warchief_iroquois\pickup_explorer_A</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.33</tag>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>GatherChop<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_choptreeside</file>
+      <tag type="Attack">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="GatherWood">0.67</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="axe" frombone="MASTER" tobone="bip01 prop1" syncanims="0" />
+  </anim>
+  <anim>Heal<assetreference type="GrannyAnim">
+      <file>animation_library\villager\villager_male_build1</file>
+      <weight>90</weight>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.36</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">0.66</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="Build">1.00</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_c</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_d</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_e</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\2_leg_task\Build_f</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="hammer" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0" />
+    <attach a="measure tape" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>kidnap_outlawA_idle<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_idleA</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_idleB</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_idleC</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_idleD</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_idleE</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_idleF</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>kidnap_outlawA_exit<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_exit</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1" />
+  </anim>
+  <anim>NuggetPirate1_Idle<assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_diga</file>
+      <weight>90</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_dig_boreda</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="shovel" frombone="" tobone="bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>NuggetPirate2_Idle<assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_idleA</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_idleB</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_idleC</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_idleD</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_idleE</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_idleF</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>NuggetPirate3_Idle<assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate3_idleA</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate3_idleb</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate3_idlec</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate3_idled</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate3_idleE</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>NuggetPirate1_Exit<assetreference type="GrannyAnim">
+      <file>nuggets\pirates\pirate_draw_gun</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="shovel" frombone="" tobone="bip01 Prop2" syncanims="0" />
+  </anim>
+  <anim>NuggetPirate2_Exit<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_outlawA_exit</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>kidnap_hostageA_idle<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_hostageA_idleD</file>
+      <weight>40</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_hostageA_idleB</file>
+      <weight>20</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_hostageA_idleC</file>
+      <weight>20</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_hostageA_idleA</file>
+      <weight>20</weight>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>kidnap_hostageA_exit<assetreference type="GrannyAnim">
+      <file>nuggets\outlaw_kidnap\kidnap_hostageA_exit</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+</animfile>

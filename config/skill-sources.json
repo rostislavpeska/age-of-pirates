@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {"id": "blendify", "pathKey": "BLENDIFY_REPO"},
+    {"id": "korean", "pathKey": "AOP_KOREAN_REPO"}
+  ]
+}

@@ -1,0 +1,90 @@
+<material>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\desertport_age4_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_matb_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_matb_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\desertport_age4_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_matb_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_matb_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\port_age4_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_mata_Details">
+      </texture>
+    </parameters>
+   <parameters variant="1">
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\port_age4_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_Masks">
+      </texture>
+    </parameters>
+     <parameters variant="1">
+      <texture name="BaseColor" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

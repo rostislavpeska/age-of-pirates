@@ -1,0 +1,15 @@
+<mix>
+  <title>Bayou Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="6">bayou\ground1_bay</texture>
+    <texture weight="1">bayou\ground2_bay</texture>
+    <texture weight="1">bayou\ground3_bay</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.45" octaves="3" persistence="0.4" emptyweight="30" posoffset="0.55">
+    <model weight="2">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_grass2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group2</model>
+  </objects>
+</mix>

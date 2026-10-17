@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/pose_sim.py",
+    "scripts/render_obj.py",
+    "scripts/test_pose_sim.py"
+  ],
+  "skills": ["gr2-granny-edit", "skinned-model-check", "aoe3de-model-test-unit", "aoe3de-model-attachments"],
+  "external": [
+    {
+      "id": "gr2-converter-wine",
+      "kind": "capability",
+      "requiredFor": ["gxo input"],
+      "optional": false,
+      "note": "GXO text of the model and the animation comes from the owner's GR2 converter under Wine in WSL (gxo-convert). Never launched on the Windows host."
+    },
+    {
+      "id": "blender",
+      "kind": "executable",
+      "requiredFor": ["render"],
+      "optional": true,
+      "note": "Background Blender for render_obj.py (tested 5.1)."
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["pose"],
+      "optional": false,
+      "note": "Python 3 with numpy for pose_sim.py."
+    }
+  ]
+}

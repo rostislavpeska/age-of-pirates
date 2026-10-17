@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animfile>
+  <component>Greek Columns<logic type="Variation">
+      <data>
+        <logic type="LowPoly">
+          <normal>
+            <assetreference type="GrannyModel">
+              <file>buildings\props\greek_columns\columns_g_fallen_Model</file>
+            </assetreference>
+          </normal>
+          <lowpoly>
+            <assetreference type="GrannyModel">
+              <file>buildings\props\greek_columns\columns_g_fallen_Model</file>
+            </assetreference>
+          </lowpoly>
+        </logic>
+      </data>
+      <data>
+        <logic type="LowPoly">
+          <normal>
+            <assetreference type="GrannyModel">
+              <file>buildings\props\greek_columns\columns_g_Model</file>
+            </assetreference>
+          </normal>
+          <lowpoly>
+            <assetreference type="GrannyModel">
+              <file>buildings\props\greek_columns\columns_g_Model</file>
+            </assetreference>
+          </lowpoly>
+        </logic>
+      </data>
+    </logic>
+  </component>
+  <anim>Idle<component>Greek Columns</component>
+  </anim>
+</animfile>

@@ -1,0 +1,34 @@
+<mix>
+  <title>Yucatan Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.5">
+    <texture weight="2">amazon\ground1_ama</texture>
+    <texture weight="1">amazon\ground2_ama</texture>
+    <texture weight="1">amazon\ground3_ama</texture>
+    <texture weight="3">amazon\ground4_ama</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.75" octaves="4" persistence="0.75" emptyweight="35" posoffset="0.7">
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant1</model>
+    <model weight="1.5" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant2</model>
+    <model weight="1.5" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant3</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant4</model>
+    <model weight="1" scalemin="0.1" scalemax="1.0">terrain\amazon\log_b</model>
+    <model weight="1" scalemin="0.1" scalemax="1.0">terrain\amazon\log_c</model>
+    <model weight="2" scalemin="0.9" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock3</model>
+    <model weight="2" scalemin="0.9" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock4</model>
+    <model weight="2" scalemin="0.9" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock2</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock6</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant6</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant8</model>
+    <model weight="1" scalemin="0.75" scalemax="1.0">terrain\underbrush\underbrush_jungle_plant9</model>
+    <model weight="1" scalemin="0.75" scalemax="1.0">terrain\underbrush\underbrush_jungle_plant10</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="4" scalemin="0.2" scalemax="0.4">terrain\california\rock11_cal</model>
+    <model weight="4" scalemin="0.3" scalemax="0.6">terrain\underbrush\underbrush_jungle_log2</model>
+    <model weight="4" scalemin="0.3" scalemax="0.6">terrain\underbrush\underbrush_jungle_log1</model>
+    <model weight="1" scalemin="0.9" scalemax="1">terrain\underbrush\underbrush_jungle3a</model>
+    <model weight="1" scalemin="0.9" scalemax="1">terrain\underbrush\underbrush_jungle1a</model>
+  </objects>
+</mix>
