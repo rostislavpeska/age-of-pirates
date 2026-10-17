@@ -202,6 +202,12 @@ building `Fortress`, bone `bone_centered` (the ground's identity bone, so the vi
   icons are 128x128 RGB full-bleed pictures without the game border (`data/wpfg/resources/art/homecity/home_city_props/
   icons/`); lantern-style icons: Gemini route with the vanilla `chinese_lanterns` and
   `Japan_hanging_lanterns-kamihinokinai1` icons as style references (one call each, 2026-10-17).
+- **Renaming a light set changes its display name only.** The lighting is the game light set named in `<lightset>`
+  (`Tenochtitlan`, `japan_night`); a light set's xml/xmb files cannot be renamed or shipped under a new name - a
+  limitation of light sets for random maps and home cities alike (owner 2026-10-17). Rename what players see: the
+  LightSet prop's `<displayname>`/`<description>` in the home city customization UI, `<lightset>` unchanged (the Koreans'
+  default `Korean_Light_Daylight` shows "Wars of Liberty", after the Wars of Liberty mod's Korea, and still uses
+  `<lightset>Tenochtitlan</lightset>`).
 
 ---
 
