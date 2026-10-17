@@ -159,6 +159,50 @@ AoE3 DE dynamically swaps Home City and map skybox textures across lighting cond
 - **Map Scripting**: Set via `rmSetLightingSet("<LightingSetName>")` in `.xs` map scripts.
 - **Twin Rebuild**: Any XML edit in `data/` must have its `.xml.xmb` twin rebuilt via `xmbc.py build data/<file>.xml`.
 
+### Night lights: the lanterns that switch on with the night LightSet (measured 2026-10-17)
+
+Building lanterns at night are **not** in the building models. A `LightSet` prop in `asianhomecityprops.xml` (or
+`homecityprops.xml`) carries a `<visual>` that is spawned only while that prop is active; Japan's
+`Japanese_LightSetNight` (variationid 1, lightset `japan_night`) places `homecity\japan\japan_night_lights.xml` at
+building `Fortress`, bone `bone_centered` (the ground's identity bone, so the visual is in the city frame).
+- That animfile = one model, `japan_props\japan_night_lights.gr2`, plus 252 `<definebone>fire_NN` and PopcornFX
+  attachments (`fire` = `homecity\small_light.pkfx`, `fire1` = `homecity\hc_single_flicker_light.pkfx`, ...) on the
+  model's `fire_NN` bones; a few bones have no attach. Ethiopia, Hausa, Aztec, Inca, Italy and Lakota also ship a
+  `*_night_lights` animfile and model (not inspected). The Korean add-on's `korean_night_lights.xml` uses the China
+  form instead: one effect (`homecity\china_hc_night_lights.pkfx`) on the bare `china_hc_fx_dummy` at `ATTACHPOINT`.
+- The model holds every lantern of the city in two meshes: `japan_night_lights_M0Shape` (`matb`, paper lanterns,
+  `default_emissive_advanced`, `homecity/japan/lanternspaper01/textures/lanternspaper01_matA_*`; 122 triangles and one
+  light bone each) and `japan_night_lightsShape` (`mata`, four stone street lanterns, China lantern textures).
+- Split per building by distance to the building meshes placed at their ground bones: 133 paper lanterns hang on the five
+  buildings (Treasury `court` 47, Fortress `tallbuilding` 32, Imperial Court `circlebuilding` 23, Merchants Guild
+  `waterbuilding` 30, Customs House `boatbuilding` 1; every one within 1.24 file units of its building), the next
+  item (a street lantern) is 2.87 away. `japan_ground.gr2` is bitknit-compressed, Maya cm (UnitsPerMeter 100, right +X,
+  back -Z): read it through `gr2_lint` `dll_read` + `read_flat`; into the 1.5625-unit model frame p = 0.015625 (-x, y, -z),
+  bone rotation C R C with C = diag(-1, 1, -1); Granny matrices are row-vector (translation in the last row).
+- Moving them onto another city's building placement: building local q = (p - t) R^T, then the Blender frame of
+  `aoe3de-complex-scene-export` (-x, -z, y)/2.54, corner order reversed, UV (u, 1 - v); parent to the building's
+  placement empty. For the game: in place on the vanilla model (`gr2_droptris` the street lanterns, `gr2_rotate_verts`
+  one rigid op per building: pivot t_J, matrix R_K^T R_J, translate t_K - t_J; `gr2_bones` move the light bones by the
+  same transform: matrix R_K^T R_J, translate t_K - R t_J). Worked recipe: Korean repo `tools/homecity_night_lanterns.py`
+  (journal 2026-10-17-claude-opus-5.5-hc-lanterns-01..08). Offline proofs only, not yet seen in game.
+- **Where a prop visual lands.** `<position><bone>` is looked up on the model of the named `<building>` first: vanilla
+  China's Treasury `court.gr2` carries `bone_fx` = minus its ground bone `bone_court`, i.e. the city origin, and China's
+  city-wide props (`ChineseLanterns`, `ChineseLightSetNight`) use it; Japan's `bone_centered` is on no building model and
+  resolves to the ground's identity bone. A city-frame visual therefore needs such a bone; with no `<bone>` the visual
+  most likely sits at the building's own placement (why China needed `bone_fx`; not game-proven). Check that the bone
+  exists in the building model or the ground before relying on it.
+- **Switching a second visual with a LightSet.** A LightSet has one `<visual>`; more night content goes into a separate
+  `Object` prop that the LightSet switches on with `<activateprops>` and every other LightSet switches off with
+  `<deactivateprops>`; the hidden prop has no display name or icon and is listed in the civ's obtainable props (vanilla
+  `Inca_LightSetNight` -> `Inca_Night_Lights`, listed in `homecitydeinca.xml`). This leaves the LightSet's own visual
+  and placement untouched.
+- **A standalone cosmetic** (independent of the lighting) is an `Object` prop with `displayname`/`description` (+ string
+  ids), `levelprereq`, `position`, `visual`, `<buttonaction>Toggle</buttonaction>`, `<cost>` (the unlock price) and
+  `<icon>`, listed in the civ's obtainable props, with no `prereq` and no LightSet activate/deactivate link. Cosmetic
+  icons are 128x128 RGB full-bleed pictures without the game border (`data/wpfg/resources/art/homecity/home_city_props/
+  icons/`); lantern-style icons: Gemini route with the vanilla `chinese_lanterns` and
+  `Japan_hanging_lanterns-kamihinokinai1` icons as style references (one call each, 2026-10-17).
+
 ---
 
 ## 7. DDT Texture Generation & Deployment
