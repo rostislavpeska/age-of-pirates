@@ -6,6 +6,11 @@ Read its [source and coverage notes](../.claude/skills/aoe3de-reference/referenc
 The following AoP-specific observations remain here; counts and executable addresses
 are historical evidence, not a portable schema or current-build guarantee.
 
+The consulate is not one XML record. Tech flags and trigger effects are catalogued in
+the shared reference linked above. How a flag card, its sequester, the politician
+portrait, the map trigger and `triggerdata.xml` fit together is
+[consulate-system.md](consulate-system.md).
+
 # Placement Rules (data\placementrules\*.xml)
 
 A placement rule file decides where a building may be dropped. A protoUnit points at one through its _PlacementFile_ attribute, resolved relative to `Data\placementrules`. A random map can repoint a protoUnit at a different rule file for that map only — see _Random Map Data Overrides_ below. The _PlacementRulesOverride_ tech effect swaps one protoUnit's rule set for another protoUnit's at runtime.

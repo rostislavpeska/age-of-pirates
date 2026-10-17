@@ -27,6 +27,7 @@ Read these **BEFORE** working on specific file types:
 | **AI Scripts** (`game/ai/*.xs`) | [ai_reference.xs](ai_reference.xs) | Complete XS language reference (2,400+ lines) |
 | **UI Commands** (`protounitcommandmods.xml`) | [command_list.md](command_list.md) | UI functions and unit type queries |
 | **Data XML** (`protomods.xml`, etc.) | [data_xml_guide.md](data_xml_guide.md) | Complete XML syntax guide (2,146 lines) |
+| **Consulate / politician switcher** | [consulate-system.md](consulate-system.md) | How the four files make one ally card. Read with the XML guide, not instead of it. |
 
 ### Step-by-Step Workflows
 

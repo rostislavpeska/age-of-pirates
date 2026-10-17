@@ -33,6 +33,7 @@ Distilled 2026-10-11 from journal records 2026-10-08-claude-28..41, 2026-10-09-c
 | Swap the villager | the civ entry names it three times: `settlerprotoname`, every `townstartingunit`, every `empirewarsstartingunit` (20 entries for one clone); plus an Age0 setup tech that enables the new villager and disables the source civ's | offline |
 | Home-city cards | vanilla villager-shipment cards ship the source civ's villager **by name**, whatever the card is called (`YPHCShipSettlersAsian1/2/5` ship `ypSettlerJapanese`); review every card and tech that targets the old villager | vanilla |
 | Replace the explorer | before dropping the old explorer's unit type, list what the source civ's age-ups and cards do to it (Japan's age techs only scale the monk's sabotage damage) | vanilla |
+| Explorer in the home city | an entry in `data/homecityprotounits.xml` (the home city's own unit list): `<civilization>` = the civ, `<explorer />`, `<visual>` = the explorer's animfile (a horse animfile for a mounted one), `<bone>bone_explorer_special</bone>` on the HC ground, `<script>explorer</script>`, `<camera>`/`<widescreencamera>`; the entry name is no proto (vanilla `ExplorerDEHetmanPolish`). `<heroprotounits>` and the bone alone show nothing. Not a merged `*mods.xml` file: ship vanilla + the entry, generated (Koreans `tools/korean_homecity_units.py`); the explorer stands where the bone is | game (Korean HC 2026-10-17, owner: "shows on his horse left of the Customs House") |
 
 ## 3. Techs that fire
 

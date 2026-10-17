@@ -32,6 +32,12 @@ Oodle-compressed and the reader cannot open it - that is expected (the tools nev
 | `converter.py --format gr2\|gxo\|fbx FILE` | conversion wrapper: runs your configured converter or, in manual mode, tells you what to produce and waits (see the last section) |
 | `multimaterial_gr2.py` (`replace(donor, parts, out, materials, damaged=)`) | the donor-preserving multi-material writer of the Korean building exports (intact and damaged at donor layout); versioned here since 2026-10-09, refuses donors with orphan fixups and asserts none in its output |
 | `gr2_fixups.py FILE...` / `--scrub IN OUT` | orphan pointer fixups (outside every object reachable from the root); `--scrub` drops them and zeroes their slots, reachable bytes unchanged. `gr2_lint` check `fixups` |
+| `gr2_bounds.py FILE...` / `--fix IN OUT` | bone-binding boxes (OBBMin/OBBMax) vs the referenced vertices; `--fix` rewrites them. `gr2_droptris`, `gr2_rotate_verts` and `gr2_editmesh` refresh the boxes of every mesh they edit; `gr2_lint` check `bounds` |
+| `gr2_droptris.py IN PLAN OUT` | drop triangles in place; plan `"dup"` = translated copies of existing triangles into the freed vertex/index slots (source vertex bytes, only Position moved; file size unchanged, refused when it does not fit) |
+| `gr2_editmesh.py IN PLAN OUT` | new rigid meshes in a vanilla model (copies of source triangles, or free-form `extra_verts`/`extra_tris` from Blender with tangents from the UVs) bound to a cloned (`material`) or EXISTING (`use_material`) material record; `"reset_root": false` keeps the vanilla root. Registers the native marshalling record of every new vertex array and scrubs orphan fixups: before 2026-10-17 its output converted under Wine but crashed the native DLL (Korean HC lanterns; `tests/test_gr2_editmesh.py`). `drop` needs a single-material source (else `gr2_droptris`) |
+| `gr2_rotate_verts.py IN PLAN OUT` | rotate (axis/degrees/pivot or a measured `"matrix"`) and/or `"translate"` listed vertices or `"all"`, normals/tangents turned; `"ops"` list for several transforms |
+| `gr2_bones.py IN PLAN OUT` | pivot canonization in place: `"canonize_root"` (root rest -> identity, every child keeps its world) and `"move"` (listed pivot bones get a rigid world transform, descendants follow, inverse-worlds recomputed); refuses a skeleton whose stored inverse-worlds are not its rest (self-check). Vertices are not touched: move them with `gr2_rotate_verts` by the same transform. Not game-proven (below); opt-in `gr2_lint` check `root_identity` |
+| `gr2_rest_anim.py MODEL OUT.gxo --seconds S --fps F [--tracks-from ANIM.gr2] [--heave BONE=AMP[,PHASE]]` | an Idle whose every key is the skeleton rest (plus an optional vertical sine), for `converter.py --format gr2`; never edit a converter dump of a vanilla anim instead (below). NOT game-proven for homecity props: prefer the vanilla anim with `gr2_rename.py ... track` |
 
 ## Facts that were each wrong once (do not re-derive)
 
@@ -72,6 +78,34 @@ Oodle-compressed and the reader cannot open it - that is expected (the tools nev
   are recorded separately. Do not generalize its metadata allocation choice into a requirement for all donors.
 - BoneBinding bounds on transformed destruction pieces are bone-local, not model-space AABBs. Transform
   the bound vertices through the bone's inverse-world matrix before measuring bounds.
+  Measured 2026-10-17 (`gr2_bounds.py`): for rigid and index-only meshes the stored box is EXACTLY the AABB of the
+  referenced vertices as `[p, 1] . InverseWorldTransform` (row vector) - 5/5 docks01 meshes, 312/312 China TC damaged
+  pieces, 15 homecity/building models. Weighted (skinned) unit meshes are no such AABB (blue_guard 0/18 under five
+  membership rules): their boxes are left alone and not linted.
+- **Moving vertices in place moves nothing else**: the boxes stay where the old geometry was (refresh them), and the
+  rendered position is still `anim(t) . InverseWorld . v`. Korean HC docks01 (2026-10-17): a pier, its collision mesh
+  and a junk boat were shifted by a transform FITTED on the other boat plus hand-picked offsets, ~20 m from the Blender
+  spot with vanilla boxes; none was visible in game. Measure each edited mesh against the vanilla REST vertices under
+  the plain map (`aoe3de-complex-scene-export`); never reuse one object's fit for another.
+- **A converter GXO dump of a vanilla anim is valid only for its first frames** (docks01_anim, `a 1265 191`: frame 600
+  BONE_MAIN scale 1.74 / translation (40, -354, 2.6), frame 1264 scale 11.2), and vanilla key 0 is not always the rest
+  pose (the boat roots: 0.30 m / 2.64 m off). The converter's dump of its OWN output round-trips (631 frames x 44 tracks
+  within 3e-5). Two different orders, both measured: the converter's GXO TEXT key 3x3 = transpose of
+  `P^T (ScaleShear . R) P` (R . ScaleShear is 0.40 off on non-uniformly scaled bones; `gr2_rest_anim.py`), while the GR2
+  FILE composes local = translate . R . ScaleShear (stored inverse-worlds of vanilla docks01 to 1.3e-5; S . R 2.55 off;
+  `gr2_bones.py`). Some vanilla files store inverse-worlds that are not their rest bind (fencewalls01, china_hc_water).
+- **Moving an animated homecity prop part: keep the vanilla Idle, freeze the moved part** (owner 2026-10-17: "I think we
+  drift to overengineering ... left can stay as was, right can be static with no anim"). Korean HC docks01, three game
+  tests: every build with a converter-built Idle (`gr2_rest_anim.py` -> converter) misplaced the junks and/or the dock in
+  game although model and anim each checked exact, and neither root canonization + pivot moves (`gr2_bones.py`) nor
+  renaming a pivot whose name the junk track prefixes changed the junk result - engine cause unresolved. What the owner
+  had seen work: vanilla skeleton + vanilla anim with the vertices moved (a moved part then swings around its far
+  pivot: "exaggerated, jumping"). Accepted route: move vertices (measured), leave the skeleton, and rename the moved
+  part's TRACK in the vanilla anim (`gr2_rename.py IN OUT track OLD NEW`: same length, same ASCII sort slot, a name no
+  bone has) so it drives nothing and the part stays static at its rest. docks01's root bone is the one non-identity root
+  among homecity props (BONE_MAIN (2.98, 0.52, -6.28), 10.8 deg); whether that matters in game is unproven.
+- `gr2_lint.read_raw` reads a mesh whose every triangle was dropped (0 indices, both index arrays empty); before
+  2026-10-17 it raised TypeError, so the lint could not run on such a droptris output.
 - Renaming a bone in place (same length or shorter, section 0 string, CRC recomputed) is safe - the root rename
   `bone_main` -> `Object02` is what made one anim pair drive both Treasure Ship stages.
 

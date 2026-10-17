@@ -1,6 +1,6 @@
 ---
 name: native-politician
-description: "Add or repair an AoP native or Royal House politician choice. Use for Trading Post ally choices, their tech effects and button integration."
+description: "Add or repair an AoP native, Royal House, or Asian consulate ally. Use for Trading Post politicians and for zpBigConsulate flag cards."
 ---
 
 # Adding a consulate politician
@@ -182,6 +182,28 @@ Order matters; every layer below was needed, and the spec covers each.
   shape per file, every shared list identical, every set names the
   politician, placement, map switch + root==repo, twin freshness. Run it red,
   build, run it green, then the game.
+
+## 7. Asian consulate ally (`zpBigConsulate*`)
+
+A flag card is not a Trading Post politician. Copy `zpbigconsulatejapaneseclone` in
+`data/politicianmods.xml`: the element name is the tech lowercased, the cloth is
+`ui\ingame\politicians\consulate_<nation>`, and the wpf png is that nation's
+archive icon. A nation with no archive cloth uses the Portuguese cloth, the same
+fallback as every other new politician. Both layers need an entry: the standard
+tech and the AoP clone.
+
+The card title follows the ally names already used: **United States Allies**,
+**Chinese Allies**.
+
+On Burma the switcher is a copy of `Activate Consulate Japan`: civilization
+condition, `cTechzpPickConsulateTechAvailable`, that civ's `zpTurnConsulateOn*`,
+`zpBigButtonResearchDecrease`, `ZP Pick Consulate Tech`, and only
+`Cheat_Returner`. `Human_Check` must fire it or the switcher never runs.
+
+Korea's Japan card is not Isolation. Standard maps use the add-on's
+`zpBigConsulateJapaneseAllies`. AoP maps use `zpBigConsulateJapaneseAlliesKorea`.
+Khmer keeps `zpBigConsulateJapaneseAlliesClone`. The full wiring, and which of
+the four files actually owns each piece, is `docs/consulate-system.md`.
 
 ## Known traps (all hit once)
 

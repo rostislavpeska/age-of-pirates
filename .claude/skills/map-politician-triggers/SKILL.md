@@ -36,7 +36,7 @@ not the hole.
 
 | Switcher | Fire Events |
 |---|---|
-| Asian civ consulates (Japan / China / India / Khmer) | `Cheat_Returner` |
+| Asian civ consulates (Japan / China / India / Khmer / Korea) | `Cheat_Returner` |
 | Faction big buttons (Orthodox / Tortuga / Sultanate / Cossacks / Venice / Maltese) | `Italian_Vilager_Balance` + `Italian_Gondola_Balance` + `Cheat_Returner` |
 
 Asian swaps do not touch the shipments, so they only need the returner.

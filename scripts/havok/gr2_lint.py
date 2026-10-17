@@ -42,6 +42,13 @@ Why each check exists (every one is a defect that reached the game first):
                           writer left re-pointed root arrays with their fixups: the DLL then converted every Korean
                           writer output out of bounds (layout-dependent bytes, crashes) while single runs passed;
                           vanilla files have none (INC-187, 2026-10-09).
+  bounds                  (every rigid / index-only mesh; weighted meshes are reported, not checked) every referenced
+                          vertex lies inside the stored bone-binding box (bone-local AABB, gr2_bounds.py; exact on
+                          vanilla rigid and destruction models): the Korean HC pier, collision mesh and a junk boat were
+                          moved in place 83-87 units outside their unchanged boxes, none visible in game (2026-10-17).
+  root_identity           (opt-in profile key "root_identity"; no profile sets it) the root bone rests at identity. Added
+                          on 2026-10-17 for the Korean HC docks01, then not used: the fix the owner chose keeps the
+                          vanilla skeleton and vanilla Idle, and a non-identity root was never shown to cause the error.
   animfile_crlf           the animfile the engine parses has CRLF endings (AGENTS.md rule 1).
   tangents                every used vertex has a non-zero tangent: materialdefault normalises it, a zero tangent is
                           NaN lighting (legacy DE conversions ship all zeros; west_townhall rendered 'very dark' with
@@ -145,7 +152,7 @@ def _decode(buf, base, stride, nv, layout):
     return out
 
 
-def _mesh(name, loc, nv, comps, tris, groups, mats, bone_names, iw, layout):
+def _mesh(name, loc, nv, comps, tris, groups, mats, bone_names, iw, layout, obbs=None):
     if 'BoneIndices' in comps:
         bi = comps['BoneIndices'].astype(np.int64)
         if bi.shape[1] > 1 and 'BoneWeights' in comps:
@@ -158,7 +165,7 @@ def _mesh(name, loc, nv, comps, tris, groups, mats, bone_names, iw, layout):
                 nrm=comps.get('Normal'), uv=comps.get('TextureCoordinates0'), bone=bone, bone_names=list(bone_names),
                 tan=comps.get('Tangent'), tanw=comps.get('BasicStaticPackedData1'),
                 tris=np.asarray(tris, np.int64).reshape(-1, 3), groups=[tuple(int(x) for x in gr) for gr in groups],
-                mats=list(mats), index_width=iw, layout=layout, comps=comps)
+                mats=list(mats), index_width=iw, layout=layout, comps=comps, obbs=obbs)
 
 
 def read_raw(path):
@@ -171,7 +178,8 @@ def read_raw(path):
     if sks:
         for b in g.array(sks[0][0]['Bones']):
             iw = np.array(b['InverseWorldTransform'], float).reshape(4, 4)
-            out['bones'].append(dict(name=b['Name'], parent=b['ParentIndex'][0], world=np.linalg.inv(iw)))
+            out['bones'].append(dict(name=b['Name'], parent=b['ParentIndex'][0], world=np.linalg.inv(iw),
+                                     rest=tuple(b['Transform'])))
     for rec, loc in refs(g, r['Models']):
         mb = rec['MeshBindings']
         locs = []
@@ -190,16 +198,20 @@ def read_raw(path):
         top = g.read(*rec['PrimaryTopology'][2], *rec['PrimaryTopology'][1])
         if top['Indices'][1]:
             (s, o), n, iw = top['Indices'][2], top['Indices'][1], 4
-        else:
+        elif top['Indices16'][1]:
             (s, o), n, iw = top['Indices16'][2], top['Indices16'][1], 2
+        else:                                             # every triangle dropped (gr2_droptris): empty, not a crash
+            s, o, n, iw = 0, 0, 0, 4
         tris = np.frombuffer(bytes(g.payload[s][o:o + n * iw]), '<i4' if iw == 4 else '<u2')
         groups = [(x['MaterialIndex'][0], x['TriFirst'][0], x['TriCount'][0]) for x in g.array(top['Groups'])]
         mats = []
         for x in g.array(rec['MaterialBindings']):
             ref = x['Material']
             mats.append(g.read(*ref[2], *ref[1])['Name'] if ref[1] else None)
-        bbs = [x['BoneName'] for x in g.array(rec['BoneBindings'])]
-        out['meshes'].append(_mesh(rec['Name'], tuple(loc), nv, comps, tris, groups, mats, bbs, iw, layout))
+        bba = g.array(rec['BoneBindings'])
+        bbs = [x['BoneName'] for x in bba]
+        obbs = [(np.array(x['OBBMin'], float), np.array(x['OBBMax'], float)) for x in bba]
+        out['meshes'].append(_mesh(rec['Name'], tuple(loc), nv, comps, tris, groups, mats, bbs, iw, layout, obbs))
     _mark_bound(out)
     return out
 
@@ -219,7 +231,8 @@ def read_flat(path):
         for k in range(P(so + 4)):
             bo = P(so + 8) + 152 * k
             iw = np.array(struct.unpack_from('<16f', d, bo + 76), float).reshape(4, 4)
-            out['bones'].append(dict(name=S(bo), parent=struct.unpack_from('<i', d, bo + 4)[0], world=np.linalg.inv(iw)))
+            out['bones'].append(dict(name=S(bo), parent=struct.unpack_from('<i', d, bo + 4)[0], world=np.linalg.inv(iw),
+                                     rest=struct.unpack_from('<I3f4f9f', d, bo + 8)))      # flags, pos, quat, scale/shear
         break                                             # first skeleton, like read_raw
     for i in range(P(52)):
         mo = P(P(56) + 4 * i)
@@ -235,7 +248,9 @@ def read_flat(path):
             tris, iw = np.frombuffer(d, '<u2', P(tto + 16), P(tto + 20)), 2
         mats = [S(P(P(mo + 24) + 4 * k)) for k in range(P(mo + 20))]
         bbs = [S(P(mo + 32) + 36 * k) for k in range(P(mo + 28))]
-        out['meshes'].append(_mesh(S(mo), (0, mo), nv, comps, tris, groups, mats, bbs, iw, layout))
+        obbs = [(np.array(struct.unpack_from('<3f', d, P(mo + 32) + 36 * k + 4), float),       # name ptr, OBBMin, OBBMax
+                 np.array(struct.unpack_from('<3f', d, P(mo + 32) + 36 * k + 16), float)) for k in range(P(mo + 28))]
+        out['meshes'].append(_mesh(S(mo), (0, mo), nv, comps, tris, groups, mats, bbs, iw, layout, obbs))
     for i in range(P(60)):
         mo = P(P(64) + 4 * i)
         out['models'].append(dict(name=S(mo), mesh_locs=[(0, P(P(mo + 80) + 4 * k)) for k in range(P(mo + 76))]))
@@ -597,6 +612,53 @@ def check_limits(stage, info, prof):
     b = R(stage, 'wrap16', changed == 0 and bool(rows), f"16-bit index wrap changes {changed} triangle(s)",
           changed_tris=changed)
     return [a, b]
+
+
+def check_bounds(stage, info):
+    """every referenced vertex lies inside the stored box of its bone binding (gr2_bounds.py: bone-local AABB, exact on
+    vanilla). In-place edits that moved vertices without refreshing the boxes left the Korean HC pier, its collision
+    mesh and a junk boat 83-87 units outside them (2026-10-17, neither visible in game)."""
+    from gr2_bounds import extents, tolerance
+    iw = {b['name']: np.linalg.inv(b['world']) for b in info['bones']}
+    bad, checked, missing, skinned = [], 0, [], 0
+    for m in info['render']:
+        if not m.get('obbs'):
+            continue
+        c = m['comps']
+        if c.get('BoneWeights') is not None:          # weighted: vanilla boxes are no rest AABB (gr2_bounds.py)
+            skinned += 1; continue
+        if any(n not in iw for n in m['bone_names']):
+            missing.append(m['name']); continue
+        for k, box in enumerate(extents(m['pos'], m['tris'], [iw[n] for n in m['bone_names']], c.get('BoneIndices'))):
+            if box is None:
+                continue
+            lo, hi = m['obbs'][k]; checked += 1
+            ex = float(max((lo - box[0]).max(), (box[1] - hi).max(), 0.0))
+            if ex > tolerance(lo, hi):
+                bad.append(dict(mesh=m['name'], bone=m['bone_names'][k], excess=round(ex, 4), verts=box[2],
+                                stored=[_r(lo, 3), _r(hi, 3)], actual=[_r(box[0], 3), _r(box[1], 3)]))
+    return R(stage, 'bounds', not bad and not missing,
+             f"{checked} binding box(es) checked, {len(bad)} with referenced vertices outside"
+             + (f": {[(b['mesh'], b['bone'], b['excess']) for b in bad[:4]]}; repair: python scripts/havok/gr2_bounds.py --fix IN OUT" if bad else '')
+             + (f"; bones missing from the skeleton for {missing}" if missing else '')
+             + (f"; {skinned} weighted mesh(es) not checked (info)" if skinned else ''), outside=bad)
+
+
+def check_root_identity(stage, info):
+    """(opt-in profile key "root_identity") the model's root bone rests at identity. docks01 is the one homecity model
+    with a non-identity root (BONE_MAIN (2.98, 0.52, -6.28), 10.8 deg); whether that matters in game is unproven."""
+    roots = [b for b in info['bones'] if b['parent'] < 0]
+    if not roots:
+        return R(stage, 'root_identity', False, 'no skeleton root')
+
+    def identity(t):                                   # the REST transform (what the anim drives), Granny flags applied
+        f = int(t[0])
+        return ((not f & 1 or np.abs(t[1:4]).max() < 1e-5) and (not f & 2 or abs(abs(t[7]) - 1) < 1e-7)
+                and (not f & 4 or np.abs(np.array(t[8:17]) - np.eye(3).reshape(-1)).max() < 1e-5))
+    bad = [(b['name'], _r(b['rest'][1:4], 3)) for b in roots if not identity(b['rest'])]
+    return R(stage, 'root_identity', not bad, f"root bone(s) {[b['name'] for b in roots]} "
+             + ('at identity' if not bad else f'NOT at identity {bad}; canonize: python scripts/havok/gr2_bones.py IN '
+                '{"canonize_root": true} OUT (children keep their world)'))
 
 
 WINDING_MIN = 0.90      # model area share; 444 vanilla building GR2s: min 0.947, median 1.00 (2026-10-09)
@@ -2144,6 +2206,9 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
             results += check_limits(stage, info, prof)
             results.append(check_tangents(stage, info))
             results.append(check_winding(stage, info))
+            results.append(check_bounds(stage, info))
+            if prof.get('root_identity'):
+                results.append(check_root_identity(stage, info))
             if prof.get('kind') == 'unit':                    # a skinned unit: the unit checks, no building facts
                 results += [check_unit_skeleton(stage, info, prof), check_unit_fit(stage, info, prof),
                             check_unit_weights(stage, info, prof),
