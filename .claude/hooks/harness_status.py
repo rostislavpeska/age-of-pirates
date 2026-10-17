@@ -4,7 +4,9 @@
     python .claude/hooks/harness_status.py                      # registered? scripts present? gate off? live proof?
     python .claude/hooks/harness_status.py --json
     python .claude/hooks/harness_status.py --write-proposed OUT  # .claude/settings.json + the missing entries of
-                                                                 # settings_entries.json (existing hooks kept as they are)
+                                                                 # settings_entries.json (existing hooks kept; a group
+                                                                 # running an entry's .claude/hooks script with an older
+                                                                 # command or matcher is updated, INC-384/INC-399)
 
 Agents never write .claude/settings.json (the permission classifier refuses it as self-modification, 2026-09-29):
 the owner copies the proposed file. "Live proof" is read from tasks/harness_log.jsonl, written by the hooks themselves:
@@ -22,6 +24,7 @@ watch.py plus this session's raw endless loops outside it, with what to stop.
 """
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -31,6 +34,7 @@ HOOK_DIR = Path(__file__).resolve().parent
 REPO = HOOK_DIR.parent.parent
 ENTRIES = HOOK_DIR / 'settings_entries.json'
 _TOOLS = str(REPO / 'scripts' / 'tools')
+HOOK_SCRIPT = re.compile(r'/\.claude/hooks/([\w.-]+\.py)\b')
 
 
 def tasks_dir():
@@ -54,23 +58,48 @@ def _pairs(block):
     return {(g.get('matcher'), h.get('command')) for g in block or [] for h in g.get('hooks', []) if isinstance(h, dict)}
 
 
+def _script(group):
+    """the one .claude/hooks/<script>.py a single-hook group runs, else None: what identifies an entry whose command
+    text changed (INC-399)"""
+    hooks = group.get('hooks') or []
+    if len(hooks) != 1 or not isinstance(hooks[0], dict):
+        return None
+    found = set(HOOK_SCRIPT.findall(hooks[0].get('command') or ''))
+    return found.pop() if len(found) == 1 else None
+
+
+def _stale(block, entry):
+    """the groups of block that run entry's .claude/hooks script with another command (INC-399: the old inbox_hook
+    command of settings.json next to the new one would run inbox_hook.py twice)"""
+    s = _script(entry)
+    return [x for x in block or [] if s and _script(x) == s and _commands([x]) != _commands([entry])]
+
+
 def registration(settings, entries):
-    """{event: True/False} - every entry command of the event is present in settings (any group) with its matcher"""
+    """{event: True/False} - every entry command of the event is present in settings (any group) with its matcher, and
+    no other group runs an entry's script with a stale command"""
     have = (settings or {}).get('hooks', {})
-    return {ev: _pairs(groups) <= _pairs(have.get(ev)) for ev, groups in entries['hooks'].items()}
+    return {ev: _pairs(groups) <= _pairs(have.get(ev)) and not any(_stale(have.get(ev), g) for g in groups)
+            for ev, groups in entries['hooks'].items()}
 
 
 def merged(settings, entries):
-    """settings with the missing entry groups appended and a stale matcher of a group with exactly the entry's commands
-    updated; other groups untouched, nothing duplicated"""
+    """settings with the missing entry groups appended, a stale matcher of a group with exactly the entry's commands
+    updated, and a group running an entry's .claude/hooks script with a stale command given the entry's hook (further
+    such groups dropped); other groups untouched, nothing duplicated"""
     out = json.loads(json.dumps(settings or {}))
     hooks = out.setdefault('hooks', {})
     for ev, groups in entries['hooks'].items():
         cur = hooks.setdefault(ev, [])
         for g in groups:
+            stale = _stale(cur, g)
+            same = [x for x in cur if _commands([x]) == _commands([g])]
+            if stale and not same and not _pairs([g]) <= _pairs(cur):
+                same = [stale.pop(0)]                       # replaced in place: its position and other keys kept
+                same[0]['hooks'] = json.loads(json.dumps(g['hooks']))
+            cur[:] = [x for x in cur if all(x is not y for y in stale)]   # a second copy would run the script twice
             if _pairs([g]) <= _pairs(cur):
                 continue
-            same = [x for x in cur if _commands([x]) == _commands([g])]
             if not same:
                 cur.append(json.loads(json.dumps(g)))     # a copy: editing the result never edits the entries
             elif 'matcher' in g:
@@ -209,9 +238,11 @@ def status(settings_path):
     core = {'hooks': {ev: [g for g in groups if any(s in json.dumps(g) for s in ('launch_gate.py', 'inbox_hook.py'))]
                       for ev, groups in entries['hooks'].items()}}
     core_ok = all(registration(settings, core).values())
+    have = settings.get('hooks', {})
     st['pending'] = sorted({h.get('command', '').split('/.claude/hooks/')[-1].split('"')[0]
                             for ev, groups in entries['hooks'].items() for g in groups for h in g.get('hooks', [])
-                            if (g.get('matcher'), h.get('command')) not in _pairs(settings.get('hooks', {}).get(ev))})
+                            if (g.get('matcher'), h.get('command')) not in _pairs(have.get(ev))
+                            or _stale(have.get(ev), g)})
     st['live'] = core_ok and bool(st['gate_seen_live']) and bool(st['inbox_seen_live'])
     st['approved_idle'] = approved_idle()
     st['background'] = background()
