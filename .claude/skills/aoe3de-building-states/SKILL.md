@@ -131,8 +131,15 @@ coverage fails. Submaterial names match case-insensitively, as the game does
 bindings are keyed by the GR2 spelling with `declared_name` when it differs, and
 two submaterials equal up to case are refused. Never census a lowercased copy of
 a material. Compressed input requires `--allow-native` and the configured
-headless DLL route; no substitution of another state. Nine synthetic tests cover
-multi-material order, case-insensitive binding and rejected incomplete readers.
+headless DLL route; no substitution of another state. An existing `--out` is
+refused, so a prior census is never overwritten. A failed run keeps its evidence:
+once `--out` exists, any failure writes `CENSUS.json` with `status: FAILED`, the
+error type, message and traceback, the source/material/script hashes computed so
+far (`null` = not reached), `partial_outputs` (never a census), schema and audit,
+then re-raises (exit non-zero). Cite that folder, never an empty one or a log a
+rerun overwrote (INC-386). Fourteen synthetic tests cover multi-material order,
+case-insensitive binding, rejected incomplete readers, the FAILED record, the
+unchanged PASS record and the existing-`--out` refusal.
 A census is not routing, visibility, blended skinning or complete frame/correspondence proof.
 
 Pair the actual state branch selection with this inventory before declaring a

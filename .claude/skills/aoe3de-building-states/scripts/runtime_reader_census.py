@@ -7,12 +7,16 @@ No fallback to a different model. Not an animfile routing or visibility proof.
 Submaterial names match case-insensitively, as in the game (audit
 2026-10-17-claude-opus-5.5 harness-fixes-02): vanilla japan_consulate_age2.material
 declares matA/matB/matC while its GR2 binds mata/matb/matc.
+A failed run keeps its evidence: once --out exists, any failure writes a FAILED
+CENSUS.json there and re-raises (audit 2026-10-17-claude-opus-5.5
+census-failure-record-01; INC-386).
 """
 import argparse
 import hashlib
 import json
 import sys
 import time
+import traceback
 import xml.etree.ElementTree as ET
 from pathlib import Path
 import numpy as np
@@ -20,6 +24,9 @@ import numpy as np
 REPO = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(REPO / 'scripts/havok'))
 import gr2_lint as L
+
+AUDIT = '2026-10-13-codex-roof-pattern-80; INC-334'
+FAILURE_AUDIT = AUDIT + '; 2026-10-17-claude-opus-5.5 census-failure-record-01; INC-386'
 
 
 def sha(path):
@@ -103,6 +110,18 @@ def material_bindings(path, art_root):
     return result
 
 
+def failure_record(args, known, exc, started):
+    """FAILED CENSUS.json: the error and every hash computed before it (None = not reached)."""
+    return dict(schema=1, status='FAILED', error_type=type(exc).__name__, error=str(exc),
+        traceback=traceback.format_exception(type(exc), exc, exc.__traceback__),
+        source_file=args.model.name, source_sha256=known.get('source'),
+        material_file=args.material.name, material_sha256=known.get('material'),
+        script_sha256=sha(__file__), dll=known.get('dll'),
+        partial_outputs=sorted(p.name for p in args.out.iterdir() if p.name != 'CENSUS.json'),
+        limitations=['FAILED: no census. Files listed in partial_outputs are not a census.'],
+        audit=FAILURE_AUDIT, seconds=time.monotonic()-started)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--model', type=Path, required=True)
@@ -114,14 +133,25 @@ def main():
     if args.out.exists():
         raise ValueError('Output already exists; retain prior census')
     args.out.mkdir(parents=True)
-    started = time.monotonic()
-    source_hash, material_hash = sha(args.model), sha(args.material)
+    started, known = time.monotonic(), {}
+    try:
+        census(args, started, known)
+    except BaseException as exc:
+        report = failure_record(args, known, exc, started)
+        (args.out/'CENSUS.json').write_text(json.dumps(report, indent=2)+'\n')
+        print(json.dumps({k:report[k] for k in ('status','error_type','error','source_file','source_sha256','seconds')}))
+        raise
+
+
+def census(args, started, known):
+    known['source'] = source_hash = sha(args.model)
+    known['material'] = material_hash = sha(args.material)
     dll = None
     if L.header(args.model).get('compressed'):
         if not args.allow_native:
             raise ValueError('Compressed model requires explicit --allow-native')
         cfg = json.loads((REPO / 'config/gr2_lint_military.json').read_text())
-        dll = L.dll_read(args.model, L.find_tools(cfg), args.out)
+        known['dll'] = dll = L.dll_read(args.model, L.find_tools(cfg), args.out)
         if dll['status'] != 'PASS':
             raise ValueError('Native decode failed: ' + repr(dll))
     info = L.load(args.model, dll)
@@ -142,7 +172,7 @@ def main():
         limitations=['No asset/state routing, visibility, frame correspondence or release proof.',
                     'All bound render triangles counted; unbound meshes excluded explicitly.',
                     'Unresolved archive textures require external archive evidence.'],
-        audit='2026-10-13-codex-roof-pattern-80; INC-334', seconds=time.monotonic()-started)
+        audit=AUDIT, seconds=time.monotonic()-started)
     assert source_hash == sha(args.model) and material_hash == sha(args.material)
     (args.out/'CENSUS.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({k:report[k] for k in ('status','source_file','source_sha256','triangle_count','triangles_by_material','seconds')}))
