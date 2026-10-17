@@ -100,3 +100,18 @@ def test_rename_track_unbinds_one_track_in_place(tmp_path):
     assert tracks_of(src) == ['junk', 'junk1', 'root'] and tracks_of(out) == ['jun_', 'junk1', 'root']
     a, b = src.read_bytes(), out.read_bytes()
     assert len(a) == len(b) and sum(x != y for x, y in zip(a, b)) <= 5                 # one letter + the CRC
+
+
+def test_untouched_bone_records_stay_byte_identical(tmp_path):
+    """a move rewrites only the moved subtree (2026-10-17: a re-run once re-rounded 6 untouched ground bones by 2.5e-6)"""
+    from gr2_read import Gr2
+    from gr2_dump import refs
+    src, out = tmp_path / 'a.gr2', tmp_path / 'b.gr2'
+    model(src)
+    rep = GB.edit(src, {'move': [{'bones': ['post'], 'translate': [1, 0, 0]}]}, out)
+    assert rep['rewritten'] == ['post']
+    def records(p):
+        g = Gr2(str(p)); arr = refs(g, g.root()['Skeletons'])[0][0]['Bones']; o = g.sections[arr[2][0]]['data_off'] + arr[2][1]
+        return [g.data[o + i * 164:o + (i + 1) * 164] for i in range(arr[1])]
+    a, b = records(src), records(out)
+    assert a[0] == b[0] and a[1] == b[1] and a[2] == b[2] and a[3] != b[3]

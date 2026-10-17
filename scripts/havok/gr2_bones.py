@@ -97,21 +97,24 @@ def edit(src, plan, out):
                 newW[j] = M @ newW[j]
         rep.setdefault('moved', []).extend(op['bones'])
     # every bone: local = inv(new parent world) . new world; rewritten only where it changed
+    touched = set()
     for i in range(n):
         if i == root:
-            T[i] = [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1]; continue
+            T[i] = [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1]; touched.add(i); continue
         L = newW[i] if parent[i] < 0 else np.linalg.inv(newW[parent[i]]) @ newW[i]
         if np.abs(L - local4(T[i])).max() > 1e-7:
-            T[i] = _transform(L, T[i])
+            T[i] = _transform(L, T[i]); touched.add(i)
+    touched |= {i for i in range(n) if np.abs(newW[i] - W[i]).max() > 1e-9}      # their inverse-world changes
     Wf = worlds(bones, [local4(t) for t in T])
-    for i in range(n):
+    for i in sorted(touched):                                                # untouched records stay byte-identical
         assert np.abs(Wf[i] - newW[i]).max() < 1e-4, f'{names[i]}: rebuilt world off by {np.abs(Wf[i] - newW[i]).max():.2e}'
         o = base + i * BONE
         struct.pack_into('<i3f4f9f', d, o + 12, *[int(T[i][0])] + [float(x) for x in T[i][1:]])
         struct.pack_into('<16f', d, o + 80, *np.linalg.inv(Wf[i]).T.reshape(-1))
+    rep['rewritten'] = [names[i] for i in sorted(touched)]
     struct.pack_into('<I', d, 32 + 8, zlib.crc32(bytes(d[g.sec_table:])) & 0xffffffff)
     Path(out).write_bytes(d)
-    rep['worlds'] = {names[i]: np.round(Wf[i][:3, 3], 4).tolist() for i in range(n) if np.abs(Wf[i] - W[i]).max() > 1e-6}
+    rep['worlds'] = {names[i]: np.round(Wf[i][:3, 3], 4).tolist() for i in sorted(touched)}
     return rep
 
 
