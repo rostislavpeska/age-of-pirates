@@ -4,7 +4,8 @@
     - append NEW rigid meshes made of transformed copies of source triangles (groups, each with its own R/t) plus
       hand-placed extra vertices/triangles (copied vertex bytes with position/UV overrides)
     - finally bake a frame change + uniform scale into every vertex (position, int8 normal/tangent), scale the bone
-      positions / inverse-world translations, reset the root bind matrix + model placement to identity, recompute OBBs
+      positions / inverse-world translations, reset the root bind matrix + model placement to identity, recompute the
+      bone-binding boxes bone-locally from the referenced vertices (gr2_bounds.py)
 Vertex layout required: 24 B = Position f32x3 @0, Normal int8x3+pad @12, Tangent int8x3+sign @16, UV f16x2 @20
 (the vanilla rigid layout; sign byte -128 = right-handed, 0 = left-handed - measured on british_tol).
 
@@ -249,6 +250,10 @@ def main():
         for i, tp in enumerate(all_meshes): B.ptr(0, mbs + i * P, tp)
         B.i32(model_loc[0], model_loc[1] + MODEL_MB, len(all_meshes)); B.repoint(model_loc[0], model_loc[1] + MODEL_MB + 4, (0, mbs))
     B.write(outp)
+    # obb() above wrote MODEL-space boxes; the stored box is bone-local (gr2_bounds.py, exact on vanilla) - refresh every
+    # mesh this plan edited or added, so a mesh on an offset bone never keeps a box away from its vertices
+    import gr2_bounds
+    gr2_bounds.refresh(outp, outp, meshes={plan['mesh']} | {nm['name'] for nm in plan.get('new', [])})
     for n, nv, nt in report: print(f'   {n:32} verts={nv:6d} tris={nt:6d}')
     g2 = Gr2(outp); r2 = g2.root()
     print(f'wrote {outp}: crc ok {g2.crc_check()}, meshes {r2["Meshes"][1]}, topologies {r2["TriTopologies"][1]}, vertexdatas {r2["VertexDatas"][1]}, sections',

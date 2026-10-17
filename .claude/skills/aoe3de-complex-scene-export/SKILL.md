@@ -9,6 +9,16 @@ This skill governs the inspection, modification, selective triangle dropping, bo
 
 ## Forensic Core Rules
 
+0. **Inventory first, then the smallest edit that keeps the vanilla animation (Korean docks01, 2026-10-17).** Before
+   any per-object export, list every edited object's transform sources (object matrix = a moved "pivot", parent,
+   delta transforms, constraints, armature pose, mesh-level edits) and every attachment drawing in the edited area
+   (vanilla `china_boats` still drew four fishing boats absent from the Blender scene, one inside the new pier).
+   Animated parts: keep the vanilla skeleton and the vanilla Idle; move vertices (measured, rule 7); a moved part whose
+   pivot stays behind swings around it in game ("exaggerated, jumping") - freeze it by renaming its track in the vanilla
+   anim (`gr2_rename.py IN OUT track OLD NEW`: same length, same sort slot, a name no bone has). Parts the vanilla Idle
+   already places stay byte-vanilla. Owner: "I think we drift to overengineering!" - three game tests with converter-made
+   Idles, root canonization and pivot moves (`gr2_bones.py`, `gr2_rest_anim.py`) misplaced the junks although model and
+   anim each checked exact; those tools stay available but are not game-proven for this.
 1. **Never recompile vanilla ground or composite building GR2s via whole-model FBX conversion.**
    Running `converter.py --format gr2` on full vanilla assets (such as `china_hc_ground` or `fillerbuildings_ijk`) drops large polygons, strips vertex buffers, alters UV precision, and destroys Havok/destruction bindings (shrinking 430 KB ground models to 145 KB).
 2. **Use in-place triangle dropping (`gr2_droptris.py`) for removing buildings/clusters.**
@@ -20,6 +30,16 @@ This skill governs the inspection, modification, selective triangle dropping, bo
 5. **Runtime XML and materials must have CRLF line endings.**
    Always convert runtime XML and `.material` files to CRLF (`check_art_eol.py --fix`) and validate with `xmlcheck.py`.
 
+7. **Moved meshes: measure each one against the vanilla REST vertices, then refresh the boxes (2026-10-17).**
+   The Blender HC scene shows every prop at its skeleton rest pose, not at the Idle anim's key 0. Map each edited
+   object's world vertices with the contract below and compare them to the vanilla mesh: a same-count mesh is one
+   rigid fit (Procrustes residual < 1e-4), a trimmed one is its object translation plus dropped triangles plus, if any,
+   translated copies of vanilla triangles (`gr2_droptris.py` `"dup"`). Never reuse one object's fit for another: the
+   Korean docks01 build moved boat 0 with boat 1's 73.33-degree fit and the pier by hand-picked shifts, ~20 m off, with
+   vanilla bone boxes - neither was visible in game. Every in-place writer now refreshes the boxes (`gr2_bounds.py`);
+   `gr2_lint` check `bounds` fails stale ones. Keep the vanilla Idle (rule 0); never freeze, edit or re-convert the
+   converter's dump of the vanilla anim (garbage past ~15 frames).
+   Worked recipe with its proof step: `age-of-pirates-koreans/tools/homecity_docks01.py`.
 ---
 
 ## 1. Coordinate Transformation Contract
@@ -39,6 +59,10 @@ X_{blender} &= -\frac{X_{gr2}}{2.54} \\
 Y_{blender} &= -\frac{Z_{gr2}}{2.54} \\
 Z_{blender} &= \frac{Y_{gr2}}{2.54}
 \end{aligned}$$
+
+Measured on the Korean HC docks01 (2026-10-17, 826 unchanged pier triangles): this map is a reflection (det -1), so a
+GR2 triangle is the Blender loop triangle with its corner order REVERSED, and GR2 UV = (u, 1 - v) exactly. Blender's
+imported corner normals are NOT the vanilla normals (median dot 0.65): take normals/tangents from vanilla vertex bytes.
 
 ### GXO Coordinate Frame
 In GXO text files (`v <x> <y> <z>`), coordinates are in **Blender metric world coordinates** $(X_{b}, Y_{b}, Z_{b})$. When `GXOConverterAge3DE.exe` compiles `.gxo` to `.gr2`, the converter itself performs the $-2.54\times$ axis transformation.
