@@ -1084,13 +1084,6 @@ for(i=1; <cNumberPlayers) {
 
    if(ypIsAsian(i) && rmGetNomadStart() == false)
      rmPlaceObjectDefAtLoc(ypMonasteryBuilder(i, 1), i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-
-   if(i == 1)
-   {
-      int testHCUnlockID = rmCreateObjectDef("test HC Unlock Player 1");
-      rmAddObjectDefItem(testHCUnlockID, "zpHCUnlockTest", 1, 6.0);
-      rmPlaceObjectDefAtLoc(testHCUnlockID, 1, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-   }
 }
 
 rmClearClosestPointConstraints();
