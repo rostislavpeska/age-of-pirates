@@ -1,0 +1,11 @@
+<tactics>
+  <action>
+    <name>AutoGatherXP</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal
+    <action>AutoGatherXP</action>
+  </tactic>
+</tactics>

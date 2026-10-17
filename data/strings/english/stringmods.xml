@@ -3665,6 +3665,8 @@
       <string _locid="503677">ZP CON Iron Pagoda</string>
       <string _locid="503678">Shenji Siphon</string>
       <string _locid="503679">ZP CON Shenji Siphon</string>
+      <string _locid="503680">ZP HC Unlock Test</string>
+      <string _locid="503681">Generates 100,000 XP per second for testing.</string>
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->
