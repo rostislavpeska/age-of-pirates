@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Tool guard: a PreToolUse hook on Bash, PowerShell, Monitor and mcp__blender__execute_blender_code. Three incident
-rules, deny through JSON.
+"""Tool guard: a PreToolUse hook on Bash, PowerShell, Monitor and every Blender MCP execute tool
+(mcp__blender*__execute_blender_code*: the `blender` and `blender-official-mcp` servers and their _for_cli variants,
+INC-384). Three incident rules, deny through JSON.
 
   R1 raw repoint   (owner 2026-09-29 13:05: "The process is STILL flawed!"; journal 29-41: Back-to-final dropped the
                    decor). Blender MCP code that points an existing image at another file (`<image>.filepath = ...`,
@@ -39,7 +40,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-BLENDER_TOOL = 'mcp__blender__execute_blender_code'
+# every Blender MCP server's execute tool, all taking `code` (INC-384: only mcp__blender__ was checked while every live
+# call went through mcp__blender-official-mcp__); settings_entries.json's matcher names the same pattern
+BLENDER_TOOL = re.compile(r'mcp__blender[\w-]*__execute_blender_code\w*')
 MONITOR_TOOL = 'Monitor'
 SHELL_TOOLS = ('Bash', 'PowerShell')
 _TOOLS = str(Path(__file__).resolve().parents[2] / 'scripts' / 'tools')
@@ -334,9 +337,9 @@ def _r3(cmd, cwd=None):
 
 def evaluate(inp):
     """(decision, rule, reason, hits, override reason)"""
-    tool = inp.get('tool_name') or ''
+    tool = str(inp.get('tool_name') or '')
     ti = inp.get('tool_input') if isinstance(inp.get('tool_input'), dict) else {}
-    if tool == BLENDER_TOOL:
+    if BLENDER_TOOL.fullmatch(tool):
         code = str(ti.get('code') or '')
         hits = check_repoint(code)
         if hits:

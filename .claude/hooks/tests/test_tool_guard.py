@@ -5,11 +5,13 @@
 Unit cases on evaluate(), then the script as Claude Code runs it (stdin JSON -> deny JSON or 0 bytes), then the exact
 settings_entries.json command through Git Bash. The harness log is a temp file (AOP_HARNESS_LOG); nothing real is
 written. Incidents: "The process is STILL flawed!" (owner 2026-09-29 13:05: raw repoints bypassed the watcher), the
-19-image reload that dropped the MCP link (28-176), `blender_gate.py | tail -1` launching Blender on a TIMEOUT (29-28).
+19-image reload that dropped the MCP link (28-176), `blender_gate.py | tail -1` launching Blender on a TIMEOUT (29-28),
+INC-384 (R1 matched only mcp__blender__execute_blender_code; live calls used mcp__blender-official-mcp__).
 """
 import importlib.util
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -21,6 +23,10 @@ REPO = HOOKS.parent.parent
 SCRIPT = HOOKS / 'tool_guard.py'
 ENTRIES = json.loads((HOOKS / 'settings_entries.json').read_text(encoding='utf-8'))
 BT = 'mcp__blender__execute_blender_code'
+OFFICIAL = 'mcp__blender-official-mcp__execute_blender_code'     # INC-384: the server every live call goes through
+BLENDER_TOOLS = [BT, BT + '_for_cli', OFFICIAL, OFFICIAL + '_for_cli']
+NOT_BLENDER_EXEC = ['mcp__blender-official-mcp__get_objects_summary', 'mcp__blender-official-mcp__render_viewport_to_path',
+                    'mcp__other__execute_blender_code', 'mcp__blenderx_execute_blender_code', 'Write', 'Edit', 'Agent']
 
 spec = importlib.util.spec_from_file_location('tool_guard_under_test', SCRIPT)
 G = importlib.util.module_from_spec(spec)
@@ -79,6 +85,20 @@ def test_watcher_api_loads_and_render_paths_pass(code):
     assert ev(BT, code=code)[0] == 'allow'
 
 
+@pytest.mark.parametrize('tool', BLENDER_TOOLS)
+def test_r1_guards_every_blender_execute_tool(tool):
+    """INC-384: R1 checked only mcp__blender__ while every live call went through mcp__blender-official-mcp__"""
+    d, rule, reason, hits, _ = ev(tool, code=REPOINTS[0])
+    assert (d, rule) == ('deny', 'R1') and hits and 'publish.py candidate' in reason
+    assert ev(tool, code=ALLOWED_CODE[0])[0] == 'allow'
+    assert ev(tool, code=REPOINTS[0] + '\n# aop-allow-repoint: scratch bake preview, not the review file')[0] == 'override'
+
+
+@pytest.mark.parametrize('tool', NOT_BLENDER_EXEC)
+def test_other_tools_named_like_blender_are_not_r1(tool):
+    assert ev(tool, code=REPOINTS[0])[0] == 'allow'
+
+
 def test_override_marker_needs_a_reason():
     code = REPOINTS[0] + '\n# aop-allow-repoint: not the review file, a scratch bake preview'
     d, _, _, _, why = ev(BT, code=code)
@@ -132,6 +152,15 @@ def test_deny_is_hook_json_and_logged(tmp_path):
     assert rec['hook'] == 'tool_guard' and rec['decision'] == 'deny' and rec['rule'] == 'R1' and rec['session_id'] == 's1'
 
 
+def test_official_mcp_deny_is_hook_json_and_logged(tmp_path):
+    """INC-384: the script denies a raw repoint sent through the blender-official-mcp server"""
+    r = run_hook({'tool_name': OFFICIAL, 'tool_input': {'code': REPOINTS[1]}, 'session_id': 's2'}, tmp_path)
+    assert r.returncode == 0 and r.stderr == b''
+    assert json.loads(r.stdout)['hookSpecificOutput']['permissionDecision'] == 'deny'
+    [rec] = logged(tmp_path)
+    assert (rec['decision'], rec['rule'], rec['tool']) == ('deny', 'R1', OFFICIAL)
+
+
 def test_allow_prints_nothing_and_logs_nothing(tmp_path):
     r = run_hook({'tool_name': BT, 'tool_input': {'code': ALLOWED_CODE[0]}}, tmp_path)
     assert r.returncode == 0 and r.stdout == b'' and r.stderr == b'' and logged(tmp_path) == []
@@ -177,8 +206,22 @@ def bash(command, payload, project, tmp_path):
 
 def test_entry_matches_both_tools_and_keeps_the_launch_gate_first():
     g = guard_entry()
-    assert set(g['matcher'].split('|')) == {'Bash', 'PowerShell', 'Monitor', BT}   # Monitor: INC-027; PowerShell: INC-037
+    # Monitor: INC-027; PowerShell: INC-037; one Blender pattern, the script's own (INC-384)
+    assert set(g['matcher'].split('|')) == {'Bash', 'PowerShell', 'Monitor', G.BLENDER_TOOL.pattern}
     assert 'launch_gate.py' in ENTRIES['hooks']['PreToolUse'][0]['hooks'][0]['command']   # test_hook_commands' cmd()
+
+
+@pytest.mark.parametrize('tool', BLENDER_TOOLS + ['Bash', 'PowerShell', 'Monitor'])
+def test_entry_matcher_selects_every_blender_execute_tool(tool):
+    """INC-384: Claude Code reads a matcher with regex characters as a regular expression; it must select the
+    official-mcp tool, whether the match is anchored or not (the same subset of syntax in Python and JavaScript)"""
+    m = guard_entry()['matcher']
+    assert re.fullmatch(m, tool) and re.search(m, tool)
+
+
+@pytest.mark.parametrize('tool', NOT_BLENDER_EXEC)
+def test_entry_matcher_leaves_other_tools_alone(tool):
+    assert not re.search(guard_entry()['matcher'], tool)
 
 
 def test_settings_command_denies_through_json(tmp_path):
@@ -186,8 +229,9 @@ def test_settings_command_denies_through_json(tmp_path):
     r = bash(cmd, {'tool_name': 'Bash', 'tool_input': {'command': GATE_BAD[0]}}, REPO, tmp_path)
     assert r.returncode == 0
     assert json.loads(r.stdout)['hookSpecificOutput']['permissionDecision'] == 'deny'
-    r = bash(cmd, {'tool_name': BT, 'tool_input': {'code': REPOINTS[1]}}, REPO, tmp_path)
-    assert json.loads(r.stdout)['hookSpecificOutput']['permissionDecision'] == 'deny'
+    for tool in BLENDER_TOOLS:                                       # INC-384: the shell filter passes all of them
+        r = bash(cmd, {'tool_name': tool, 'tool_input': {'code': REPOINTS[1]}}, REPO, tmp_path)
+        assert json.loads(r.stdout)['hookSpecificOutput']['permissionDecision'] == 'deny', tool
 
 
 def test_settings_command_starts_python_only_for_the_gate_or_blender(tmp_path):
@@ -233,3 +277,24 @@ def test_status_lists_the_guard_as_pending_without_hiding_a_live_core(tmp_path, 
     sp.write_text(json.dumps(full), encoding='utf-8')
     st = hs.status(sp)
     assert st['live'] is True and st['pending'] == []
+
+
+def test_status_and_merge_update_a_stale_guard_matcher(tmp_path, monkeypatch):
+    """INC-384: settings.json holding the guard under the old matcher (mcp__blender__ only) is not registered, names
+    tool_guard.py as pending, and --write-proposed updates that group's matcher instead of adding a second group"""
+    spec = importlib.util.spec_from_file_location('hs_matcher', HOOKS / 'harness_status.py')
+    hs = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(hs)
+    monkeypatch.setenv('AOP_HARNESS_LOG', str(tmp_path / 'log.jsonl'))
+    stale = hs.merged({}, ENTRIES)
+    [g] = [g for g in stale['hooks']['PreToolUse'] if 'tool_guard.py' in json.dumps(g)]
+    g['matcher'] = 'Bash|PowerShell|Monitor|' + BT
+    assert hs.registration(stale, ENTRIES)['PreToolUse'] is False
+    sp = tmp_path / 'settings.json'
+    sp.write_text(json.dumps(stale), encoding='utf-8')
+    assert hs.status(sp)['pending'] == ['tool_guard.py']
+    m = hs.merged(stale, ENTRIES)
+    guards = [x for x in m['hooks']['PreToolUse'] if 'tool_guard.py' in json.dumps(x)]
+    assert [x['matcher'] for x in guards] == [guard_entry()['matcher']]
+    assert all(hs.registration(m, ENTRIES).values()) and hs.merged(m, ENTRIES) == m
+    assert stale['hooks']['PreToolUse'][0] == m['hooks']['PreToolUse'][0]      # the launch gate group, untouched
