@@ -1,6 +1,7 @@
 """Audit 2026-10-13-codex-roof-pattern-80; INC-334."""
 import importlib.util
 from pathlib import Path
+import tempfile
 import unittest
 import numpy as np
 
@@ -36,6 +37,50 @@ class CensusTests(unittest.TestCase):
     def test_missing_uv_refused(self):
         mesh=self.mesh();mesh['uv']=None
         with self.assertRaisesRegex(ValueError,'Missing/nonfinite UV'): C.collect({'render':[mesh]},{})
+
+
+MATERIAL = '''<material>
+  <submaterial name="{a}"><materialdef name="default" />
+    <parameters><texture name="BaseColor" override="buildings\\x\\x_matA_BaseColor" /></parameters></submaterial>
+  <submaterial name="{b}"><materialdef name="default_doublesided_cutout" /><parameters /></submaterial>
+  <submaterial name="matD"><materialdef name="default" /><parameters /></submaterial>
+</material>
+'''
+
+
+class CaseInsensitiveBindingTests(unittest.TestCase):
+    """Audit 2026-10-17-claude-opus-5.5 harness-fixes-02: vanilla japan_consulate_age2.material
+    declares matA/matB/matC, its GR2 binds mata/matb/matc; the game renders it textured."""
+
+    def bindings(self, a='Protected', b='ROOF'):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / 'x.material'
+            path.write_text(MATERIAL.format(a=a, b=b), encoding='utf-8')
+            return C.material_bindings(path, Path(d))
+
+    def test_bound_spelling_used_and_declared_name_kept(self):
+        mesh = CensusTests.mesh(self)
+        bound = C.match_bindings({'render': [mesh]}, self.bindings())
+        self.assertEqual(list(bound), ['protected', 'roof', 'matD'])
+        self.assertEqual(bound['protected']['declared_name'], 'Protected')
+        self.assertEqual(bound['roof']['shader'], 'default_doublesided_cutout')
+        self.assertNotIn('declared_name', bound['matD'])  # declared, never bound: own spelling
+        a, _ = C.collect({'render': [mesh]}, bound)
+        self.assertEqual(a['material'].tolist(), ['roof', 'protected'])
+
+    def test_exact_spelling_unchanged(self):
+        bound = C.match_bindings({'render': [CensusTests.mesh(self)]}, self.bindings('protected', 'roof'))
+        self.assertNotIn('declared_name', bound['protected'])
+        self.assertEqual(bound['protected']['textures']['BaseColor']['source'], 'archive_or_unresolved')
+
+    def test_names_equal_up_to_case_refused(self):
+        with self.assertRaisesRegex(ValueError, 'Duplicate material name .*matA, mata'):
+            self.bindings('matA', 'mata')
+
+    def test_still_missing_when_no_case_variant_declared(self):
+        mesh = CensusTests.mesh(self); mesh['mats'] = ['protected', 'roof2']
+        with self.assertRaisesRegex(ValueError, 'Missing material binding: roof2'):
+            C.collect({'render': [mesh]}, C.match_bindings({'render': [mesh]}, self.bindings()))
 
 
 if __name__=='__main__':unittest.main()

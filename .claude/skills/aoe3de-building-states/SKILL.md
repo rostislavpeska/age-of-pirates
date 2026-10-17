@@ -126,10 +126,14 @@ Run once per selected intact/damaged/construction model. The NPZ preserves every
 bound triangle's positions, raw GR2 UVs, material, mesh/triangle indices and
 dominant corner bone indices; JSON identifies bindings, texture hashes and source
 hashes. Material-group indices are resolved explicitly and missing/duplicate
-coverage fails. Compressed input requires `--allow-native` and the configured
-headless DLL route; no substitution of another state. Five synthetic tests cover
-multi-material order and rejected incomplete readers. A census is not routing,
-visibility, blended skinning or complete frame/correspondence proof.
+coverage fails. Submaterial names match case-insensitively, as the game does
+(vanilla `japan_consulate_age2.material` declares `matA`, its GR2 binds `mata`):
+bindings are keyed by the GR2 spelling with `declared_name` when it differs, and
+two submaterials equal up to case are refused. Never census a lowercased copy of
+a material. Compressed input requires `--allow-native` and the configured
+headless DLL route; no substitution of another state. Nine synthetic tests cover
+multi-material order, case-insensitive binding and rejected incomplete readers.
+A census is not routing, visibility, blended skinning or complete frame/correspondence proof.
 
 Pair the actual state branch selection with this inventory before declaring a
 destination unused. A source file named RUNTIME_GEOM does not establish runtime
