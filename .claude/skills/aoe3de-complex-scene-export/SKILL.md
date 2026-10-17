@@ -77,10 +77,14 @@ Separate the prop from conjoined environment meshes; write a GXO (`mt "mata"`, `
 scripts/havok/converter.py --format gr2 --bang <model.gxo>`; a CRLF `.material`; declare the attachment and attach it to
 a bone in the animfile.
 
-## 5. Live scene tracking (WIP)
+## 5. Live scene tracking
 
-`scripts/tools/blender_scene_tracker.py` (uncommitted work in progress): `snapshot` / `diff baseline.json` (added,
-deleted, moved with deltas, modified meshes), `timeline` (the `save_post` journal `blender_scene_journal.jsonl`),
-`audit-repo` (live meshes vs repository `.gr2` face counts) and `install-handler --persist`. It drives the live session
-on port 9876 (`blender-mcp-safety` R14: one session per port). Its snapshot/diff part is generic and proposed for
-Blendify `blender-complex-scene`; `audit-repo` stays here.
+Generic snapshot / diff: Blendify `blender-mcp-safety` `scripts/operator_diff.py` (world-geometry move, `pivot_only` /
+`origin_moved` for origin edits, mesh hash, camera; port 9876, R14 one session per port).
+`scripts/tools/blender_scene_tracker.py` is the AoP adapter: it re-exports that snapshot/diff and adds `audit-repo`
+(live meshes vs repository `.gr2` face counts through `gr2_lint`) and the save journal (`install-handler [--persist]`,
+`timeline` of `blender_scene_journal.jsonl`). The persisted handler (`aoe_scene_tracker_startup.py` in the owner's
+Blender 5.1 startup folder) has no `register()` and logs a warning at start-up; changing or removing it is a change to
+the owner's Blender setup and needs their yes.
+
+Repeated props baked into composite meshes: [aoe3de-bulk-submesh-replace](../aoe3de-bulk-submesh-replace/SKILL.md).
