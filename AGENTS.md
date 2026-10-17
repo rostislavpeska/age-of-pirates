@@ -110,6 +110,11 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
      .claude/hooks/launch_gate.py --claim "<job>" --by <agent> [--task <ID>]` and `--release <id>` it. While an open
      P0 bug exists a launch declares `task: <P0 id>` (a mention does not count). Resume (`resumeFromRunId`), never
      relaunch or rename; a real fresh start says `fresh-run: <reason>` and is reported. Only the owner turns it off.
+     This cap counts workflows and spawned agents (subagents) only, not sessions (owner, 2026-10-18:
+     "Workflows+subagents only").
+   - **Sessions:** at most 6 working sessions + 1 coordinator at once on this PC, all agent families counted (owner,
+     2026-10-18: "6 workers + 1 coordinator"). Running sessions finish; the cap applies to new launches. A session
+     starts another session only on the owner's yes. Same rule in Blendify AGENTS.md.
    - **Enforcement is live only once the owner registered the hooks** (`.claude/hooks/settings_entries.json` into
      `.claude/settings.json`); `python .claude/hooks/harness_status.py` says whether it is. Until then every agent
      follows this rule by hand.
