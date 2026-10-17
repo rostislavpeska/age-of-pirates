@@ -14,12 +14,17 @@ Validates that:
    across internal seams (A right edge meets B left edge, B meets C, C meets D).
 5. Game DDT Asset Freshness: All 4 DXT1 .ddt textures exist in the game mod with correct
    engine byte size (2,796,328 bytes for 2048x2048 DXT1 with mipmaps).
+
+Checks 1-3 query a live Blender, opt-in only (INC-392): AOP_REVIEW_BLENDER_PORT names the port of a disposable
+review Blender (scripts/tools/local_env.py). Unset, not a port or 9876 (the owner's live Blender): they skip before
+any socket exists.
 """
 
 import os
 import sys
 import json
 import socket
+import threading
 import pytest
 import cv2
 import numpy as np
@@ -40,16 +45,25 @@ import local_env  # noqa: E402
 SCRATCH = local_env.value('AOP_HC_BACKDROP_SCRATCH')
 SCRATCH_DIR = os.path.abspath(SCRATCH) if SCRATCH else None
 
-BLENDER_PORT = 9876
+
+def review_blender_port():
+    """the opt-in review Blender port; skips the calling test, before any socket exists, when there is none"""
+    port, why = local_env.review_blender_port()
+    if port is None:
+        pytest.skip(f"live-Blender test, opt-in only: {why}. Set it to the port of a disposable review Blender "
+                    "(blender-mcp-safety open_review.py --port 9877); the owner's Blender on 9876 is never queried")
+    return port
 
 
 def query_blender(code_str, timeout=10.0):
+    port = review_blender_port()
     s = socket.socket()
     s.settimeout(timeout)
     try:
-        s.connect(('127.0.0.1', BLENDER_PORT))
+        s.connect(('127.0.0.1', port))
     except Exception as e:
-        pytest.skip(f"Live Blender bridge not reachable on port {BLENDER_PORT}: {e}")
+        s.close()
+        pytest.skip(f"review Blender not reachable on AOP_REVIEW_BLENDER_PORT={port}: {e}")
     req = json.dumps({'type': 'execute', 'code': code_str, 'strict_json': False}) + '\0'
     s.sendall(req.encode('utf-8'))
     buf = bytearray()
@@ -228,6 +242,63 @@ result = {'seam_checks': seam_checks}
         for uv in check['uv_pairs']:
             assert uv['u0'] > 0.95, f"Seam {pair} left boundary U not near 1.0: {uv['u0']}"
             assert uv['u1'] < 0.05, f"Seam {pair} right boundary U not near 0.0: {uv['u1']}"
+
+
+# INC-392: without the opt-in the two live-Blender tests skip and no socket is ever created
+BLENDER_TESTS = (test_blender_backdrop_spatial_slot_ordering, test_blender_mesh_seam_coincidence_and_uvs)
+
+
+def _no_socket(*_a, **_k):
+    raise AssertionError('a live-Blender test opened a socket without the AOP_REVIEW_BLENDER_PORT opt-in')
+
+
+@pytest.mark.parametrize('setting, why', [
+    (None, 'is not set'), ('9876', "the owner's live Blender port"), ('blender', 'not a port')])
+def test_blender_tests_skip_without_a_socket(monkeypatch, setting, why):
+    monkeypatch.setattr(local_env, 'read_env_file', lambda _path: {})       # this device's config/aop.local.env
+    if setting is None:
+        monkeypatch.delenv('AOP_REVIEW_BLENDER_PORT', raising=False)
+    else:
+        monkeypatch.setenv('AOP_REVIEW_BLENDER_PORT', setting)
+    monkeypatch.setattr(socket, 'socket', _no_socket)
+    monkeypatch.setattr(socket, 'create_connection', _no_socket)
+    for test in BLENDER_TESTS:
+        with pytest.raises(pytest.skip.Exception, match=why):
+            test()
+
+
+def test_opt_in_queries_the_configured_review_port(monkeypatch):
+    """a fake bridge on an OS-assigned port (never 9876) receives the request and answers it"""
+    srv = socket.socket()
+    srv.bind(('127.0.0.1', 0))
+    srv.listen(1)
+    srv.settimeout(10)
+    port = srv.getsockname()[1]
+    assert port != local_env.OWNER_BLENDER_PORT
+    got = {}
+
+    def serve():
+        conn, _ = srv.accept()
+        with conn:
+            buf = bytearray()
+            while b'\0' not in buf:
+                chunk = conn.recv(65536)
+                if not chunk:
+                    break
+                buf.extend(chunk)
+            got['request'] = json.loads(buf.partition(b'\0')[0].decode('utf-8'))
+            conn.sendall(json.dumps({'status': 'ok', 'result': {'answer': 42}}).encode('utf-8') + b'\0')
+
+    monkeypatch.setattr(local_env, 'read_env_file', lambda _path: {})
+    monkeypatch.setenv('AOP_REVIEW_BLENDER_PORT', str(port))
+    t = threading.Thread(target=serve, daemon=True)
+    t.start()
+    try:
+        assert query_blender('result = 1') == {'answer': 42}
+    finally:
+        t.join(10)
+        srv.close()
+    assert got['request'] == {'type': 'execute', 'code': 'result = 1', 'strict_json': False}
 
 
 def test_korean_homecity_camera_contract():

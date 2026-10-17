@@ -89,6 +89,28 @@ def tasks_dir(repo=REPO):
     return value('AOP_TASKS_DIR', repo) or os.path.join(claude_config_dir(), 'aop-tasks')
 
 
+OWNER_BLENDER_PORT = 9876   # the owner's live Blender (the MCP add-on's fixed port): no test ever queries it (INC-392)
+
+
+def review_port_problem(v):
+    """None when v names a port a test may query, else the problem"""
+    if not v.strip().isdigit() or not 0 < int(v) < 65536:
+        return 'not a port'
+    if int(v) == OWNER_BLENDER_PORT:
+        return "the owner's live Blender port, never a test target"
+    return None
+
+
+def review_blender_port(repo=REPO):
+    """AOP_REVIEW_BLENDER_PORT, the opt-in port of a disposable review Blender that live-Blender tests may query ->
+    (port, None); unset, not a port or 9876 -> (None, why not)"""
+    v = value('AOP_REVIEW_BLENDER_PORT', repo)
+    if not v:
+        return None, 'AOP_REVIEW_BLENDER_PORT is not set (config/aop.local.env)'
+    bad = review_port_problem(v)
+    return (None, 'AOP_REVIEW_BLENDER_PORT=%s is %s' % (v, bad)) if bad else (int(v), None)
+
+
 # ------------------------------------------------------------------------------------------ setup and check
 def example_hints(path):
     """{KEY: the comment lines directly above it} of an example env file, in file order"""
@@ -160,6 +182,7 @@ NON_PATH = {
     'AOP_GR2_DLL_ROUTE': lambda v: None if v.lower() in ('wsl', 'native', 'both') else 'not wsl, native or both',
     'AOP_WSL_DISTRO': lambda v: (None if (d := wsl_distros()) is not None and v in d else
                                  'not a WSL distro on this device (%s)' % ', '.join(d or ['wsl.exe unavailable'])),
+    'AOP_REVIEW_BLENDER_PORT': review_port_problem,
 }
 
 

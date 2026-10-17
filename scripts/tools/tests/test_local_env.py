@@ -16,7 +16,8 @@ sys.path.insert(0, str(REPO / "scripts" / "tools"))
 
 import local_env as E  # noqa: E402
 
-KEYS = ("AOP_KOREAN_REPO", "AOP_TASKS_DIR", "AOP_KOREAN_ASSETS", "AOP_AITEST_DIR", "GR2_LINT_SPECIMENS")
+KEYS = ("AOP_KOREAN_REPO", "AOP_TASKS_DIR", "AOP_KOREAN_ASSETS", "AOP_AITEST_DIR", "GR2_LINT_SPECIMENS",
+        "AOP_REVIEW_BLENDER_PORT")
 
 
 @pytest.fixture(autouse=True)
@@ -89,6 +90,21 @@ def test_check_counts_missing_files_and_broken_paths(tmp_path):
     lines.clear()
     assert E.check(str(repo), out=lines.append) == 1
     assert any("BROKEN" in ln and "AOP_KOREAN_REPO" in ln for ln in lines)
+
+
+@pytest.mark.parametrize("value, port, why", [
+    ("9877", 9877, None), ("", None, "is not set"), ("9876", None, "the owner's live Blender port"),
+    ("blender", None, "not a port"), ("70000", None, "not a port")])
+def test_review_blender_port_is_opt_in_and_never_the_owners(tmp_path, value, port, why):
+    """INC-392: live-Blender tests query only this opt-in port; check() reports a bad value as BROKEN, not a path"""
+    repo = fake_repo(tmp_path, "AOP_REVIEW_BLENDER_PORT=%s\n" % value)
+    got, problem = E.review_blender_port(str(repo))
+    assert got == port and (problem is None if why is None else why in problem), problem
+    E.init(str(repo), out=lambda *_: None)
+    lines = []
+    E.check(str(repo), out=lines.append)
+    row = next(ln.split() for ln in lines if "AOP_REVIEW_BLENDER_PORT" in ln)
+    assert row[0] == ("unset" if not value else "ok" if port else "BROKEN"), row
 
 
 def test_the_example_carries_no_values():
