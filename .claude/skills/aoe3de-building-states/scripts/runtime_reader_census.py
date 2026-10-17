@@ -4,6 +4,9 @@ Audit: 2026-10-13-codex-roof-pattern-80; INC-334. Reuses gr2_lint's decoder.
 Raw positions stay in the serialized model frame; no inferred rest transform.
 Use --allow-native for a configured, headless DLL decode of compressed files.
 No fallback to a different model. Not an animfile routing or visibility proof.
+Submaterial names match case-insensitively, as in the game (audit
+2026-10-17-claude-opus-5.5 harness-fixes-02): vanilla japan_consulate_age2.material
+declares matA/matB/matC while its GR2 binds mata/matb/matc.
 """
 import argparse
 import hashlib
@@ -59,12 +62,32 @@ def collect(info, bindings):
                 triangle=np.concatenate(tri_ids), bone=np.concatenate(bones)), mesh_rows
 
 
-def material_bindings(path, art_root):
+def match_bindings(info, bindings):
+    """Key the material file's submaterials by the spelling the GR2 meshes bind.
+
+    The game resolves a mesh's material name case-insensitively, so a declared
+    'matA' serves a bound 'mata'; the entry then records declared_name='matA'.
+    Declared submaterials that no mesh binds keep their own spelling.
+    """
+    bound = {}
+    for mesh in info['render']:
+        for name in mesh['mats']:
+            bound.setdefault(name.casefold(), set()).add(name)
     result = {}
+    for declared, entry in bindings.items():
+        for name in sorted(bound.get(declared.casefold(), ())) or [declared]:
+            result[name] = entry if name == declared else dict(entry, declared_name=declared)
+    return result
+
+
+def material_bindings(path, art_root):
+    result, folded = {}, {}
     for sub in ET.parse(path).getroot().findall('submaterial'):
         name = sub.attrib['name']
-        if name in result:
-            raise ValueError('Duplicate material name: ' + name)
+        if name.casefold() in folded:
+            raise ValueError(f'Duplicate material name (the game matches case-insensitively): '
+                             f'{folded[name.casefold()]}, {name}')
+        folded[name.casefold()] = name
         textures = {}
         for tex in sub.findall('./parameters/texture'):
             ref = tex.attrib.get('override')
@@ -104,7 +127,7 @@ def main():
     info = L.load(args.model, dll)
     if not info['header']['crc_ok']:
         raise ValueError('Source CRC failure')
-    bindings = material_bindings(args.material, args.art_root)
+    bindings = match_bindings(info, material_bindings(args.material, args.art_root))
     arrays, meshes = collect(info, bindings)
     np.savez_compressed(args.out / 'READERS.npz', **arrays)
     values, counts = np.unique(arrays['material'], return_counts=True)
