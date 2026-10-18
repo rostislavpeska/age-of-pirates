@@ -53,6 +53,9 @@ In `data/homecity<civ>.xml`, each civilization specifies its primary viewport ca
 ## 3. Composition & Image Generation Formula
 
 1. **Aspect Ratio**: 16:9 panoramic master (e.g. $1376 \times 768$ base, upscaled via Topaz to $5504 \times 1376$).
+   **Upscaler:** the owner judged Magnific Precision V2 better than Topaz on a side-by-side of the same crop
+   (2026-10-17, journal `2026-10-17-claude-01`); the shipped Korean backdrops still use Topaz 4x. Flora offers
+   Magnific only at 2x; for 4x use the Magnific API (`scale_factor` 2-16). Show every paid A/B to the owner (INC-375).
 2. **Top 45%–55% (Vast Open Sky)**:
    - Expansive morning dawn, sunset, or misty haze gradient with delicate cirrus clouds.
    - Ample vertical breathing room allows flexible crop height adjustments ($y_0$) to balance mountain height against camera pitch.
