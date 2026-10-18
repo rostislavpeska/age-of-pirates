@@ -35,6 +35,7 @@ only. It walks only `art data game sound randmaps` and reports:
 | `( ) [ ] { } , ; ' " ! @ # $ % ^ & = +` or non-ASCII in a name | e.g. `texture.(0,0,4,9).tga` - exports, and what validators choke on |
 | zero-byte files, hidden files, case-insensitive duplicate paths | unfinished or platform traps |
 | **`.xml.xmb` whose CONTENT differs from its `.xml`** | STALE TWIN - the game will load the old data. Decoded with bar-extract's `bartool.py` and compared as element trees (whitespace collapsed, so a CRLF stored as LF is not a difference). mtimes are NOT used - a git checkout rewrites them. Without bartool the check degrades to an mtime warning. |
+| **a line marked `AOP-TEST-ONLY`** in an `.xs` or XML file | test content left in a shipped file (next section); `make_zip.py` refuses to build too |
 
 | warning | why |
 |---|---|
@@ -45,6 +46,22 @@ only. It walks only `art data game sound randmaps` and reports:
 The portal limit is **2 GB compressed** (user, 2026-09-02). The 2026-09-02 build
 was 6,295 files, 2.78 GB on disk, 1.89 GB zipped (ratio 0.68); the check prints
 an estimate from that ratio.
+
+## Test-only content: mark it `AOP-TEST-ONLY`
+
+A test hook in a shipped file never goes out, beta or prod (owner 2026-10-19, about a `zpHCUnlockTest` placement for
+player 1 in `zpburma_b.xs`: "flag as test unit to be removed before exporting to Beta or production"). Whoever
+adds one puts the marker in a comment on the test lines themselves:
+
+```
+// AOP-TEST-ONLY: <what it is, who/when>; remove before a beta or prod export          (.xs)
+<!-- AOP-TEST-ONLY: <what it is, who/when>; remove before a beta or prod export -->    (XML files)
+```
+
+`prezip_check.py` blocks on every marked line it finds (folders or `--zip`), and `make_zip.py` stops before it writes
+anything while a file it would zip still has one; a marked map that is stripped does not count. The fix is removing
+the test lines in the folder, never deleting the marker. Only text files the game reads are scanned
+(`scripts/release_marker.py`); tests: `tests/test_release_marker.py`.
 
 ## Deployment protocol
 

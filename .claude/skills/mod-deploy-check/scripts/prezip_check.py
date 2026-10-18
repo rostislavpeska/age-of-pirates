@@ -19,6 +19,10 @@ import argparse, os, re, subprocess, sys, time, zipfile
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 
+sys.dont_write_bytecode = True                  # never leave __pycache__ behind
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from release_marker import TEST_ONLY_MARK, marked_lines  # noqa: E402
+
 GAME_DIRS = ("art", "data", "game", "sound", "randmaps")
 
 # Every extension the game itself ships (verified against the vanilla .bar
@@ -136,6 +140,8 @@ def audit(entries, rep, on_disk_root=None):
                 rep.b("CONTENT does not match the extension (mislabelled file)", n + "  head=" + repr(head[:4]))
         except Exception:
             pass
+        for hit in marked_lines(n, _rd):
+            rep.b(TEST_ONLY_MARK + " test content - remove it before a beta or prod export", hit)
         if base.startswith("."):
             rep.b("hidden file", n)
         if len(n) > 200:

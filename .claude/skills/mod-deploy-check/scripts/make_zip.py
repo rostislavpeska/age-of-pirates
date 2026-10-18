@@ -18,9 +18,16 @@ map still appeared in the lobby - hence all files of the map, and the check insi
 The zip is written as <out>.part.zip (matches the *.zip gitignore rule, so a commit in the meantime cannot pick it up)
 and renamed when complete. Deflate level 6; .png stored (already compressed). After writing, the zip is re-opened and
 checked: CRC of every entry, only the five folders at the root, no stripped map left, entry count as planned.
+
+Test-only content stops the build before anything is written, beta and prod alike: a line marked AOP-TEST-ONLY in
+a file that would be zipped (release_marker.py; owner 2026-10-19). A stripped map's marked lines do not count.
 Standard library only. Exit 0 = zip written and verified."""
 from __future__ import annotations
 import argparse, os, re, subprocess, sys, time, zipfile
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from release_marker import TEST_ONLY_MARK, marked_lines  # noqa: E402
 
 GAME_DIRS = ("art", "data", "game", "sound", "randmaps")
 MAP_DIRS = ("randmaps", "game/randmaps")          # map scripts live directly in these two folders
@@ -80,6 +87,11 @@ def main():
         print("STRIP %-10s %s" % (key, ", ".join(hit)))
     for rel, why in skipped:
         print("leave out (%s): %s" % (why, rel))
+    marked = [h for rel in files for h in marked_lines(rel, lambda p=os.path.join(root, rel): open(p, "rb").read())]
+    if marked:
+        print("%s test content would ship - remove it before a beta or prod export; nothing written:" % TEST_ONLY_MARK,
+              *marked, sep="\n  ")
+        sys.exit(1)
 
     t0 = time.time(); raw = 0
     with zipfile.ZipFile(part, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6, allowZip64=True) as z:

@@ -35,6 +35,9 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
 5. **New records go at the end of real content**, directly above the file's first long TEST/commented
    section, ids continuing the real sequence (protomods: the highest id in use + 1, read from the file;
    never a number copied from a doc - "21160+" stood here and 21160 was reused, CI red 2026-10-17).
+   A test hook in a shipped file (a map script, a production record) carries an `// AOP-TEST-ONLY: <what, who/when>`
+   comment (`<!-- -->` in XML) on its lines; the release check and `make_zip.py` refuse any beta or prod zip with
+   one (owner 2026-10-19; skill `mod-deploy-check`).
 6. **Backslashes in the Bash tool collapse** (`\\` loses a level even in quoted heredocs). Write scripts that
    contain Windows paths with the Write tool and build the character from `chr(92)`.
 
