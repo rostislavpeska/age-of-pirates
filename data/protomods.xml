@@ -77902,6 +77902,13 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
+  <!-- Vanilla fix (owner 2026-10-18: "add rubble also for Asian market, that's probably vanilla bug"):
+       ypTradeMarketAsian has no deadreplacement, so a destroyed Asian market left no rubble. BuildingRubble5x5 is
+       the vanilla size for obstruction radius 5 (ypSPCAztecMarket, Factory); lifespan 15 like ypConsulate. -->
+  <unit name="ypTradeMarketAsian">
+    <deadreplacement>BuildingRubble5x5</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+  </unit>
 <!--TEST AND TEMPORARY CONTENT-->
 
 

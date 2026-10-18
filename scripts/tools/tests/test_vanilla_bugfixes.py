@@ -68,3 +68,14 @@ def test_every_fixed_ship_still_boards_artillery_in_vanilla():
     for name in _proto.ARTILLERY_LOAD_DELAY_FIX - NEWER_THAN_SNAPSHOT:
         assert name in snap, f"{name} not in the vanilla snapshot"
         assert _proto._contains(snap[name], "LogicalTypeGarrisonInShips", False), name
+
+
+def test_the_asian_market_leaves_rubble():
+    # owner 2026-10-18: "add rubble also for Asian market, that's probably vanilla bug" - vanilla gives it no
+    # deadreplacement; BuildingRubble5x5 is the vanilla size for obstruction radius 5 (ypSPCAztecMarket, Factory)
+    fix = [u for u in PROTOMODS.findall("./unit") if u.get("name") == "ypTradeMarketAsian" and u.get("id") is None]
+    assert len(fix) == 1
+    assert (fix[0].findtext("deadreplacement"), fix[0].findtext("deadreplacementlifespan")) == ("BuildingRubble5x5", "15")
+    snap = {u.get("name"): u for u in ET.parse(SNAPSHOT).getroot().iter("unit")}
+    assert snap["ypTradeMarketAsian"].find("deadreplacement") is None   # still a vanilla gap, so the merge is needed
+    assert snap["BuildingRubble5x5"] is not None

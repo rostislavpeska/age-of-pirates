@@ -22,6 +22,10 @@ description: "Inspect and adapt AoE3 DE Havok destruction graphs, collision and 
 - Animfile: `<logic type="Destruction"><p1>damaged</p1><p99>intact</p99>`, Death component = damaged model,
   `.dmg` templates = projectile impact system (`boneimpact*`), `simskeleton` = the skeleton the anims are
   sampled on (battleship: the damaged model; frigate: none).
+- **Rubble is the proto, not the animfile:** the rubble left after death is a separate unit from the proto's
+  `<deadreplacement>BuildingRubbleNxN</deadreplacement>` + `<deadreplacementlifespan>15</...>`. Vanilla
+  `ypTradeMarketAsian` (and the European `Market`) has none, so a Market on it leaves no rubble (Korean Market,
+  2026-10-18, journal 2026-10-18-claude-opus-5.5-139). Check that field before the Death wiring or the `.hkt`.
 
 - **One surface, one owner** (owner 2026-10-10, Korean castle in game: "pieces get chipped but underneath the original
   part stays on place (like cloning debris)").
