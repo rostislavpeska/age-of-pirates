@@ -76,6 +76,17 @@ model passes UV, density, frame, contract and DLL checks and renders black on
 two-sided cut-out pages and dark elsewhere (Korean House r14b, owner's game test);
 Blender's viewport shades back faces as front, so the authoring scene looks right.
 
+**Props boundary (2026-10-17):** every placed prop must reach the GR2 and every review of it. Find a page by its
+texture, never by its slot letter: the Korean props page is `matd` on the civic buildings, `mate` on the Houses and
+`matf` on the age-0 Houses, where `matd` is the TC pottery page. The consumer's havok tool `gr2_props.py` lists
+what a GR2 draws per bound mesh, slot and page (`composition`), checks a project props manifest per placement on the
+page per stage (`check`; a construction stage must draw nothing there) and gives a review builder the parts it must
+show (`expected_parts`). `gr2_lint` runs it as check `props` when the profile has `props_manifest`; a missing manifest
+or gate is SKIP, never a pass. The matching is the generic Blendify `blender-complex-scene` composition gate.
+Evidence: a review builder kept only the own-page meshes of the Korean Consulate and both prop meshes vanished from
+every review the owner saw ("Where are the props?"); gr2_lint `materials` compares slot sets only and the UV
+contract pins counts written from the same payload, so neither could notice.
+
 Editor test entries must have distinct localized names from both the vanilla
 donor and any comparison clone. Verify the compiled string tables, not only XML.
 

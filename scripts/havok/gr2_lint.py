@@ -46,6 +46,10 @@ Why each check exists (every one is a defect that reached the game first):
                           vertex lies inside the stored bone-binding box (bone-local AABB, gr2_bounds.py; exact on
                           vanilla rigid and destruction models): the Korean HC pier, collision mesh and a junk boat were
                           moved in place 83-87 units outside their unchanged boxes, none visible in game (2026-10-17).
+  props                   (opt-in profile key "props_manifest") every placed prop of the project's props manifest is on
+                          its page in this stage, nothing extra, on the right page version; "none" stages draw nothing
+                          on it (gr2_props.py). A review builder kept only the own-page meshes and both prop meshes of
+                          the Korean Consulate vanished from every review; no check counted props (2026-10-17).
   root_identity           (opt-in profile key "root_identity"; no profile sets it) the root bone rests at identity. Added
                           on 2026-10-17 for the Korean HC docks01, then not used: the fix the owner chose keeps the
                           vanilla skeleton and vanilla Idle, and a non-identity root was never shown to cause the error.
@@ -2260,6 +2264,9 @@ def lint(prof, intact=None, damaged=None, hkt=None, intact_material=None, damage
                 ok, message = check_uv_contract(stage, info, prof['uv_contract'],
                                                 prof.get('_root') or Path(__file__).resolve().parents[2])
                 results.append(R(stage, 'source_uv_contract', ok, message))
+            if prof.get('props_manifest'):                    # every placed prop on its page (2026-10-17, gr2_props.py)
+                from gr2_props import lint_check as check_props
+                results.append(check_props(stage, info, mat, prof, R))
         if animfile is not None:
             results.append(check_crlf(animfile))
     finally:
