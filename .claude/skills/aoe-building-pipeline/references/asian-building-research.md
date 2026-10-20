@@ -51,6 +51,22 @@ V=0.5-BlenderX/12, aligns the shared footprint's wood foundations with the donor
 L plan. This alignment was checked in Blender, not newly calibrated from an engine
 capture. It is evidence for this pilot, not a universal decal UV orientation.
 
+Correction, INC-473 (2026-10-19): never carry a decal UV orientation between Blender
+frames; derive it from the building. The Industrial TC scenes use the display frame
+(-raw X, -raw Z, raw Y), already handed like the meshes. There the shared footprint
+needs a plain planar UV (U=0.5+x/12, V=0.5+y/12, image up = +Y). The quarter-turn above
+fails there and the earlier mirrored corner list (u=1-x) put the stone courtyard under
+the roofs. Measured on the real Japanese and Chinese donor meshes: stone under roofs
+0.35/0.45 for the plain UV against 0.76/0.80 for the mirrored one. Gate every decal with
+the tested helper in the Korean project, `research/Industrial_TC_24/recipes/decal_placement.py`
+(`repair_scene(scene)` in process, or `--mode validate|repair` in background Blender): it
+scores all eight orientations against the donor roof footprint, requires a margin among
+the four axis-preserving ones and refuses a vacuous pass. Two limits remain: the axis-
+swapping diagonal mirror is a near tie on this nearly diagonal-symmetric plan (excluded
+because a decal's width/height axes cannot swap), and a straight-down camera needs an
+explicit north-up rotation (`top_view_euler`); `to_track_quat('-Z','Y')` is degenerate
+there and produced 180-degree-turned review renders.
+
 Use a slight ground-plane separation to avoid z-fighting, a 12 x 12 boundary and
 unit ticks, and top/RTS views. Keep age alternatives mutually exclusive to avoid
 stacked alpha darkening. Pack preview images into the research blend. Link the
