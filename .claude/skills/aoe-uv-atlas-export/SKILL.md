@@ -66,6 +66,28 @@ freeze (`uv_fingerprint.py record`), never before.
   per trial scale.
 - Keep original chart sizes until this step; only this step scales (uniformly).
 
+The subtype priority above is the legacy TC recipe, not an alpha-only restriction.
+With explicit `capabilities` on **every** page, `assign_pages` delegates to the
+generic `blender-uv-reuse/scripts/page_allocation.py` allocator instead. Declare
+page `binding` and capabilities `opacity`, `channels`, `source_bindings`; declare
+each chart's `requirements` as `opacity`, `channels`, `binding`. The 1024 page can
+accept `opaque` and `cutout` together, including opaque normal-mapped surfaces;
+the 2048 page can remain opaque-only. Existing generic dependencies remain explicit
+and are not new owned allocations. `emit` checks owners and members against page
+eligibility and emits destination binding plus original channel requirements.
+This is a candidate map-transfer contract: preserve real alpha and tangent-space
+normals when transferring/baking maps and revalidate saved bindings/mips. Do not
+infer transparency or supported channels from resource numbers or material names.
+Legacy profiles retain their old behavior for replay, including the regression
+where unlisted opaque types cannot fill spare alpha-page capacity.
+
+`scripts/replay_saved_pages.py ACTUAL.json SOURCE.blend DECLARATIONS.json OUT.json
+--density D --gutter G` verifies saved/cache hashes, consumes explicit material
+contracts and a named face scope, normalizes whole cached charts to equivalent
+area density, and executes the real assignment/emission path without asset edits.
+Its proposal reports incomplete scope and missing material dependency evidence;
+it does not certify both density axes or authorize replacing real UVs/maps.
+
 ## Workflow
 
 1. `families()` from blender-uv-conjoin with the AO `compat` from blender-uv-ao-separation.
