@@ -113,8 +113,11 @@ a post is fine: it ends against the post on both sides.
      4-connected cells, drop specks, fill small holes and add a 1-texel soft edge. The images are not regenerated.
 3. **Base.** Run `lighten_under_mask.py` in report mode on each field, then apply `keep`, `partial` or `neutral`
    as decided. Write the result to a new file; never write over the input.
-4. **Preview** in Blender with `scripts/details_review.py` (the game formula, one shared player-colour node,
-   `set_player(1..8)`). See [review-preview.md](references/review-preview.md) for how to install it and verify it.
+4. **Preview/bind** in Blender with `scripts/details_review.py` (the R-only game formula, one shared player-colour
+   node, `set_player(1..8)`). Supply the source-declared Details path, BaseColor identity and UV0 layer; missing
+   declared files and unsupported legacy/partial graphs fail explicitly. A material-building importer must call
+   this adapter; it is not an automatic import hook. See [review-preview.md](references/review-preview.md) for
+   supported graph behavior, offline tests and the separate per-route saved-model replay gate.
 5. **Check** with `scripts/check_state.py --base <HEAD maps> --cand <candidate>` (add `--faces/--select` for the
    leak check). It passes only if every other map is byte-identical, BaseColor changed only under Details.R > 0, and
    no unselected face carries mean R > 0.5. Render the before/after from the **owner's current (HEAD) scene or
