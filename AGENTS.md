@@ -216,7 +216,8 @@ delivery and owner acceptance separately. Authorized continued WIP work may proc
 after delivery; silence does not grant final acceptance or a below-floor GO.
 
 During any 3D work (modeling, UV, conjoinment, AO, atlas, baking, texturing, export - Blender or Photoshop)
-every agent records lessons in the shared `.claude/skills/JOURNAL.jsonl` **at the moment they happen**: an owner
+every agent records lessons in the shared diary (Blendify `.local/JOURNAL.jsonl`, since the 13 October split; the
+old `.claude/skills/JOURNAL.jsonl` here is a legacy record) **at the moment they happen**: an owner
 correction, a failure, a confirmed method, a measurement that settles a question. Use the `workflow-journal`
 skill (`python .claude/skills/workflow-journal/scripts/journal.py add ...`). Skills are improved later by
 distilling open records (`journal.py digest`), on the owner's request; agent-private memory is not shared.
