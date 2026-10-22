@@ -67,6 +67,20 @@ the adapter with declared role paths and verify its saved output. In particular,
 4UP recipe built only BaseColor/Normals/Masks and did not call this adapter. Authoring, runtime-model imports and
 reference copies each require their own pinned saved-model replay and blue/red response before claiming coverage.
 
+`scripts/extraction_adapter.py` provides the explicit read-only descriptor for
+Blendify `allocation_delivery.extract_saved_blender(group_adapter={path,sha256})`.
+It pins the exact binder source bytes and supports its finite R-only group, one
+sRGB BaseColor image, one Non-Color Details image and named explicit UV0 input.
+Unknown groups, legacy blue suppression, extra nodes, missing/ambiguous images,
+muted nodes and changed clamps fail. Further AO/multi-image BaseColor graphs
+require a separately verified role adapter; this module does not guess roles.
+`test_extraction_adapter.py` covers this boundary. Fixture proof is not saved-model
+proof. The retained Korean TC R3 native readback (INC580, 2026-10-21) contains
+the legacy ten-node/eleven-link `R*(1-B)*Strength` group plus an AO multiply;
+it correctly refuses this adapter. A modeller must supply a separately preserved
+and explicitly migrated supported source before a new authorized native replay.
+The rejected R3 ornament remains rejected; this diagnostic creates no art approval.
+
 After changing player colour, verify the rendered target actually changes. A scene
 can retain unused legacy colour nodes while the visible material uses a constant
 blue input. Follow links from the material assigned to the rendered object, then
