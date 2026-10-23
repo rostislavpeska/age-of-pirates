@@ -1,0 +1,144 @@
+{
+ "screen": "editor",
+ "width": 2880,
+ "height": 1800,
+ "cx": 2553.25,
+ "cy": 1534.21,
+ "radius_px": 218.72,
+ "fill": "longer_side",
+ "sign_u": 1,
+ "sign_v": -1,
+ "measured": true,
+ "note": "disc measured 2026-09-24 from 10_generated.png (box [2180, 1300, 2880, 1800]): bright line 3179 px, rms 0.878 px, 287 rays, rim spread 1.0 px, line / rim 1.0402; signs +1/-1 as fitted on the Paris editor explorer stars 2026-09-24",
+ "points": [],
+ "residual_px": null,
+ "method": "disc",
+ "accepted": true,
+ "checked": true,
+ "r_line_px": 227.52,
+ "probes": [
+  {
+   "x": 2750,
+   "y": 1420,
+   "rgb": [
+    197,
+    164,
+    76
+   ]
+  },
+  {
+   "x": 2667,
+   "y": 1337,
+   "rgb": [
+    224,
+    184,
+    90
+   ]
+  },
+  {
+   "x": 2439,
+   "y": 1337,
+   "rgb": [
+    173,
+    146,
+    66
+   ]
+  },
+  {
+   "x": 2327,
+   "y": 1534,
+   "rgb": [
+    234,
+    199,
+    92
+   ]
+  },
+  {
+   "x": 2356,
+   "y": 1648,
+   "rgb": [
+    207,
+    172,
+    89
+   ]
+  },
+  {
+   "x": 2439,
+   "y": 1731,
+   "rgb": [
+    225,
+    188,
+    98
+   ]
+  },
+  {
+   "x": 2553,
+   "y": 1762,
+   "rgb": [
+    222,
+    183,
+    90
+   ]
+  },
+  {
+   "x": 2667,
+   "y": 1731,
+   "rgb": [
+    190,
+    162,
+    82
+   ]
+  }
+ ],
+ "check_pairs": [
+  {
+   "what": "explorer p1 id 8302",
+   "x_m": 33.0,
+   "z_m": 153.0,
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "px": 2572.0,
+   "py": 1688.0,
+   "err_px": 1.945,
+   "kind": "icon"
+  },
+  {
+   "what": "explorer p2 id 8690",
+   "x_m": 163.0,
+   "z_m": 147.0,
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "px": 2633.0,
+   "py": 1631.0,
+   "err_px": 1.218,
+   "kind": "icon"
+  },
+  {
+   "what": "explorer p3 id 9078",
+   "x_m": 49.0,
+   "z_m": 543.0,
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "px": 2403.0,
+   "py": 1504.5,
+   "err_px": 1.724,
+   "kind": "icon"
+  },
+  {
+   "what": "explorer p4 id 9467",
+   "x_m": 185.0,
+   "z_m": 533.0,
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "px": 2469.0,
+   "py": 1447.0,
+   "err_px": 1.098,
+   "kind": "icon"
+  }
+ ],
+ "check_residual_px": 1.945,
+ "look_offset_px": [
+  0.0,
+  0.0
+ ]
+}

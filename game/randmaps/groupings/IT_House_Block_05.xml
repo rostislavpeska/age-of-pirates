@@ -35,7 +35,7 @@
 		<unit variation="0" posx="-12.2836" posz="-5.1902" orientx="1.0000" orienty="0.0000" orientz="-0.0092">SPCPathBlock3</unit>
 		<unit variation="17" posx="10.1178" posz="-6.4626" orientx="-0.0159" orienty="0.0000" orientz="-0.9999">zpNativeHouseOrthodoxSouth</unit>
 		<unit variation="0" posx="6.6704" posz="-9.4928" orientx="-0.0095" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="0" posx="-8.1031" posz="-7.8503" orientx="-0.7025" orienty="0.0000" orientz="0.7117">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="-8.1031" posz="-7.8503" orientx="-0.7025" orienty="0.0000" orientz="0.7117">zpNativeHouseVenetianE</unit>
 		<unit variation="248" posx="-11.6206" posz="-5.0231" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseOrthodoxSouth</unit>
 		<unit variation="135" posx="-0.1293" posz="-6.8321" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
 		<unit variation="0" posx="-9.4512" posz="-4.3805" orientx="0.7136" orienty="0.0000" orientz="0.7005">SPCPathBlock3</unit>
@@ -78,7 +78,7 @@
 		<unit variation="2" posx="3.3148" posz="6.0876" orientx="-0.0061" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="187" posx="-13.1504" posz="9.0465" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropStatue</unit>
 		<unit variation="2" posx="-12.3584" posz="8.9058" orientx="-0.0061" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
-		<unit variation="1" posx="8.1043" posz="7.5317" orientx="0.7034" orienty="0.0000" orientz="-0.7108">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="8.1043" posz="7.5317" orientx="0.7034" orienty="0.0000" orientz="-0.7108">zpNativeHouseVenetianG</unit>
 		<unit variation="196" posx="3.0919" posz="9.9928" orientx="-0.0072" orienty="0.0000" orientz="-1.0000">deSPCCityStateHouseProp</unit>
 		<unit variation="0" posx="7.4088" posz="9.7219" orientx="0.0093" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="226" posx="-12.1114" posz="10.6759" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropStatue</unit>

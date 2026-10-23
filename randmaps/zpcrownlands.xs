@@ -1150,10 +1150,10 @@ void main(void)
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302344);
-	rmObjectiveScreenSetGoal(302824);
-	rmObjectiveAdd(302833, 302834, true, true, true); // General objective
-	rmObjectiveAdd(302825, 302826, true, true, true); // General objective
+	rmObjectiveScreenSetTitle(502344);
+	rmObjectiveScreenSetGoal(502824);
+	rmObjectiveAdd(502833, 502834, true, true, true); // General objective
+	rmObjectiveAdd(502825, 502826, true, true, true); // General objective
 
 	// ************************* TRIGGERS ******************************
 
@@ -1251,6 +1251,13 @@ void main(void)
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	// players only - gaia keeps its protos (a setup tech on gaia resets AutoConvert suspensions)
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+	}
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);

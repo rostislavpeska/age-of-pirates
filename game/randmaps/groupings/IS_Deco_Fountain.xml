@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>7</width>
+	<height>4</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="48" posx="-4.7978" posz="-2.5503" orientx="0.7071" orienty="0.0000" orientz="0.7071">deNativePropsCivilianLeaders</unit>
+		<unit variation="84" posx="3.5014" posz="-1.1665" orientx="-0.9819" orienty="0.0000" orientz="0.1893">ypSMSufiAccessory</unit>
+		<unit variation="197" posx="-4.6810" posz="-0.9152" orientx="0.9239" orienty="0.0000" orientz="-0.3827">dePropsAnimalsCamel</unit>
+		<unit variation="226" posx="0.4972" posz="-0.1372" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainA</unit>
+		<unit variation="0" posx="0.4736" posz="-0.1739" orientx="-1.0000" orienty="0.0000" orientz="0.0006">SPCPathBlock1</unit>
+		<unit variation="84" posx="5.3076" posz="-0.6673" orientx="-0.8282" orienty="0.0000" orientz="-0.5605">ypSMSufiAccessory</unit>
+		<unit variation="3" posx="5.1310" posz="1.0085" orientx="0.9240" orienty="0.0000" orientz="0.3823">zpPropJewishMarketStall</unit>
+		<unit variation="84" posx="-4.1454" posz="1.6249" orientx="-0.8282" orienty="0.0000" orientz="-0.5605">ypSMSufiAccessory</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="props\east_colony2">
+			<block startx="-3" startz="-2" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="1"></block>
+			<block startx="0" startz="-2" endx="0" endz="1"></block>
+			<block startx="1" startz="-2" endx="1" endz="1"></block>
+			<block startx="2" startz="-2" endx="2" endz="1"></block>
+			<block startx="3" startz="-2" endx="3" endz="1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

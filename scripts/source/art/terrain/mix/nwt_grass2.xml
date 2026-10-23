@@ -1,0 +1,20 @@
+<mix>
+  <title>Northwest Territory Grass 2</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="5">nwterritory\ground_grass1a_nwt</texture>
+    <texture weight="3">nwterritory\ground_grass2_nwt</texture>
+    <texture weight="1">nwterritory\ground_grass5_nwt</texture>
+    <texture weight="3">nwterritory\ground_grass3_nwt</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.27" octaves="3" persistence="0.4" emptyweight="20" posoffset="0.55">
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="2" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_rock3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_rock4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.3">terrain\underbrush\underbrush_forest_group1</model>
+  </objects>
+</mix>

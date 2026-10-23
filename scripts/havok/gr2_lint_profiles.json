@@ -1,0 +1,825 @@
+{
+ "_doc": [
+  "Profiles for scripts/havok/gr2_lint.py. 'references' = numbers MEASURED on vanilla models (python scripts/havok/gr2_lint.py --measure-reference <vanilla.gr2>, files extracted to a scratchpad, never into the repo); never on a pilot or on the model under test.",
+  "'profiles' = one building each: its files, the reference it must match, and its own design facts (platform height, props on the fixed base bone) with the reason for each tolerance.",
+  "Frames: 'raw' = the gr2 file's own coordinates (y up). 'display' = (-x_raw, -z_raw, y_raw): +X right, +Y back, +Z up, as rotate_gr2.py documents. Quadrants are display-frame, relative to the footprint (bbox) centre."
+ ],
+ "tools": {
+  "gr2_to_raw_dir": "$AOP_KOREAN_REPO/research/Texturing_11/Export_CP1/tools",
+  "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). $VARIABLES = this device's local environment (scripts/tools/local_env.py: the environment, else config/aop.local.env); override: env GR2_LINT_TOOLS. Missing -> the dll_read check is SKIP, never PASS.",
+  "owner_messages": "$AOP_TASKS_DIR/tasks.json",
+  "_owner_messages_doc": "the owner's message store: a waiver in a profile's \"waivers\" counts only when its owner_quote is one of his WHOLE messages there (as the UV lineage gate). AOP_TASKS_DIR not set on this device or the file missing -> no waiver counts."
+ },
+ "texture_budget": {
+  "_doc": "AoP texture CEILINGS (this project only; owner 2026-09-30 m334, classes m335/m336; KTC-165). gr2_lint check texture_budget counts a model's own texture SETS (one per BaseColor; the sizes from the DDT headers) against its class. The class is set PER MODEL with the owner: a profile's texture_budget {class, confirmed_by: owner message id, models: [the model stems it covers]}; per_model entries (keyed by the model stem) override it. A class without confirmed_by is PROPOSED and FAILS the export: 'class not confirmed by the owner'. INC-033: confirmed_by must resolve to his message in the store (tools.owner_messages) that names the class and the model (the entry's or profile's \"names\"); a confirmed folder class covers only its \"models\" (the market folder also holds a house and a port); every own texture file of every stage and variant counts, and the animfile's replacetexture targets. The universal UV density floor is not here: .claude/skills/blender-architecture-texturing/references/uv-density-floor.md.",
+  "owner_quote": "Model like Town center: 1x2048 + 1x1024 as complementary with transparent objects MAX! Smaller buildings like Barracks: 1x2048 Large buildings (cathedral, Basilica, some bigger woonder): 2x2048 These are ceilings for this project!!!!!!!!!!!!!! (m334)",
+  "classes": {
+   "small": {"ceiling": [2048], "_doc": "1x2048: barracks-size and smaller (the house is small, m336)"},
+   "medium": {"ceiling": [2048, 1024], "_doc": "1x2048 + one 1024 complement for the transparent / cutout objects: Town Center, Market, possibly others per model (m335). Only medium has the complement"},
+   "large": {"ceiling": [2048, 2048], "_doc": "2x2048: cathedral, basilica, the bigger wonders"},
+   "4x2048": {"ceiling": [2048, 2048, 2048, 2048], "_doc": "4x2048: the Korean House family only (Koreans add-on, owner 2026-10-12: \"Approve 4x2048\", then \"Yes: House A/B/C = 4x2048\"): the Colonial skin WALLS + ROOFS and the Discovery straw Hanok skin WALLS + ROOFS, one set each shared by House A/B/C over every stage; the shared atlases are pinned dependencies, not counted"}
+  },
+  "count_shared_vanilla": false,
+  "_count_doc": "PROPOSED (gates/BUDGET_INVENTORY.md, 2026-09-30), owner to confirm: shared vanilla atlases a model borrows (generic props, the destruction sheet) are listed by the check but not counted - vanilla's own West TC age 3 loads three sets that way. Also to confirm: '1x2048' is counted as sets with a size cap (implemented), not as a pixel sum."
+ },
+ "references": {
+  "china_tc_age2": {
+   "source": "vanilla china_towncenter_age2.gr2 + china_towncenter_age2_damaged.gr2/.hkt, measured 2026-09-29",
+   "mast_quadrant": "+X+Y",
+   "courtyard_quadrant": "-X-Y",
+   "layout_words": "tower (flag mast) back-right, open courtyard front-left",
+   "mast_display_xy": [2.0771, 2.3513],
+   "roof_area_share": {"+X+Y": 0.4623, "-X+Y": 0.2841, "-X-Y": 0.0098, "+X-Y": 0.2437},
+   "tip_m": 13.4386,
+   "uv_handedness_positive": {"intact": 0.867, "damaged": 0.7731},
+   "bone_flag_civ": [-2.2189, 12.0598, -2.1127],
+   "flag_off_axis_m": 0.0121,
+   "flag_below_tip_m": 1.3788,
+   "garrison_below_flag_m": 1.106,
+   "BONE_HITPOINTBAR": [2.3284, 11.6993, -0.3933],
+   "damaged": {
+    "bones": 272,
+    "base_bone": "base",
+    "base_tris": 1838,
+    "base_max_height_m": 2.123,
+    "mast_axis_offset_vs_intact_m": 0.146,
+    "bbox_equals_intact": true,
+    "hkt_bodies": 221,
+    "hkt_axis_map": [2, 1, 0],
+    "hkt_scale": 1.0222,
+    "hkt_median_err_m": 0.0107,
+    "hkt_p95_err_m": 0.0186,
+    "mixed_bone_tris": 0
+   }
+  },
+  "japan_tc_age1": {
+   "source": "vanilla japan_towncenter_age1.gr2 + _damaged.gr2, measured 2026-09-29 (second opinion on the conventions)",
+   "mast_quadrant": "+X+Y",
+   "courtyard_quadrant": "-X-Y",
+   "uv_handedness_positive": {"intact": 0.9478, "damaged": 0.7006},
+   "flag_off_axis_m": 0.0181,
+   "flag_below_tip_m": 1.1722,
+   "garrison_below_flag_m": 1.5625,
+   "BONE_HITPOINTBAR": [2.3284, 11.6993, -0.3933],
+   "damaged": {"bones": 247, "base_max_height_m": 2.189, "mast_axis_offset_vs_intact_m": 0.058}
+  }
+ },
+ "profiles": {
+  "korean_tc": {
+   "reference": "china_tc_age2",
+   "_doc": "Korean Town Center (donor graph: the China TC age 2 damaged model). Specimens: tests/test_gr2_lint.py.",
+   "names": ["Korean TC", "KTC", "TC", "Town Center", "Town centre"],
+   "_names_doc": "the owner's words for this building: his class confirmation (m335 says TC) and a density waiver must name it (INC-033, INC-036)",
+   "texture_budget": {"class": "medium", "confirmed_by": "m335", "models": ["korean_tc"], "_doc": "owner m335: TC and Market are medium (2048 + 1024 complement). The shipped S18k carried a third set (matc 512, the hidden faces): FAIL. 2026-10-08: the TC backing and cut faces moved to the shared Korean r65 atlas, the owner-authorized shared dependency of every Korean building (the same pinned record as the military profiles), counted once at Korean level.",
+    "shared_mod_dependencies": [{"source_names": ["Korean TC shared matC"], "authorization": {"kind": "recorded_owner_chat", "path": "config/gr2_uv_contracts/shared_matc_tc_owner_evidence.json", "sha256": "dd141bfb0f435f575fa897804ff192111c03442c8ec5c8806bfea7879c0f37be", "owner_quote": "We need to save space obsessively, so only one copy of the atlas most be in game - the new one."}, "files": [{"path": "buildings/korean_shared/textures/korean_shared_matc_r65_BaseColor.ddt", "sha256": "ab986a62a37bb7f21cc01ba12d1cc3f6b9e766330475aa6a5fbe85a20c7d719d", "width": 1024, "height": 1024}, {"path": "buildings/korean_shared/textures/korean_shared_matc_r65_Normals.ddt", "sha256": "2f91e0bb857f25ab01552d5b5409182ea495a29405a234fe85d58a6dbecd353a", "width": 1024, "height": 1024}, {"path": "buildings/korean_shared/textures/korean_shared_matc_r65_Masks.ddt", "sha256": "9ae32260b70ad94db7285a5ee0c8f6e85c387734b831fdb547f9f31bf0f4927f", "width": 1024, "height": 1024}]}, {"source_names": ["Korean shared props r6.2"], "authorization": {"kind": "recorded_owner_chat", "path": "config/gr2_uv_contracts/shared_props_tc_owner_evidence.json", "sha256": "492a756b494cb0856287231f250c1c371d341a45b0e1e7b4c6bad6187b9608b3", "owner_quote": "plus one more - finisted and  damaged TC - add some more props from our prop set"}, "files": [{"path": "buildings/korean_shared/textures/korean_shared_props_r6_2_BaseColor.ddt", "sha256": "db92d6f3fd321745618108f305ab047d795ced0a5453108e0cd6bc04b7c2ffe1", "width": 2048, "height": 2048}, {"path": "buildings/korean_shared/textures/korean_shared_props_r6_2_Normals.ddt", "sha256": "89df41eb1b6640fa054588dbd2e60b2ab9c3b676c5c987f1836e4de5d765c014", "width": 2048, "height": 2048}, {"path": "buildings/korean_shared/textures/korean_shared_props_r6_2_Masks.ddt", "sha256": "c4cc66ba7e9cf39adcb64a71b97774ae6f940208de7c9d302524a693452be3e0", "width": 2048, "height": 2048}]}]},
+   "waivers": [],
+   "_waivers_doc": "owner exceptions to the UV density floor only: {id, check: density_floor, model, pages?: [BaseColor names], owner_quote: his WHOLE message, msg, at, recorded_by}. None recorded: the matc hidden-face exemption is the owner's call.",
+   "files": {
+    "intact": "korean_tc.gr2",
+    "damaged": "korean_tc_damaged.gr2",
+    "hkt": "korean_tc_damaged.hkt",
+    "intact_material": "korean_tc.material",
+    "damaged_material": "korean_tc_damaged.material",
+    "animfile": "korean_tc.xml"
+   },
+   "uv_gate": {
+    "path": "$AOP_KOREAN_REPO/research/Texturing_11/Claude_CP2/gates/uv_gate.py",
+    "_doc": "INC-002 (2026-09-30): the owner-approved roof UV was dropped and S18k shipped. The lint runs the UV lineage gate (check uv_lineage): not ok = FAIL, gate missing = SKIP (exit 2, not cleared). AOP_KOREAN_REPO comes from this device's local environment (scripts/tools/local_env.py); not set = SKIP."
+   },
+   "limits": {
+    "max_vertices": 65535,
+    "max_index": 65535,
+    "_doc": "damaged meshes are drawn with 16-bit indices (2026-09-29: one 102,527-vertex mesh wrapped into building-high sheets)"
+   },
+   "orientation": {
+    "mast_quadrant": "+X+Y",
+    "courtyard_quadrant": "-X-Y",
+    "roof_height_m": 2.5,
+    "min_mast_offset_m": 1.0,
+    "_doc": "from china_tc_age2 (Japan TC age 1 agrees). Courtyard = the quadrant with the least up-facing area above roof_height_m. A 90-degree turn or an x/z mirror moves the mast to another quadrant."
+   },
+   "handedness": {
+    "expect_sign": 1,
+    "min_fraction": 0.6,
+    "name_board": null,
+    "_doc": "area share of UV charts with the expected handedness; vanilla 0.70-0.95, a mirrored model ~0.05-0.30. It catches the diagonal mirror the quadrants cannot see. name_board (optional): {\"stage\": \"intact\", \"mesh\": \"<mesh name>\", \"triangles\": [ids], \"expect_sign\": 1} - fill the ids once the owner confirms the board reads correctly in game."
+   },
+   "attach": {
+    "bones": ["bone_flag_civ", "BONE_GARRISONFLAG", "BONE_HITPOINTBAR"],
+    "flag_axis_tol_m": 0.02,
+    "flag_below_tip_m": 1.3788,
+    "garrison_below_flag_m": 1.106,
+    "height_tol_m": 0.02,
+    "hitpointbar": [2.3284, 11.6993, -0.3933],
+    "hitpointbar_tol_m": 0.01,
+    "_doc": "vanilla China TC convention (the donor): civ flag on the mast axis (vanilla 1.2 cm off), 1.3788 m below the tip, garrison flag 1.106 m below it; hitpoint bar at the fixed vanilla point (China and Japan identical). The pilot flag hung 15.5 cm beside its pole."
+   },
+   "intact_bones": ["BONE_MAIN", "bone_flag_civ", "BONE_GARRISONFLAG", "BONE_HITPOINTBAR"],
+   "damaged": {
+    "bbox_tol_m": 0.01,
+    "tip_tol_m": 0.005,
+    "mast_axis_tol_m": 0.15,
+    "attach_tol_m": 0.001,
+    "_frame_doc": "the damaged model sits in the intact's frame: vanilla China bbox and tip identical, attach bones identical, the damaged pole measures 0.146 m (Japan 0.058) from the intact pole - a turn or mirror moves it by > 3 m.",
+    "base_bone": "base",
+    "base_max_height_m": 0.6,
+    "base_allowed_boxes": {
+     "_doc": "raw-frame [min, max] boxes of the props the design keeps on the fixed base bone (Destruction_S18k HANDOFF: 'notice board + jar cluster on the fixed base bone'). Everything else on the base above the platform is a defect (window panels left behind when the pieces fall).",
+     "notice_board": [[1.25, -0.05, 2.5], [1.8, 1.5, 3.7]],
+     "notice_board_foot": [[0.2, -0.05, 2.55], [0.7, 0.6, 3.75]],
+     "jar_cluster": [[-3.7, -0.05, 3.8], [-1.6, 1.05, 4.7]],
+     "courtyard_props": [[0.316, -0.05, -0.379], [4.26, 2.5, 2.764]],
+     "east_cart": [[4.23, -0.05, -4.02], [5.77, 1.15, -0.58]]
+    },
+    "_base_doc": "platform = the Korean stone platform, top 0.55 m in the design (vanilla China's platform reaches 2.12 m). The notice-board foot box is below the platform height anyway; kept for clarity.",
+    "hkt": {
+     "axis_map": [2, 1, 0],
+     "scale": 1.0222,
+     "scale_tol": 0.002,
+     "median_err_max_m": 0.02,
+     "containment_tol_m": 0.05,
+     "containment_max_share": 0.005,
+     "containment_max_out_m": 0.1,
+     "_doc": "vanilla China: Havok body translation = 1.0222 x (z, y, x) of the GR2 bone world position, median 1.07 cm, every body paired. Render vertices vs their own piece's convex hull: vanilla China farthest 0.066 m outside, 0.05% of 45,915 vertices beyond 5 cm; a piece bound to the wrong bone or frame sits metres away."
+    }
+   }
+  },
+  "1death_anim": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "HC_buildings": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "IH": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "Woku": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "african_civs": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "architekture": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "arsenal": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "asian_civs": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "castle_zen": {"class": "large", "status": "proposed, owner to confirm"},
+     "castle_zen_construction": {"class": "large", "status": "proposed, owner to confirm"},
+     "castle_zen_damaged": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "basilica": {
+   "texture_budget": {
+    "class": "large",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "bridge": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "cabin": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "church": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "jesuitcathedral": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "constructions": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "dock": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "fixed_gun": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "fort": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "general_store": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "gold_mine": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "grape_vine": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "gunstore": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "half_timbered": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "hanseatic": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "house": {
+   "names": ["House"],
+   "texture_budget": {
+    "class": "small",
+    "confirmed_by": "m336",
+    "models": ["west_house_SPCa", "west_house_SPCb", "west_house_SPCc"]
+   }
+  },
+  "inuit_ice_fishing_hole": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "inuit_igloo": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "jesuit_chichimeca_mission": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "korean_tc_experiment": {
+   "texture_budget": {
+    "class": "medium",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "london_basilica": {
+   "texture_budget": {
+    "class": "large",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "maori": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "market": {
+   "names": ["Market"],
+   "texture_budget": {
+    "class": "medium",
+    "confirmed_by": "m335",
+    "models": ["oriental_market_Model", "west market standin", "west market standin invisible"],
+    "_doc": "m335 confirms the markets only (INC-033): the folder also holds a house and a port",
+    "per_model": {
+     "oriental_house": {"class": "small", "status": "proposed, owner to confirm", "names": ["House"], "_doc": "a house; m336 says houses are small, the owner confirms this model"},
+     "trading_port2_Model": {"class": "small", "status": "proposed, owner to confirm", "_doc": "a port (west port B.xml), not a market"}
+    }
+   }
+  },
+  "mill": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "mining_camp": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "napoleonic_era": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "nassau": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "native_settlement": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "ottoman_mosque": {"class": "large", "status": "proposed, owner to confirm"},
+     "synagogue_berlin": {"class": "large", "status": "proposed, owner to confirm"},
+     "orthodox_cathedral_01": {"class": "large", "status": "proposed, owner to confirm"},
+     "orthodox_cathedral_02": {"class": "large", "status": "proposed, owner to confirm"},
+     "bourbon_palace_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "bourbon_palace_con_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "bourbon_palace_garden_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "imperial_palace_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "spcblue_mosque2": {"class": "large", "status": "proposed, owner to confirm"},
+     "venice_rialto2_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "venice_rialto_Model": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "ports": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "props": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "props_colony": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "sheriff": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "spc": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "per_model": {
+     "montezuma_palace2_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "montezuma_palace_Damaged": {"class": "large", "status": "proposed, owner to confirm"},
+     "montezuma_palace_Deathmodel": {"class": "large", "status": "proposed, owner to confirm"},
+     "montezuma_palace_Model": {"class": "large", "status": "proposed, owner to confirm"},
+     "tower_of_london": {"class": "large", "status": "proposed, owner to confirm"}
+    }
+   }
+  },
+  "stables": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "tavern": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "test": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "tortuga": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "town_center": {
+   "texture_budget": {
+    "class": "medium",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "trading_post": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm"
+   }
+  },
+  "korean_shared": {
+   "resource_only": true,
+   "resource_kind": "shared_texture_atlas",
+   "_doc": "TC-compatible matC texture dependency only; no building model or own page allocation. Consumers pin its files and owner authorization in config/gr2_lint_military.json."
+  },
+  "wall": {
+   "texture_budget": {
+    "class": "small",
+    "status": "proposed, owner to confirm",
+    "_doc": "no .material in the 2026-09-30 inventory; class proposed by default size"
+   }
+  },
+  "wonders": {
+   "texture_budget": {
+    "class": "large",
+    "status": "proposed, owner to confirm"
+   }
+  }
+ },
+ "unit_texture_budget": {
+  "_doc": "PROPOSED for the owner (2026-10-11), NOT confirmed: the texture ceiling of human UNITS, kept apart from the owner's building classes (texture_budget above, m334-m336), which are unchanged. gr2_lint's texture_budget check runs these classes for unit profiles exactly as for buildings: every own texture file counted, a class without confirmed_by FAILS ('class not confirmed by the owner'). The quote below was relayed to the export workflow on 2026-10-11; the owner message store (tools.owner_messages) holds no 2026-10-11 message, so it confirms nothing until his message is recorded there and the unit profile's texture_budget names it in confirmed_by. An extending profile file cannot redefine these classes.",
+  "owner_quote": "human unuts should have 1x 1024 texture, let's hold it",
+  "owner_quote_date": "2026-10-11",
+  "classes": {
+   "unit_human_1024": {
+    "ceiling": [
+     1024
+    ],
+    "_doc": "PROPOSED: one 1024 set (BaseColor, Normals, Masks, Details) for a human unit's body and any weapon skinned into it; an attachment model (a helmet, a bow) is a separate gr2 with its own .material, linted on its own"
+   }
+  },
+  "count_shared_vanilla": false
+ },
+ "unit_references": {
+  "_doc": "Numbers MEASURED on vanilla units (python scripts/havok/gr2_lint.py --measure-unit-reference <vanilla.gr2> --material <its .material> --pose-npz <seated idle pose>; files read from a scratch extraction, never the repo), 2026-10-11. density = blender-organic-uv's evaluator definitions (uvlib.face_metrics, wquantile); visibility = gr2_lint.face_visibility, a numpy port of uv_eval_blender.face_visibility that reproduces the evaluator's iron_rider_0 run (VAN_iron_rider_0_body) exactly: visible-weighted p10/p50/p90 313.4/342.2/400.3, never-visible area 0.3182. Pose NPZ from aoe3de-unit-animation pose_sim (rider clip on the posed vanilla horse, rider origin = bone_attachpoint), camera pitch 47, 8 headings, single-sided.",
+  "iron_rider_0": {
+   "file": "iron_rider_0.gr2",
+   "skeleton": {
+    "bones": 32,
+    "names": [
+     "Bip01_Root",
+     "Bip01_Pelvis",
+     "Bip01_Spine",
+     "Bip01_L_Thigh",
+     "Bip01_L_Calf",
+     "Bip01_R_Thigh",
+     "Bip01_R_Calf",
+     "Bip01_Prop1",
+     "bip01_attach_rt",
+     "bone_handle",
+     "bone_link1",
+     "bone_link2",
+     "bone_link3",
+     "Bip01_Spine1",
+     "Bip01_Neck",
+     "Bip01_R_Clavicle",
+     "Bip01_L_Clavicle",
+     "Bip01_L_UpperArm",
+     "Bip01_R_UpperArm",
+     "Bip01_L_ForeArm",
+     "Bip01_R_ForeArm",
+     "Bip01_Prop2",
+     "Bip01_R_Foot",
+     "Bip01_L_Foot",
+     "bone_tip",
+     "Bip01_L_Hand",
+     "Bip01_R_Hand",
+     "Bip01_Head",
+     "Bip01_Ponytail1",
+     "Bip01_R_Toe0",
+     "Bip01_L_Toe0",
+     "Bip01_Ponytail11"
+    ],
+    "parents": [
+     -1,
+     0,
+     1,
+     2,
+     3,
+     2,
+     5,
+     0,
+     7,
+     8,
+     9,
+     10,
+     11,
+     2,
+     13,
+     14,
+     14,
+     16,
+     15,
+     17,
+     18,
+     0,
+     6,
+     4,
+     12,
+     19,
+     20,
+     14,
+     27,
+     22,
+     23,
+     28
+    ],
+    "world_sha256": "94b6e281c0c565a5"
+   },
+   "weighted_bones": [
+    "Bip01_Head",
+    "Bip01_L_Calf",
+    "Bip01_L_Clavicle",
+    "Bip01_L_Foot",
+    "Bip01_L_ForeArm",
+    "Bip01_L_Hand",
+    "Bip01_L_Thigh",
+    "Bip01_L_UpperArm",
+    "Bip01_Pelvis",
+    "Bip01_R_Calf",
+    "Bip01_R_Clavicle",
+    "Bip01_R_Foot",
+    "Bip01_R_ForeArm",
+    "Bip01_R_Hand",
+    "Bip01_R_Thigh",
+    "Bip01_R_UpperArm",
+    "Bip01_Spine",
+    "Bip01_Spine1",
+    "bone_handle",
+    "bone_link1",
+    "bone_link2",
+    "bone_link3",
+    "bone_tip"
+   ],
+   "max_influences": 4,
+   "zero_slot_slot0_share_min": 1.0,
+   "triangles": 1328,
+   "welded": 976,
+   "layouts_vanilla": [
+    true,
+    true
+   ],
+   "density": {
+    "page": "units\\asians\\chinese\\iron_flail\\textures\\iron_rider_0_mata_BaseColor",
+    "faces": 1182,
+    "meshes": [
+     "iron_rider_0Shape"
+    ],
+    "all": {
+     "p10": 313.7,
+     "p50": 343.4,
+     "p90": 371.5
+    },
+    "visible_weighted": {
+     "p10": 313.4,
+     "p50": 342.2,
+     "p90": 400.3,
+     "never_visible_area_share": 0.3182
+    },
+    "pose": "oprichnik_idle1 key 0 on horse_idle_a key 0, iron_flail_horse_0 (the Idle/0 pair of the iron flail animfiles)",
+    "camera": {
+     "pitch": 47.0,
+     "headings": 8
+    }
+   }
+  },
+  "keshik_rider_rank01": {
+   "file": "keshik_rider_rank01.gr2",
+   "skeleton": {
+    "bones": 28,
+    "names": [
+     "Bip01_Root",
+     "Bip01_Pelvis",
+     "Bip01_Spine",
+     "Bip01_R_Thigh",
+     "Bip01_R_Calf",
+     "Bip01_R_Foot",
+     "Bip01_R_Toe0",
+     "Bip01_Prop1",
+     "Bip01_Prop2",
+     "Bip01_R_Toe0Nub",
+     "Bip01_L_Thigh",
+     "Bip01_L_Calf",
+     "Bip01_Spine1",
+     "Bip01_Neck",
+     "Bip01_R_Clavicle",
+     "Bip01_L_Clavicle",
+     "Bip01_R_UpperArm",
+     "Bip01_L_UpperArm",
+     "Bip01_L_ForeArm",
+     "Bip01_R_ForeArm",
+     "Bip01_Head",
+     "Bip01_Ponytail1",
+     "Bip01_L_Foot",
+     "Bip01_L_Hand",
+     "Bip01_R_Hand",
+     "Bip01_Ponytail11",
+     "Bip01_L_Toe0",
+     "Bip01_L_Toe0Nub"
+    ],
+    "parents": [
+     -1,
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     0,
+     0,
+     6,
+     2,
+     10,
+     2,
+     12,
+     13,
+     13,
+     14,
+     15,
+     17,
+     16,
+     13,
+     20,
+     11,
+     18,
+     19,
+     21,
+     22,
+     26
+    ],
+    "world_sha256": "0584bb376d5e24cf"
+   },
+   "weighted_bones": [
+    "Bip01_Head",
+    "Bip01_L_Calf",
+    "Bip01_L_Clavicle",
+    "Bip01_L_Foot",
+    "Bip01_L_ForeArm",
+    "Bip01_L_Hand",
+    "Bip01_L_Thigh",
+    "Bip01_L_UpperArm",
+    "Bip01_Pelvis",
+    "Bip01_R_Calf",
+    "Bip01_R_Clavicle",
+    "Bip01_R_Foot",
+    "Bip01_R_ForeArm",
+    "Bip01_R_Hand",
+    "Bip01_R_Thigh",
+    "Bip01_R_UpperArm",
+    "Bip01_Spine",
+    "Bip01_Spine1"
+   ],
+   "max_influences": 3,
+   "zero_slot_slot0_share_min": 1.0,
+   "triangles": 1278,
+   "welded": 981,
+   "layouts_vanilla": [
+    true
+   ],
+   "density": {
+    "page": "units\\asians\\chinese\\keshik\\textures\\keshik_rider_rank01_mata_BaseColor",
+    "faces": 1278,
+    "meshes": [
+     "keshik_rider_rank01Shape"
+    ],
+    "all": {
+     "p10": 342.2,
+     "p50": 358.4,
+     "p90": 380.9
+    },
+    "visible_weighted": {
+     "p10": 332.2,
+     "p50": 358.5,
+     "p90": 390.9,
+     "never_visible_area_share": 0.3686
+    },
+    "pose": "sword_idle_A key 0 on horse_idle_A key 0, keshik_horse_rank01 (the Idle/0 pair of the keshik animfiles)",
+    "camera": {
+     "pitch": 47.0,
+     "headings": 8
+    }
+   }
+  }
+ },
+ "unit_profiles": {
+  "unit_rider_1024": {
+   "kind": "unit",
+   "status": "profile confirmed by the owner 2026-10-11; texture class per model pending (INC-033)",
+   "_doc": "OWNER 2026-10-11: confirmed this rider profile in principle - his answer 'Yes, confirm it (Recommended)' to 'Confirm the proposed rider check profile unit_rider_1024 (the gate every unit must pass before a game test)?' (one 1024 texture per human unit, limits measured on vanilla riders, the universal UV density floor on top). The unit texture class still FAILS per model until confirmed_by points at his own message in the owner store naming the class and the model (INC-033), recorded when the first unit model exists. The export lint of a new skinned RIDER whose body (and any weapon skinned into it) shares one 1024 page. Generic checks: crc, fixups, dll_read, vertex_limit, wrap16, tangents, winding, materials. Unit checks: unit_skeleton (one reference skeleton byte for byte: names, order, parents, rest matrices), unit_weights (8-bit sums 255, descending, no bone twice, cap 4, unused slots repeat slot 0, weighted bones inside the measured set), unit_vertex (the vanilla 40-byte skinned layout and DE fill), unit_budget (triangles and welded vertices within the measured vanilla rider maxima), texture_budget (unit class unit_human_1024, PROPOSED: FAILS until the owner confirms), unit_density (the organic UV gate profile's density minima instead of the building density floor; the visible-weighted part needs --pose-npz). The vanilla references iron_rider_0 and keshik_rider_rank01 pass it (scripts/havok/tests/test_gr2_lint_unit.py). Not covered yet: LowPoly (_lp) models, rigid attachment models, infantry.",
+   "names": [
+    "rider",
+    "human unit",
+    "human units"
+   ],
+   "references": [
+    "iron_rider_0",
+    "keshik_rider_rank01"
+   ],
+   "unit": {
+    "skeletons": [
+     "iron_rider_0",
+     "keshik_rider_rank01"
+    ],
+    "_skeletons_doc": "a new rider takes a donor skeleton byte for byte (aoe3de-unit-model rider-skeleton.md section 8); add a donor here only with its measured unit_references entry",
+    "allowed_weighted_bones": [
+     "Bip01_Head",
+     "Bip01_L_Calf",
+     "Bip01_L_Clavicle",
+     "Bip01_L_Foot",
+     "Bip01_L_ForeArm",
+     "Bip01_L_Hand",
+     "Bip01_L_Thigh",
+     "Bip01_L_UpperArm",
+     "Bip01_Pelvis",
+     "Bip01_R_Calf",
+     "Bip01_R_Clavicle",
+     "Bip01_R_Foot",
+     "Bip01_R_ForeArm",
+     "Bip01_R_Hand",
+     "Bip01_R_Thigh",
+     "Bip01_R_UpperArm",
+     "Bip01_Spine",
+     "Bip01_Spine1",
+     "bone_handle",
+     "bone_link1",
+     "bone_link2",
+     "bone_link3",
+     "bone_tip"
+    ],
+    "_allowed_doc": "the union of the bones the references weight (iron_rider_0: the 18 body bones + the 5 flail chain bones; keshik: the 18 body bones); Neck, Root, Prop, Toe, Ponytail, Nub and attach bones are never weighted",
+    "max_influences": 4,
+    "zero_slot_slot0_min": 1.0,
+    "_zero_slot_doc": "measured 1.0 on both references (unused index slots repeat slot 0's index; 97.5-100 % over the DE full-LOD meshes)",
+    "max_triangles": 1504,
+    "max_welded_vertices": 1061,
+    "_budget_doc": "the maxima over the 20 referenced DE full-LOD riders (steppe_rider_2: 1504 triangles, 1061 welded vertices; aoe3de-unit-model vanilla-unit-measurements.md, measure_units.py); references: iron_rider_0 1328 / 976, keshik_rider_rank01 1278 / 981",
+    "page": 1024,
+    "pitch": 47.0,
+    "headings": 8
+   },
+   "uv_density": {
+    "profile": ".claude/skills/aoe3de-unit-model/profiles/organic_uv_unit_body_1024.json",
+    "checks": [
+     "density_p50",
+     "density_visible_p10"
+    ],
+    "_doc": "the hard minima of the organic UV gate profile (one source with the UV step's uv_gates.py); measured on the references: iron_rider_0 p50 343.4 / visible p10 313.4, keshik_rider_rank01 358.4 / 332.2. The visible-weighted density needs the unit's seated idle pose (--pose-npz: its Idle variant 0 rider clip key 0 on its horse's Idle variant 0 clip key 0)."
+   },
+   "texture_budget": {
+    "class": "unit_human_1024",
+    "status": "proposed, owner to confirm",
+    "owner_quote": "human unuts should have 1x 1024 texture, let's hold it",
+    "_doc": "relayed 2026-10-11, not in the owner message store: no confirmed_by, so texture_budget FAILS for every unit model except a listed vanilla reference with no own texture file"
+   }
+  }
+ }
+}

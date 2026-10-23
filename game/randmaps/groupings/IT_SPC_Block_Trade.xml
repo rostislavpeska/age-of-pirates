@@ -60,7 +60,7 @@
 		<unit variation="0" posx="-1.8605" posz="8.0353" orientx="0.9976" orienty="0.0000" orientz="-0.0698">SPCPathBlock3</unit>
 		<unit variation="0" posx="4.4430" posz="8.8515" orientx="-0.9976" orienty="0.0000" orientz="0.0698">SPCPathBlock3</unit>
 		<unit variation="0" posx="15.2770" posz="6.8887" orientx="-0.7044" orienty="0.0000" orientz="0.7098">PropsPoles</unit>
-		<unit variation="246" posx="0.4288" posz="5.5501" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="0.4288" posz="5.5501" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianG</unit>
 		<unit variation="247" posx="2.6432" posz="8.7025" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeWallFull</unit>
 		<unit variation="1" posx="12.6121" posz="8.2762" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpPropMarketStall</unit>
 		<unit variation="247" posx="-1.7633" posz="10.6180" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeWallFull</unit>

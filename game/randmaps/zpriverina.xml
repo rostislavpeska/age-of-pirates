@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapinfo details="301639" displayNameID="301638" loadDetails="301640" largeMapName = "zpriverina"
+<mapinfo details="501639" displayNameID="501638" loadDetails="501640" largeMapName = "zpriverina"
     imagepath="ui\random_map\riverina\riverina_mini" cannotReplace="" loadBackground="ui\random_map\riverina\riverina_map">
     <loadss>ui\random_map\riverina\riverina_01</loadss>
     <loadss>ui\random_map\riverina\riverina_02</loadss>

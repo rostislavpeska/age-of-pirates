@@ -1,0 +1,97 @@
+---
+name: aoe3de-building-export
+description: "Reusable cross-mod workflow for static Age of Empires III DE building rigs, FBX-to-GR2 conversion, textures, materials and animation XML. Use after geometry and UV authoring; apply a consuming project's building profile first when one is provided."
+---
+
+# Static AoE3DE building export
+
+Generic geometry and UV authoring belongs in a modeling skill. This skill begins when an approved building must be rigged, converted and packaged for AoE3DE.
+
+This is the intact/static export workflow. Fractured GR2 models paired with Havok
+destruction files need a donor-aware pipeline supplied by the consuming project:
+piece bindings, collision frames and the body graph must survive together. Do not
+rebuild a damaged runtime model through this skill's static FBX converter recipe.
+
+Read [rig and conversion](references/rig-export.md) before rigging or converting. Read [textures and XML](references/textures-xml.md) before producing runtime assets.
+
+Use the companion [reference library](../aoe3de-reference/SKILL.md) for XML field
+lookup and the scoped runtime XML profile. Check [local-tool readiness](../skill-library-audit/references/local-tools.md)
+before relying on installed applications or connections.
+
+## Required workflow
+
+Check prerequisites for the step being performed. Blender and its `bpy` runtime
+are needed for the rig audit; ordinary Python cannot run that helper. The texture
+validator needs Python and **Pillow**. Conversion needs PowerShell and a separately
+installed converter compatible with `--format=gr2 --bang`, supplied explicitly via
+`-ConverterPath`. The wrapper does not install or include that converter.
+
+Before conversion, identify a GR2 inspector capable of reading actual meshes,
+bones, bindings and bounds. That inspector is an external capability in this
+package; do not substitute the wrapper's header check. If unavailable, retain the
+staged output and report structural validation as blocked, without deploying it.
+
+For live Blender or Photoshop work, verify the actual connection, active file and
+unsaved state before edits. Photoshop is required only when the chosen source or
+workflow needs it; an agreed compatible editor may suffice otherwise. Preserve
+layered source fidelity. A discovered executable does not establish compatibility,
+a valid license or a working automation connection. Missing tools block only the
+dependent step; do not install, upgrade or silently substitute them during preflight.
+
+1. Identify the exact Blender file, scene, export objects, installed target and a known-working game reference. Preserve hashes and checkpoints.
+2. Audit source and evaluated geometry, corner normals, armature modifiers, deform weights, UV layers, material slots, transforms and bounds independently. For derived assets, compare retained surfaces with the unmodified original model: the edited Blender source may already contain shading damage. `scripts/inspect_static_rig.py` does not compare corner normals or prove converter/game behavior.
+3. Export from a duplicate prepared for the verified target profile. Preserve custom corner-normal data during attribute cleanup. Triangulate only the export copy and inspect its diagonals and shading against the original reference.
+4. If the operator performs or supplies a manual FBX export, treat that file as authoritative. Do not silently replace it with an automated export or regenerate it.
+5. Convert into an empty staging directory only after the complete intended export succeeds. Verify the actual GR2 structure, corner normals/tangent basis, mesh/bone and material bindings, counts, dependencies and bounds before installation. A successful converter exit and a valid header are only sanity checks; a round-trip can preserve an already-broken source.
+6. Keep editable texture sources synchronized with shipped TGA/DDT outputs. Once an operator manually corrects a PSD or equivalent source, export from that live source; do not rerun an earlier generator over it.
+7. Validate material and animation XML against a working target asset, then apply the consuming mod's line-ending, XMB and reference rules.
+8. Report Blender validation, conversion validation and in-game validation separately.
+
+A runtime-to-Blender scene (meshes rebuilt from the shipped GR2 arrays) is a **verification view** of what ships,
+never the model the owner reviews or edits: edit and review the quad/ngon authoring model, and use runtime triangles
+only to verify, as `REF_` comparison objects, or as a declared fallback when no authoring model exists (Blendify
+`blender-asset-conventions` scene-and-export section 3a, `model_identity.py`; INC-388, owner 2026-10-17: triangulated
+models "only as a fallback when no other model is present"). In such a verification view, GR2 quantized normals need
+not have unit length.
+Preserve their raw arrays as evidence, normalize both vectors for angular
+comparison, and state the measured tolerance. Do not interpret Blender's unit
+length conversion as a runtime normal edit. The13-building14October verification view
+measured source lengths0.994..1.006 and maximum direction difference0.381degrees;
+positions/UVs and original runtime normal bytes remained unchanged.
+
+**Raw UV export boundary (INC-133):** a direct Blender-to-GR2 writer must store
+`(u, 1-v)`, with tangents computed from those final raw UVs. Do not also flip the
+DDT image rows. Establish the convention against a working asset; compare every
+serialized triangle corner, its position and material against frozen source data
+using an independent check. Density and a serializer roundtrip cannot catch a
+consistently wrong coordinate convention. Render the actual bound GR2 meshes with
+their XML-resolved DDT textures, including asymmetric atlas landmarks and alpha;
+authoring-file beauty renders do not validate the exported mapping. Retain the
+failed file as a negative fixture. Report any unverified engine normal-shader
+assumption separately from the proven texture lookup.
+
+**Winding boundary (INC-198):** the engine culls by triangle winding and lights by
+the stored normal; the two must agree. A frame change with determinant -1 (a mirror,
+e.g. Blender -> raw `(-x, z, -y)`) flips the winding of every face whose corner order
+is kept: reverse each face's corners in the same step that maps the positions and
+normals, and apply the same order wherever corner order is pinned (UV contracts,
+writer comparisons). `gr2_lint` check `winding` fails a model below 90 % agreement
+by area or any mesh below 50 % (444 vanilla building GR2s: min 94.7 %). An inside-out
+model passes UV, density, frame, contract and DLL checks and renders black on
+two-sided cut-out pages and dark elsewhere (Korean House r14b, owner's game test);
+Blender's viewport shades back faces as front, so the authoring scene looks right.
+
+Editor test entries must have distinct localized names from both the vanilla
+donor and any comparison clone. Verify the compiled string tables, not only XML.
+
+After a failure, retain the artifacts and test one falsifiable hypothesis. A repeated failure with the same recipe requires inspection of the actual FBX/GR2/XML evidence before another export.
+
+For a localized DXT5 cutout repair, the consumer's `scripts/havok/ddt_patch.py`
+supports `--alpha-only` (all RGB bytes retained) and `--alpha-selectors`
+(also locks alpha endpoints and unaffected pixel selectors). The latter requires
+`--alpha-only`; with a cutout threshold it refuses palettes that cannot represent
+the requested classification. Filtered mip deltas preserve stored mip content
+outside the edit's influence. These are compression controls, not permission to
+edit a shared alpha page: independent all-state/filter/mip reader checks and
+visual review remain required. A palette refusal is evidence, never a reason to
+silently drop the cutout threshold or broaden the affected readers.

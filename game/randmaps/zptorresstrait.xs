@@ -1217,6 +1217,19 @@ rmSetTriggerLoop(true);
 rmCreateTrigger("Starting Techs");
 rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
+// King of the Hill on a tiny island (owner 2026-09-25): KotH mode unlocks - ships capture the hill - and any other
+// mode locks; one trigger, so exactly one of the two runs
+if (rmGetIsKOTH()) {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",i);
+	rmSetTriggerEffectParam("TechID","cTechzpUnlockNavalKotH"); // KotH on a tiny island: every ship captures
+	rmSetTriggerEffectParamInt("Status",2);
+} else {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",i);
+	rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+	rmSetTriggerEffectParamInt("Status",2);
+}
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater

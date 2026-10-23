@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/mod_overlap.py",
+    "scripts/test_mod_overlap.py"
+  ],
+  "skills": [
+    "aoe3de-new-civ",
+    "aoe-xml",
+    "aoe3de-soundsets",
+    "mod-deploy-check",
+    "vanilla-merge",
+    "visual-detail-check"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": ["audit", "tests"],
+      "optional": false,
+      "note": "mod_overlap.py uses the standard library only; pytest runs test_mod_overlap.py.",
+      "commands": ["python", "python3"],
+      "modules": []
+    }
+  ]
+}

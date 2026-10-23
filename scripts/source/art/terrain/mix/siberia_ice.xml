@@ -1,0 +1,9 @@
+<mix>
+  <title>Siberia Ice</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="3" persistence="0.5">
+    <texture weight="3">great_lakes\ground_ice1_glw</texture>
+    <texture weight="3">great_lakes\ground_ice2_glw</texture>
+    <texture weight="1">great_lakes\ground_ice3_glw</texture>
+  </paint>
+</mix>

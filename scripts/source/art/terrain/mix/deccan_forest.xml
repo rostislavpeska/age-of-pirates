@@ -1,0 +1,18 @@
+<mix>
+  <title>Deccan Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="3">deccan\ground_forest_deccan</texture>
+    <texture weight="1">deccan\ground_forest_grass1_deccan</texture>
+    <texture weight="1">deccan\ground_forest_grass2_deccan</texture>
+    <texture weight="1">deccan\ground_forest_dirt5_deccan</texture>
+  </paint>
+  <objects mode="turbulence" freq="1.5" octaves="10" persistence="1.0" emptyweight="20" posoffset="0.5">
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_01</model>
+    <model weight="8" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_03</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_01</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_02</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_02</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_03</model>
+  </objects>
+</mix>

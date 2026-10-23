@@ -1,0 +1,135 @@
+---
+name: aoe-uv-atlas-export
+description: "Prepare AoE3 runtime atlases from approved UV families using the selected density, page and material budgets. Use at the final atlas/export stage; check documented implementation limits."
+---
+
+# Final UV atlas: pages at one density (foundation)
+
+Enter only after the shared workflow's [sharing and AO checkpoints](../blender-uv-workflow/SKILL.md).
+Declare the runtime ceiling early; do not enforce atlas fit on the clean worksheet.
+The material-priority recipes below describe the tested TC profile. The
+`pages.military_2048` adapter supplies one fixed 2048 page, explicit runtime gutter,
+and a bounded scale search that refuses to go below `min_scale`. Derive that minimum
+from measured working densities, not a nominal target. Fixture-tested packing
+support is not proof that the real Military models fit; their emitted meshes must
+still pass density, overlap, source-detail and mip checks. No implicit extra page
+or density reduction. Four texels is not a universal low-mip padding guarantee:
+inspect compressed mip levels for the target profile. Save the checker once and
+load identical pixels for comparisons. Packing cannot certify source detail.
+
+Pipeline: [blender-clean-uv](../blender-clean-uv/SKILL.md) -> [blender-uv-conjoin](../blender-uv-conjoin/SKILL.md)
+-> [blender-uv-ao-separation](../blender-uv-ao-separation/SKILL.md) -> **this skill** ->
+[aoe3de-building-export](../aoe3de-building-export/SKILL.md) (GR2, materials, DDT).
+
+## Budget first, freeze last
+
+When the owner grants a percentage reduction, record whether it is **linear
+texel density or texel area**, the unchanged baseline file/UV hash, and the minimum
+retained fraction. A 30% linear reduction means scale >=0.70 (area >=0.49), not
+30% again after each candidate. Verify both density axes against that baseline
+on the reopened mesh. This allowance is separate from the universal density floor.
+
+Try a bounded set of packing orders before sacrificing detail. The optional
+`scripts/bounded_pack.py` compares deterministic rectangle orders/scores with fixed
+runtime gaps and refuses a result below its explicit minimum. Its best trial is
+not a proof of globally optimal packing. Retain better tested candidates; a new
+heuristic search must not replace one with a worse result just because it ran last.
+Report occupancy, rectangle waste and gutter cost separately. If AO neutralization
+is authorized, compare its visual cost via the AO skill; do not silently loosen
+pointwise thresholds. No new texture page or hidden material per class.
+
+**Shared dependencies are part of completion.** Zero downward faces on the own
+page does not establish correct backing UVs. Before final freeze, the workflow's
+`shared_mapping` check must cover actual compatible cells, UV bounds, source image
+bindings and visible-backing dispositions. Pending resources may remain in a WIP
+capacity experiment, but never disappear from its report or become an export PASS.
+
+Estimate the page budget (step 0 of the [pipeline order](../blender-architecture-texturing/references/pipeline-order.md))
+before UV or bake work starts, not when this skill runs: the Korean TC found its reserved area at
+122% of the pages only after roof and window bakes existed, and those bakes were lost. The
+`UV_Final` this skill writes is the layer the owner freezes; production bakes come after the
+freeze (`uv_fingerprint.py record`), never before.
+
+## Rules (owner decisions, 2026-09-28)
+
+- Split **families**, never faces: owner and members share texels, so they share a page.
+- **One texel density on all pages.** Maximise the uniform scale s (runtime texels per
+  working texel) by bisection; never downscale one page to make the split work.
+- Material-based assignment: the small page takes, in priority order, alpha-bearing
+  eave cutouts (must fit - alpha page), ridges, then solid roof tiles "as much as
+  possible"; everything else goes to the large page. The large page stays opaque:
+  alpha on the large page with an opaque small page is wrong (owner, 2026-10-11),
+  except a declared shared base + building split such as the Dock. Free small-page
+  space takes the next subtype in this list, not a larger scale for the charts
+  already there; the workflow's `space` freeze check measures both.
+- Gutter in RUNTIME texels (4: DXT 4x4 blocks plus mips), converted to working texels
+  per trial scale.
+- Keep original chart sizes until this step; only this step scales (uniformly).
+
+## Workflow
+
+1. `families()` from blender-uv-conjoin with the AO `compat` from blender-uv-ao-separation.
+2. `pages.best_split(charts, owners, PAGES)` then `pages.emit(...)` -> per face
+   `{page, uv in [0,1] of that page, family, owner}`.
+3. In Blender: write `UV_Final`, one material per page (face material index = page),
+   bake AO once per owner into the real page images (blender-uv-ao-separation
+   `bake_owner_ao.py` with the `pages` config).
+4. Review: texture split (mata / matb / matc colours), family colours, white AO model,
+   density checker. **Standard density checker (all models, owner decision 2026-09-28):** Blender's generated
+   Color Grid (`generated_type='COLOR_GRID'`, the "Orientation checker" GPT Astra and
+   `blender_ao_review.py` use), generated at EACH texture's own resolution (2048 map -> 2048 grid,
+   1024 -> 1024, 512 -> 512, 4096 -> 4096), mapped straight through that map's UV layer with
+   Closest interpolation. One checker pixel is one real texel, so density is read on the model,
+   not guessed; equal pixel steps across maps mean equal density.
+5. UDIM inspection view: one layer `UV_UDIM` with tile 1001 = mata, 1002 = matb, 1003 = matc
+   (u offset per page), tiled images at each tile's real resolution (UDIM_Families = family
+   sheets, UDIM_AO = baked AO, UDIM_Checker = native Color Grids), so every texture is
+   inspected on the model and in one UV editor. Korean TC: `build_udim.py` (S18d).
+6. Report density against vanilla with the same formulas: island density
+   sqrt(UV area x page pixels / 3D area) (median, p10-p90) and effective density
+   sqrt(used texels / visible 3D area). Korean TC S18c: 107 island / 85 effective vs vanilla
+   TCs 116-139 / 77-92 (a bit below / same level).
+
+## Korean TC result (S18c, measured)
+
+2048 (mata) + 1024 (matb) + hidden 512 (matc). Every visible face at a uniform
+**107 texels/unit** (p10-p90 107-112), effective 85. Vanilla town centres: island 116-139,
+effective 77-92 -> a bit below / same level. 1024 map: all eave cutouts, all ridges, 39% of
+roof tiles. Before restoring 225 charts that S12 had parked at hidden-page density, 17.6%
+of the visible area sat at 15 texels/unit - always measure the p10, not only the median.
+
+## Texture-set coherence (one set per binding)
+
+Incident 2026-10-08: a review shader bound the new shared atlas colour with the retired revision's normal and
+mask maps (on the retired UVs), and a page move kept the old tangents. Maps bound together must come from ONE
+texture set of one revision; the consumer's UVs must sit inside the atlas regions and its tangents must follow
+the set's convention. Names and sizes cannot decide this (vanilla reuses a base model's normals/masks under a
+new colour in about a quarter of all submaterials), so own sets are registered:
+
+- `config/texture_sets.json`: own sets by revision (channel paths + DDT hashes, `retired`, preview hashes/aliases,
+  atlas `regions`, `tangent` convention). Register every new own texture revision before binding it.
+- `<consumer-root>/scripts/havok/texture_sets.py`: the rules; `gr2_lint.py` runs `texture_sets`, `atlas_regions` and
+  `tangent_convention` on every model (FAIL = mixed or retired sets, faces outside the regions, wrong tangents).
+- Variants (`<parameters variant="N">`, the Corvette pattern): a recolour changes BaseColor/Details only and keeps
+  the default normals/masks; a full re-skin from more than one source is reported as a warning, not failed.
+  Same-channel structure correlation is reported (calibrated: recolours 0.95, but repainted sails/player-colour
+  maps drop to 0.1-0.4), never used as a gate.
+- Blender scenes: `blender -b <file.blend> --python scripts/blender_texture_sets.py -- <out.json> [<repo root>]`
+  (read-only; the same script can run live through the MCP). Run it on every review/preview scene before
+  delivering pictures.
+
+Tests: `python -m pytest <consumer-root>/scripts/havok/tests/test_texture_sets.py`.
+
+## Not yet covered (next work)
+
+- Export handoff: GR2 conversion and AoE3DE `.material` files per page, DDT formats
+  (DXT5 for the alpha page, DXT1 otherwise), mip settings - via aoe3de-building-export.
+- Exact-shape packing (nesting into concavities) to raise fill above ~75%.
+- Normal/colour texture authoring on the pages; real-model validation of the one-page Military profile.
+
+## Tools
+
+`scripts/pages.py` - `assign_pages`, `best_split` (bisection on s), `emit`, `military_2048`.
+
+Bounded alternatives: `scripts/bounded_pack.py`; regression tests:
+`python -m unittest discover -s .claude/skills/aoe-uv-atlas-export/scripts -p "test_*.py"`.

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "tests/test_camera.py"
+  ],
+  "skills": [
+    "aoe3de-model-attachments",
+    "rm-unit-bench",
+    "rm-trigger-testing",
+    "game-startup",
+    "ui-calibrate"
+  ],
+  "external": [
+    {
+      "id": "aop-project-tools",
+      "kind": "capability",
+      "requiredFor": [
+        "camera-bench"
+      ],
+      "optional": false,
+      "note": "The AoP repository supplies scripts/aitest (camera_bench.py, destruction_bench.py, driver.py, ocr_server.ps1, coordinate sheets) and scripts/tools/unitbench.py. Run from that repository.",
+      "modules": [
+        "camera_bench"
+      ]
+    },
+    {
+      "id": "aoe3de",
+      "kind": "application",
+      "requiredFor": [
+        "camera-bench"
+      ],
+      "optional": false,
+      "note": "Age of Empires III DE through Steam; owner go for screen control; never killed."
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "camera-bench"
+      ],
+      "optional": false,
+      "note": "Screen capture and contact sheets.",
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ]
+    },
+    {
+      "id": "pytest",
+      "kind": "python-package",
+      "requiredFor": [
+        "tests"
+      ],
+      "optional": true,
+      "note": "Runs the bundled tests.",
+      "distribution": "pytest",
+      "modules": [
+        "pytest"
+      ]
+    }
+  ]
+}

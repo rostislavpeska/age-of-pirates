@@ -1,0 +1,11 @@
+<mix>
+  <title>Flowers Purple</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="6" persistence="0.9" emptyweight="0.1" posoffset="0.2">
+    <model weight="10" scalemin="1.0" scalemax="4.0">terrain\great_plains\flower03</model>
+    <model weight="10" scalemin="1.0" scalemax="4.0">terrain\great_plains\flower04</model>
+    <model weight="10" scalemin="1.0" scalemax="4.0">terrain\great_plains\flower06</model>
+    <model weight="10" scalemin="1.0" scalemax="4.0">terrain\great_plains\flower07</model>
+    <model weight="10" scalemin="1.0" scalemax="4.0">terrain\great_plains\flower08</model>
+  </objects>
+</mix>

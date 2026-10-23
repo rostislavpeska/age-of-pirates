@@ -1,0 +1,21 @@
+<mix>
+  <title>Africa Desert Grass Medium</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">AfricaDesert\ground_grass1_afriDesert</texture>
+    <texture weight="1">AfricaDesert\ground_grass2_afriDesert</texture>
+    <texture weight="4">AfricaDesert\ground_grass3_afriDesert</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.10" octaves="4" persistence="0.75" emptyweight="95" posoffset="0.99">
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant8</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock6</model>
+  </objects>
+  <objects mode="turbulence" freq="0.10" octaves="3" persistence="0.75" emptyweight="75" posoffset="0.5">
+    <model weight="2" scalemin="1.0" scalemax="1.2">terrain\underbrush\underbrush_jungle_brush1</model>
+    <model weight="2" scalemin="0.75" scalemax="1.0">terrain\amazon\plant_d</model>
+  </objects>
+</mix>

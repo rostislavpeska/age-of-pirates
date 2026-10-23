@@ -1,0 +1,11 @@
+<animfile>
+  <component>building
+    <assetreference type="GrannyModel">
+      <file>buildings\native_settlement\venice\clock_tower_Model</file>
+      <materialvariant index="3"/>
+    </assetreference>
+  </component>
+  <anim>Idle
+    <component>building</component>
+  </anim>
+</animfile>

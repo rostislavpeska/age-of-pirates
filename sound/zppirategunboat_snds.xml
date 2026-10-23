@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protounitsounddef>
+  <!-- Age of Pirates zpPirateGunboat: the pirate crew answers with the British Privateer lines, every civ -->
+  <protounit name="zpPirateGunboat">
+    <soundtype name="Select">
+      <soundset name="BritishPrivateerSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <soundset name="BritishPrivateerAcknowledge">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

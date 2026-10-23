@@ -31,7 +31,7 @@
 		<unit variation="197" posx="-3.1216" posz="-9.5468" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deSMTengriGuy</unit>
 		<unit variation="0" posx="6.0980" posz="-6.7367" orientx="-0.6915" orienty="0.0000" orientz="0.7224">SPCPathBlock3</unit>
 		<unit variation="2" posx="-11.3611" posz="-8.9310" orientx="-0.9995" orienty="0.0000" orientz="0.0301">zpNativeWallFull</unit>
-		<unit variation="0" posx="7.5237" posz="-8.7657" orientx="0.7205" orienty="0.0000" orientz="0.6935">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="7.5237" posz="-8.7657" orientx="0.7205" orienty="0.0000" orientz="0.6935">zpNativeHouseVenetianE</unit>
 		<unit variation="0" posx="10.4955" posz="-6.0539" orientx="0.7245" orienty="0.0000" orientz="0.6893">SPCPathBlock2</unit>
 		<unit variation="245" posx="-11.4328" posz="-6.1722" orientx="0.0188" orienty="0.0000" orientz="0.9998">deNatEUPropFence</unit>
 		<unit variation="142" posx="-0.2401" posz="-5.3588" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>

@@ -1,0 +1,29 @@
+<mix>
+  <title>Mongolia Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.05" octaves="6" persistence="0.5">
+    <texture weight="2">mongolia\ground_grass3_mongol</texture>
+    <texture weight="1">mongolia\ground_grass4_mongol</texture>
+    <texture weight="1">mongolia\ground_grass5_mongol</texture>
+    <texture weight="4">mongolia\ground_grass6_mongol</texture>
+    <texture weight="1">mongolia\ground_sand1_mongol</texture>
+    <texture weight="1">mongolia\ground_sand2_mongol</texture>
+    <texture weight="3">mongolia\ground_sand3_mongol</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="45" posoffset="0.55">
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush1</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush3</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush5</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush6</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group1</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group2</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group3</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group4</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock1</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock2</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock3</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock4</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock5</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock6</model>
+  </objects>
+</mix>

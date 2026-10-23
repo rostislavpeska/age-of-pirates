@@ -1,0 +1,11 @@
+<mix>
+  <title>Coastal Honshu C</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="2">coastal_japan\ground_grass2_co_japan</texture>
+    <texture weight="1">coastal_japan\ground_dirt1_co_japan</texture>
+    <texture weight="2">coastal_japan\ground_grass3_co_japan</texture>
+    <texture weight="1">coastal_japan\ground_forest_con_japan</texture>
+    <texture weight="1">coastal_japan\ground_dirt2_co_japan</texture>
+  </paint>
+</mix>

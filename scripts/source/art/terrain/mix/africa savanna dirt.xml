@@ -1,0 +1,16 @@
+<mix>
+  <title>Africa Savanna Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">AfricaSavanna\ground_dirt1_afriSavanna</texture>
+    <texture weight="2">AfricaSavanna\ground_dirt2_afriSavanna</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.7" emptyweight="30" posoffset="0.8">
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_africa_savanna_rocks\underbrush_africa_savanna_rock1</model>
+    <model weight="3" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_africa_savanna_rocks\underbrush_africa_savanna_rock2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_africa_savanna_rocks\underbrush_africa_savanna_rock3</model>
+    <model weight="3" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_africa_savanna_rocks\underbrush_africa_savanna_rock4</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_africa_savanna_rocks\underbrush_africa_savanna_rock5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_africa_savanna_rocks\underbrush_africa_savanna_rock6</model>
+  </objects>
+</mix>

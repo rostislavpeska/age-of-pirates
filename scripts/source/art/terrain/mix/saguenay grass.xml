@@ -1,0 +1,24 @@
+<mix>
+  <title>Saguenay Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="5" persistence="0.5">
+    <texture weight="3">saguenay\ground1_sag</texture>
+    <texture weight="4">saguenay\ground5_sag</texture>
+    <texture weight="3">saguenay\ground4_sag</texture>
+    <texture weight="2">saguenay\ground6_sag</texture>
+    <texture weight="1">saguenay\ground2_sag</texture>
+    <texture weight="1">saguenay\ground3_sag</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.4" octaves="3" persistence="0.9" emptyweight="65" posoffset="0.65">
+    <model weight="3" scalemin="0.7" scalemax="1.0">terrain\plants\dune_grass_d</model>
+    <model weight="3" scalemin="1.5" scalemax="2.3">terrain\great_plains\wheatgrass01</model>
+    <model weight="3" scalemin="0.5" scalemax="0.65">terrain\new_england\grassreeds2_ne</model>
+    <model weight="3" scalemin="0.5" scalemax="0.65">terrain\new_england\grassreeds3_ne</model>
+    <model weight="3" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="0.5" scalemin="0.5" scalemax="0.75">terrain\new_england\lake_rocks4_ne</model>
+    <model weight="0.5" scalemin="0.5" scalemax="0.75">terrain\new_england\lake_rocks5_ne</model>
+    <model weight="0.5" scalemin="0.5" scalemax="0.75">terrain\new_england\lake_rocks9_ne</model>
+    <model weight="0.3" scalemin="0.75" scalemax="1.0">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_tutorial_maple03</model>
+  </objects>
+</mix>

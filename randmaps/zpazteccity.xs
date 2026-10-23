@@ -1321,11 +1321,11 @@ void main(void)
 	rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302437);
-	rmObjectiveScreenSetGoal(302868);
-	rmObjectiveAdd(302452, 302453, true, true, true); // General objective
+	rmObjectiveScreenSetTitle(502437);
+	rmObjectiveScreenSetGoal(502868);
+	rmObjectiveAdd(502452, 502453, true, true, true); // General objective
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302451, 302453, true, true, true); // Royal Court REV
+	rmObjectiveAdd(502451, 502453, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(2, 2);
 
 
@@ -1459,6 +1459,13 @@ void main(void)
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	// players only - gaia keeps its protos (a setup tech on gaia resets AutoConvert suspensions)
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+	}
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
@@ -1532,7 +1539,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","VictoryCounter");
 	rmSetTriggerEffectParamInt("Start", victoryCountDown);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","{302450}"); // Counter Message
+	rmSetTriggerEffectParam("Msg","{502450}"); // Counter Message
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("Victory_Defenders"));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);

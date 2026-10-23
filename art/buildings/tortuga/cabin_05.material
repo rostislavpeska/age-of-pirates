@@ -1,0 +1,110 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+     <parameters>
+      <texture name="BaseColor" override="buildings\tortuga\textures\tortuga_cabin_04_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\props_colony\textures\trading_post_age3_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\props_colony\textures\trading_post_age3_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\tortuga\textures\tortuga_store_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\spc\general_store\textures\general_store_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\spc\general_store\textures\general_store_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_barracks_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_barracks_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_barracks_matb_Masks">
+      </texture>
+    </parameters>
+    </submaterial>
+    <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\tortuga\textures\tortuga_sheriff_mata_yellow_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\sheriff\textures\sheriff_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\saloon\textures\saloon_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\half_timbered\textures\dock_props_dutch_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+     <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\dock_props\textures\new_net_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\dock_props\textures\new_net_matb_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\dock_props\textures\new_net_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_ruins\ivy_ruins\textures\ivyatlas_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_ruins\ivy_ruins\textures\ivyatlas_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_ruins\ivy_ruins\textures\ivyatlas_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\animals\chicken\textures\small_chicken_cage_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\animals\chicken\textures\small_chicken_cage_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\animals\chicken\textures\small_chicken_cage_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,18 @@
+<mix>
+  <title>Italy Cliff Top Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.20" octaves="10" persistence="0.5">
+    <texture weight="3">new_england\ground4_ne</texture>
+    <texture weight="2">new_england\river1_ne</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="3">terrain\new_england\cliff_rock_a_ne</model>
+    <model weight="3">terrain\new_england\cliff_rock_b_ne</model>
+    <model weight="3">terrain\new_england\cliff_rock_c_ne</model>
+    <model weight="3">terrain\new_england\cliff_rock_d_ne</model>
+  </objects>
+</mix>

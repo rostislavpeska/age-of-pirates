@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md"
+  ],
+  "skills": [
+    "rm-workflow",
+    "rm-objects-herds",
+    "rm-water-rivers",
+    "grouping-terrain",
+    "lobby-minimap"
+  ],
+  "external": []
+}

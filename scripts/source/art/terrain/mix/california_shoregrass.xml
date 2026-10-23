@@ -1,0 +1,9 @@
+<mix>
+  <title>California Shore Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="4">california\groundshore1_cal</texture>
+    <texture weight="1">california\groundshore2_cal</texture>
+    <texture weight="1">california\groundshore3_cal</texture>
+  </paint>
+</mix>

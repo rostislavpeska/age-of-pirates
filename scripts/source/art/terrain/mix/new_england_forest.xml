@@ -1,0 +1,25 @@
+<mix>
+  <title>New England Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.4">
+    <texture weight="1">new_england\ground2_cliff_ne</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.1" octaves="4" persistence="0.7" emptyweight="0" posoffset="0.9">
+    <model weight="5" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_tutorial_maple01</model>
+    <model weight="5" scalemin="0.8" scalemax="1.1">terrain\underbrush\underbrush_tutorial_maple02</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_tutorial_maple03</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_grass2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_rock3</model>
+  </objects>
+</mix>
