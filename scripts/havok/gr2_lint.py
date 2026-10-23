@@ -316,28 +316,28 @@ NATIVE_LAYOUTS = (8, 72, 136)   # extra work-folder name lengths: the process me
 def _dll_native(g2r, src, dst, exe, dll):
     """the same tool and DLL run directly on Windows (only where Smart App Control is off), once per work-folder length
     in NATIVE_LAYOUTS. A file the DLL reads out of bounds (orphan pointer fixups, INC-187) converts differently or crashes
-    depending on the memory layout, so every run must pass with byte-identical output."""
+    depending on the memory layout, so every run must pass with byte-identical output. Use system temp, not the evidence
+    folder: a long cwd can be rejected by Windows CreateProcess even when Python can copy the files (INC-601)."""
     outs, tails, rc_all = [], [], 0
     for n in NATIVE_LAYOUTS:
-        work = Path(dst).parent / ('native_' + uuid.uuid4().hex + 'n' * n)[:8 + n]
-        work.mkdir()
-        shutil.copyfile(src, work / 'in.gr2')
-        shutil.copyfile(dll, work / 'granny2_age3de.dll')
-        shutil.copyfile(exe, work / 'gr2raw.exe')
-        try:
-            r = subprocess.run([str(work / 'gr2raw.exe')], cwd=str(work), capture_output=True, timeout=300)
-            rc, tail = r.returncode, (r.stdout[-300:] + r.stderr[-300:]).decode('utf-8', 'replace').strip()
-        except (OSError, subprocess.SubprocessError) as e:
-            rc, tail = None, repr(e)
-        if rc is not None and rc & 0xffffffff == 0xC0000005:
-            tail = f'access violation 0xC0000005 inside granny2_age3de.dll (layout +{n}). ' + tail
-        out = work / 'out.gr2'
-        outs.append(out.read_bytes() if out.exists() and out.stat().st_size else None)
+        with tempfile.TemporaryDirectory(prefix='gr2native_' + 'n' * n + '_') as folder:
+            work = Path(folder)
+            shutil.copyfile(src, work / 'in.gr2')
+            shutil.copyfile(dll, work / 'granny2_age3de.dll')
+            shutil.copyfile(exe, work / 'gr2raw.exe')
+            try:
+                r = subprocess.run([str(work / 'gr2raw.exe')], cwd=str(work), capture_output=True, timeout=300)
+                rc, tail = r.returncode, (r.stdout[-300:] + r.stderr[-300:]).decode('utf-8', 'replace').strip()
+            except (OSError, subprocess.SubprocessError) as e:
+                rc, tail = None, repr(e)
+            if rc is not None and rc & 0xffffffff == 0xC0000005:
+                tail = f'access violation 0xC0000005 inside granny2_age3de.dll (layout +{n}). ' + tail
+            out = work / 'out.gr2'
+            outs.append(out.read_bytes() if out.exists() and out.stat().st_size else None)
         if rc != 0 or outs[-1] is None:
             if rc_all == 0:
                 rc_all = rc if rc not in (0, None) else (None if rc is None else -2)
             tails.append(tail or f'layout +{n}: rc={rc}, no output')
-        shutil.rmtree(work, ignore_errors=True)
     if rc_all == 0 and len({o for o in outs}) > 1:
         rc_all, tails = -1, [f'outputs differ between memory layouts {NATIVE_LAYOUTS}: the DLL reads data out of bounds '
                              '(orphan pointer fixups? python scripts/havok/gr2_fixups.py)']

@@ -15,6 +15,12 @@ All tools live in `scripts/havok/`; run them from the repo root with `python scr
 Vanilla files come raw (uncompressed) from the .bar (**bar-extract** skill); converter output is usually
 Oodle-compressed and the reader cannot open it - that is expected (the tools never need to read converter output).
 
+Native DLL validation uses unique system-temp workspaces, independently of the evidence destination. A long nested
+evidence path can make Windows reject the process working directory before the DLL starts (INC-601). All three
+memory-layout runs and, for route `both`, byte-identical native/WSL output remain required. A process-launch failure
+is not a model pass. Host controls: `python -m pytest scripts/havok/tests/test_gr2_lint_native.py -q`; actual DLL
+consumption of the affected candidate remains a separate check.
+
 ## Tools
 
 | tool | what it does |
