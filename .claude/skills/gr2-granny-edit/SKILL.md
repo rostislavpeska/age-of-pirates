@@ -112,6 +112,15 @@ consumption of the affected candidate remains a separate check.
   among homecity props (BONE_MAIN (2.98, 0.52, -6.28), 10.8 deg); whether that matters in game is unproven.
 - `gr2_lint.read_raw` reads a mesh whose every triangle was dropped (0 indices, both index arrays empty); before
   2026-10-17 it raised TypeError, so the lint could not run on such a droptris output.
+- Dropping every triangle does **not** remove the mesh's model binding or its stored vertices.
+  `gr2_lint.check_hkt` checks stored vertices of bound meshes, so an obsolete, empty mesh can still contribute
+  stale collision points. When the intended operation removes that mesh, remove only its explicitly identified
+  zero-index entry from the model's `MeshBindings`, using the existing `Builder`/repoint and fixup-scrub pattern;
+  retain the root mesh record and buffers. Verify the exact binding delta, unchanged vertex/index data and
+  skeleton, then repeat pairing, containment and native loading on the resulting file. Preserve the failing
+  pre-removal check; do not loosen containment or silently suppress nonempty meshes.
+- Identify retained records by their native location and model binding, not `Name` alone: unbound donor records
+  can share a name. Compare both active and deliberately protected unbound buffers without collapsing them.
 - Renaming a bone in place (same length or shorter, section 0 string, CRC recomputed) is safe - the root rename
   `bone_main` -> `Object02` is what made one anim pair drive both Treasure Ship stages.
 
