@@ -93,6 +93,40 @@ def test_absent_declaration_preserves_counting(tmp_path, monkeypatch):
     assert r['status'] == 'FAIL' and r['data']['counted'] == 2
 
 
+@pytest.mark.parametrize('mutation', [None, 'hash', 'model', 'scope', 'model_string', 'scope_string',
+                                    'quote', 'ceiling', 'citation', 'boolean', 'over', 'overcount'])
+def test_recorded_model_ceiling_keeps_counting_and_fails_closed(tmp_path, monkeypatch, mutation):
+    art, mat, prof = fixture(tmp_path, monkeypatch)
+    tb = prof['texture_budget']
+    tb.pop('class'); tb.pop('confirmed_by'); tb.pop('shared_mod_dependencies')
+    evidence = dict(authority='owner', kind='recorded_owner_chat', purpose='texture_budget_ceiling',
+                    source_citation='fixture owner chat', owner_quote='Use the extra 512 page.',
+                    models=['fake'], ceiling=[2048, 512])
+    if mutation == 'model': evidence['models'] = ['other']
+    if mutation == 'model_string': evidence['models'] = 'other_fake_suffix'
+    if mutation == 'citation': evidence['source_citation'] = ''
+    if mutation == 'boolean': evidence['ceiling'] = [2048, True]
+    path = tmp_path / 'ceiling.json'; path.write_text(json.dumps(evidence))
+    tb['ceiling'] = evidence['ceiling'][:]
+    tb['ceiling_authorization'] = dict(kind='recorded_owner_chat', path=str(path),
+        sha256=hashlib.sha256(path.read_bytes()).hexdigest(), owner_quote=evidence['owner_quote'])
+    if mutation == 'hash': tb['ceiling_authorization']['sha256'] = '0' * 64
+    if mutation == 'scope': tb['models'] = ['other']
+    if mutation == 'scope_string': tb['models'] = 'other_fake_suffix'
+    if mutation == 'quote': tb['ceiling_authorization']['owner_quote'] = 'yes'
+    if mutation == 'ceiling': tb['ceiling'] = [4096, 4096]
+    if mutation == 'over':
+        (art / 'tc_BaseColor.ddt').write_bytes((art / 'own_BaseColor.ddt').read_bytes())
+    if mutation == 'overcount':
+        (art / 'third_BaseColor.ddt').write_bytes((art / 'tc_BaseColor.ddt').read_bytes())
+        mat.write_bytes(mat.read_bytes().replace(b'</material>', b'<submaterial name="third"><parameters>'
+            b'<texture name="BaseColor" override="third_BaseColor"/></parameters></submaterial></material>'))
+    r = check(art, mat, prof)
+    assert r['status'] == ('PASS' if mutation is None else 'FAIL'), r
+    assert r['data']['counted'] == (3 if mutation == 'overcount' else 2)
+    assert r['data']['confirmed'] == (mutation in (None, 'over', 'overcount'))
+
+
 def test_pinned_chat_evidence_without_fabricated_message_id(tmp_path, monkeypatch):
     art, mat, prof = fixture(tmp_path, monkeypatch)
     dep = prof['texture_budget']['shared_mod_dependencies'][0]

@@ -36,6 +36,16 @@ its own repository.
 
 `gr2_lint.py` enforces two gates:
 
+An explicit owner-approved exception may use per-model `texture_budget.ceiling`
+and `ceiling_authorization` instead of inventing a class label. The latter pins a
+`recorded_owner_chat` JSON artifact by SHA256 with purpose `texture_budget_ceiling`,
+the exact quote and source citation, explicit model list, and identical page-size
+list. Preserve the question and existing-budget context when the answer grants an
+additional page. Wrong or malformed scope, missing approval and changed evidence
+fail closed. Global classes, density floors, and shared-resource validation remain
+unchanged; every additional state/page is still counted. This is a recorded human
+authorization, not automatic authentication of arbitrary metadata.
+
 - **`texture_budget`:** counts the model's own texture sets, one per BaseColor, from the `.material` and the
   DDT headers. Shared vanilla atlases are listed, not counted; that counting rule is proposed, for the owner
   to confirm.

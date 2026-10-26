@@ -57,3 +57,30 @@ def test_new_mesh_on_multimaterial_source_registers_array_and_leaves_no_orphans(
     assert set(mats) == {'mat_a', 'mat_b'}                     # bound to the existing record, no clone
     mb = meshes['added']['MaterialBindings']
     assert all(after.deref(mb[2][0], mb[2][1] + k * after.struct_size(*mb[3])) == mats['mat_b'] for k in range(mb[1]))
+
+
+def test_new_mesh_keeps_the_model_bindings_and_leaves_unbound_meshes_unbound(tmp_path):
+    """Korean Industrial TC preview 2026-10-23 (INC-608): a writer leaves unbound donor meshes in the root Meshes array;
+    binding every root mesh made those leftovers render. The model keeps its own bindings plus the new mesh."""
+    src, plan, out = tmp_path / 'src.gr2', tmp_path / 'plan.json', tmp_path / 'out.gr2'
+    members = [('Position', 'real32', 3), ('Normal', 'binormal_int8', 3), ('BasicStaticPackedData0', 'uint8', 1),
+               ('Tangent', 'binormal_int8', 3), ('BasicStaticPackedData1', 'uint8', 1), ('TextureCoordinates0', 'real16', 2)]
+    columns = {'Position': [[0, 0, 0], [1, 0, 0], [0, 1, 0]], 'Normal': [[0, 0, 127]] * 3, 'BasicStaticPackedData0': [[0]] * 3,
+               'Tangent': [[127, 0, 0]] * 3, 'BasicStaticPackedData1': [[0]] * 3,
+               'TextureCoordinates0': [[0, 0], [1, 0], [0, 1]]}
+    mesh = lambda name, mat: dict(name=name, members=members, columns=columns, indices=[0, 1, 2], groups=[(0, 0, 1)],
+                                  materials=[mat], bone_names=['root'])
+    src.write_bytes(G.build_model([dict(name='root', parent=-1, transform=G.transform(flags=0))],
+                                  [mesh('leftover', 'mat_x'), mesh('body', 'mat_a')], mesh_bindings=[1]))
+    plan.write_text(json.dumps({'mesh': 'body', 'reset_root': False, 'drop': [0], 'new': [{
+        'name': 'flipped', 'bone': 'root', 'use_material': 'mat_a',
+        'groups': [{'R': np.eye(3).tolist(), 't': [0, 0, 0], 'tris': [0], 'flip': True}]}]}))
+    r = subprocess.run([sys.executable, str(HAVOK / 'gr2_editmesh.py'), str(src), str(plan), str(out)],
+                       capture_output=True, text=True, cwd=str(HAVOK))
+    assert r.returncode == 0, r.stdout + r.stderr
+    g = Gr2(str(out)); root = g.root()
+    names = {tuple(loc): m['Name'] for m, loc in refs(g, root['Meshes'])}
+    mb = refs(g, root['Models'])[0][0]['MeshBindings']
+    bound = [names[tuple(g.deref(mb[2][0], mb[2][1] + i * 8))] for i in range(mb[1])]
+    assert bound == ['body', 'flipped']
+    assert g.crc_check() and not orphan_fixups(str(out))['orphans']

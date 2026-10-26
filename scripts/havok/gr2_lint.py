@@ -1537,6 +1537,41 @@ def class_confirmation(entry, cls, prof, model, store=None):
     return True, None
 
 
+def recorded_model_ceiling(entry, prof, model):
+    """Pinned owner-chat ceiling for this model only; never edits global classes.
+
+    Like shared_mod_dependencies, this is an auditable approval record, not an
+    automatic authentication of an owner quote. Invalid declarations fail closed.
+    """
+    auth = entry.get('ceiling_authorization')
+    try:
+        path, missing = profile_path(prof, auth['path'])
+        raw = path.read_bytes() if path and not missing else b''
+        evidence = json.loads(raw)
+        ceiling = entry['ceiling']
+        scopes = (evidence.get('models'), entry.get('models'))
+        exact_scope = all(isinstance(s, list) and s
+                          and all(isinstance(n, str) and n.strip() for n in s)
+                          and model in s for s in scopes)
+        valid = (auth.get('kind') == 'recorded_owner_chat'
+                 and hashlib.sha256(raw).hexdigest() == auth.get('sha256')
+                 and evidence.get('authority') == 'owner'
+                 and evidence.get('kind') == 'recorded_owner_chat'
+                 and evidence.get('purpose') == 'texture_budget_ceiling'
+                 and bool(evidence.get('source_citation'))
+                 and bool(evidence.get('owner_quote'))
+                 and evidence['owner_quote'] == auth.get('owner_quote')
+                 and exact_scope
+                 and isinstance(ceiling, list) and bool(ceiling)
+                 and all(type(n) is int and n > 0 and n & (n - 1) == 0 for n in ceiling)
+                 and evidence.get('ceiling') == ceiling)
+        if valid:
+            return sorted(ceiling, reverse=True), None
+    except (OSError, ValueError, TypeError, KeyError, AttributeError):
+        pass
+    return [], 'invalid recorded owner ceiling: pin exact quote, model, dimensions and evidence SHA256'
+
+
 def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), animfiles=()):
     """AoP texture-budget CEILING (owner 2026-09-30, m334-m336): the model's own texture files over all its stages
     (INC-033) against its class (small 1x2048, medium 2048 + a 1024 complement, large 2x2048). The class is set per
@@ -1565,6 +1600,11 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
     missing = [t for s in sets for t in s['missing']]
     cls, who = entry.get('class'), entry.get('confirmed_by')
     ceiling = sorted((classes.get(cls) or {}).get('ceiling') or [], reverse=True)
+    explicit = 'ceiling' in entry or 'ceiling_authorization' in entry
+    ceiling_error = None
+    if explicit:
+        ceiling, ceiling_error = recorded_model_ceiling(entry, prof, model)
+        cls, who = 'recorded model ceiling', 'recorded owner chat'
     over = []
     if len(pages) > len(ceiling):
         over.append(f'{len(pages)} sets > {len(ceiling)}')
@@ -1585,7 +1625,11 @@ def check_texture_budget(stage, mat_path, art_root, prof, model, materials=(), a
     if shared_mod:
         head += '; pinned shared mod files, not counted: ' + ', '.join(s['path'] for s in shared_mod)
     why, verified = list(shared_errors), True
-    if not cls or cls not in classes:
+    if explicit:
+        if ceiling_error:
+            why.append(ceiling_error)
+            verified = False
+    elif not cls or cls not in classes:
         why.append(entry.get('why') or f"no texture class recorded for {model} (the owner sets it per model)")
     elif not who:
         why.append(entry.get('why') or f"class {cls} not confirmed by the owner "

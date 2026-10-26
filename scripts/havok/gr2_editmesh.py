@@ -261,9 +261,13 @@ def main():
         refarray(g.root_sec, g.root_off + ROOT_TOPOS, r['TriTopologies'], new_topo_ptrs)
         refarray(g.root_sec, g.root_off + ROOT_VDS, r['VertexDatas'], new_vd_ptrs)
         model, model_loc = refs(g, r['Models'])[0]; MODEL_MB = member_offsets(g, r['Models'][3], ['MeshBindings'])[0]
-        mbs = B.alloc(0, bytes(P * len(all_meshes)))
-        for i, tp in enumerate(all_meshes): B.ptr(0, mbs + i * P, tp)
-        B.i32(model_loc[0], model_loc[1] + MODEL_MB, len(all_meshes)); B.repoint(model_loc[0], model_loc[1] + MODEL_MB + 4, (0, mbs))
+        # the model's own bindings plus the new meshes: root Meshes may hold unbound donor leftovers (as gr2_appendmesh;
+        # Korean Industrial TC 2026-10-23, INC-608: binding all root meshes made the leftovers render)
+        mbind = model['MeshBindings']
+        binds = [g.deref(mbind[2][0], mbind[2][1] + i * P) for i in range(mbind[1])] + new_mesh_ptrs
+        mbs = B.alloc(0, bytes(P * len(binds)))
+        for i, tp in enumerate(binds): B.ptr(0, mbs + i * P, tp)
+        B.i32(model_loc[0], model_loc[1] + MODEL_MB, len(binds)); B.repoint(model_loc[0], model_loc[1] + MODEL_MB + 4, (0, mbs))
     B.write(outp)
     # Granny's native 64->32 conversion needs a marshalling record per appended packed vertex array (INC-290, as
     # gr2_appendmesh): without them Wine converts the file while the native DLL crashes (Korean HC lanterns 2026-10-17)
