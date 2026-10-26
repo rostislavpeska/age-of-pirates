@@ -2606,7 +2606,6 @@
     <command page="0" column="20">zpNatArmoredTrain</command>
     <command page="0" column="20">zpNatArmoredTrainDisabled</command>
     <command page="0" column="20">zpNatArmoredTrainNoResource</command>
-    <command page="0" column="4">zpNatBourbonRoyalMarchSmall</command>
     <command page="0" column="3">zpAuditoreLighthouseSmall</command>
     <command page="0" column="4">zpNatBlanikKnightsSmall</command>
     <command page="0" column="4">zpNatImperialCommandSmall</command>
@@ -40964,15 +40963,15 @@
     <unittype>HasBountyValue</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFindBarracks</unittype>
-    <train row="0" page="0" column="1">zpNatRoyalMusketeer</train>
-    <train row="0" page="0" column="2">zpNatRoyalDragoon</train>
+    <train row="0" page="0" column="1">deNatRoyalMusketeer</train>
+    <train row="0" page="0" column="2">deNatRoyalDragoon</train>
     <train row="0" page="0" column="3">deMercRoyalHorseman</train>
-    <tech row="0" page="1" column="1">zpVeteranBourbon</tech>
-    <tech row="0" page="1" column="1">zpGuardBourbon</tech>n
-    <tech row="0" page="2" column="1">zpNatBourbonReforms</tech>
-    <tech row="0" page="2" column="2">zpNatBourbonRoyalTax</tech>
-    <tech row="0" page="2" column="3">zpNatBourbonChouannerie</tech>
-    <tech row="0" page="2" column="4">zpNatBourbonMaisonDuRoi</tech>
+    <tech row="0" page="1" column="1">DEVeteranBourbon</tech>
+    <tech row="0" page="1" column="1">DEGuardBourbon</tech>n
+    <tech row="0" page="2" column="1">DENatBourbonReforms</tech>
+    <tech row="0" page="2" column="2">DENatBourbonRoyalTax</tech>
+    <tech row="0" page="2" column="3">DENatBourbonChouannerie</tech>
+    <tech row="0" page="2" column="4">DENatBourbonMaisonDuRoi</tech>
     <tech row="0" page="0" column="20">zpNatBourbonRoyalMarch</tech>
     <tech row="0" page="2" column="2">zpBourbonExpansion</tech>
     <flag>CollidesWithProjectiles</flag>

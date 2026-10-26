@@ -70,10 +70,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "spcjesuit");
   
-		subCiv2=rmGetCivID("SPCbourbon");
-		rmEchoInfo("subCiv2 is SPCbourbon "+subCiv2);
+		subCiv2=rmGetCivID("Bourbon");
+		rmEchoInfo("subCiv2 is Bourbon "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "SPCbourbon");
+			rmSetSubCiv(2, "Bourbon");
 
         subCiv3=rmGetCivID("zpSansculottes");
 		rmEchoInfo("subCiv3 is zpSansculottes "+subCiv3);
@@ -1835,6 +1835,10 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpExtendedBourbonsSPC");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // No normal revolutions on this map
 		rmSetTriggerEffectParamInt("Status",2);
 		if (rmGetPlayerTeam(i) == 0) {
@@ -1881,7 +1885,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParamInt("Level",1);
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("Civilization","SPCBourbon");
+	rmSetTriggerEffectParam("Civilization","Bourbon");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","502071");

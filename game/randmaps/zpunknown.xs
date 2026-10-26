@@ -289,7 +289,7 @@ void main(void)
 		subCiv29 = rmGetCivID("Yoruba");
 		subCiv30 = rmGetCivID("DESPCLenape");
 		subCiv31 = rmGetCivID("Saltpeter");
-		subCiv32 = rmGetCivID("SPCBourbon");
+		subCiv32 = rmGetCivID("Bourbon");
 		subCiv33 = rmGetCivID("Habsburg");
 		subCiv34 = rmGetCivID("Hanover");
 		subCiv35 = rmGetCivID("Jagiellon");
@@ -353,7 +353,7 @@ void main(void)
 		rmSetSubCiv(29, "Yoruba");
 		rmSetSubCiv(30, "DESPCLenape");
 		rmSetSubCiv(31, "Saltpeter");
-		rmSetSubCiv(32, "SPCBourbon");
+		rmSetSubCiv(32, "Bourbon");
 		rmSetSubCiv(33, "Habsburg");
 		rmSetSubCiv(34, "Hanover");
 		rmSetSubCiv(35, "Jagiellon");
@@ -15445,8 +15445,8 @@ void main(void)
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);				
 			rmAddTriggerEffect("Set Tech Status");
-//	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("DEUnknownAllianceBourbonEnabler"), false);
-	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpUnknownAllianceBourbonEnabler"), false);
+	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("DEUnknownAllianceBourbonEnabler"), false);
+//	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpUnknownAllianceBourbonEnabler"), false);
 			rmSetTriggerEffectParamInt("PlayerID", i);
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
@@ -16957,6 +16957,12 @@ void main(void)
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("Set Tech Status");
 		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedStuart"), false);
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParamInt("Status", 2);
+	}
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Set Tech Status");
+		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedBourbons"), false);
 		rmSetTriggerEffectParamInt("PlayerID", i);
 		rmSetTriggerEffectParamInt("Status", 2);
 	}

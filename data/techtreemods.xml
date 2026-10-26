@@ -465,6 +465,54 @@
       <effect type="TechStatus" status="obtainable">zpStuartAbilitySmall</effect>
     </effects>
   </tech>
+  <tech name="zpExtendedBourbons" type="Normal">
+    <dbid>408211</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" command="deNatBourbonRoyalMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" command="zpNatBourbonRoyalMarchSmall" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deNatBourbonRoyalMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonRoyalMarch" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpBourbonExpansion" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBourbonAbilityBig</effect>
+      <effect type="TechStatus" status="obtainable">zpBourbonAbilitySmall</effect>
+    </effects>
+  </tech>
+  <tech name="zpExtendedBourbonsSPC" type="Normal">
+    <dbid>408212</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" command="deNatBourbonRoyalMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" command="zpNatBourbonRoyalMarchSmall" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deNatBourbonRoyalMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonRoyalMarch" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpBourbonExpansionSPC" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBourbonAbilityBig</effect>
+      <effect type="TechStatus" status="obtainable">zpBourbonAbilitySmall</effect>
+    </effects>
+  </tech>
   <tech name="zpChateauRoyalShadow" type="Normal">
     <dbid>40823</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -476,14 +524,14 @@
       </typecount>
     </prereqs>
     <effects>
-      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+      <effect civ="Bourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player"></target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+        <target type="ProtoUnit">deNatRoyalDragoon</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deMercBattleship</target>
@@ -20596,13 +20644,7 @@
         </target>
       </effect>
       <effect type="CommandRemove" tech="zpBourbonExpansion">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpBourbonExpansion">
         <target type="ProtoUnit">zpBourbonSummerPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpBourbonExpansionSPC" page="2" column="2">
-        <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatRoyalMusketeer</target>
@@ -21344,13 +21386,7 @@
         </target>
       </effect>
       <effect type="CommandRemove" tech="zpBourbonExpansion">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpBourbonExpansion">
         <target type="ProtoUnit">zpBourbonSummerPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpBourbonExpansionSPC" page="2" column="2">
-        <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatRoyalMusketeer</target>
@@ -21388,13 +21424,7 @@
         </target>
       </effect>
       <effect type="CommandRemove" tech="zpBourbonExpansion">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpBourbonExpansion">
         <target type="ProtoUnit">zpBourbonSummerPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpBourbonExpansionSPC" page="2" column="2">
-        <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatRoyalMusketeer</target>
@@ -39581,6 +39611,45 @@
         <target type="Player" />
       </effect>
       <effect mergemode="add" type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="zpBourbonAbilityBig" type="Normal">
+    <dbid>408213</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpBourbonAbilitySmall" type="Normal">
+    <dbid>408214</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="DENativeBourbon">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatBourbonRoyalMarch</effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerRoyalMarch" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpBourbonExpansion</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpBourbonExpansionSPC</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatNightWatch</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatChateauRoyal</effect>
+    </effects>
+  </tech>
+  <tech name="DENativeBourbonColonialize">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatBourbonRoyalMarch</effect>
+      <effect type="CommandRemove" tech="zpNatBourbonRoyalMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
 <!--TEST TECHS-->

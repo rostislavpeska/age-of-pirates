@@ -486,7 +486,7 @@
     <associatedpower>zpNatPowerRoyalMarch</associatedpower>
     <castpower>
     </castpower>
-    <subciv>SPCBourbon</subciv>
+    <subciv>Bourbon</subciv>
     <usemultiple>
     </usemultiple>
   </protounitcommand>
@@ -497,7 +497,7 @@
     <associatedpower>zpPowerBourbonExpansion</associatedpower>
     <castpower>
     </castpower>
-    <subciv>SPCBourbon</subciv>
+    <subciv>Bourbon</subciv>
     <usemultiple>
     </usemultiple>
     <usebigbutton>
