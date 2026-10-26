@@ -3053,6 +3053,15 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
+	// Cliff unloading on: vanilla trigger effect added by the 2026-10-20 game update
+	rmCreateTrigger("Cliff Unloading");
+	rmAddTriggerEffect("Scenario: Enable Cliff Unloading");
+	rmSetTriggerEffectParam("Enable", "true");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.99);
 

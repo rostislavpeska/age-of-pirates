@@ -13,27 +13,27 @@
     </condition>
     <condition name="Distance to Unit">
       <param name="SrcObject" dispname="$$22295$$Source Units" vartype="unit">default</param>
-      <param name="DstObject" dispname="$$22296$$Target Unit" vartype="unit">default</param>
+      <param name="DstObject" dispname="$$22296$$Target Unit" vartype="unit" dispradius="">default</param>
       <param name="Op" dispname="$$22297$$Operator" vartype="operator">==</param>
-      <param name="Dist" dispname="$$22298$$Distance" vartype="float">0</param>
+      <param name="Dist" dispname="$$22298$$Distance" vartype="float" dispradius="">0</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
       <expression>trUnitDistanceToUnit("%DstObject%") %Op% %Dist%</expression>
     </condition>
     <condition name="Units in Area">
-      <param name="DstObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="DstObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <param name="Op" dispname="$$22297$$Operator" vartype="operator">==</param>
       <param name="Count" dispname="$$22304$$Count" vartype="float">1</param>
       <expression>trCountUnitsInArea("%DstObject%",%Player%,"%UnitType%",%Dist%) %Op% %Count%</expression>
     </condition>
     <condition name="Distance to Point">
       <param name="SrcObject" dispname="$$22295$$Source Units" vartype="unit">default</param>
-      <param name="DstPoint" dispname="" vartype="area">0</param>
+      <param name="DstPoint" dispname="" vartype="area" dispradius="">0</param>
       <param name="Op" dispname="$$22297$$Operator" vartype="operator">==</param>
-      <param name="Dist" dispname="$$22298$$Distance" vartype="float">0</param>
+      <param name="Dist" dispname="$$22298$$Distance" vartype="float" dispradius="">0</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
       <expression>trUnitDistanceToPoint(%DstPoint%) %Op% %Dist%</expression>
@@ -244,17 +244,17 @@
     </condition>
     <condition name="Army Distance to Unit">
       <param name="SrcArmy" dispname="$$22348$$Army" vartype="group">default</param>
-      <param name="DstObject" dispname="$$22296$$Target Unit" vartype="unit">default</param>
+      <param name="DstObject" dispname="$$22296$$Target Unit" vartype="unit" dispradius="">default</param>
       <param name="Op" dispname="$$22297$$Operator" vartype="operator">==</param>
-      <param name="Dist" dispname="$$22298$$Distance" vartype="float">0</param>
+      <param name="Dist" dispname="$$22298$$Distance" vartype="float" dispradius="">0</param>
       <command>trArmySelect("%SrcArmy%");</command>
       <expression>trUnitDistanceToUnit("%DstObject%") %Op% %Dist%</expression>
     </condition>
     <condition name="Army Distance to Point">
       <param name="SrcArmy" dispname="$$22348$$Army" vartype="group">default</param>
-      <param name="DstPoint" dispname="" vartype="area">0</param>
+      <param name="DstPoint" dispname="" vartype="area" dispradius="">0</param>
       <param name="Op" dispname="$$22297$$Operator" vartype="operator">==</param>
-      <param name="Dist" dispname="$$22298$$Distance" vartype="float">0</param>
+      <param name="Dist" dispname="$$22298$$Distance" vartype="float" dispradius="">0</param>
       <command>trArmySelect("%SrcArmy%");</command>
       <expression>trUnitDistanceToPoint(%DstPoint%) %Op% %Dist%</expression>
     </condition>
@@ -1427,20 +1427,20 @@
       <command>trDamageUnit(%DamageAmt%);</command>
     </effect>
     <effect name="Damage Units in Area">
-      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <param name="Damage" dispname="$$25479$$Damage" vartype="float">50</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
       <command>trDamageUnitsInArea(%Player%,"%UnitType%",%Dist%,%Damage%);</command>
     </effect>
     <effect name="Move From Area">
-      <param name="RefObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="RefObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="UnitType" dispname="$$25481$$Type" vartype="string">Unit</param>
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <param name="Radius" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Radius" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <param name="DstPoint" dispname="$$22410$$X" vartype="area">0</param>
       <param name="AttackMove" dispname="$$18986$$Attack Move" vartype="bool">false</param>
       <command>trUnitSelectClear();</command>
@@ -1755,29 +1755,29 @@
       <command>trDisableUnitDeletion(%Disable%);</command>
     </effect>
     <effect name="Convert Units in Area">
-      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="SrcPlayer" dispname="$$79816$$Source Player" vartype="player">1</param>
       <param name="TrgPlayer" dispname="$$79817$$Target Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
       <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"%UnitType%",%Dist%);</command>
     </effect>
     <effect name="Kill Units in Area">
-      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
       <command>trKillUnitsInArea(%Player%,"%UnitType%",%Dist%);</command>
     </effect>
     <effect name="Delete Units in Area">
-      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
       <command>trRemoveUnitsInArea(%Player%,"%UnitType%",%Dist%);</command>
@@ -1796,8 +1796,8 @@
       <param name="Name" dispname="$$22365$$Name" vartype="string">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">0</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="CenterUnit" dispname="$$22300$$Center Unit" vartype="unit">default</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="CenterUnit" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <param name="Count" dispname="$$22487$$Total" vartype="long">0</param>
       <param name="Msg" dispname="$$20056$$Message" vartype="stringid">The End is Near</param>
       <param name="Event" dispname="$$22362$$Trigger" vartype="event">0</param>
@@ -1917,10 +1917,10 @@
       <command>trHealUnit(%HealAmt%);</command>
     </effect>
     <effect name="Heal Units in Area">
-      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <param name="HealAmt" dispname="$$22456$$Amount" vartype="float">50</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
@@ -1973,10 +1973,10 @@
       <command>trGroupingConvertUnitType(%InstanceID%, %PlayerID%, "%UnitType%");</command>
     </effect>
     <effect name="Heal Units Percent in Area">
-      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit" dispradius="">default</param>
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="UnitType" dispname="$$22302$$Unit Type" vartype="unittype">Unit</param>
-      <param name="Dist" dispname="$$22303$$Radius" vartype="float">10</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float" dispradius="">10</param>
       <param name="HealPct" dispname="$$123029$$HealPct" vartype="float">50</param>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
@@ -4810,6 +4810,10 @@
       <param name="Player" dispname="Player" vartype="player">1</param>
       <param name="Yield" dispname="Yield Rate" vartype="float">1</param>
       <command>trPlayerSetGlobalYield(%Player%, %Yield%);</command>
+    </effect>
+    <effect name="Scenario: Enable Cliff Unloading">
+      <param name="Enable" dispname="Enable" vartype="bool">true</param>
+      <command>trEnableCliffUnloading(%Enable%);</command>
     </effect>
     <effect name="Scenario: Enable Revolutions">
       <param name="Enable" dispname="Enable" vartype="bool">true</param>

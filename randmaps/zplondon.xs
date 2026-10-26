@@ -4170,6 +4170,15 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
+	// Cliff unloading on: vanilla trigger effect added by the 2026-10-20 game update
+	rmCreateTrigger("Cliff Unloading");
+	rmAddTriggerEffect("Scenario: Enable Cliff Unloading");
+	rmSetTriggerEffectParam("Enable", "true");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	// ---- 16. AI SOCKET BUILD - last in the file on purpose: a trigger whose TechID the running process cannot resolve is
 	// dropped by the serializer and can take everything after it along (nugget-targeting skill, process-stale-data law).
 	// Caribbean Wars 1023-1033: the AI-only tech (ZP PLAYER Human false; zpSPCLondonAI = zpSPCPirateCityStatesAI's shape) adds
