@@ -30,7 +30,7 @@ All 4 test maps sit exclusively in `<Steam>\Game\RandMaps\` with prefix `0000_` 
 |---|---|---|---|
 | `0000_bourbon_1_extended` | `0000 Bourbon Test: Extended (Sun King Era)` | Subciv: `Bourbon`<br>Triggers: `cTechzpExtendedBourbons` active | - Build Trading Post on socket.<br>- **Page 0, Col 4:** Small Royal March button (`zpNatBourbonRoyalMarchSmall`).<br>- **Page 1, Col 1:** Sun King Era (`zpBourbonExpansion`).<br>- Big Royal March button is **hidden/unobtainable**. |
 | `0000_bourbon_2_vanilla` | `0000 Bourbon Test: Vanilla (Normal)` | Subciv: `Bourbon`<br>Triggers: None (pure vanilla) | - Build Trading Post on socket.<br>- Standard vanilla **Big Royal March button** (`deNatPowerRoyalMarch`) is active/visible.<br>- **No** small button on Page 0 Col 4.<br>- **No** Sun King Era button on Page 1.<br>- 100% exact vanilla AoE3 DE behavior. |
-| `0000_bourbon_3_paris_spc` | `0000 Bourbon Test: Paris Style SPC` | Subciv: `Bourbon`<br>Triggers: `cTechzpBonusBourbon` & `cTechzpExtendedBourbonsSPC` | - Build Trading Post on socket.<br>- **Page 0, Col 4:** Small Royal March button.<br>- **Page 1, Col 1:** Sun King Era SPC (`zpBourbonExpansionSPC`).<br>- Researching Sun King Era grants D'Artagnan and Summer Palace Wagon. |
+| `0000_bourbon_3_paris_spc` | `0000 Bourbon Test: Paris Style SPC` | Subciv: `Bourbon`<br>Triggers: `Industrialize`, `cTechzpBonusBourbon` & `cTechzpExtendedBourbonsSPC`<br>Units: Includes `zpBourbonSummerPalaceWagon` | - Build Trading Post on socket.<br>- **Page 0, Col 4:** Small Royal March button.<br>- **Page 1, Col 1:** Sun King Era SPC (`zpBourbonExpansionSPC`).<br>- Researching Sun King Era grants D'Artagnan and Summer Palace Wagon.<br>- Unpack Chateau: before Maison du Roi, col 3 has no horseman. Research Maison du Roi -> Royal Horseman appears at col 3! |
 | `0000_bourbon_4_paris_attacker` | `0000 Bourbon Test: Attacker Locked` | Subciv: `Bourbon`<br>Triggers: `cTechzpNatBourbonBigbuttonDisableShadow` & `cTechzpNatBigbuttonDisableShadow` | - Build Trading Post on socket.<br>- Royal March big button is **disabled / locked** (attacker / revolutionary state where royalist power is barred). |
 
 ---
@@ -46,7 +46,31 @@ All 4 test maps sit exclusively in `<Steam>\Game\RandMaps\` with prefix `0000_` 
 
 ---
 
-## 4. Verification Oracle & Pass Criteria
+## 4. Maison du Roi & Bourbon Chateau Royal Horseman Training
+
+- **Requirement:** Researching Maison du Roi (`DENatBourbonMaisonDuRoi`) enables Royal Horseman training at the Bourbon Chateau (`zpBourbonSummerPalace`).
+- **Implementation:**
+  - `data/techtreemods.xml`: Added override for `DENatBourbonMaisonDuRoi` with:
+    ```xml
+    <tech name="DENatBourbonMaisonDuRoi">
+      <effects>
+        <effect mergemode="add" type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+          <target type="ProtoUnit">deMercRoyalHorseman</target>
+        </effect>
+      </effects>
+    </tech>
+    ```
+  - `data/protomods.xml`: `zpBourbonSummerPalace` already lists `<train row="0" page="0" column="3">deMercRoyalHorseman</train>`.
+  - Rebuilt twin `data/techtreemods.xml.xmb`.
+- **Observable Contract on `0000_bourbon_3_paris_spc`:**
+  - Unpack the starting `zpBourbonSummerPalaceWagon`.
+  - Before researching Maison du Roi: Page 0 shows Musketeer (col 1), Dragoon (col 2), and Royal March (col 4). Col 3 is empty (Royal Horseman not enabled yet).
+  - Research Maison du Roi (`DENatBourbonMaisonDuRoi`) at the Chateau (Page 2, Col 4) or at the Trading Post.
+  - Immediately: Royal Horseman (`deMercRoyalHorseman`) appears at Page 0, Column 3 of the Bourbon Chateau and can be trained!
+
+---
+
+## 5. Verification Oracle & Pass Criteria
 
 1. **Pre-flight Mapcheck:**
    - Ran `python -m scripts.mapcheck <stem> --static-only` across all 4 test maps:
@@ -54,5 +78,5 @@ All 4 test maps sit exclusively in `<Steam>\Game\RandMaps\` with prefix `0000_` 
 2. **In-Game Observation Pass Criteria:**
    - In `0000_bourbon_1_extended`: Small button at page 0 column 4 is clickable; Sun King Era is clickable at page 1 column 1.
    - In `0000_bourbon_2_vanilla`: Big button appears in center; no small button or Sun King Era.
-   - In `0000_bourbon_3_paris_spc`: SPC Sun King Era trains D'Artagnan.
+   - In `0000_bourbon_3_paris_spc`: SPC Sun King Era trains D'Artagnan; researching Maison du Roi enables Royal Horseman at the Chateau!
    - In `0000_bourbon_4_paris_attacker`: Big button is greyed out / inactive.

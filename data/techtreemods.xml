@@ -39652,6 +39652,13 @@
       </effect>
     </effects>
   </tech>
+  <tech name="DENatBourbonMaisonDuRoi">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercRoyalHorseman</target>
+      </effect>
+    </effects>
+  </tech>
 <!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">
