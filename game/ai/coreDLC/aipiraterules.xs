@@ -5998,7 +5998,7 @@ rule zpBourbonTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketSPCBourbon, cUnitStateAny) == 0)
+   if (kbUnitCount(cMyID, cUnitTypedeSocketBourbon, cUnitStateAny) == 0)
       {
       return; // Player has no Maltese socket.
       }

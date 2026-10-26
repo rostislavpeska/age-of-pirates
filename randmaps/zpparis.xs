@@ -87,10 +87,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "spcjesuit");
   
-		subCiv2=rmGetCivID("SPCbourbon");
-		rmEchoInfo("subCiv2 is SPCbourbon "+subCiv2);
+		subCiv2=rmGetCivID("Bourbon");
+		rmEchoInfo("subCiv2 is Bourbon "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "SPCbourbon");
+			rmSetSubCiv(2, "Bourbon");
 
         subCiv3=rmGetCivID("zpSansculottes");
 		rmEchoInfo("subCiv3 is zpSansculottes "+subCiv3);
@@ -2002,7 +2002,7 @@ rmSetStatusText("",0.70);
 	vector courtLoc = rmGetUnitPosition(flag4ID);
 	vector cityHallLoc = rmGetUnitPosition(flag5ID);
 
-	string guardianUnit1 = "zpNatRoyalMusketeer";
+	string guardianUnit1 = "deNatRoyalMusketeer";
 	string guardianUnit2 = "zpNatRevolutionary";
 
 
@@ -2036,6 +2036,10 @@ rmSetStatusText("",0.70);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpBonusBourbon"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpExtendedBourbonsSPC");
 		rmSetTriggerEffectParamInt("Status",2);
 		if (rmGetPlayerTeam(i) == 0) {
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2074,7 +2078,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("Civilization","SPCBourbon");
+	rmSetTriggerEffectParam("Civilization","Bourbon");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","501968");

@@ -71,7 +71,7 @@ start, and was dead in game until 2026-09-06. `plan` now strips both flags;
 Royal-House powers to the player from the house's Age0 tech
 (`GrantsPowerDuration`, e.g. `DENativePhanar` -> `deNatPowerGreekRevolution`).
 A clone power has a new name, so add the same effect for it in that tech's
-override - Bourbon does (`zpSPCNativeBourbon` grants `zpNatPowerRoyalMarch`),
+override - Bourbon does (the `DENativeBourbon` override grants `zpNatPowerRoyalMarch`),
 Sultan/Imperial/Blanik do; Phanar got it 2026-09-06. `plan` emits the line
 when vanilla grants the original; `verify` warns when the clone is not granted
 (a warning, not a failure: both Habsburg smalls lack it and are recorded as

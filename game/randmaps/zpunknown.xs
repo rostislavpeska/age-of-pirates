@@ -289,7 +289,7 @@ void main(void)
 		subCiv29 = rmGetCivID("Yoruba");
 		subCiv30 = rmGetCivID("DESPCLenape");
 		subCiv31 = rmGetCivID("Saltpeter");
-		subCiv32 = rmGetCivID("SPCBourbon");
+		subCiv32 = rmGetCivID("Bourbon");
 		subCiv33 = rmGetCivID("Habsburg");
 		subCiv34 = rmGetCivID("Hanover");
 		subCiv35 = rmGetCivID("Jagiellon");
@@ -353,7 +353,7 @@ void main(void)
 		rmSetSubCiv(29, "Yoruba");
 		rmSetSubCiv(30, "DESPCLenape");
 		rmSetSubCiv(31, "Saltpeter");
-		rmSetSubCiv(32, "SPCBourbon");
+		rmSetSubCiv(32, "Bourbon");
 		rmSetSubCiv(33, "Habsburg");
 		rmSetSubCiv(34, "Hanover");
 		rmSetSubCiv(35, "Jagiellon");
@@ -8263,6 +8263,8 @@ void main(void)
 		nativeChance = rmRandFloat(0,0.21);
 		if (merryXmass == 1 && counterXmass <1)
 			nativeChance = 0.13;
+		if (counterBour < 0)
+			nativeChance = 0.145;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): one Bourbon village guaranteed (AoP chain: Bourbon < 0.15)
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
@@ -8494,6 +8496,8 @@ void main(void)
 	for(i = 0; <(nativeNumber-aopNativeNumber-pirateNumber-electorNumber))
 	{
 		nativeChance = rmRandFloat(0,0.56);
+		if (counterBour < 0)
+			nativeChance = 0.005;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): one Bourbon village guaranteed (all-native chain: Bourbon < 0.01)
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
@@ -12877,7 +12881,7 @@ void main(void)
 //		somalisAlliance = 1;	
 //		sudaneseAlliance = 1;	
 //		yorubaAlliance = 1;		
-//		bourbonAlliance = 1;	
+		bourbonAlliance = 1;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): Bourbon alliance guaranteed
 //		habsburgAlliance = 1;	
 //		hanoverAlliance = 1;	
 //		jagiellonAlliance = 1;	
@@ -15445,8 +15449,7 @@ void main(void)
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);				
 			rmAddTriggerEffect("Set Tech Status");
-//	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("DEUnknownAllianceBourbonEnabler"), false);
-	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpUnknownAllianceBourbonEnabler"), false);
+	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("DEUnknownAllianceBourbonEnabler"), false);
 			rmSetTriggerEffectParamInt("PlayerID", i);
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
@@ -16957,6 +16960,12 @@ void main(void)
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("Set Tech Status");
 		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedStuart"), false);
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParamInt("Status", 2);
+	}
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Set Tech Status");
+		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedBourbons"), false);
 		rmSetTriggerEffectParamInt("PlayerID", i);
 		rmSetTriggerEffectParamInt("Status", 2);
 	}

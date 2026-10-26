@@ -377,9 +377,6 @@
         <choice name="zpSansculottes">
           <soundset name="FrenchMonitorSelect" />
         </choice>
-        <choice name="SPCBourbon">
-          <soundset name="FrenchMonitorSelect" />
-        </choice>
         <choice name="zpGrinchVillage">
           <soundset name="FrenchMonitorSelect" />
         </choice>
@@ -851,9 +848,6 @@
           <soundset name="FrenchMonitorAcknowledge" />
         </choice>
         <choice name="zpSansculottes">
-          <soundset name="FrenchMonitorAcknowledge" />
-        </choice>
-        <choice name="SPCBourbon">
           <soundset name="FrenchMonitorAcknowledge" />
         </choice>
         <choice name="zpGrinchVillage">

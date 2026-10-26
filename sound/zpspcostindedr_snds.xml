@@ -477,9 +477,6 @@
         <choice name="zpRevParis">
           <soundset name="BritishFrigateSelect" />
         </choice>
-        <choice name="SPCBourbon">
-          <soundset name="BritishFrigateSelect" />
-        </choice>
         <choice name="zpGrinchVillage">
           <soundset name="BritishFrigateSelect" />
         </choice>
@@ -1022,9 +1019,6 @@
           <soundset name="BritishFrigateAcknowledge" />
         </choice>
         <choice name="zpRevParis">
-          <soundset name="BritishFrigateAcknowledge" />
-        </choice>
-        <choice name="SPCBourbon">
           <soundset name="BritishFrigateAcknowledge" />
         </choice>
         <choice name="zpGrinchVillage">

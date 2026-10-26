@@ -95,8 +95,9 @@
     <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
     <ability>zpPowerArmouredTrainInactive<tech>zpArmoredTrainLockShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerArmouredTrainNoResource<tech>zpArmoredTrainNoResourceShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>  
-    <ability>zpNatPowerRoyalMarch<tech>Colonialize</tech><subciv>SPCBourbon</subciv><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
-    <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
+    <ability mergemode="replace">deNatPowerRoyalMarch<tech>zpBourbonAbilityBig</tech><subciv>Bourbon</subciv><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown><usebigabilitybutton3>true</usebigabilitybutton3><rof>275</rof><castonself>true</castonself></ability>
+    <ability>zpNatPowerRoyalMarch<tech>zpBourbonAbilitySmall</tech><subciv>Bourbon</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
+    <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>Bourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
     <ability>zpPowerParliamentRemonstrance<tech>zpNatParliamentBigbuttonDisableShadow</tech><subciv>zpParliament</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerStuartExpansion<tech>zpNatStuartBigbuttonDisableShadow</tech><subciv>Stuart</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
@@ -238,10 +239,6 @@
   <zpbourbonsummerpalace>
     <ability>zpNatPowerRoyalMarch<activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
   </zpbourbonsummerpalace>
-  <zpnatroyalmusketeer>
-    <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
-    <ability>zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
-  </zpnatroyalmusketeer>
   <zppariscitadel>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zppariscitadel>
@@ -485,4 +482,10 @@
     <ability>PowerRecruitGuardian<rof>90</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatprincerupert>
+  <!-- Napoleonic Era on the vanilla trained Royal Musketeer (owner 2026-10-26: "vanilla royal musketeers don't have the
+       rocket ability after the napoleonic paris upgrade"): vanilla binds its mortar button to DERevolutionFranceNE and
+       gives it to the mercenary only; the mod's upgrade is zpRevolutionFranceNE, the line deNatMercRoyalMusketeer has. -->
+  <denatroyalmusketeer>
+    <ability mergemode="add">zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </denatroyalmusketeer>
 </abilitymods>
