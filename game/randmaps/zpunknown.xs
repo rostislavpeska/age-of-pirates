@@ -8263,6 +8263,8 @@ void main(void)
 		nativeChance = rmRandFloat(0,0.21);
 		if (merryXmass == 1 && counterXmass <1)
 			nativeChance = 0.13;
+		if (counterBour < 0)
+			nativeChance = 0.145;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): one Bourbon village guaranteed (AoP chain: Bourbon < 0.15)
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
@@ -8494,6 +8496,8 @@ void main(void)
 	for(i = 0; <(nativeNumber-aopNativeNumber-pirateNumber-electorNumber))
 	{
 		nativeChance = rmRandFloat(0,0.56);
+		if (counterBour < 0)
+			nativeChance = 0.005;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): one Bourbon village guaranteed (all-native chain: Bourbon < 0.01)
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
@@ -12877,7 +12881,7 @@ void main(void)
 //		somalisAlliance = 1;	
 //		sudaneseAlliance = 1;	
 //		yorubaAlliance = 1;		
-//		bourbonAlliance = 1;	
+		bourbonAlliance = 1;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): Bourbon alliance guaranteed
 //		habsburgAlliance = 1;	
 //		hanoverAlliance = 1;	
 //		jagiellonAlliance = 1;	
@@ -15446,7 +15450,6 @@ void main(void)
 			rmSetTriggerLoop(false);				
 			rmAddTriggerEffect("Set Tech Status");
 	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("DEUnknownAllianceBourbonEnabler"), false);
-//	        rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpUnknownAllianceBourbonEnabler"), false);
 			rmSetTriggerEffectParamInt("PlayerID", i);
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
