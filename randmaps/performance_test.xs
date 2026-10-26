@@ -42,10 +42,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "spcjesuit");
   
-		subCiv2=rmGetCivID("SPCbourbon");
-		rmEchoInfo("subCiv2 is SPCbourbon "+subCiv2);
+		subCiv2=rmGetCivID("Bourbon");
+		rmEchoInfo("subCiv2 is Bourbon "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "SPCbourbon");
+			rmSetSubCiv(2, "Bourbon");
 
         subCiv3=rmGetCivID("zpSansculottes");
 		rmEchoInfo("subCiv3 is zpSansculottes "+subCiv3);
@@ -1711,7 +1711,7 @@ rmSetStatusText("",0.70);
 	}
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("Civilization","SPCBourbon");
+	rmSetTriggerEffectParam("Civilization","Bourbon");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","501968");

@@ -5940,10 +5940,6 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercRevolutionary" culture="none" newname="501910">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122422">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122008">
-      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatEclaireur" culture="none" newname="502056">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatCataphract" culture="none" newname="502255">
@@ -6119,8 +6115,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6175,8 +6169,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6231,8 +6223,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6287,8 +6277,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6346,8 +6334,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6405,8 +6391,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6461,8 +6445,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">DEVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -6517,8 +6500,6 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
@@ -19853,15 +19834,6 @@
         <target type="ProtoUnit">zpNatMercRevolutionary</target>
       </effect>
       <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
       <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
@@ -19913,277 +19885,6 @@
       </effect>
       <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="3">
         <target type="ProtoUnit">zpParisCitadelPassage</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpSPCNativeBourbon" type="Normal">
-    <dbid>40816</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deMercBattleship</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalMarch</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonChouannerie</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonMaisonDuRoi</effect>
-      <effect type="TechStatus" status="obtainable">zpNativeTreatyBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpIndianFriendshipBourbon</effect>
-      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
-      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpBourbonExpansion</effect>
-      <effect type="TechStatus" status="obtainable">zpBourbonExpansionSPC</effect>
-      <effect type="TechStatus" status="obtainable">zpNatChateauRoyal</effect>
-      <effect type="TechStatus" status="obtainable">zpNatNightWatch</effect>
-      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerRoyalMarch" relativity="Assign">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpSPCNativeBourbonColonialize" type="Normal">
-    <dbid>40775</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="TechStatus" status="active">zpNatBourbonRoyalMarch</effect>
-    </effects>
-  </tech>
-  <tech name="zpVeteranBourbon" type="Normal">
-    <dbid>40776</dbid>
-    <displaynameid>122416</displaynameid>
-    <cost resourcetype="Wood">125.0000</cost>
-    <cost resourcetype="Gold">125.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
-    <rollovertextid>122419</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>UpgradeTech</flag>
-    <flag>YPNativeImprovement</flag>
-    <flag>DENativeUnitUpgrade</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122420">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122422" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="TechStatus" status="active">DEVeteranBourbon</effect>
-    </effects>
-  </tech>
-  <tech name="zpGuardBourbon" type="Normal">
-    <dbid>40777</dbid>
-    <displaynameid>122417</displaynameid>
-    <cost resourcetype="Wood">350.0000</cost>
-    <cost resourcetype="Gold">350.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
-    <rollovertextid>122419</rollovertextid>
-    <flag>UpgradeTech</flag>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <flag>DENativeUnitUpgrade</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status="Active">zpVeteranBourbon</techstatus>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122421">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122422" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122007">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122008" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="TechStatus" status="active">DEGuardBourbon</effect>
-    </effects>
-  </tech>
-  <tech name="zpNatBourbonReforms" type="Normal">
-    <dbid>40778</dbid>
-    <displaynameid>122286</displaynameid>
-    <cost resourcetype="Food">300.0000</cost>
-    <cost resourcetype="Wood">300.0000</cost>
-    <cost resourcetype="Gold">300.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\europeans\bourbon\bourbon_reforms.png</icon>
-    <rollovertextid>122285</rollovertextid>
-    <valuetext>{techResourceAmount(DENatBourbonReforms)}</valuetext>
-    <flag>YPNativeImprovement</flag>
-    <flag>DEUsesValueText</flag>
-    <effects>
-      <effect type="Data2" amount="0.20" subtype="ResourceByKBStat" kbstat="totalTechReward" resource="XP" resourcecap="2000.00" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="EnableTechXPReward" relativity="Assign">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpNatBourbonRoyalTax" type="Normal">
-    <dbid>40779</dbid>
-    <displaynameid>122288</displaynameid>
-    <cost resourcetype="Food">150.0000</cost>
-    <cost resourcetype="Wood">150.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\europeans\bourbon\taille_royal.png</icon>
-    <rollovertextid>122287</rollovertextid>
-    <valuetext>{techResourceAmount(DENatBourbonRoyalTax)}</valuetext>
-    <flag>YPNativeImprovement</flag>
-    <flag>DEUsesValueText</flag>
-    <effects>
-      <effect type="Data2" amount="35.00" subtype="ResourceByKBQuery" resource="Gold" queryunittype="LogicalTypeBuildingsNotWallsOrGroves" querystate="Alive" resourcecap="10000.00" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data2" amount="-35.00" subtype="ResourceByKBQuery" resource="Gold" queryunittype="deFurTrade" querystate="Alive" resourcecap="1000000.00" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpNatBourbonChouannerie" type="Normal">
-    <dbid>40780</dbid>
-    <displaynameid>122290</displaynameid>
-    <cost resourcetype="Food">275.0000</cost>
-    <researchpoints>15.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\europeans\bourbon\chouannerie.png</icon>
-    <rollovertextid>122289</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-    <flag>CountsTowardMilitaryScore</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="DamageBonus" unittype="AbstractInfantry" allactions="1" relativity="Absolute">
-        <target type="ProtoUnit">LogicalTypeLandEconomy</target>
-      </effect>
-      <effect type="Data" amount="-0.34" subtype="DamageBonus" unittype="AbstractInfantry" allactions="1" relativity="Absolute">
-        <target type="ProtoUnit">Coureur</target>
-      </effect>
-      <effect type="Data" amount="-0.34" subtype="DamageBonus" unittype="AbstractInfantry" allactions="1" relativity="Absolute">
-        <target type="ProtoUnit">CoureurCree</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpNatBourbonMaisonDuRoi" type="Normal">
-    <dbid>40781</dbid>
-    <displaynameid>122292</displaynameid>
-    <cost resourcetype="Gold">750.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\europeans\bourbon\maison_du_roi.png</icon>
-    <rollovertextid>122291</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-    <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="SetOnShipmentSentTech" amount="1.00">DEShipRoyalHorseman</effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalHorsemanBourbonProxy</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deMercRoyalHorseman</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpNativeTreatyBourbon" type="Normal">
-    <dbid>40782</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">HCNativeTreaties</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatRoyalMusketeer" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpIndianFriendshipBourbon" type="Normal">
-    <dbid>40783</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpNatRoyalMusketeer" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="deNatRoyalDragoon" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
-    </effects>
-  </tech>
-  <tech name="zpNativeTradeTreatyBourbon" type="Normal">
-    <dbid>40784</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
-        <target type="Player">
-        </target>
       </effect>
     </effects>
   </tech>
@@ -20652,9 +20353,6 @@
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
-      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
@@ -20787,19 +20485,19 @@
         <target type="ProtoUnit">deNatMercRoyalDragoon</target>
       </effect>
       <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+        <target type="ProtoUnit">deNatRoyalDragoon</target>
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+        <target type="ProtoUnit">deNatRoyalDragoon</target>
       </effect>
       <effect type="Data" amount="1.30" subtype="DamageForAllHandLogicActions" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+        <target type="ProtoUnit">deNatRoyalDragoon</target>
       </effect>
       <effect type="Data" action="MortarAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
@@ -20811,13 +20509,13 @@
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
       <effect type="Data" action="MortarAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" action="ChargePistolAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" amount="2.00" subtype="LOS" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="deNatMercRoyalMusketeer" relativity="Absolute">
         <target type="Player">
@@ -20827,62 +20525,16 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRoyalMusketeer" relativity="Absolute">
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="deNatRoyalMusketeer" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRoyalDragoon" relativity="Absolute">
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="deNatRoyalDragoon" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
       <effect type="TechStatus" status="active">DEHCAncienRegime</effect>
       <effect type="TechStatus" status="unobtainable">DERoyalMusketeerPistolCharge</effect>
-    </effects>
-  </tech>
-  <tech name="DERevolutionFranceNE">
-    <effects>
-      <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.30" subtype="DamageForAllHandLogicActions" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect mergemode="add" type="Data" action="MortarAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect mergemode="add" type="Data" action="ChargePistolAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="2.00" subtype="LOS" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRoyalMusketeer" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRoyalDragoon" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
-      </effect>
-      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalMusketeer" relativity="Absolute">
-        <target type="ProtoUnit">deIconNatFootCarabinier</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalDragoon" relativity="Absolute">
-        <target type="ProtoUnit">deIconNatHorseCarabinier</target>
-      </effect>
     </effects>
   </tech>
   <tech name="zpArtilleryCamps" type="Normal">
@@ -20993,12 +20645,6 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
-      <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatRoyalMusketeer" page="0" column="20">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
     </effects>
 	</tech>
   <tech name="zpMilitaryCampBuildLimit" type="Normal">
@@ -21034,67 +20680,27 @@
     <flag>Shadow</flag>
     <prereqs>
       <techstatus status="Active">zpBonusBourbon</techstatus>
-      <techstatus status="Active">zpAncienRegimeAddTechsToEmbassy</techstatus>
+      <techstatus status="Active">DEHCAncienRegime</techstatus>
     </prereqs>
     <effects>
-      <effect type="CommandRemove" tech="DEVeteranBourbon">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandRemove" tech="DEGuardBourbon">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatBourbonReforms">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatBourbonRoyalTax">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpVeteranBourbon" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpGuardBourbon" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonReforms" page="2" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonRoyalTax" page="2" column="2">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
       <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="1">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
       <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="2">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
-      <effect type="CommandAdd" tech="zpVeteranBourbon" page="1" column="1">
+      <effect type="CommandAdd" tech="DEVeteranBourbon" page="1" column="1">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
-      <effect type="CommandAdd" tech="zpGuardBourbon" page="1" column="1">
+      <effect type="CommandAdd" tech="DEGuardBourbon" page="1" column="1">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonReforms" page="2" column="1">
+      <effect type="CommandAdd" tech="DENatBourbonReforms" page="2" column="1">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonRoyalTax" page="2" column="2">
+      <effect type="CommandAdd" tech="DENatBourbonRoyalTax" page="2" column="2">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
-      <effect civ="Bourbon" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">DEVeteranBourbon</effect>
-      <effect type="TechStatus" status="unobtainable">DEGuardBourbon</effect>
-      <effect type="TechStatus" status="unobtainable">DENatBourbonReforms</effect>
-      <effect type="TechStatus" status="unobtainable">DENatBourbonRoyalTax</effect>
-      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
     </effects>
   </tech>
   <tech name="zpIndependenceWarSetup" type="Normal">
@@ -21220,10 +20826,10 @@
       <techstatus status="Active">zpRevolutionFranceNE</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalMusketeer" relativity="Absolute">
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatRoyalMusketeer" relativity="Absolute">
         <target type="ProtoUnit">deIconNatFootCarabinier</target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalDragoon" relativity="Absolute">
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatRoyalDragoon" relativity="Absolute">
         <target type="ProtoUnit">deIconNatHorseCarabinier</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercRoyalMusketeer" relativity="Absolute">
@@ -21262,8 +20868,8 @@
       <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
         <target type="ProtoUnit">zpSPCFortBarracks</target>
       </effect>
-      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect type="TechStatus" status="active">DEVeteranBourbon</effect>
+      <effect type="TechStatus" status="active">DEGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="zpNapoleonicEraNames" type="Normal">
@@ -21273,62 +20879,18 @@
     <flag>Shadow</flag>
     <prereqs>
       <techstatus status="Active">zpRevolutionFranceNE</techstatus>
-      <techstatus status="Active">zpVeteranBourbon</techstatus>
-      <techstatus status="Active">zpGuardBourbon</techstatus>
+      <techstatus status="Active">DEVeteranBourbon</techstatus>
+      <techstatus status="Active">DEGuardBourbon</techstatus>
     </prereqs>
     <effects>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
+      <effect type="SetName" proto="deNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
       </effect>
-      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      <effect type="SetName" proto="deNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
       </effect>
       <effect type="SetName" proto="deNatMercRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
       </effect>
       <effect type="SetName" proto="deNatMercRoyalDragoon" culture="none" newname="126582" newrollover="126583">
       </effect>
-    </effects>
-  </tech>
-  <tech name="DEHCAncienRegime">
-    <effects>
-      <effect mergemode="remove" type="CommandAdd" tech="DEVeteranBourbon" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect mergemode="remove" type="CommandAdd" tech="DEGuardBourbon" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect mergemode="remove" type="CommandAdd" tech="DENatBourbonReforms" page="2" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect mergemode="remove" type="CommandAdd" tech="DENatBourbonRoyalTax" page="2" column="2">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect mergemode="remove" type="TechStatus" status="obtainable">DEVeteranBourbon</effect>
-      <effect mergemode="remove" type="TechStatus" status="obtainable">DEGuardBourbon</effect>
-      <effect mergemode="remove" type="TechStatus" status="obtainable">DENatBourbonReforms</effect>
-      <effect mergemode="remove" type="TechStatus" status="obtainable">DENatBourbonRoyalTax</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpAncienRegimeAddTechsToEmbassy</effect>
-    </effects>
-  </tech>
-  <tech name="zpAncienRegimeAddTechsToEmbassy" type="Normal">
-    <dbid>40821</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="CommandAdd" tech="DEVeteranBourbon" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="DEGuardBourbon" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatBourbonReforms" page="2" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatBourbonRoyalTax" page="2" column="2">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">DEVeteranBourbon</effect>
-      <effect type="TechStatus" status="obtainable">DEGuardBourbon</effect>
-      <effect type="TechStatus" status="obtainable">DENatBourbonReforms</effect>
-      <effect type="TechStatus" status="obtainable">DENatBourbonRoyalTax</effect>
     </effects>
   </tech>
   <tech name="zpNapoleonicEraNamesLegendary" type="Normal">
@@ -21341,9 +20903,9 @@
       <techstatus status="Active">ImpLegendaryNativesShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
+      <effect type="SetName" proto="deNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
       </effect>
-      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      <effect type="SetName" proto="deNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
       </effect>
       <effect type="SetName" proto="deNatMercRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
       </effect>
@@ -21394,9 +20956,6 @@
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
-      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
@@ -21431,9 +20990,6 @@
       </effect>
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCCommandPost</target>
@@ -32534,54 +32090,6 @@
       <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
     </effects>
   </tech>
-  <tech name="zpUnknownAllianceBourbon" type="Normal">
-    <dbid>41240</dbid>
-    <displaynameid>122142</displaynameid>
-    <status>UNOBTAINABLE</status>
-    <researchpoints>5.0000</researchpoints>
-    <icon>resources\images\icons\techs\aliance_bourbon.png</icon>
-    <flag>Shadow</flag>
-    <effects>
-      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deMercBattleship</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonChouannerie</effect>
-      <effect type="TechStatus" status="obtainable">zpNatBourbonMaisonDuRoi</effect>
-      <effect type="CommandAdd" tech="zpVeteranBourbon" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpGuardBourbon" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonReforms" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonRoyalTax" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonChouannerie" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatBourbonMaisonDuRoi" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
-    </effects>
-  </tech>
   <tech name="zpUnknownAllianceWokou" type="Normal">
     <dbid>41202</dbid>
     <displaynameid>503054</displaynameid>
@@ -32957,23 +32465,6 @@
     <effects>
       <effect type="TechStatus" status="obtainable">zpUnknownAllianceZen</effect>
       <effect type="CommandAdd" tech="zpUnknownAllianceZen" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpUnknownAllianceBourbonEnabler" type="Normal">
-    <dbid>41213</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="TechStatus" status="obtainable">zpUnknownAllianceBourbon</effect>
-      <effect type="CommandAdd" tech="zpUnknownAllianceBourbon" page="1" column="1">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
       <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
@@ -33682,7 +33173,6 @@
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceScientists</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceWokou</effect>
-      <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceZen</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceSufi</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceJesuit</effect>
@@ -39656,6 +39146,40 @@
     <effects>
       <effect mergemode="add" type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deMercRoyalHorseman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpBourbonHeroVeteranShadow" type="Normal">
+    <dbid>408215</dbid>
+    <status>OBTAINABLE</status>
+    <researchpoints>0.0000</researchpoints>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEVeteranBourbon</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpBourbonHeroGuardShadow" type="Normal">
+    <dbid>408216</dbid>
+    <status>OBTAINABLE</status>
+    <researchpoints>0.0000</researchpoints>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEGuardBourbon</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAbstractHeroMusketeer</target>
       </effect>
     </effects>
   </tech>

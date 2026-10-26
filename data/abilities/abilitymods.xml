@@ -239,10 +239,6 @@
   <zpbourbonsummerpalace>
     <ability>zpNatPowerRoyalMarch<activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
   </zpbourbonsummerpalace>
-  <zpnatroyalmusketeer>
-    <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
-    <ability>zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
-  </zpnatroyalmusketeer>
   <zppariscitadel>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zppariscitadel>
@@ -486,4 +482,10 @@
     <ability>PowerRecruitGuardian<rof>90</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatprincerupert>
+  <!-- Napoleonic Era on the vanilla trained Royal Musketeer (owner 2026-10-26: "vanilla royal musketeers don't have the
+       rocket ability after the napoleonic paris upgrade"): vanilla binds its mortar button to DERevolutionFranceNE and
+       gives it to the mercenary only; the mod's upgrade is zpRevolutionFranceNE, the line deNatMercRoyalMusketeer has. -->
+  <denatroyalmusketeer>
+    <ability mergemode="add">zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </denatroyalmusketeer>
 </abilitymods>

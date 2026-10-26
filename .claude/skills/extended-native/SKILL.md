@@ -163,8 +163,8 @@ the house's Age0 tech with `GrantsPowerDuration` (nine of them: Bourbon,
 Habsburg, Hanover, Jagiellon, Oldenburg, Phanar, Vasa, Wettin, Wittelsbach -
 `grep GrantsPowerDuration` in vanilla `techtreey.xml` lists them). A clone
 power has a new name, so that grant does not cover it: the override MUST add
-the same effect for the clone (Bourbon: `techtreemods.xml` ~19596,
-`zpSPCNativeBourbon` grants `zpNatPowerRoyalMarch`). Regular natives (Inuit
+the same effect for the clone (Bourbon: the `DENativeBourbon` override in
+`techtreemods.xml` adds the grant of `zpNatPowerRoyalMarch` with `mergemode="add"`). Regular natives (Inuit
 and the like) have no grant in vanilla and need none. `abilitytool.py plan`
 emits the line when vanilla grants the original; `verify` fails when it is
 missing.
