@@ -8498,6 +8498,8 @@ void main(void)
 		nativeChance = rmRandFloat(0,0.56);
 		if (counterBour < 0)
 			nativeChance = 0.005;		// AOP-BETA-RIG (owner 2026-10-26, revert before prod): one Bourbon village guaranteed (all-native chain: Bourbon < 0.01)
+		if (counterMaya < 0)		// AOP-TEST-ONLY: Maya village guaranteed for the extended Maya test (owner 2026-10-28); remove before any export
+			nativeChance = 0.365;		// AOP-TEST-ONLY: Maya village guaranteed for the extended Maya test (owner 2026-10-28); remove before any export (all-native chain: Maya 0.36-0.37)
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
