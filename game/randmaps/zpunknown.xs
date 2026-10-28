@@ -16936,13 +16936,11 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", i);
 		rmSetTriggerEffectParamInt("Status", 2);
 	}
-	if (bourbonAlliance != 1) {
-		for(i=1; <= cNumberNonGaiaPlayers) {
-			rmAddTriggerEffect("Set Tech Status");
-			rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendMaya"), false);
-			rmSetTriggerEffectParamInt("PlayerID", i);
-			rmSetTriggerEffectParamInt("Status", 2);
-		}
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Set Tech Status");
+		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendMaya"), false);
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParamInt("Status", 2);
 	}
 	// extended natives: Inuits, Phanar, Stuart - same idiom as the Maya block above
 	for(i=1; <= cNumberNonGaiaPlayers) {
