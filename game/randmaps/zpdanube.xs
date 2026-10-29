@@ -1671,17 +1671,6 @@ void main(void)
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.90);
 
-	// ____________________ LOCAL MERCENARIES (Crownlands) ____________________
-	rmDisableDefaultMercs(true);
-	rmDisableCivTypeMercRestriction(true);
-	rmEnableMerc("MercJaeger", -1);
-	rmEnableMerc("deMercPandour", -1);
-	rmEnableMerc("deMercGrenadier", -1);
-	rmEnableMerc("zpMercBohemianKnight", -1);
-	rmEnableMerc("MercGreatCannon", -1);
-
-	rmForbidTradeMonopoly(true);
-
 	// ************************* TRIGGERS ******************************
 
 	// Lookups use underscores (rm-triggers law 3): rmCreateTrigger("A B") is found by rmTriggerID("A_B")

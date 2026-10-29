@@ -20,7 +20,7 @@ copy): `--check` flags one as FORBIDDEN and `--sync` deletes it. Do not spend ti
 
 | # | Phase | Skill | Offline gate | In-game gate (only when placement matters) |
 |---|---|---|---|---|
-| 0 | Brief: intent, size, land/water, players, natives, routes | map-profile (`scripts/maps/<stem>.json`) | profile written | - |
+| 0 | Brief: intent, size, land/water, players, natives, routes; standard or historical (below) | map-profile (`scripts/maps/<stem>.json`) | profile written | - |
 | 1 | Skeleton: spine, .xml, names, file locations | rm-skeleton, rm-name-catalogs | `mapcheck --static-only --live` = 0 FAIL | one editor generation with the crash oracle |
 | 2 | Terrain: areas, water, cliffs, mixes, overlays | rm-areas, rm-water-rivers, rm-coordinates | `mapcheck --live` (SIM) | minimap screenshot (map-minimap / rm-unit-bench runner) |
 | 3 | Routes and sockets | rm-trade-routes | mapcheck route-type check | minimap |
@@ -32,6 +32,39 @@ copy): `--check` flags one as FORBIDDEN and `--sync` deletes it. Do not spend ti
 
 "It does not work" at any phase -> rm-diagnose before any theory. New art on the map -> rm-unit-bench
 before the map.
+
+## Standard map or historical map: decide in phase 0
+
+Owner 2026-10-29, on the Danube: "it's standard map, not historical". The Danube had taken a Trade Monopoly ban and a
+forced merc list from Crownlands. Owner: "don't use it, also don't enforce any mercs and any objective". The five
+features below belong to historical maps only. A standard map has none of them, whatever map its blocks came from.
+
+| Feature | Historical map | Standard map | File |
+|---|---|---|---|
+| Recommended civs | `<recommendedSettings>` with one `<civilization>British</civilization>` line per civ (all 11) | none | lobby `.xml` |
+| Pre-configured teams and lobby rules | `<enforcedSettings>` of `<setting type="..." state="enforced\|forbidden" />`: the team mode (`TwoTeams` enforced on most; `FFA` enforced on King of Bohemia; `OneVsAll` enforced on Aztec City), `DefaultRules` and `AltTeamNames` enforced, `RecordGame` forbidden, `Diplomacy` forbidden on Crownlands and King of Bohemia | none | lobby `.xml` |
+| No Trade Monopoly | `rmForbidTradeMonopoly(true);` (all 11) | never | map `.xs` |
+| Objectives | `rmObjectiveScreenSetTitle` / `rmObjectiveScreenSetGoal` / `rmObjectiveAdd` with the map's own goals | none. Only the KotH entry, inside `if (rmGetIsKOTH())` (Black Sea), because KotH is a lobby option | map `.xs` |
+| Mercenaries | a local list: `rmDisableDefaultMercs(true);` `rmDisableCivTypeMercRestriction(true);` + `rmEnableMerc(...)` (all but Aztec City) | `chooseMercs();` alone, the default pool | map `.xs` |
+
+The historical maps are the ones with the silver lobby border (lobby-minimap): London, Paris, Istanbul, Independence War,
+Versailles, Aztec City, Civil War, Florence, Fall of Venice, Crownlands, King of Bohemia. Survey of 2026-10-29: every one
+carries the lobby settings and the Monopoly ban; every one except Aztec City carries a local merc list.
+
+- **Neither of these marks a historical map.** Never decide the class from them:
+  - The `piratehistoricalmap` map type is also on standard maps: Elbe, Black Sea, Caribbean Wars, Iceland, Balearic
+    Islands, Unknown and Danube (Iceland and Balearic set it through a variable). It selects the mod's nugget and
+    map-type data; keep it.
+  - The lobby `<filter>Historical</filter>` is also on Balearic Islands, Iceland and Black Sea, and only 4 of the 11
+    historical maps have it.
+- **Copying from a historical map into a standard one** (King of Bohemia, Crownlands): take the terrain, starts and
+  resources; leave the merc list, the Monopoly line, the objectives and the lobby settings behind. On 2026-10-29 the
+  Danube's merc list and Monopoly ban were removed for this reason.
+- **Do not copy these deviations** (owner decision pending, 2026-10-29):
+  - standard maps that still force a local merc list: Elbe, Black Sea, Winter Wonderland II, Caribbean Wars, Unknown
+    (random local mercs);
+  - Caribbean Wars also adds a map objective outside KotH ("Capture a Pirate Town ...", string 502223);
+  - Grinch, a Christmas scenario map, also carries lobby settings (recommended civs, `TwoTeams`) and a merc list.
 
 ## Known patterns: copy, don't derive
 
