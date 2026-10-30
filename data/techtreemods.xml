@@ -837,7 +837,11 @@
       <effect type="TechStatus" status="unobtainable">ypBigConsulateDutch</effect>
       <effect type="TechStatus" status="unobtainable">ypBigConsulateSpanish</effect>
       <effect type="TechStatus" status="unobtainable">ypBigConsulateJapanese</effect>
-      <effect type="TechStatus" status="unobtainable">ypBigConsulateJapaneseAllies</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAllies</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSPCChina</effect>
+      <effect type="TechStatus" status="obtainable">zpRevolutionRomaniaPirateMap</effect>
+      <effect type="TechStatus" status="obtainable">zpRevolutionChilePirateMap</effect>
       <effect type="CommandRemove" tech="ypPickConsulateTech">
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
@@ -39183,6 +39187,35 @@
       </effect>
     </effects>
   </tech>
+  <!-- AoP maps: the two vanilla revolutions that turn on a consulate card get the AoP clone instead; zpIsPirateMap arms both (owner 2026-10-30) -->
+  <tech name="zpRevolutionRomaniaPirateMap" type="Normal">
+    <dbid>408217</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DERevolutionRomania</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">ypBigSequesterRussians</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">ypBigConsulateRussians</effect>
+      <effect type="TechStatus" status="active">zpBigConsulateRussiansClone</effect>
+    </effects>
+  </tech>
+  <tech name="zpRevolutionChilePirateMap" type="Normal">
+    <dbid>408218</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DERevolutionChile</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">ypBigSequesterGermans</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">ypBigConsulateGermans</effect>
+      <effect type="TechStatus" status="active">zpBigConsulateGermansClone</effect>
+    </effects>
+  </tech>
 <!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">
@@ -41227,10 +41260,6 @@
       <effect type="TechStatus" status="obtainable">zpBigConsulateSPCChinaClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateJapaneseAlliesKorea</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
-      <effect type="TechStatus" status="unobtainable">ypBigConsulateRussians</effect>
-      <effect type="TechStatus" status="unobtainable">ypBigConsulateJapanese</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAllies</effect>
-      <effect type="TechStatus" status="unobtainable">ypBigConsulateSPCChina</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesJones</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
