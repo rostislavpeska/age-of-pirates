@@ -6004,6 +6004,7 @@ void main(void)
 	rmCreateTrigger("CaesarTrainSOFF Plr" + pt);
 	rmCreateTrigger("Human Check Plr" + pt);
 	rmCreateTrigger("Activate Consulate Japanese" + pt);
+	rmCreateTrigger("Activate Consulate Korea" + pt);
 	rmCreateTrigger("Activate Consulate Chinese" + pt);
 	rmCreateTrigger("Activate Consulate Indians" + pt);
 	rmCreateTrigger("Activate Tortuga" + pt);
@@ -6446,6 +6447,8 @@ void main(void)
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japanese" + pt));
 	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea" + pt));
+	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Chinese" + pt));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Indians" + pt));
@@ -6470,6 +6473,30 @@ void main(void)
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
 	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOnJapanese");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+
+	rmSwitchToTrigger(rmTriggerID("Activate_Consulate_Korea" + pt));
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player", pt);
+	rmSetTriggerConditionParam("Civilization", "zpKoreans");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID", "cTechzpPickConsulateTechAvailable");
+	rmSetTriggerConditionParamInt("PlayerID", pt);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOnKorean");
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
