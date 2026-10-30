@@ -116,6 +116,18 @@ explicitly. `...OffPirates` disables Georgians/Bulgarians/Constantinopole;
 alternative patrons, never simultaneous, and each is gated on its own distinct
 big button. Nothing to reconcile - the mutual exclusion is already in the data.
 
+**This holds for AoP's own cards.** Vanilla and add-on cards are not in the sets.
+`zpIsPirateMap` turns them off at the start. Romania's Russian Allies and Chile's
+German Allies come back with a revolution; a shadow armed by `zpIsPirateMap`
+(`zpRevolution*PirateMap`) swaps each for its AoP clone. See
+`docs/consulate-system.md`, "Why a foreign card appears in a picker".
+
+Every map with Asian switchers has one per Asian civilization, Korea included
+(`Activate Consulate Korea`, civilization `zpKoreans`, set `zpTurnConsulateOnKorean`;
+on all 52 map files since 2026-10-30). A new map copies all of them. Each switcher
+gets its own `for (k=1; <= cNumberNonGaiaPlayers)` loop (owner 2026-10-30:
+"Consulates are in separate loops"); only Istanbul keeps all its triggers in one loop.
+
 ## Pick the right regional variant
 
 | Tech | Enables | Used by |
@@ -174,5 +186,12 @@ git show HEAD:randmaps/<map>.xs > "<SteamRandMaps>/zzbaseline.xs"
 python -m scripts.mapcheck zzbaseline ; python -m scripts.mapcheck <deployed-name>
 ```
 
-Keep repo and every game-root copy byte-identical, and preserve the map's line
-endings (`.xs` here are LF).
+Then the picker leak guard (every set, every map; `docs/consulate-system.md`, "Why a foreign card appears in a
+picker"):
+
+```bash
+python -m pytest scripts/mapcheck/tests/test_consulate_validation.py -q
+```
+
+Keep repo and every game-root copy identical in content, and preserve each
+file's line endings (the repo `.xs` are CRLF; some old game-folder copies are LF).

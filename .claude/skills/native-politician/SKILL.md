@@ -47,7 +47,10 @@ fallback every entry shares). No registration anywhere else.
 consulate tech: the set's own members `obtainable`, everybody else
 `unobtainable`. There are ~38 of them; **every set must name the new
 politician** (off in all but its own), otherwise a set fired later leaves
-him visible. A map fires its set from the consulate switcher triggers
+him visible. Vanilla and add-on cards are not in the sets: `zpIsPirateMap` turns
+them off at the start, and the two a revolution brings back are swapped for their
+AoP clones by shadows it arms (`docs/consulate-system.md`, "Why a foreign card
+appears in a picker"). A map fires its set from the consulate switcher triggers
 (`Activate <Faction><k>` -> `ZP Set Tech Status (XS)` status 2 -> `ZP Pick
 Consulate Tech`); see the `map-politician-triggers` skill for that family.
 A map-exclusive politician = his own set (clone the group's set, swap him
