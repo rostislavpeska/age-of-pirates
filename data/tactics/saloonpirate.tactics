@@ -115,6 +115,23 @@
         <maxrange>0.5</maxrange>
         <rate type="AbstractInfiniteCrate">1.0</rate>
     </action>
+    <action>
+      <name stringid="38128">CoverRangedAttack</name>
+      <type>Attack</type>
+      <attackaction>1</attackaction>
+      <rangedlogic>1</rangedlogic>
+      <anim>RangedAttack</anim>
+      <idleanim>Ranged_Idle</idleanim>
+      <active>0</active>
+      <maxheight>0</maxheight>
+      <accuracy>1.0</accuracy>
+      <trackrating>12</trackrating>
+      <projectile>InvisibleProjectile</projectile>
+      <impacteffect>effects\impacts\gun</impacteffect>
+      <minrange>2</minrange>
+      <rate type="Unit">1.0</rate>
+      <instantballistics>1</instantballistics>
+    </action>
     <tactic>Volley
         <action priority="100">BuildingAttack</action>
         <action priority="90">RangedAttack</action>
@@ -173,6 +190,7 @@
         <walkanim>Charge_walk</walkanim>
         <joganim>Charge_jog</joganim>
         <runanim>Charge_run</runanim>
+        <boredanim>Defend_bored</boredanim>
     </tactic>
     <tactic>Cover
         <action priority="100">CoverBuildingAttack</action>
@@ -214,5 +232,6 @@
         <walkanim>Charge_walk</walkanim>
         <joganim>Charge_jog</joganim>
         <runanim>Charge_run</runanim>
+        <boredanim>Cover_bored</boredanim>
     </tactic>
 </tactics>

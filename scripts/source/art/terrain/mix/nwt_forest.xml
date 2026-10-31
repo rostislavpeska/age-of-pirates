@@ -1,0 +1,9 @@
+<mix>
+  <title>Northwest Territory Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="7">nwterritory\ground_grass2_nwt</texture>
+    <texture weight="5">nwterritory\ground_grass4_nwt</texture>
+    <texture weight="3">nwterritory\ground_grass5_nwt</texture>
+  </paint>
+</mix>

@@ -228,7 +228,7 @@
     <instantballistics>1</instantballistics>
   </action>
   <action>
-    <name stringid="302012">ExtraHitPointsMusketeer</name>
+    <name stringid="502012">ExtraHitPointsMusketeer</name>
     <type>AutoRangedModify</type>
     <active>1</active>
     <maxrange>25</maxrange>

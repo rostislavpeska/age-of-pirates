@@ -1,0 +1,9 @@
+<mix>
+  <title>Rockies Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="5">rockies\ground05_roc</texture>
+    <texture weight="4">rockies\ground07_roc</texture>
+    <texture weight="4">rockies\ground06_roc</texture>
+  </paint>
+</mix>

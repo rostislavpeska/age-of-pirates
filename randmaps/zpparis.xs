@@ -87,10 +87,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "spcjesuit");
   
-		subCiv2=rmGetCivID("SPCbourbon");
-		rmEchoInfo("subCiv2 is SPCbourbon "+subCiv2);
+		subCiv2=rmGetCivID("Bourbon");
+		rmEchoInfo("subCiv2 is Bourbon "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "SPCbourbon");
+			rmSetSubCiv(2, "Bourbon");
 
         subCiv3=rmGetCivID("zpSansculottes");
 		rmEchoInfo("subCiv3 is zpSansculottes "+subCiv3);
@@ -396,7 +396,7 @@ void main(void)
 	//rmPlaceGroupingAtLoc(bastilleGrouping, 0, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4));
 	
 	rmSetNuggetDifficulty(297, 297);
-	int victoryGrouping1 = rmPlaceGroupingInstanceAtLoc(bastilleGrouping, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4), 0);
+	int victoryGrouping1 = rmPlaceGroupingInstanceAtLoc(bastilleGrouping, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4)-rmZMetersToFraction(1.0), 0);   // island 1 m south (Sep 2026)
 
     // Nothe Dame West
     int notredameGrouping = rmCreateGrouping("bridge2", "EU_island_Notre_Dame");
@@ -1857,6 +1857,39 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(fishID, playerEdgeConstraint);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
 
+	// AI CONSTRUCTION MARKERS (owner 2026-09-24, London 12.11's pattern) - zpAILondonConstrMarker (editor-only, Tracked,
+	// owned by the player so the AI's own query finds it) on every construction block (Empty Blocks above), one per player
+	// per block: the AI's forward base goes to the block on the other shore nearest its enemy (aipiraterules.xs
+	// pirateForwardBasePoint). Placed after every grouping instance the triggers read: no id moves.
+	int constrMark = rmCreateObjectDef("ai construction marker");
+	rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker", 1, 0.0);
+	rmSetObjectDefAllowOverlap(constrMark, true);
+	rmSetObjectDefMinDistance(constrMark, 0.0);
+	rmSetObjectDefMaxDistance(constrMark, 0.0);
+	for (i = 1; <= cNumberNonGaiaPlayers)
+	{
+		if (cNumberNonGaiaPlayers <= 2)
+		{
+			if (verticalVariation == 1)
+			{
+				rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ0);
+				rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ9);
+			}
+			else
+			{
+				rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ9);
+				rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ0);
+			}
+		}
+		else
+		{
+			rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ0);
+			rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ9);
+			rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ0);
+			rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ9);
+		}
+	}
+
 	//********************* GENERAL SETUP *************************
 
 	// ____________________ LOCAL MERCENARIES ____________________
@@ -1871,28 +1904,28 @@ rmSetStatusText("",0.70);
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302018);
-	rmObjectiveScreenSetGoal(302021);
-	rmObjectiveAdd(302022, 302023, true, true, true); // General objective REV
+	rmObjectiveScreenSetTitle(502018);
+	rmObjectiveScreenSetGoal(502021);
+	rmObjectiveAdd(502022, 502023, true, true, true); // General objective REV
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302061, 302023, true, true, true); // General objective ROY
+	rmObjectiveAdd(502061, 502023, true, true, true); // General objective ROY
 	rmObjectiveSetTeam(2, 2);
-	rmObjectiveAdd(302237, 302238, false, true, true); // Secondary objective REV
+	rmObjectiveAdd(502237, 502238, false, true, true); // Secondary objective REV
 	rmObjectiveSetTeam(3, 1);
-	rmObjectiveAdd(302239, 302240, false, true, true); // Secondary objective ROY
+	rmObjectiveAdd(502239, 502240, false, true, true); // Secondary objective ROY
 	rmObjectiveSetTeam(4, 2);
 
-	/*rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
+	/*rmObjectiveAdd(502024, 502023, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(3, 1);
-	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court ROY
+	rmObjectiveAdd(502024, 502023, true, true, true); // Royal Court ROY
 	rmObjectiveSetTeam(4, 2);
-	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall REV
+	rmObjectiveAdd(502025, 502023, true, true, true); // City Hall REV
 	rmObjectiveSetTeam(5, 1);
-	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall ROY
+	rmObjectiveAdd(502025, 502023, true, true, true); // City Hall ROY
 	rmObjectiveSetTeam(6, 2);
-	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille REV
+	rmObjectiveAdd(502026, 502023, true, true, true); // Bastille REV
 	rmObjectiveSetTeam(7, 1);
-	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
+	rmObjectiveAdd(502026, 502023, true, true, true); // Bastille ROY
 	rmObjectiveSetTeam(8, 2);*/
 
 	// ************************* TRIGGERS ******************************
@@ -1969,7 +2002,7 @@ rmSetStatusText("",0.70);
 	vector courtLoc = rmGetUnitPosition(flag4ID);
 	vector cityHallLoc = rmGetUnitPosition(flag5ID);
 
-	string guardianUnit1 = "zpNatRoyalMusketeer";
+	string guardianUnit1 = "deNatRoyalMusketeer";
 	string guardianUnit2 = "zpNatRevolutionary";
 
 
@@ -1986,6 +2019,10 @@ rmSetStatusText("",0.70);
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpForbidRevolutions"); // No normal revolutions on this map
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1999,6 +2036,10 @@ rmSetStatusText("",0.70);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpBonusBourbon"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpExtendedBourbonsSPC");
 		rmSetTriggerEffectParamInt("Status",2);
 		if (rmGetPlayerTeam(i) == 0) {
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2037,10 +2078,10 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("Civilization","SPCBourbon");
+	rmSetTriggerEffectParam("Civilization","Bourbon");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("StringID","301968");
+	rmSetTriggerEffectParam("StringID","501968");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2417,9 +2458,9 @@ rmSetStatusText("",0.70);
 		rmSetTriggerEffectParamInt("Stop",0);
 
 		if (i==1)
-			rmSetTriggerEffectParam("Msg","{302140}"); // Counter Revolutionaries
+			rmSetTriggerEffectParam("Msg","{502140}"); // Counter Revolutionaries
 		else
-			rmSetTriggerEffectParam("Msg","{302141}"); // Counter Revolutionaries
+			rmSetTriggerEffectParam("Msg","{502141}"); // Counter Revolutionaries
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
@@ -2509,6 +2550,32 @@ rmSetStatusText("",0.70);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate Korea"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","zpKoreans");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2675,6 +2742,8 @@ rmSetStatusText("",0.70);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
 	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
+	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
@@ -2704,7 +2773,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","zpRevParis");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301916");
+	rmSetTriggerEffectParam("StringID","501916");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -2728,7 +2797,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","DERevFrance");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301925");
+	rmSetTriggerEffectParam("StringID","501925");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -2752,7 +2821,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","DERevFranceNE");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301926");
+	rmSetTriggerEffectParam("StringID","501926");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -3463,6 +3532,15 @@ rmSetStatusText("",0.70);
 		rmSetTriggerLoop(false);
 	}
 	}
+
+	// Cliff unloading on: vanilla trigger effect added by the 2026-10-20 game update
+	rmCreateTrigger("Cliff Unloading");
+	rmAddTriggerEffect("Scenario: Enable Cliff Unloading");
+	rmSetTriggerEffectParam("Enable", "true");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 
 	// Testing

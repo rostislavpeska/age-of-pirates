@@ -2701,6 +2701,15 @@ minInterval 60
       researchBuildingPUID = cUnitTypeChurch;
    }
 
+   if (researchBuildingPUID == -1)
+   {
+      researchBuildingPUID = getUnit(cUnitTypedeChurchDanish);
+   }
+   if (researchBuildingPUID == -1)
+   {
+      researchBuildingPUID = getUnit(cUnitTypedeChurchPolish);
+   }
+
    // Quit if there is no Church / Cathedral.
    if (kbUnitCount(cMyID, researchBuildingPUID, cUnitStateAlive) < 1)
    {
@@ -3963,6 +3972,42 @@ minInterval 60
    {
       xsDisableSelf();
    }
+}
+
+
+// AssertiveWall: Added from DE
+
+//==============================================================================
+// customsHouseUpgradeMonitor
+//==============================================================================
+rule customsHouseUpgradeMonitor
+inactive
+minInterval 60
+{
+   if (cvOkToResearchEconomicUpgrades == false)
+   {
+      return;
+   }
+   debugTechs("--- Running rule customsHouseUpgradeMonitor ---");
+
+   if (gDefensivelyOverrun == true)
+   {
+      debugTechs("We're defensively overrun, don't research these techs.");
+      return;
+   }
+
+   if (kbTechGetStatus(cTechDETollRegister) == cTechStatusObtainable)
+   {
+      researchSimpleTech(cTechDETollRegister, cUnitTypedeCustomsHouse);
+      return;
+   }
+   if (kbTechGetStatus(cTechDEBorsen) == cTechStatusObtainable)
+   {
+      researchSimpleTech(cTechDEBorsen, cUnitTypedeCustomsHouse);
+      return;
+   }
+   debugTechs("We've gotten all technologies we want from the Customs House, disabling rule.");
+   xsDisableRule("customsHouseUpgradeMonitor");
 }
 
 /*

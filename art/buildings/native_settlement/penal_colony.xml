@@ -66,8 +66,8 @@
 				</decal>
 			</variationid4>
 			<variationid5>
-				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\penal_colony\prison_prop1_Model</file>
+				<assetreference type="CompositeModel">
+					<file>buildings\native_settlement\penal_colony\prison_prop1_x12</file>
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>

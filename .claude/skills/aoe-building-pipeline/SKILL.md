@@ -1,0 +1,101 @@
+---
+name: aoe-building-pipeline
+description: "AoP entry point for building export, materials and deployment. Start here in Age of Pirates; applies this mod's profile and St Pauls/Basilica evidence, then uses aoe3de-building-export for the shared workflow."
+---
+
+# AoP building profile
+
+Read [aoe3de-building-export](../aoe3de-building-export/SKILL.md) for the shared rig, export, conversion and texture procedure and [aoe-xml](../aoe-xml/SKILL.md) for this mod's XML rules. Those are the maintained implementations; this skill adds only AoP configuration and worked examples.
+
+For staged UV acceptance use [blender-uv-workflow](../blender-uv-workflow/SKILL.md).
+For authoring, use [blender-architecture](../blender-architecture/SKILL.md) and [blender-architecture-texturing](../blender-architecture-texturing/SKILL.md) in this repository.
+For the Korean set's lattice, hanji, roof coloring and age-specific finish recipes, use [korean-architecture](../korean-architecture/SKILL.md).
+Follow its [pipeline order](../blender-architecture-texturing/references/pipeline-order.md) on
+every building: declare the texture budget early, accept clean/material charts before sharing,
+then AO variants and final packing. Runtime bakes use owner-frozen UVs. Korean TC,
+2026-09-25..28: the v15 roof and v19 window bakes were made first, then a budget overflow
+(122%) forced the conjoin/repack that invalidated them (journal `2026-09-28-claude-15`).
+
+**Texture ceilings (this project; owner 2026-09-30, m334-m336).** Before UV planning, the owner agrees a
+class for each model:
+
+- **small**: 1x2048. Barracks-size and smaller; the house is small (m336).
+- **medium**: 1x2048 plus one 1024 complement for the transparent / cutout objects. Town Center and Market
+  (m335). Only medium has the complement.
+- **large**: 2x2048. Cathedral, basilica, the bigger wonders.
+
+The class is stored per model in `<consumer-root>/scripts/havok/gr2_lint_profiles.json`, as `texture_budget {class,
+confirmed_by}`. A class without `confirmed_by` is only proposed, and it FAILS the export with "class not
+confirmed by the owner".
+
+A separate mod (one source of truth: its content never enters AoP) keeps its building profiles in its own repository
+and runs `gr2_lint.py --profiles <its file> --profile <name> art/buildings/<folder>/`. Its file says
+`"extends": "gr2_lint_profiles.json"`: it inherits the owner's classes and the DLL tool route, it can never redefine
+`texture_budget`, and its relative paths (owner message store, shared-dependency evidence, UV contracts) resolve from
+its own repository.
+
+`gr2_lint.py` enforces two gates:
+
+An explicit owner-approved exception may use per-model `texture_budget.ceiling`
+and `ceiling_authorization` instead of inventing a class label. The latter pins a
+`recorded_owner_chat` JSON artifact by SHA256 with purpose `texture_budget_ceiling`,
+the exact quote and source citation, explicit model list, and identical page-size
+list. Preserve the question and existing-budget context when the answer grants an
+additional page. Wrong or malformed scope, missing approval and changed evidence
+fail closed. Global classes, density floors, and shared-resource validation remain
+unchanged; every additional state/page is still counted. This is a recorded human
+authorization, not automatic authentication of arbitrary metadata.
+
+- **`texture_budget`:** counts the model's own texture sets, one per BaseColor, from the `.material` and the
+  DDT headers. Shared vanilla atlases are listed, not counted; that counting rule is proposed, for the owner
+  to confirm.
+- **`texel_density`:** the universal
+  [UV density floor](../blender-architecture-texturing/references/uv-density-floor.md).
+
+The shipped Korean TC fails both gates. It has a third set (matc 512, the hidden faces), and that page puts
+9.6 % of the model's area below 60 t/u.
+For Painter work use [substance-painter-remote](../substance-painter-remote/SKILL.md).
+For player colour (Details map, lighter BaseColor under the mask) use [aoe3de-player-colour](../aoe3de-player-colour/SKILL.md).
+
+**State models.** What a construction or damaged model keeps, removes and adds is decided by
+[aoe3de-building-states](../aoe3de-building-states/SKILL.md) s.4-5, not by an export recipe. Read it before the
+first part is kept or removed: copying an earlier building's export recipe does not carry those rules (Korean Dock
+2026-10-11: window frames kept without their walls, no roof frame; journal 2026-10-11-claude-09). Gate every
+construction model with `logic_qa.py` (floating = 0) from
+[blender-overlap-cleanup](../blender-overlap-cleanup/SKILL.md); `gr2_lint` does not check floating parts.
+
+**Every check exits non-zero on failure, and the chain stops on that exit code** (`set -e` or `&&`; never `;`, never
+a grep for printed text). A QA step that prints FAIL and exits 0 lets the next step publish or install the failed
+model (journal 2026-10-11-claude-10, 2026-10-10-claude-civic-pair-06, 2026-10-09-claude-10).
+
+**Every model delivery ships its test bed** in the same change
+([aoe3de-model-test-unit](../aoe3de-model-test-unit/SKILL.md); owner 2026-10-11: "test bed must always be part of
+the package").
+
+For new destructible architecture, use
+[aoe3de-destructible-building](../aoe3de-destructible-building/SKILL.md) for the
+upfront modeling constraints and intact/fractured handoff.
+
+For destructible buildings, use [havok-destruction](../havok-destruction/SKILL.md)
+alongside the intact-model workflow. The Korean Town Center donor adaptation is
+user-confirmed in game (2026-09-25): preserve the donor body graph, replace the
+fractured visible geometry and refit collision hulls. Use that skill's measured
+frames and GR2 binding/export checks; the static FBX converter recipe is not the
+damaged-model pipeline. A physics experiment can use simple existing materials
+while final architecture textures and UVs remain deferred.
+
+Apply the shared skill's local-prerequisite checks before application work. AoP's
+installed converter configuration does not travel with exported skills. For GR2
+structural evidence in this repository, use `<consumer-root>/scripts/havok/gr2_dump.py` with its
+reader dependencies under the `gr2-granny-edit` skill; do not count the converter
+wrapper's header check as structural validation. A consumer of the public building
+skill must supply an equivalent inspection capability.
+
+- Read [rig/export evidence](references/rig-export.md) for the Basilica reference, scale and St Pauls geometry/layer failures.
+- Read [textures/XML profile](references/textures-xml.md) for the tested material packing, runtime paths and sound/decal references.
+- For Asian civilization building research, read [Asian routing and donor evidence](references/asian-building-research.md) before choosing age models or a destruction donor.
+- For Asian UV/texture authoring, use the [measured vanilla atlas evidence](references/asian-uv-atlas-evidence.md) and the reusable chart-joining procedure. Coherent facade/roof charts and shared trim precede packing. The Korean per-construction-face unique layouts were rejected despite passing density checks; do not repeat that shortcut.
+- Before hidden-face optimization, read [intact/damaged vanilla surface measurements](references/asian-surface-visibility-evidence.md). Vanilla intact shells omit backs that damaged meshes supply separately; retained undersides do not uniformly use much lower texture density. Use per-state visibility certificates rather than a downward-normal delete rule.
+- During building blockout, load the active anim component's ground decal in Blender at its declared world dimensions. Use the [decal scale-reference procedure](references/asian-building-research.md#ground-decals-as-scale-references); retain it in a separate reference scene and exclude it from model export and AO bakes.
+- Use helpers under `.claude/skills/aoe3de-building-export/scripts/` from the repository root; there is no separate AoP implementation of those scripts.
+- Before deployment, follow [mod-deploy-check](../mod-deploy-check/SKILL.md); game operation follows [game-startup](../game-startup/SKILL.md).

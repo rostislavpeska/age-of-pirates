@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AoE3 anim viewer</title>
+<style>
+  :root { --bg: #1b1d21; --panel: #23262c; --line: #363a42; --fg: #d8dbe0; --dim: #8b919b; --acc: #e0b44a; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+    font: 12px/1.45 ui-monospace, Consolas, monospace; }
+  #app { display: flex; height: 100%; }
+  #stage { position: relative; flex: 1; min-width: 0; }
+  #view { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+  #status { position: absolute; left: 12px; top: 10px; color: var(--acc); }
+  #hud { position: absolute; left: 12px; bottom: 10px; right: 12px; color: var(--dim); pointer-events: none; }
+  aside { width: 380px; overflow: auto; background: var(--panel); border-left: 1px solid var(--line); padding: 10px 12px; }
+  aside section { border-top: 1px solid var(--line); padding: 8px 0; }
+  aside header { padding-bottom: 6px; }
+  #subject { color: var(--acc); font-weight: bold; word-break: break-all; }
+  #bundleid, .note, #weights, #unitmsg { color: var(--dim); }
+  label { margin-right: 8px; white-space: nowrap; }
+  select, input, button { background: #15171a; color: var(--fg); border: 1px solid var(--line); border-radius: 3px;
+    font: inherit; padding: 2px 4px; }
+  button { cursor: pointer; }
+  select#anim, select#variant { max-width: 100%; }
+  #scrubwrap { position: relative; margin-top: 14px; }
+  #ticks { position: absolute; left: 0; right: 0; top: -12px; height: 10px; }
+  .tick { position: absolute; width: 2px; height: 10px; margin-left: -1px; background: var(--dim); }
+  .tick.main { top: 0; } .tick.child { top: 5px; height: 5px; }
+  .tick.t-attack { background: #ff5a4a; } .tick.t-footstepleft, .tick.t-footstepright { background: #6ad0ff; }
+  .tick.t-specificsoundset { background: #b88cff; } .tick.t-particles { background: #ffd34a; }
+  #scrub { width: 100%; }
+  #readout { white-space: pre-wrap; color: var(--dim); margin-top: 4px; }
+  #badge { margin-left: 6px; letter-spacing: 1px; color: var(--dim); }
+  table { border-collapse: collapse; } td { padding: 1px 4px; vertical-align: top; }
+  .f-M { color: #7fd47f; } .f-A { color: #e0b44a; } .f-U { color: #ff7a6a; } .f-H { color: #b88cff; }
+  #warnings { padding-left: 16px; margin: 4px 0; } #warnings li { margin: 2px 0; word-break: break-word; }
+  body.job aside, body.job #hud { display: none; }
+  body.job #view { width: auto; height: auto; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="view"></canvas>
+    <div id="status"></div>
+    <div id="hud">drag: turn - wheel: zoom - space: play/pause - arrows: one key - [ ]: previous / next tag. Lighting
+      guesses: Shading section; M/A/U/H per stage: Fidelity tab. Sheets, videos, compare: anim_viewer.py render / video /
+      compare.</div>
+  </div>
+  <aside>
+    <header>
+      <div><span id="subject"></span><span id="badge" title="fidelity per stage: M measured, A approximated, U unknown, H hypothesis"></span></div>
+      <div id="bundleid"></div>
+    </header>
+    <section>
+      <label>Unit <input id="unitq" type="text" size="16" placeholder="proto name"></label>
+      <button id="unitgo">find</button>
+      <select id="unitlist"></select> <button id="unitbuild">load</button>
+      <div id="unitmsg"></div>
+    </section>
+    <section id="logic"></section>
+    <section>
+      <div><label>Anim <select id="anim"></select></label></div>
+      <div><label>Variant <select id="variant"></select></label> <span id="weights"></span></div>
+      <div><label title="horse/rider pairing: a labelled hypothesis">Rider sync <select id="sync"></select></label>
+        <label title="B-spline is the contract; knots-linear is a debug view">Curves <select id="method">
+          <option value="bspline">B-spline</option><option value="knots">knots-linear (debug)</option></select></label></div>
+    </section>
+    <section>
+      <button id="play">Pause</button> <button id="prev">&lt; key</button> <button id="next">key &gt;</button>
+      <label>speed <select id="speed"><option value="0.1">0.1x</option><option value="0.25">0.25x</option>
+        <option value="0.5">0.5x</option><option value="1" selected>1x</option><option value="2">2x</option></select></label>
+      <label><input type="checkbox" id="loop" checked> loop</label>
+      <div id="scrubwrap"><div id="ticks"></div><input type="range" id="scrub" min="0" max="10000" value="0"></div>
+      <div id="readout"></div>
+    </section>
+    <section>
+      <label>Camera <select id="cam"><option value="game">game (pitch 47)</option><option value="free">free orbit</option></select></label>
+      <label title="the game's FOV is unknown until calibration">FOV <input type="range" id="fov" min="10" max="70" value="30"> <span id="fovval"></span></label>
+      <button id="reset">reset</button> <button id="export" title="PNG of this frame into the server's output folder">export PNG</button>
+      <div id="exportmsg" class="note"></div>
+      <div><label><input type="checkbox" id="bones"> bones</label> <label><input type="checkbox" id="grid" checked> grid (1 unit)</label>
+        <label>colour <select id="pc"></select></label></div>
+    </section>
+    <section id="shading"></section>
+    <section><div id="notes"></div></section>
+    <section><details><summary>Warnings (<span id="wcount">0</span>)</summary><ul id="warnings"></ul></details></section>
+    <section><details><summary>Fidelity</summary><table id="fidelity"></table></details></section>
+  </aside>
+</div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapinfo details="300687" displayNameID="300686" loadDetails="300688" largeMapName = "zpphilippines"
+<mapinfo details="500687" displayNameID="500686" loadDetails="500688" largeMapName = "zpphilippines"
     imagepath="ui\random_map\philippines\philippines_mini" cannotReplace="" loadBackground="ui\random_map\philippines\philippines_map">
     <loadss>ui\random_map\philippines\philippines_01</loadss>
     <loadss>ui\random_map\philippines\philippines_02</loadss>

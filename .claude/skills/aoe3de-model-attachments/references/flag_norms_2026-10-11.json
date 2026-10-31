@@ -1,0 +1,39 @@
+{
+ "models_read": 1829,
+ "models_failed": 200,
+ "flag_bones": 464,
+ "no_pole": 10,
+ "norms": {
+  "civ": {
+   "n": 313,
+   "median": 1.378,
+   "p10": 0.989,
+   "p90": 1.633,
+   "min": 0.194,
+   "max": 2.772
+  },
+  "garrison": {
+   "n": 141,
+   "median": 2.399,
+   "p10": 0.905,
+   "p90": 2.932,
+   "min": -5.044,
+   "max": 3.992
+  }
+ },
+ "two_flag_models": 108,
+ "two_flag_examples": [
+  "agra_fort_age2.gr2",
+  "agra_fort_age3.gr2",
+  "agra_fort_age4.gr2",
+  "az_tc_1.gr2",
+  "az_tc_2.gr2",
+  "az_tc_4.gr2",
+  "az_war_hut_age1.gr2",
+  "az_war_hut_age2.gr2",
+  "az_war_hut_age4.gr2",
+  "china_dock_age2.gr2",
+  "china_dock_age4.gr2",
+  "china_towncenter_age2.gr2"
+ ]
+}

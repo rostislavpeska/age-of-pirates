@@ -1,0 +1,21 @@
+{
+  "proto": "House",
+  "control": "House",
+  "stem": "000_unitbench_ctl",
+  "seed": 4242,
+  "players": 2,
+  "verdict": "PASS",
+  "units": 7,
+  "counts": {
+    "TownCenter": 2,
+    "House": 2,
+    "AIStart": 3
+  },
+  "notes": [
+    "positions unreadable in this save (parser heuristic); verdict by proto names",
+    "counts: subject 2, control 2 (expected 1 each)"
+  ],
+  "geo": {},
+  "screenshot": "C:\\Users\\TIGO\\Games\\Age of Empires 3 DE\\76561198347905238\\mods\\local\\age-of-pirates\\sandbox\\census\\samples\\bench\\ub_unitbench_ctl_s4242_generated.png",
+  "save": "C:\\Users\\TIGO\\Games\\Age of Empires 3 DE\\76561198347905238\\mods\\local\\age-of-pirates\\sandbox\\census\\samples\\bench\\ub_unitbench_ctl_s4242.age3Yscn"
+}

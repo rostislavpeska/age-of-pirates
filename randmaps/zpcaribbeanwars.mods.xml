@@ -4,5 +4,11 @@
 		<unit name="zpSPCFixedGun">
 			<animfile>buildings\fixed_gun\fixed_gun_pirate.xml</animfile>
 		</unit>
+		<unit name="zpNativeHousePirateSmall">
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNativeHousePirateSmallFlat">
+			<flag>NotSelectable</flag>
+		</unit>
 	</protomods>
 </mods>

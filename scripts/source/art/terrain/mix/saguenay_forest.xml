@@ -1,0 +1,20 @@
+<mix>
+  <title>Saguenay Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.4">
+    <texture weight="1">saguenay\groundforest_sag</texture>
+    <texture weight="3">Saguenay\ground3_sag</texture>
+    <texture weight="3">saguenay\ground4_sag</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.7" emptyweight="85" posoffset="0.90">
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group2</model>
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_bush1</model>
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group1</model>
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="3" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="0.5" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_lake_rock1</model>
+    <model weight="0.5" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_lake_rock3</model>
+  </objects>
+</mix>

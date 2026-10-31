@@ -1,0 +1,9 @@
+<mix>
+  <title>Africa Rainforest Grass Dry</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">AfricaRainforest\ground_grass3_afriRainforest</texture>
+    <texture weight="3">AfricaRainforest\ground_grass4_afriRainforest</texture>
+    <texture weight="4">AfricaRainforest\ground_dirt1_afriRainforest</texture>
+  </paint>
+</mix>

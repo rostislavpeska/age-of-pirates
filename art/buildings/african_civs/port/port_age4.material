@@ -1,0 +1,150 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\port_age4_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_mata_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\desertport_age4_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_mata_Details">
+      </texture>
+   </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\port_age4_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_matb_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_matb_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\desertport_age4_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_matb_Masks">
+      </texture>
+      <texture name="Details" override="buildings\african_civs\port\textures\port_age4_matb_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\Props_Additional\Asians_Accessories\Textures\Asians_accessories_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\Props_Additional\Asians_Accessories\Textures\Asians_accessories_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\Props_Additional\Asians_Accessories\Textures\Asians_accessories_mata_Masks">
+      </texture>
+    </parameters>
+     <parameters variant="1">
+      <texture name="BaseColor" override="homecity\home_city_props\Props_Additional\Asians_Accessories\Textures\Asians_accessories_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\Props_Additional\Asians_Accessories\Textures\Asians_accessories_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\Props_Additional\Asians_Accessories\Textures\Asians_accessories_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\Props_Additional\dock_props\atlas\dock_props_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\Props_Additional\dock_props\atlas\dock_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\Props_Additional\dock_props\atlas\dock_props_mata_Masks">
+      </texture>
+    </parameters>
+   <parameters variant="1">
+      <texture name="BaseColor" override="homecity\home_city_props\Props_Additional\dock_props\atlas\dock_props_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\Props_Additional\dock_props\atlas\dock_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\Props_Additional\dock_props\atlas\dock_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,20 @@
+<mix>
+  <title>Araucania North Grass B</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.5" octaves="3" persistence=".55">
+    <texture weight="4">araucania\ground09_ara</texture>
+    <texture weight="8">araucania\ground08_ara</texture>
+    <texture weight="4">araucania\ground07_ara</texture>
+    <texture weight="4">araucania\ground07_b_ara</texture>
+    <texture weight="3">araucania\ground10_ara</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="2" scalemin="0.6" scalemax="1.2">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="2" scalemin="0.6" scalemax="1.2">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="2" scalemin="0.6" scalemax="1.1">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="2" scalemin="0.6" scalemax="1.1">terrain\underbrush\underbrush_forest_grass2</model>
+    <model weight="2" scalemin="0.6" scalemax="1.2">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="2" scalemin="0.6" scalemax="1.2">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="2" scalemin="0.6" scalemax="1.2">terrain\underbrush\underbrush_forest_group4</model>
+  </objects>
+</mix>

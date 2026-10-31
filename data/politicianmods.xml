@@ -159,7 +159,18 @@
   </zpconsulatehansaeast>
   <zpconsulatepiratesbeauregard portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/beauregard.png">
   </zpconsulatepiratesbeauregard>
-  
+  <zpconsulatecossackbohdan portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_bohdan.png">
+  </zpconsulatecossackbohdan>
+  <zpconsulatecossackmazepa portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_mazepa.png">
+  </zpconsulatecossackmazepa>
+  <zpconsulatecossackpetro portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_petro.png">
+  </zpconsulatecossackpetro>
+  <zpconsulatesultanatephanar portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_phanar.png"> 
+  </zpconsulatesultanatephanar>
+  <zpconsulatesultanatesufi portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_sufi.png"> 
+  </zpconsulatesultanatesufi>
+  <zpconsulatesultanatecorsairs portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_corsairs.png"> 
+  </zpconsulatesultanatecorsairs>
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>
   <zpconsulaterevlafayette portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">
@@ -167,4 +178,36 @@
   <zpconsulaterevnapoleon portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_napoleon.png">
   </zpconsulaterevnapoleon>
 
+  <zpconsulateestatehannover portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/george_iii.png">
+  </zpconsulateestatehannover>
+  <zpconsulateestatejesuit portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/brebuf.png">
+  </zpconsulateestatejesuit>
+  <zpconsulateestatepenalcolony portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/olgenthorpe.png">
+  </zpconsulateestatepenalcolony>
+  <zpconsulateestatewestern portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/daniel_bone.png">
+  </zpconsulateestatewestern>
+  <zpconsulateestatesansculottes portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">
+  </zpconsulateestatesansculottes>
+  <zpconsulateestatejewish portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/solomon.png">
+  </zpconsulateestatejewish>
+  <zpconsulatepiratesjones portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/johnpauljones.png">
+  </zpconsulatepiratesjones>
+  <zpconsulateparliamentcromwell portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cromwell.png">
+  </zpconsulateparliamentcromwell>
+  <zpconsulateparliamentinchiquin portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/inchiquin.png">
+  </zpconsulateparliamentinchiquin>
+  <zpconsulateparliamentmyddelton portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/myddelton.png">
+  </zpconsulateparliamentmyddelton>
+  <zpbigconsulatespcchina portraitfilename="ui\ingame\politicians\consulate_chinese" portraitfilenamewpf="resources/images/icons/politicians/consulate_chinese.png">
+  </zpbigconsulatespcchina>
+  <zpbigconsulatespcchinaclone portraitfilename="ui\ingame\politicians\consulate_chinese" portraitfilenamewpf="resources/images/icons/politicians/consulate_chinese.png">
+  </zpbigconsulatespcchinaclone>
+  <zpbigconsulateamericans portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_americans.png">
+  </zpbigconsulateamericans>
+  <zpbigconsulateamericansclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_americans.png">
+  </zpbigconsulateamericansclone>
+  <zpbigconsulatejapaneseallieskorea portraitfilename="ui\ingame\politicians\consulate_japanese" portraitfilenamewpf="resources/images/icons/politicians/consulate_japanese.png">
+  </zpbigconsulatejapaneseallieskorea>
+  <zpbigconsulatejapaneseallies portraitfilename="ui\ingame\politicians\consulate_japanese" portraitfilenamewpf="resources/images/icons/politicians/consulate_japanese.png">
+  </zpbigconsulatejapaneseallies>
 </politicianmods>

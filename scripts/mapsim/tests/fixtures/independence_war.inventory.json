@@ -1,0 +1,538 @@
+{
+ "map_size": "480/600/720/792 m ladder (PlayerNum 1/3/5/7)",
+ "sea_level": "rmSetSeaLevel(1.0) at line 62; terrain initialized as water via rmTerrainInitialize(\"water\") at line 71, so any area with base height >= ~1.0 creates land",
+ "water_and_lighting": "rmSetLightingSet(\"NewEngland_Skirmish\") line 66; rmSetSeaType(\"ZP New England Calm\") line 69; rmEnableLocalWater(false) line 70; rmTerrainInitialize(\"water\") line 71; rmSetMapType: \"grass\",\"water\",\"default\",\"newEngland\",\"piratehistoricalmap\" lines 72-76; rmSetMapElevationHeightBlend(1) line 59",
+ "areas": [
+  {
+   "name": "riverArea1",
+   "line": 366,
+   "loc_x": "0.5",
+   "loc_z": "0.4",
+   "count": 1
+  },
+  {
+   "name": "centralLake",
+   "line": 383,
+   "loc_x": "0.5",
+   "loc_z": "0.3",
+   "count": 1
+  },
+  {
+   "name": "playerIslandNorth",
+   "line": 403,
+   "loc_x": "0.8",
+   "loc_z": "0.8",
+   "count": 1
+  },
+  {
+   "name": "playerIslandSouth",
+   "line": 420,
+   "loc_x": "0.2",
+   "loc_z": "0.8",
+   "count": 1
+  },
+  {
+   "name": "bridgeDockEast",
+   "line": 439,
+   "loc_x": "0.5733333333333334",
+   "loc_z": "0.88",
+   "count": 1
+  },
+  {
+   "name": "bridgeDockWest",
+   "line": 451,
+   "loc_x": "0.42666666666666664",
+   "loc_z": "0.88",
+   "count": 1
+  },
+  {
+   "name": "shoreLine1",
+   "line": 471,
+   "loc_x": "0.59",
+   "loc_z": "0.74",
+   "count": 1
+  },
+  {
+   "name": "shoreLine2",
+   "line": 484,
+   "loc_x": "0.41000000000000003",
+   "loc_z": "0.64",
+   "count": 1
+  },
+  {
+   "name": "shoreLine3",
+   "line": 497,
+   "loc_x": "0.69",
+   "loc_z": "0.5",
+   "count": 1
+  },
+  {
+   "name": "shoreLine4",
+   "line": 510,
+   "loc_x": "0.31000000000000005",
+   "loc_z": "0.5",
+   "count": 1
+  },
+  {
+   "name": "playerHillsNorth",
+   "line": 526,
+   "loc_x": "0.8",
+   "loc_z": "0.8",
+   "count": 1
+  },
+  {
+   "name": "playerHillsSouth",
+   "line": 545,
+   "loc_x": "0.2",
+   "loc_z": "0.8",
+   "count": 1
+  },
+  {
+   "name": "pirate_site1",
+   "line": 596,
+   "loc_x": "?conv(xsVectorGetX(rmGetUnitPosition(...)))",
+   "loc_z": "?conv(xsVectorGetZ(rmGetUnitPosition(...)))",
+   "count": 1
+  },
+  {
+   "name": "pirate_site2",
+   "line": 608,
+   "loc_x": "?conv(xsVectorGetX(rmGetUnitPosition(...)))",
+   "loc_z": "?conv(xsVectorGetZ(rmGetUnitPosition(...)))",
+   "count": 1
+  },
+  {
+   "name": "estateValley1",
+   "line": 768,
+   "loc_x": "0.29",
+   "loc_z": "0.85",
+   "count": 1
+  },
+  {
+   "name": "estateValley2",
+   "line": 779,
+   "loc_x": "0.135",
+   "loc_z": "0.645",
+   "count": 1
+  },
+  {
+   "name": "estateValley3",
+   "line": 790,
+   "loc_x": "0.13",
+   "loc_z": "0.375",
+   "count": 1
+  },
+  {
+   "name": "estateValley4",
+   "line": 801,
+   "loc_x": "0.71",
+   "loc_z": "0.85",
+   "count": 1
+  },
+  {
+   "name": "estateValley5",
+   "line": 812,
+   "loc_x": "0.865",
+   "loc_z": "0.645",
+   "count": 1
+  },
+  {
+   "name": "estateValley6",
+   "line": 823,
+   "loc_x": "0.87",
+   "loc_z": "0.375",
+   "count": 1
+  },
+  {
+   "name": "westforest",
+   "line": 1238,
+   "loc_x": "None",
+   "loc_z": "None",
+   "count": 52
+  },
+  {
+   "name": "eastForest",
+   "line": 1277,
+   "loc_x": "None",
+   "loc_z": "None",
+   "count": 52
+  }
+ ],
+ "object_defs": [
+  {
+   "name": "bridge stopper",
+   "line": 246,
+   "items": [
+    "zpSPCWaterSpawnPoint"
+   ]
+  },
+  {
+   "name": "sockets to dock Trade Posts1",
+   "line": 255,
+   "items": [
+    "zpTradingPostCaptureNavalLone"
+   ]
+  },
+  {
+   "name": "sockets to dock Trade Posts2",
+   "line": 260,
+   "items": [
+    "zpTradingPostCaptureNavalLone"
+   ]
+  },
+  {
+   "name": "sockets to dock Trade Posts3",
+   "line": 265,
+   "items": [
+    "zpTradingPostCaptureNavalLone"
+   ]
+  },
+  {
+   "name": "sockets to dock Trade Posts4",
+   "line": 270,
+   "items": [
+    "zpTradingPostCaptureNavalLone"
+   ]
+  },
+  {
+   "name": "nuggets to dock Trade Posts1",
+   "line": 275,
+   "items": [
+    "Nugget"
+   ]
+  },
+  {
+   "name": "nuggets to dock Trade Posts2",
+   "line": 280,
+   "items": [
+    "Nugget"
+   ]
+  },
+  {
+   "name": "nuggets to dock Trade Posts3",
+   "line": 285,
+   "items": [
+    "Nugget"
+   ]
+  },
+  {
+   "name": "nuggets to dock Trade Posts4",
+   "line": 290,
+   "items": [
+    "Nugget"
+   ]
+  },
+  {
+   "name": "bridge",
+   "line": 341,
+   "items": []
+  },
+  {
+   "name": "pirate controller 1",
+   "line": 571,
+   "items": [
+    "zpSPCWaterSpawnPoint"
+   ]
+  },
+  {
+   "name": "pirate controller 2",
+   "line": 576,
+   "items": [
+    "zpSPCWaterSpawnPoint"
+   ]
+  },
+  {
+   "name": "pirate city 1",
+   "line": 626,
+   "items": []
+  },
+  {
+   "name": "pirate city 2",
+   "line": 633,
+   "items": []
+  },
+  {
+   "name": "pirate water flag 1",
+   "line": 642,
+   "items": [
+    "zpPirateWaterSpawnFlag1"
+   ]
+  },
+  {
+   "name": "pirate water flag 2",
+   "line": 651,
+   "items": [
+    "zpPirateWaterSpawnFlag2"
+   ]
+  },
+  {
+   "name": "pirate port 1",
+   "line": 662,
+   "items": []
+  },
+  {
+   "name": "pirate port 2",
+   "line": 670,
+   "items": []
+  },
+  {
+   "name": "haudenosaunee village w1",
+   "line": 686,
+   "items": []
+  },
+  {
+   "name": "haudenosaunee village e1",
+   "line": 691,
+   "items": []
+  },
+  {
+   "name": "haudenosaunee village w2",
+   "line": 697,
+   "items": []
+  },
+  {
+   "name": "haudenosaunee village e2",
+   "line": 702,
+   "items": []
+  },
+  {
+   "name": "haudenosaunee village w3",
+   "line": 709,
+   "items": []
+  },
+  {
+   "name": "haudenosaunee village e3",
+   "line": 714,
+   "items": []
+  },
+  {
+   "name": "estate west upper",
+   "line": 838,
+   "items": []
+  },
+  {
+   "name": "estate west middle",
+   "line": 843,
+   "items": []
+  },
+  {
+   "name": "estate west lower",
+   "line": 848,
+   "items": []
+  },
+  {
+   "name": "estate east upper",
+   "line": 853,
+   "items": []
+  },
+  {
+   "name": "estate east middle",
+   "line": 858,
+   "items": []
+  },
+  {
+   "name": "estate east lower",
+   "line": 863,
+   "items": []
+  },
+  {
+   "name": "player fort",
+   "line": 981,
+   "items": []
+  },
+  {
+   "name": "startingUnits",
+   "line": 1115,
+   "items": []
+  },
+  {
+   "name": "player TC",
+   "line": 1117,
+   "items": [
+    "TownCenter"
+   ]
+  },
+  {
+   "name": "player mine",
+   "line": 1132,
+   "items": [
+    "mine"
+   ]
+  },
+  {
+   "name": "player deer",
+   "line": 1138,
+   "items": [
+    "deer"
+   ]
+  },
+  {
+   "name": "player trees",
+   "line": 1145,
+   "items": [
+    "TreeNewEngland"
+   ]
+  },
+  {
+   "name": "colony ship 1",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 2",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 3",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 4",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 5",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 6",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 7",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "colony ship 8",
+   "line": 1173,
+   "items": [
+    "HomeCityWaterSpawnFlag"
+   ]
+  },
+  {
+   "name": "random mine",
+   "line": 1209,
+   "items": [
+    "Mine"
+   ]
+  },
+  {
+   "name": "berries80",
+   "line": 1311,
+   "items": [
+    "berrybush"
+   ]
+  },
+  {
+   "name": "berries 280",
+   "line": 1323,
+   "items": [
+    "berrybush"
+   ]
+  },
+  {
+   "name": "western deer herd",
+   "line": 1336,
+   "items": [
+    "deer"
+   ]
+  },
+  {
+   "name": "eastern deer herd",
+   "line": 1355,
+   "items": [
+    "deer"
+   ]
+  },
+  {
+   "name": "nugget easy",
+   "line": 1379,
+   "items": [
+    "Nugget"
+   ]
+  },
+  {
+   "name": "nugget medium",
+   "line": 1395,
+   "items": [
+    "Nugget"
+   ]
+  },
+  {
+   "name": "fish 1",
+   "line": 1413,
+   "items": [
+    "FishCod"
+   ]
+  },
+  {
+   "name": "whale",
+   "line": 1424,
+   "items": [
+    "MinkeWhale"
+   ]
+  },
+  {
+   "name": "village tree",
+   "line": 1433,
+   "items": [
+    "TreeNewEngland"
+   ]
+  }
+ ],
+ "trade_route": {
+  "waypoints": [
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.7) - always (line 301)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.5) - always (line 302)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 0.4) - always (line 303)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 0.3) - always (line 304)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.3) - always (line 305)",
+   "if (cNumberNonGaiaPlayers < 3): (0.41, 0.3) then (0.41, 0.4) (lines 307-308)",
+   "else if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6): (0.43, 0.3) then (0.43, 0.4) (lines 311-312)",
+   "else (i.e. 3-4 or 7+ players): (0.4, 0.3) then (0.4, 0.4) (lines 315-316)",
+   "if (cNumberNonGaiaPlayers < 7): (0.5, 0.5) (line 319)",
+   "nested if (cNumberNonGaiaPlayers < 5): (0.5, 0.7) (line 321)"
+  ],
+  "notes": "tradeRouteID = rmCreateTradeRoute() line 290. Docked defs via rmSetObjectDefTradeRouteID (lines 291-299): stopperID, loneSocketID1-4, loneNuggetID1-4. Built with rmBuildTradeRoute(tradeRouteID, \"river_trail\") line 325. rmGetTradeRouteWayPoint reads: socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5) line 328, consumed by rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1) line 329 (comment: without the stopper the islands won't spawn). Trigger 'Starting Techs' sets Trade Route 1 to Level 1 (non-geometry)."
+ },
+ "player_placement": "rmSetTeamSpacingModifier(0.6) line 851; float teamStartLoc = rmRandFloat(0.0, 1.0) line 853. Branch 1 - if (cNumberTeams > 2): rmSetPlacementSection(0.73, 0.27) line 856; rmSetTeamSpacingModifier(0.75) line 857; rmPlacePlayersCircular(0.38, 0.42, 0) line 858. Branch 2 - else if (PlayerNum == 2): if teamStartLoc > 0.5 then rmPlacePlayer(1, 0.85, 0.55) + rmPlacePlayer(2, 0.15, 0.55) (lines 864-865) else rmPlacePlayer(1, 0.15, 0.55) + rmPlacePlayer(2, 0.85, 0.55) (lines 868-869). Branch 3 - else (4 players in 2 teams): if teamStartLoc > 0.5: rmSetPlacementTeam(0) + rmSetPlacementSection(0.73, 0.90) + rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0)); rmSetPlacementTeam(1) + rmSetPlacementSection(0.10, 0.27) + rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0)) (lines 876-881); else same with sections swapped: team 0 gets (0.10, 0.27), team 1 gets (0.73, 0.90) (lines 885-890). TCs then placed at rmPlayerLocXFraction(i)/rmPlayerLocZFraction(i) (line 951).",
+ "other_geometry_calls": [
+  "rmSetMapElevationHeightBlend(1) - line 59",
+  "rmSetWorldCircleConstraint(true) - line 81 (corner constraint; several areas opt out via rmSetAreaObeyWorldCircleConstraint(false))",
+  "rmAllocateSubCivs(2); rmSetSubCiv(0, 'NatPirates'); rmSetSubCiv(1, 'zpColonialEstate') - lines 37-48",
+  "include 'mercenaries.xs', 'ypAsianInclude.xs', 'ypKOTHInclude.xs' (lines 21-23); chooseMercs() line 78",
+  "Helper vars: bridgeX = 0.5, bridgeZ = 0.88 (lines 336-337); estateW1x=0.317 estateW1z=0.762, estateW2x=0.218 estateW2z=0.650, estateW3x=0.180 estateW3z=0.506, estateE1x=0.683 estateE1z=0.762, estateE2x=0.782 estateE2z=0.650, estateE3x=0.820 estateE3z=0.506 (lines 706-711); estateOrder = rmRandInt(1,6) (line 675) picks resource sequence reused on both banks",
+  "rmSetNuggetDifficulty(101, 101) line 828 (harbour guardian nuggets); rmSetNuggetDifficulty(1, 2) line 1161; rmSetNuggetDifficulty(3, 4) line 1177",
+  "rmSetAreaWarnFailure(false): estateValley1-6 (lines 723/734/745/756/767/778), westforest+i (line 1019), eastForest+i (line 1058)",
+  "Closest-point machinery: rmAddClosestPointConstraint + rmFindClosestPointVector(anchor, rmXFractionToMeters(1.0)) + rmClearClosestPointConstraints used for pirate flags (633-647), pirate ports (652-665), colony ships (964-981)",
+  "Classes defined: player, classHill, classPatch, starting settlement, startingUnit, classForest, importantItem, natives, classCliff, secrets, nuggets, center, classPlateau, great lake, deep lake, startingResource, mountains, portSite (lines 84-101); patch (352), center redefined (355)",
+  "Constraint defs (name = kind, target, distance, line): playerEdgeConstraint = pie 0.5,0.5 rmXFractionToMeters(0.0)..rmXFractionToMeters(0.45) 0-360deg L107; longPlayerEdgeConstraint = pie ..0.42 L108; avoidWater5 = terrain 'Land' false 5.0 L110; avoidWater10 = terrain 'Land' false 10.0 L111; avoidWater20 = terrain 'Land' false 20.0 L112; avoidWater30 = terrain 'Land' false 30.0 L113; centerConstraint = class center 30.0 L114; centerConstraintFar = class center 60.0 L115; circleConstraint = pie 0..rmZFractionToMeters(0.47) L116; avoidLand = terrain 'Water' false 20.0 L117; Northward/Southward/Eastward/Westward = pies radius rmZFractionToMeters(0.5), sectors 315-135/135-315/45-225/225-45 deg L120-123; landHalf = box 0.0,0.45,1.0,1.0 L128 (defined, never applied); westLand = box 0.0,0.45,0.5,1.0 L129; eastLand = box 0.5,0.45,1.0,1.0 L130",
+  "Constraint defs cont.: playerConstraintForest = class player 20.0 L133; longPlayerConstraint = class player 70.0 L134; mediumPlayerConstraint = class player 40.0 L135; playerConstraint = class player 45.0 L136; shortPlayerConstraint = class player 20.0 L137; smallMapPlayerConstraint = class player 70.0 L138; avoidStartingResources = class startingResource 8.0 L139; avoidStartingResourcesMin = 2.0 L140; avoidStartingResourcesShort = 4.0 L141; flagEdgeConstraint = pie 0..rmXFractionToMeters(0.48) L142; forestObjConstraint = type 'all' 6.0 L145; forestConstraint = class classForest 20.0 L146; avoidResource = type 'resource' 20.0 L147; avoidCoin = type 'Mine' 30.0 L148; shortAvoidCoin = type 'gold' 10.0 L149; avoidStartResource = type 'resource' 10.0 L150; avoidMountains = class mountains 20.0 L151",
+  "Constraint defs cont.: avoidImpassableLand = terrain 'Land' false 6.0 L154; shortAvoidImpassableLand = 2.0 L155; longAvoidImpassableLand = 10.0 L156; hillConstraint = class classHill 10.0 L157; shortHillConstraint = 5.0 L158; patchConstraint = class classPatch 5.0 L159; avoidCliffs = class classCliff 30.0 L160; avoidWater4 = terrain 'Land' false 4.0 L161; nearShore = terrainMax 'water' false 20.0 L162; avoidStartingUnits = class startingUnit 45.0 L165; shortAvoidStartingUnits = 10.0 L166; avoidImportantItem = class importantItem 10.0 L167; avoidNativesShort = class natives 8.0 L168; avoidNatives = class natives 30.0 L169; avoidSecrets = class secrets 20.0 L170; avoidNuggets = class nuggets 60.0 L171; deerConstraint = type 'deer' 40.0 L172; shortNuggetConstraint = type 'AbstractNugget' 7.0 L173; shortDeerConstraint = type 'deer' 20.0 L174; avoidSheep = type 'sheep' 55.0 L175; flagLand = terrain 'land' true 11.0 L176; avoidAll = type 'all' 6.0 L179",
+  "Constraint defs cont. (trade-route family): avoidTradeRoute = tradeRouteDistance 7.0 L185; shortAvoidTradeRoute = 3.0 L186; avoidTradeRouteFar = 8.0 L187; avoidTradeRouteFar2 = 10.0 L188; avoidTradeRouteFar3 = 12.0 L189; avoidTradeSockets = type 'sockettraderoute' 8.0 L190; farAvoidTradeSockets = type 'sockettraderoute' 12.0 L191; fishLand = terrain 'land' true 6.0 L192; avoidFish1 = type fish1 10.0 L193; HCspawnLand = terrain 'land' true 12.0 L194; ObjectAvoidTradeRoute = tradeRouteDistance 7.0 L195; whaleVsWhaleID = type 'MinkeWhale' 50.0 L196; whaleLand = terrain 'land' true 35.0 L197; avoidTradeRouteMin = tradeRouteDistance 5.0 L219. NOTE comment lines 182-184: trade-route constraints deliberately NOT applied to player islands/patches (route is built before continents)",
+  "Constraint defs cont.: greatLakesConstraint = class 'great lake' 0.1 L200; farGreatLakesConstraint = 20.0 L201; portOnShore = terrain 'land' true 3.5 L202; avoidDeepWater = class 'deep lake' 20.0 L203; avoidSocket = type 'SocketTradeRoute' 10.0 L204; avoidSocketMedium = type 'Socket' 30.0 L205; avoidSocketLong = type 'Socket' 40.0 L206; flagVsFlag = type 'HomeCityWaterSpawnFlag' 30 L207; ferryOnShore = terrainMax 'water' true 22.0 L208; avoidPirates = type 'zpSocketPirates' 45.0 L211; avoidEstate = type 'zpNativeHouseWesternVillageB' 30.0 L212; avoidTownCenterFar = type 'townCenter' 30.0 L213; avoidTradeSocket = type 'SocketTradeRoute' 40.0 L214; avoidTradeSocketShort = 25.0 L215; avoidTradeRouteSocketMin = type 'SocketTradeRoute' 25.0 L216; avoidTradeSocketFar = 40.0 L217; avoidTradeSocketFar2 = 45.0 L218; avoidTownCenter = type 'townCenter' 25.0 L220; avoidTownCenterShort = type 'townCenter' 6.0 L221; avoidKOTH = type 'ypKingsHill' 12.0 L224; avoidWall = type 'AbstractWall' 5.0 L227; avoidBridge = type 'zpBridgeFace' 15.0 L228; avoidBridgeLong = type 'zpBridgeFace' 70.0 L229",
+  "Constraint defs cont. (dansil block): cityConstraint = box 0.2,0.0,0.8,1.0 L350; avoidPatch = class patch 22.0 L353; avoidPlateauShort = class classPlateau 1.0 L354; avoidCenter = class center 6.0 L356; circleConstraint2 = pie 0..rmZFractionToMeters(0.48) L357",
+  "Position readbacks feeding geometry: pirateControllerLoc1/2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(pirateControllerID1/2, 0)) lines 574-575; TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i)) line 952",
+  "File tail (lines 1222-1993) is trigger definitions only - no geometry calls; final rmSetStatusText(0.99) line 1991, main() ends line 1993"
+ ]
+}

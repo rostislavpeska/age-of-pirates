@@ -1,0 +1,144 @@
+---
+name: aoe-xml
+description: "Edit AoP runtime and data XML with the required line endings, references and XMB rebuilds. Use before changing game records, animfiles, materials or sound XML."
+---
+
+# aoe-xml - how XML works in this mod (mechanics only, no game design)
+
+Two file families. Everything else follows from which one you are touching.
+
+| family | where | what the engine reads | after every edit |
+|---|---|---|---|
+| **data** | `data/**/*.xml` (protomods, techtreemods, protounitcommandmods, abilities/, tactics/, nuggetmods, civmods, traderoute*, strings/...) | the compiled **`.xml.xmb` twin** when one exists beside the source (it does for all 22 `data/*.xml`); a file with no twin is compiled from source at load | `python .claude/skills/aoe3de-bar-archives/scripts/xmbc.py check data/X.xml` then `build`; strings: `python scripts/tools/stringsync.py --build` (14 languages) |
+| **runtime** | `art/**/*.xml` (animfiles), `*.material`, `sound/*_snds.xml`, `*.lgt` | the plain XML, parsed at run time | nothing to compile - but it MUST be CRLF (below); never create a twin here |
+
+Both families load once per process: **every change needs a full game restart** (the `game-startup` skill; never kill the game).
+
+## Invariants (each one has cost a day)
+
+1. **CRLF, always, for the runtime family.** An LF-only animfile/material/_snds is silently ignored: proto loads, unit places, decal draws, model never renders, no error (Tower of London 2026-09-17). The Write tool and `open(..., 'w')` produce LF - `python scripts/tools/check_art_eol.py --fix` converts; the project hook does it on every Write/Edit; `.gitattributes` keeps checkouts CRLF. "Model does not appear" -> line endings first, gr2 last.
+2. **Never copy an archive asset into the mod.** Textures, models, decals, particles, sounds the game ships are referenced by their archive path (`homecity\british\british_tol\textures\british_tol_matA_BaseColor`, `buildings\fort\west_fort_decal`). Only content the mod made is a file here. Every byte ships in the zip.
+3. **Identifier text is one line.** XMB keeps element text verbatim: `<name>\n  arctic1\n</name>` compiles to `'arctic1\n  '` and silently falls back to the default (traderoutedefs 2026-09). Names, ids, paths: opening tag, text, closing tag on ONE line.
+4. **Twins are the truth.** An edited `data/*.xml` whose `.xml.xmb` was not rebuilt is inert; commit both. Art/sound XML never gets a twin (it would mask the plain file).
+5. **English strings are the source.** `data/strings/english/stringmods.xml` (NEW STRINGS block, ids 500001+) -> `stringsync.py --build` writes every language's `.xml.xmb`; forgetting it ships missing names to 14 languages.
+6. **Paths in XML are archive-style**: backslashes, relative to `art/` (models/textures/decals/animfiles, no extension) or `data/` (tactics, placement rules, icons under `data/wpfg`: `resources\art\...png`). In Bash heredocs backslashes collapse - write such files with the Write tool / `chr(92)`.
+7. **Unit names are exact, case included.** Copy a proto name from `data/protomods.xml` or the live protoy, never type it from memory. `zpDryDock` in `randmaps/zpistanbulb.mods.xml` (the proto is `zpDrydock`) silently removed the AI constant `cUnitTypezpDrydock` on Istanbul, and every AI died at match start (2026-09-26 to 2026-10-05). Tech names the same. `python scripts/tools/check_unit_names.py` checks the `protomods` / `techtreemods` rewrites (a vanilla rewrite spelled with another case is a NEW entry; an entry without `id` / `<dbid>` must rewrite something that exists), every unit and tech in the per-map `.mods.xml` files (a tech there also warns: it can work but is not reliable - flip it from the map's setup tech), and every `cUnitTypezp...` / `cTechzp...` in the AI; it runs inside `xmlcheck.py` and on every push (`.github/workflows/unit_names.yml`).
+8. **A retexture copies its source's `<materialdef>`, per model and submaterial, read from the vanilla `.material`.** The def decides what the BaseColor alpha does: only `*cutout*` (and `speedtree\*`) cut cards out; `default`, `default_doublesided`, `destructible` ignore the alpha and draw the card as a solid square. Vanilla varies it within one unit (Changdao age 0 `default_doublesided`, ages 1-2 `default_doublesided_cutout`), and alpha alone does not tell it (269 vanilla unit materials carry cut-out alpha under a def that ignores it: a cutting def would cut their model away). One def typed for a whole unit drew the Gakgung Archer's cards solid in two game tests (2026-10-09). Generators read the def from the source material (`bartool cat Art/<model>.material.XMB`), never a constant; `xmlcheck.py` fails a material whose alpha use differs from its source (`scripts/material_source.py`; `--explain <model>` lists the vanilla defs).
+9. **One vanilla building proto, many civ and age skins: the look lives in the vanilla animfile, never in a test bed.** Every civ's Town Center is the one vanilla `TownCenter` proto. Its look per civ and age is a `Culture` -> `Tech` branch of the vanilla `art/buildings/town_center/town_center.xml` (`<none>` / `<colonialize>` / `<industrialize>`, each a `BuildingCompletion`). The `zzTEST<Name>` bench loads its own animfile directly, with no civ or age logic, so a correct bench proves nothing about age-up. A new age look is a new tier in the civ's branch of the vanilla animfile (Koreans: `tools/korean_visuals.py` `UPGRADES` in the Korean add-on, which generates the file). Reuse the vanilla generic construction stages and swap only p100. Before saying "installed", check the game path: proto -> vanilla animfile -> civ branch -> tier for that age. A Korean Industrial TC shipped only as a bench, and an agent "fixed" the bench instead of the branch, while the game kept the Colonial look in the Industrial Age (owner 2026-10-23, korean-buildings-blender #58: "Korean TC XML is just test bed!!! Vanilla needs civ upgrade. there is only one TC with multiople civ based skins").
+
+## Placement convention (unless the user says otherwise)
+
+New records go at the **end of the real content, directly above the file's first long TEST / commented block**,
+ids continuing the real sequence. Never beside an older related record.
+
+| file | insert above | id / key |
+|---|---|---|
+| `data/protomods.xml` | `<!--TEST AND TEMPORARY CONTENT-->` | `id` = `dbid` = last real id + 1 (21175 today) |
+| `data/techtreemods.xml` | `<!--TEST TECHS-->` | techs are keyed by `name` |
+| `data/strings/english/stringmods.xml` | the Christmas/test comment block at the end of NEW STRINGS | `_locid` = last real id + 1 (503439 today); display, editor, rollover as separate ids |
+| `data/protounitcommandmods.xml`, `abilities/abilitymods.xml`, `randomnamemods.xml`, `nuggetmods.xml` ... | end of file, before any trailing comment block | keyed by `name` (abilitymods: the lower-case proto name as the element) |
+| `sound/<proto lowercase>_snds.xml` | own file | file name = lower-case proto name |
+| `art/<area>/<name>/` | own folder: `<name>.xml` + `<name>.material` (+ `.gr2`, `textures/` only for mod-made textures) | animfile path in the proto = `<area>\<name>\<name>.xml` |
+
+**Top-of-file exceptions exist**: records the rest of the file depends on (ownership/probe techs, shadow techs that many later records reference, `mergeMode='replace'` overrides of vanilla ids) sit at the top and the file's own header comment says so. Read the first 60 lines of the file before inserting; ask when the user has not said where a record belongs and it is not a plain addition.
+
+Overriding a vanilla record: same id, `mergeMode='replace'` (protomods has one: `CommunityPlaza`). Never re-declare a vanilla id without it.
+
+## Nuggets: land and naval are two different things (nuggetmods.xml)
+
+A `<nugget>` record is picked by the map script's `rmSetNuggetDifficulty(d, d)` latch at the moment a placeholder
+unit is placed (baked in a grouping or an object def). Two families, placed on different spots and never
+interchangeable:
+
+| | land nugget | naval (water) nugget |
+|---|---|---|
+| record | no `<waternugget>` | `<waternugget>true</waternugget>` |
+| `<nuggetunit>` | `zpNuggetInvisible`, `Nugget*`, `NuggetCapturableBuildingBig`... | `zpNuggetInvisibleWater`, `ypNuggetBoat`, `ypNuggetSeaLionRock`... |
+| placeholder in the script / grouping | `Nugget` (object def) or the baked land placeholder | object def: `ypNuggetBoat` (zpcaribbeanwars, zpindependencewar, zpIceland - SEA maps only: an rmRiverCreate river floats no collideable hull, London 2026-09-18); baked in a grouping: `zpNuggetInvisibleWater` (Istanbul's forts / guild) |
+| where it may stand | on land (a plateau, a block cell, inside walls) | on OPEN water - clear of a pier grouping's terrain box and of the lane (London 2026-09-18: 18 m in front of the pier = on the box edge, nothing spawned) |
+| guardians | `<guardian>` or `<guardianunit><unit>` land units - guardian clones (`deGuardian*`, `zpGuardian*`) OR plain aggressive units (`zpNuggetIstanbul` 512 = 9 x `zpNatJanissary`, `zpNuggetTowerOfLondon` 605 = 10 x `zpNatRedcoat`) | ships (`zpGuardianCorsairGalley`, `dePrivateerGuardian`) |
+| texts | copy `rolloverstringid` / `applystringid` from the record you clone - never new strings for a variant | same |
+
+A land record latched onto a water placeholder (or the reverse) spawns nothing, silently. The map type must be
+listed in the record (`<maptype>piratehistoricalmap</maptype>` for the pirate historical maps). Query a baked
+nugget's unit in the script by the record's `<nuggetunit>`, never by the authored placeholder proto (Istanbul's
+law). New records: `data/nuggetmods.xml` only loads at game start - XMB rebuild plus a restart before a test.
+
+## Unit actions, stances and abilities move together
+
+A unit attack lives in three places, and an ability in a fourth:
+
+| Where | What |
+|---|---|
+| `data/protomods.xml` `<protoaction>` | the numbers: damage, range, rof, bonuses |
+| `data/tactics/<unit>.tactics` `<action>` | how it fires: `type` (`Attack` fires in place; `BroadsideAttack` turns the ship side-on), `anim` (must exist in the animfile and carry a `<tag type="Attack">`), `<active>0</active>` = off until a tech or power switches it on |
+| the same tactics, every `<tactic>` stance | which actions the stance uses |
+| `data/abilities/abilitymods.xml` (+ vanilla `abilities.xml`) | ability buttons; each power in `powers.xml` / `powermods.xml` fires the action named in its `<unitaction>` (PowerBroadside -> BroadsideAttack, PowerLongRange -> LongRangeAttack) |
+
+Removing an action means removing it from all four. Switching one off (`active 0`) depends on the power:
+**PowerLongRange** fires an inactive `LongRangeAttack` (vanilla gunboat: `LongRangeAttack` active 0). **PowerBroadside
+does NOT**: every vanilla PowerBroadside ship (frigate, fuchuan, war junk) keeps `BroadsideAttack` active, low stance
+priority (1 against RangedAttack 100) so it only fires through the ability. The battleship's inactive broadside is
+switched on by techs, not by a power. A tech turns an action on permanently with `subtype="ActionEnable"
+action="..."` (DEHCPortugueseBattleshipCard: Heal). `xmlcheck.py` fails an ability whose action the unit's tactics no
+longer define (Treasure Ship 2026-09-27: broadside stripped from the tactics while PowerBroadside stayed in
+abilitymods) and a PowerBroadside whose `BroadsideAttack`-type action is `active 0` (Treasure Ship 2026-09-27: the
+button did nothing in game).
+
+## Abilities and random names are separate files: a new proto inherits neither
+
+Neither is part of the proto. Both files are keyed by the proto's name, so a unit copied or cloned from a vanilla
+unit starts with no ability buttons and no personal name, even when its protomods record, tactics and `Abilities`
+command are complete. Koreans add-on, owner's test 2026-10-09: the monk (a Japanese monk copy) had an empty
+Abilities grid and was called by its display name.
+
+| File (vanilla original) | Key | Entry - one line each: XMB keeps element text verbatim |
+|---|---|---|
+| `data/abilities/abilitymods.xml` (`Data/abilities/abilities.xml`) | an element named by the **lower-case** proto name | `<zpmonkkorean><ability>ypPowerGuardianStun<rof>60</rof></ability>...</zpmonkkorean>`; optional `<tech>` (listed only once the tech is active), `<castonself>true</castonself>`, `<alwaysdisabledingrid>true</alwaysdisabledingrid>` (a passive shown in the grid), `<forceshowrollover>true</forceshowrollover>` |
+| `data/randomnamemods.xml` (`Data/randomnames.xml`) | `<protounit>` text = the proto name, exact case | `<protounit>zpMonkKorean<civ>Default<title>600028</title>...</civ></protounit>`; each `<title>` is the string id of one personal name; `<civ name>` per civ or `Default`; the proto needs flag `HeroName` or `HeroName2` |
+
+For a new unit made from another one:
+1. Read the source unit's entries: `bartool.py cat Data/abilities/abilities.xml.XMB` (`<sourcelowercase>`) and
+   `bartool.py cat Data/randomnames.xml.XMB` (`<protounit>Source`).
+2. Copy them under the new name, in the same order. Drop each ability the new unit lacks: a power's `<unitaction>`
+   must be an action in the new tactics (`xmlcheck` fails a dead one). New personal names are new strings.
+3. Rebuild both `.xmb` twins (they are data XML), then restart the game.
+
+An `Abilities` command without an entry is not by itself a bug: 63 vanilla units have one (Crossbowman, Priest,
+Envoy ...). So `xmlcheck` cannot flag a missing entry; follow the list above whenever a unit is copied.
+A separate add-on mod (`../age-of-pirates-koreans`) ships its own `data/abilities/abilitymods.xml` and
+`data/randomnamemods.xml` with only its entries, as with its protomods. These two files were first shipped this way
+on 2026-10-09: until a game test confirms them, check in game that AoP's abilities (Broadside on the pirate ships)
+and AoP's names survive with the add-on loaded.
+
+## Verification ladder (do all of it before a game test)
+
+```
+python .claude/skills/aoe-xml/scripts/xmlcheck.py [paths...]     # the one command
+```
+It checks: well-formed XML; CRLF on the runtime family; twin freshness (source newer than `.xmb`); every reference
+resolves - animfile, tactics, icons, gr2/textures/decals/pkfx (mod folder or archive index), string ids (mod or
+vanilla range), `_snds` present for every mod proto and every soundset it names defined (mod or vanilla soundsets);
+proto/string ids unique and above the vanilla range; every ability's action exists in the unit's tactics;
+`stringsync` audit. Exit 1 on any ERROR.
+Then: `xmbc.py build` for the twins you touched, `stringsync.py --build` if strings changed, full game restart,
+and the **`rm-unit-bench`** skill for a new unit/building (offline pre-flight + one-unit map + census + screenshot).
+
+## References (read the one you need)
+
+- `references/data-xml.md` - PROVEN PATTERNS first when the user describes a behaviour ("works like the X building"):
+  find the mechanism by grepping its tags, never by guessing a unit name - e.g. the capturable-building flag
+  (team-colour banner while gaia, owner's flag once captured: `civflagoverride` + `ApplyFlagOverrideIfGaia`).
+  Also: the data files: record families, which twin, id ranges, string sections, mergeMode, the
+  sections of [the shared XML reference](../aoe3de-reference/references/data_xml_guide.md)
+  to read for attribute semantics. AoP-specific placement/nugget/map-override
+  observations remain in `docs/data_xml_guide.md`.
+- `references/art-xml.md` - animfile grammar (components, anims, attachments, logic types, decal, materialvariant),
+  `.material` grammar and texture profile, `_snds.xml` grammar and generation rules, path resolution table.
+
+## Related skills
+
+`bar-extract` (read vanilla, compile XMB), `rm-unit-bench` (see it in game), `mod-deploy-check` (release audit),
+`gr2-granny-edit` / `aoe-building-pipeline` (models and textures), the recipes: `extended-native`, `native-politician`,
+`native-ability-minify`. Separate `add-unit`, `add-building` and `add-tech` packages
+do not currently exist; use this skill and the relevant existing recipe instead.

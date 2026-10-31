@@ -1,0 +1,12 @@
+<mix>
+  <title>Test Mix</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">carolinas\Underwater1</texture>
+    <texture weight="1">carolinas\Underwater2</texture>
+    <texture weight="2">carolinas\Underwater3</texture>
+    <texture weight="4">caribbean\seafloor_coral0_crb</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.2" octaves="5" persistence="0.4" emptyweight="35" posoffset="0.5">
+  </objects>
+</mix>

@@ -1,0 +1,12 @@
+{
+  "verdict": "PASS",
+  "counts": {
+    "TownCenter": 2,
+    "House": 1,
+    "zpNatInuitHarpooner": 1,
+    "AIStart": 3
+  },
+  "notes": [
+    "positions unreadable in this save (parser heuristic); verdict by proto names"
+  ]
+}

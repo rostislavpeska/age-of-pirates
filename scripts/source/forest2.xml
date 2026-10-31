@@ -1,0 +1,868 @@
+<foresttypes>
+  <forest name="Borneo Forest" iconname="ui\editor\forestAmazonRain" floor="Borneo\ground_forest_borneo" density="0.26" clumpiness="0.6">
+    <protounit>ypTreeBorneo</protounit>
+    <underbrushobj prob="1.0">UnderbrushBorneo</underbrushobj>
+  </forest>
+  <forest name="Borneo Palm Forest" iconname="ui\editor\forestAmazonRain" floor="" density="0.26" clumpiness="0.6">
+    <protounit>ypTreeBorneoPalm</protounit>
+    <underbrushobj prob="1.0">UnderbrushBorneo</underbrushobj>
+  </forest>
+  <forest name="Borneo Canopy Forest" iconname="ui\editor\forestAmazonRain" floor="Borneo\ground_forest_borneo" density="0.26" clumpiness="0.6">
+    <protounit>ypTreeBorneoCanopy</protounit>
+    <underbrushobj prob="1.0">UnderbrushBorneo</underbrushobj>
+  </forest>
+  <forest name="Coastal Japan Forest" iconname="ui\editor\forestCarolinaMarsh" floor="coastal_japan\ground_forest_co_japan" floormix="coastal_japan_forest" density="0.25" clumpiness="0.1">
+    <protounit>yptreecoastaljapan</protounit>
+    <underbrushobj prob="0.9">UnderbrushCoastalJapan</underbrushobj>
+  </forest>
+  <forest name="Deccan Forest" iconname="ui\editor\forestAshoka" floor="deccan\ground_forest_deccan" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeDeccan</protounit>
+    <underbrushobj prob="1.0">underbrushdeccan</underbrushobj>
+  </forest>
+  <forest name="Ashoka Forest" iconname="ui\editor\forestAshoka" floormix="deccan_grass_a" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeAshoka</protounit>
+    <underbrushobj prob="0.5">underbrush_deccan</underbrushobj>
+  </forest>
+  <forest name="Eucalyptus Forest" iconname="ui\editor\forestEucal" floormix="deccan_grass_a" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.5">underbrush_deccan</underbrushobj>
+  </forest>
+  <forest name="Bamboo Forest" iconname="ui\editor\forest_bamboo" floor="Yellow_river\forest_yellow_riv" floormix="yellow_river_forest" density="1.0" clumpiness="1.0">
+    <protounit>ypTreeBamboo</protounit>
+    <underbrushobj prob="1">UnderbrushYellowRiver</underbrushobj>
+  </forest>
+  <forest name="Ginkgo Forest" iconname="ui\editor\forest_Ginkgo" floormix="yellow_river_forest" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeGinkgo</protounit>
+  </forest>
+  <forest name="Yellow River Forest" iconname="ui\editor\forest_bamboo" floor="Yellow_river\forest_yellow_riv" floormix="yellow_river_forest" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeYellowRiver</protounit>
+    <underbrushobj prob="1">UnderbrushYellowRiver</underbrushobj>
+  </forest>
+  <forest name="Mongolian Forest" iconname="ui\editor\forestAshoka" floor="" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeMongolia</protounit>
+    <underbrushobj prob="1">UnderbrushMongolia</underbrushobj>
+  </forest>
+  <forest name="Himalayas Forest" iconname="ui\editor\forestHemlock" floor="himalayas\ground_dirt5_himal" floormix="himalayas_forest" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeHimalayas</protounit>
+    <underbrushobj prob="0.8">UnderbrushHimalayas</underbrushobj>
+  </forest>
+  <forest name="Saxaul Forest" iconname="ui\editor\forestSaxaul" floor="" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeSaxaul</protounit>
+    <underbrushobj prob="1">UnderbrushMongolia</underbrushobj>
+  </forest>
+  <forest name="Mongolian Fir Forest" iconname="ui\editor\forestMongolianFir" floor="" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="1">UnderbrushMongolia</underbrushobj>
+  </forest>
+  <forest name="Ceylon Forest" iconname="ui\editor\forestBorneoPalm" floor="ceylon\ground_grass2_ceylon" floormix="ceylon_grass_a" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeCeylon</protounit>
+    <underbrushobj prob="1.0">UnderbrushCeylon</underbrushobj>
+  </forest>
+  <forest name="African Forest" iconname="ui\editor\forestAmazonRain" floor="Africa\ground3_afr" density="0.25" clumpiness="0.5">
+    <protounit>TreeAfrica</protounit>
+  </forest>
+  <forest name="East African Forest" iconname="ui\editor\forestAshoka" floor="" density="0.25" clumpiness="0.5">
+    <protounit>TreeTexasDirt</protounit>
+    <protounit>TreeTexasDirt</protounit>
+    <protounit>TreeTexasDirt</protounit>
+    <protounit>TreePolyepis</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="1">UnderbrushYellowRiver</underbrushobj>
+  </forest>
+  <forest name="Acacia Forest" iconname="ui\editor\forestAshoka" floor="" density="0.25" clumpiness="0.5">
+    <protounit>ypTreeJapanesePine</protounit>
+    <protounit>ypTreeJapanesePine</protounit>
+    <protounit>ypTreeJapanesePine</protounit>
+    <protounit>ypTreeJapanesePine</protounit>
+    <protounit>ypTreeJapanesePine</protounit>
+    <protounit>ypTreeMongolia</protounit>
+    <underbrushobj prob="1">UnderbrushMongolia</underbrushobj>
+  </forest>
+  <forest name="z23 African Jungle" iconname="ui\editor\forestAmazonRain" floormix="" density="0.9" clumpiness="0.7">
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.9">UnderbrushBorneo</underbrushobj>
+  </forest>
+  <forest name="z24 African Forest" iconname="ui\editor\forestAmazonRain" floormix="" density="0.9" clumpiness="0.6">
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrassGreen</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z25 African Savannah Forest" iconname="ui\editor\forestMadrone" floormix="" density="0.6" clumpiness="0.9">
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeSonora</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.5">underbrushgreatplains</underbrushobj>
+  </forest>
+  <forest name="z26 African Savannah" iconname="ui\editor\forestGreatPlainsgrass" floormix="" density="1.0" clumpiness="0.0">
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.1">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z27 South African Desert" iconname="ui\editor\forestsanora" floormix="" density="0.1" clumpiness="0.3">
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.4">UnderbrushDesert</underbrushobj>
+  </forest>
+  <forest name="z28 Nile Forest" iconname="ui\editor\forestCeylon" floormix="" density="0.9" clumpiness="0.4">
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeCaribbean</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z29 Nile Delta Forest" iconname="ui\editor\forestCeylon" floormix="" density="0.9" clumpiness="0.4">
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.9">underbrushgreatplains</underbrushobj>
+  </forest>
+  <forest name="z30 African Coast" iconname="ui\editor\forestCeylon" floormix="" density="0.9" clumpiness="0.6">
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z31 Mediterranean Coastal Forest" iconname="ui\editor\forestGreatPlains" floormix="" density="0.5" clumpiness="0.4">
+    <protounit>TreeTexas</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z32 Spanish Inland Forest" iconname="ui\editor\forestGreatPlains" floormix="" density="0.6" clumpiness="0.5">
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="0.6">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z32 Spanish Rainforest" iconname="ui\editor\forestEucal" floormix="z_Temperate_Rainforest" density="0.6" clumpiness="0.5">
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.6">UnderbrushCarolinasForest</underbrushobj>
+  </forest>
+  <forest name="z33 French Forest" iconname="ui\editor\forestEucal" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="1.0">UnderbrushForest</underbrushobj>
+  </forest>
+  <forest name="z34 German Forest" iconname="ui\editor\forestGreatLakes" floormix="" density="0.9" clumpiness="0.9">
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeNorthwestTerritory</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.7">UnderbrushCarolinasForest</underbrushobj>
+  </forest>
+  <forest name="z35 German Redwood Forest" iconname="ui\editor\forestredwood" floormix="" density="0.9" clumpiness="0.9">
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRedwood</protounit>
+    <underbrushobj prob="0.7">UnderbrushCarolinasForest</underbrushobj>
+  </forest>
+  <forest name="z36 Scandinavian Coast" iconname="ui\editor\forestMongolianFir" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeRockies</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockies</underbrushobj>
+  </forest>
+  <forest name="z37 Scandinavian Slopes" iconname="ui\editor\forestMongolianFir" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeHimalayas</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockies</underbrushobj>
+  </forest>
+  <forest name="z38 Scandinavian Mountains" iconname="ui\editor\forestMongolianFir" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeHimalayas</protounit>
+    <protounit>TreePatagoniaSnow</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockiesSnow</underbrushobj>
+  </forest>
+  <forest name="z39 Russian Forest" iconname="ui\editor\forestMongolianFir" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>TreeNorthwestTerritory</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.6">UnderbrushSaguenay</underbrushobj>
+  </forest>
+  <forest name="z40 Steppe Forest" iconname="ui\editor\forestMongolianFir" floormix="" density="0.5" clumpiness="0.9">
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.5">underbrushmongolia</underbrushobj>
+  </forest>
+  <forest name="z41 Alpine Forest" iconname="ui\editor\forestMongolianFir" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>ypTreeHimalayas</protounit>
+    <underbrushobj prob="1.0">UnderbrushRockies</underbrushobj>
+  </forest>
+  <forest name="z42 Italian Forest" iconname="ui\editor\forestMongolianFir" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="1.0">UnderbrushForest</underbrushobj>
+  </forest>
+  <forest name="z42 Bluebell Forest" iconname="ui\editor\forestEucal" floormix="" density="0.7" clumpiness="0.0">
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.9">UnderbrushCoastalJapan</underbrushobj>
+  </forest>
+  <forest name="z43 Greek Forest" iconname="ui\editor\forestEucal" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeTexas</protounit>
+    <protounit>ypTreeMadrone</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="1.0">UnderbrushCarolinasForest</underbrushobj>
+  </forest>
+  <forest name="z44 Lebanese Forest" iconname="ui\editor\forestTexasDirt" floormix="" density="0.6" clumpiness="0.7">
+    <protounit>TreeTexas</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z45 Arabian Desert" iconname="ui\editor\forestSaxaul" floor="" density="0.1" clumpiness="0.9">
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeSaxaul</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z46 Socotra" iconname="ui\editor\forestCeylon" floor="" density="0.3" clumpiness="0.6">
+    <protounit>TreeSonora</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeSaxaul</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>ypTreeJapaneseMaple</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>ypTreeJapaneseMaple</protounit>
+    <underbrushobj prob="0.5">underbrushdeccan</underbrushobj>
+  </forest>
+  <forest name="Unknown Forest Funky" iconname="ui\editor\forestCeylon" floor="carolinas\Underwater2" density="0.5" clumpiness="0.6">
+    <protounit>deTreeBaobab</protounit>
+    <protounit>TreeSonora</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeSaxaul</protounit>
+    <protounit>ypTreeJapaneseMaple</protounit>
+    <protounit>TreeRedwoodChonky</protounit>
+    <protounit>TreePampas</protounit>
+    <protounit>TreeCarolinaMarsh</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>deTreeFig</protounit>
+    <protounit>ypTreeGinkgo</protounit>
+    <protounit>TreeChristmas</protounit>
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>deTreeFanPalm</protounit>
+    <underbrushobj prob="0.5">underbrushdeccan</underbrushobj>
+  </forest>
+  <forest name="z49 South Persian Forest" iconname="ui\editor\forestCeylon" floormix="" density="0.6" clumpiness="0.7">
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.0">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z48 North Persian Forest" iconname="ui\editor\forestCeylon" floormix="" density="0.6" clumpiness="0.7">
+    <protounit>ypEucalyptus</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.1">underbrushgreatplains</underbrushobj>
+  </forest>
+  <forest name="z49 Hyrcanian Rainforest" iconname="ui\editor\forestEucal" floormix="z_Temperate_Rainforest" density="0.8" clumpiness="0.8">
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="1.0">UnderbrushYellowRiver</underbrushobj>
+  </forest>
+  <forest name="z50 Hyrcanian Palm Forest" iconname="ui\editor\forestCarolinaPine" floormix="z_Temperate_Rainforest" density="0.7" clumpiness="0.8">
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.7">UnderbrushYellowRiver</underbrushobj>
+  </forest>
+  <forest name="z51 Hyrcanian Palms" iconname="ui\editor\forestCeylon" floormix="" density="0.6" clumpiness="0.6">
+    <protounit>TreeCaribbean</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.0">underbrushgreatplains</underbrushobj>
+  </forest>
+  <forest name="z53 Bactria" iconname="ui\editor\forestCeylon" floor="" density="0.3" clumpiness="0.6">
+    <protounit>ypTreeDeccan</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeTexas</protounit>
+    <underbrushobj prob="0.5">underbrushDeccan</underbrushobj>
+  </forest>
+  <forest name="z54 Gobi" iconname="ui\editor\forestSaxaul" floormix="" density="0.2" clumpiness="0.7">
+    <protounit>ypTreeSaxaul</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.5">underbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z55 Bamboo Mongolia" iconname="ui\editor\forest_bamboo" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.5">underbrushmongolia</underbrushobj>
+  </forest>
+  <forest name="z56 Indian Coast" iconname="ui\editor\forestAshoka" floor="" density="0.4" clumpiness="0.6">
+    <protounit>ypTreeDeccan</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <underbrushobj prob="0.5">underbrushdeccan</underbrushobj>
+  </forest>
+  <forest name="z57 Chinese Coast" iconname="ui\editor\forest_Ginkgo" floor="" density="0.5" clumpiness="0.6">
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <underbrushobj prob="0.5">underbrushyellowriver</underbrushobj>
+  </forest>
+  <forest name="z58 Korea" iconname="ui\editor\forest_Ginkgo" floor="" density="0.5" clumpiness="0.6">
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeJapaneseMaple</protounit>
+    <underbrushobj prob="0.5">underbrushyellowriver</underbrushobj>
+  </forest>
+  <forest name="z58 Chinese Jungle" iconname="ui\editor\forestEucal" floor="" density="0.6" clumpiness="0.6">
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.5">underbrushyellowriver</underbrushobj>
+  </forest>
+  <forest name="z58 Indian Jungle" iconname="ui\editor\forestdeccan" floor="" density="0.6" clumpiness="0.6">
+    <protounit>ypTreeDeccan</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.5">underbrushdeccan</underbrushobj>
+  </forest>
+  <forest name="z59 Bamboo Jungle" iconname="ui\editor\forestbamboo" floor="" density="0.6" clumpiness="0.6">
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <underbrushobj prob="0.5">underbrushyellowriver</underbrushobj>
+  </forest>
+  <forest name="z60 Chinese Mountains" iconname="ui\editor\forest_Ginkgo" floor="" density="0.3" clumpiness="0.6">
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.5">underbrushyellowriver</underbrushobj>
+  </forest>
+  <forest name="z61 Indian Mountains" iconname="ui\editor\forestDeccan" floor="" density="0.3" clumpiness="0.6">
+    <protounit>ypTreeDeccan</protounit>
+    <protounit>ypTreeDeccan</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.5">underbrushyellowriver</underbrushobj>
+  </forest>
+  <forest name="z62 Japanese Mountains" iconname="ui\editor\forestCarolinaMarsh" floor="" density="0.5" clumpiness="0.6">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeJapaneseMaple</protounit>
+    <protounit>ypTreeJapanesePine</protounit>
+    <underbrushobj prob="0.5">UnderbrushCoastalJapan</underbrushobj>
+  </forest>
+  <forest name="z62 Sichuan" iconname="ui\editor\forestCeylon" floormix="" density="0.6" clumpiness="0.7">
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeBamboo</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>ypTreeYellowRiver</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.9">UnderbrushYellowRiver</underbrushobj>
+  </forest>
+  <forest name="z63 Alaskan Coast" iconname="ui\editor\forestrockies" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeMongolianFir</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeNorthwestTerritory</protounit>
+    <underbrushobj prob="0.5">Underbrushnewengland</underbrushobj>
+  </forest>
+  <forest name="z64 Alaskan Mountains" iconname="ui\editor\forestrockies" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeMongolianFir</protounit>
+    <protounit>ypTreeHimalayas</protounit>
+    <protounit>ypTreeHimalayas</protounit>
+    <protounit>TreeRockies</protounit>
+    <protounit>TreeNorthwestTerritory</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockies</underbrushobj>
+  </forest>
+  <forest name="z65 Northern Redwood" iconname="ui\editor\forestredwood" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRockies</protounit>
+    <protounit>TreeNorthwestTerritory</protounit>
+    <underbrushobj prob="0.6">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z65 Redwood and Pine" iconname="ui\editor\forestredwood" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRedwood</protounit>
+    <protounit>TreeRockies</protounit>
+    <underbrushobj prob="0.6">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z66 California Plains" iconname="ui\editor\forestGreatPlains" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.6">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z67 Saguenay Plains" iconname="ui\editor\forestGreatPlains" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>TreeSaguenay</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.6">UnderbrushSaguenay</underbrushobj>
+  </forest>
+  <forest name="z68 Carolina Plains" iconname="ui\editor\forestGreatPlains" floor="" density="0.4" clumpiness="0.6">
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>TreeCarolinagGrass</protounit>
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.6">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z69 New England Saps" iconname="ui\editor\forestNewEngland" floormix="z_Maple_Saplings" density="0.4" clumpiness="0.5">
+    <protounit>TreeNewEngland</protounit>
+    <protounit>TreeNewEngland</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z69 North New England" iconname="ui\editor\forestNewEngland" floormix="z_Maple_Saplings" density="0.4" clumpiness="0.5">
+    <protounit>TreeNewEngland</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeSaguenay</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z68 North Carolinas" iconname="ui\editor\forestNewEngland" floormix="" density="0.8" clumpiness="0.5">
+    <protounit>TreeNewEngland</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z69 Appalachian Rainforest" iconname="ui\editor\forestNewEngland" floormix="z_Temperate_Rainforest" density="0.8" clumpiness="0.5">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z69 Appalachian Rainforest II" iconname="ui\editor\forestNewEngland" floormix="z_Temperate_Rainforest" density="0.8" clumpiness="0.5">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z70 East Saguenay" iconname="ui\editor\forestNewEngland" floormix="" density="0.8" clumpiness="0.5">
+    <protounit>TreeNewEngland</protounit>
+    <protounit>TreeSaguenay</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="0.1">UnderbrushSaguenay</underbrushobj>
+  </forest>
+  <forest name="z71 West Saguenay" iconname="ui\editor\forestNorthwestTerritory" floormix="" density="0.7" clumpiness="0.5">
+    <protounit>TreeNorthwestTerritory</protounit>
+    <protounit>TreeSaguenay</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="0.1">UnderbrushSaguenay</underbrushobj>
+  </forest>
+  <forest name="z72 Ponderosa Pines" iconname="ui\editor\forestBorneoPalm" floormix="" density="0.6" clumpiness="0.6">
+    <protounit>TreePonderosaPine</protounit>
+    <underbrushobj prob="0.4">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z72 Ponderosa PD" iconname="ui\editor\forestBorneoPalm" floormix="" density="0.6" clumpiness="0.6">
+    <protounit>TreePonderosaPine</protounit>
+    <protounit>TreePonderosaPine</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreePinonPine</protounit>
+    <underbrushobj prob="0.4">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z73 Pinyon Pine Forest" iconname="ui\editor\forestBorneoPalm" floormix="" density="0.6" clumpiness="0.5">
+    <protounit>TreePinonPine</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z74 Lush Sonora" iconname="ui\editor\forestYucatan" floormix="" density="0.6" clumpiness="0.5">
+    <protounit>TreeSonora</protounit>
+    <protounit>TreeSonora</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z75 Polylepis Forest" iconname="ui\editor\forestBorneoPalm" floormix="" density="0.6" clumpiness="0.5">
+    <protounit>TreePolyepis</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z75 Pinyon Polylepis Forest" iconname="ui\editor\forestBorneoPalm" floormix="" density="0.6" clumpiness="0.5">
+    <protounit>TreePinonPine</protounit>
+    <protounit>TreePolyepis</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z76 Valdivian Rainforest" iconname="ui\editor\forestAmazonRain" floormix="z_Temperate_Rainforest" density="0.7" clumpiness="0.6">
+    <protounit>TreeAmazon</protounit>
+    <protounit>Treeandes</protounit>
+    <protounit>Treeandes</protounit>
+    <protounit>TreeKapok</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+    <protounit>TreePatagoniaDirt</protounit>
+    <protounit>TreeCarolinamarsh</protounit>
+    <underbrushobj prob="0.3">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z76 Valdivian Forest" iconname="ui\editor\forestCarolinaPine" floormix="" density="0.3" clumpiness="0.7">
+    <protounit>Treeandes</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+    <protounit>TreePatagoniaDirt</protounit>
+    <protounit>TreePatagoniaDirt</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z77 Pampas" iconname="ui\editor\forestGreatPlainsgrass" floormix="" density="0.9" clumpiness="0.1">
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.9">UnderbrushPampas</underbrushobj>
+  </forest>
+  <forest name="z77 Easter Island Early" iconname="ui\editor\forestCeylon" floormix="" density="0.8" clumpiness="0.5">
+    <protounit>TreeCeylon</protounit>
+    <protounit>TreeAmazon</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z78 Easter Island Late" iconname="ui\editor\forestGreatPlainsgrass" floormix="" density="0.7" clumpiness="0.5">
+    <protounit>TreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="z79 Hawaii" iconname="ui\editor\forestCeylon" floormix="" density="0.8" clumpiness="0.5">
+    <protounit>TreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreeAmazon</protounit>
+    <protounit>TreeCeylon</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.5">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z80 New Guinea" iconname="ui\editor\forestAmazonRain" floormix="" density="0.5" clumpiness="0.7">
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.9">UnderbrushBorneo</underbrushobj>
+  </forest>
+  <forest name="z81 New Zealand" iconname="ui\editor\forestAndes" floormix="z_Temperate_Rainforest" density="0.5" clumpiness="0.7">
+    <protounit>TreeYucatan</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeCarolinaMarsh</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>treepuya</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <protounit>TreePinonPine</protounit>
+    <underbrushobj prob="0.1">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z82 NZ Pines" iconname="ui\editor\forestCarolinaPine" floormix="z_Temperate_Rainforest" density="0.5" clumpiness="0.7">
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>TreePinonPine</protounit>
+    <underbrushobj prob="0.1">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z83 South Australian Rainforest" iconname="ui\editor\forestBayouSwamp" floormix="z_Temperate_Rainforest" density="0.5" clumpiness="0.7">
+    <protounit>ypTreeBorneoPalm</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>TreeCarolinamarsh</protounit>
+    <protounit>ypTreeBorneoPalm</protounit>
+    <protounit>TreeCarolinagrass</protounit>
+    <protounit>TreeCarolinamarsh</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreePinonPine</protounit>
+    <underbrushobj prob="0.1">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z84 North Australian Rainforest" iconname="ui\editor\forestAmazonRain" floormix="z_Temperate_Rainforest" density="0.7" clumpiness="0.5">
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.1">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z84 Australian Rainforest" iconname="ui\editor\forestAmazonRain" floormix="z_Temperate_Rainforest" density="0.7" clumpiness="0.5">
+    <protounit>ypTreeBorneo</protounit>
+    <protounit>ypTreeBorneoPalm</protounit>
+    <protounit>TreeCarolinamarsh</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.1">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z85 Australian Lush Forest" iconname="ui\editor\forestEucal" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreePinonPine</protounit>
+    <protounit>TreeYucatan</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.1">UnderbrushCalifornia</underbrushobj>
+  </forest>
+  <forest name="z86 Australian Bush" iconname="ui\editor\forestAndes" floormix="" density="0.8" clumpiness="0.3">
+    <protounit>TreePuya</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeKapok</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeEucalyptus</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z87 Australian Woodland" iconname="ui\editor\forestEucal" floormix="" density="0.7" clumpiness="0.6">
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.9">UnderbrushDeccan</underbrushobj>
+  </forest>
+  <forest name="z88 Australian Coastal Bush South" iconname="ui\editor\forestEucal" floormix="" density="0.5" clumpiness="0.7">
+    <protounit>TreePonderosaPine</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreePinonPine</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeKapok</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z89 Australian Coastal Bush" iconname="ui\editor\forestCeylon" floormix="" density="0.6" clumpiness="0.7">
+    <protounit>TreePonderosaPine</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeKapok</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.9">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="z90 Australian Coastal Bush North" iconname="ui\editor\forestCeylon" floormix="" density="0.7" clumpiness="0.7">
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeCeylon</protounit>
+    <protounit>ypTreeKapok</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <protounit>ypTreeEucalyptus</protounit>
+    <underbrushobj prob="0.9">UnderbrushDeccan</underbrushobj>
+  </forest>
+  <forest name="z91 Australian Scrub" iconname="ui\editor\forestpuya" floormix="" density="0.8" clumpiness="0.6">
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeSonora</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.9">UnderbrushDeccan</underbrushobj>
+  </forest>
+  <forest name="z91 Australian Coastal Scrub" iconname="ui\editor\forestpuya" floormix="" density="0.8" clumpiness="0.6">
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeSonora</protounit>
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeTexas</protounit>
+    <protounit>TreeMadrone</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.9">UnderbrushDeccan</underbrushobj>
+  </forest>
+  <forest name="z92 Australian Grassland" iconname="ui\editor\forestGreatPlainsgrass" floormix="" density="0.9" clumpiness="0.6">
+    <protounit>TreePaintedDesert</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreePuya</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <protounit>TreeGreatPlainsGrass</protounit>
+    <underbrushobj prob="0.9">UnderbrushDeccan</underbrushobj>
+  </forest>
+  <forest name="African Acacia Forest" iconname="ui\editor\forestAmazonRain" floormix="africa desert forest" density="0.25" clumpiness="0.5">
+    <protounit>deTreeAcacia</protounit>
+  </forest>
+  <forest name="Af Atlas Forest" iconname="ui\editor\forestAmazonRain" floormix="africa desert forest dirt" density="0.50" clumpiness="0.5">
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeSenegaliaLaeta</protounit>
+    <protounit>TreeJuniper</protounit>
+    <protounit>ypTreeSaxaul</protounit>
+  </forest>
+  <forest name="Af Sahara Forest" iconname="ui\editor\forestAmazonRain" floormix="africa desert grass dry" density="0.25" clumpiness="0.25">
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeDoumPalm</protounit>
+    <protounit>deTreeNileBank</protounit>
+    <protounit>TreeJuniper</protounit>
+    <protounit>deTreeAcacia</protounit>
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeDoumPalm</protounit>
+  </forest>
+  <forest name="Af Savanna Dry Forest" iconname="ui\editor\forestAmazonRain" floormix="africa savanna forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeBaobab</protounit>
+    <protounit>deTreeSenegaliaLaeta</protounit>
+  </forest>
+  <forest name="Af Savanna Baobab Forest" iconname="ui\editor\forestAmazonRain" floormix="africa savanna forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeBaobab</protounit>
+  </forest>
+  <forest name="Af Savanna Grassland Forest" iconname="ui\editor\forestAmazonRain" floormix="africa savanna forest" density="0.25" clumpiness="0.5">
+    <protounit>TreeAfrica</protounit>
+  </forest>
+  <forest name="Af Savanna Wateringhole Forest" iconname="ui\editor\forestAmazonRain" floormix="africa savanna forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeFig</protounit>
+  </forest>
+  <forest name="Af Tassili Forest" iconname="ui\editor\forestAmazonRain" floormix="africa desert forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deDoumPalm</protounit>
+    <protounit>deTreeFanPalm</protounit>
+  </forest>
+  <forest name="Af Ivory Coastal Forest" iconname="ui\editor\forestCeylon" floormix="borneo_sand_a" density="0.666" clumpiness="0.25">
+    <protounit>TreeCaribbean</protounit>
+    <protounit>TreeCaribbean</protounit>
+    <protounit>deTreeFanPalm</protounit>
+  </forest>
+  <forest name="Af Gold Coastal Forest" iconname="ui\editor\forestCeylon" floormix="borneo_sand_a" density="0.9" clumpiness="0.4">
+    <protounit>TreeCaribbean</protounit>
+  </forest>
+  <forest name="Af Gold Plains Forest" iconname="ui\editor\forestAmazonRain" floormix="africa rainforest forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeBaobab</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+    <protounit>TreeCarolinaGrass</protounit>
+  </forest>
+  <forest name="Af Niger Delta Mangrove Forest" iconname="ui\editor\forestAmazonRain" floormix="africa rainforest forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeMangrove</protounit>
+  </forest>
+  <forest name="Af Niger Delta Tropical Forest" iconname="ui\editor\forestAmazonRain" floormix="africa rainforest forest" density="0.25" clumpiness="0.5">
+    <protounit>deTreeFanPalm</protounit>
+    <protounit>TreeKapok</protounit>
+  </forest>
+  <forest name="Af Sahel Forest" iconname="ui\editor\forestAmazonRain" floormix="africa savanna forest dirt" density="0.25" clumpiness="0.5">
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeSenegaliaLaeta</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+  </forest>
+  <forest name="Af Nile Bank Forest" iconname="ui\editor\forestCeylon" floormix="africa desert forest" density="0.9" clumpiness="0.4">
+    <protounit>deTreeNileBank</protounit>
+  </forest>
+  <forest name="Af Nile Forest" iconname="ui\editor\forestCeylon" floormix="africa desert forest dirt" density="0.9" clumpiness="0.4">
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeBoabab</protounit>
+  </forest>
+  <forest name="Af Highland Forest" iconname="ui\editor\forestCeylon" floor="Africa\ground3_afr" density="0.9" clumpiness="0.4">
+    <protounit>deTreeSaharanCypress</protounit>
+    <protounit>deTreeBoabab</protounit>
+  </forest>
+  <forest name="Af Harenna Forest" iconname="ui\editor\forestAmazonRain" floor="Africa\ground3_afr" density="0.25" clumpiness="0.5">
+    <protounit>TreeAraucania</protounit>
+  </forest>
+  <forest name="Italian Forest" iconname="ui\editor\foresttexas" floor="great_lakes\ground_forest_gls" density="0.25" clumpiness="0.5">
+    <protounit>deTreeCypress</protounit>
+    <protounit>deTreeCypress</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>deTreePoplar</protounit>
+    <protounit>deTreePoplar</protounit>
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.5">underbrushgreatplains</underbrushobj>
+    <underbrushobj prob="0.5">UnderbrushShrub</underbrushobj>
+    <underbrushobj prob="0.5">UnderbrushBlackhills</underbrushobj>
+    <underbrushobj prob="0.5">UnderbrushTexasGrass</underbrushobj>
+  </forest>
+  <forest name="East European Forest" iconname="ui\editor\foresttexas" floor="great_lakes\ground_forest_gls" density="0.25" clumpiness="0.5">
+    <protounit>deTreePoplar</protounit>
+    <protounit>deTreePoplar</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>TreeGreatLakes</protounit>
+    <protounit>deTreePoplar</protounit>
+    <protounit>deTreePoplar</protounit>
+    <protounit>TreeGreatPlains</protounit>
+    <protounit>ypTreeMongolianFir</protounit>
+    <underbrushobj prob="0.5">underbrushgreatplains</underbrushobj>
+    <underbrushobj prob="0.5">UnderbrushShrub</underbrushobj>
+    <underbrushobj prob="1.0">UnderbrushForest</underbrushobj>
+  </forest>
+</foresttypes>

@@ -1,0 +1,10 @@
+<mix>
+  <title>Borneo Grass C</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="3">borneo\ground_grass5_borneo</texture>
+    <texture weight="3">borneo\ground_grass4_borneo</texture>
+    <texture weight="3">borneo\ground_grass3_borneo</texture>
+    <texture weight="3">borneo\ground_sand3_borneo</texture>
+  </paint>
+</mix>

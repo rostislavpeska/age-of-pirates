@@ -1,0 +1,26 @@
+<mix>
+  <title>Carolina Props</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.8">
+    <model weight="3" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="2" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_rock4</model>
+    <model weight="2" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="2" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_forest_log1</model>
+    <model weight="2" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_forest_log2</model>
+    <model weight="2" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_forest_log3</model>
+    <model weight="1" scalemin="0.3" scalemax="1.0">terrain\patagonia\underbrush_log_a_pat</model>
+    <model weight="1" scalemin="1.0" scalemax="4.0">terrain\patagonia\underbrush_log_b_pat</model>
+    <model weight="2" scalemin="0.5" scalemax="0.8">terrain\california\rock_a_cal</model>
+    <model weight="2" scalemin="0.5" scalemax="0.8">terrain\california\rock_b_cal</model>
+    <model weight="2" scalemin="0.5" scalemax="0.8">terrain\california\rock_c_cal</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_group2</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="2" scalemin="0.5" scalemax="0.8">terrain\california\rock_d_cal</model>
+    <model weight="3" scalemin="0.5" scalemax="2.0">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="3" scalemin="0.5" scalemax="2.0">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="3" scalemin="0.5" scalemax="2.0">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="3" scalemin="0.5" scalemax="2.0">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_grass1</model>
+  </objects>
+</mix>

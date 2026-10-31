@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "convention": "raw_gr2=(author_u,1-author_v)",
+  "author_checkpoint": "gr2-canonical-r2 (new-model re-export, game DLL clean)",
+  "author_payload_sha256": "69dccba5a39edc4059c13141bd0a2ecd82fac595ae7153b2f13685137a1d4f37",
+  "author_damaged_payload_sha256": "3809b184ffd0e71e29f09ddb2347b2896759c4245956bc1e9eb9e11e402f1c65",
+  "provenance": "korean_barracks gr2-canonical-r2 (new-model re-export, game DLL clean): payloads korean_barracks_intact_payload.json + korean_barracks_damaged_payload.json, derived from the installed GR2s (korean_barracks_physics.gr2 e85dc88936bb, korean_barracks_physics_damaged.gr2 39b30f724dc3) on the owner's instruction ['Barracks and stables - ignore. Use files we have!!!!', 'Explort what we have. Create new canonical version from GR12 or whatever!']; contract from the payloads (from_author), proven equal to from_runtime",
+  "expected": {
+    "intact": {
+      "mata": {
+        "corners": 27396,
+        "position_f32_sha256": "eecf752787698fac23de0e660ee03c237302961b0e44fef8a594bffb1dd3585d",
+        "raw_uv_f16_sha256": "5545251d9da205781f377d0e9df5147c1957d72f1ad7179ee89624e8f3cac27d"
+      },
+      "matc": {
+        "corners": 15528,
+        "position_f32_sha256": "903600db6062dae62a30c0956e4d7e7a33dbe68e3567ad8c43692baad295c13b",
+        "raw_uv_f16_sha256": "4958e4e6067d953fbdede8da85ec00ed48de13f692e98eaabdc1c1712b25aaea"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "0bf7ff8b434e7756286071277ba343511ccb771d1838da9c52142cdf21961e58",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      }
+    },
+    "damaged": {
+      "matc": {
+        "corners": 43719,
+        "position_f32_sha256": "aa3581fee9b0d21b328c1002c05e9de7db2776169681a4f1cbe3aeea9820666e",
+        "raw_uv_f16_sha256": "46051b27fd4465fc1a1c6fbe6a018d2b9b834f8be54e5a82893395600faf4ff4"
+      },
+      "mata": {
+        "corners": 46602,
+        "position_f32_sha256": "baa4b9e657d47cc48f28d412ecd24dfb60503ea817cd4a6fb37a49625be72c52",
+        "raw_uv_f16_sha256": "903389846db5b6384bf27932adb19a523711651cf6771501c7f97453804c29ac"
+      },
+      "matb": {
+        "corners": 1344,
+        "position_f32_sha256": "0bf7ff8b434e7756286071277ba343511ccb771d1838da9c52142cdf21961e58",
+        "raw_uv_f16_sha256": "140663c7cacee569388adc2585374ad8509699ba45384a6fe03d0a5b05b64557"
+      },
+      "matz": {
+        "corners": 14694,
+        "position_f32_sha256": "be0c856de2ce2bcfe6c88534f3c44c46d1a54121fbf65a44246edc75e74846e1",
+        "raw_uv_f16_sha256": "657448391d8c2cb9fbc62fbe7358b9ff44ea2c548b1bd27a7e7f5917d34d3725"
+      }
+    }
+  }
+}

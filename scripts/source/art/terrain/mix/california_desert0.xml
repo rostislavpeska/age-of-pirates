@@ -1,0 +1,25 @@
+<mix>
+  <title>California Desert 0</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="6">california\desert2_cal</texture>
+    <texture weight="5">california\desert3_cal</texture>
+    <texture weight="4">california\desert4_cal</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.8" octaves="3" persistence="0.75" emptyweight="90" posoffset="0.95">
+    <model weight="3" scalemin="0.75" scalemax="1.0">terrain\underbrush\underbrush_desert_bush1</model>
+    <model weight="3" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_bush2</model>
+    <model weight="3" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="3" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_bush6</model>
+    <model weight="3" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_desert_tallgrass1</model>
+    <model weight="3" scalemin="0.5" scalemax="0.8">terrain\underbrush\underbrush_desert_tallgrass2</model>
+    <model weight="3" scalemin="0.5" scalemax="1.00">terrain\underbrush\underbrush_desert_rock1</model>
+    <model weight="3" scalemin="0.5" scalemax="1.00">terrain\underbrush\underbrush_desert_rock2</model>
+    <model weight="1.5" scalemin="0.5" scalemax="1.00">terrain\underbrush\underbrush_desert_rock3</model>
+    <model weight="3" scalemin="0.5" scalemax="1.00">terrain\underbrush\underbrush_desert_rock4</model>
+    <model weight="1.5" scalemin="0.5" scalemax="1.00">terrain\underbrush\underbrush_desert_rock5</model>
+    <model weight="1.5" scalemin="0.5" scalemax="1.00">terrain\underbrush\underbrush_desert_rock6</model>
+    <model weight="0.5" scalemin="0.75" scalemax="1.0">terrain\underbrush\underbrush_desert_grass1</model>
+    <model weight="0.5" scalemin="0.75" scalemax="1.0">terrain\underbrush\underbrush_desert_grass2</model>
+  </objects>
+</mix>

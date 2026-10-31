@@ -1,0 +1,18 @@
+<mix allowunderwater="true">
+  <title>Amazon River Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="6" persistence="0.7" emptyweight="0" posoffset="0.9">
+    <model underwater="true" mindepth="0.1" maxdepth="5.0" weight="6" scalemin="0.05" scalemax="0.4">terrain\underbrush\underbrush_seaweed_01</model>
+    <model underwater="true" mindepth="0.1" maxdepth="5.0" weight="3" scalemin="0.05" scalemax="0.15">terrain\amazon\riverrock1_am</model>
+    <model underwater="true" mindepth="0.1" maxdepth="5.0" weight="3" scalemin="0.05" scalemax="0.15">terrain\amazon\riverrock2_am</model>
+    <model underwater="true" mindepth="0.1" maxdepth="5.0" weight="3" scalemin="0.05" scalemax="0.15">terrain\amazon\riverrock3_am</model>
+    <model underwater="true" mindepth="0.1" maxdepth="3.0" weight="2" scalemin="0.1" scalemax="0.5">terrain\california\log_a_cal</model>
+    <model underwater="true" mindepth="0.1" maxdepth="3.0" weight="2" scalemin="0.1" scalemax="0.5">terrain\california\log_b_cal</model>
+    <model underwater="true" mindepth="2.2" maxdepth="100" weight="3" scalemin="0.5" scalemax="0.85">terrain\underbrush\underbrush_seaweed_01</model>
+    <model underwater="true" mindepth="2.2" maxdepth="100" weight="2" scalemin="0.6" scalemax="0.9">terrain\amazon\riverrock1_am</model>
+    <model underwater="true" mindepth="2.2" maxdepth="100" weight="2" scalemin="0.6" scalemax="0.9">terrain\amazon\riverrock2_am</model>
+    <model underwater="true" mindepth="2.2" maxdepth="100" weight="2" scalemin="0.6" scalemax="0.9">terrain\amazon\riverrock3_am</model>
+    <model underwater="true" mindepth="2.2" maxdepth="100" weight="2" scalemin="0.3" scalemax="1.1">terrain\amazon\riverlog1</model>
+    <model underwater="true" mindepth="2.2" maxdepth="100" weight="2" scalemin="0.3" scalemax="1.1">terrain\amazon\riverlog2_am</model>
+  </objects>
+</mix>
