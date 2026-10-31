@@ -1085,12 +1085,8 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateRussiansClone</effect>
-      <effect type="ForbidTech" amount="0.00">zpBigConsulateRussiansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateRussiansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateBritishClone</effect>
-      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateFrenchClone</effect>
-      <effect type="ForbidTech" amount="0.00">zpBigConsulateFrenchClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateFrenchClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateGermansClone</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateSPCChinaClone</effect>
@@ -1302,6 +1298,7 @@
     <icon>resources\images\icons\eso\flag_german_icon.png</icon>
     <rollovertextid>65904</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
+    <sequestertech>zpBigSequesterGermansClone</sequestertech>
     <flag>YPUseBigButton3</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPInfiniteTech</flag>
@@ -1315,6 +1312,7 @@
       <effect type="TechStatus" status="obtainable">ypConsulateGermansWoodTrickle</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateGermansCoinTrickle</effect>
       <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterGermansClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterGermansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterGermansClone</effect>
       <effect type="TechStatus" status="active">ypBigSequesterRemove</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -1364,6 +1362,7 @@
   <tech name="zpBigConsulateJapaneseClone" type="Normal">
     <dbid>40011</dbid>
     <displaynameid>68231</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -1389,6 +1388,8 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateRonin</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterJapaneseClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterJapaneseClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterJapaneseClone</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateJapaneseMeijiRestoration</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -1464,6 +1465,7 @@
   <tech name="zpBigConsulatePortugueseClone" type="Normal">
     <dbid>40013</dbid>
     <displaynameid>64152</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -1492,6 +1494,8 @@
       <effect type="Data" amount="0.85" subtype="Cost" resource="Wood" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterPortugueseClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterPortugueseClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterPortugueseClone</effect>
       <effect type="TechStatus" status="obtainable">ypConsulatePortugueseBrigade</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -1532,6 +1536,7 @@
   <tech name="zpBigConsulateDutchClone" type="Normal">
     <dbid>40014</dbid>
     <displaynameid>64154</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -1558,6 +1563,8 @@
         <target type="ProtoUnit">ypConsulateArmyDutch3</target>
       </effect>
       <effect type="TechStatus" status="active">ypBigSequesterRemove</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterDutchClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterDutchClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterDutchClone</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateDutchBrigade</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -1583,6 +1590,7 @@
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\eso\flag_russian_icon.png</icon>
     <rollovertextid>64155</rollovertextid>
+    <sequestertech>zpBigSequesterRussiansClone</sequestertech>
     <flag>YPInfiniteTech</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>NativeDance</flag>
@@ -1620,13 +1628,13 @@
       </effect>
       <effect type="SetName" tech="ypFortifiedCastle" newname="79803" newrollover="79801">
       </effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="TechStatus" status="unobtainable">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
   <tech name="zpBigConsulateSpanishClone" type="Normal">
     <dbid>40016</dbid>
     <displaynameid>64158</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -1657,6 +1665,8 @@
         <target type="ProtoUnit">ypConsulateArmySpanish2</target>
       </effect>
       <effect type="TechStatus" status="active">ypBigSequesterRemove</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterSpanishClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterSpanishClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterSpanishClone</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateSpanishBrigade</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -1771,13 +1781,13 @@
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="deTorpBush2" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="TechStatus" status="unobtainable">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
   <tech name="zpBigConsulateOttomansClone" type="Normal">
     <dbid>40018</dbid>
     <displaynameid>65442</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -1804,6 +1814,8 @@
         <target type="ProtoUnit">ypConsulateArmyOttoman2</target>
       </effect>
       <effect type="TechStatus" status="active">ypBigSequesterRemove</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterOttomansClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterOttomansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterOttomansClone</effect>
       <effect type="TechStatus" status="obtainable">ypConsulateOttomansBrigade</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -2019,6 +2031,7 @@
   <tech name="zpBigSequesterPortugueseClone" type="Normal">
     <dbid>40038</dbid>
     <displaynameid>65611</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -2080,6 +2093,9 @@
         <target type="Tech">ypFakeImperialAge</target>
       </effect>
       <effects>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulatePortugueseClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulatePortugueseClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
       </effects>
     </effects>
@@ -2145,6 +2161,7 @@
         <target type="ProtoUnit">ypMeteorHammer</target>
       </effect>
       <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateGermansClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateGermansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateGermansClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
@@ -2152,6 +2169,7 @@
   <tech name="zpBigSequesterOttomansClone" type="Normal">
     <dbid>40040</dbid>
     <displaynameid>65609</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -2197,12 +2215,16 @@
       <effect type="Data" amount="7.00" subtype="LOS" relativity="Absolute">
         <target type="ProtoUnit">AbstractWall</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateOttomansClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateOttomansClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
   <tech name="zpBigSequesterSpanishClone" type="Normal">
     <dbid>40041</dbid>
     <displaynameid>65615</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -2237,6 +2259,9 @@
         </target>
       </effect>
       <effect type="TechStatus" status="unobtainable">ypConsulateRelationsSpanish</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateSpanishClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateSpanishClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
@@ -2379,6 +2404,7 @@
   <tech name="zpBigSequesterJapaneseClone" type="Normal">
     <dbid>40045</dbid>
     <displaynameid>68233</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endisolation.png</icon>
@@ -2417,12 +2443,16 @@
       <effect type="Data" amount="0.93" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateJapaneseClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateJapaneseClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
   <tech name="zpBigSequesterDutchClone" type="Normal">
     <dbid>40046</dbid>
     <displaynameid>65605</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -2457,6 +2487,9 @@
         </target>
       </effect>
       <effect type="TechStatus" status="unobtainable">ypConsulateDutchLivestockPenWagon</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateDutchClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateDutchClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
@@ -40892,6 +40925,7 @@
 <tech name="zpBigConsulateAmericansClone" type="Normal">
     <dbid>50080</dbid>
     <displaynameid>503619</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -40955,6 +40989,8 @@
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanForce</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanArmy</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateAmericanFleet</effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterAmericansClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterAmericansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterAmericansClone</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
       <effect civ="DEAmericans" type="Data" amount="0.00" subtype="SetCivRelation" relativity="Absolute">
@@ -40967,6 +41003,7 @@
 <tech name="zpBigSequesterAmericansClone" type="Normal">
     <dbid>50081</dbid>
     <displaynameid>65613</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -41032,12 +41069,16 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateAmericansClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateAmericansClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateAmericansClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
 <tech name="zpBigConsulateSPCChinaClone" type="Normal">
     <dbid>50082</dbid>
     <displaynameid>503620</displaynameid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -41114,6 +41155,8 @@
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFish" relativity="BasePercent">
         <target type="ProtoUnit">AbstractFishingBoat</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterSPCChinaClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterSPCChinaClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterSPCChinaClone</effect>
       <effect type="TechStatus" status="active">ypBigSequesterRemove</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
@@ -41138,6 +41181,7 @@
 <tech name="zpBigSequesterSPCChinaClone" type="Normal">
     <dbid>50083</dbid>
     <displaynameid>68633</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -41168,6 +41212,9 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateSPCChinaClone</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateSPCChinaClone</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateSPCChinaClone</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
@@ -41386,6 +41433,7 @@
     <displaynameid>503644</displaynameid>
     <editornameid>503645</editornameid>
     <rollovertextid>503646</rollovertextid>
+    <researchlimit>99</researchlimit>
     <cost resourcetype="Trade">100.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -41411,6 +41459,8 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateRonin</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigSequesterJapaneseAlliesKorea</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigSequesterJapaneseAlliesKorea</effect>
       <effect type="TechStatus" status="obtainable">zpBigSequesterJapaneseAlliesKorea</effect>
       <effect type="TechStatus" status="active">ypBigTradeTaxEnable</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -41436,6 +41486,7 @@
 <tech name="zpBigSequesterJapaneseAlliesKorea" type="Normal">
     <dbid>50092</dbid>
     <displaynameid>68633</displaynameid>
+    <researchlimit>99</researchlimit>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_endrelations.png</icon>
@@ -41478,6 +41529,9 @@
       <effect type="Data" amount="0.93" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">LogicalTypeAffectedByVillagerUpgrades</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable" deactivate="true">zpBigConsulateJapaneseAlliesKorea</effect>
+      <effect type="ForbidTech" amount="0.00">zpBigConsulateJapaneseAlliesKorea</effect>
+      <effect type="TechStatus" status="obtainable">zpBigConsulateJapaneseAlliesKorea</effect>
       <effect type="TechStatus" status="active">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
