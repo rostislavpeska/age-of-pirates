@@ -295,7 +295,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpAirshipProxy</multipleblockunit>
+      <units>
+        <unit>zpAirship</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpAirshipAIProxy</multipleblockunit>
+      <units>
+        <unit>zpAirshipAI</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpAirshipAIProxy</multipleblockunit>
       <units>
         <unit>zpAirshipAI</unit>
@@ -316,6 +336,16 @@
     </multipleblocktrain>
     <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpSiegeRifleProxy</multipleblockunit>
+      <units>
+        <unit>zpSiegeRifle</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpSiegeRifleProxy</multipleblockunit>
       <units>
         <unit>zpSiegeRifle</unit>
@@ -362,6 +392,16 @@
     </agetech>
     <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpPriestProxy</multipleblockunit>
+      <units>
+        <unit>zpPriest</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpPriestProxy</multipleblockunit>
       <units>
         <unit>zpPriest</unit>
@@ -587,7 +627,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatMercMountedInfantryProxy</multipleblockunit>
+      <units>
+        <unit>deNatMountedInfantryRider</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatLineInfantryProxy</multipleblockunit>
+      <units>
+        <unit>deNatLineInfantry</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatLineInfantryProxy</multipleblockunit>
       <units>
         <unit>deNatLineInfantry</unit>
@@ -607,7 +667,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatLipkaTatarProxy</multipleblockunit>
+      <units>
+        <unit>deNatLipkaTatar</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatShockRiderProxy</multipleblockunit>
+      <units>
+        <unit>deNatShockRider</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatShockRiderProxy</multipleblockunit>
       <units>
         <unit>deNatShockRider</unit>
@@ -627,7 +707,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatChevaulegerProxy</multipleblockunit>
+      <units>
+        <unit>deNatChevauleger</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatMountainTrooperProxy</multipleblockunit>
+      <units>
+        <unit>deNatMountainTrooper</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatMountainTrooperProxy</multipleblockunit>
       <units>
         <unit>deNatMountainTrooper</unit>
@@ -685,6 +785,16 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpSurgeonProxy</multipleblockunit>
+      <units>
+        <unit>Surgeon</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <agetech>
       <age>Age0</age>
       <tech>zpNativeHussites</tech>
@@ -715,7 +825,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatLandsknechtProxy</multipleblockunit>
+      <units>
+        <unit>zpNatLandsknecht</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatMountedInfantryElector</multipleblockunit>
+      <units>
+        <unit>deNatMountedInfantryRider</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatMountedInfantryElector</multipleblockunit>
       <units>
         <unit>deNatMountedInfantryRider</unit>
@@ -735,7 +865,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatLineInfantryElector</multipleblockunit>
+      <units>
+        <unit>deNatLineInfantry</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatChevaulegerElector</multipleblockunit>
+      <units>
+        <unit>deNatChevauleger</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatChevaulegerElector</multipleblockunit>
       <units>
         <unit>deNatChevauleger</unit>
@@ -755,7 +905,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatMountainTrooperElector</multipleblockunit>
+      <units>
+        <unit>deNatMountainTrooper</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatDrummerElector</multipleblockunit>
+      <units>
+        <unit>deNatDrummer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatDrummerElector</multipleblockunit>
       <units>
         <unit>deNatDrummer</unit>
@@ -775,7 +945,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatTotenkopfElector</multipleblockunit>
+      <units>
+        <unit>deNatTotenkopf</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatBrunswickerElector</multipleblockunit>
+      <units>
+        <unit>deNatBrunswicker</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatBrunswickerElector</multipleblockunit>
       <units>
         <unit>deNatBrunswicker</unit>
@@ -795,7 +985,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatTrabantElector</multipleblockunit>
+      <units>
+        <unit>deNatTrabant</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatSaxonCuirassierElector</multipleblockunit>
+      <units>
+        <unit>deNatSaxonCuirassier</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatSaxonCuirassierElector</multipleblockunit>
       <units>
         <unit>deNatSaxonCuirassier</unit>
@@ -815,6 +1025,16 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatRoyalHuntsmanElector</multipleblockunit>
+      <units>
+        <unit>deNatRoyalHuntsman</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
       <multipleblockunit>zpNatNorthernMusketeerElector</multipleblockunit>
       <units>
@@ -825,7 +1045,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatNorthernMusketeerElector</multipleblockunit>
+      <units>
+        <unit>deNatNorthernMusketeer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatRoyalHunterElector</multipleblockunit>
+      <units>
+        <unit>deNatRoyalHunter</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatRoyalHunterElector</multipleblockunit>
       <units>
         <unit>deNatRoyalHunter</unit>
@@ -903,6 +1143,16 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpPirateCetbangProxy</multipleblockunit>
+      <units>
+        <unit>zpPirateCetbang</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <agetech>
       <age>Age0</age>
       <tech>zpNativeCossacks</tech>
@@ -933,7 +1183,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatJanissaryProxy</multipleblockunit>
+      <units>
+        <unit>zpNatJanissary</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatEvzoneProxy</multipleblockunit>
+      <units>
+        <unit>deNatEvzone</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatEvzoneProxy</multipleblockunit>
       <units>
         <unit>deNatEvzone</unit>
@@ -953,7 +1223,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatBoyarProxy</multipleblockunit>
+      <units>
+        <unit>deNatBoyar</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatCorsairSultanate</multipleblockunit>
+      <units>
+        <unit>zpNatCorsair</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatCorsairSultanate</multipleblockunit>
       <units>
         <unit>zpNatCorsair</unit>
@@ -973,6 +1263,16 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatPirateSultanate</multipleblockunit>
+      <units>
+        <unit>zpNatPirate</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
       <multipleblockunit>zpNatQizilbashSultanate</multipleblockunit>
       <units>
@@ -983,7 +1283,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatQizilbashSultanate</multipleblockunit>
+      <units>
+        <unit>zpNatQizilbashProxy</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatGatlingCamelSultanate</multipleblockunit>
+      <units>
+        <unit>zpNatGatlingCamel</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatGatlingCamelSultanate</multipleblockunit>
       <units>
         <unit>zpNatGatlingCamel</unit>
@@ -1157,7 +1477,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatTotenkopfEstate</multipleblockunit>
+      <units>
+        <unit>deNatTotenkopf</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatBrunswickerEstate</multipleblockunit>
+      <units>
+        <unit>deNatBrunswicker</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatBrunswickerEstate</multipleblockunit>
       <units>
         <unit>deNatBrunswicker</unit>
@@ -1177,7 +1517,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatConquistadorEstate</multipleblockunit>
+      <units>
+        <unit>zpNatConquistador</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatArcabuceroEstate</multipleblockunit>
+      <units>
+        <unit>zpNatConquistadorMusketeer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatArcabuceroEstate</multipleblockunit>
       <units>
         <unit>zpNatConquistadorMusketeer</unit>
@@ -1197,7 +1557,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatColonialWardenEstate</multipleblockunit>
+      <units>
+        <unit>zpNatColonialGuardOrig</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatConvictLabourerEstate</multipleblockunit>
+      <units>
+        <unit>zpNatConvictLabourer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatConvictLabourerEstate</multipleblockunit>
       <units>
         <unit>zpNatConvictLabourer</unit>
@@ -1217,7 +1597,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatCowpuncherEstate</multipleblockunit>
+      <units>
+        <unit>zpMountedOutlaw</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatStageCoachEstate</multipleblockunit>
+      <units>
+        <unit>zpStageCoach</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatStageCoachEstate</multipleblockunit>
       <units>
         <unit>zpStageCoach</unit>
@@ -1237,7 +1637,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatRevolutionaryEstate</multipleblockunit>
+      <units>
+        <unit>zpNatRevolutionary</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatEclaireurEstate</multipleblockunit>
+      <units>
+        <unit>zpNatEclaireur</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatEclaireurEstate</multipleblockunit>
       <units>
         <unit>zpNatEclaireur</unit>
@@ -1257,7 +1677,27 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>NativeEmbassy</building>
+      <multipleblockunit>zpNatSettlementMilitiaEstate</multipleblockunit>
+      <units>
+        <unit>zpNatSettlementMilitia</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatSettlerJewishEstate</multipleblockunit>
+      <units>
+        <unit>zpNatSettlerJewish</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>NativeEmbassy</building>
       <multipleblockunit>zpNatSettlerJewishEstate</multipleblockunit>
       <units>
         <unit>zpNatSettlerJewish</unit>
