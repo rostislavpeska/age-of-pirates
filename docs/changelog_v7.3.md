@@ -89,6 +89,12 @@ Autumn 2026 release. Two new historical city maps lead it: London 1660, with two
 - Factory wings on London, Storming the Bastille and March to Versailles, London's park palace and the Minster's monastery wings could be selected — fixed; the same for the decorative small houses on Caribbean Wars.
 - Artillery loads onto the new DLC whaling ships and the Corvette without the slow load delay, as on every other ship.
 - "The Emperess" ship name — fixed to "The Empress".
+- Consulate on mod maps: a partner you had already used could not be chosen again, and End Relations worked only once — fixed.
+- Revolting to Romania or Chile turned a vanilla consulate card back on on mod maps (vanilla Russian Allies in the Hussite picker on the Danube, for example) — fixed, the revolution now swaps it for the mod's own card (not yet confirmed in game).
+- With the Koreans add-on, a Korean player's consulate was empty on every mod map except Burma — fixed.
+- Unknown map: the Maya stayed vanilla (no Maya Influence button at the Trading Post) in every game that rolled the Bourbon alliance — fixed, every player now gets the extended Maya.
+- Danube forced local mercenaries, banned the Trade Monopoly victory and showed the King of Bohemia loading picture, though it is a standard map — fixed: default mercenaries, Trade Monopoly allowed, its own loading picture.
+- AI players could field raw proxy units instead of the real unit (seen with Prince Elector Mounted Infantry and Brunswickers) — proxies now also convert at the Native Embassy (in beta testing, not yet confirmed in game).
 
 ## Game balance
 - Harpooner reworked (see Inuits).
