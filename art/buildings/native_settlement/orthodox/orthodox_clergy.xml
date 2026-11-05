@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<submodel>
+		Orthodox
+		<attachment>ee_hat<component>ee_hat<assetreference type="GrannyModel"><file>units\priests\sacerdote_ortodoxo_hat\askari_hat</file></assetreference></component><anim>Idle<component>ee_hat</component></anim></attachment>
+		<attachment>med_book<component>med_book<assetreference type="GrannyModel"><file>units\priests\med_priest_book</file></assetreference></component><anim>Idle<component>med_book</component></anim></attachment>
+		<attachment>beard<include>units\priests\sacerdote_ortodoxo\head\head.xml</include></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\priests\sacerdote_ortodoxo\ee_priest</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\priests\sacerdote_ortodoxo\ee_priest</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal><attach a="beard" frombone="MASTER" tobone="MASTER" syncanims="1"></attach><attach a="med_book" frombone="L HAND" tobone="L HAND" syncanims="0"></attach><attach a="ee_hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\shared\human_idle_generic_A</file></assetreference><component>ModelComp</component></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\human_bored_generic_A</file></assetreference><component>ModelComp</component></anim>
+	</submodel>
+	<submodel>
+		Hospitaller
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_01</file><materialvariant index="1"></materialvariant></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_01</file><materialvariant index="1"></materialvariant></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\shared\human_idle_generic_A</file></assetreference><component>ModelComp</component></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\human_bored_generic_A</file></assetreference><component>ModelComp</component></anim>
+	</submodel>
+	<component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="Orthodox"/>
+			</data>
+			<data>
+				<submodelref ref="Orthodox"/>
+			</data>
+			<data>
+				<submodelref ref="Hospitaller"/>
+			</data>
+		</logic>
+	</component>
+</animfile>

@@ -1,0 +1,159 @@
+{
+ "_comment": "Editor minimap crop of gen_paris.png (2560x1080, taken 2026-09-20 22:48:03 after generating zpparis, 4 players, seed 4242) and the world positions from its save census_paris_s4242.age3Yscn (22:48:13, same generation) read from each record's own header at tag-49 (orthonormal 3x3 after it on all 8577 records). The star is the EXPLORER; the command post is the glyph behind it. Built 2026-09-24 by the calibration implementer. Map size = the ENGINE size 654 x 360 (the save's terrain header: 327 x 180 tiles; rmSetMapSize asks 653): explorer_err_px at 654 m, explorer_err_px_at_653 the earlier numbers (2026-09-24 fix round).",
+ "image": "paris_editor_minimap.png",
+ "screen": "editor",
+ "screen_size": [
+  2560,
+  1080
+ ],
+ "crop_offset": [
+  2119,
+  770
+ ],
+ "map": "zpparis",
+ "players": 4,
+ "teams": 2,
+ "size_x_m": 654.0,
+ "size_z_m": 360.0,
+ "size_script_m": [
+  653.0,
+  360.0
+ ],
+ "terrain_tiles": [
+  327,
+  180
+ ],
+ "disc": {
+  "cx": 2269.33,
+  "cy": 920.33,
+  "r_disc": 130.5,
+  "r_line": 136.18,
+  "full_frame": {
+   "cx": 2269.33,
+   "cy": 920.33,
+   "r_disc": 130.5,
+   "r_line": 136.18
+  }
+ },
+ "look_at": [
+  2220.0,
+  1022.1
+ ],
+ "trapezoid_clipped": true,
+ "stars": [
+  {
+   "what": "P1 blue Explorer (id 8092)",
+   "player_colour": [
+    0,
+    0,
+    255
+   ],
+   "x_m": 57.0,
+   "z_m": 87.0,
+   "star_px": 2220.5,
+   "star_py": 1023.5,
+   "star_score": 1.0,
+   "explorer_err_px": 1.34,
+   "post": {
+    "what": "P1 blue deSPCCommandPost (id 8091)",
+    "x_m": 67.0,
+    "z_m": 99.0,
+    "err_px_to_star": 7.14
+   },
+   "explorer_err_px_at_653": 1.27
+  },
+  {
+   "what": "P2 red Explorer (id 8111)",
+   "player_colour": [
+    255,
+    0,
+    0
+   ],
+   "x_m": 69.0,
+   "z_m": 267.0,
+   "star_px": 2172.5,
+   "star_py": 969.5,
+   "star_score": 1.0,
+   "explorer_err_px": 1.06,
+   "post": {
+    "what": "P2 red deSPCCommandPost (id 8110)",
+    "x_m": 69.0,
+    "z_m": 277.0,
+    "err_px_to_star": 5.02
+   },
+   "explorer_err_px_at_653": 1.12
+  },
+  {
+   "what": "P3 yellow Explorer (id 8129)",
+   "player_colour": [
+    255,
+    255,
+    0
+   ],
+   "x_m": 573.0,
+   "z_m": 109.0,
+   "star_px": 2359.5,
+   "star_py": 871.5,
+   "star_score": 0.98,
+   "explorer_err_px": 0.9,
+   "post": {
+    "what": "P3 yellow deSPCCommandPost (id 8128)",
+    "x_m": 587.0,
+    "z_m": 97.0,
+    "err_px_to_star": 6.72
+   },
+   "explorer_err_px_at_653": 0.89
+  },
+  {
+   "what": "P4 purple Explorer (id 8148)",
+   "player_colour": [
+    128,
+    0,
+    128
+   ],
+   "x_m": 579.0,
+   "z_m": 285.0,
+   "star_px": 2311.5,
+   "star_py": 820.5,
+   "star_score": 1.0,
+   "explorer_err_px": 1.14,
+   "post": {
+    "what": "P4 purple deSPCCommandPost (id 8147)",
+    "x_m": 587.0,
+    "z_m": 277.0,
+    "err_px_to_star": 3.94
+   },
+   "explorer_err_px_at_653": 1.3
+  }
+ ],
+ "edges": {
+  "sides": {
+   "a": {
+    "what": "long edge z=0 m",
+    "model_px": 71.835,
+    "measured_px": 70.244,
+    "inset_px": 1.591,
+    "samples": 99,
+    "rays": 99,
+    "spread_px": 0.707
+   },
+   "b": {
+    "what": "long edge z=360 m",
+    "model_px": 71.835,
+    "measured_px": 69.763,
+    "inset_px": 2.072,
+    "samples": 99,
+    "rays": 99,
+    "spread_px": 0.707
+   }
+  },
+  "agree_px": 0.481,
+  "main_session_scan": {
+   "model_half_width_px_at_653": 71.94,
+   "measured_px": [
+    70.19,
+    70.69
+   ]
+  }
+ }
+}

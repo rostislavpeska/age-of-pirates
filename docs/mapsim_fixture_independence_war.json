@@ -1,0 +1,727 @@
+{
+ "map_size": {
+  "expression": "rmSetMapSize(size, size)",
+  "line": 57,
+  "values_by_players": "int size = 400; if (PlayerNum >= 3) size = 500; if (PlayerNum >= 5) size = 600; if (PlayerNum >= 7) size = 660 (lines 50-56; PlayerNum = cNumberNonGaiaPlayers)"
+ },
+ "sea_level": "rmSetSeaLevel(1.0) at line 62; terrain initialized as water via rmTerrainInitialize(\"water\") at line 71, so any area with base height >= ~1.0 creates land",
+ "water_and_lighting": "rmSetLightingSet(\"NewEngland_Skirmish\") line 66; rmSetSeaType(\"ZP New England Calm\") line 69; rmEnableLocalWater(false) line 70; rmTerrainInitialize(\"water\") line 71; rmSetMapType: \"grass\",\"water\",\"default\",\"newEngland\",\"piratehistoricalmap\" lines 72-76; rmSetMapElevationHeightBlend(1) line 59",
+ "areas": [
+  {
+   "name": "riverArea1",
+   "line": 364,
+   "loc_x": "0.5",
+   "loc_z": "0.4",
+   "size": "rmAreaTilesToFraction(2700); PlayerNum>=3: rmAreaTilesToFraction(3500); >=5: rmAreaTilesToFraction(4500); >=7: rmAreaTilesToFraction(6000)",
+   "base_height": "(none set)",
+   "cliff_type": "(none)",
+   "creates_land": false,
+   "notes": "Invisible marker (water channel). coherence 0.6; elevationVariation 0.0; class classGreatLake; influence segment (0.5,1.0)-(0.5,0.5); obeyWorldCircleConstraint false; reveal 1; rmBuildArea line 379"
+  },
+  {
+   "name": "centralLake",
+   "line": 381,
+   "loc_x": "0.5",
+   "loc_z": "0.3",
+   "size": "rmAreaTilesToFraction(7900); PlayerNum>=3: rmAreaTilesToFraction(11600); >=5: rmAreaTilesToFraction(16500); >=7: rmAreaTilesToFraction(21000)",
+   "base_height": "(none set)",
+   "cliff_type": "(none)",
+   "creates_land": false,
+   "notes": "Invisible marker (the gulf). coherence 0.8; elevationVariation 0.0; class classDeepWater; influence segments (0.8,0.1)-(0.5,0.3), (0.5,0.3)-(0.2,0.1), (0.2,0.1)-(0.8,0.1); reveal 1; rmBuildArea line 397"
+  },
+  {
+   "name": "playerIslandNorth",
+   "line": 401,
+   "loc_x": "0.8",
+   "loc_z": "0.8",
+   "size": "0.33, 0.33 (literal fraction)",
+   "base_height": "3",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "coherence 1.0; mix newengland_grass; terrain layers new_england\\shoreline3_ne (0,1) and shoreline2_ne (1,2); heightBlend 2; smoothDistance 6; obeyWorldCircle false; constraints: greatLakesConstraint (class great lake 0.1), avoidDeepWater (class deep lake 20.0), avoidBridge (zpBridgeFace 15.0); rmBuildArea line 415"
+  },
+  {
+   "name": "playerIslandSouth",
+   "line": 417,
+   "loc_x": "0.2",
+   "loc_z": "0.8",
+   "size": "0.33, 0.33 (literal fraction)",
+   "base_height": "3",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Identical to playerIslandNorth (coherence 1.0, mix newengland_grass, shoreline layers, heightBlend 2, smooth 6, obeyWorldCircle false, constraints greatLakesConstraint/avoidDeepWater/avoidBridge); rmBuildArea line 431"
+  },
+  {
+   "name": "bridgeDockEast",
+   "line": 435,
+   "loc_x": "bridgeX+rmXTilesToFraction(22) (bridgeX=0.5)",
+   "loc_z": "bridgeZ (=0.88)",
+   "size": "rmAreaTilesToFraction(300)",
+   "base_height": "3.0",
+   "cliff_type": "ZP Elbe Cliff",
+   "creates_land": true,
+   "notes": "coherence 1.0; rmSetAreaCliffEdge(1, 1.0, 0.1, 1.0, 0); rmSetAreaCliffHeight(0, 0.0, 1.0); class classPlateau; obeyWorldCircle false; rmBuildArea line 445"
+  },
+  {
+   "name": "bridgeDockWest",
+   "line": 447,
+   "loc_x": "bridgeX-rmXTilesToFraction(22) (bridgeX=0.5)",
+   "loc_z": "bridgeZ (=0.88)",
+   "size": "rmAreaTilesToFraction(300)",
+   "base_height": "3.0",
+   "cliff_type": "ZP Elbe Cliff",
+   "creates_land": true,
+   "notes": "Mirror of bridgeDockEast; cliffEdge(1,1.0,0.1,1.0,0); cliffHeight(0,0.0,1.0); class classPlateau; obeyWorldCircle false; rmBuildArea line 457"
+  },
+  {
+   "name": "shoreLine1",
+   "line": 464,
+   "loc_x": "0.7",
+   "loc_z": "0.4",
+   "size": "rmAreaTilesToFraction(700)",
+   "base_height": "3.5",
+   "cliff_type": "New England",
+   "creates_land": true,
+   "notes": "Harbour dock cliff. coherence 1.0; cliffEdge(1,1.0,0.1,1.0,0); cliffHeight(0,0.0,1.0); class classPlateau; obeyWorldCircle false; rmBuildArea line 474"
+  },
+  {
+   "name": "shoreLine2",
+   "line": 476,
+   "loc_x": "0.58",
+   "loc_z": "0.2",
+   "size": "rmAreaTilesToFraction(700)",
+   "base_height": "3.5",
+   "cliff_type": "New England",
+   "creates_land": true,
+   "notes": "Same params as shoreLine1; rmBuildArea line 486"
+  },
+  {
+   "name": "shoreLine3",
+   "line": 488,
+   "loc_x": "0.42",
+   "loc_z": "0.2",
+   "size": "rmAreaTilesToFraction(700)",
+   "base_height": "3.5",
+   "cliff_type": "New England",
+   "creates_land": true,
+   "notes": "Same params as shoreLine1; rmBuildArea line 498"
+  },
+  {
+   "name": "shoreLine4",
+   "line": 500,
+   "loc_x": "0.3",
+   "loc_z": "0.4",
+   "size": "rmAreaTilesToFraction(700)",
+   "base_height": "3.5",
+   "cliff_type": "New England",
+   "creates_land": true,
+   "notes": "Same params as shoreLine1; rmBuildArea line 510"
+  },
+  {
+   "name": "playerHillsNorth",
+   "line": 515,
+   "loc_x": "0.8",
+   "loc_z": "0.8",
+   "size": "0.23, 0.23 (literal fraction)",
+   "base_height": "3",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Elevated overlay on north island. mix newengland_grass_b; coherence 1.0; heightBlend 2; smooth 6; obeyWorldCircle false; constraints avoidWater5 (Land false 5.0), avoidBridge (zpBridgeFace 15.0); elevationVariation 6.0; cElevTurbulence; minFreq 0.09; octaves 3; persistence 0.2; noiseBias 1; rmBuildArea line 532"
+  },
+  {
+   "name": "playerHillsSouth",
+   "line": 534,
+   "loc_x": "0.2",
+   "loc_z": "0.8",
+   "size": "0.23, 0.23 (literal fraction)",
+   "base_height": "3",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Identical params to playerHillsNorth; rmBuildArea line 551"
+  },
+  {
+   "name": "pirate_site1",
+   "line": 581,
+   "loc_x": "rmXMetersToFraction(xsVectorGetX(pirateControllerLoc1)) (controller placed at 0.17)",
+   "loc_z": "rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc1)) (controller placed at 0.30)",
+   "size": "rmAreaTilesToFraction(1100)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Headland under pirate village 1. coherence 1.0; mix newengland_grass_leaves; shoreline3_ne (0,1) + shoreline2_ne (1,2) layers; heightBlend 2; smooth 15; elevationVariation 0.0; obeyWorldCircle false; rmBuildArea line 593"
+  },
+  {
+   "name": "pirate_site2",
+   "line": 595,
+   "loc_x": "rmXMetersToFraction(xsVectorGetX(pirateControllerLoc2)) (controller placed at 0.83)",
+   "loc_z": "rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc2)) (controller placed at 0.30)",
+   "size": "rmAreaTilesToFraction(1100)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Identical to pirate_site1; rmBuildArea line 607"
+  },
+  {
+   "name": "estateValley1",
+   "line": 715,
+   "loc_x": "estateW1x (=0.317)",
+   "loc_z": "estateW1z (=0.762)",
+   "size": "rmAreaTilesToFraction(700.0)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Height-only flatten (no mix on purpose). coherence 0.8; smooth 15; heightBlend 2; elevationVariation 0.0; rmSetAreaWarnFailure(false); rmBuildArea line 724"
+  },
+  {
+   "name": "estateValley2",
+   "line": 726,
+   "loc_x": "estateW2x (=0.218)",
+   "loc_z": "estateW2z (=0.650)",
+   "size": "rmAreaTilesToFraction(700.0)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Same params as estateValley1; warnFailure false; rmBuildArea line 735"
+  },
+  {
+   "name": "estateValley3",
+   "line": 737,
+   "loc_x": "estateW3x (=0.180)",
+   "loc_z": "estateW3z (=0.506)",
+   "size": "rmAreaTilesToFraction(700.0)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Same params; warnFailure false; rmBuildArea line 746"
+  },
+  {
+   "name": "estateValley4",
+   "line": 748,
+   "loc_x": "estateE1x (=0.683)",
+   "loc_z": "estateE1z (=0.762)",
+   "size": "rmAreaTilesToFraction(700.0)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Same params; warnFailure false; rmBuildArea line 757"
+  },
+  {
+   "name": "estateValley5",
+   "line": 759,
+   "loc_x": "estateE2x (=0.782)",
+   "loc_z": "estateE2z (=0.650)",
+   "size": "rmAreaTilesToFraction(700.0)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Same params; warnFailure false; rmBuildArea line 768"
+  },
+  {
+   "name": "estateValley6",
+   "line": 770,
+   "loc_x": "estateE3x (=0.820)",
+   "loc_z": "estateE3z (=0.506)",
+   "size": "rmAreaTilesToFraction(700.0)",
+   "base_height": "3.0",
+   "cliff_type": "(none)",
+   "creates_land": true,
+   "notes": "Same params; warnFailure false; rmBuildArea line 779"
+  },
+  {
+   "name": "westforest+i (loop)",
+   "line": 1018,
+   "loc_x": "(no rmSetAreaLocation - engine random placement under constraints)",
+   "loc_z": "(none)",
+   "size": "rmAreaTilesToFraction(200) to rmAreaTilesToFraction(300)",
+   "base_height": "(none set)",
+   "cliff_type": "(none)",
+   "creates_land": false,
+   "notes": "Forest area loop: numTries=52 (>=5 players: 66; >=7: 80), break after 5 consecutive rmBuildArea failures. warnFailure false; forest type 'z69 North New England'; density 1.0; class classForest; clumpiness 0.0; underbrush 0.0; coherence 0.4; constraints: avoidImportantItem (class importantItem 10.0), shortAvoidCoin (gold 10.0), avoidTownCenterFar (townCenter 30.0), avoidPlateauShort (class classPlateau 1.0), avoidAll (all 6.0), avoidWater10 (Land false 10.0), avoidTradeRouteFar2 (trade route 10.0), forestConstraint (class classForest 20.0), westLand (box 0.0,0.45,0.5,1.0)"
+  },
+  {
+   "name": "eastForest+i (loop)",
+   "line": 1057,
+   "loc_x": "(no rmSetAreaLocation - engine random placement under constraints)",
+   "loc_z": "(none)",
+   "size": "rmAreaTilesToFraction(200) to rmAreaTilesToFraction(300)",
+   "base_height": "(none set)",
+   "cliff_type": "(none)",
+   "creates_land": false,
+   "notes": "Mirror forest loop, numTries=52/66/80, 5-fail break. Same params/constraints as westforest but eastLand (box 0.5,0.45,1.0,1.0) instead of westLand; constraint order: avoidImportantItem, shortAvoidCoin, avoidTownCenterFar, avoidPlateauShort, avoidWater10, avoidAll, avoidTradeRouteFar2, forestConstraint, eastLand"
+  }
+ ],
+ "object_defs": [
+  {
+   "name": "bridge stopper (stopperID)",
+   "line": 238,
+   "placement": "trade-route docked (rmSetObjectDefTradeRouteID line 291) + rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1) line 329",
+   "loc": "socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5) (line 328)",
+   "constraints": [],
+   "notes": "zpSPCWaterSpawnPoint x1 r0.0; rmSetObjectDefAllowOverlap true; MinDistance 0.0, MaxDistance 0.0. Comment: without it the islands won't spawn"
+  },
+  {
+   "name": "sockets to dock Trade Posts1 (loneSocketID1)",
+   "line": 247,
+   "placement": "trade-route docked (line 292) + rmPlaceObjectDefAtLoc(loneSocketID1, 0, 0.6, 0.4) line 832",
+   "loc": "0.6, 0.4",
+   "constraints": [],
+   "notes": "zpTradingPostCaptureNavalLone x1 r0.0; MinDistance 0.0, MaxDistance 0.5"
+  },
+  {
+   "name": "sockets to dock Trade Posts2 (loneSocketID2)",
+   "line": 252,
+   "placement": "trade-route docked (line 293) + rmPlaceObjectDefAtLoc(loneSocketID2, 0, 0.58, 0.3) line 835",
+   "loc": "0.58, 0.3",
+   "constraints": [],
+   "notes": "zpTradingPostCaptureNavalLone x1; MinDistance 0.0, MaxDistance 0.5"
+  },
+  {
+   "name": "sockets to dock Trade Posts3 (loneSocketID3)",
+   "line": 257,
+   "placement": "trade-route docked (line 294) + rmPlaceObjectDefAtLoc(loneSocketID3, 0, 0.42, 0.3) line 838",
+   "loc": "0.42, 0.3",
+   "constraints": [],
+   "notes": "zpTradingPostCaptureNavalLone x1; MinDistance 0.0, MaxDistance 0.5"
+  },
+  {
+   "name": "sockets to dock Trade Posts4 (loneSocketID4)",
+   "line": 262,
+   "placement": "trade-route docked (line 295) + rmPlaceObjectDefAtLoc(loneSocketID4, 0, 0.4, 0.4) line 841",
+   "loc": "0.4, 0.4",
+   "constraints": [],
+   "notes": "zpTradingPostCaptureNavalLone x1; MinDistance 0.0, MaxDistance 0.5"
+  },
+  {
+   "name": "nuggets to dock Trade Posts1 (loneNuggetID1)",
+   "line": 267,
+   "placement": "trade-route docked (line 296) + rmPlaceObjectDefAtLoc(loneNuggetID1, 0, 0.6, 0.4) line 833",
+   "loc": "0.6, 0.4",
+   "constraints": [],
+   "notes": "Nugget x1; MinDistance 4.0, MaxDistance 6.0; rmSetNuggetDifficulty(101, 101) at line 828 governs these guardian nuggets"
+  },
+  {
+   "name": "nuggets to dock Trade Posts2 (loneNuggetID2)",
+   "line": 272,
+   "placement": "trade-route docked (line 297) + rmPlaceObjectDefAtLoc(loneNuggetID2, 0, 0.58, 0.3) line 836",
+   "loc": "0.58, 0.3",
+   "constraints": [],
+   "notes": "Nugget x1; MinDistance 4.0, MaxDistance 6.0"
+  },
+  {
+   "name": "nuggets to dock Trade Posts3 (loneNuggetID3)",
+   "line": 277,
+   "placement": "trade-route docked (line 298) + rmPlaceObjectDefAtLoc(loneNuggetID3, 0, 0.42, 0.3) line 839",
+   "loc": "0.42, 0.3",
+   "constraints": [],
+   "notes": "Nugget x1; MinDistance 4.0, MaxDistance 6.0"
+  },
+  {
+   "name": "nuggets to dock Trade Posts4 (loneNuggetID4)",
+   "line": 282,
+   "placement": "trade-route docked (line 299) + rmPlaceObjectDefAtLoc(loneNuggetID4, 0, 0.4, 0.4) line 842",
+   "loc": "0.4, 0.4",
+   "constraints": [],
+   "notes": "Nugget x1; MinDistance 4.0, MaxDistance 6.0"
+  },
+  {
+   "name": "bridge (grouping 'Bridge_universal_long')",
+   "line": 339,
+   "placement": "rmPlaceGroupingAtLoc(bridgeCrossing, 0, bridgeX, bridgeZ) line 344",
+   "loc": "bridgeX=0.5, bridgeZ=0.88",
+   "constraints": [],
+   "notes": "Grouping; MinDistance 0.00, MaxDistance 0.00; rmAddGroupingToClass classPlateau; plain land crossing, no trade route"
+  },
+  {
+   "name": "pirate controller 1 (pirateControllerID1)",
+   "line": 560,
+   "placement": "rmPlaceObjectDefAtLoc(pirateControllerID1, 0, 0.17, 0.30) line 571",
+   "loc": "0.17, 0.30",
+   "constraints": [],
+   "notes": "zpSPCWaterSpawnPoint x1; MinDistance 0.0, MaxDistance 0.0; placed position read back via rmGetUnitPosition into pirateControllerLoc1 (line 574) and reused for pirate_site1, village, flag, port"
+  },
+  {
+   "name": "pirate controller 2 (pirateControllerID2)",
+   "line": 565,
+   "placement": "rmPlaceObjectDefAtLoc(pirateControllerID2, 0, 0.83, 0.30) line 572",
+   "loc": "0.83, 0.30",
+   "constraints": [],
+   "notes": "zpSPCWaterSpawnPoint x1; MinDistance 0.0, MaxDistance 0.0; position read into pirateControllerLoc2 (line 575)"
+  },
+  {
+   "name": "pirate city 1 (grouping 'pirate_village05')",
+   "line": 615,
+   "placement": "rmPlaceGroupingInstanceAtLoc(piratesVillageID1, x, z, 0) line 619",
+   "loc": "rmXMetersToFraction(xsVectorGetX(pirateControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc1))",
+   "constraints": [],
+   "notes": "Grouping; MinDistance 0.00, MaxDistance 0.00; NO grouping constraints by design (fixed placement); instance id kept for zpSocketPirates lookup"
+  },
+  {
+   "name": "pirate city 2 (grouping 'Pirate_Village06')",
+   "line": 622,
+   "placement": "rmPlaceGroupingInstanceAtLoc(piratesVillageID2, x, z, 0) line 626",
+   "loc": "rmXMetersToFraction(xsVectorGetX(pirateControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc2))",
+   "constraints": [],
+   "notes": "Grouping; MinDistance 0.00, MaxDistance 0.00"
+  },
+  {
+   "name": "pirate water flag 1 (piratewaterflagID1)",
+   "line": 631,
+   "placement": "rmPlaceObjectDefAtLoc at closest-point result, line 636",
+   "loc": "closeToVillage1 = rmFindClosestPointVector(pirateControllerLoc1, rmXFractionToMeters(1.0)) under rmAddClosestPointConstraint(flagLand) (flagLand = terrain 'land' true 11.0)",
+   "constraints": [
+    "closest-point: flagLand (rmCreateTerrainDistanceConstraint 'land', true, 11.0)"
+   ],
+   "notes": "zpPirateWaterSpawnFlag1 x1 r1.0; rmClearClosestPointConstraints after (line 638)"
+  },
+  {
+   "name": "pirate water flag 2 (piratewaterflagID2)",
+   "line": 640,
+   "placement": "rmPlaceObjectDefAtLoc at closest-point result, line 645",
+   "loc": "closeToVillage2 = rmFindClosestPointVector(pirateControllerLoc2, rmXFractionToMeters(1.0)) under flagLand",
+   "constraints": [
+    "closest-point: flagLand (terrain 'land' true 11.0)"
+   ],
+   "notes": "zpPirateWaterSpawnFlag2 x1 r1.0; rmClearClosestPointConstraints line 647"
+  },
+  {
+   "name": "pirate port 1 (grouping 'pirateport03')",
+   "line": 651,
+   "placement": "rmPlaceGroupingAtLoc at closest-point result, line 655",
+   "loc": "closeToVillage1a = rmFindClosestPointVector(pirateControllerLoc1, rmXFractionToMeters(1.0)) under rmAddClosestPointConstraint(portOnShore) (terrain 'land' true 3.5)",
+   "constraints": [
+    "closest-point: portOnShore (rmCreateTerrainDistanceConstraint 'land', true, 3.5)"
+   ],
+   "notes": "Grouping; rmClearClosestPointConstraints line 657"
+  },
+  {
+   "name": "pirate port 2 (grouping 'pirateport04')",
+   "line": 659,
+   "placement": "rmPlaceGroupingAtLoc at closest-point result, line 663",
+   "loc": "closeToVillage2a = rmFindClosestPointVector(pirateControllerLoc2, rmXFractionToMeters(1.0)) under portOnShore",
+   "constraints": [
+    "closest-point: portOnShore (terrain 'land' true 3.5)"
+   ],
+   "notes": "Grouping; rmClearClosestPointConstraints line 665"
+  },
+  {
+   "name": "estate west upper (grouping 'Colonial_estate_'+estateUpper)",
+   "line": 783,
+   "placement": "rmPlaceGroupingAtLoc(estateWestUpperID, 0, estateW1x, estateW1z, 1) line 786",
+   "loc": "estateW1x=0.317, estateW1z=0.762",
+   "constraints": [],
+   "notes": "MinDistance 0.00, MaxDistance 0.00; estateUpper/Middle/Lower resource types come from estateOrder = rmRandInt(1,6) (line 675): 1=coin/wood/food, 2=coin/food/wood, 3=wood/coin/food, 4=wood/food/coin, 5=food/coin/wood, 6=food/wood/coin; same order reused on both banks"
+  },
+  {
+   "name": "estate west middle (grouping 'Colonial_estate_'+estateMiddle)",
+   "line": 788,
+   "placement": "rmPlaceGroupingAtLoc(estateWestMiddleID, 0, estateW2x, estateW2z, 1) line 791",
+   "loc": "estateW2x=0.218, estateW2z=0.650",
+   "constraints": [],
+   "notes": "MinDistance 0.00, MaxDistance 0.00"
+  },
+  {
+   "name": "estate west lower (grouping 'Colonial_estate_'+estateLower)",
+   "line": 793,
+   "placement": "rmPlaceGroupingAtLoc(estateWestLowerID, 0, estateW3x, estateW3z, 1) line 796",
+   "loc": "estateW3x=0.180, estateW3z=0.506",
+   "constraints": [],
+   "notes": "MinDistance 0.00, MaxDistance 0.00"
+  },
+  {
+   "name": "estate east upper (grouping 'Colonial_estate_'+estateUpper)",
+   "line": 798,
+   "placement": "rmPlaceGroupingAtLoc(estateEastUpperID, 0, estateE1x, estateE1z, 1) line 801",
+   "loc": "estateE1x=0.683, estateE1z=0.762",
+   "constraints": [],
+   "notes": "MinDistance 0.00, MaxDistance 0.00"
+  },
+  {
+   "name": "estate east middle (grouping 'Colonial_estate_'+estateMiddle)",
+   "line": 803,
+   "placement": "rmPlaceGroupingAtLoc(estateEastMiddleID, 0, estateE2x, estateE2z, 1) line 806",
+   "loc": "estateE2x=0.782, estateE2z=0.650",
+   "constraints": [],
+   "notes": "MinDistance 0.00, MaxDistance 0.00"
+  },
+  {
+   "name": "estate east lower (grouping 'Colonial_estate_'+estateLower)",
+   "line": 808,
+   "placement": "rmPlaceGroupingAtLoc(estateEastLowerID, 0, estateE3x, estateE3z, 1) line 811",
+   "loc": "estateE3x=0.820, estateE3z=0.506",
+   "constraints": [],
+   "notes": "MinDistance 0.00, MaxDistance 0.00"
+  },
+  {
+   "name": "king hill (kingHillID)",
+   "line": 816,
+   "placement": "rmPlaceObjectDefAtLoc(kingHillID, 0, 0.5, 0.72, 1) line 822 - only if rmGetIsKOTH()",
+   "loc": "0.5, 0.72",
+   "constraints": [
+    "avoidAll (type 'all' 6.0)",
+    "playerEdgeConstraint (pie 0.5,0.5, r rmXFractionToMeters(0.0)..rmXFractionToMeters(0.45), 0-360deg)",
+    "avoidWater10 (terrain 'Land' false 10.0)",
+    "avoidBridge (type 'zpBridgeFace' 15.0)"
+   ],
+   "notes": "ypKingsHill x1 r0.0; KOTH game mode only"
+  },
+  {
+   "name": "startingUnits",
+   "line": 902,
+   "placement": "rmPlaceObjectDefAtLoc(startingUnits, i, TCLoc.x, TCLoc.z) line 972, per player loop",
+   "loc": "rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc))",
+   "constraints": [],
+   "notes": "rmCreateStartingUnitsObjectDef(5.0)"
+  },
+  {
+   "name": "player TC (TCID)",
+   "line": 904,
+   "placement": "rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)) line 951, loop for(i=1; <cNumberPlayers)",
+   "loc": "rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)",
+   "constraints": [
+    "avoidTownCenter (type 'townCenter' 25.0)",
+    "playerEdgeConstraint (pie 0..rmXFractionToMeters(0.45))",
+    "avoidImpassableLand (terrain 'Land' false 6.0)",
+    "avoidSocketLong (type 'Socket' 40.0)",
+    "avoidWater10 (terrain 'Land' false 10.0)",
+    "avoidEstate (type 'zpNativeHouseWesternVillageB' 30.0)"
+   ],
+   "notes": "CoveredWagon x1 if rmGetNomadStart() else TownCenter x1; MinDistance 0.0; MaxDistance TCfloat = 20 if cNumberTeams==2 else 60 (lines 896-900, 915-916); placed position read into TCLoc (line 952)"
+  },
+  {
+   "name": "player mine (playerMineID)",
+   "line": 919,
+   "placement": "rmPlaceObjectDefAtLoc(playerMineID, 0, TCLoc.x, TCLoc.z) line 973, per player loop",
+   "loc": "TCLoc of each player",
+   "constraints": [
+    "avoidImpassableLand (terrain 'Land' false 6.0)"
+   ],
+   "notes": "mine x1 r0; MinDistance 10.0, MaxDistance 30.0"
+  },
+  {
+   "name": "player deer (playerDeerID)",
+   "line": 925,
+   "placement": "rmPlaceObjectDefAtLoc(playerDeerID, 0, TCLoc.x, TCLoc.z) line 974, per player loop",
+   "loc": "TCLoc of each player",
+   "constraints": [
+    "avoidImpassableLand (terrain 'Land' false 6.0)"
+   ],
+   "notes": "deer x rmRandInt(10,15) r10.0; MinDistance 15.0, MaxDistance 30.0; rmSetObjectDefCreateHerd true"
+  },
+  {
+   "name": "player trees (playerTreeID)",
+   "line": 932,
+   "placement": "rmPlaceObjectDefAtLoc(playerTreeID, 0, TCLoc.x, TCLoc.z) line 975, per player loop",
+   "loc": "TCLoc of each player",
+   "constraints": [
+    "avoidStartingResources (class startingResource 8.0)",
+    "avoidImpassableLand (terrain 'Land' false 6.0)"
+   ],
+   "notes": "TreeNewEngland x15 r8.0; MinDistance 15, MaxDistance 25; classes: classStartingResource, classForest"
+  },
+  {
+   "name": "colony ship +i (colonyShipID, per player)",
+   "line": 955,
+   "placement": "rmPlaceObjectDefAtLoc at closest-point result, line 971 (inside player loop)",
+   "loc": "closestPoint = rmFindClosestPointVector(TCLoc, rmXFractionToMeters(1.0)) under closest-point constraints",
+   "constraints": [
+    "closest-point: flagEdgeConstraint (pie 0.5,0.5, rmXFractionToMeters(0.0)..rmXFractionToMeters(0.48), 0-360deg)",
+    "closest-point: flagVsFlag (type 'HomeCityWaterSpawnFlag' 30)",
+    "closest-point: flagLand (terrain 'land' true 11.0)",
+    "closest-point: avoidBridgeLong (type 'zpBridgeFace' 70.0)"
+   ],
+   "notes": "HomeCityWaterSpawnFlag x1 r1.0; if rmGetNomadStart(): + Galley x1 r10.0 (Ottomans) or caravel x1 r10.0 (others); rmClearClosestPointConstraints after loop (line 981)"
+  },
+  {
+   "name": "ypMonasteryBuilder(i, 1)",
+   "line": 978,
+   "placement": "rmPlaceObjectDefAtLoc at TCLoc, line 978 - only if ypIsAsian(i) && rmGetNomadStart()==false",
+   "loc": "TCLoc of each Asian player",
+   "constraints": [],
+   "notes": "Object def built by ypAsianInclude.xs helper"
+  },
+  {
+   "name": "random mine (randomGoldID)",
+   "line": 989,
+   "placement": "rmPlaceObjectDefInArea(randomGoldID, 0, playerIslandSouthID, cNumberNonGaiaPlayers*1.5) line 1001; rmPlaceObjectDefInArea(..., playerIslandNorthID, cNumberNonGaiaPlayers*1.5) line 1002",
+   "loc": "in areas playerIslandSouth / playerIslandNorth",
+   "constraints": [
+    "avoidCoin (type 'Mine' 30.0)",
+    "avoidAll (type 'all' 6.0)",
+    "avoidTownCenterFar (type 'townCenter' 30.0)",
+    "avoidSocketLong (type 'Socket' 40.0)",
+    "avoidWater20 (terrain 'Land' false 20.0)",
+    "avoidTradeRoute (trade route 7.0)",
+    "avoidEstate (type 'zpNativeHouseWesternVillageB' 30.0)",
+    "playerEdgeConstraint (pie 0..rmXFractionToMeters(0.45))"
+   ],
+   "notes": "Mine x1 r0.0; MinDistance 0.0, MaxDistance rmXFractionToMeters(0.45)"
+  },
+  {
+   "name": "berries+i (berriesID)",
+   "line": 1091,
+   "placement": "rmPlaceObjectDefAtLoc(berriesID, 0, 0.5, 0.5) line 1101",
+   "loc": "0.5, 0.5",
+   "constraints": [
+    "avoidCoin (type 'Mine' 30.0)",
+    "avoidAll (type 'all' 6.0)",
+    "avoidTradeRoute (trade route 7.0)",
+    "avoidSocket (type 'SocketTradeRoute' 10.0)",
+    "avoidWater20 (terrain 'Land' false 20.0)",
+    "westLand (box 0.0,0.45,0.5,1.0)"
+   ],
+   "notes": "berrybush x3 r4.0; MinDistance 0.0, MaxDistance rmXFractionToMeters(0.45); single placement, west half"
+  },
+  {
+   "name": "berries 2+i (berriesID2)",
+   "line": 1103,
+   "placement": "rmPlaceObjectDefAtLoc(berriesID2, 0, 0.5, 0.5) line 1113",
+   "loc": "0.5, 0.5",
+   "constraints": [
+    "avoidCoin (type 'Mine' 30.0)",
+    "avoidAll (type 'all' 6.0)",
+    "avoidTradeRoute (trade route 7.0)",
+    "avoidSocket (type 'SocketTradeRoute' 10.0)",
+    "avoidWater20 (terrain 'Land' false 20.0)",
+    "eastLand (box 0.5,0.45,1.0,1.0)"
+   ],
+   "notes": "berrybush x3 r4.0; MinDistance 0.0, MaxDistance rmXFractionToMeters(0.45); east half"
+  },
+  {
+   "name": "western deer herd (deerHerdID)",
+   "line": 1116,
+   "placement": "rmPlaceObjectDefAtLoc(deerHerdID, 0, 0.5, 0.5) in loop for(i=0; <numTries) with numTries=3*cNumberNonGaiaPlayers, lines 1129-1133",
+   "loc": "0.5, 0.5 (anchor; MinDistance rmXFractionToMeters(0.03), MaxDistance rmXFractionToMeters(0.45))",
+   "constraints": [
+    "shortAvoidCoin (type 'gold' 10.0)",
+    "avoidTradeSockets (type 'sockettraderoute' 8.0)",
+    "avoidTownCenterFar (type 'townCenter' 30.0)",
+    "avoidWater20 (terrain 'Land' false 20.0)",
+    "avoidAll (type 'all' 6.0)",
+    "avoidImpassableLand (terrain 'Land' false 6.0)",
+    "deerConstraint (type 'deer' 40.0)",
+    "westLand (box 0.0,0.45,0.5,1.0)"
+   ],
+   "notes": "deer x rmRandInt(4,7) r6.0; rmSetObjectDefCreateHerd true"
+  },
+  {
+   "name": "eastern deer herd (deerHerdID2)",
+   "line": 1135,
+   "placement": "rmPlaceObjectDefAtLoc(deerHerdID2, 0, 0.5, 0.5) in loop, numTries=3*cNumberNonGaiaPlayers, lines 1148-1152",
+   "loc": "0.5, 0.5 (anchor; MinDistance rmXFractionToMeters(0.03), MaxDistance rmXFractionToMeters(0.45))",
+   "constraints": [
+    "shortAvoidCoin (type 'gold' 10.0)",
+    "avoidTownCenterFar (type 'townCenter' 30.0)",
+    "avoidTradeSockets (type 'sockettraderoute' 8.0)",
+    "avoidWater20 (terrain 'Land' false 20.0)",
+    "avoidAll (type 'all' 6.0)",
+    "avoidImpassableLand (terrain 'Land' false 6.0)",
+    "deerConstraint (type 'deer' 40.0)",
+    "eastLand (box 0.5,0.45,1.0,1.0)"
+   ],
+   "notes": "deer x rmRandInt(4,7) r6.0; herd true"
+  },
+  {
+   "name": "nugget easy (nugget1)",
+   "line": 1159,
+   "placement": "rmPlaceObjectDefInArea(nugget1, 0, playerIslandSouthID, cNumberNonGaiaPlayers*1.5) line 1172; same in playerIslandNorthID line 1173",
+   "loc": "in areas playerIslandSouth / playerIslandNorth",
+   "constraints": [
+    "shortPlayerConstraint (class player 20.0)",
+    "avoidTownCenter (type 'townCenter' 25.0)",
+    "avoidImpassableLand (terrain 'Land' false 6.0)",
+    "avoidNuggets (class nuggets 60.0)",
+    "avoidTradeSockets (type 'sockettraderoute' 8.0)",
+    "avoidTradeRoute (trade route 7.0)",
+    "avoidAll (type 'all' 6.0)",
+    "avoidEstate (type 'zpNativeHouseWesternVillageB' 30.0)",
+    "circleConstraint (pie 0.5,0.5, 0..rmZFractionToMeters(0.47), 0-360deg)"
+   ],
+   "notes": "Nugget x1 r0.0; rmSetNuggetDifficulty(1, 2) line 1161; class 'nuggets'"
+  },
+  {
+   "name": "nugget medium (nugget2)",
+   "line": 1175,
+   "placement": "rmPlaceObjectDefInArea(nugget2, 0, playerIslandSouthID, cNumberNonGaiaPlayers/2) line 1188; same in playerIslandNorthID line 1189",
+   "loc": "in areas playerIslandSouth / playerIslandNorth",
+   "constraints": [
+    "shortPlayerConstraint (class player 20.0)",
+    "avoidImpassableLand (terrain 'Land' false 6.0)",
+    "avoidNuggets (class nuggets 60.0)",
+    "avoidTradeRoute (trade route 7.0)",
+    "avoidTownCenterFar (type 'townCenter' 30.0)",
+    "avoidEstate (type 'zpNativeHouseWesternVillageB' 30.0)",
+    "circleConstraint (pie 0..rmZFractionToMeters(0.47))",
+    "avoidAll (type 'all' 6.0)",
+    "avoidWater20 (terrain 'Land' false 20.0)"
+   ],
+   "notes": "Nugget x1 r0.0; rmSetNuggetDifficulty(3, 4) line 1177; class 'nuggets'"
+  },
+  {
+   "name": "fish 1 (fishID)",
+   "line": 1193,
+   "placement": "rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 50+10*cNumberNonGaiaPlayers) line 1202",
+   "loc": "0.5, 0.5 (count 50+10*cNumberNonGaiaPlayers)",
+   "constraints": [
+    "avoidFish1 (type fish1='FishCod' 10.0)",
+    "fishLand (terrain 'land' true 6.0)"
+   ],
+   "notes": "FishCod x1 r0.0 (fish1 variable, line 25); MinDistance 0.0; MaxDistance rmXFractionToMeters(0.4) if rmGetIsKOTH() else rmXFractionToMeters(0.45) (lines 1196-1199)"
+  },
+  {
+   "name": "whale (whaleID)",
+   "line": 1204,
+   "placement": "rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers) line 1210",
+   "loc": "0.5, 0.5 (count 4*cNumberNonGaiaPlayers)",
+   "constraints": [
+    "whaleVsWhaleID (type 'MinkeWhale' 50.0)",
+    "whaleLand (terrain 'land' true 35.0)"
+   ],
+   "notes": "MinkeWhale x1 r0.0; MinDistance 0.0, MaxDistance rmXFractionToMeters(0.5)"
+  },
+  {
+   "name": "village tree (villageTreeID)",
+   "line": 1213,
+   "placement": "rmPlaceObjectDefInArea(villageTreeID, 0, pirateSite1, 6) line 1216; rmPlaceObjectDefInArea(..., pirateSite2, 6) line 1217",
+   "loc": "in areas pirate_site1 / pirate_site2, 6 each",
+   "constraints": [
+    "avoidAll (type 'all' 6.0)"
+   ],
+   "notes": "TreeNewEngland x1 r0.0"
+  }
+ ],
+ "trade_route": {
+  "waypoints": [
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.7) - always (line 301)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.5) - always (line 302)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 0.4) - always (line 303)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 0.3) - always (line 304)",
+   "rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.3) - always (line 305)",
+   "if (cNumberNonGaiaPlayers < 3): (0.41, 0.3) then (0.41, 0.4) (lines 307-308)",
+   "else if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6): (0.43, 0.3) then (0.43, 0.4) (lines 311-312)",
+   "else (i.e. 3-4 or 7+ players): (0.4, 0.3) then (0.4, 0.4) (lines 315-316)",
+   "if (cNumberNonGaiaPlayers < 7): (0.5, 0.5) (line 319)",
+   "nested if (cNumberNonGaiaPlayers < 5): (0.5, 0.7) (line 321)"
+  ],
+  "notes": "tradeRouteID = rmCreateTradeRoute() line 290. Docked defs via rmSetObjectDefTradeRouteID (lines 291-299): stopperID, loneSocketID1-4, loneNuggetID1-4. Built with rmBuildTradeRoute(tradeRouteID, \"river_trail\") line 325. rmGetTradeRouteWayPoint reads: socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5) line 328, consumed by rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1) line 329 (comment: without the stopper the islands won't spawn). Trigger 'Starting Techs' sets Trade Route 1 to Level 1 (non-geometry)."
+ },
+ "player_placement": "rmSetTeamSpacingModifier(0.6) line 851; float teamStartLoc = rmRandFloat(0.0, 1.0) line 853. Branch 1 - if (cNumberTeams > 2): rmSetPlacementSection(0.73, 0.27) line 856; rmSetTeamSpacingModifier(0.75) line 857; rmPlacePlayersCircular(0.38, 0.42, 0) line 858. Branch 2 - else if (PlayerNum == 2): if teamStartLoc > 0.5 then rmPlacePlayer(1, 0.85, 0.55) + rmPlacePlayer(2, 0.15, 0.55) (lines 864-865) else rmPlacePlayer(1, 0.15, 0.55) + rmPlacePlayer(2, 0.85, 0.55) (lines 868-869). Branch 3 - else (4 players in 2 teams): if teamStartLoc > 0.5: rmSetPlacementTeam(0) + rmSetPlacementSection(0.73, 0.90) + rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0)); rmSetPlacementTeam(1) + rmSetPlacementSection(0.10, 0.27) + rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0)) (lines 876-881); else same with sections swapped: team 0 gets (0.10, 0.27), team 1 gets (0.73, 0.90) (lines 885-890). TCs then placed at rmPlayerLocXFraction(i)/rmPlayerLocZFraction(i) (line 951).",
+ "other_geometry_calls": [
+  "rmSetMapElevationHeightBlend(1) - line 59",
+  "rmSetWorldCircleConstraint(true) - line 81 (corner constraint; several areas opt out via rmSetAreaObeyWorldCircleConstraint(false))",
+  "rmAllocateSubCivs(2); rmSetSubCiv(0, 'NatPirates'); rmSetSubCiv(1, 'zpColonialEstate') - lines 37-48",
+  "include 'mercenaries.xs', 'ypAsianInclude.xs', 'ypKOTHInclude.xs' (lines 21-23); chooseMercs() line 78",
+  "Helper vars: bridgeX = 0.5, bridgeZ = 0.88 (lines 336-337); estateW1x=0.317 estateW1z=0.762, estateW2x=0.218 estateW2z=0.650, estateW3x=0.180 estateW3z=0.506, estateE1x=0.683 estateE1z=0.762, estateE2x=0.782 estateE2z=0.650, estateE3x=0.820 estateE3z=0.506 (lines 706-711); estateOrder = rmRandInt(1,6) (line 675) picks resource sequence reused on both banks",
+  "rmSetNuggetDifficulty(101, 101) line 828 (harbour guardian nuggets); rmSetNuggetDifficulty(1, 2) line 1161; rmSetNuggetDifficulty(3, 4) line 1177",
+  "rmSetAreaWarnFailure(false): estateValley1-6 (lines 723/734/745/756/767/778), westforest+i (line 1019), eastForest+i (line 1058)",
+  "Closest-point machinery: rmAddClosestPointConstraint + rmFindClosestPointVector(anchor, rmXFractionToMeters(1.0)) + rmClearClosestPointConstraints used for pirate flags (633-647), pirate ports (652-665), colony ships (964-981)",
+  "Classes defined: player, classHill, classPatch, starting settlement, startingUnit, classForest, importantItem, natives, classCliff, secrets, nuggets, center, classPlateau, great lake, deep lake, startingResource, mountains, portSite (lines 84-101); patch (352), center redefined (355)",
+  "Constraint defs (name = kind, target, distance, line): playerEdgeConstraint = pie 0.5,0.5 rmXFractionToMeters(0.0)..rmXFractionToMeters(0.45) 0-360deg L107; longPlayerEdgeConstraint = pie ..0.42 L108; avoidWater5 = terrain 'Land' false 5.0 L110; avoidWater10 = terrain 'Land' false 10.0 L111; avoidWater20 = terrain 'Land' false 20.0 L112; avoidWater30 = terrain 'Land' false 30.0 L113; centerConstraint = class center 30.0 L114; centerConstraintFar = class center 60.0 L115; circleConstraint = pie 0..rmZFractionToMeters(0.47) L116; avoidLand = terrain 'Water' false 20.0 L117; Northward/Southward/Eastward/Westward = pies radius rmZFractionToMeters(0.5), sectors 315-135/135-315/45-225/225-45 deg L120-123; landHalf = box 0.0,0.45,1.0,1.0 L128 (defined, never applied); westLand = box 0.0,0.45,0.5,1.0 L129; eastLand = box 0.5,0.45,1.0,1.0 L130",
+  "Constraint defs cont.: playerConstraintForest = class player 20.0 L133; longPlayerConstraint = class player 70.0 L134; mediumPlayerConstraint = class player 40.0 L135; playerConstraint = class player 45.0 L136; shortPlayerConstraint = class player 20.0 L137; smallMapPlayerConstraint = class player 70.0 L138; avoidStartingResources = class startingResource 8.0 L139; avoidStartingResourcesMin = 2.0 L140; avoidStartingResourcesShort = 4.0 L141; flagEdgeConstraint = pie 0..rmXFractionToMeters(0.48) L142; forestObjConstraint = type 'all' 6.0 L145; forestConstraint = class classForest 20.0 L146; avoidResource = type 'resource' 20.0 L147; avoidCoin = type 'Mine' 30.0 L148; shortAvoidCoin = type 'gold' 10.0 L149; avoidStartResource = type 'resource' 10.0 L150; avoidMountains = class mountains 20.0 L151",
+  "Constraint defs cont.: avoidImpassableLand = terrain 'Land' false 6.0 L154; shortAvoidImpassableLand = 2.0 L155; longAvoidImpassableLand = 10.0 L156; hillConstraint = class classHill 10.0 L157; shortHillConstraint = 5.0 L158; patchConstraint = class classPatch 5.0 L159; avoidCliffs = class classCliff 30.0 L160; avoidWater4 = terrain 'Land' false 4.0 L161; nearShore = terrainMax 'water' false 20.0 L162; avoidStartingUnits = class startingUnit 45.0 L165; shortAvoidStartingUnits = 10.0 L166; avoidImportantItem = class importantItem 10.0 L167; avoidNativesShort = class natives 8.0 L168; avoidNatives = class natives 30.0 L169; avoidSecrets = class secrets 20.0 L170; avoidNuggets = class nuggets 60.0 L171; deerConstraint = type 'deer' 40.0 L172; shortNuggetConstraint = type 'AbstractNugget' 7.0 L173; shortDeerConstraint = type 'deer' 20.0 L174; avoidSheep = type 'sheep' 55.0 L175; flagLand = terrain 'land' true 11.0 L176; avoidAll = type 'all' 6.0 L179",
+  "Constraint defs cont. (trade-route family): avoidTradeRoute = tradeRouteDistance 7.0 L185; shortAvoidTradeRoute = 3.0 L186; avoidTradeRouteFar = 8.0 L187; avoidTradeRouteFar2 = 10.0 L188; avoidTradeRouteFar3 = 12.0 L189; avoidTradeSockets = type 'sockettraderoute' 8.0 L190; farAvoidTradeSockets = type 'sockettraderoute' 12.0 L191; fishLand = terrain 'land' true 6.0 L192; avoidFish1 = type fish1 10.0 L193; HCspawnLand = terrain 'land' true 12.0 L194; ObjectAvoidTradeRoute = tradeRouteDistance 7.0 L195; whaleVsWhaleID = type 'MinkeWhale' 50.0 L196; whaleLand = terrain 'land' true 35.0 L197; avoidTradeRouteMin = tradeRouteDistance 5.0 L219. NOTE comment lines 182-184: trade-route constraints deliberately NOT applied to player islands/patches (route is built before continents)",
+  "Constraint defs cont.: greatLakesConstraint = class 'great lake' 0.1 L200; farGreatLakesConstraint = 20.0 L201; portOnShore = terrain 'land' true 3.5 L202; avoidDeepWater = class 'deep lake' 20.0 L203; avoidSocket = type 'SocketTradeRoute' 10.0 L204; avoidSocketMedium = type 'Socket' 30.0 L205; avoidSocketLong = type 'Socket' 40.0 L206; flagVsFlag = type 'HomeCityWaterSpawnFlag' 30 L207; ferryOnShore = terrainMax 'water' true 22.0 L208; avoidPirates = type 'zpSocketPirates' 45.0 L211; avoidEstate = type 'zpNativeHouseWesternVillageB' 30.0 L212; avoidTownCenterFar = type 'townCenter' 30.0 L213; avoidTradeSocket = type 'SocketTradeRoute' 40.0 L214; avoidTradeSocketShort = 25.0 L215; avoidTradeRouteSocketMin = type 'SocketTradeRoute' 25.0 L216; avoidTradeSocketFar = 40.0 L217; avoidTradeSocketFar2 = 45.0 L218; avoidTownCenter = type 'townCenter' 25.0 L220; avoidTownCenterShort = type 'townCenter' 6.0 L221; avoidKOTH = type 'ypKingsHill' 12.0 L224; avoidWall = type 'AbstractWall' 5.0 L227; avoidBridge = type 'zpBridgeFace' 15.0 L228; avoidBridgeLong = type 'zpBridgeFace' 70.0 L229",
+  "Constraint defs cont. (dansil block): cityConstraint = box 0.2,0.0,0.8,1.0 L350; avoidPatch = class patch 22.0 L353; avoidPlateauShort = class classPlateau 1.0 L354; avoidCenter = class center 6.0 L356; circleConstraint2 = pie 0..rmZFractionToMeters(0.48) L357",
+  "Position readbacks feeding geometry: pirateControllerLoc1/2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(pirateControllerID1/2, 0)) lines 574-575; TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i)) line 952",
+  "File tail (lines 1222-1993) is trigger definitions only - no geometry calls; final rmSetStatusText(0.99) line 1991, main() ends line 1993"
+ ]
+}

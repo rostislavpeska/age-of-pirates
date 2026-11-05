@@ -1,0 +1,18 @@
+<mix>
+  <title>California Forest Ground</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="2">california\ground6_cal</texture>
+    <texture weight="2">california\groundforest_cal</texture>
+    <texture weight="1">california\ground8_cal</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="45" posoffset="0.55">
+    <model weight="5">terrain\california\shrub_a_cal</model>
+    <model weight="4">terrain\california\shrub_b_cal</model>
+    <model weight="3">terrain\california\log_a_cal</model>
+    <model weight="3">terrain\california\log_b_cal</model>
+    <model weight="3">terrain\california\log_c_cal</model>
+    <model weight="4">terrain\california\forestrocks_cal</model>
+    <model weight="2">terrain\california\forestgrass_cal</model>
+  </objects>
+</mix>

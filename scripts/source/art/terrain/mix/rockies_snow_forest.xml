@@ -1,0 +1,24 @@
+<mix>
+  <title>Rockies Snow Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="1">rockies\groundsnow6_roc</texture>
+    <texture weight="1">rockies\groundsnow7_roc</texture>
+    <texture weight="1">rockies\groundsnow9_roc</texture>
+    <texture weight="1">rockies\ground1_roc</texture>
+    <texture weight="5">rockies\groundforestsnow_roc</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.6" emptyweight="90" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_snow_grass1</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_grass2</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_bushsnow1</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_bushsnow2</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_log1</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_log2</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_log3</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_stump1</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_stump2</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_group1</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_group2</model>
+  </objects>
+</mix>

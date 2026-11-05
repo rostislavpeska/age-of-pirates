@@ -1,0 +1,11 @@
+<mix>
+  <title>European Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.1" octaves="4" persistence="0.7" emptyweight="40" posoffset="1.0">
+    <model weight="1">terrain\trees\tree_poplar_a</model>
+    <model weight="1">terrain\trees\tree_poplar_b</model>
+    <model weight="1">terrain\trees\tree_cypress_Italian_a</model>
+    <model weight="1">terrain\trees\tree_cypress_Italian_b</model>
+    <model weight="1">terrain\trees\tree_cypress_Italian_c</model>
+  </objects>
+</mix>

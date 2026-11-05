@@ -1,0 +1,10 @@
+<mix>
+  <title>Africa Savanna Grass Dry</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="1">AfricaSavanna\ground_grass2_afriSavanna</texture>
+    <texture weight="2">AfricaSavanna\ground_grass3_afriSavanna</texture>
+    <texture weight="3">AfricaSavanna\ground_grass4_afriSavanna</texture>
+    <texture weight="4">AfricaSavanna\ground_dirt1_afriSavanna</texture>
+  </paint>
+</mix>

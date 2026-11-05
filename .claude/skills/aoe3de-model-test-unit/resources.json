@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md"
+  ],
+  "skills": [
+    "rm-unit-bench",
+    "aoe3de-building-states",
+    "aoe3de-model-attachments",
+    "havok-destruction",
+    "aoe-xml"
+  ],
+  "external": [
+    {
+      "id": "consuming-mod-build",
+      "kind": "capability",
+      "requiredFor": [
+        "xmb-twins",
+        "mod-tests"
+      ],
+      "optional": false,
+      "note": "The consuming mod's own build step (XMB twins for data and every language) and its tests; the skill bundles no scripts."
+    }
+  ]
+}

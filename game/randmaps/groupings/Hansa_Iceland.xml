@@ -129,6 +129,10 @@
 		<unit variation="0" posx="-14.4684" posz="14.0440" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-7.4611" posz="15.5682" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-14.3955" posz="15.3478" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="45" posx="4.0618" posz="-29.9562" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpHarbourPlatform</unit>
+		<unit variation="45" posx="-17.1635" posz="-28.8116" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpHarbourPlatform</unit>
+		<unit variation="45" posx="-25.3025" posz="-21.4434" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpHarbourPlatform</unit>
+		<unit variation="45" posx="-26.1702" posz="-0.3832" orientx="0.0001" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="patagonia\ground_shoreline2_pat">

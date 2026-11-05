@@ -1,0 +1,8 @@
+<mix>
+  <title>Scorched Ground</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="2">spc\scorched03</texture>
+    <texture weight="1">spc\scorched04</texture>
+  </paint>
+</mix>

@@ -1,0 +1,22 @@
+<mix>
+  <title>Caves 2</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.05" octaves="2" persistence="0.5">
+    <texture weight="2">cave\cave_ground4</texture>
+    <texture weight="1">cave\cave_ground3</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.1" octaves="3" persistence="0.7" emptyweight="0" posoffset="0.3">
+    <model weight="2" scalemin="0.03" scalemax="0.3">terrain\cave\cave_rock_a</model>
+    <model weight="2" scalemin="0.03" scalemax="0.3">terrain\cave\cave_rock_b</model>
+    <model weight="2" scalemin="0.03" scalemax="0.3">terrain\cave\cave_rock_c</model>
+    <model weight="2" scalemin="0.03" scalemax="0.3">terrain\cave\cave_rock_d</model>
+    <model weight="2" scalemin="0.03" scalemax="0.3">terrain\cave\cave_rock_e</model>
+    <model weight="3" scalemin="0.3" scalemax="0.5">terrain\cave\cave_stalagmite_a</model>
+    <model weight="3" scalemin="0.3" scalemax="0.5">terrain\cave\cave_stalagmite_c</model>
+    <model weight="3" scalemin="0.3" scalemax="0.5">terrain\cave\cave_stalagmite_d</model>
+    <model weight="1" scalemin="0.3" scalemax="0.5">terrain\new_england\cliff_rock_a_ne</model>
+    <model weight="1" scalemin="0.3" scalemax="0.5">terrain\new_england\cliff_rock_b_ne</model>
+    <model weight="1" scalemin="0.3" scalemax="0.5">terrain\new_england\cliff_rock_c_ne</model>
+    <model weight="1" scalemin="0.3" scalemax="0.5">terrain\new_england\cliff_rock_d_ne</model>
+  </objects>
+</mix>

@@ -70,6 +70,12 @@
 			</assetreference>
 			<component>propellerR</component>
 		</anim>
+		<anim animlengthoverride="3.0000">RangedAttack
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Anim</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
 		<anim>Death
 			<assetreference type="GrannyAnim">
 				<file>units\balloons\propeller_Idle</file>
@@ -140,6 +146,15 @@
 	</anim>
 	<anim>
 		BombAttack
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship_idle</file>
+			<tag type="Attack">0.01</tag>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>
+		RangedAttack
 		<assetreference type="GrannyAnim">
 			<file>units\balloons\airship_idle</file>
 			<tag type="Attack">0.01</tag>

@@ -1,0 +1,12 @@
+<mix allowunderwater="true">
+  <title>California Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.95" octaves="3" persistence="0.75" emptyweight="0.2" posoffset="0.9">
+    <model underwater="true" mindepth="1.8" maxdepth="2.6" weight="1" scalemin="1" scalemax="1">terrain\underbrush\underbrush_coast_seaweed1</model>
+    <model underwater="true" mindepth="1.8" maxdepth="2.6" weight="1" scalemin="1" scalemax="1">terrain\underbrush\underbrush_coast_seaweed2</model>
+    <model underwater="true" mindepth="1.8" maxdepth="2.6" weight="1" scalemin="0.3" scalemax="0.5">terrain\underbrush\underbrush_seaweed_01</model>
+    <model underwater="true" mindepth="1.8" maxdepth="2.95" weight="2" scalemin="0.5" scalemax="1.0">terrain\new_england\shorelinerock_big_ne_3</model>
+    <model underwater="true" mindepth="1.8" maxdepth="2.95" weight="1" scalemin="0.5" scalemax="1.0">terrain\new_england\shorelinerock_big_ne_4</model>
+    <model underwater="true" mindepth="1.8" maxdepth="2.95" weight="2" scalemin="0.5" scalemax="1.0">terrain\new_england\shorelinerock_big_ne_5</model>
+  </objects>
+</mix>

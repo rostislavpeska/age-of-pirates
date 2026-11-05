@@ -1,0 +1,8 @@
+{
+ "schema": 1,
+ "_doc": [
+  "AoP's OWN texture sets by revision (scripts/havok/texture_sets.py). Each mod keeps its own registry: a model's registry is found by texture_sets.registry_for (the first <mod>/tools/texture_sets.json or <mod>/config/texture_sets.json above it). Register a set here when AoP produces revisioned own textures that must not be mixed (see the aoe-uv-atlas-export skill, texture-set coherence).",
+  "The Korean sets moved to ../age-of-pirates-koreans/tools/texture_sets.json on 2026-10-09 with the Korean models."
+ ],
+ "sets": []
+}

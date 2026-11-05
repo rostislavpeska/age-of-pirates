@@ -1,0 +1,10 @@
+<mix allowunderwater="true">
+  <title>Texas Pond Clutter</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="0" posoffset="0.5">
+    <model underwater="true" mindepth="1" maxdepth="100" weight="10" scalemin="1.0" scalemax="1.8">terrain\underbrush\underbrush_desert_rock1</model>
+    <model underwater="true" mindepth="1" maxdepth="100" weight="10" scalemin="1.0" scalemax="1.8">terrain\underbrush\underbrush_desert_rock2</model>
+    <model underwater="true" mindepth="1" maxdepth="100" weight="10" scalemin="1.0" scalemax="1.8">terrain\underbrush\underbrush_desert_rock3</model>
+    <model underwater="true" mindepth="1" maxdepth="100" weight="10" scalemin="1.0" scalemax="1.8">terrain\underbrush\underbrush_desert_rock4</model>
+  </objects>
+</mix>

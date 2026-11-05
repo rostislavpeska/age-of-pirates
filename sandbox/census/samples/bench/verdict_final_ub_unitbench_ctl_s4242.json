@@ -1,0 +1,12 @@
+{
+  "verdict": "PASS",
+  "counts": {
+    "TownCenter": 2,
+    "House": 2,
+    "AIStart": 3
+  },
+  "notes": [
+    "positions unreadable in this save (parser heuristic); verdict by proto names",
+    "counts: subject 2, control 2 (expected 1 each)"
+  ]
+}

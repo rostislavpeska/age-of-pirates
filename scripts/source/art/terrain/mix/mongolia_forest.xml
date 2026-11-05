@@ -1,0 +1,23 @@
+<mix>
+  <title>Mongolia Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="1">mongolia\ground_forest_mongol</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.2" emptyweight="60" posoffset="0.5">
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush1</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush3</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush5</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush6</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group1</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group2</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group3</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group4</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock1</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock2</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock3</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock4</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock5</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock6</model>
+  </objects>
+</mix>

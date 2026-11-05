@@ -1,0 +1,65 @@
+{
+  "map": "zp_z_z_zcivilwar2",
+  "version": 1,
+  "script": "install:RandMaps/zp_z_z_zcivilwar2.xs",
+  "notes": "Civil War pilot profile (plan G3). Ford walkability is the founding evidence of SHALLOW_BUILD_DEPTH_M=1.5 (scripts/mapsim/waterdata.py).",
+  "evidence": [
+    {
+      "id": "ford-walkable-2026-08-09",
+      "date": "2026-08-09",
+      "source": "in-game",
+      "claim": "The river ford shallows are walkable and buildable at their 1.5 m carve depth; the main channel blocks land units.",
+      "ref": "user verification during mapsim shallow calibration, session 2026-08-09"
+    },
+    {
+      "id": "played-2026-08-09",
+      "date": "2026-08-09",
+      "source": "in-game",
+      "claim": "Map generates and plays; the trade-route harbours dock onto the route in-game.",
+      "ref": "regular playtesting of the map by the author"
+    },
+    {
+      "id": "native-islands-mini-2026-08-09",
+      "date": "2026-08-09",
+      "source": "measurement",
+      "claim": "Native islands appear on the in-game minimap at reduced size - the authored tile budget oversizes them and the engine keeps the partial fill (rmSetAreaWarnFailure idiom).",
+      "ref": "mapsim-vs-minimap comparison, session 2026-08-09 (icons/random_map/civilwar/civilwar_mini.png)"
+    }
+  ],
+  "overrides": {},
+  "expectations": [
+    {
+      "probe": [0.87, 0.556],
+      "class": "SHALLOW",
+      "why": "east ford strip must stay walkable-buildable water",
+      "evidence": "ford-walkable-2026-08-09"
+    },
+    {
+      "probe": [0.5, 0.5],
+      "class": "DEEP",
+      "why": "main river channel must block land units",
+      "evidence": "ford-walkable-2026-08-09"
+    }
+  ],
+  "tests": [
+    {
+      "template": "player_spawn_complete",
+      "params": {"spawn_classes": ["LAND"], "min_spacing_m": 200},
+      "why": "both players must start on dry land, on opposite river banks"
+    }
+  ],
+  "known_issues": [
+    {
+      "check": "SIM:ROUTE_TOO_FAR",
+      "match": "harbour",
+      "why": "harbours dock onto the route in-game; the model's nominal route resolution overestimates the offset (re-triage at G6)",
+      "evidence": "played-2026-08-09"
+    },
+    {
+      "check": "SIM:AREA_SHORTFALL",
+      "match": "native_island",
+      "why": "native islands render small-but-present in-game; the authored budget intentionally oversizes them and the engine keeps the partial fill",
+      "evidence": "native-islands-mini-2026-08-09"
+    }
+  ]
+}

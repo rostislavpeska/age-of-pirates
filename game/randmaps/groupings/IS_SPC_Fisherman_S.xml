@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>22</width>
+	<height>18</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="37" posx="-4.7286" posz="7.3304" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpHarbourPlatform</unit>
+		<unit variation="51" posx="-3.7686" posz="7.4033" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
+		<unit variation="248" posx="-4.6709" posz="10.4174" orientx="0.3827" orienty="-0.0000" orientz="0.9239">zpHCFisherman</unit>
+		<unit variation="16" posx="5.8891" posz="7.1454" orientx="-0.3827" orienty="-0.0000" orientz="0.9239">zpPropOttomanMarketStall</unit>
+
+		<unit variation="203" posx="-2.0000" posz="2.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCFishermansGuild</unit>
+		<unit variation="0" posx="-10.0000" posz="2.0000" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNuggetInvisibleWater</unit>
+		<unit variation="119" posx="5.9236" posz="3.6446" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropJewishMarketStall</unit>
+		<unit variation="126" posx="6.0356" posz="-1.3258" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpPropJewishMarketStall</unit>
+		<unit variation="253" posx="-6.6969" posz="-5.3835" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpHarbourPlatform</unit>
+		<unit variation="173" posx="5.2426" posz="-4.3647" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropOttomanMarketStall</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline1_car">
+			<block startx="10" startz="2" endx="10" endz="8"></block>
+			<block startx="9" startz="2" endx="9" endz="8"></block>
+			<block startx="8" startz="2" endx="8" endz="8"></block>
+			<block startx="7" startz="3" endx="7" endz="8"></block>
+			<block startx="6" startz="4" endx="6" endz="8"></block>
+			<block startx="10" startz="-9" endx="10" endz="-7"></block>
+			<block startx="9" startz="-9" endx="9" endz="-7"></block>
+			<block startx="8" startz="-9" endx="8" endz="-7"></block>
+			<block startx="7" startz="-9" endx="7" endz="-7"></block>
+			<block startx="6" startz="-9" endx="6" endz="-7"></block>
+			<block startx="10" startz="-6" endx="10" endz="1"></block>
+			<block startx="9" startz="-6" endx="9" endz="1"></block>
+			<block startx="8" startz="-6" endx="8" endz="-5"></block>
+			<block startx="7" startz="-6" endx="7" endz="-6"></block>
+			<block startx="4" startz="-2" endx="4" endz="0"></block>
+			<block startx="3" startz="-1" endx="3" endz="0"></block>
+			<block startx="3" startz="-3" endx="3" endz="-3"></block>
+			<block startx="2" startz="-3" endx="2" endz="-1"></block>
+			<block startx="1" startz="-2" endx="1" endz="-2"></block>
+			<block startx="1" startz="-4" endx="1" endz="-4"></block>
+			<block startx="0" startz="-3" endx="0" endz="-3"></block>
+			<block startx="0" startz="-6" endx="0" endz="-5"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-5"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="-2"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-4"></block>
+			<block startx="5" startz="-9" endx="5" endz="-8"></block>
+			<block startx="4" startz="-9" endx="4" endz="-8"></block>
+			<block startx="3" startz="-9" endx="3" endz="-8"></block>
+			<block startx="2" startz="-9" endx="2" endz="-8"></block>
+			<block startx="1" startz="-9" endx="1" endz="-7"></block>
+			<block startx="0" startz="-9" endx="0" endz="-7"></block>
+			<block startx="-1" startz="-9" endx="-1" endz="-7"></block>
+			<block startx="-2" startz="-9" endx="-2" endz="-7"></block>
+			<block startx="-3" startz="-9" endx="-3" endz="-7"></block>
+			<block startx="-4" startz="-9" endx="-4" endz="-7"></block>
+			<block startx="-5" startz="-9" endx="-5" endz="-7"></block>
+			<block startx="-6" startz="-9" endx="-6" endz="-7"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-7"></block>
+			<block startx="-8" startz="-9" endx="-8" endz="-7"></block>
+			<block startx="-9" startz="-9" endx="-9" endz="-7"></block>
+			<block startx="-10" startz="-9" endx="-10" endz="-7"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-1"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="0"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="1"></block>
+			<block startx="-6" startz="-6" endx="-6" endz="1"></block>
+			<block startx="-7" startz="-6" endx="-7" endz="1"></block>
+			<block startx="-8" startz="-6" endx="-8" endz="1"></block>
+			<block startx="-9" startz="-6" endx="-9" endz="1"></block>
+			<block startx="-10" startz="-6" endx="-10" endz="1"></block>
+			<block startx="5" startz="5" endx="5" endz="8"></block>
+			<block startx="4" startz="6" endx="4" endz="8"></block>
+			<block startx="3" startz="6" endx="3" endz="8"></block>
+			<block startx="2" startz="6" endx="2" endz="8"></block>
+			<block startx="2" startz="3" endx="2" endz="4"></block>
+			<block startx="1" startz="6" endx="1" endz="8"></block>
+			<block startx="1" startz="4" endx="1" endz="4"></block>
+			<block startx="0" startz="5" endx="0" endz="8"></block>
+			<block startx="-1" startz="5" endx="-1" endz="8"></block>
+			<block startx="-2" startz="5" endx="-2" endz="8"></block>
+			<block startx="-3" startz="4" endx="-3" endz="8"></block>
+			<block startx="-4" startz="3" endx="-4" endz="8"></block>
+			<block startx="-5" startz="2" endx="-5" endz="8"></block>
+			<block startx="-6" startz="2" endx="-6" endz="8"></block>
+			<block startx="-7" startz="2" endx="-7" endz="8"></block>
+			<block startx="-8" startz="2" endx="-8" endz="8"></block>
+			<block startx="-9" startz="2" endx="-9" endz="8"></block>
+			<block startx="-10" startz="2" endx="-10" endz="8"></block>
+			<block startx="-11" startz="2" endx="-11" endz="8"></block>
+			<block startx="-11" startz="-6" endx="-11" endz="1"></block>
+			<block startx="-11" startz="-9" endx="-11" endz="-7"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline3_car">
+			<block startx="7" startz="2" endx="7" endz="2"></block>
+			<block startx="6" startz="2" endx="6" endz="3"></block>
+			<block startx="8" startz="-4" endx="8" endz="1"></block>
+			<block startx="7" startz="-5" endx="7" endz="1"></block>
+			<block startx="6" startz="-6" endx="6" endz="1"></block>
+			<block startx="5" startz="-6" endx="5" endz="1"></block>
+			<block startx="4" startz="1" endx="4" endz="1"></block>
+			<block startx="4" startz="-6" endx="4" endz="-3"></block>
+			<block startx="3" startz="-6" endx="3" endz="-4"></block>
+			<block startx="2" startz="0" endx="2" endz="0"></block>
+			<block startx="2" startz="-6" endx="2" endz="-4"></block>
+			<block startx="1" startz="0" endx="1" endz="1"></block>
+			<block startx="1" startz="-3" endx="1" endz="-3"></block>
+			<block startx="1" startz="-6" endx="1" endz="-5"></block>
+			<block startx="0" startz="-1" endx="0" endz="1"></block>
+			<block startx="0" startz="-4" endx="0" endz="-4"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="1"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="-2" startz="0" endx="-2" endz="1"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="-3"></block>
+			<block startx="5" startz="-7" endx="5" endz="-7"></block>
+			<block startx="4" startz="-7" endx="4" endz="-7"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="2" startz="-7" endx="2" endz="-7"></block>
+			<block startx="-3" startz="1" endx="-3" endz="1"></block>
+			<block startx="5" startz="2" endx="5" endz="4"></block>
+			<block startx="4" startz="2" endx="4" endz="5"></block>
+			<block startx="3" startz="2" endx="3" endz="5"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="1" startz="5" endx="1" endz="5"></block>
+			<block startx="1" startz="2" endx="1" endz="3"></block>
+			<block startx="0" startz="2" endx="0" endz="3"></block>
+			<block startx="-1" startz="2" endx="-1" endz="3"></block>
+			<block startx="-2" startz="2" endx="-2" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline2_car">
+			<block startx="3" startz="1" endx="3" endz="1"></block>
+			<block startx="3" startz="-2" endx="3" endz="-2"></block>
+			<block startx="2" startz="1" endx="2" endz="1"></block>
+			<block startx="1" startz="-1" endx="1" endz="-1"></block>
+			<block startx="0" startz="-2" endx="0" endz="-2"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="-2"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="-1"></block>
+			<block startx="-3" startz="0" endx="-3" endz="0"></block>
+			<block startx="-4" startz="1" endx="-4" endz="1"></block>
+			<block startx="2" startz="2" endx="2" endz="2"></block>
+			<block startx="0" startz="4" endx="0" endz="4"></block>
+			<block startx="-1" startz="4" endx="-1" endz="4"></block>
+			<block startx="-2" startz="3" endx="-2" endz="4"></block>
+			<block startx="-3" startz="2" endx="-3" endz="3"></block>
+			<block startx="-4" startz="2" endx="-4" endz="2"></block>
+		</tilegroup>
+		<heights>
+			<tiles x="-11" z="-9">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="-8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.112 0.161 0.263 0.921 1.015 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="-7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.183 0.617 0.992 1.503 1.963 2.351 2.740 2.708 2.711 1.553 0.573 0.000 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="-6">0.000 0.000 0.000 0.000 0.000 0.000 0.073 0.738 1.781 2.924 3.297 3.530 3.810 4.079 4.281 4.127 2.996 1.779 0.661 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="-5">0.000 0.000 0.000 0.000 0.000 0.000 0.253 1.244 2.973 4.241 4.457 4.662 4.858 4.995 5.306 4.913 4.160 3.076 1.770 0.364 0.000 0.000</tiles>
+			<tiles x="-11" z="-4">0.000 0.000 0.000 0.000 0.000 0.000 0.178 1.512 3.295 4.579 5.153 5.303 5.350 5.500 5.500 5.353 4.938 4.314 3.195 1.346 0.136 0.000</tiles>
+			<tiles x="-11" z="-3">0.000 0.000 0.000 0.000 0.000 0.000 0.608 1.998 3.790 4.855 5.394 5.481 5.491 5.499 5.500 5.500 5.500 5.159 4.167 2.262 0.631 0.000</tiles>
+			<tiles x="-11" z="-2">0.000 0.000 0.000 0.000 0.000 0.070 1.065 2.571 4.316 5.244 5.463 5.496 5.497 5.498 5.500 5.500 5.500 5.402 4.944 3.482 0.755 0.000</tiles>
+			<tiles x="-11" z="-1">0.000 0.000 0.000 0.000 0.000 0.253 1.232 2.723 4.322 5.397 5.490 5.497 5.497 5.499 5.500 5.500 5.500 5.500 5.205 3.796 0.000 0.000</tiles>
+			<tiles x="-11" z="0">0.000 0.000 0.000 0.000 0.000 0.275 1.082 2.568 4.137 5.346 5.495 5.499 5.499 5.499 5.500 5.500 5.500 5.496 4.858 3.249 0.698 0.000</tiles>
+			<tiles x="-11" z="1">0.000 0.000 0.000 0.000 0.000 0.113 0.678 2.007 3.889 5.208 5.488 5.500 5.500 5.500 5.500 5.500 5.500 5.349 4.342 2.008 0.524 0.000</tiles>
+			<tiles x="-11" z="2">0.000 0.000 0.000 0.000 0.000 0.000 0.200 1.077 3.349 4.918 5.372 5.497 5.500 5.500 5.500 5.500 5.500 4.853 3.193 1.068 0.159 0.000</tiles>
+			<tiles x="-11" z="3">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 1.604 3.650 5.086 5.336 5.465 5.500 5.500 5.500 5.231 4.220 1.632 0.476 0.000 0.000</tiles>
+			<tiles x="-11" z="4">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 1.161 3.460 4.789 4.959 5.088 5.304 4.774 3.729 1.302 0.366 0.075 0.000 0.000</tiles>
+			<tiles x="-11" z="5">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.898 2.087 3.414 3.730 3.700 3.323 1.642 0.442 0.000 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="6">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.504 1.139 1.442 1.547 1.074 0.499 0.023 0.000 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.048 0.168 0.125 0.126 0.000 0.000 0.000 0.000 0.000 0.000</tiles>
+			<tiles x="-11" z="8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000</tiles>
+		</heights>
+	</tiles>
+</grouping>

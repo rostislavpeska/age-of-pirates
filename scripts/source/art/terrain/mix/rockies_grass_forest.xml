@@ -1,0 +1,18 @@
+<mix>
+  <title>Rockies Grass Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="1">rockies\ground3_roc</texture>
+    <texture weight="1">rockies\ground4_roc</texture>
+    <texture weight="1">rockies\ground5_roc</texture>
+    <texture weight="6">rockies\groundforest_roc</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.55" octaves="3" persistence="0.6" emptyweight="50" posoffset="0.5">
+    <model weight="2">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_rock3</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_grass2</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_bush2</model>
+  </objects>
+</mix>

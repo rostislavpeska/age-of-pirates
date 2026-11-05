@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="homecity\british\british_tol\textures\british_tol_matA_BaseColor" />
+      <texture name="Normals" override="homecity\british\british_tol\textures\british_tol_matA_Normals" />
+      <texture name="Masks" override="homecity\british\british_tol\textures\british_tol_matA_Masks" />
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\british\british_tol\textures\british_tol_03_matA_BaseColor" />
+      <texture name="Normals" override="homecity\british\british_tol\textures\british_tol_03_matA_Normals" />
+      <texture name="Masks" override="homecity\british\british_tol\textures\british_tol_03_matA_Masks" />
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_basecolor" />
+      <texture name="Normals" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_normals" />
+      <texture name="Masks" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_masks" />
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_basecolor" />
+      <texture name="Normals" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_normals" />
+      <texture name="Masks" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_masks" />
+    </parameters>
+  </submaterial>
+</material>

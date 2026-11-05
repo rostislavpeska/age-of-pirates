@@ -31,7 +31,7 @@
     <anim>Heal</anim>
   </action>
   <action>
-    <name stringid="300774">PoisonBombWeak</name>
+    <name stringid="500774">PoisonBombWeak</name>
     <type>Attack</type>
     <rangedlogic>1</rangedlogic>
     <maxrange>6</maxrange>

@@ -1,0 +1,21 @@
+{
+ "note": "The gr2_lint defect corpus: models that went wrong IN GAME (2026-09-29, journal 29-177/178), each with the checks it must fail - exactly these, no more, no fewer (stage = the lint stage the file is linted as). Files live outside the repo (no model copies in git): GR2_LINT_SPECIMENS or the default session folder in test_gr2_lint.py. Owner decision T2 (HARNESS_TEST_STRATEGY.md) moves them to a lasting folder; then only the root changes, never the hashes. A missing file shows as an unlisted skip (run_all_tests.py: red); a changed file fails test_gr2_corpus.py.",
+ "specimens": [
+  {"id": "old_damaged", "file": "p0_damaged/backup/korean_tc_damaged.gr2.1939",
+   "sha256": "a466b1ad63bee90f891ab14b448e2ccd8b458fe01d0badd32133ca15396a568b", "stage": "damaged",
+   "fails": ["base_binding", "damaged_frame", "hitpointbar", "hkt_pairing", "orientation", "vertex_limit", "wrap16"],
+   "defect": "one 102,527-vertex mesh, unrotated: the damaged stage broke in game"},
+  {"id": "split_2050", "file": "p0_damaged/split/F.gr2",
+   "sha256": "977d8c3ab7058a58402d1df2e2ab97a8c57063ef939041911c4adbfeda4eef54", "stage": "damaged",
+   "fails": ["base_binding"],
+   "defect": "per-material split: limits and frame fixed, 14 window panels still bound to 'base'"},
+  {"id": "pre_rotation_raw", "file": "install_rot_split/backup_195802/korean_tc.gr2",
+   "sha256": "a1dab445ca5f7cd5e4e70763ffce1808d72a77f3b3b112ac5a4db65f01bccb57", "stage": "intact",
+   "fails": ["hitpointbar", "orientation"],
+   "defect": "intact model before the 90-degree turn (mast in -X+Y)"},
+  {"id": "pre_rotation_oodle", "file": "ingame_fix/backup_1928/korean_tc.gr2",
+   "sha256": "93a7f4a1a97284175cb96492cbcbf8d451f8c9a9342be1f7630fa82fd7419ddd", "stage": "intact", "dll": true,
+   "fails": ["flag_on_mast", "orientation"],
+   "defect": "same, converter output (Oodle-compressed): the pilot flag 15.5 cm off the pole; read only through the game DLL under Wine (test_gr2_lint.py)"}
+ ]
+}

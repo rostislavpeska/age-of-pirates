@@ -1,0 +1,13 @@
+<mix>
+  <title>Texas Clutter Low</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="200" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_desert_bush1</model>
+    <model weight="1">terrain\underbrush\underbrush_desert_bush3</model>
+    <model weight="1">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="30">terrain\underbrush\underbrush_desert_rock1</model>
+    <model weight="30">terrain\underbrush\underbrush_desert_rock2</model>
+    <model weight="30">terrain\underbrush\underbrush_desert_rock3</model>
+    <model weight="30">terrain\underbrush\underbrush_desert_rock4</model>
+  </objects>
+</mix>

@@ -1,0 +1,20 @@
+<mix>
+  <title>Andes Grass C</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.5" octaves="4" persistence="0.2">
+    <texture weight="1">andes\ground16_and</texture>
+    <texture weight="1">andes\ground17_and</texture>
+    <texture weight="3">andes\ground18_and</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="3">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="3" scalemin="0.3" scalemax="1.0">terrain\andes\underbrush_brush1_and</model>
+    <model weight="3" scalemin="0.3" scalemax="1.0">terrain\andes\underbrush_brush3_and</model>
+    <model weight="1" scalemin="0.1" scalemax="0.5">terrain\california\log_a_cal</model>
+    <model weight="1" scalemin="0.1" scalemax="0.5">terrain\california\log_b_cal</model>
+  </objects>
+</mix>

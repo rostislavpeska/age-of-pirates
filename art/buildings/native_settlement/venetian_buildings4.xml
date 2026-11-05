@@ -16,7 +16,7 @@
             <assetreference type="GrannyModel">
                 <file>buildings\native_settlement\venice\venice_house3b_Model</file>
             </assetreference>
-            <attach a="chimney_smoke" frombone="bone_chimney" tobone="bone_chimney" syncanims="0"></attach>
+            <!--<attach a="chimney_smoke" frombone="bone_chimney" tobone="bone_chimney" syncanims="0"></attach>-->
         </component>
         <anim>Idle
             <component>generic_a</component>
@@ -57,7 +57,7 @@
             <assetreference type="GrannyModel">
                 <file>buildings\native_settlement\venice\venice_house3c_Model</file>
             </assetreference>
-            <attach a="chimney_smoke" frombone="bone_chimney" tobone="bone_chimney" syncanims="0"></attach>
+            <!--<attach a="chimney_smoke" frombone="bone_chimney" tobone="bone_chimney" syncanims="0"></attach>-->
         </component>
         <anim>Idle
             <component>generic_a</component>

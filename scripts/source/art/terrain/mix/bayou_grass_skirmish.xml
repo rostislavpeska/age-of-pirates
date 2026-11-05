@@ -1,0 +1,45 @@
+<mix>
+  <title>Bayou Grass Skirmish</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="6">bayou\ground1_bay</texture>
+    <texture weight="4">bayou\ground2_bay</texture>
+    <texture weight="4">bayou\ground3_bay</texture>
+    <texture weight="2">bayou\ground5_bay</texture>
+    <texture weight="2">bayou\ground6_bay</texture>
+    <texture weight="3">bayou\cliff_top1_bay</texture>
+    <texture weight="1">bayou\groundforest_bay</texture>
+    <texture weight="2">bayou\ground4_passable_bay</texture>
+    <texture weight="1">bayou\ground7_passable_bay</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.45" octaves="3" persistence="0.4" emptyweight="50" posoffset="0.55">
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\great_plains\green_grass01</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\great_plains\green_grass02</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_group2</model>
+    <model weight="1" scalemin="0.6" scalemax="1.0">terrain\underbrush\underbrush_forest_bush1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_lake_bush1</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_lake_bush2</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="2" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="2" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="3" scalemin="0.7" scalemax="1.5">terrain\carolinas\underbrush_marshclump_3_car</model>
+    <model weight="3" scalemin="0.7" scalemax="1.5">terrain\carolinas\underbrush_marshclump_5_car</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_log1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_log2</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_rock3</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_rock4</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_rock5</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_rock6</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_stump1</model>
+    <model weight="1" scalemin="1.0" scalemax="2.0">terrain\underbrush\underbrush_forest_stump2</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_group1</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_group2</model>
+    <model weight="2" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="2" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_grass2</model>
+  </objects>
+</mix>

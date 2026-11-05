@@ -15,20 +15,31 @@
             <component>flag</component>
         </anim>
     </attachment>
-    <component>Palaces
-        <assetreference type="GrannyModel">
-            <file>buildings\hc_buildings\new\ee_trading_company_game_Model</file>
-        </assetreference>
-        <attach a="hugeflag" frombone="bone_place02" tobone="bone_Banner" syncanims="0"></attach>
-        <decal>
+ <component>
+		ModelComp
+		<logic type="Tech">
+			<none>
+				<assetreference type="GrannyModel">
+					<file>buildings\hc_buildings\new\ee_trading_company_game_Model</file>
+				</assetreference>
+                <attach a="hugeflag" frombone="bone_place02" tobone="bone_Banner" syncanims="0"></attach>
+			</none>
+			<zpcorsairdocksupdateshadow>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\arabian\houses\arabian_center</file>
+				</assetreference>
+			</zpcorsairdocksupdateshadow>
+		</logic>
+		<decal>
             <effecttype>default</effecttype>
             <texture>buildings\native_settlement\japan_decal_01</texture>
             <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
             <width>10.00</width>
             <height>10.00</height>
         </decal>
-    </component>
-    <anim>Idle
-        <component>Palaces</component>
-    </anim>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
 </animfile>

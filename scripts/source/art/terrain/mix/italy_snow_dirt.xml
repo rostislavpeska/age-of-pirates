@@ -1,0 +1,28 @@
+<mix>
+  <title>Italy Snow Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.05" octaves="10" persistence="0.5">
+    <texture weight="1">rockies\groundsnow2_roc</texture>
+    <texture weight="1">rockies\groundsnow5_roc</texture>
+    <texture weight="2">patagonia\ground_snow1_pat</texture>
+    <texture weight="2">patagonia\ground_snow2_pat</texture>
+    <texture weight="1">patagonia\ground_snow3_pat</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_snow_grass1</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_grass2</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_bush1</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_bush2</model>
+    <model weight="1">terrain\patagonia\underbrush_brush_a_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_brush_b_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_brush_c_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_rock_a_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_rock_b_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_rock_c_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_rock_d_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_rock_e_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_group_a_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_group_b_snow_pat</model>
+    <model weight="1">terrain\patagonia\underbrush_group_c_snow_pat</model>
+  </objects>
+</mix>

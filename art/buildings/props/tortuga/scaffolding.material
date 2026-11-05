@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\market\market_generic\textures\market_generic_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\market\market_generic\textures\market_generic_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\market\market_generic\textures\market_generic_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\prop_ee_market\textures\prop_ee_market_02_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\prop_ee_market\textures\prop_ee_market_02_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\prop_ee_market\textures\prop_ee_market_02_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/korean-v20-evidence.md"
+  ],
+  "skills": [
+    "aoe-building-pipeline",
+    "blender-architecture",
+    "gr2-granny-edit",
+    "havok-destruction"
+  ],
+  "external": []
+}

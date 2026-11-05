@@ -1,0 +1,14 @@
+<material>
+   <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="nuggets\pirates\pirate_null\textures\pirate_null_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="nuggets\pirates\pirate_null\textures\pirate_null_mata_Normals">
+      </texture>
+      <texture name="Masks" override="nuggets\pirates\pirate_null\textures\pirate_null_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

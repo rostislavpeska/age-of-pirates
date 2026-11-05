@@ -1,0 +1,21 @@
+<mix>
+  <title>Ceylon Grass A</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="3">ceylon\ground_grass3_ceylon</texture>
+    <texture weight="2">ceylon\ground_grass4_ceylon</texture>
+    <texture weight="1">ceylon\ground_grass2_ceylon</texture>
+    <texture weight="1">ceylon\ground_grass1_ceylon</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_01</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_02</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_03</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_04</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_05</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_grass_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_03</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_04</model>
+  </objects>
+</mix>

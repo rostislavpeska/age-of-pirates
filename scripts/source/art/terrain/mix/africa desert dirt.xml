@@ -1,0 +1,8 @@
+<mix>
+  <title>Africa Desert Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">AfricaDesert\ground_dirt1_afriDesert</texture>
+    <texture weight="2">AfricaDesert\ground_dirt2_afriDesert</texture>
+  </paint>
+</mix>

@@ -1,0 +1,779 @@
+{
+  "_doc": [
+    "Profiles for scripts/havok/gr2_lint.py. 'references' = numbers MEASURED on vanilla models (python scripts/havok/gr2_lint.py --measure-reference <vanilla.gr2>, files extracted to a scratchpad, never into the repo); never on a pilot or on the model under test.",
+    "'profiles' = one building each: its files, the reference it must match, and its own design facts (platform height, props on the fixed base bone) with the reason for each tolerance.",
+    "Frames: 'raw' = the gr2 file's own coordinates (y up). 'display' = (-x_raw, -z_raw, y_raw): +X right, +Y back, +Z up, as rotate_gr2.py documents. Quadrants are display-frame, relative to the footprint (bbox) centre."
+  ],
+  "tools": {
+    "gr2_to_raw_dir": "$AOP_KOREAN_REPO/research/Texturing_11/Export_CP1/tools",
+    "_doc": "gr2_to_raw.py (headless Granny DLL read under Wine/WSL). Override: env GR2_LINT_TOOLS or config/tool-paths.local.json tools.gr2_to_raw_dir. Missing -> the dll_read check is SKIP, never PASS.",
+    "owner_messages": "config/gr2_uv_contracts/owner_authorization.json",
+    "_owner_messages_doc": "the owner's message store: a waiver in a profile's \"waivers\" counts only when its owner_quote is one of his WHOLE messages there (as the UV lineage gate). Override: config/tool-paths.local.json tools.owner_messages. Missing -> no waiver counts."
+  },
+  "texture_budget": {
+    "_doc": "AoP texture CEILINGS (this project only; owner 2026-09-30 m334, classes m335/m336; KTC-165). gr2_lint check texture_budget counts a model's own texture SETS (one per BaseColor; the sizes from the DDT headers) against its class. The class is set PER MODEL with the owner: a profile's texture_budget {class, confirmed_by: owner message id, models: [the model stems it covers]}; per_model entries (keyed by the model stem) override it. A class without confirmed_by is PROPOSED and FAILS the export: 'class not confirmed by the owner'. INC-033: confirmed_by must resolve to his message in the store (tools.owner_messages) that names the class and the model (the entry's or profile's \"names\"); a confirmed folder class covers only its \"models\" (the market folder also holds a house and a port); every own texture file of every stage and variant counts, and the animfile's replacetexture targets. The universal UV density floor is not here: .claude/skills/blender-architecture-texturing/references/uv-density-floor.md.",
+    "owner_quote": "Model like Town center: 1x2048 + 1x1024 as complementary with transparent objects MAX! Smaller buildings like Barracks: 1x2048 Large buildings (cathedral, Basilica, some bigger woonder): 2x2048 These are ceilings for this project!!!!!!!!!!!!!! (m334)",
+    "classes": {
+      "small": {
+        "ceiling": [
+          2048
+        ],
+        "_doc": "1x2048: barracks-size and smaller (the house is small, m336)"
+      },
+      "medium": {
+        "ceiling": [
+          2048,
+          1024
+        ],
+        "_doc": "1x2048 + one 1024 complement for the transparent / cutout objects: Town Center, Market, possibly others per model (m335). Only medium has the complement"
+      },
+      "large": {
+        "ceiling": [
+          2048,
+          2048
+        ],
+        "_doc": "2x2048: cathedral, basilica, the bigger wonders"
+      }
+    },
+    "count_shared_vanilla": false,
+    "_count_doc": "PROPOSED (gates/BUDGET_INVENTORY.md, 2026-09-30), owner to confirm: shared vanilla atlases a model borrows (generic props, the destruction sheet) are listed by the check but not counted - vanilla's own West TC age 3 loads three sets that way. Also to confirm: '1x2048' is counted as sets with a size cap (implemented), not as a pixel sum."
+  },
+  "profiles": {
+    "korean_barracks_physics": {
+      "model": "korean_barracks_physics",
+      "names": [
+        "barracks"
+      ],
+      "files": {
+        "intact": "korean_barracks_physics.gr2",
+        "damaged": "korean_barracks_physics_damaged.gr2",
+        "hkt": "korean_barracks_physics_damaged.hkt",
+        "intact_material": "korean_barracks_physics.material",
+        "damaged_material": "korean_barracks_physics_damaged.material",
+        "animfile": "korean_barracks_physics.xml"
+      },
+      "texture_budget": {
+        "class": "small",
+        "confirmed_by": "owner-military-one-2048",
+        "models": [
+          "korean_barracks_physics"
+        ],
+        "shared_mod_dependencies": [
+          {
+            "source_names": [
+              "Korean TC shared matC"
+            ],
+            "authorization": {
+              "kind": "recorded_owner_chat",
+              "path": "config/gr2_uv_contracts/shared_matc_owner_evidence.json",
+              "sha256": "e30d2fcc2bcdc13df021360cb61cc078f19e08e6fbe5985851bd7e652f7244a7",
+              "owner_quote": "The atlas (matc) is one shared with Town |Center and caN WORK FOER ALL Koprean buildings - should also be on the Korean specific rules (shared materials / textures / other assets)"
+            },
+            "files": [
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_BaseColor.ddt",
+                "sha256": "ab986a62a37bb7f21cc01ba12d1cc3f6b9e766330475aa6a5fbe85a20c7d719d",
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Normals.ddt",
+                "sha256": "2f91e0bb857f25ab01552d5b5409182ea495a29405a234fe85d58a6dbecd353a",
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Masks.ddt",
+                "sha256": "9ae32260b70ad94db7285a5ee0c8f6e85c387734b831fdb547f9f31bf0f4927f",
+                "width": 1024,
+                "height": 1024
+              }
+            ]
+          },
+          {
+            "source_names": [
+              "Korean TC pots"
+            ],
+            "authorization": {
+              "kind": "recorded_owner_chat",
+              "path": "config/gr2_uv_contracts/shared_props_owner_evidence.json",
+              "sha256": "033f8236f1e23300ae2b2351c504c39d5c855206cb67ca33898c82cd10b32975",
+              "owner_quote": "You can use the pots from Korean TC. Keep the material and UV tied to TC and only define material as matb with link to TC material then. That's fine."
+            },
+            "files": [
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_BaseColor.ddt",
+                "sha256": "9f444e4f8d1ddc798c2a9eb3f3f90e06882be1d29aecb8c41d5deb9a3890867a",
+                "width": 2048,
+                "height": 2048
+              },
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_Normals.ddt",
+                "sha256": "f3fdf917ca0cb1ebff167d31bfdba00a88c9f35c676af1ca316de72a4ed0a902",
+                "width": 2048,
+                "height": 2048
+              },
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_Masks.ddt",
+                "sha256": "49a3e7f235c67ee58cd008fc942957d573ddec87d8434ea0cfca1b29a1082799",
+                "width": 2048,
+                "height": 2048
+              }
+            ]
+          }
+        ]
+      },
+      "limits": {
+        "max_vertices": 65535,
+        "max_index": 65535
+      },
+      "_scope": "Author r58 unchanged; runtime r59 fixes raw V origin. Source-corner contract, accepted r03 rest/flag/ground contracts, shared dependencies pinned. In-game acceptance is separate.",
+      "physical_mounts": [
+        {
+          "bone": "bone_flag_civ",
+          "position": [
+            -3.258046,
+            3.905937,
+            1.65
+          ],
+          "body": "flagpole_wood_solid_p2b_exclude_01",
+          "bottom_y": 0.14,
+          "top_y": 5.35795
+        }
+      ],
+      "rest_contract": {
+        "bounds_tolerance_m": 0.002,
+        "ground_supports": []
+      },
+      "uv_contract": {
+        "path": "config/gr2_uv_contracts/korean_barracks_gr2canon_r2.json",
+        "sha256": "42bcbb93d83ab340aa8f204ff81f39b43f42fa840a26ab43f12a80d1c5426bdf"
+      }
+    },
+    "korean_stable_physics": {
+      "model": "korean_stable_physics",
+      "names": [
+        "stable",
+        "stables"
+      ],
+      "files": {
+        "intact": "korean_stable_physics.gr2",
+        "damaged": "korean_stable_physics_damaged.gr2",
+        "hkt": "korean_stable_physics_damaged.hkt",
+        "intact_material": "korean_stable_physics.material",
+        "damaged_material": "korean_stable_physics_damaged.material",
+        "animfile": "korean_stable_physics.xml"
+      },
+      "texture_budget": {
+        "class": "small",
+        "confirmed_by": "owner-military-one-2048",
+        "models": [
+          "korean_stable_physics"
+        ],
+        "shared_mod_dependencies": [
+          {
+            "source_names": [
+              "Korean TC shared matC"
+            ],
+            "authorization": {
+              "kind": "recorded_owner_chat",
+              "path": "config/gr2_uv_contracts/shared_matc_owner_evidence.json",
+              "sha256": "e30d2fcc2bcdc13df021360cb61cc078f19e08e6fbe5985851bd7e652f7244a7",
+              "owner_quote": "The atlas (matc) is one shared with Town |Center and caN WORK FOER ALL Koprean buildings - should also be on the Korean specific rules (shared materials / textures / other assets)"
+            },
+            "files": [
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_BaseColor.ddt",
+                "sha256": "ab986a62a37bb7f21cc01ba12d1cc3f6b9e766330475aa6a5fbe85a20c7d719d",
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Normals.ddt",
+                "sha256": "2f91e0bb857f25ab01552d5b5409182ea495a29405a234fe85d58a6dbecd353a",
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Masks.ddt",
+                "sha256": "9ae32260b70ad94db7285a5ee0c8f6e85c387734b831fdb547f9f31bf0f4927f",
+                "width": 1024,
+                "height": 1024
+              }
+            ]
+          },
+          {
+            "source_names": [
+              "Korean TC pots"
+            ],
+            "authorization": {
+              "kind": "recorded_owner_chat",
+              "path": "config/gr2_uv_contracts/shared_props_owner_evidence.json",
+              "sha256": "033f8236f1e23300ae2b2351c504c39d5c855206cb67ca33898c82cd10b32975",
+              "owner_quote": "You can use the pots from Korean TC. Keep the material and UV tied to TC and only define material as matb with link to TC material then. That's fine."
+            },
+            "files": [
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_BaseColor.ddt",
+                "sha256": "9f444e4f8d1ddc798c2a9eb3f3f90e06882be1d29aecb8c41d5deb9a3890867a",
+                "width": 2048,
+                "height": 2048
+              },
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_Normals.ddt",
+                "sha256": "f3fdf917ca0cb1ebff167d31bfdba00a88c9f35c676af1ca316de72a4ed0a902",
+                "width": 2048,
+                "height": 2048
+              },
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_Masks.ddt",
+                "sha256": "49a3e7f235c67ee58cd008fc942957d573ddec87d8434ea0cfca1b29a1082799",
+                "width": 2048,
+                "height": 2048
+              }
+            ]
+          }
+        ]
+      },
+      "limits": {
+        "max_vertices": 65535,
+        "max_index": 65535
+      },
+      "_scope": "Author r58 unchanged; runtime r59 fixes raw V origin. Source-corner contract, accepted r03 rest/flag/ground contracts, shared dependencies pinned. In-game acceptance is separate.",
+      "physical_mounts": [
+        {
+          "bone": "bone_flag_civ",
+          "position": [
+            -2.229,
+            5.873758,
+            4.075281
+          ],
+          "body": "flagpole_wood_solid_p2b_exclude_0",
+          "bottom_y": 3.36,
+          "top_y": 6.9828
+        }
+      ],
+      "rest_contract": {
+        "bounds_tolerance_m": 0.002,
+        "ground_supports": [
+          {
+            "name": "Stable/RearHall/foot-1_0",
+            "xz_min": [
+              2.8550000190734863,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              3.1449999809265137,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot-1_1",
+            "xz_min": [
+              0.8550000190734863,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              1.1449999809265137,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot-1_2",
+            "xz_min": [
+              -1.1449999809265137,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              -0.8550000190734863,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot-1_3",
+            "xz_min": [
+              -3.1449999809265137,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              -2.8550000190734863,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_0",
+            "xz_min": [
+              2.8550000190734863,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              3.1449999809265137,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_1",
+            "xz_min": [
+              0.8550000190734863,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              1.1449999809265137,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_2",
+            "xz_min": [
+              -1.1449999809265137,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              -0.8550000190734863,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_3",
+            "xz_min": [
+              -3.1449999809265137,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              -2.8550000190734863,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_0",
+            "xz_min": [
+              0.20499995350837708,
+              -1.0249998569488525
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              -0.73499995470047
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_1",
+            "xz_min": [
+              0.20499995350837708,
+              0.6949999928474426
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              0.9850000143051147
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_2",
+            "xz_min": [
+              0.20499995350837708,
+              2.4149999618530273
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              2.7049999237060547
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_3",
+            "xz_min": [
+              0.20499995350837708,
+              4.134999752044678
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              4.424999713897705
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_0",
+            "xz_min": [
+              -3.194999933242798,
+              -1.0249998569488525
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              -0.73499995470047
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_1",
+            "xz_min": [
+              -3.194999933242798,
+              0.6949999928474426
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              0.9850000143051147
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_2",
+            "xz_min": [
+              -3.194999933242798,
+              2.4149999618530273
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              2.7049999237060547
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_3",
+            "xz_min": [
+              -3.194999933242798,
+              4.134999752044678
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              4.424999713897705
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          }
+        ]
+      },
+      "uv_contract": {
+        "path": "../age-of-pirates-koreans/tools/uv_contracts/korean_stable_repair_r2.json",
+        "sha256": "703369e502379f50082998a2e8d0f93852a7076a4b6f86595556a727a06cda0a"
+      }
+    },
+    "korean_stable_physics_con": {
+      "model": "korean_stable_physics",
+      "names": [
+        "stable",
+        "stables"
+      ],
+      "files": {
+        "intact": "korean_stable_physics_con.gr2",
+        "intact_material": "korean_stable_physics_con.material"
+      },
+      "texture_budget": {
+        "class": "small",
+        "confirmed_by": "owner-military-one-2048",
+        "models": [
+          "korean_stable_physics"
+        ],
+        "shared_mod_dependencies": [
+          {
+            "source_names": [
+              "Korean TC shared matC"
+            ],
+            "authorization": {
+              "kind": "recorded_owner_chat",
+              "path": "config/gr2_uv_contracts/shared_matc_owner_evidence.json",
+              "sha256": "e30d2fcc2bcdc13df021360cb61cc078f19e08e6fbe5985851bd7e652f7244a7",
+              "owner_quote": "The atlas (matc) is one shared with Town |Center and caN WORK FOER ALL Koprean buildings - should also be on the Korean specific rules (shared materials / textures / other assets)"
+            },
+            "files": [
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_BaseColor.ddt",
+                "sha256": "ab986a62a37bb7f21cc01ba12d1cc3f6b9e766330475aa6a5fbe85a20c7d719d",
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Normals.ddt",
+                "sha256": "2f91e0bb857f25ab01552d5b5409182ea495a29405a234fe85d58a6dbecd353a",
+                "width": 1024,
+                "height": 1024
+              },
+              {
+                "path": "buildings/korean_shared/textures/korean_shared_matc_r65_Masks.ddt",
+                "sha256": "9ae32260b70ad94db7285a5ee0c8f6e85c387734b831fdb547f9f31bf0f4927f",
+                "width": 1024,
+                "height": 1024
+              }
+            ]
+          },
+          {
+            "source_names": [
+              "Korean TC pots"
+            ],
+            "authorization": {
+              "kind": "recorded_owner_chat",
+              "path": "config/gr2_uv_contracts/shared_props_owner_evidence.json",
+              "sha256": "033f8236f1e23300ae2b2351c504c39d5c855206cb67ca33898c82cd10b32975",
+              "owner_quote": "You can use the pots from Korean TC. Keep the material and UV tied to TC and only define material as matb with link to TC material then. That's fine."
+            },
+            "files": [
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_BaseColor.ddt",
+                "sha256": "9f444e4f8d1ddc798c2a9eb3f3f90e06882be1d29aecb8c41d5deb9a3890867a",
+                "width": 2048,
+                "height": 2048
+              },
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_Normals.ddt",
+                "sha256": "f3fdf917ca0cb1ebff167d31bfdba00a88c9f35c676af1ca316de72a4ed0a902",
+                "width": 2048,
+                "height": 2048
+              },
+              {
+                "path": "buildings/korean_tc/textures/korean_tc_mata_Masks.ddt",
+                "sha256": "49a3e7f235c67ee58cd008fc942957d573ddec87d8434ea0cfca1b29a1082799",
+                "width": 2048,
+                "height": 2048
+              }
+            ]
+          }
+        ]
+      },
+      "limits": {
+        "max_vertices": 65535,
+        "max_index": 65535
+      },
+      "_scope": "Author r58 unchanged; runtime r59 fixes raw V origin. Source-corner contract, accepted r03 rest/flag/ground contracts, shared dependencies pinned. In-game acceptance is separate.",
+      "rest_contract": {
+        "bounds_tolerance_m": 0.002,
+        "ground_supports": [
+          {
+            "name": "Stable/RearHall/foot-1_0",
+            "xz_min": [
+              2.8550000190734863,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              3.1449999809265137,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot-1_1",
+            "xz_min": [
+              0.8550000190734863,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              1.1449999809265137,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot-1_2",
+            "xz_min": [
+              -1.1449999809265137,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              -0.8550000190734863,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot-1_3",
+            "xz_min": [
+              -3.1449999809265137,
+              -1.6649999618530273
+            ],
+            "xz_max": [
+              -2.8550000190734863,
+              -1.375
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_0",
+            "xz_min": [
+              2.8550000190734863,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              3.1449999809265137,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_1",
+            "xz_min": [
+              0.8550000190734863,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              1.1449999809265137,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_2",
+            "xz_min": [
+              -1.1449999809265137,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              -0.8550000190734863,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/RearHall/foot1_3",
+            "xz_min": [
+              -3.1449999809265137,
+              -4.864999771118164
+            ],
+            "xz_max": [
+              -2.8550000190734863,
+              -4.574999809265137
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_0",
+            "xz_min": [
+              0.20499995350837708,
+              -1.0249998569488525
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              -0.73499995470047
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_1",
+            "xz_min": [
+              0.20499995350837708,
+              0.6949999928474426
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              0.9850000143051147
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_2",
+            "xz_min": [
+              0.20499995350837708,
+              2.4149999618530273
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              2.7049999237060547
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot-1_3",
+            "xz_min": [
+              0.20499995350837708,
+              4.134999752044678
+            ],
+            "xz_max": [
+              0.49500003457069397,
+              4.424999713897705
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_0",
+            "xz_min": [
+              -3.194999933242798,
+              -1.0249998569488525
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              -0.73499995470047
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_1",
+            "xz_min": [
+              -3.194999933242798,
+              0.6949999928474426
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              0.9850000143051147
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_2",
+            "xz_min": [
+              -3.194999933242798,
+              2.4149999618530273
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              2.7049999237060547
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          },
+          {
+            "name": "Stable/StallWing/foot1_3",
+            "xz_min": [
+              -3.194999933242798,
+              4.134999752044678
+            ],
+            "xz_max": [
+              -2.9049999713897705,
+              4.424999713897705
+            ],
+            "ground_y": 0,
+            "tolerance_m": 0.01
+          }
+        ]
+      },
+      "uv_contract": {
+        "path": "../age-of-pirates-koreans/tools/uv_contracts/korean_stable_repair_con_r2.json",
+        "sha256": "0bdc6043a9abc911d674d1a0b39cd71c30af6bf9cbfaaf192e8d246029c58909"
+      }
+    }
+  }
+}

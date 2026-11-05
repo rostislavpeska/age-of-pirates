@@ -1,0 +1,151 @@
+<foresttypes>
+  <forest name="Andes Forest" iconname="ui\editor\forestAndes" floormix="andes_grass_a" density="0.25" clumpiness="0.5">
+    <protounit>Treeandes</protounit>
+    <underbrushobj prob="0.5">andes_grassrock_a</underbrushobj>
+  </forest>
+  <forest name="puya Forest" iconname="ui\editor\forestpuya" floormix="andes_grass_a" density="0.15" clumpiness="0.5">
+    <protounit>Treepuya2</protounit>
+    <underbrushobj prob="0.5">andes_grassrock_a</underbrushobj>
+  </forest>
+  <forest name="Amazon Rain Forest" iconname="ui\editor\forestAmazonRain" floor="Amazon\groundforest_ama" density="0.25" clumpiness="0.5">
+    <protounit>TreeAmazon</protounit>
+    <underbrushobj prob="0.5">UnderbrushAmazon</underbrushobj>
+  </forest>
+  <forest name="Bayou Swamp Forest" iconname="ui\editor\forestBayouSwamp" floormix="bayou_forest" density="0.25" clumpiness="0.5">
+    <protounit>TreeBayou</protounit>
+  </forest>
+  <forest name="Caribbean Palm Forest" iconname="ui\editor\forestcaribbeanpalmforest" floor="caribbean\cliff_top1_crb" density="0.25" clumpiness="0.30">
+    <protounit>TreeCaribbean</protounit>
+  </forest>
+  <forest name="Caribbean Palm Forest Skirmish" iconname="ui\editor\forestcaribbeanpalmforest" floor="caribbean\cliff_top1_crb" density="0.25" clumpiness="0.30">
+    <protounit>TreeCaribbean</protounit>
+    <underbrushobj prob="0.5">UnderbrushJungleSkirmish</underbrushobj>
+  </forest>
+  <forest name="Hispaniola Forest Skirmish" iconname="ui\editor\forestcaribbeanpalmforest" floor="caribbean\groundforest_crb" density="0.25" clumpiness="0.30">
+    <protounit>TreeCaribbean</protounit>
+    <underbrushobj prob="0.5">UnderbrushJungleSkirmish</underbrushobj>
+  </forest>
+  <forest name="Carolina Pine Forest" iconname="ui\editor\forestCarolinaPine" floor="Carolinas\groundforest_car" density="0.25" clumpiness="0.5">
+    <protounit>TreeCarolinagrass</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasforest</underbrushobj>
+  </forest>
+  <forest name="Carolina Marsh Forest" iconname="ui\editor\forestCarolinaMarsh" floor="Carolinas\groundforestmarsh_car" density="0.25" clumpiness="0.5">
+    <protounit>treecarolinamarsh</protounit>
+    <underbrushobj prob="0.5">Underbrushcarolinasmarsh</underbrushobj>
+  </forest>
+  <forest name="Great Lakes Forest" iconname="ui\editor\forestGreatLakes" floor="great_lakes\ground_forest_gls" density="0.75" clumpiness="0.5">
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="0.5">UnderbrushForest</underbrushobj>
+  </forest>
+  <forest name="Great Lakes Forest Snow" iconname="ui\editor\forestGreatLakessnow" floor="Yukon\groundforestsnow_yuk" density="0.75" clumpiness="0.5">
+    <protounit>TreeGreatLakesSnow</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockiesSnow</underbrushobj>
+  </forest>
+  <forest name="Great Plains Forest" iconname="ui\editor\forestGreatPlains" floor="" density="0.75" clumpiness="0.5">
+    <protounit>TreeGreatPlains</protounit>
+  </forest>
+  <forest name="Great Plains grass" iconname="ui\editor\forestGreatPlainsgrass" floor="" density="0.25" clumpiness="0.1">
+    <protounit>TreeGreatPlainsGrass</protounit>
+  </forest>
+  <forest name="Great Plains grass green" iconname="ui\editor\forestgreatplainsgreengrass" floor="" density="0.25" clumpiness="0.1">
+    <protounit>TreeGreatPlainsGrassgreen</protounit>
+    <underbrushobj prob="0.5">underbrushgreatplains</underbrushobj>
+  </forest>
+  <forest name="New England Forest" iconname="ui\editor\forestNewEngland" floormix="new_england_forest" density="0.75" clumpiness="0.5">
+    <protounit>TreeNewEngland</protounit>
+  </forest>
+  <forest name="Pampas Forest" iconname="ui\editor\forestPampas" floormix="pampas_forest" density="0.25" clumpiness="0.5">
+    <protounit>TreePampas</protounit>
+  </forest>
+  <forest name="Painteddesert Forest" iconname="ui\editor\forestPainteddesert" floor="painteddesert\pd_ground_diffuse_i" density="0.25" clumpiness="0.5">
+    <protounit>TreePaintedDesert</protounit>
+  </forest>
+  <forest name="Patagonia Forest" iconname="ui\editor\forestPatagonia" floor="patagonia\groundforest_pat" density="0.25" clumpiness="0.5">
+    <protounit>TreePatagoniaDirt</protounit>
+    <underbrushobj prob="0.5">UnderbrushPatagoniaDirt</underbrushobj>
+  </forest>
+  <forest name="Patagonia Snow Forest" iconname="ui\editor\forestPatagoniaSnow" floor="patagonia\groundforest_snow_pat" density="0.25" clumpiness="0.5">
+    <protounit>TreePatagoniaSnow</protounit>
+    <underbrushobj prob="0.5">UnderbrushPatagoniaSnow</underbrushobj>
+  </forest>
+  <forest name="Rockies Snow Forest" iconname="ui\editor\forestRockiesSnow" floor="Rockies\groundforestsnow_roc" density="0.25" clumpiness="0.5">
+    <protounit>TreeRockiesSnow</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockiesSnow</underbrushobj>
+  </forest>
+  <forest name="Rockies Forest" iconname="ui\editor\forestRockies" floor="Rockies\groundforest_roc" density="0.25" clumpiness="0.5">
+    <protounit>TreeRockies</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockies</underbrushobj>
+  </forest>
+  <forest name="Saguenay Forest" iconname="ui\editor\forestsaquenay" floormix="saguenay_forest" density="0.25" clumpiness="0.5">
+    <protounit>TreeSaguenay</protounit>
+    <underbrushobj prob="0.01">UnderbrushSaguenay</underbrushobj>
+  </forest>
+  <forest name="Sonora Forest" iconname="ui\editor\forestsanora" floor="sonora\groundforest_son" density="0.25" clumpiness="0.5">
+    <protounit>TreeSonora</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexas</underbrushobj>
+  </forest>
+  <forest name="Texas Forest" iconname="ui\editor\foresttexas" floor="texas\groundforest_tex" density="0.25" clumpiness="0.5">
+    <protounit>TreeTexas</protounit>
+    <underbrushobj prob="0.5">Underbrushtexas</underbrushobj>
+  </forest>
+  <forest name="Texas Forest Dirt" iconname="ui\editor\forestTexasDirt" floor="texas\Tree_gravel_tex" density="0.25" clumpiness="0.5">
+    <protounit>TreeTexasDirt</protounit>
+    <underbrushobj prob="0.5">Underbrushtexas</underbrushobj>
+  </forest>
+  <forest name="Yucatan Forest" iconname="ui\editor\forestYucatan" floor="Amazon\groundforest_ama" density="0.25" clumpiness="0.5">
+    <protounit>TreeYucatan</protounit>
+    <underbrushobj prob="0.45">UnderbrushYucatan</underbrushobj>
+  </forest>
+  <forest name="Yukon Snow Forest" iconname="ui\editor\forestYukonSnow" floor="Yukon\groundforestsnow_yuk" density="0.25" clumpiness="0.5">
+    <protounit>TreeYukonSnow</protounit>
+    <underbrushobj prob="0.6">UnderbrushYukon</underbrushobj>
+  </forest>
+  <forest name="Yukon Forest" iconname="ui\editor\forestYukon" floor="Yukon\groundforest_yuk" density="0.25" clumpiness="0.5">
+    <protounit>TreeYukon</protounit>
+    <underbrushobj prob="0.6">UnderbrushYukon</underbrushobj>
+  </forest>
+  <forest name="Christmas Forest" iconname="ui\editor\forestYukonSnow" floor="Yukon\groundforestsnow_yuk" density="0.25" clumpiness="0.5">
+    <protounit>TreeChristmas</protounit>
+    <protounit>TreeGreatLakesSnow</protounit>
+    <protounit>TreeGreatLakesSnow</protounit>
+    <protounit>TreeGreatLakesSnow</protounit>
+    <protounit>TreeGreatLakesSnow</protounit>
+    <protounit>TreeGreatLakesSnow</protounit>
+    <underbrushobj prob="0.6">UnderbrushYukon</underbrushobj>
+  </forest>
+  <forest name="California Redwood Chonky Forest" iconname="ui\editor\forestYukonSnow" floormix="California_forestground" density="1.0" clumpiness="0.25">
+    <protounit>TreeRedwoodChonky</protounit>
+  </forest>
+  <forest name="California Redwood Forest" iconname="ui\editor\forestYukonSnow" floormix="California_forestground" density="1.0" clumpiness="0.25">
+    <protounit>TreeRedwood</protounit>
+  </forest>
+  <forest name="California Madrone Forest" iconname="ui\editor\forestYukonSnow" floormix="california_madrone_forest" density="1.0" clumpiness="0.5">
+    <protounit>TreeMadrone</protounit>
+  </forest>
+  <forest name="California Desert Forest" iconname="ui\editor\forestsanora" floormix="california_desert0" density="0.75" clumpiness="0.5">
+    <protounit>TreeSonora</protounit>
+    <underbrushobj prob="0.5">UnderbrushTexas</underbrushobj>
+  </forest>
+  <forest name="California Pine Forest" iconname="ui\editor\forestGreatLakes" floormix="california_madrone_forest" density="1.0" clumpiness="0.5">
+    <protounit>TreeGreatLakes</protounit>
+  </forest>
+  <forest name="NW Territory Forest" iconname="ui\editor\forestRockies" floor="nwterritory\ground_grass5_nwt" density="1.00" clumpiness="0.5">
+    <protounit>TreeNorthwestTerritory</protounit>
+    <underbrushobj prob="0.6">UnderbrushRockies</underbrushobj>
+  </forest>
+  <forest name="NW Territory Birch Forest" iconname="ui\editor\forestGreatLakes" floor="nwterritory\ground_grass5_nwt" density="1.00" clumpiness="0.5">
+    <protounit>TreeGreatLakes</protounit>
+    <underbrushobj prob="0.5">UnderbrushForest</underbrushobj>
+  </forest>
+  <forest name="Araucania Forest" iconname="ui\editor\forestaraucania" floormix="araucania_north_forest" density="0.25" clumpiness="0.5">
+    <protounit>TreeAraucania</protounit>
+    <underbrushobj prob="0.5">andes_grassrock_a</underbrushobj>
+  </forest>
+  <forest name="North Araucania Forest" iconname="ui\editor\forestnortharaucania" floormix="araucania_north_forest2" density="1.0" clumpiness="0.5">
+    <protounit>TreeAraucania</protounit>
+    <underbrushobj prob="1.0">andes_grassrock_a</underbrushobj>
+  </forest>
+  <forest name="North Araucania Coastal Forest" iconname="ui\editor\forestaraucanncoast" floormix="araucania_north_forest2" density="1.0" clumpiness="0.5">
+    <protounit>TreeAraucania</protounit>
+  </forest>
+</foresttypes>

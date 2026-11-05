@@ -1,0 +1,16 @@
+<protounitsounddef>
+  <protounit name="zpNatBritishCastles">
+    <soundtype name="Select">
+      <soundset name="UI_Building_Military" />
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="UI_Select_Building_Fort" />
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction" />
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Select_Building_Fort" />
+    </soundtype>
+  </protounit>
+</protounitsounddef>

@@ -17,8 +17,8 @@
   <distanceatleastfromtype player="any" foundation="any" distance="22" errorstringid="123113">deSPCCapturableFlag</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="16" errorstringid="125166">deRMFoodMill</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="12" errorstringid="123337">deSPCHeadquartersVienna</distanceatleastfromtype>
-   <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="301928">AbstractCityManison</distanceatleastfromtype>
-   <distanceatleastfromtype player="any" foundation="any" distance="6" errorstringid="301928">AbstractCityManisonB</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302073">deSPCTreeCypressProp</distanceatleastfromtype>
+   <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="501928">AbstractCityManison</distanceatleastfromtype>
+   <distanceatleastfromtype player="any" foundation="any" distance="6" errorstringid="501928">AbstractCityManisonB</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="502033">zpBridgeFace</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="502073">deSPCTreeCypressProp</distanceatleastfromtype>
 </placementrules>

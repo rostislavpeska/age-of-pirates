@@ -1,0 +1,120 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_west\cannonworks\textures\cannonworks_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_west\cannonworks\textures\cannonworks_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_west\cannonworks\textures\cannonworks_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\dutch_homecity_dockhouse\textures\dutch_homecity_dockhouse_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_homecity_dockhouse\textures\dutch_homecity_dockhouse_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_homecity_dockhouse\textures\dutch_homecity_dockhouse_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\swedish\swedish_ground\textures\swedish_ground_mata_y_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\swedish\swedish_ground\textures\swedish_ground_mata_y_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\swedish\swedish_ground\textures\swedish_ground_mata_y_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\cabin\cabin\textures\cabin_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\cabin\cabin\textures\cabin_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\cabin\cabin\textures\cabin_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\half_timbered\textures\Lumbermill_mata_BaseColor">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\havana_port\textures\spc_dock1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\havana_port\textures\spc_dock1_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\havana_port\textures\spc_dock1_mata_masks">
+      </texture>
+      <float name="AO Intensity" override="0.5000">
+      </float>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\spc\igc_shipwreck\textures\debris01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="objects\spc\igc_shipwreck\textures\debris01_mata_normals">
+      </texture>
+      <texture name="Masks" override="objects\spc\igc_shipwreck\textures\debris01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\grove\textures\asian_grove_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\grove\textures\asian_grove_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\grove\textures\asian_grove_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matj">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\spc_waterfall\spc_waterfall\textures\SPC_Watefall_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="objects\spc_waterfall\spc_waterfall\textures\SPC_Watefall_matb_Normals">
+      </texture>
+      <texture name="Masks" override="objects\spc_waterfall\spc_waterfall\textures\SPC_Watefall_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

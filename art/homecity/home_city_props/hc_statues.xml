@@ -1,0 +1,81 @@
+<animfile>
+	<component>
+		statues
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\home_city_props\prop_statue\hc_prop_statue1</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\home_city_props\prop_statue\hc_prop_statue2</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\home_city_props\prop_statue\hc_statue_b_explorer</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\home_city_props\prop_statue\hc_statue_p_explorer</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\home_city_props\prop_statue\portuguese_kingstatue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\home_city_props\hc_statue_rider_ice</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\hausa\amina_statue\amina_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\spc\nate_statue\nate_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\revolution\statue\dutch_ex_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\revolution\statue\french_ex_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\revolution\statue\german_ex_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\revolution\statue\otto_ex_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\revolution\statue\russian_ex_statue</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>homecity\revolution\statue\spanish_ex_statue</file>
+				</assetreference>
+			</data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>statues</component>
+	</anim>
+</animfile>

@@ -1,0 +1,22 @@
+<mix>
+  <title>Amazon Clutter High</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="30" posoffset="0.5">
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant1</model>
+    <model weight="2" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant2</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant3</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant4</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant5</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant6</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant8</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant9</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant11</model>
+    <model weight="10" scalemin="0.8" scalemax="1.5">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="10" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_jungle_rock1</model>
+    <model weight="10" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_jungle_rock2</model>
+    <model weight="10" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_jungle_rock3</model>
+    <model weight="10" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_jungle_rock4</model>
+    <model weight="10" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_jungle_rock5</model>
+  </objects>
+</mix>

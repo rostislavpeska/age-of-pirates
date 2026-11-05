@@ -1842,7 +1842,7 @@ minInterval 30
    int buildingID = -1;
    int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
    
-   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   // AssertiveWall: On island maps, run the amphibious assault
    if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
    {
       // Try calling it individually
@@ -1858,6 +1858,29 @@ minInterval 30
       }
       return;
    }
+
+   // AssertiveWall: If we don't have a wagon, try running the tower forward base after waiting a while for the cooldown
+   static int lastFBattempt = -1;
+   static int fbCooldown = -1;
+   if (fbCooldown < 0)
+   {
+      // Logic here is that rushing civs more aggressively try to establish forward bases and map control
+      // I'll admit there isn't much sense to these cooldowns, other than trying to avoid excessive attempts
+      // and making things different for the sake of it
+      if (gStrategy == cStrategyRush) { fbCooldown = 120000; } // 2 mins
+      else if (gStrategy == cStrategyNakedFF) { fbCooldown = 180000; } // 3 mins
+      else if (gStrategy == cStrategySafeFF) { fbCooldown = 300000; } // 5 mins
+      else if (gStrategy == cStrategyFastIndustrial) { fbCooldown = 240000; } // 4 mins
+      else { fbCooldown = 180000; } // 3 min default
+   }
+
+   if (gForwardBaseState == cForwardBaseStateNone && 
+       gStartOnDifferentIslands != true && availableFortWagon < 0 && xsGetTime() > (lastFBattempt + fbCooldown))
+   {
+      // individually try making the tower version
+      forwardTowerBaseManager();
+   }
+   
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
    if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
@@ -1878,6 +1901,7 @@ minInterval 30
             //vector location = cInvalidVector;  AssertiveWall: moved up above
    
             // AssertiveWall: Use the forward island
+            // NOTE: never get here now that the amphibiousAssault runs. Leaving active as a note
             if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
             {
                location = selectForwardBaseBeachHead();
@@ -1951,16 +1975,24 @@ minInterval 30
       }
       case cForwardBaseStateBuilding:
       {
-         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0); 
+         // AssertiveWall: down from 100. It has been grabbing the most random things
          if (fortUnitID < 0)
          {
             // Check for other military buildings.
-            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 20.0);
             numberFound = kbUnitQueryExecute(buildingQuery);
             numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
             for (i = 0; < numberFound)
             {
                buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
                for (j = 0; < numberMilitaryBuildings)
                {
                   if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
@@ -1969,12 +2001,14 @@ minInterval 30
                      break;
                   }
                }
+
                if (fortUnitID >= 0)
                {
                   break;
                }
             }
          }
+
          if (fortUnitID >= 0)
          { // Building exists and is complete, go to state Active.
             if (kbUnitGetBaseID(fortUnitID) >= 0)
@@ -1989,11 +2023,20 @@ minInterval 30
                gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
                gForwardBaseUpTime = xsGetTime();
                gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeFortFrontier);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
                debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
                   gForwardBaseID + ", Unit ID is " + fortUnitID);
                debugBuildings("");
                debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
                debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
             }
             else
             {
@@ -2030,6 +2073,13 @@ minInterval 30
             for (i = 0; < numberFound)
             {
                buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
                for (j = 0; < numberMilitaryBuildings)
                {
                   if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
@@ -3011,9 +3061,9 @@ minInterval 5
           ((gRevolutionType & cRevolutionFinland) == 0))
       { 
          planID = createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1); 
-         if (gStartOnDifferentIslands == true && dockCount <= 1)
+         if (gStartOnDifferentIslands == true && dockCount < 1)
          {
-            aiPlanSetDesiredResourcePriority(planID, 90); // Docks are high priority on island maps
+            aiPlanSetDesiredResourcePriority(planID, 80); // Docks are high priority on island maps
             //if (towerCount < 1)
             //{
             //   planID = createSimpleBuildPlan(gTowerUnit, 1, 89, false, cMilitaryEscrowID, mainBaseID, 2);
@@ -3021,11 +3071,11 @@ minInterval 5
          }
          else if (gStartOnDifferentIslands == true && dockCount <= 2)
          {
-            aiPlanSetDesiredResourcePriority(planID, 70); // Docks are high priority on island maps
+            aiPlanSetDesiredResourcePriority(planID, 60); // Docks are high priority on island maps
          }
          else
          {
-            aiPlanSetDesiredResourcePriority(planID, 60);
+            aiPlanSetDesiredResourcePriority(planID, 50);
          }
       }
    }
@@ -4782,3 +4832,187 @@ inactive
 
 
 
+// Added from DE
+
+//==============================================================================
+// roundChurchConstructionMonitor
+//==============================================================================
+rule roundChurchConstructionMonitor
+inactive
+minInterval 60
+{
+   if (cvOkToFortify == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule roundChurchConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeChurchDanish) >= 0)
+   {
+      debugBuildings("We already have a Round Church build plan going, don't stack them.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Round Church build plan.");
+      return;
+   }
+   
+   int churchesWanted = 1;
+   // Start building more off them starting in Fortress, don't want to overburden the economy early on.
+   if (kbGetAge() >= cAge3)
+   {
+      churchesWanted = selectByDifficulty(1, 1, 2, 2, 3, 3);
+   }
+   
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypedeChurchDanish);
+   if (churchesWanted > buildLimit)
+   {
+      churchesWanted = buildLimit;
+      aiEchoWarning("Round Church BL is out of sync with our selectByDifficulty.");
+   }
+   debugBuildings("We want " + churchesWanted + " Round Churches.");
+   
+   // Don't make any more Tower build plans if we're already at our calculated limit.
+   if (kbUnitCount(cMyID, cUnitTypedeChurchDanish, cUnitStateABQ) >= churchesWanted)
+   {
+      debugBuildings("We already have our wanted number of Round Churches.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeChurchDanish, 1, 50, false, cMilitaryEscrowID, mainBaseID);
+}
+
+//==============================================================================
+// customsHouseConstructionMonitor
+// Always keep 1 Customs House alive.
+//==============================================================================
+rule customsHouseConstructionMonitor
+inactive
+minInterval 30
+{
+   if (cvOkToBuild == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule rule customsHouseConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypedeCustomsHouse, cUnitStateAlive) >= 1)
+   {
+      debugBuildings("We already have a Customs House alive.");
+      return;
+   }
+   if (aiGetFallenExplorerID() >= 0)
+   {
+      debugBuildings("Our Explorer is dead and we have no Customs House, start force ransoming him.");
+      gForceRansomExplorer = true;
+      return;
+   }
+   gForceRansomExplorer = false;
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeCustomsHouse) >= 0)
+   {
+      debugBuildings("We already have a Customs House build plan going, BL of 1.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Customs House build plan.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeCustomsHouse, 1, 100, false, cMilitaryEscrowID, mainBaseID);
+}
+
+//==============================================================================
+// folwarkConstructionMonitor
+// We always want 1 Folwark alive, then our farming logic could upgrade it to be a proper 10 slot Mill.
+//==============================================================================
+rule folwarkConstructionMonitor
+inactive
+minInterval 30
+{
+   if (cvOkToBuild == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule folwarkConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypedeFolwark, cUnitStateAlive) >= 1)
+   {
+      debugBuildings("We currently have a Folwark alive, don't need to add more.");
+      return;
+   }
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeFolwark) >= 0)
+   {
+      debugBuildings("We already have a Folwark build plan going, don't stack them.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Folwark build plan.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeFolwark, 1, 50, false, cEconomyEscrowID, mainBaseID);
+}
+
+//==============================================================================
+// sejmConstructionMonitor
+// Always keep 1 Sejm alive.
+//==============================================================================
+rule sejmConstructionMonitor
+inactive
+minInterval 30
+{
+   if (cvOkToBuild == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule sejmConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypedeSejm, cUnitStateAlive) >= 1)
+   {
+      debugBuildings("We already have a Sejm alive.");
+      return;
+   }
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeSejm) >= 0)
+   {
+      debugBuildings("We already have a Sejm build plan going, BL of 1.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Sejm build plan.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeSejm, 1, 50, false, cEconomyEscrowID, mainBaseID);
+}

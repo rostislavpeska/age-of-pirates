@@ -1,0 +1,34 @@
+<mix>
+  <title>Texas Grass Skirmish</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="3">texas\ground2_tex</texture>
+    <texture weight="1">texas\path_Blend</texture>
+    <texture weight="1">texas\ground3_tex</texture>
+    <texture weight="1">texas\ground1_tex</texture>
+    <texture weight="0.5">texas\Tree_gravel_tex</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.4" octaves="3" persistence="0.6" emptyweight="60" posoffset="0.7">
+    <model weight="1" scalemin="0.6" scalemax="0.8">terrain\underbrush\underbrush_desert_bush1</model>
+    <model weight="1" scalemin="0.6" scalemax="0.8">terrain\underbrush\underbrush_desert_bush2</model>
+    <model weight="1" scalemin="0.6" scalemax="1">terrain\underbrush\underbrush_desert_bush4</model>
+    <model weight="1" scalemin="0.6" scalemax="0.9">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.6" scalemax="0.9">terrain\underbrush\underbrush_desert_bush6</model>
+    <model weight="1" scalemin="0.7" scalemax="1">terrain\underbrush\underbrush_desert_group1</model>
+    <model weight="1" scalemin="0.7" scalemax="1">terrain\underbrush\underbrush_desert_group3</model>
+    <model weight="1" scalemin="0.7" scalemax="1">terrain\underbrush\underbrush_desert_group5</model>
+    <model weight="1" scalemin="0.6" scalemax="0.8">terrain\underbrush\underbrush_desert_tallgrass1</model>
+    <model weight="1" scalemin="0.8" scalemax="1">terrain\underbrush\underbrush_desert_tallgrass2</model>
+    <model weight="1" scalemin="0.6" scalemax="1">terrain\underbrush\underbrush_desert_grass1</model>
+    <model weight="1" scalemin="0.6" scalemax="1">terrain\underbrush\underbrush_desert_grass2</model>
+    <model weight="1" scalemin="0.4" scalemax="0.8">terrain\underbrush\underbrush_desert_saguarocactus1</model>
+    <model weight="1" scalemin="0.5" scalemax="0.8">terrain\underbrush\underbrush_desert_saguarocactus2</model>
+    <model weight="1" scalemin="0.4" scalemax="0.9">terrain\underbrush\underbrush_desert_saguarocactus3</model>
+    <model weight="1" scalemin="0.5" scalemax="0.8">terrain\underbrush\underbrush_desert_saguarocactus4</model>
+    <model weight="1" scalemin="0.8" scalemax="1">terrain\underbrush\underbrush_desert_pearcactus1</model>
+    <model weight="1" scalemin="0.6" scalemax="1">terrain\underbrush\underbrush_desert_pearcactus2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.1">terrain\underbrush\underbrush_desert_pearcactus3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.1">terrain\underbrush\underbrush_desert_pearcactus4</model>
+    <model weight="1" scalemin="0.6" scalemax="1.1">terrain\underbrush\underbrush_desert_pearcactus5</model>
+  </objects>
+</mix>

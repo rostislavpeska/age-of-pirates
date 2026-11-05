@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapinfo details="301292" displayNameID="301291" loadDetails="301293" largeMapName = "hawaiiLarge"
+<mapinfo details="501292" displayNameID="501291" loadDetails="501293" largeMapName = "hawaiiLarge"
     imagepath="ui\random_map\hawaii\hawaii_mini" cannotReplace="" loadBackground="ui\random_map\hawaii\hawaii_map">
     <loadss>ui\random_map\hawaii\hawaii_ss_01</loadss>
     <loadss>ui\random_map\hawaii\hawaii_ss_02</loadss>

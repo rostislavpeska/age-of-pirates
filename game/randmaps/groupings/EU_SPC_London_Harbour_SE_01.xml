@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>16</width>
+	<height>17</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="139" posx="-6.0151" posz="-5.7815" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeStatueVenetian</unit>
+		<unit variation="204" posx="4.2060" posz="-5.8835" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeStatueVenetian</unit>
+		<unit variation="173" posx="-6.6779" posz="-2.2757" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropMarketStall</unit>
+		<unit variation="214" posx="2.1931" posz="-2.9019" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropMarketStall</unit>
+		<unit variation="19" posx="-6.9926" posz="0.1725" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropMarketStall</unit>
+		<unit variation="92" posx="5.8846" posz="-1.2776" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpPropMarketStall</unit>
+		<unit variation="124" posx="-9.6937" posz="4.7231" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
+		<unit variation="124" posx="8.0511" posz="3.9157" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
+		<unit variation="209" posx="-14.1986" posz="11.2563" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="33" posx="-0.5043" posz="11.9532" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
+		<unit variation="124" posx="1.5522" posz="12.3230" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="161" posx="-4.1885" posz="12.2366" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="125" posx="12.2231" posz="11.2275" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="33" posx="7.2198" posz="11.3581" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
+		<unit variation="7" posx="7.6942" posz="11.0887" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="235" posx="-9.4261" posz="11.5011" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="93" posx="-9.1968" posz="11.4266" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpHarbourPlatform</unit>
+		<unit variation="32" posx="12.7785" posz="13.8549" orientx="0.9413" orienty="0.0000" orientz="-0.3377">zpHarbourShip</unit>
+		<unit variation="98" posx="8.7614" posz="14.2318" orientx="0.3827" orienty="-0.0000" orientz="0.9239">zpHCFisherman</unit>
+		<unit variation="176" posx="-9.0354" posz="14.9499" orientx="0.0000" orienty="-0.0000" orientz="1.0000">NativePirates</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">
+			<block startx="-8" startz="-8" endx="-8" endz="-3"></block>
+			<block startx="-7" startz="-8" endx="-7" endz="-8"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-8"></block>
+			<block startx="-8" startz="8" endx="-8" endz="8"></block>
+			<block startx="-5" startz="8" endx="-5" endz="8"></block>
+			<block startx="-4" startz="8" endx="-4" endz="8"></block>
+			<block startx="-1" startz="8" endx="-1" endz="8"></block>
+			<block startx="-8" startz="0" endx="-8" endz="5"></block>
+			<block startx="-7" startz="1" endx="-7" endz="4"></block>
+			<block startx="-6" startz="1" endx="-6" endz="1"></block>
+			<block startx="6" startz="-1" endx="6" endz="-1"></block>
+			<block startx="6" startz="6" endx="6" endz="6"></block>
+			<block startx="7" startz="-1" endx="7" endz="0"></block>
+			<block startx="7" startz="3" endx="7" endz="6"></block>
+			<block startx="5" startz="8" endx="5" endz="8"></block>
+			<block startx="6" startz="7" endx="6" endz="8"></block>
+			<block startx="7" startz="7" endx="7" endz="8"></block>
+			<block startx="2" startz="-8" endx="2" endz="-8"></block>
+			<block startx="3" startz="-8" endx="3" endz="-8"></block>
+			<block startx="4" startz="-8" endx="4" endz="-8"></block>
+			<block startx="5" startz="-8" endx="5" endz="-7"></block>
+			<block startx="6" startz="-8" endx="6" endz="-6"></block>
+			<block startx="7" startz="-8" endx="7" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-8" startz="-2" endx="-8" endz="-2"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-2"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-4"></block>
+			<block startx="-5" startz="-8" endx="-5" endz="-3"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-3"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-8" endx="-2" endz="-2"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-2"></block>
+			<block startx="-8" startz="7" endx="-8" endz="7"></block>
+			<block startx="-7" startz="7" endx="-7" endz="8"></block>
+			<block startx="-6" startz="7" endx="-6" endz="8"></block>
+			<block startx="-5" startz="7" endx="-5" endz="7"></block>
+			<block startx="-4" startz="7" endx="-4" endz="7"></block>
+			<block startx="-3" startz="7" endx="-3" endz="8"></block>
+			<block startx="-2" startz="7" endx="-2" endz="8"></block>
+			<block startx="-1" startz="7" endx="-1" endz="7"></block>
+			<block startx="-8" startz="-1" endx="-8" endz="-1"></block>
+			<block startx="-8" startz="6" endx="-8" endz="6"></block>
+			<block startx="-7" startz="-1" endx="-7" endz="0"></block>
+			<block startx="-7" startz="5" endx="-7" endz="6"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="0"></block>
+			<block startx="-6" startz="2" endx="-6" endz="6"></block>
+			<block startx="-5" startz="0" endx="-5" endz="6"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="6"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="6"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="6"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="6"></block>
+			<block startx="0" startz="-1" endx="0" endz="6"></block>
+			<block startx="1" startz="-1" endx="1" endz="6"></block>
+			<block startx="2" startz="-1" endx="2" endz="6"></block>
+			<block startx="3" startz="-1" endx="3" endz="4"></block>
+			<block startx="3" startz="6" endx="3" endz="6"></block>
+			<block startx="4" startz="-1" endx="4" endz="0"></block>
+			<block startx="4" startz="6" endx="4" endz="6"></block>
+			<block startx="5" startz="-1" endx="5" endz="-1"></block>
+			<block startx="5" startz="5" endx="5" endz="6"></block>
+			<block startx="6" startz="0" endx="6" endz="0"></block>
+			<block startx="6" startz="4" endx="6" endz="5"></block>
+			<block startx="0" startz="7" endx="0" endz="8"></block>
+			<block startx="1" startz="7" endx="1" endz="8"></block>
+			<block startx="2" startz="7" endx="2" endz="8"></block>
+			<block startx="3" startz="7" endx="3" endz="8"></block>
+			<block startx="4" startz="7" endx="4" endz="8"></block>
+			<block startx="5" startz="7" endx="5" endz="7"></block>
+			<block startx="0" startz="-8" endx="0" endz="-2"></block>
+			<block startx="1" startz="-8" endx="1" endz="-2"></block>
+			<block startx="2" startz="-7" endx="2" endz="-2"></block>
+			<block startx="3" startz="-6" endx="3" endz="-2"></block>
+			<block startx="4" startz="-2" endx="4" endz="-2"></block>
+			<block startx="5" startz="-6" endx="5" endz="-2"></block>
+			<block startx="6" startz="-5" endx="6" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-6" startz="-3" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-2" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-2" endx="-4" endz="-2"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="-1"></block>
+			<block startx="7" startz="1" endx="7" endz="2"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="4" startz="-7" endx="4" endz="-3"></block>
+		</tilegroup>
+		<tilegroup type="Ice" subtype="city\ground1_cob_dark">
+			<block startx="3" startz="5" endx="3" endz="5"></block>
+			<block startx="4" startz="1" endx="4" endz="5"></block>
+			<block startx="5" startz="0" endx="5" endz="4"></block>
+			<block startx="6" startz="1" endx="6" endz="3"></block>
+		</tilegroup>
+		<cliffgroup type="ZP City">
+			<block startx="-5" startz="-2" endx="-5" endz="-2"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="5"></block>
+			<block startx="-4" startz="5" endx="-4" endz="5"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="-1" startz="5" endx="-1" endz="5"></block>
+			<block startx="0" startz="5" endx="0" endz="5"></block>
+			<block startx="1" startz="5" endx="1" endz="5"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="3" startz="-1" endx="3" endz="5"></block>
+			<block startx="3" startz="-3" endx="3" endz="-2"></block>
+		</cliffgroup>
+		<heights>
+			<tiles x="-8" z="-8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.514 0.485 0.178 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-6">0.000 0.000 0.000 0.000 0.496 0.000 0.000 0.864 1.536 1.950 1.810 1.198 0.302 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-5">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.719 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-4">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-3">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-2">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="-1">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="0">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="1">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="2">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="3">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="4">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="5">0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="6">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-8" z="8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+		</heights>
+	</tiles>
+</grouping>

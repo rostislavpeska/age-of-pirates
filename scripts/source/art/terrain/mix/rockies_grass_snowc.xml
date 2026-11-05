@@ -1,0 +1,9 @@
+<mix>
+  <title>Rockies Grass Snow C</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="6">rockies\groundsnow7_roc</texture>
+    <texture weight="2">rockies\groundsnow6_roc</texture>
+    <texture weight="6">rockies\groundsnow8_roc</texture>
+  </paint>
+</mix>

@@ -124,6 +124,39 @@
 		<unit id="20330" name="zpAmericanEmbassy">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
+		<!-- Danes and Poles (user 2026-09-24): each on the city file of its vanilla rule - buildingsmall -> buildingsmall_city
+		     (house, church, Customs House), buildinglarge -> buildinglarge_city (Polish church, Sejm), mill -> mill_city
+		     (the Folwark and its four forms) -->
+		<unit name="deHouseDanish">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deChurchDanish">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deCustomsHouse">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deChurchPolish">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deSejm">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deFolwark">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deFolwarkFarm">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deFolwarkLivestock">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deFolwarkDefensive">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deFolwarkSich">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
 		<unit name="deNatEUPropFence">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>

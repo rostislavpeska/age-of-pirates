@@ -1,0 +1,21 @@
+<mix>
+  <title>Snow Props</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.5" octaves="3" persistence="0.8" emptyweight="0.3" posoffset="0.8">
+    <model weight="1" scalemin="0.6" scalemax="1.0">terrain\underbrush\underbrush_forest_bushsnow1</model>
+    <model weight="1" scalemin="0.6" scalemax="1.0">terrain\underbrush\underbrush_forest_bushsnow2</model>
+    <model weight="1" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_snow_log1</model>
+    <model weight="1" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_snow_log2</model>
+    <model weight="1" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_snow_log3</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_snow_group1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_snow_group2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_snow_grass1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_snow_grass2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_snow_rock2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_snow_rock4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_snow_rock6</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_snow_stump1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_snow_stump2</model>
+    <model weight="1" scalemin="0.7" scalemax="1.0">terrain\underbrush\underbrush_snow_bush2</model>
+  </objects>
+</mix>

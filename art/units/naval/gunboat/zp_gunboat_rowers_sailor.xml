@@ -1,0 +1,55 @@
+<animfile>
+  <definebone>bone_master</definebone>
+  <definebone>bone_rower_front_special</definebone>
+  <definebone>bone_rower_front_special</definebone>
+  <definebone>bone_rower2_front_special</definebone>
+  <definebone>bone_rower2_back_special</definebone>
+  <definebone>bone_rower3_front_special</definebone>
+  <definebone>bone_rower3_back_special</definebone>
+  <definebone>bone_rower4_front_special</definebone>
+  <definebone>bone_rower4_back_special</definebone>
+  <definebone>bone_rower5_front_special</definebone>
+  <definebone>bone_rower5_back_special</definebone>
+  <definebone>bone_leader_front_special</definebone>
+  <definebone>bone_leader_back_special</definebone>
+  <definebone>bone_rower6_front_special</definebone>
+  <definebone>bone_rower6_back_special</definebone>
+  <definebone>bone_rower8_front_special</definebone>
+  <definebone>bone_rower8_back_special</definebone>
+  <definebone>bone_rower9_front_special</definebone>
+  <definebone>bone_rower9_back_special</definebone>
+  <definebone>bone_rower10_front_special</definebone>
+  <definebone>bone_rower10_back_special</definebone>
+  <attachment>rowerleft<include>units\naval\gunboat\zp_gunboat_sailor_rower2.xml</include>
+  </attachment>
+  <attachment>rowerright<include>units\naval\gunboat\zp_gunboat_sailor_rower1.xml</include>
+  </attachment>
+  <attachment>captain<include>units\naval\gunboat\gunboat_captain.xml</include>
+  </attachment>
+  <component>rowers<assetreference type="GrannyModel">
+      <file>units\naval\gunboat\gunboat_rowers</file>
+    </assetreference>
+    <attach a="rowerleft" frombone="Bip01" tobone="bone_rower_front_special" syncanims="1" />
+    <attach a="rowerleft" frombone="Bip01" tobone="bone_rower3_front_special" syncanims="1" />
+    <attach a="rowerleft" frombone="Bip01" tobone="bone_rower5_front_special" syncanims="1" />
+    <attach a="rowerright" frombone="Bip01" tobone="bone_rower2_back_special" syncanims="1" />
+    <attach a="rowerright" frombone="Bip01" tobone="bone_rower4_back_special" syncanims="1" />
+    <attach a="rowerright" frombone="Bip01" tobone="bone_rower6_back_special" syncanims="1" />
+    <attach a="captain" frombone="Bip01" tobone="bone_rower10_back_special" syncanims="1" />
+  </component>
+  <anim>Idle<component>rowers</component>
+  </anim>
+  <anim>Walk<component>rowers</component>
+  </anim>
+  <anim>Death<assetreference type="GrannyAnim">
+      <file>units\naval\gunboat\gunboat_rowers_death</file>
+    </assetreference>
+    <component>rowers</component>
+  </anim>
+  <anim>RangedAttack<component>rowers</component>
+  </anim>
+  <anim>Bombard_ranged_attack<component>rowers</component>
+  </anim>
+  <anim>GatherFish<component>rowers</component>
+  </anim>
+</animfile>

@@ -1,0 +1,97 @@
+{
+ "_comment": "Game UI points for a 2560x1080 CLIENT area (created 2026-09-24, scripts/gameio). On this device the game runs borderless full screen on the primary monitor at (0,0), so client pixels = screen pixels, and full-screen shots give client pixels directly. Every point states its provenance ('measured YYYY-MM-DD <how>', 'screenshot <file> ...', 'derived <how>'); sheets.Sheet.point refuses derived points unless allow_derived=True. A provenance that says 're-measure live' predates the 2026-09-10 build: probe it before any click relies on it. Points NOT entered, and why, are under _not_entered.",
+ "size": [2560, 1080],
+ "menu": {
+  "_layout": {
+   "x": 444,
+   "frame_lines": [251, 287, 306, 342, 361, 397, 416, 452, 471, 507, 526, 562, 581, 617, 636, 672, 691, 727],
+   "tol_px": 1,
+   "buttons": {"continue": [251, 288], "load": [306, 343], "campaign": [361, 398], "skirmish": [416, 453],
+               "multiplayer": [471, 508], "home_city": [526, 563], "scenario_editor": [581, 618],
+               "options": [636, 673], "tools": [691, 728]},
+   "outline_x": [341, 548],
+   "provenance": "measured 2026-09-24 live/01_menu.png (the main session's full-resolution 2560x1080 capture of the post-September-patch home menu, 2026-09-24 12:02, game v100.19.18309.0; committed crops scripts/gameio/tests/fixtures/menu_20260924_*.png) by screens.is_main_menu's frame-line detector on column x=444: the first row of each 2-px frame line (253,228,163) with black outside - 18 lines, 9 buttons (Continue, Load, Campaign, Skirmish, Multiplayer, Home City, Scenario Editor, Options, Tools) at a 55 px pitch; 'buttons' = each button's frame rows, 'outline_x' = the black outline run above every top frame. Pixel-identical in the box 330-560 x 240-740 to the 2026-09-20 22:40 shot (fixture menu_20260920_col.png). screens.menu_layout_ok(img) requires these lines within tol_px before a menu click (python -m scripts.gameio menu <name> does): a shifted layout fails it - the 2026-08-26 menu had Skirmish one pitch lower, at y 490, which is Multiplayer now. Exit (y ~992-1028) is deliberately not a point."
+  },
+  "skirmish": {
+   "x": 444, "y": 435, "rgb": [212, 181, 104],
+   "also": {"x": 444, "y": 417, "rgb": [253, 228, 163]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/01_menu.png (post-September-patch home menu, full resolution; fixture menu_20260924_skirmish.png): the Skirmish label's glyph box (R > 150, G > 110, R - B > 60 inside the button) is x 403-485, y 429-441, centre (444.0, 435.0); (444,435) is a label pixel (212,181,104) - exactly the colour the 2026-08-26 probe (444,490) was calibrated to. 'also' = the top frame's second row (444,417). The same pixels on the 2026-09-20 22:40 shot. Not yet clicked live."
+  },
+  "scenario_editor": {
+   "x": 440, "y": 600, "rgb": [243, 215, 125],
+   "also": {"x": 444, "y": 582, "rgb": [253, 228, 163]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/01_menu.png (fixture menu_20260924_editor.png): the Scenario Editor label's glyph box is x 365-524, y 594-606, centre (444.5, 600.0). Column x=444 crosses the label only in 1-2 px strokes, so the probe is (440,600) (243,215,125), inside a 2-px glyph stroke (rows 599-602) 4.5 px left of the label centre; 'also' = the top frame's second row (444,582). The older click (444,599) - measured 2026-09-18 live (sandbox/census/editor_regen.py MENU_EDITOR; it opened the editor in the debugRandomMaps bisect boot loop) - lies in the same button (frame rows 581-618) on the plain fill (82,34,17)."
+  },
+  "tools": {
+   "x": 444, "y": 709, "rgb": [244, 218, 129],
+   "also": {"x": 444, "y": 692, "rgb": [253, 228, 163]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/01_menu.png (fixture menu_20260924_col.png): (444,709) is a Tools label pixel (244,218,129); the label's glyph box is x 416-472, y 704-716, centre (444.0, 710.0), inside the button frame rows 691-728; 'also' = the top frame's second row (444,692). Never clicked."
+  }
+ },
+ "editor": {
+  "file_menu": {
+   "x": 18, "y": 14, "space": "client",
+   "provenance": "measured 2026-08-10 (sandbox/census/census_run.py sheet C, commit dfa9abe7, client pixels 2560x1080); the File > New / Type / Generate / Save As chain ran live on about 30 London generations and 4 bench runs on 2026-09-17 (samples/london, samples/bench)."
+  },
+  "file_new": {
+   "x": 44, "y": 47, "space": "client",
+   "provenance": "measured 2026-08-10 (census_run.py sheet C, dfa9abe7); in the chain used live 2026-09-17."
+  },
+  "file_saveas": {
+   "x": 56, "y": 160, "space": "client",
+   "provenance": "measured 2026-08-10 (census_run.py sheet C, dfa9abe7); in the chain used live 2026-09-17."
+  },
+  "type_arrow": {
+   "x": 1498, "y": 457, "space": "client",
+   "provenance": "measured 2026-08-10 (census_run.py sheet C, dfa9abe7); on the Type arrow of the New Scenario dialog in samples/regen/ldn3_dialog.png (2026-09-22)."
+  },
+  "generate": {
+   "x": 1398, "y": 739, "space": "client",
+   "provenance": "measured 2026-08-10 (census_run.py sheet C, dfa9abe7); on the Generate button in samples/regen/ldn3_dialog.png (2026-09-22)."
+  },
+  "save_name": {
+   "x": 1200, "y": 886, "space": "client",
+   "provenance": "measured 2026-08-10 (census_run.py sheet C, dfa9abe7); inside the Save File name field of a 2026-09-20 22:52 shot (session scratch after_no.png; its column and probe crops are fixture editor_savefile_20260920_*)."
+  },
+  "save_button": {
+   "x": 699, "y": 838, "space": "client",
+   "provenance": "measured 2026-08-10 (census_run.py sheet C, dfa9abe7); on the Save button of the same 2026-09-20 Save File shot."
+  },
+  "menubar": {
+   "x": 1280, "y": 14, "rgb": [28, 28, 28], "space": "client",
+   "provenance": "measured 2026-09-18 (sandbox/census/editor_regen.py EDITOR_MENUBAR, dark grey menu bar); rgb (28,28,28) on the editor frames of 2026-09-17, 09-18, 09-20 and 09-22 (fixtures editor_20260917_bar.png, editor_newscenario_20260922_bar.png)."
+  },
+  "player_box": {
+   "x": 2375, "y": 45, "rgb": [0, 0, 255], "space": "client",
+   "provenance": "measured 2026-09-18 (editor_regen.py EDITOR_PLAYERBOX, the blue active-player box); rgb (0,0,255) on the same frames; (12,11,162) while the Save File dialog dims the screen."
+  }
+ },
+ "match": {
+  "cog": {
+   "x": 2493, "y": 39, "space": "client",
+   "provenance": "measured 2026-08-26 live (scripts/aitest/coords/2560x1080_default.json match_cog, commit e13c5186), before the 2026-09-10 build: re-measure live."
+  }
+ },
+ "minimap": {
+  "editor_disc": {
+   "x": 2269.33, "y": 920.33, "r_disc": 130.5, "r_line": 136.18, "space": "client",
+   "provenance": "measured 2026-09-24 offline by scripts/mapview/minimap_detect.measure_disc on 9 stored editor screenshots (main session): centre (2269.33, 920.33), drawn disc rim 130.5 px; re-run on sandbox/census/samples/london/ldn_hb2_generated.png (2026-09-17) gives the same centre and rim, bright-gold line 136.18 px. Measured 2026-09-24 LIVE as well, on the post-September-patch editor at full resolution (main session frames live/03_editor_blank.png, live/london4p_generated_full.png, live/12_after_save.png, 12:04-12:07): centre (2269.33, 920.33) (2269.32 on the last), rim 130.50, bright line 136.18, 8 ring probes on each."
+  },
+  "match_disc": {
+   "x": 2399.32, "y": 899.31, "r_disc": 147.0, "r_line": 153.35, "space": "client",
+   "provenance": "screenshot sandbox/census/tt_state0.png (2026-08-15, an Istanbul match, before the 2026-09-10 build) read by minimap_detect.measure_disc on 2026-09-24: centre (2399.32, 899.31), rim 147.0 px, bright-gold line 153.35 px. Re-measure live before the in-match camera relies on it."
+  }
+ },
+ "_not_entered": {
+  "menu.skirmish at (444,490), rgb (212,181,104)": "measured 2026-08-26 live (aitest home_skirmish), before the 2026-09-10 build. On the 2026-09-20 and the live 2026-09-24 home menus (444,490) lies inside the MULTIPLAYER button (frame 471-508) and reads (113,69,38), so the old probe fails there and a click on it would open Multiplayer. The same label colour now sits at (444,435) - entered as menu.skirmish.",
+  "editor.seed_field (900,497)": "census_run.py sheet C: hits the 'Seed:' label box (x ~855-930), not the field (x ~933-1450, y ~480-506, sandbox/census/ui_picked.png); no seed ever landed (survey 2026-09-24). Measure the field live.",
+  "editor Type-list rows (1024,528) / (1024,559)": "depend on the maps installed and the list's scroll state; (1024,528) loaded Florence twice on 2026-09-22. Read a shot of the open list first.",
+  "minimap_center (2320,900)": "scripts/aitest/coords/2560x1080_default.json: no recorded provenance, ~80 px left of the measured in-match disc centre (review F13).",
+  "match_quit (2391,411)": "measured 2026-08-26 before the patch; on the 2880x1800 device y 414 of the LIVE cog menu is Restart (issue I10). Measure the live and post-match menus first.",
+  "quit_yes (1081,612)": "derived in the aitest sheet with no recorded method ('confirm on first use').",
+  "lobby_probe (2277,430), lobby_play (2287,1020)": "measured 2026-08-26 live, before the patch; this sheet has no lobby namespace yet (the contract names menu, editor, match, minimap)."
+ }
+}

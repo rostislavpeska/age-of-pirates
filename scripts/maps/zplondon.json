@@ -1,0 +1,44 @@
+{
+  "map": "zplondon",
+  "version": 1,
+  "script": "randmaps/zplondon.xs",
+  "notes": "London, layout stage (2026-09-17 evening, the Figma sketch measured: 10 block lines across, road between the 8th and 9th; 4 columns per bank). Frame 360 x 573/653/773 (Paris short side, 7 m margins) (long z); river along x at z 0.5, one 'ZP Paris River' radius 40 (~84 m), STRAIGHT shoreline; road along z at x ~0.78 measured from on-route controllers; rows 00 and 0 behind the road (25.2 m off it), rows 1-8 in front (18 m off it, 34 m pitch = Paris's 13 m corridor moved to the road), columns 32/48/64/80 tiles from a 7 m promenade. St Paul / Minster rows 1-2 x cols 1-2; Stuart_270 / Parlam_90 row 3 x cols 1-2; Tower of London rows 7-8 x cols 1-2 at the water; 30 EU house blocks per bank; no trade blocks (later task); the only SocketTradeRoute on the bridge. Harbours stripped (redesign later); U lane legs 16 m, turn at x 75 m. Build order is load-bearing: road+controllers+socket -> river -> bridge (instance API, grid re-indexed around the arches) -> lane -> quays -> blocks -> players.",
+  "evidence": [
+    {
+      "id": "paris-idiom-2026-09-17",
+      "date": "2026-09-17",
+      "source": "in-game",
+      "claim": "zpparis.xs paints shore/streets/countryside as 0.7/0.6-size areas clipped by box constraints; mapcheck reports the same six AREA_SHORTFALL on Paris, which ships and plays (the user's playtesting). London copies that idiom verbatim.",
+      "ref": "python -m scripts.mapcheck randmaps/zpparis.xs --live -> 6 FAIL SIM:AREA_SHORTFALL (shore South/North, streets South/North, countryside S/N)"
+    }
+  ],
+  "overrides": {},
+  "expectations": [],
+  "tests": [],
+  "known_issues": [
+    {
+      "check": "SIM:AREA_SHORTFALL",
+      "match": "quay ",
+      "why": "Paris idiom: oversized area clipped by its box constraint on purpose",
+      "evidence": "paris-idiom-2026-09-17"
+    },
+    {
+      "check": "SIM:AREA_SHORTFALL",
+      "match": "streets ",
+      "why": "Paris idiom: oversized area clipped by its box constraint on purpose",
+      "evidence": "paris-idiom-2026-09-17"
+    },
+    {
+      "check": "SIM:AREA_SHORTFALL",
+      "match": "countryside S",
+      "why": "Paris idiom: oversized area clipped by its box constraint on purpose",
+      "evidence": "paris-idiom-2026-09-17"
+    },
+    {
+      "check": "SIM:AREA_SHORTFALL",
+      "match": "countryside N",
+      "why": "Paris idiom: oversized area clipped by its box constraint on purpose",
+      "evidence": "paris-idiom-2026-09-17"
+    }
+  ]
+}

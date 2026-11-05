@@ -1,0 +1,459 @@
+{
+ "constructs": [
+  {
+   "construct": "Global-scope variable declarations initialized from engine constants (before main, before includes)",
+   "example": "int TeamNum = cNumberTeams;\nint PlayerNum = cNumberNonGaiaPlayers;\nint numPlayer = cNumberPlayers;\nint evenOdd = -1;",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "include directive (statement form with semicolon, after globals)",
+   "example": "include \"mercenaries.xs\";",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "void main(void) entry-point function definition",
+   "example": "void main(void)\n{",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "User-defined helper function with XS mandatory default-parameter syntax, void return, result passed via global, early return;",
+   "example": "int g_zpTeamPlayerResult = -1;\nvoid zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)\n{\n    g_zpTeamPlayerResult = -1;\n    if (teamOrder <= 0) {\n        return;\n    }\n    ...\n}",
+   "files": [
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Typed local declarations with initializer: int, float, string, vector (no bool vars observed; bool only as literals)",
+   "example": "int size = 400;\nfloat bridgeX = 0.5;\nstring fish1 = \"FishCod\";\nvector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Plain reassignment of already-declared variable (sequential last-write-wins)",
+   "example": "numTries=52;\nif (cNumberNonGaiaPlayers >= 5)\n\tnumTries = 66;\nif (cNumberNonGaiaPlayers >= 7)\n\tnumTries = 80;",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Arithmetic with + - * / and parentheses, int*float mixing, arithmetic on random values",
+   "example": "int size = 400+(cNumberNonGaiaPlayers*40);\nrmPlaceObjectDefInArea(nugget1, 0,  playerIslandSouthID, cNumberNonGaiaPlayers*1.5);\nint hussiteCampType2 = 9-hussiteCampType1;\nnumTries=3*cNumberNonGaiaPlayers;",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Negative literals (int and float) as initializers and call arguments",
+   "example": "int evenOdd = -1;\nrmTerrainInitialize(\"nwterritory\\ground_grass2_nwt\", -0.114);\nint riverID = rmRiverCreate(-1, \"ZP Bohemian River\", 4, 4, 89, 89);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Float literals including high precision and no-leading-zero-free forms",
+   "example": "rmSetAreaBaseHeight(castleCliff3, 7.136);\nsocketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.34375);\nrmSetStatusText(\"\",0.99);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "String concatenation with + including int/float-to-string coercion and empty-string prefix idiom",
+   "example": "int westForest=rmCreateArea(\"westforest\"+i);\nrmSetTriggerEffectParam(\"SrcObject\",\"\"+loneHarbourID1);\nrmSetTriggerEffectParam(\"Position\", \"\"+xsVectorGetX(flagLoc1)+\",\"+xsVectorGetY(flagLoc1)+\",\"+xsVectorGetZ(flagLoc1), false);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "String concat selecting asset/grouping names from random or computed values (asset identity is dynamic)",
+   "example": "int pirateVariation = rmRandInt(7, 8);\nint piratesVillageID = rmCreateGrouping(\"pirate city\", \"pirate_village0\" + pirateVariation);\nint estateWestUpperID = rmCreateGrouping(\"estate west upper\", \"Colonial_estate_\"+estateUpper);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "if with unbraced single-statement body (player-count ladder on cNumberNonGaiaPlayers / alias PlayerNum)",
+   "example": "int size = 400;\nif (PlayerNum >=3)\n\tsize = 500;\nif (PlayerNum >=5)\n\tsize = 600;\nif (PlayerNum >=7)\n\tsize = 660;\nrmSetMapSize(size, size);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "if / else if / else chains with compound && and || conditions on player count",
+   "example": "if (cNumberNonGaiaPlayers < 3){\n\trmAddTradeRouteWaypoint(tradeRouteID, 0.41, 0.3);\n\trmAddTradeRouteWaypoint(tradeRouteID, 0.41, 0.4);\n}\nelse if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6){ ... }\nelse{ ... }",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Nested if inside if (player-count waypoint tail)",
+   "example": "if (cNumberNonGaiaPlayers <7){\n\trmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.5);\n\tif (cNumberNonGaiaPlayers <5){\n\t\trmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.7);\n\t}\n}",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Comparison against bool literal and call-in-condition",
+   "example": "if (rmAllocateSubCivs(2) == true)\nif(rmBuildArea(westForest)==false)\nif(ypIsAsian(i) && rmGetNomadStart() == false)",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Empty if body used as negated filter, with real work in else",
+   "example": "if (x == y || x == k || y == k) {\n}\nelse {\n\trmAddTriggerEffect(\"Diplomacy\");\n\t...\n}",
+   "files": [
+    "zpkingofbohemia.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "XS shorthand for-loop, strict < form: init without type, condition has NO left operand, implicit +1 step, loop var implicitly declared",
+   "example": "for(i=1; <cNumberPlayers) {\n\trmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));\n\t...\n}",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "XS shorthand for-loop, <= form (also with literal bound, and 0-based variant that iterates gaia too)",
+   "example": "for (k=1; <= cNumberNonGaiaPlayers) { ... }\nfor (s=1; <=4) { ... }\nfor(i=0; <= cNumberNonGaiaPlayers) { ... }",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Full C-style three-clause for-loop with explicit condition variable and i++ (coexists with shorthand in the same file)",
+   "example": "for (i = 0; i < numTries; i++)\n{\n\tint eastForest = rmCreateArea(\"eastForest\" + i);\n\t...\n}",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Nested for-loops 2-3 deep (s/k/i and x/y player pair loops)",
+   "example": "for (s=1; <=4) {\n\tcastleSocketID = xsArrayGetInt(castleSockets, s-1);\n\tfor (k=1; <= cNumberNonGaiaPlayers) {\n\t\t...\n\t\tfor(i=1; <= cNumberNonGaiaPlayers) { ... }\n\t}\n}",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "break statement and postfix ++ in retry-until-5-consecutive-failures forest loops",
+   "example": "if(rmBuildArea(westForest)==false)\n{\n\tfailCount++;\n\tif(failCount==5)\n\t\tbreak;\n}\nelse\n\tfailCount=0;",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Loop body that geometry-branches on the loop variable via sequential ifs",
+   "example": "for (q = 1; <= numCliffs) {\n\t...\n\tif (q==1)\n\t\trmSetAreaLocation(edgeMountain, 0.5, 0.98);\n\tif (q==2)\n\t\trmSetAreaLocation(edgeMountain, 0.5, 0.02);\n\t...\n\trmBuildArea(edgeMountain);\n}",
+   "files": [
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Call used as nested expression inside another call's argument (unit conversions, accessors)",
+   "example": "rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(2700), rmAreaTilesToFraction(2700));\nrmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Arithmetic mixing variables, literals and conversion-call results inside arguments",
+   "example": "rmSetAreaLocation(bridgeDockEast, bridgeX+rmXTilesToFraction(22), bridgeZ);\nrmAddTradeRouteWaypoint(tradeRouteID2, 0.25, 0.65+rmZTilesToFraction(22));\nint playerEdgeConstraint=rmCreateBoxConstraint(\"player edge of map\", rmXTilesToFraction(15), rmZTilesToFraction(15), 1.0-rmXTilesToFraction(15), 1.0-rmZTilesToFraction(15), 0.01);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "vector type with xsVectorGetX/Y/Z accessors round-tripped through meters/fraction conversions",
+   "example": "vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));\nrmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "rmGetTradeRouteWayPoint value read feeding later placement, with the SAME vector variable serially reassigned between placements",
+   "example": "vector socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.0);\n...\nsocketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.12);\nrmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);\nsocketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.31);\nrmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Closest-point search pattern: push constraints, rmFindClosestPointVector, place, clear",
+   "example": "rmAddClosestPointConstraint(flagLand);\nvector closeToVillage1 = rmFindClosestPointVector(pirateControllerLoc1, rmXFractionToMeters(1.0));\nrmPlaceObjectDefAtLoc(piratewaterflagID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1)));\nrmClearClosestPointConstraints();",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Random draws steering geometry and asset choice",
+   "example": "float teamStartLoc = rmRandFloat(0.0, 1.0);\nint estateOrder = rmRandInt(1, 6);\nrmAddObjectDefItem(playerDeerID, \"deer\", rmRandInt(10,15), 10.0);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Game-setup-dependent conditionals: rmGetIsKOTH, rmGetNomadStart, rmGetPlayerCiv, rmGetPlayerTeam, rmGetNumberPlayersOnTeam",
+   "example": "if(rmGetIsKOTH()) {\n\tint kingHillID = rmCreateObjectDef(\"king hill\");\n\t...\n}\nif (rmGetNomadStart())\n\t{ rmAddObjectDefItem(TCID, \"CoveredWagon\", 1, 0.0); }\nint teamZeroCount = rmGetNumberPlayersOnTeam(0);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Declaration inside one if-branch, plain reassignment in the else, use after the if (XS function-level scoping, not block scoping)",
+   "example": "if (cNumberNonGaiaPlayers < 5)\n\tint riverID = rmRiverCreate(-1, \"ZP Hansa Baltic Lake\", 4, 4, 39, 39);\nelse\n\triverID = rmRiverCreate(-1, \"ZP Hansa Baltic Lake\", 4, 4, 59, 59);\nrmRiverAddWaypoint(riverID, 0.3, 0.65);",
+   "files": [
+    "000_Elbe.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "xsArray int arrays used to index handles inside trigger loops",
+   "example": "int castleSockets = xsArrayCreateInt(4, -1, \"Castle Sockets\");\nxsArraySetInt(castleSockets, 0, socket1);\n...\ncastleSocketID = xsArrayGetInt(castleSockets, s-1);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Trigger DSL blocks: rmCreateTrigger / rmSwitchToTrigger(rmTriggerID(name+k)) / rmAddTriggerCondition / rmAddTriggerEffect / rmSetTrigger*Param* / priority-active-loop footer",
+   "example": "rmCreateTrigger(\"AI Techs\"+k);\nrmAddTriggerCondition(\"ZP PLAYER Human\");\nrmSetTriggerConditionParamInt(\"Player\",k);\nrmAddTriggerEffect(\"ZP Set Tech Status (XS)\");\nrmSetTriggerEffectParamInt(\"PlayerID\",k);\nrmSetTriggerPriority(4);\nrmSetTriggerActive(true);\nrmSetTriggerRunImmediately(true);\nrmSetTriggerLoop(false);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Trailing comma tolerated inside an argument list",
+   "example": "rmSetTriggerEffectParamInt(\"Player2\", y,);",
+   "files": [
+    "zpkingofbohemia.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Two statements on one physical line (copy-paste artifact), including a contradictory duplicate setter",
+   "example": "int socketID6=rmCreateObjectDef(\"sockets to dock Trade Posts6\");\trmSetObjectDefTradeRouteID(socketID6, tradeRouteID2);\n\trmSetObjectDefTradeRouteID(socketID6, tradeRouteID);",
+   "files": [
+    "000_Elbe.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Raw un-escaped backslash inside string literals (terrain paths)",
+   "example": "rmAddAreaTerrainLayer(playerIslandNorthID, \"new_england\\shoreline3_ne\", 0, 1);\nrmTerrainInitialize(\"great_lakes\\ground_grass1_gls\", -0.114);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Line comments: full-line, trailing after code, glued directly to code with no space, and commented-out code lines",
+   "example": "float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low is spring\n//rmSetMapElevationParameters(cElevTurbulence, 0.03, 5, 0.7, 4.0);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Block comments /* ... */ spanning hundreds of lines and containing complete, real-looking rm* call sequences (dead code)",
+   "example": "/*for (k=1; <= cNumberNonGaiaPlayers) {\n\t...\n\trmSetTriggerLoop(false);\n\t}*/",
+   "files": [
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Engine enum/constant identifiers as arguments",
+   "example": "rmSetAreaElevationType(playerHillsNorthID, cElevTurbulence);",
+   "files": [
+    "000_independence_war.xs",
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  },
+  {
+   "construct": "Sequential-if string-tuple selection from a random int (poor man's switch; no switch/while exists in any file)",
+   "example": "int estateOrder = rmRandInt(1, 6);\nif (estateOrder == 1) {\n\testateUpper = \"coin\"; estateMiddle = \"wood\"; estateLower = \"food\";\n}\nif (estateOrder == 2) { ... }",
+   "files": [
+    "000_independence_war.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Helper called repeatedly with results snapshotted from a global into per-player variables (attacker/defender ordering)",
+   "example": "zpGetTeamPlayer(1, 1);\nint firstDefender = g_zpTeamPlayerResult;\nzpGetTeamPlayer(2, 1);\nint secondDefender = g_zpTeamPlayerResult;",
+   "files": [
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Multiple statements per line separated by semicolons in branch bodies",
+   "example": "estateUpper = \"coin\"; estateMiddle = \"wood\"; estateLower = \"food\";",
+   "files": [
+    "000_independence_war.xs"
+   ],
+   "required_for_geometry": true
+  },
+  {
+   "construct": "Case-mismatched trigger name lookup that the engine tolerates",
+   "example": "rmCreateTrigger(\"Starting Techs\");\nrmSwitchToTrigger(rmTriggerID(\"Starting techs\"));",
+   "files": [
+    "000_Elbe.xs",
+    "zpkingofbohemia.xs",
+    "zpcrownlands.xs"
+   ],
+   "required_for_geometry": false
+  }
+ ],
+ "recommended_subset": "The extractor must be a small sequential interpreter, not a pattern matcher, evaluated once per candidate player count (P = 2..8, with cNumberPlayers = P+1, cNumberNonGaiaPlayers = P and their file-local aliases PlayerNum/numPlayer/numPlayers; cNumberTeams and team composition supplied as scenario parameters or enumerated). Minimum it must EVALUATE: (1) flat function-level symbol table with typed declarations (int/float/string/vector) and sequential last-write-wins assignment — including declarations that appear inside an if-branch but remain visible afterwards; (2) constant folding of + - * / with int/float promotion, parentheses, negative and float literals, and string concatenation with numeric coercion (area/grouping names like \\\"westforest\\\"+i are identity-bearing); (3) if / else if / else with braced, unbraced-single-statement and empty bodies, conditions using == != < <= > >= && || and bool literals — branching on the folded player-count aliases must select exactly one arm; (4) all three for-loop forms — for(i=1; <N), for(i=1; <= N), and full C-style for(i=0; i<N; i++) — with implicit loop-variable declaration, implicit +1 step in the shorthand forms, break, and postfix ++; loops over player count must be unrolled per P; (5) function calls as statements and as nested argument expressions, with an evaluator for the pure conversion builtins rmXTilesToFraction/rmZTilesToFraction/rmXFractionToMeters/rmZFractionToMeters/rmXMetersToFraction/rmZMetersToFraction/rmAreaTilesToFraction/rmDegreesToRadians — these REQUIRE the current map size, so rmSetMapSize(size,size) and the player-count-branched size variable must be folded first, in program order; (6) opaque-handle modelling: rmCreateArea/rmCreateObjectDef/rmCreateGrouping/rmCreateTradeRoute/rmRiverCreate/rmDefineClass/rmCreate*Constraint return fresh ids bound to variables, and property setters (rmSetAreaSize, rmSetAreaLocation, rmSetObjectDefMin/MaxDistance, rmAddTradeRouteWaypoint, waypoint lists, constraints) accumulate onto the handle with last-write-wins per property (rmSetAreaSize is legitimately called up to 4 times on one area under player-count guards); (7) a tainted-value lattice for vectors and ints: rmGetUnitPosition(rmGetUnitPlacedOfPlayer(...)), rmFindClosestPointVector, rmGetTradeRouteWayPoint, rmPlayerLocXFraction/ZFraction, rmRandInt/rmRandFloat, rmGetNomadStart, rmGetIsKOTH, rmGetPlayerCiv, rmGetPlayerTeam, rmGetNumberPlayersOnTeam, rmAllocateSubCivs, rmGetCivID produce runtime-dependent values; xsVectorGetX/Y/Z and arithmetic/concat propagate the taint, and any geometry argument that ends up tainted is emitted as 'runtime-dependent' with its symbolic expression (e.g. 'xsVectorGetX(pos(pirateControllerID1)) placed at literal (0.17,0.30) => approx resolvable') rather than a guessed number; (8) comment stripping for //, glued // after code, and multi-hundred-line /* */ blocks BEFORE any extraction; (9) tolerant argument parsing: trailing commas in arg lists, multiple statements per physical line, raw backslashes in strings; (10) zpcrownlands' zpGetTeamPlayer helper either inline-executed (its result depends only on rmGetPlayerTeam, so taint it) or treated as a tainted global read of g_zpTeamPlayerResult. xsArrayCreateInt/SetInt/GetInt with constant-foldable indices are trivial to support and appear only in trigger wiring, so implement them cheaply or skip with the trigger sections.",
+ "safe_to_skip": [
+  "Entire trigger DSL blocks: rmCreateTrigger, rmSwitchToTrigger, rmTriggerID, rmAddTriggerCondition, rmAddTriggerEffect, rmSetTriggerConditionParam*/EffectParam*, rmSetTriggerPriority/Active/RunImmediately/Loop — no geometry output; note the for-loops wrapping them still need parsing (parse-and-discard, do not blind-skip lines, because trigger loops share loop variables k/x/s/i with the rest of main)",
+  "xsArray create/set/get (used only to shuttle handles into trigger params in these four files)",
+  "rmSetStatusText progress-bar calls and rmEchoInfo diagnostics",
+  "include file contents (mercenaries.xs, ypAsianInclude.xs, ypKOTHInclude.xs) — only chooseMercs()/ypIsAsian()/ypMonasteryBuilder()/KOTH helpers come from them; treat their calls as opaque no-ops or tainted",
+  "Sub-civ allocation block: rmAllocateSubCivs / rmGetCivID / rmSetSubCiv (affects natives availability, not coordinates)",
+  "Cosmetic setters if only geometry numbers are wanted: rmSetLightingSet, rmSetMapType, rmSetSeaType, rmSetSeaLevel, rmEnableLocalWater, forest density/clumpiness/underbrush, rmSetAreaMix/rmAddAreaTerrainLayer paint, rmSetAreaReveal, rmSetNuggetDifficulty, rmSetTriggerEffectParam sound/music",
+  "Commented-out code: // lines and the huge /* */ blocks at the tails of zpkingofbohemia.xs (line 2930 to end) and zpcrownlands.xs (line 1997 to end) plus small /* */ patches around zpkingofbohemia.xs:515-525 — must be stripped, never extracted",
+  "seasonPicker in 000_Elbe.xs (declared from rmRandFloat, never consumed) and other dead declarations like evenOdd, classPortSite duplicates"
+ ],
+ "hazards": [
+  "Variables reassigned between uses: size, numTries, numCliffs, numSockets are set then conditionally overwritten before consumption, and vector socketLoc1/socketLoc2 is reassigned between EVERY rmPlaceObjectDefAtPoint — a regex that pairs a variable with its first assignment produces wrong numbers for all but the first placement",
+  "Player-count branching everywhere, on FOUR different spellings of the same value (cNumberNonGaiaPlayers, PlayerNum, numPlayer, numPlayers) plus mixed comparison styles (>=3 ladders vs ==5||==6 vs range &&) — extraction must be evaluated per player count, not collapsed; zpkingofbohemia.xs:52-57 even has a duplicated 'if (cNumberNonGaiaPlayers >= 5)' pair where the second silently overwrites the first (size 460 is dead)",
+  "Tile/fraction conversions (rmXTilesToFraction etc.) are NOT constants — they depend on the map size set by the player-count-branched rmSetMapSize earlier in program order; folding them with a fixed map size gives wrong offsets for every non-2-player count",
+  "Runtime-only reads that must be flagged 'runtime-dependent', never guessed: rmGetUnitPosition(rmGetUnitPlacedOfPlayer(...)), rmFindClosestPointVector (depends on pushed closest-point constraints AND generated terrain), rmGetTradeRouteWayPoint (interpolates the BUILT route, not the waypoint list), rmPlayerLocXFraction/ZFraction (depends on rmPlacePlayersCircular randomness and teamStartLoc = rmRandFloat), rmRandInt/rmRandFloat, rmGetNomadStart, rmGetIsKOTH, rmGetPlayerTeam/Civ, rmGetNumberPlayersOnTeam-derived spawnType/weirdMap in zpcrownlands (depends on team composition, not just player count)",
+  "rmSetAreaSize is called up to four times on the same area handle under player-count guards (riverArea1, centralLake) — semantics are sequential overwrite; a first-match or all-matches regex reports 2700 tiles for an 8-player map instead of 6000",
+  "Loop-generated entities: 'westforest'+i, 'eastForest'+i, 'forest '+i, 'edge mountains'+q create up to 80 areas per loop with count depending on player count AND on runtime build failures (break after 5 consecutive rmBuildArea failures) — static extraction can only report the attempted range",
+  "Commented-out code is lethal to naive regex: both mod files end with several hundred lines of /* */-wrapped trigger+geometry code, and // lines contain plausible calls like rmSetMapElevationParameters and 'seasonPicker = 0.77' — comment stripping must happen before matching, including // glued directly to code with no space",
+  "Function-level (not block) scoping: 'int riverID' declared inside an if-branch is reassigned in the else and used after (000_Elbe.xs:347-353); 'string fish1' likewise in zpcrownlands.xs:83-86 — a block-scoped evaluator loses these variables",
+  "Values flow through a mutable global: zpGetTeamPlayer writes g_zpTeamPlayerResult which is snapshotted into fourteen attacker/defender variables that steer placements — treating calls as pure or reading the global once gives wrong player indices",
+  "Shorthand loop variables (i, k, x, s, q) are implicitly declared and REUSED across many later loops in the same function; after the forest loop breaks early, 'i' keeps its exit value and leaks into subsequent names like rmCreateObjectDef(\"berries\"+i) — evaluators must carry loop-exit values forward",
+  "Syntax tolerance required: trailing comma in arg list rmSetTriggerEffectParamInt(\"Player2\", y,) (zpkingofbohemia.xs), two statements on one physical line with a contradictory duplicate rmSetObjectDefTradeRouteID (000_Elbe.xs:797-798, second call wins), raw backslashes in string literals (\"new_england\\shoreline3_ne\"), and both shorthand and full C-style for-loops in the same file",
+  "Waypoint lists are order- and branch-sensitive: trade routes append waypoints inside player-count branches, so the polyline itself differs per player count; extracting waypoints without replaying the branch yields a route that mixes mutually exclusive segments",
+  "rmPlaceObjectDefAtLoc coordinates that LOOK literal are sometimes derived: estateW1x..estateE3z are float variables assigned once (safe), but bridgeDock locations are bridgeX+rmXTilesToFraction(22) (map-size dependent) — distinguishing the two requires evaluation, not pattern class"
+ ],
+ "includes_used": [
+  "mercenaries.xs",
+  "ypAsianInclude.xs",
+  "ypKOTHInclude.xs"
+ ]
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\arabian\ottoman_stall</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\arabian\ottoman_stall2</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\arabian\ottoman_stall3</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid2>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\arabian\ottoman_stall4</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid2>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

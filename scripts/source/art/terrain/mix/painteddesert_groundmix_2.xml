@@ -1,0 +1,14 @@
+<mix>
+  <title>Painted Desert Ground Mix 2</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="2" persistence=".85">
+    <texture weight="3">painteddesert\pd_ground_diffuse_d</texture>
+    <texture weight="3">painteddesert\pd_ground_diffuse_e</texture>
+    <texture weight="3">painteddesert\pd_ground_diffuse_f</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.1" octaves="3" persistence="0.9" emptyweight="5" posoffset="0.5">
+    <model weight="1">terrain\underbrush\gc_brush_01</model>
+    <model weight="1">terrain\underbrush\gc_brush_02</model>
+    <model weight="1">terrain\underbrush\gc_brush_03</model>
+  </objects>
+</mix>

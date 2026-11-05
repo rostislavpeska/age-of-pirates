@@ -1,0 +1,197 @@
+---
+name: gr2-granny-edit
+description: "Inspect or edit AoE3 DE GR2 skeletons and mesh structures while preserving protected vertex data. Use for precise bone additions, mesh splits and binary-level verification."
+---
+
+# Granny-level .gr2 editing
+
+**Core rule (measured on the Treasure Ship, 2026-09-15):** every model the game must render exactly like
+vanilla is built from the **raw vanilla gr2 with in-place edits**. A converter (GXO or FBX route) rewrites
+the vertex data in its own format and the result shades dark in game (no tangents; even with tangents it was
+never right). Converters are used only for **animations**, for **geometry into Blender** and, if yours can dump a
+GXO, as a **loader test**.
+
+All tools live in `scripts/havok/`; run them from the repo root with `python scripts/havok/<tool>.py`.
+Vanilla files come raw (uncompressed) from the .bar (**bar-extract** skill); converter output is usually
+Oodle-compressed and the reader cannot open it - that is expected (the tools never need to read converter output).
+
+Native DLL validation uses unique system-temp workspaces, independently of the evidence destination. A long nested
+evidence path can make Windows reject the process working directory before the DLL starts (INC-601). All three
+memory-layout runs and, for route `both`, byte-identical native/WSL output remain required. A process-launch failure
+is not a model pass. Host controls: `python -m pytest scripts/havok/tests/test_gr2_lint_native.py -q`; actual DLL
+consumption of the affected candidate remains a separate check.
+
+## Tools
+
+| tool | what it does |
+|---|---|
+| `gr2_read.py FILE` | `Gr2` class: sections, relocations, type tree, CRC check (`crc_check()`), generic `read()/array()`; prints the skeleton |
+| `gr2_dump.py FILE [--bones] [--tracks]` | skeletons (parents, positions), meshes (vertex layout, rigid / indexed / skinned, bbox, bone bindings), models, animations (track groups, curve formats per track) |
+| `gr2_pieces.py DMG.gr2 [substring] [rig.gxo]` | per-piece vertex clouds of a destruction model (BoneIndices), optional position match against a GXO's sail meshes with an auto-detected frame |
+| `gr2_pose.py MODEL.gr2 ANIM.gr2 [substring]` | a static-pose anim vs the model's rest: per bone delta rotation (axis/angle) and scale/shear matrix |
+| `gr2_addbones.py VANILLA.gr2 TABLE.gxo OUT.gr2 --inplace --map mirror [--only ...]` | append bones from a GXO `b` table into the vanilla skeleton, in place (see below) |
+| `gr2_reskeleton.py DONOR.gr2 TARGET.gr2 OUT.gr2 [--tol 0.005]` | give a skinned model another model's skeleton (bones, hierarchy, rest/inverse-world matrices, skeleton and model names) while every mesh byte stays the target's; refuses missing bound bones or joints off by more than `--tol`. Used for the Disciple on the yabusame rider skeleton so cavalry animations drive it (joints identical; vertex/index sections byte-identical, one count byte changed; native GXO dump OK). Verify with `skinned-model-check` |
+| `gr2_splitmesh.py BONES.gr2 RIG.gxo OUT.gr2` | cut triangles whose vertices coincide with the GXO's `sail_*` meshes into new rigid meshes bound to those meshes' bones; vertex bytes copied verbatim |
+| `rig_table.py` (Blender: `blender -b RIG.blend --python scripts/havok/rig_table.py -- OUT.gxo`) | the bone table + `sail_*` mesh vertices of a Blender rig in GXO form - replaces a converter dump of the rig (verified identical) |
+| `fbx_check.py NEW.fbx VANILLA.fbx OUT_DIR` | Blender headless: loop-by-loop comparison (positions, normals, UVs) + renders |
+| `anim_tracks.py IN.gxo OUT.gxo --keep bone_sail [--group ROOT]` / `--drop Object02` | filter animation tracks in GXO form, force the track-group name |
+| `converter.py --format gr2\|gxo\|fbx FILE` | conversion wrapper: runs your configured converter or, in manual mode, tells you what to produce and waits (see the last section) |
+| `multimaterial_gr2.py` (`replace(donor, parts, out, materials, damaged=)`) | the donor-preserving multi-material writer of the Korean building exports (intact and damaged at donor layout); versioned here since 2026-10-09, refuses donors with orphan fixups and asserts none in its output |
+| `gr2_fixups.py FILE...` / `--scrub IN OUT` | orphan pointer fixups (outside every object reachable from the root); `--scrub` drops them and zeroes their slots, reachable bytes unchanged. `gr2_lint` check `fixups` |
+| `gr2_bounds.py FILE...` / `--fix IN OUT` | bone-binding boxes (OBBMin/OBBMax) vs the referenced vertices; `--fix` rewrites them. `gr2_droptris`, `gr2_rotate_verts` and `gr2_editmesh` refresh the boxes of every mesh they edit; `gr2_lint` check `bounds` |
+| `gr2_droptris.py IN PLAN OUT` | drop triangles in place; plan `"dup"` = translated copies of existing triangles into the freed vertex/index slots (source vertex bytes, only Position moved; file size unchanged, refused when it does not fit) |
+| `gr2_editmesh.py IN PLAN OUT` | new rigid meshes in a vanilla model (copies of source triangles, or free-form `extra_verts`/`extra_tris` from Blender with tangents from the UVs) bound to a cloned (`material`) or EXISTING (`use_material`) material record; `"reset_root": false` keeps the vanilla root. Registers the native marshalling record of every new vertex array and scrubs orphan fixups: before 2026-10-17 its output converted under Wine but crashed the native DLL (Korean HC lanterns; `tests/test_gr2_editmesh.py`). `drop` needs a single-material source (else `gr2_droptris`). The model keeps its own mesh bindings plus the new meshes; unbound donor leftovers in root `Meshes` stay unbound (before 2026-10-23 every root mesh was bound and the leftovers rendered: INC-608). A `flip` group with identity `R` re-adds dropped triangles outward-wound |
+| `gr2_rotate_verts.py IN PLAN OUT` | rotate (axis/degrees/pivot or a measured `"matrix"`) and/or `"translate"` listed vertices or `"all"`, normals/tangents turned; `"ops"` list for several transforms |
+| `gr2_bones.py IN PLAN OUT` | pivot canonization in place: `"canonize_root"` (root rest -> identity, every child keeps its world) and `"move"` (listed pivot bones get a rigid world transform, descendants follow, inverse-worlds recomputed); refuses a skeleton whose stored inverse-worlds are not its rest (self-check). Vertices are not touched: move them with `gr2_rotate_verts` by the same transform. Not game-proven (below); opt-in `gr2_lint` check `root_identity` |
+| `gr2_rest_anim.py MODEL OUT.gxo --seconds S --fps F [--tracks-from ANIM.gr2] [--heave BONE=AMP[,PHASE]]` | an Idle whose every key is the skeleton rest (plus an optional vertical sine), for `converter.py --format gr2`; never edit a converter dump of a vanilla anim instead (below). NOT game-proven for homecity props: prefer the vanilla anim with `gr2_rename.py ... track` |
+
+## Facts that were each wrong once (do not re-derive)
+
+- 64-bit v7 file: magic 16 B, section table at 32 + SectionArrayOffset (=104), 44-byte section entries
+  (compression, data offset, size, expanded, align, first16, first8, reloc offset/count, marshalling
+  offset/count). **CRC32 = zlib.crc32(file[104:])**. Pointers are 8 bytes at **4-byte** alignment; array =
+  int32 count + pointer; variant array = type ptr + count + data ptr. Member type enum has a removed slot 6.
+- Bone record 164 B: Name@0, ParentIndex@8, Transform@12 (flags 3, pos, quat xyzw, 3x3 scale/shear),
+  InverseWorld4x4@80 = inverse(column-vector world).T, LODError@144 (1304.65 for added bones), ExtendedData@148.
+- Mesh record 76 B: Name, PrimaryVertexData, MorphTargets, PrimaryTopology, MaterialBindings, BoneBindings,
+  ExtendedData. TriTopology 132 B (Groups, Indices int32 or Indices16, rest empty). VertexData 44 B
+  (Vertices variant array + VertexComponentNames + annotation sets). Vanilla vertex stride 24 (Position f32x3,
+  Normal int8x3, pad, Tangent int8x3, pad, UV f16x2; destruction models replace the first pad by BoneIndices).
+- **Section roles matter to the game's Granny DLL**: rigid models keep vertex/index data in sections 1/2,
+  destruction models in 3/4. New data must be appended to the SAME section as the source mesh's data; writing
+  a destruction model's new meshes into 1/2 crashed `granny2_age3de.dll` (the loader test caught it).
+- Never move an existing array to another section (crashes the loader). Grow section 0 in place: insert after
+  the array, shift every later offset (relocation sources/targets, first16/first8), or append new records at the
+  end and only update counts/pointers (what `gr2_splitmesh.py` does).
+- **A re-pointed array must lose its pointer fixups** (INC-187, 2026-10-09). Appending a new root/MeshBindings
+  array and re-pointing to it leaves the old array in the section with its fixups: `granny2_age3de.dll` then
+  converts the file out of bounds - live memory pointers over the next section's vertex/index bytes, output that
+  changes with the process memory layout, or 0xC0000005. One DLL run passes such a file (the 2026-10-07 military
+  PASS logs did). Vanilla Shrine/scaffold files: 0 orphans of 382-733 fixups; every Korean writer output: 12-58.
+  Re-pointing the vanilla Shrine's root.Meshes alone (same two pointers) reproduced it; dropping the two old
+  fixups fixed it. `gr2_fixups.py` finds them; the earlier "intermittent native loading" below may be the same
+  defect.
+- The inspected ship damaged roots (`bone_main`) carry a **90-degree Y rest rotation**; their intact roots
+  (`Object02`) are identity. This is not universal: the early Chinese Town Center has an essentially
+  identity `BONE_MAIN` in both models. Inspect the chosen donor before converting relative transforms.
+- Register newly appended mixed-format vertex buffers in the section's marshalling table, not only in
+  VertexData and relocation records. A Korean damaged-model trial passed CRC and the Python reader but
+  failed native Granny loading intermittently until its missing `(count, data offset, type section,
+  type offset)` entry was added. Native loading and a read-only GXO dump then passed. That trial allocated
+  new metadata in an unused section while retaining the donor's original records; vertices/indices stayed
+  in sections 3/4. The user subsequently confirmed that prototype's destruction works in game
+  (2026-09-25); [the exact build and method](../havok-destruction/references/chinese-tc-experiment.md)
+  are recorded separately. Do not generalize its metadata allocation choice into a requirement for all donors.
+- BoneBinding bounds on transformed destruction pieces are bone-local, not model-space AABBs. Transform
+  the bound vertices through the bone's inverse-world matrix before measuring bounds.
+  Measured 2026-10-17 (`gr2_bounds.py`): for rigid and index-only meshes the stored box is EXACTLY the AABB of the
+  referenced vertices as `[p, 1] . InverseWorldTransform` (row vector) - 5/5 docks01 meshes, 312/312 China TC damaged
+  pieces, 15 homecity/building models. Weighted (skinned) unit meshes are no such AABB (blue_guard 0/18 under five
+  membership rules): their boxes are left alone and not linted.
+- **Moving vertices in place moves nothing else**: the boxes stay where the old geometry was (refresh them), and the
+  rendered position is still `anim(t) . InverseWorld . v`. Korean HC docks01 (2026-10-17): a pier, its collision mesh
+  and a junk boat were shifted by a transform FITTED on the other boat plus hand-picked offsets, ~20 m from the Blender
+  spot with vanilla boxes; none was visible in game. Measure each edited mesh against the vanilla REST vertices under
+  the plain map (`aoe3de-complex-scene-export`); never reuse one object's fit for another.
+- **A converter GXO dump of a vanilla anim is valid only for its first frames** (docks01_anim, `a 1265 191`: frame 600
+  BONE_MAIN scale 1.74 / translation (40, -354, 2.6), frame 1264 scale 11.2), and vanilla key 0 is not always the rest
+  pose (the boat roots: 0.30 m / 2.64 m off). The converter's dump of its OWN output round-trips (631 frames x 44 tracks
+  within 3e-5). Two different orders, both measured: the converter's GXO TEXT key 3x3 = transpose of
+  `P^T (ScaleShear . R) P` (R . ScaleShear is 0.40 off on non-uniformly scaled bones; `gr2_rest_anim.py`), while the GR2
+  FILE composes local = translate . R . ScaleShear (stored inverse-worlds of vanilla docks01 to 1.3e-5; S . R 2.55 off;
+  `gr2_bones.py`). Some vanilla files store inverse-worlds that are not their rest bind (fencewalls01, china_hc_water).
+- **Moving an animated homecity prop part: keep the vanilla Idle, freeze the moved part** (owner 2026-10-17: "I think we
+  drift to overengineering ... left can stay as was, right can be static with no anim"). Korean HC docks01, three game
+  tests: every build with a converter-built Idle (`gr2_rest_anim.py` -> converter) misplaced the junks and/or the dock in
+  game although model and anim each checked exact, and neither root canonization + pivot moves (`gr2_bones.py`) nor
+  renaming a pivot whose name the junk track prefixes changed the junk result - engine cause unresolved. What the owner
+  had seen work: vanilla skeleton + vanilla anim with the vertices moved (a moved part then swings around its far
+  pivot: "exaggerated, jumping"). Accepted route: move vertices (measured), leave the skeleton, and rename the moved
+  part's TRACK in the vanilla anim (`gr2_rename.py IN OUT track OLD NEW`: same length, same ASCII sort slot, a name no
+  bone has) so it drives nothing and the part stays static at its rest. docks01's root bone is the one non-identity root
+  among homecity props (BONE_MAIN (2.98, 0.52, -6.28), 10.8 deg); whether that matters in game is unproven.
+- `gr2_lint.read_raw` reads a mesh whose every triangle was dropped (0 indices, both index arrays empty); before
+  2026-10-17 it raised TypeError, so the lint could not run on such a droptris output.
+- Dropping every triangle does **not** remove the mesh's model binding or its stored vertices.
+  `gr2_lint.check_hkt` checks stored vertices of bound meshes, so an obsolete, empty mesh can still contribute
+  stale collision points. When the intended operation removes that mesh, remove only its explicitly identified
+  zero-index entry from the model's `MeshBindings`, using the existing `Builder`/repoint and fixup-scrub pattern;
+  retain the root mesh record and buffers. Verify the exact binding delta, unchanged vertex/index data and
+  skeleton, then repeat pairing, containment and native loading on the resulting file. Preserve the failing
+  pre-removal check; do not loosen containment or silently suppress nonempty meshes.
+- Identify retained records by their native location and model binding, not `Name` alone: unbound donor records
+  can share a name. Compare both active and deliberately protected unbound buffers without collapsing them.
+- Renaming a bone in place (same length or shorter, section 0 string, CRC recomputed) is safe - the root rename
+  `bone_main` -> `Object02` is what made one anim pair drive both Treasure Ship stages.
+
+## The GXO text form (interchange between the tools and any converter)
+
+```
+t "texture"            mt "material"           tb ...              # header lines (a converter dump)
+b "bone" <parent> r00 r01 r02 r10 r11 r12 r20 r21 r22 tx ty tz      # ABSOLUTE model-space transform, row-major 3x3
+m "mesh"    mb "bone" (x N: the mesh's bone list)    mm <material index>
+v x y z  /  vn x y z  /  vt u v      # interleaved PER VERTEX (v, vn, vt, v, vn, vt ...); a blocked list is misread
+vw w0 w1 w2 w3 b0 b1 b2 b3           # optional skin weights; bone indices 1-BASED into the mb list
+fg 1                                  # face group, before the f lines
+f i j k                               # 1-based vertex indices, per mesh
+a <frames> <fps>   cg "root"   c "bone"   k r00..r22 tx ty tz        # anims: track group = root/model name, keys LOCAL per parent
+```
+Facts: `b` transforms are absolute (a chain bone repeats its parent's translation) - reading them as
+parent-relative doubled the sail chain positions; the 3x3 is row-major (transpose for a column-vector rotation);
+normals dumped from int8 vanilla data come back as value/254 (normalise); `mt` without a `tb` line is dropped
+by the converter. Frames: converter GXO of a converter-made model = engine units, x across, y along, z up,
+engine (x, y up, z) = (-gx, gz, -gy) (`--map mirror`); a GXO dumped from a VANILLA gr2 is the same frame at
+engine/2.54 (`--scale 2.54`). `rig_table.py` writes exactly this form from Blender (armature space of the rig
+scenes = engine units in the same frame), so no converter is needed for tables.
+
+## Bone tables for the appender (`gr2_addbones.py`)
+
+- parent = 1-based index into the table, 0 = root; existing bone names in the table are skipped but usable as
+  parents (e.g. a damaged model's `mast_wood_solid_3`); parents may also be other new bones (scale chains);
+- `--map mirror` for tables in the converter/Blender frame (engine units); `--scale 2.54` for a GXO dumped
+  from a vanilla gr2. Verified: muzzle bones transplanted this way fire outward in game.
+- Ready-made tables: `rig_table.py` (Blender rig), a converter GXO of any model that already has the bones,
+  `scripts/havok/dmg_bonetable.py` (animtrans chains for a damaged model), or a hand-written text file.
+
+## Verification ladder (every step before a game restart)
+
+1. `gr2_dump.py OUT.gr2` - CRC ok, bones/meshes/bindings as intended; `--tracks` on anims (only the intended
+   bones, track group = root name).
+2. `gr2_fixups.py OUT.gr2` must report 0 orphan fixups. When a compatible native loader is available, require
+   its load check for new buffers or bindings, in more than one memory layout with identical output (`gr2_lint`
+   dll_read: AOP_GR2_DLL_ROUTE native/both converts in three work-folder lengths).
+   CRC and this Python reader alone missed the Korean trial's marshalling defect. Direct
+   `GrannyReadEntireFile` / `GrannyGetFileInfo`, or a read-only GXO dump through the configured converter,
+   checks native deserialization. Investigate a native crash before installation; distinguish a load failure
+   from a later converter export failure. Neither predicts every game-rendering or simulation outcome.
+3. For retained static surfaces, use direct decoded-data comparison or an FBX inspection copy plus
+   `fbx_check.py OUT.fbx VANILLA.fbx DIR`. Compare positions, UVs and normalized corner vectors with
+   precision-aware tolerances. Audit deliberately new geometry separately. For a damaged model, compare
+   decoded piece geometry, rigid indices, skeleton matrices and local bounds directly; never rebuild the
+   runtime damaged GR2 from a converter's FBX/GXO inspection copy.
+4. Game test (**game-startup** skill; art changes need a full restart, the user closes the game). Record
+   operator-reported outcomes as such, tied to asset hashes; do not infer unreported stages or quality checks.
+
+## Frames, units
+
+- Blender rig scenes (`sails_*.py`): armature object scale 0.01, data in engine units, Z up, y along the ship,
+  x across; **blender = M.T . engine** with the mirror map above.
+- A converter FBX of a vanilla gr2 imports at engine/254 in Blender (units /2.54, then /100); converter-made
+  gr2s import at engine/100. `fbx_check.py` reports the ratio (1.0 or 2.54 are the two sane values).
+
+Related skills: **skinned-model-check** (before/after proof for edits of skinned unit models: skeleton, weights,
+moved vertices), **ship-sails** (the full sail pipeline that uses these tools), **unit-bones**,
+**havok-destruction**, **bar-extract**.
+
+## Converter: not part of the repo, any tool that reads/writes GXO or FBX will do
+
+The repo ships no converter and the skills never depend on a particular one. Wherever a step says "-> FBX",
+"-> GXO" or "-> gr2", produce that file with whatever you have (drag-and-drop GUI, 3ds Max / Blender plugin,
+web tool, a command-line exe). `python scripts/havok/converter.py --format gr2|gxo|fbx FILE` is a convenience
+wrapper: with a backend configured in the gitignored `scripts/havok/converter.local.json` (copy
+`converter.example.json`: `wine-wsl`, `native`, `command`) it runs the conversion; with none (`manual`, the
+default) it prints the input, the options and the expected output path and waits until the file appears.
+The owner's own converter (GXO Exporter by Kevsoft, third-party, not redistributable) and the skill that drives it
+under Wine in WSL (`gxo-convert`, gitignored) live in OneDrive `DE Converter\claude-skills\gxo-convert`, shared by
+all the owner's devices - link or copy that folder into `.claude/skills/` there. Other people: own tool, manual
+backend, same pipeline.

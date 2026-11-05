@@ -7,7 +7,7 @@
     <anim>Idle</anim>
   </action>
   <action>
-    <name stringid="301085">AreaHeal</name>
+    <name stringid="501085">AreaHeal</name>
     <type>Heal</type>
     <maxrange>20</maxrange>
     <active>0</active>

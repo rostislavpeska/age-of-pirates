@@ -1,0 +1,152 @@
+---
+name: aoe3de-player-colour
+description: "Create and verify AoE3 DE player-colour masks and BaseColor preparation. Use for player-colour fields, Details maps or dark and muddy colour responses."
+---
+# AoE3 DE player colour (Details map)
+
+## How the engine does it
+
+Every building materialdef (default, cutout, doublesided, destructible, parallax) samples an optional 4th texture,
+`Details`, and does, per texel (a multiply, not a replace):
+
+    albedo_lin = BaseColor_lin * lerp(1, PlayerColour_lin, Details.R)
+
+- Only **R** is read. G is the emissive mask in `default_emissive` only; B and A are unread. Write R-only, G = B = 0.
+- Details is **linear** (no srgb flag, default black = no player colour). It uses **UV0**, the same as BaseColor, so
+  every texel shared through stacked or conjoined UVs is coloured on every face that uses it.
+- File: RTS3 DDT, DXT1 (fmt 4), full mip chain, **same resolution as its BaseColor**. Material: one extra
+  `<texture name="Details" override="...">` line in the submaterial, and the same line in the damaged material.
+  Recipe in [details_export.md](references/details_export.md); shader and vanilla evidence in
+  [engine-and-vanilla.md](references/engine-and-vanilla.md).
+
+## Strength: 100 % by default
+
+Owner rule (2026-10-11): "player color 100% opacity - edit the guidelines. 100% default if not requested less".
+Every player-colour surface is Details R = 255. A weaker surface needs the owner's own request for that surface, with
+his words recorded beside it. Only the anti-aliased chart edge (1-2 texels) and deliberate flake holes in the paint may
+be below 255; never a whole field, band or motif at 0.9 or 0.55. Before every export, run
+`scripts/details_full_strength.py IN OUT --report R.json`. It sets every interior texel to 1.0, keeps flake holes
+below `--hole`, and scales edges by their local plateau. The report must show `interior_partial_after: 0`.
+Mask out a surface the owner asked to keep weaker before running it. Evidence: the Korean Dock gable motif was
+authored at 0.9; the lift made 93 % of painted texels full, and the rest are anti-aliased edges and 405 flake holes.
+
+### Full overlay vs targeted masks
+
+Owner, 2026-10-11, on a reskinned banner: "sometimes we simply need full player color overlay and not targeted based on
+shape. So full player color except the circle and 100% overlay".
+
+Choose the mask mode per object before painting:
+- **Full overlay:** flags, banners, pennants, sails, a cloth field. The whole cloth region is Details R = 255, except
+  the named emblem or medallion, on an even light base (about 220 grey with only a trace of the cloth's shading).
+- **Targeted:** building trim, bands, motifs. Use the shape or part masks in this skill.
+
+Never gate a cloth field by luminance or texture shape. The first Korean castle banner kept the vanilla cloth's mottling
+out of the mask and read washed and patchy in the viewer.
+
+## The BaseColor under the mask: the decision rule
+
+The multiply means the base under the mask sets the player colour's brightness and hue. A saturated or dark base
+tints and darkens it: gold x blue is dark navy. Vanilla keeps the base under the mask neutral and light (231-255 grey;
+castle_regicide 158 grey for whole wall panels).
+
+**Only light objects (sails, white or cream walls, light cloth) keep their BaseColor under the mask. Everything else
+(gold, wood, painted colours, dark fields) gets a lighter base.**
+
+Measure it: `scripts/lighten_under_mask.py` (default mode `report`) takes the texels under the full mask
+(Details.R >= 250) and gives the verdict:
+
+| verdict | condition (8-bit sRGB base) | action |
+| --- | --- | --- |
+| KEEP | mean Rec.709 luma >= 200 **and** mean Lab chroma <= 20 | leave the BaseColor as it is |
+| LIGHTEN | anything else | mode `partial` (keeps some hue at the target luma) or `neutral` (grey) |
+
+Calibrated on two measured cases (see the AoP evidence): cream walls had luma 211 and chroma 11 (KEEP); gold gable
+cells had luma 127 and chroma 41 (LIGHTEN). The tool reports the predicted in-game colour for 2-3 players before and
+after. Always show the owner the in-game look with 2-3 player colours before deciding. The verdict is advice, and the
+owner can overrule it. The tool warns when the chosen mode contradicts the verdict.
+
+The lighten modes touch only texels with Details.R > 0 (optionally inside `--region`, e.g. one field under a shared
+Details map). They blend by R, so a soft edge moves by its fraction. They keep grain, soot and AO as relative
+brightness (`grey = target x (Y / mean Y)^0.6`, capped) and lift the field's mean to `--target-srgb` (default 211).
+
+## Budget: measure what the player sees
+
+Vanilla Asian buildings (18 JP/CN atlases, measured 2026-10-08) put player colour on **0.6-4 % of
+used texels (median 2.1 %)**, on thin stripes, base trims, eave bands or one panel; never on tile
+fields, posts or door leaves; the mask is hard (61-96 % of non-zero texels >= 250) and worn like
+flaking paint. A texel share hides stacking: on the Korean Barracks a 0.8 % texel share was still
+3.8 % on screen, because the one kept band cell was stacked ~7x and its light base made it louder.
+Report the **stack-weighted share** (texels x visible faces sharing them) or the pixel share of a
+blue-vs-red render pair, before and after; narrowing a stacked band to one 10-12 texel stripe is the
+effective lever. Evidence: AoP workflow journal 2026-10-08-claude-05 and -16.
+
+**Within a building set, copy the set's pattern before tuning the budget** (owner, 2026-10-08): find how
+the reference building places player colour (Korean Town Center wall base = wood sill | player-colour
+panel ~0.375 m, Details 255, hard | wood rail; vanilla JP/CN = a stripe between beams) and apply the
+same structure to every member. On the Korean skirts: the two lower planks carry player colour, the top
+plank stays wood. Removing the role entirely (pinstripes only) read as an overcorrection, and leaving
+one building on its old full band broke the set. Paint the base under the planks lighter than the bare
+wood (Korean set: luma ~187 with the grain kept) so the colour reads, and lift the reference's panels by
+the same amount. Evidence: journal 2026-10-08-claude-21 and -22.
+
+**A motif is whole on every face that shows it, or it is not painted** (owner 2026-10-11, Korean Consulate gable:
+"this decoration in gable - nice but splited ... either two decorations on each side or nothing"). The r7 medallion
+sat at the board centre, exactly behind the king post, and every gable reading those texels showed it cut in two.
+Before placing a discrete motif (medallion, emblem, crest), ray-cast the board along its normal against the rest of
+the LOW model, on the owner AND every reader face, and map the hits to page texels (civic pair:
+`recipes/civic_gable_occluders.py`). Place it at the centre if the footprint is clear on every face; otherwise as a
+mirrored pair clear of the occluder; otherwise leave it out. A reader's outline must not cut it either. The painter
+asserts this on the result (`civic_gable_frieze.py --occluders ... --emblem-place auto`). A continuous band crossed by
+a post is fine: it ends against the post on both sides.
+
+## Workflow
+
+1. **Scope.** Agree which surfaces carry player colour (owner's screenshot or words). Freeze the UVs first: Details
+   follows UV0, so a later repack invalidates the mask.
+2. **Mask** with `scripts/details_mask.py`. Sources are max-combined. See [mask-sources.md](references/mask-sources.md).
+   - *Faces*: select faces by geometry or class, then export `faces.json` (UV0 polygons plus the visible pixel counts).
+     Texel groups come from centre-rasterised sharing (>= 3 texels). **A group that also holds a seen unselected face
+     is refused** (exit 2, with an unshare proposal); never widen the colour through collateral sharing. The coverage
+     is supersampled for a soft edge on shared chart borders, then dilated into the gutter (10 steps).
+   - *Procedural*: segment a painted field in the existing BaseColor inside a region. Use CIE Lab hue and chroma,
+     then an **Otsu split on the hue, not the luma**: soot and fading darken lines and cells alike. Then take the
+     4-connected cells, drop specks, fill small holes and add a 1-texel soft edge. The images are not regenerated.
+3. **Base.** Run `lighten_under_mask.py` in report mode on each field, then apply `keep`, `partial` or `neutral`
+   as decided. Write the result to a new file; never write over the input.
+4. **Preview/bind** in Blender with `scripts/details_review.py` (the R-only game formula, one shared player-colour
+   node, `set_player(1..8)`). Supply the source-declared Details path, BaseColor identity and UV0 layer; missing
+   declared files and unsupported legacy/partial graphs fail explicitly. A material-building importer must call
+   this adapter; it is not an automatic import hook. See [review-preview.md](references/review-preview.md) for
+   supported graph behavior, offline tests and the separate per-route saved-model replay gate.
+5. **Check** with `scripts/check_state.py --base <HEAD maps> --cand <candidate>` (add `--faces/--select` for the
+   leak check). It passes only if every other map is byte-identical, BaseColor changed only under Details.R > 0, and
+   no unselected face carries mean R > 0.5. Render the before/after from the **owner's current (HEAD) scene or
+   state**, never from an older final or a copy that lacks his latest elements.
+   Check **completeness separately from leakage**. For a repeated architectural role
+   (for example a band around all walls), enumerate required components from the
+   brief and whole model before selecting painted faces. Sample the intended
+   world-space role through each component's actual UV0 into Details.R, including
+   mirrored ends, short returns, courtyards and elevated walls. Record nonempty
+   samples and all-reader compatibility per component; a whole-model average can
+   hide a completely unpainted end. Validate the source-bound report with
+   `scripts/check_role_coverage.py report.json` and show matched front/back/corner
+   views. The validator checks report completeness, not the sampling implementation
+   or visual quality. Local cuts/reuse need a UV review packet; retain other charts.
+6. **Export**: build the DDT and add the material lines ([details_export.md](references/details_export.md)). Then run
+   the consuming mod's own line-ending and deployment checks.
+
+## Scripts
+
+Plain Python, NumPy and Pillow (details_review.py runs inside Blender). Images are handled in file order (row 0 =
+top), and UV (u, v) maps to (u*size, (1-v)*size).
+
+- `pc_common.py`: colour math, `ingame_albedo`, `base_stats`/`classify` (the rule), Otsu, components, dilation.
+- `details_mask.py`: the faces and procedural sources to `<page>_Details.png` (R, 0, 0), plus a JSON report.
+- `lighten_under_mask.py`: verdict and the keep/partial/neutral base under the mask.
+- `check_state.py`: scope check (maps, BaseColor under the mask, texel-sharing leak).
+- `check_role_coverage.py`: per-component role coverage and source-identity evidence;
+  `test_role_coverage.py` tests missing, empty, stale and conflicting evidence.
+- `details_review.py`: the Blender preview node group, install/uninstall/set_player/selftest.
+- `test_player_colour.py`: `python -m pytest <skill>/scripts/test_player_colour.py -q`
+
+Project evidence and worked examples: [Age of Pirates Korean TC](references/aop-korean-tc-evidence.md).
