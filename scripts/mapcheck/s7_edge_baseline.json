@@ -1,7 +1,6 @@
 {
  "_comment": "mapcheck S7 (map-edge constraints; S6 is the XS scope checker) findings per map at 4 players / 2 teams, recorded 2026-10-06 when the check was added. A count may only fall; a map not listed must have none. Fix a map, then lower or remove its line.",
  "counts": {
-  "game/randmaps/zp_z_cookislands.xs": 11,
   "game/randmaps/zpatols.xs": 10,
   "game/randmaps/zpaustralia.xs": 12,
   "game/randmaps/zpBalearicIslands.xs": 9,
@@ -34,7 +33,6 @@
   "game/randmaps/zpwildwest.xs": 28,
   "game/randmaps/zpwwcanyon.xs": 19,
   "game/randmaps/zpzealand.xs": 13,
-  "randmaps/performance_test.xs": 10,
   "randmaps/zpazteccity.xs": 11,
   "randmaps/zpblacksea.xs": 3,
   "randmaps/zpcaribbeanwars.xs": 19,
@@ -48,7 +46,6 @@
   "randmaps/zpistanbulb.xs": 13,
   "randmaps/zpkingofbohemia.xs": 10,
   "randmaps/zpparis.xs": 10,
-  "randmaps/zpvenicecit_test.xs": 20,
   "randmaps/zpvenicecity.xs": 22,
   "randmaps/zpverseilles.xs": 7,
   "randmaps/zpwinterwonderlandii.xs": 48

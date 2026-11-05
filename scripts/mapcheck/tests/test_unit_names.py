@@ -23,7 +23,7 @@ def known():
 def test_repo_names_are_exact_snapshot():
     # CI form: no game install - case mismatches, unknown mod names and broken rewrites still fail; vanilla gaps warn
     errors, warns, used_live, n_mods, n_ai = cun.run(live=False)
-    assert n_mods >= 18 and n_ai >= 10
+    assert n_mods >= 17 and n_ai >= 10
     assert not errors, "\n".join(errors)
 
 

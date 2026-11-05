@@ -182,7 +182,7 @@ Vanilla has 26 defs and the mod adds 13. Columns:
 
 | def | kind | V-defs | M-defs | texture (straight) | decal V/M | hide V/M | units (mod file) | repo maps |
 |---|---|---|---|---|---|---|---|---|
-| dirt | land | 2 | 2 | dirt | bump/bump | n/n | Travois | London 724, Paris 350, Versailles 379, KingOfBohemia 613, Crownlands 369, Florence 477, AztecCity 313, performance_test 299; game/ BlueMountains, EyreBasin, Mississippi, Riverina, Tasmania, WildWest, WWCanyon; zpunknown (var) |
+| dirt | land | 2 | 2 | dirt | bump/bump | n/n | Travois | London 724, Paris 350, Versailles 379, KingOfBohemia 613, Crownlands 369, Florence 477, AztecCity 313; game/ BlueMountains, EyreBasin, Mississippi, Riverina, Tasmania, WildWest, WWCanyon; zpunknown (var) |
 | stone | land | 24 | 3 | road | bump/bump | Y/n | Stagecoach | (target) |
 | snow | land | 46 | 4 | snow | yes/yes | n/n | Travois | game/LabradorCoast 309; zpunknown (var) |
 | train | land | 68 | 5 | train | bump/bump | Y/n | TrainEngine + TrainCoalcar + TrainCarCoin + 2x TrainCar + TrainCarWood + 2x TrainCarFood + TrainCaboose | CivilWar 286 (built directly) |
@@ -590,9 +590,9 @@ Every `euro*` type also forces `deMapEuropean` and `bpRegicideEuropeanMap` [PROV
 | euroNavalTradeRoute (3137) | DEEnableTradeRouteEuropeanWater -> DEEnableTradeRouteWater | nothing | Water1/2 (own route) | nothing | no |
 | euroLandRiverTradeRoute (3177) | European + EuropeanRiver | Europe1/2 | nothing | River1/2 | no |
 | euroLandNavalTradeRoute (3218) | European + EuropeanWater | Europe1/2 | Water1/2 | nothing | no |
-| euroTradeRouteUpgradeAll (3259) - Paris (`zpparis.xs` 148), performance_test (103); London until `fa44aea2` | EuropeanAll + EuropeanRiverAll + EuropeanWaterAll | EuropeAll1/2: upgrades ALL routes | WaterAll1/2: upgrades ALL routes | RiverAll1/2: upgrades ALL routes | no |
+| euroTradeRouteUpgradeAll (3259) - Paris (`zpparis.xs` 148); London until `fa44aea2` | EuropeanAll + EuropeanRiverAll + EuropeanWaterAll | EuropeAll1/2: upgrades ALL routes | WaterAll1/2: upgrades ALL routes | RiverAll1/2: upgrades ALL routes | no |
 | euroNoTrade (3301) | DEEnableTradeRouteEuropean | Europe1/2 | nothing | nothing | no |
-| euroTradeRouteCapture (3341) - Versailles 164, Elbe 89, Venice City 70 (+ zpvenicecit_test 70), Iceland (var at 46, set at 104), Black Sea 108, Istanbul 741, London 426 (since `fa44aea2`) | deTradeRouteCaptureableEuropean + DEEnableTradeRouteEuropean | Europe1/2 | nothing [LIKELY, O8] | nothing | yes, on capturable posts: deCrateof{Food,Wood,Coin}African1 + Influence/Export Capture [nautical posts: OPEN, O9] |
+| euroTradeRouteCapture (3341) - Versailles 164, Elbe 89, Venice City 70, Iceland (var at 46, set at 104), Black Sea 108, Istanbul 741, London 426 (since `fa44aea2`) | deTradeRouteCaptureableEuropean + DEEnableTradeRouteEuropean | Europe1/2 | nothing [LIKELY, O8] | nothing | yes, on capturable posts: deCrateof{Food,Wood,Coin}African1 + Influence/Export Capture [nautical posts: OPEN, O9] |
 | euroNavalRiverTradeRoute (3382) | European + EuropeanWater + EuropeanRiver | Europe1/2 | Water1/2 | River1/2 | no |
 | Finland (3464) | as UpgradeAll + DEMapFasterWaterTradeUnit | EuropeAll | WaterAll | RiverAll | no |
 
@@ -766,7 +766,7 @@ Sources: M-trig, which is byte-identical to vanilla for the four route effects (
 
 | name | kind, M-trig line | params (vartype, default) | compiles to | mod users |
 |---|---|---|---|---|
-| Trade Route Set Level | effect 1623-1627 | TradeRoute (traderoute, 1), Level (long, 1) | `trTradeRouteSetLevel(%TradeRoute%, %Level%);` | zplondon 2860-2865 (start, both routes level 1) + 2902-2904 / 2926-2928 (route techs, level 2), zpistanbulb 4331-4336, zpelbe 1297-1302 + 1706-1717, zpverseilles 1875, zpvenicecity 1071 / 1325, zpvenicecit_test 1013 / 1117-1128, zpIceland 1981 / 2787, zpazteccity 1505-1518, zpindependencewar 1670 / 1689, zpcivilwar 2168, zpblacksea 1456 / 2033-2044; game/ bluemountains, eyrebasin, labradorcoast, mississippi, wildwest, wwcanyon |
+| Trade Route Set Level | effect 1623-1627 | TradeRoute (traderoute, 1), Level (long, 1) | `trTradeRouteSetLevel(%TradeRoute%, %Level%);` | zplondon 2860-2865 (start, both routes level 1) + 2902-2904 / 2926-2928 (route techs, level 2), zpistanbulb 4331-4336, zpelbe 1297-1302 + 1706-1717, zpverseilles 1875, zpvenicecity 1071 / 1325, zpIceland 1981 / 2787, zpazteccity 1505-1518, zpindependencewar 1670 / 1689, zpcivilwar 2168, zpblacksea 1456 / 2033-2044; game/ bluemountains, eyrebasin, labradorcoast, mississippi, wildwest, wwcanyon |
 | Trade Route Apply Tech | effect 1873-1877 | TradeRoute, TechID (tech, 0) | `trTradeRouteApplyTech(%TradeRoute%, %TechID%);` | vanilla unknown*.xs; mod game/zpunknown.xs 12408-12416 only |
 | Trade Route Toggle State | effect 1618-1622 | TradeRoute, ShowUnit (bool, true) | `trTradeRouteToggleState(%TradeRoute%, %ShowUnit%);` | armored-train and lava maps (civilwar, Iceland, melanesia, hawaii, polynesia, labrador, bluemountains, wildwest, wwcanyon, eyrebasin, mississippi); caribbeanwars blockade 1550-1631 |
 | Trade Route Set Position | effect 1613-1617 | TradeRoute, Position (float 0-1, 'Normalized Distance From Start') | `trTradeRouteSetPosition(%TradeRoute%, %Position%);` | none |
@@ -784,7 +784,7 @@ Sources: M-trig, which is byte-identical to vanilla for the four route effects (
 | ZP Set Tech Status (XS) | effect 2150-2155 | PlayerID, TechID (string 'cTechX'), Status | `trTechSetStatus(p, cTechX, s);` | every mod map's start trigger |
 | ZP Set Tech Status Conditional (XS) | effect 2156-2168 | - | - | - |
 | ZP Tech Status Equals (XS) | condition 482-487 | PlayerID, TechID (string), Status | `trTechStatusCheck(p, cTechX, s)` | zpelbe 1703-1720, zpIceland 2780, zpvenicecity 1320, zpblacksea 2033, zpindependencewar 1684, zplondon 2898-2901 / 2922-2925 |
-| ZP Trade Harbour AutoSetup | effect about 3787-3830 | TechID (cTechDEEnableTradeRouteWater), Proto1 (deTradingGalleon), Proto2 (deTradingFluyt) | injects rules UpdatePortStartingTech / UpdatePortsI / UpdatePortsII through '}}'; activates DEEnableTradeRouteWater for players 1-8 and zpUpdatePort1/2 for gaia | no map calls the effect; 13 maps carry equivalent hand-written rules (zpcaribbeanwars, zpcivilwar, zpvenicecit_test; game/ zpatols, zpbarrierreef, zpdeadsea, zpmalta_castles, zpmediterranean, zpmississippi, zppolynesia, zptasmania, zptortuga, zpvenice); not London |
+| ZP Trade Harbour AutoSetup | effect about 3787-3830 | TechID (cTechDEEnableTradeRouteWater), Proto1 (deTradingGalleon), Proto2 (deTradingFluyt) | injects rules UpdatePortStartingTech / UpdatePortsI / UpdatePortsII through '}}'; activates DEEnableTradeRouteWater for players 1-8 and zpUpdatePort1/2 for gaia | no map calls the effect; 13 maps carry equivalent hand-written rules (zpcaribbeanwars, zpcivilwar; game/ zpatols, zpbarrierreef, zpdeadsea, zpmalta_castles, zpmediterranean, zpmississippi, zppolynesia, zptasmania, zptortuga, zpvenice); not London |
 
 **Engine help (exe)** [PROVEN]:
 
@@ -951,7 +951,6 @@ The survey covers all 19 scripts in `randmaps/`, all 33 in `game/randmaps/`, the
 | zpverseilles | grass, land, default, westEurope, piratehistoricalmap, euroTradeRouteCapture (159-164) | #1 @372 dirt @379 | deTradingPostCaptureEuropean x4 (565-587, placed 810-819); SocketTradeRoute def linked but NEVER placed (366-374) | EU_SPC_Block_Trade_NoSocket (610) | Set Level r1=1 (1875); zpVerseilles*Setup -> zpDisableTradeRouteUpgrade (1839 / 1853); zpTollstation (1868; no port socket on the map) | nugget 510 zpNuggetCapturableTradeEU1 (808); forbid 1704 |
 | zpelbe | grass, water, default, centralEurope, euroTradeRouteCapture, piratehistoricalmap (85-90) | #1 @277 river_trail @305; #2 @313 water_trail @338 (N) | #1: zpTradingPostCaptureNaval x2 (381-399) + NavalLone x2 (791-818; 797 relinked to #1 at 798); #2: CaptureNaval x2 (375-391, placed 423 / 427); Nugget x2 linked to #1 (803-820) | none | Set Level r1=1, r2=1 (1297 / 1300); zpHansaTradeRouteUpgrade -> r1=2, r2=2 (1706-1717) | nuggets 306 (Hansa cities, 419), 101 (lone, 815); no forbid |
 | zpvenicecity | water, piratehistoricalmap, mediEurope, euroTradeRouteCapture (67-70) | #1 @280 water_trail @285 | zpTradingPostCaptureNaval x4 (331-383) | none | Set Level r1=1 (1071); zpVeniceTradeRouteUpgrade -> r1=2 (1320-1332) | fake stopper unlinked (288-296); nugget 298 (389); forbid 893; mods.xml removes the capture tactics |
-| zpvenicecit_test | as zpvenicecity (67-70) | #1 @280 water_trail @285 | zpTradingPostCaptureNaval x4 (332-354) | none | Set Level r1=1 (1013); r1=2 on zpVeniceTradeRouteUpgrade (1117-1128) | forbid 868 |
 | zpblacksea | grass, water, eastEurope, default, piratehistoricalmap, eurotradeRouteCapture [lower-case e] (103-108) | #1 @402 water_trail @426 | zpTradingPostCaptureNavalOriental x2 when blockadeSpawn==0, otherwise unlinked zpSPCWaterSpawnPoint (460-500); NavalLone x3 (734-747) + Nugget x3 linked (752-765), placed 771-776 | none | Set Level r1=1 (1456); zpSultanateTradeRouteUpgrade -> r1=2 (2033-2044) | nugget 511 (769); no forbid |
 | zpistanbulb | grass, water, eastEurope, default, piratehistoricalmap, eurotradeRouteCapture [lower-case e], mediEurope (736-743) | #1 tradeRouteN @1022 water_trail @1032; #2 tradeRouteS @1034 water_trail @1043 | zpOrientalFerry x4, 2 per lane (1368-1375, 1388-1395, 1448-1455, 1468-1475) | trade harbour groupings with ypNuggetTradingPost baked (4266-4269) | Set Level r1=1, r2=1 (4331 / 4334) and zpDisableAllTradeRouteUpgrades for players 1..N (loop 4294, effect 4300-4304), both since `fa44aea2`; no custom upgrade trigger | nugget 517; forbid 748 |
 | zpcivilwar | bayou, grass, water, piratehistoricalmap (76-79) | #1 @274 train @286; #2 @288 armored_train @298; #3 @300 armored_train @310; #4 @372 native_water_trail @443 | #1: zpTrainStationA x3 (731-760; capturable only through zpcivilwar.mods.xml 4-14); #4: zpTradingPostCaptureNaval x2 (406-420, placed BEFORE the build) | City_State_Western_* (zpTrainStationProps) | deTradeRouteCaptureableEuropean (1477); AT_Initialize r4=2 + toggles (2168-2180) | Autoconvert disabled in setup; forbid 1344 |
@@ -964,14 +963,13 @@ The survey covers all 19 scripts in `randmaps/`, all 33 in `game/randmaps/`, the
 | zpcaribbeanwars | caribbean, piratehistoricalmap, grass, water, caribbeanwater (58-62) | #1 @176 water_trail @187; #2 @189 water_trail @200 | none (177 / 190 are one-argument link calls) | harbour_center_*: zpSPCPortSocket (477-499) | blockade Toggle State (1550-1631); zpSPCTradeRouteGo/Stop East/West | no forbid |
 | zpgrinch | yukon, snow, land (43-45) | #1 @337 xmassnow @362; #2 @338 xmassnow @363 | SocketTradeRoute x1 per route (340-357, placed 370-377) | none | zpXmassTradeRoute (1122) | no forbid |
 | zpwinterwonderlandii | treasureSet, ScenarioFreezing, snow, land (120-123) | #1 @396 toiletPaper='xmassnow' @492 | SocketTradeRoute (400-405, placed 511-646) | none | zpXmassTradeRoute (1547) | no forbid |
-| performance_test | grass, land, default, westEurope, piratehistoricalmap, euroTradeRouteUpgradeAll (98-103) | #1 @292 dirt @299 | SocketTradeRoute x2 (287-294, placed 306-314) | eu_wall_*_socketable: zpSPCPortSocket (263 / 268); EU_island_Bastille (335) | zpTollstation | Paris clone; forbid 1604 |
 
 ### 7.2 Table: `game/randmaps/` (33 scripts, compact)
 
 | map | trade map types | routes (defs) | route-linked posts | grouping sockets (unlinked) | route triggers |
 |---|---|---|---|---|---|
 | zpBalearicIslands | mapType5='euroNavalTradeRoute' (43, via 109-114) | 2x water_trail (315 / 324; #1 rebuilt 337) | SocketTradeRoute on useTradeRouteID (817-819) | Harbour_Universal_E/N/S/W | - |
-| zp_z_cookislands, zpcookislands | water | water_trail | SocketTradeRoute | - | DEEnableTradeRouteWater |
+| zpcookislands | water | water_trail | SocketTradeRoute | - | DEEnableTradeRouteWater |
 | zpatols | water | 2x water_trail | SocketTradeRoute x2 defs | - | I/II Update Ports (1424-1452) |
 | zpaustralia | australia, grass, water | 3x water_trail | zpSPCWaterSpawnPoint only | Harbour_Universal_NE/NW/S | - |
 | zpbarrierreef | water, tropical, barrierreef | water_trail | none | - | - |
@@ -1006,7 +1004,7 @@ The owner's statement "no map actually combines the convertible TPs and normal o
 | map | normal route-linked SocketTradeRoute | port socket (Toll Station) | capturable post on a route | combined? |
 |---|---|---|---|---|
 | zplondon (mod) | 1 on the road (731; absent in both saved censuses, O6) | zpSPCPortSocket in the bridge (790) | 4x zpOrientalFerry on the lane | YES, the only mod map |
-| zpparis / performance_test | 2 | 2 (wall gates) | none | no |
+| zpparis | 2 | 2 (wall gates) | none | no |
 | zpverseilles | def only, never placed | none | 4x deTradingPostCaptureEuropean | no (capture-only) |
 | zpelbe, zpvenicecity (+test), zpIceland, zpblacksea, zpindependencewar, zpistanbulb | none | none | zp capture protos / zpOrientalFerry | no (capture-only) |
 | zpcivilwar | none | none | 2x CaptureNaval (#4) + 3x zpTrainStationA made capturable (#1) | no (two capturable kinds) |
@@ -1032,7 +1030,7 @@ Maps whose triggers set a route level while upgrade techs may still be obtainabl
 | zpindependencewar | r1=1; =2 on zpRevolutionAmerica | Water1/2 (caribbeanwater) | Lone posts on the river-kind native_water_trail | author's comment | LIKELY safe |
 | zpcivilwar | r4=2 at start | none forced; capture tech set | - | zpArmoredTrainTech kills the enable gates | LIKELY safe |
 | armored-train maps (6 in game/randmaps) | after zpArmoredTrainTech | - | - | gates DETradeRouteUpgrade1Enable/2Enable unobtainable | LIKELY safe |
-| zpparis / performance_test | no Set Level | EuropeAll | TradingPost (normal upgrading) | - | not affected |
+| zpparis | no Set Level | EuropeAll | TradingPost (normal upgrading) | - | not affected |
 | vanilla euEngland, euDeluge, euEightyYearsWar, euGreatNorthernWar, euRussoTurkWar | Apply Tech (+ Set Level on RussoTurk) | Europe / River / Water | TradingPost | unknown | OPEN (O3) |
 
 ### 7.5 Table: vanilla European reference maps
@@ -1082,7 +1080,6 @@ No readable vanilla map uses `euroTradeRouteUpgradeAll` or `euroTradeRouteCaptur
 | King of Bohemia | 1153 |
 | Istanbul | 748 |
 | Independence War | 2060 |
-| performance_test | 1604 |
 
 It is absent on Elbe, Black Sea, Iceland, Caribbean Wars, Grinch and Winter Wonderland.
 
@@ -1359,7 +1356,7 @@ Tests of the earlier design need a test copy of `zplondon.xs` at `cae26f9b` in S
 | T9 | `cae26f9b` copy, edited | route 2: Apply Tech EuropeAll1 instead of Set Level; build the TP; read page 1 and the toggles; watch the lane | O3, O4 |
 | T10 | `cae26f9b` copy | capture two ferries, research WaterAll1 on one, compare both | O14 |
 
-Paris (`zpparis.xs` 148) and performance_test (103) still use UpgradeAll, but each has one land route only, so they cannot show a cross-route effect (O13, O16).
+Paris (`zpparis.xs` 148) still uses UpgradeAll, but has one land route only, so it cannot show a cross-route effect (O13, O16).
 
 Test copies of London go into Steam `Game/RandMaps` as a bare `.xs` (+ `.xml`), never with a `.mods.xml` (memory `mods-xml-never-in-game-root`). Starting the game is the owner's call (skill `game-startup`).
 
@@ -1441,7 +1438,7 @@ Each question with its cheapest test. "Current London" means the build of `e4f89
 | O10 | Do unrestricted normal crates (e.g. deCrateof*Water, deTradeCrateAll) also appear on a capture post once their tech is active? | current London: a captured ferry, look for deTradeCrateAll (granted since `750af968`); or a `cae26f9b` copy after WaterAll1 | 2.7, 9.2 |
 | O11 | Is a map-forced tech with an unmet prereq (the capture techs need Colonialize) active from the start or only in Age 2? | Versailles: capture a post in Age 1, look for crate buttons | 3.4 |
 | O12 | What does XPRate 0.5 BasePercent on the capture techs do, and does it hit normal TPs of the same player? | compare a normal TP's delivery on euroLandTradeRoute vs euroTradeRouteCapture (e.g. Paris vs Versailles setup), or the XP counter over 60 s | 3.4, 9.5 |
-| O13 | What do the Data2 landtech / watertech / rivertech links do (mark siblings Active for one player or all; unlock the sibling's crates)? | `cae26f9b` copy: buy EuropeAll1 at the land TP, then see whether a captured ferry still offers WaterAll1 and shows water crates; or vanilla euBaltic (land + naval under UpgradeAll, LIKELY). Paris and performance_test have one route only | 3.2 |
+| O13 | What do the Data2 landtech / watertech / rivertech links do (mark siblings Active for one player or all; unlock the sibling's crates)? | `cae26f9b` copy: buy EuropeAll1 at the land TP, then see whether a captured ferry still offers WaterAll1 and shows water crates; or vanilla euBaltic (land + naval under UpgradeAll, LIKELY). Paris has one route only | 3.2 |
 | O14 | A per-instance tech researched on a capture post without CreateUniqueInstance: does it apply to that post only or to every post of that proto the player owns? | needs a capture post that offers an upgrade (none on current London or Istanbul): `cae26f9b` copy, capture two ferries, research WaterAll1 on one, compare both | 4.2 |
 | O15 | Does a per-player CommandRemove on zpOrientalFerry (zpDisableAllTradeRouteUpgrades, applied to players 1..N at start since `750af968`, not to gaia) hold on a post captured from gaia? Does gaia need the lock? Does `<tech mergeMode="remove">` work in a per-map .mods.xml? | current London or Istanbul: capture a ferry, look for any upgrade button (none expected); the per-map removal has no precedent | 4.4, 8c |
 | O16 | Does UpgradeAllTradeRoutes also raise a route whose posts are all gaia-owned? | moot for London since `fa44aea2`; `cae26f9b` copy: buy EuropeAll1 before any ferry is captured, watch the lane | 3.2 |

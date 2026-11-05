@@ -200,7 +200,7 @@ def _set_leaks(path: Path) -> list:
 # ---- tests ----------------------------------------------------------------------------------------------------------
 
 def test_the_model_sees_the_system():
-    assert len(SETS) >= 40 and len(CARDS) >= 119 and len(SET_MAPS) >= 50, (len(SETS), len(CARDS), len(SET_MAPS))
+    assert len(SETS) >= 40 and len(CARDS) >= 119 and len(SET_MAPS) >= 49, (len(SETS), len(CARDS), len(SET_MAPS))
     assert {"ypbigconsulaterussians", "ypbigconsulategermans", "zpbigconsulatejapaneseallies"} <= CARDS
     assert CIV_MARKERS.get("zpAotWKhmers") == "Khmers"
 

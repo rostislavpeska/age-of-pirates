@@ -27,8 +27,6 @@ MOD_MAPS = sorted((REPO / "game" / "randmaps").glob("*.xs"))
 # decision (see docs/plan_mapsim_architecture.md G6 triage). Do NOT add
 # entries without a triage note; remove them the moment the map is fixed.
 OPEN_STATIC = {
-    # dev-only variant, no lobby .xml on purpose? -> user decision
-    "zp_z_cookislands": {("S5", "no companion")},
     # starting tree proto does not exist anywhere -> trees never spawn;
     # replacement name is a content choice (zpmalta uses TreeTexas)
     "zpBalearicIslands": {("S4", "TreeMediterranean")},
