@@ -105,7 +105,7 @@ the test lines in the folder, never deleting the marker. Only text files the gam
 5. **Size**: compressed zip <= 2 GB.
 6. **Upload** at https://www.ageofempires.com/mods/create/ (new) or the mod's own
    page (update). The portal refuses a mod without **tags**; set thumbnail and
-   description; note the version in the changelog.
+   description; note the version in the changelog (skill `mod-portal-changelog` fills the Change List box).
 7. **Verify** on a clean profile or the second device: subscribe in the in-game
    Mod Manager, load a map that depends on the newest data (strings, protos), and
    compare the game process start time against the XMB mtimes before judging
