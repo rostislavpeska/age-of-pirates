@@ -1,4 +1,4 @@
-# Version 7.3: Restoration of the Monarchy & Revelations of Istanbul
+# Version 7.3: Historical Maps vol.3
 
 Autumn 2026 release. Two new historical city maps lead it: London 1660, with two new native factions (the Parliamentarians and an extended House of Stuart), and Istanbul 1512, held back from 7.2 together with its Ottoman content. A third new map, the Danube Bend, joins them, along with the cliff-unloading option from the October game update on twelve maps and a long list of fixes.
 
@@ -80,20 +80,19 @@ Autumn 2026 release. Two new historical city maps lead it: London 1660, with two
 - AI pirate rules start wherever a pirate settlement or pirate city state stands (London's and Istanbul's pirate camps were missed).
 
 ## Bugfixes
+- Cliff boarding and landing: since a base-game update, ships could not land units on cliff coasts or take them back on board on Venice City, Tasmania and Iceland — fixed with the cliff unloading from the October 2026 game update (see Map updates).
 - Ships captured trading posts, harbours and forts: since the base game's September patch most ships capture like herders, so any auto-converting building in range flipped to a passing ship. Ships capture nothing on mod maps any more, except where naval capture belongs (Istanbul and the naval King of the Hill modes) — fixed.
-- Istanbul: every AI stopped with a script error at match start — fixed.
 - Captured neutral buildings (Town Mill, Aztec Granary, Aztec Shrine, Menagerie, Safari, Fisherman's Guild, both Pirate Docks) could be deleted by their new owner — fixed.
 - Harbour guard treasures sometimes spawned in the water on Independence War and Black Sea, which left the harbour uncapturable — fixed.
 - The Treasure Ship's Broadside did nothing — fixed (it needs the Wokou treasure fleet tech).
 - Destroyed Asian Markets left no rubble (a base-game gap) — fixed.
-- Factory wings on London, Storming the Bastille and March to Versailles, London's park palace and the Minster's monastery wings could be selected — fixed; the same for the decorative small houses on Caribbean Wars.
+- Factory wings on Storming the Bastille and March to Versailles could be selected — fixed; the same for the decorative small houses on Caribbean Wars.
 - Artillery loads onto the new DLC whaling ships and the Corvette without the slow load delay, as on every other ship.
 - "The Emperess" ship name — fixed to "The Empress".
 - Consulate on mod maps: a partner you had already used could not be chosen again, and End Relations worked only once — fixed.
 - Revolting to Romania or Chile turned a vanilla consulate card back on on mod maps (vanilla Russian Allies in the Hussite picker on the Danube, for example) — fixed, the revolution now swaps it for the mod's own card (not yet confirmed in game).
 - With the Koreans add-on, a Korean player's consulate was empty on every mod map except Burma — fixed.
 - Unknown map: the Maya stayed vanilla (no Maya Influence button at the Trading Post) in every game that rolled the Bourbon alliance — fixed, every player now gets the extended Maya.
-- Danube forced local mercenaries, banned the Trade Monopoly victory and showed the King of Bohemia loading picture, though it is a standard map — fixed: default mercenaries, Trade Monopoly allowed, its own loading picture.
 - AI players could field raw proxy units instead of the real unit (seen with Prince Elector Mounted Infantry and Brunswickers) — proxies now also convert at the Native Embassy (in beta testing, not yet confirmed in game).
 
 ## Game balance
