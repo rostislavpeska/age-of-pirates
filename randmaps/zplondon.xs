@@ -3280,6 +3280,43 @@ void main(void)
 		rmSetTriggerLoop(true);
 	}
 
+	// 14.1d the British compensation (owner 2026-11-11: "British on the London map have a bit disadvantage, because their
+	// manor houses are not working"): a British player gets their side's bonus shadow once their big button is researched -
+	// the attackers' Divine Right of Kings +10 population room, the defenders' Grand Remonstrance +50% build limit on
+	// Parliament's units. The green rollover line is zpLondonSetup's (techtreemods); fires once.
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("London British Bonus" + k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("Civilization", "British");
+		if (rmGetPlayerTeam(k) == 0)
+		{
+			rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+			rmSetTriggerConditionParamInt("PlayerID", k);
+			rmSetTriggerConditionParam("TechID", "cTechzpStuartExpansionSPC");
+			rmSetTriggerConditionParamInt("Status", 2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpLondonBritishPopulation");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		else
+		{
+			rmAddTriggerCondition("ZP Tech Researching (XS)");
+			rmSetTriggerConditionParam("TechID", "cTechzpParliamentRemonstrance");
+			rmSetTriggerConditionParamInt("PlayerID", k);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpLondonBritishBuildLimits");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	// 14.2 the Grand Remonstrance big button -> the Parliament card set -> the pick dialog (Venice "Activate Orthodox")
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{

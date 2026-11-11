@@ -3665,6 +3665,8 @@
       <string _locid="503677">ZP CON Iron Pagoda</string>
       <string _locid="503678">Shenji Siphon</string>
       <string _locid="503679">ZP CON Shenji Siphon</string>
+      <string _locid="503680">Opens the extended House of Stuart. \n • Unlocks Sovereign of the Seas \n • Unlocks The Last Cavalier \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Turns every Lowlander into a Whitecoat; the Trading Post trains Whitecoats instead \n&lt;color=0.0, 1.0, 0.0&gt;Civ Bonus (British):&lt;/color&gt; \n • +10 maximum population</string>
+      <string _locid="503681">Pick your leader of Parliament \n&lt;color=0.0, 1.0, 0.0&gt;Civ Bonus (British):&lt;/color&gt; \n • Parliamentarian units +50% build limit</string>
 
       <!-- ======================================== -->
       <!-- Korean military: unique model and donor-reference identities (INC-133). -->

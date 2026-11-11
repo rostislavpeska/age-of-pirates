@@ -132,7 +132,10 @@ class TestLondonExtension:
             return re.sub(r"\s+", " ", b)
         assert core(g) == core(l) and "<displaynameid>503549</displaynameid>" in l and "stuartextend_big.png" in l
         assert "<rollovertextid>503582</rollovertextid>" in l and "<rollovertextid>503550</rollovertextid>" in g and "Whitecoat" not in g
-        assert not any(("cTech%s" % n) in _text(LONDON) for n in ("zpStuartExpansion", "zpStuartExpansionSPC"))     # the buttons come through the extension, not the map
+        # the buttons come through the extension, not the map: the map never SETS them (2026-11-11: the British bonus
+        # trigger 14.1d only reads zpStuartExpansionSPC's status, test_london_british_bonus.py)
+        assert not any(('rmSetTriggerEffectParam("TechID", "cTech%s")' % n) in _text(LONDON) for n in ("zpStuartExpansion", "zpStuartExpansionSPC"))
+        assert '"cTechzpStuartExpansion"' not in _text(LONDON)
 
 
 class TestAICommonwealthGate:

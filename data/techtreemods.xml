@@ -38407,6 +38407,15 @@
       <effect type="TechStatus" status="unobtainable">DERedoubts</effect>
       <effect type="TechStatus" status="unobtainable">DECityFortifications</effect>
       <effect type="TechStatus" status="active">zpExtendedStuartLondon</effect>
+      <!-- British compensation (owner 2026-11-11: "British on the London map have a bit disadvantage, because their
+           manor houses are not working"): a British player's big buttons get a green "Civ Bonus (British)" line
+           (vanilla's civ-gated rename, e.g. DEHCREVMilitaryFrontier reqtech="Age0Russian"); the bonus itself is in
+           the shadows zpLondonBritishPopulation / zpLondonBritishBuildLimits, fired by zplondon.xs 14.1d - never as an
+           effect on the button, whose automatic effect list shows every effect to every civ (owner's test, Spanish) -->
+      <effect type="SetName" tech="zpStuartExpansionSPC" newname="503549" newrollover="503680" reqtech="Age0British">
+      </effect>
+      <effect type="SetName" tech="zpParliamentRemonstrance" newname="503478" newrollover="503681" reqtech="Age0British">
+      </effect>
       <effect type="TechStatus" status="active">zpLockShipCapture</effect>
       <effect type="TechStatus" status="active">zpDisableAllTradeRouteUpgrades</effect>
       <effect type="TechStatus" status="active">DETradeRouteAllResourcesShadow</effect>
@@ -39277,6 +39286,44 @@
       <effect type="TechStatus" status="active">ypBigSequesterGermans</effect>
       <effect type="TechStatus" status="unobtainable" deactivate="true">ypBigConsulateGermans</effect>
       <effect type="TechStatus" status="active">zpBigConsulateGermansClone</effect>
+    </effects>
+  </tech>
+  <!-- London's British compensation (zpLondonSetup has the rollover): the bonus shadows, fired once by zplondon.xs 14.1d
+       for a British player when their side's big button is researched -->
+  <tech name="zpLondonBritishPopulation" type="Normal">
+    <dbid>408219</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <!-- Divine Right of Kings: +10 population room (the Cathedral stages' effect) -->
+      <effect type="Data" amount="10.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLondonBritishBuildLimits" type="Normal">
+    <dbid>408220</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <!-- The Grand Remonstrance: +50% build limit on Parliament's units (protomods Redcoat 13, Lord 2, Ironside 10,
+           Bonaght 15, Welsh Longbowman 15); Absolute adds. Only the picked leader's regiment is ever enabled -->
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLord</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatIronside</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBonaght</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWelshLongbowman</target>
+      </effect>
     </effects>
   </tech>
 <!--TEST TECHS-->
