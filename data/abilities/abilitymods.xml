@@ -10,6 +10,10 @@
     <ability>PowerBroadside<rof>60</rof></ability>
     <ability>PowerLongRange<rof>60</rof></ability>
   </zpspcneptunegalley>
+  <zpmercneptunegalley>
+    <ability>PowerBroadside<rof>60</rof></ability>
+    <ability>PowerLongRange<rof>60</rof></ability>
+  </zpmercneptunegalley>
   <zpmalteseriggedship>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpmalteseriggedship>
@@ -24,7 +28,7 @@
   </zpspcfixedgun>
   <zpspctreasureship>
     <ability>PowerLongRange<rof>60</rof></ability>
-    <ability>PowerBroadside<rof>60</rof></ability>
+    <ability>PowerBroadside<tech>zpNatTreasureFleet</tech><rof>60</rof></ability>
   </zpspctreasureship>
   <zpwokousteamer>
     <ability>PowerLongRange<rof>60</rof></ability>
@@ -91,16 +95,28 @@
     <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
     <ability>zpPowerArmouredTrainInactive<tech>zpArmoredTrainLockShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerArmouredTrainNoResource<tech>zpArmoredTrainNoResourceShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>  
-    <ability>zpNatPowerRoyalMarch<tech>Colonialize</tech><subciv>SPCBourbon</subciv><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
-    <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
+    <ability mergemode="replace">deNatPowerRoyalMarch<tech>zpBourbonAbilityBig</tech><subciv>Bourbon</subciv><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown><usebigabilitybutton3>true</usebigabilitybutton3><rof>275</rof><castonself>true</castonself></ability>
+    <ability>zpNatPowerRoyalMarch<tech>zpBourbonAbilitySmall</tech><subciv>Bourbon</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
+    <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>Bourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
+    <ability>zpPowerParliamentRemonstrance<tech>zpNatParliamentBigbuttonDisableShadow</tech><subciv>zpParliament</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
+    <ability>zpPowerStuartExpansion<tech>zpNatStuartBigbuttonDisableShadow</tech><subciv>Stuart</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpAuditoreLighthouse<tech>Colonialize</tech><subciv>Auditore</subciv><rof>120.0</rof><castonself>true</castonself></ability>
     <ability>zpNatPowerBlanikKnights<tech>Colonialize</tech><subciv>zpBohemianKing</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpBohemianKing")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability>zpPowerImperialCommand<tech>Colonialize</tech><subciv>zpPrinceElector</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpPrinceElector")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability>zpPowerImperialCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+    <ability>zpPowerSultanCommand<tech>Colonialize</tech><subciv>zpSultanate</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpSultanate")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerSultanCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
     <ability mergemode="replace">deNatPowerRadetzyMarch<tech>zpHabsburgColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><usebigabilitybutton3>true</usebigabilitybutton3><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability>zpNatPowerRadetzyMarch<tech>zpHabsburgAustrianColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability>zpNatPowerElDeguello<tech>zpSpanishHabsburgColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability mergemode="replace">deNatPowerArcticAcclimation<tech>zpInuitAcclimationBig</tech><subciv>Inuit</subciv><subcivalliancefactor>0.1</subcivalliancefactor><usebigabilitybutton3>true</usebigabilitybutton3><rof>80</rof><castonself>true</castonself></ability>
+    <ability>zpNatPowerArcticAcclimation<tech>zpInuitAcclimationSmall</tech><subciv>Inuit</subciv><subcivalliancefactor>0.1</subcivalliancefactor><rof>80</rof><castonself>true</castonself></ability>
+    <ability mergemode="replace">deNatPowerGreekRevolution<tech>zpPhanarAbilityBig</tech><subciv>Phanar</subciv><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("Phanar")</uicommand><usebigabilitybutton3>true</usebigabilitybutton3><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpNatPowerGreekRevolution<tech>zpPhanarAbilitySmall</tech><subciv>Phanar</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("Phanar")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerEstateLevy<tech>Colonialize</tech><subciv>zpColonialEstate</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpColonialEstate")</uicommand><rof>240</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability mergemode="replace">deNatPowerHighlandCharge<tech>zpStuartAbilityBig</tech><subciv>Stuart</subciv><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown><usebigabilitybutton3>true</usebigabilitybutton3><castifnotselected>true</castifnotselected><rof>235</rof><castonself>true</castonself></ability>
+    <ability>zpNatPowerHighlandCharge<tech>zpStuartAbilitySmall</tech><subciv>Stuart</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><castifnotselected>true</castifnotselected><rof>235</rof><castonself>true</castonself></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
@@ -114,6 +130,9 @@
   <zparmoredtrainbarrackstatic>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zparmoredtrainbarrackstatic>
+  <zporientalferry>
+    <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+  </zporientalferry>
   <zparmoredtrainkitchenwagonstatic>
     <ability>zpKitchenAuraFieldKitchen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>zpKitchenAuraCantine<alwaysdisabledingrid>true</alwaysdisabledingrid><tech>zpArmoredTrainImprove</tech><forceshowrollover>true</forceshowrollover></ability>
@@ -220,10 +239,6 @@
   <zpbourbonsummerpalace>
     <ability>zpNatPowerRoyalMarch<activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
   </zpbourbonsummerpalace>
-  <zpnatroyalmusketeer>
-    <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
-    <ability>zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
-  </zpnatroyalmusketeer>
   <zppariscitadel>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zppariscitadel>
@@ -232,7 +247,14 @@
   </zppariscitadelpassage>
   <explorer>
     <ability>zpAbilityInspiringFlagFrench<tech>zprevolutionfrance</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+    <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
   </explorer>
+  <xpiroquoiswarchief>
+    <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+  </xpiroquoiswarchief>
+  <xplakotawarchief>
+    <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+  </xplakotawarchief>
   <zpspcdartagnan>
     <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
     <ability>PowerCrackshot<rof>90</rof></ability>
@@ -302,6 +324,9 @@
   <zpspccitymarket>
     <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspccitymarket>
+  <zpspccitymarketoriental>
+    <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspccitymarketoriental>
   <zpspcazteccitymarket>
     <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcazteccitymarket>
@@ -380,6 +405,40 @@
   <zpoldspanishchurch>
     <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpoldspanishchurch>
+  <zpspchatmanbohdan>
+    <ability>dePowerStrikeYermak<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchatmanbohdan>
+  <zpspchatmanmazepa>
+    <ability>dePowerStrikeYermak<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPassiveCossackFather<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchatmanmazepa>
+  <zpspchatmanpetro>
+    <ability>dePowerStrikeYermak<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPassiveCossackUnity<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchatmanpetro>
+  <zpcossackrowboat >
+    <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
+    <ability>ypPowerSabotage<tech>zpSPCRowboatSabotage</tech><rof>240</rof></ability>
+  </zpcossackrowboat>
+  <zpconsulatecarolean>
+    <ability>deCaroleanCharge<rof>90</rof><usebigabilitybutton>true</usebigabilitybutton><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+  </zpconsulatecarolean>
+  <zpspchayreddin>
+    <ability>dePowerFalconDive<rof>20</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchayreddin>
+  <zpspcistanbulmosque>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcistanbulmosque>
+  <zpspcregalship>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcregalship>
+  <zpdispatchvessel>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpdispatchvessel>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
@@ -387,4 +446,46 @@
   <zpwokoudiverland>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
   </zpwokoudiverland>
+  <zpspcbonhommerichard>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcbonhommerichard>
+  <zpspcserapis>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcserapis>
+  <!-- Mutineers: the DLC Sailor's passive cards (Carpentry, Buckshot), verbatim -->
+  <zpnatmutineer>
+    <ability>deSailorChopWood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityBuckshot<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmutineer>
+  <zpnatmercmutineer>
+    <ability>deSailorChopWood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityBuckshot<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmercmutineer>
+  <zpspclondonbasilica>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspclondonbasilica>
+  <zpspcminster>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcminster>
+  <zpnatlord>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatlord>
+  <zpnatinuitharpooner>
+    <ability>dePromotionRange<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatinuitharpooner>
+  <zpnatmercinuitharpooner>
+    <ability>dePromotionRange<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmercinuitharpooner>
+  <zpnatprincerupert>
+    <ability>PowerSwashbuckler<rof>45</rof></ability>
+    <ability>zpPassiveRupertsHorse<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>PowerRecruitGuardian<rof>90</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatprincerupert>
+  <!-- Napoleonic Era on the vanilla trained Royal Musketeer (owner 2026-10-26: "vanilla royal musketeers don't have the
+       rocket ability after the napoleonic paris upgrade"): vanilla binds its mortar button to DERevolutionFranceNE and
+       gives it to the mercenary only; the mod's upgrade is zpRevolutionFranceNE, the line deNatMercRoyalMusketeer has. -->
+  <denatroyalmusketeer>
+    <ability mergemode="add">zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </denatroyalmusketeer>
 </abilitymods>

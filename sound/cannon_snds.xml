@@ -69,8 +69,16 @@
           </soundset>
         </choice>
         <choice name="XPIroquois">
-          <soundset name="IroquoisLightCannonSelect">
-          </soundset>
+          <techlogic>
+            <choice name="none">
+              <soundset name="IroquoisLightCannonSelect">
+              </soundset>
+            </choice>
+            <choice name="DEIndependenceIroquois">
+              <soundset name="FrenchCannonSelect">
+              </soundset>
+            </choice>
+          </techlogic>
         </choice>
         <choice name="XPSioux">
           <soundset name="SiouxRifleRiderSelect">
@@ -137,7 +145,23 @@
           </soundset>
         </choice>
         <choice name="DEMexicans">
-          <soundset name="SpanishSettlerMaleSelect">
+          <soundset name="DEMexicanCannonSelect">
+          </soundset>
+        </choice>
+        <choice name="DEDanish">
+          <soundset name="DanishHeavyArtillerySelect">
+          </soundset>
+        </choice>
+        <choice name="DEPolish">
+          <soundset name="PolishHeavyMilitarySelect">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="SpanishCannonSelect">
+          </soundset>
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianCannonSelect">
           </soundset>
         </choice>
       </civlogic>
@@ -411,12 +435,28 @@
         <choice name="XPIroquois">
           <targetlogic>
             <choice name="default">
-              <soundset name="IroquoisLightCannonAcknowledge">
-              </soundset>
+              <techlogic>
+                <choice name="none">
+                  <soundset name="IroquoisLightCannonAcknowledge">
+                  </soundset>
+                </choice>
+                <choice name="DEIndependenceIroquois">
+                  <soundset name="FrenchCannonAcknowledge">
+                  </soundset>
+                </choice>
+              </techlogic>
             </choice>
             <choice name="enemy">
-              <soundset name="IroquoisLightCannonAttack">
-              </soundset>
+              <techlogic>
+                <choice name="none">
+                  <soundset name="IroquoisLightCannonAttack">
+                  </soundset>
+                </choice>
+                <choice name="DEIndependenceIroquois">
+                  <soundset name="FrenchCannonAttack">
+                  </soundset>
+                </choice>
+              </techlogic>
             </choice>
             <choice name="build">
             </choice>
@@ -741,11 +781,59 @@
         <choice name="DEMexicans">
           <targetlogic>
             <choice name="default">
+              <soundset name="DEMexicanCannonAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEMexicanCannonAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEDanish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DanishHeavyArtilleryAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DanishHeavyArtilleryAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEPolish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="PolishHeavyMilitaryAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="PolishHeavyMilitaryAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEMaltese">
+          <targetlogic>
+            <choice name="default">
               <soundset name="SpanishCannonAcknowledge">
               </soundset>
             </choice>
             <choice name="enemy">
               <soundset name="SpanishCannonAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEItalians">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEItalianCannonAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEItalianCannonAttack">
               </soundset>
             </choice>
           </targetlogic>

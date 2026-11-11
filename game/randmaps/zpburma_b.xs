@@ -1391,6 +1391,19 @@ rmCreateTrigger("Starting Techs");
 rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
 rmSetTriggerEffectParamInt("Status",2);
+// King of the Hill on a tiny island (owner 2026-09-25): KotH mode unlocks - ships capture the hill - and any other
+// mode locks; one trigger, so exactly one of the two runs
+if (rmGetIsKOTH()) {
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",i);
+   rmSetTriggerEffectParam("TechID","cTechzpUnlockNavalKotH"); // KotH on a tiny island: every ship captures
+   rmSetTriggerEffectParamInt("Status",2);
+} else {
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",i);
+   rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+   rmSetTriggerEffectParamInt("Status",2);
+}
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechzpIsBurmaMap"); // Trade Route Setup
@@ -1576,6 +1589,32 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	}
 
 for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Korea"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","zpKoreans");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Wokou"+k);
 rmAddTriggerCondition("ZP Tech Researching (XS)");
 rmSetTriggerConditionParam("TechID","cTechzpBlackmailing"); //operator
@@ -1622,6 +1661,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Wokou"+k));
 rmSetTriggerPriority(4);

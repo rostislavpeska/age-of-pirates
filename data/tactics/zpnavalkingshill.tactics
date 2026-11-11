@@ -1,0 +1,10 @@
+<tactics>
+  <action>
+    <name stringid="69161">AutoConvert</name>
+    <type>AutoConvert</type>
+    <maxrange>25.0</maxrange>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal<action>AutoConvert</action>
+  </tactic>
+</tactics>

@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ottoman\ottoman_market_grouping\textures\Ottoman_market_grouping_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\ottoman\ottoman_market_grouping\textures\Ottoman_market_grouping_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ottoman\ottoman_market_grouping\textures\Ottoman_market_grouping_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\portuguese\prop_port_marketgroup01\textures\prop_prot_marketgroup01_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\portuguese\prop_port_marketgroup01\textures\prop_prot_marketgroup01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\portuguese\prop_port_marketgroup01\textures\prop_prot_marketgroup01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

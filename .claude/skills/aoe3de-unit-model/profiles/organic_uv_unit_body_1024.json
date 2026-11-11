@@ -1,0 +1,321 @@
+{
+ "schema": "blender-organic-uv/gates/1",
+ "name": "aoe3de-unit-body-1024",
+ "date": "2026-10-11",
+ "applies_to": "an Age of Empires III DE human unit (rider or infantry) whose body, and any weapon skinned into the body mesh, share one 1024 page; t/m numbers assume 1 engine unit = 1 m",
+ "derived_from": "vanilla AoE3 DE unit benchmark of 2026-10-11 (references/organic-uv-reference.md): iron_rider_0 body measured with uv_eval on its own page, and the DE 1024 bodies keshik_rider_rank01, yabusamerider_0, musketeer_2age, changdao_0, ashigaru_0age. Hard limits sit at or just past the vanilla value; targets are what the H1 recipe reached on a 1.1k-triangle rider",
+ "runs": {
+  "page": "uv_eval on every mesh of the page (body + skinned weapon), the attachment meshes as occluders",
+  "body": "uv_eval on the body alone (weapon and attachments as occluders): the fair comparison with a vanilla body that owns its page"
+ },
+ "checks": [
+  {
+   "id": "flipped_faces",
+   "label": "Flipped faces",
+   "run": "page",
+   "metric": "flips.flipped_faces",
+   "hard": {
+    "max": 0
+   },
+   "target": {
+    "max": 0
+   },
+   "evidence": "0 on every DE body"
+  },
+  {
+   "id": "self_folds",
+   "label": "Self-overlap (fold) px2",
+   "run": "page",
+   "metric": "overlaps.self_fold_px2",
+   "hard": {
+    "max": 0
+   },
+   "target": {
+    "max": 0
+   },
+   "evidence": "0 on every DE body; SLIM no_flip still left a 4.5 px2 strip fold once"
+  },
+  {
+   "id": "unintended_overlap",
+   "label": "Unintended overlap px2",
+   "run": "page",
+   "metric": "overlaps.unintended_px2",
+   "hard": {
+    "max": 0
+   },
+   "target": {
+    "max": 0
+   },
+   "evidence": "DE bodies 0-0.3 % stacked (one folded strap)"
+  },
+  {
+   "id": "mirrored_islands",
+   "label": "Mirrored islands",
+   "run": "page",
+   "metric": "flips.mirrored_islands",
+   "hard": {
+    "max": 0
+   },
+   "target": {
+    "max": 0
+   },
+   "evidence": "DE riders mirror 0 % of their UV"
+  },
+  {
+   "id": "declared_mirror",
+   "label": "Stacked mirror texels px2",
+   "run": "page",
+   "metric": "overlaps.declared_mirror_px2",
+   "hard": {
+    "max": 0
+   },
+   "target": {
+    "max": 0
+   },
+   "evidence": "DE bodies give every side its own texels (asymmetric paint, player colour)"
+  },
+  {
+   "id": "min_gap",
+   "label": "Min island gap px",
+   "run": "page",
+   "metric": "packing.min_island_gap_px",
+   "hard": {
+    "min": 8
+   },
+   "target": {
+    "min": 16
+   },
+   "evidence": "iron_rider_0 21.3 px (gutters vanish at mip 5); DE 4.4-21 px"
+  },
+  {
+   "id": "page_border",
+   "label": "Page border px",
+   "run": "page",
+   "metric": "packing.min_page_border_px",
+   "hard": {
+    "min": 4
+   },
+   "target": {
+    "min": 8
+   },
+   "evidence": "iron_rider_0 15 px"
+  },
+  {
+   "id": "L2",
+   "label": "L2 stretch (page)",
+   "run": "page",
+   "metric": "distortion.L2_stretch",
+   "hard": {
+    "max": 1.06
+   },
+   "target": {
+    "max": 1.03
+   },
+   "evidence": "iron_rider_0 1.052; a head priority raises the page L2 by design"
+  },
+  {
+   "id": "Linf",
+   "label": "Linf stretch",
+   "run": "page",
+   "metric": "distortion.Linf_stretch",
+   "hard": {
+    "max": 3.75
+   },
+   "target": {
+    "max": 2.0
+   },
+   "evidence": "iron_rider_0 3.75"
+  },
+  {
+   "id": "angle_mean",
+   "label": "Angle stretch sigma1/sigma2 mean",
+   "run": "page",
+   "metric": "distortion.angular_aniso_mean",
+   "hard": {
+    "max": 1.2
+   },
+   "target": {
+    "max": 1.15
+   },
+   "evidence": "iron_rider_0 1.149; DE 1.12-1.25"
+  },
+  {
+   "id": "angle_p90",
+   "label": "Angle stretch p90",
+   "run": "page",
+   "metric": "distortion.angular_aniso_p90",
+   "hard": {
+    "max": 1.45
+   },
+   "target": {
+    "max": 1.35
+   },
+   "evidence": "iron_rider_0 1.40"
+  },
+  {
+   "id": "density_p50",
+   "label": "Texel density p50 t/m",
+   "run": "page",
+   "metric": "texel_density.all.p50",
+   "hard": {
+    "min": 343
+   },
+   "target": {
+    "min": 360
+   },
+   "evidence": "iron_rider_0 343; DE p50 343-477"
+  },
+  {
+   "id": "density_visible_p10",
+   "label": "Visible-weighted density p10 t/m",
+   "run": "page",
+   "metric": "texel_density.visible_weighted.p10",
+   "hard": {
+    "min": 313
+   },
+   "target": {
+    "min": 350
+   },
+   "evidence": "iron_rider_0 313.4 (uv_eval run VAN_iron_rider_0_body: seated idle oprichnik_idle1 k0 on horse_idle_a k0, pitch 47, 8 headings), reproduced exactly by gr2_lint's visibility port; keshik_rider_rank01 332.2 (sword_idle_A k0 on horse_idle_A k0). Hard min = floor of the lowest vanilla reference, 313: the earlier 314 rounded 313.4 up and failed the reference itself (review finding 2026-10-11, resolved by measurement)"
+  },
+  {
+   "id": "coverage",
+   "label": "Texel coverage",
+   "run": "page",
+   "metric": "packing.coverage_texels",
+   "hard": {
+    "min": 0.55
+   },
+   "target": {
+    "min": 0.6
+   },
+   "evidence": "DE bodies 58-72 %"
+  },
+  {
+   "id": "gpu_vertices",
+   "label": "GPU vertices, every UV layer in file",
+   "run": "page",
+   "metric": "counts.gpu_vertices_all_uv_layers",
+   "hard": {
+    "max": 1050
+   },
+   "target": {
+    "max": 950
+   },
+   "evidence": "the unit model contract ceiling of 1,050 vertices; vanilla welded 628-1061; UV splits only, normal and material splits not counted"
+  },
+  {
+   "id": "upright",
+   "label": "Upright islands share",
+   "run": "page",
+   "metric": "orientation.upright_share_15deg",
+   "hard": {
+    "min": 0.7
+   },
+   "target": {
+    "min": 0.95
+   },
+   "evidence": "iron_rider_0 72 %; DE 46-73 %"
+  },
+  {
+   "id": "lr_asym",
+   "label": "Left/right density asymmetry",
+   "run": "page",
+   "metric": "symmetry.density_log2_asym_mean",
+   "hard": {
+    "max": 0.01
+   },
+   "target": {
+    "max": 0.003
+   },
+   "evidence": "iron_rider_0 0.0022"
+  },
+  {
+   "id": "seam_per_sqrt_area",
+   "label": "Body seam per sqrt(area)",
+   "run": "body",
+   "metric": "seams.seam_per_sqrt_area",
+   "hard": {
+    "max": 6.6
+   },
+   "target": {
+    "max": 5.6
+   },
+   "evidence": "iron_rider_0 5.30; DE 5.27-8.01"
+  },
+  {
+   "id": "visible_seam_per_sqrt_area",
+   "label": "Visible seam per sqrt(area)",
+   "run": "body",
+   "metric": "seams.visible_mean_per_sqrt_area",
+   "hard": {
+    "max": 1.03
+   },
+   "target": {
+    "max": 0.9
+   },
+   "evidence": "iron_rider_0 1.03 (seated idle, pitch 47)"
+  },
+  {
+   "id": "uv_split_ratio",
+   "label": "UV split ratio (body)",
+   "run": "body",
+   "metric": "counts.uv_split_ratio",
+   "hard": {
+    "max": 1.32
+   },
+   "target": {
+    "max": 1.25
+   },
+   "evidence": "iron_rider_0 1.22"
+  },
+  {
+   "id": "body_islands",
+   "label": "Body islands",
+   "run": "body",
+   "metric": "islands.count",
+   "hard": {
+    "max": 20
+   },
+   "target": {
+    "min": 10,
+    "max": 16
+   },
+   "evidence": "DE bodies 9-37 islands"
+  },
+  {
+   "id": "body_tiny_islands",
+   "label": "Body tiny islands",
+   "run": "body",
+   "metric": "islands.tiny_count",
+   "hard": {
+    "max": 2
+   },
+   "target": {
+    "max": 0
+   },
+   "evidence": "uv_eval tiny = under 16 x 16 texels; the benchmark counted iron_rider_0 with 2 islands of 4 triangles or fewer"
+  },
+  {
+   "id": "head_torso",
+   "label": "Head/torso density (bone regions)",
+   "run": "body",
+   "metric": "bone_regions.head_torso",
+   "hard": null,
+   "target": {
+    "min": 1.25,
+    "max": 1.35
+   },
+   "evidence": "owner 2026-10-11 agreed a head priority of about 1.3x like vanilla; iron_rider_0 1.30, changdao 1.22, ashigaru 1.37, keshik 1.47, yabusame 0.97, musketeer 1.02 (same estimator, all faces)"
+  },
+  {
+   "id": "head_torso_visible",
+   "label": "Head/torso, visible faces only",
+   "run": "body",
+   "metric": "bone_regions.head_torso_visible",
+   "hard": null,
+   "target": null,
+   "evidence": "information: the same estimator without never-visible faces; which variant carries the 1.3 target is an open owner decision (references/open-questions.md)"
+  }
+ ]
+}

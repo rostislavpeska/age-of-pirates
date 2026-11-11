@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<damagetemplate>
+	<model name="units\naval\treasureship\zptreasureship">
+		<impactpoint name="boneimpact01" bone="boneimpact01" impacttype=""/>
+		<impactpoint name="boneimpact02" bone="boneimpact02" impacttype=""/>
+		<impactpoint name="boneimpact03" bone="boneimpact03" impacttype=""/>
+		<impactpoint name="boneimpact04" bone="boneimpact04" impacttype=""/>
+		<impactpoint name="boneimpact05" bone="boneimpact05" impacttype=""/>
+		<impactpoint name="boneimpact06" bone="boneimpact06" impacttype=""/>
+		<impactpoint name="boneimpact07" bone="boneimpact07" impacttype=""/>
+		<impactpoint name="boneimpact08" bone="boneimpact08" impacttype=""/>
+	</model>
+</damagetemplate>

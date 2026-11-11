@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "301163" displayNameID = "301162" loadDetails="301164" largeMapName = "zmississippi"
+<mapinfo details = "501163" displayNameID = "501162" loadDetails="501164" largeMapName = "zmississippi"
     imagepath = "ui\random_map\mississippi\mississippi_mini" cannotReplace = "" loadBackground="ui\random_map\mississippi\mississippi_map">
 	<loadss>ui\random_map\mississippi\mississippi_01</loadss>
     <loadss>ui\random_map\mississippi\mississippi_02</loadss>

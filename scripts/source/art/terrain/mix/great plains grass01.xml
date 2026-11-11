@@ -1,0 +1,16 @@
+<mix>
+  <title>Great Plains Grass 1</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="fractalsum" freq="0.1" octaves="5" persistence="0.5">
+    <texture weight="2">great_plains\ground1_gp</texture>
+    <texture weight="1">great_plains\ground2_gp</texture>
+    <texture weight="1">great_plains\ground3_gp</texture>
+  </paint>
+  <objects mode="turbulence" freq="1.9" octaves="5" persistence="0.5" emptyweight="40" posoffset="0.5">
+    <model weight="2">terrain\great_plains\g_rocka_gp</model>
+    <model weight="2">terrain\great_plains\g_rockb_gp</model>
+    <model weight="2">terrain\great_plains\g_rockc_gp</model>
+    <model weight="2">terrain\great_plains\g_rockd_gp</model>
+    <model weight="1">terrain\great_plains\g_rocke_gp</model>
+  </objects>
+</mix>

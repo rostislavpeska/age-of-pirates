@@ -1,0 +1,11 @@
+<mix allowunderwater="true">
+  <title>Patagonia Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="5" persistence="0.9" emptyweight="0.70" posoffset="0.90">
+    <model underwater="true" mindepth="2.5" maxdepth="3" weight="1" scalemin="0.2" scalemax="1.5">terrain\patagonia\underbrush_rock_e_pat</model>
+    <model underwater="true" mindepth="2.5" maxdepth="3" weight="1" scalemin="0.2" scalemax="1.5">terrain\patagonia\underbrush_rock_d_pat</model>
+    <model underwater="true" mindepth="2.5" maxdepth="3" weight="3" scalemin="0.2" scalemax="4.5">terrain\patagonia\underbrush_rock_c_pat</model>
+    <model underwater="true" mindepth="2.5" maxdepth="3" weight="3" scalemin="0.2" scalemax="4.5">terrain\patagonia\underbrush_rock_b_pat</model>
+    <model underwater="true" mindepth="2.5" maxdepth="3" weight="3" scalemin="1" scalemax="4.5">terrain\new_england\cliff_rock_b_ne</model>
+  </objects>
+</mix>

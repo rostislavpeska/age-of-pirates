@@ -37,8 +37,16 @@
           </soundset>
         </choice>
         <choice name="Japanese">
-          <soundset name="PortugueseFrigateSelect">
-          </soundset>
+          <techlogic>
+            <choice name="none">
+              <soundset name="PortugueseFrigateSelect">
+              </soundset>
+            </choice>
+            <choice name="ypJapaneseMeijiVisualsShadow">
+              <soundset name="JapaneseShipsSelect">
+              </soundset>
+            </choice>
+          </techlogic>
         </choice>
         <choice name="Chinese">
           <soundset name="PortugueseFrigateSelect">
@@ -160,6 +168,22 @@
             </choice>
           </techlogic>
         </choice>
+        <choice name="DEDanish">
+          <soundset name="NorwegianWarshipSelect">
+          </soundset>
+        </choice>
+        <choice name="DEPolish">
+          <soundset name="PolishHeavyMilitarySelect">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianCulverinSelect">
+          </soundset>
+        </choice>
       </civlogic>
     </soundtype>
     <soundtype name="Death">
@@ -207,8 +231,24 @@
           </soundset>
         </choice>
         <choice name="Japanese">
-          <soundset name="PortugueseFrigateAcknowledge">
-          </soundset>
+          <techlogic>
+            <choice name="none">
+              <soundset name="PortugueseFrigateAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="ypJapaneseMeijiVisualsShadow">
+              <targetlogic>
+                <choice name="default">
+                  <soundset name="JapaneseShipsAcknowledge">
+                  </soundset>
+                </choice>
+                <choice name="enemy">
+                  <soundset name="JapaneseShipsAttack">
+                  </soundset>
+                </choice>
+              </targetlogic>
+            </choice>
+          </techlogic>
         </choice>
         <choice name="Chinese">
           <soundset name="PortugueseFrigateAcknowledge">
@@ -327,6 +367,38 @@
               </soundset>
             </choice>
           </techlogic>
+        </choice>
+        <choice name="DEDanish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="NorwegianWarshipAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="NorwegianWarshipAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEPolish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="PolishHeavyWarshipAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="PolishHeavyWarshipAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianFrigateAcknowledge">
+          </soundset>
         </choice>
       </civlogic>
     </soundtype>

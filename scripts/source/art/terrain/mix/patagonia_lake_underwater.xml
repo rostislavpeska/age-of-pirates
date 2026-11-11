@@ -1,0 +1,9 @@
+<mix allowunderwater="true">
+  <title>Patagonia Lake Underwater</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="1" posoffset="0.90">
+    <model underwater="true" mindepth="2.8" maxdepth="3" weight="1" scalemin="1" scalemax="3">terrain\patagonia\underbrush_rock_e_pat</model>
+    <model underwater="true" mindepth="2.8" maxdepth="3" weight="1" scalemin="1" scalemax="3">terrain\nwterritory\underbrush_rock1_nwt</model>
+    <model underwater="true" mindepth="2.5" maxdepth="3" weight="1" scalemin="0.3" scalemax="1">terrain\cave\cave_rock_e</model>
+  </objects>
+</mix>

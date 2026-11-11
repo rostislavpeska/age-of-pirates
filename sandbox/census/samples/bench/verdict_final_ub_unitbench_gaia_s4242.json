@@ -1,0 +1,11 @@
+{
+  "verdict": "FAIL_SPINE",
+  "counts": {
+    "TownCenter": 2,
+    "AIStart": 3
+  },
+  "notes": [
+    "positions unreadable in this save (parser heuristic); verdict by proto names",
+    "control 'House' absent"
+  ]
+}

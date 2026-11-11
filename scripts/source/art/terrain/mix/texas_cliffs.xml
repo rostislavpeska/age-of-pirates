@@ -1,0 +1,10 @@
+<mix>
+  <title>Texas Cliff</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.1" octaves="3" persistence="0.9" emptyweight="30" posoffset="1.0">
+    <model weight="2.0" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_cliffs_group1</model>
+    <model weight="2.0" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_cliffs_group2</model>
+    <model weight="2.0" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_cliffs_group3</model>
+    <model weight="2.0" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_cliffs_group4</model>
+  </objects>
+</mix>

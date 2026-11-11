@@ -1,0 +1,8 @@
+<mix>
+  <title>Africa Savanna Forest Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="3">AfricaSavanna\ground_forest2_afriSavanna</texture>
+    <texture weight="1">AfricaSavanna\ground_dirt1_afriSavanna</texture>
+  </paint>
+</mix>

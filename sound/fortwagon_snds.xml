@@ -103,8 +103,16 @@
           </soundset>
         </choice>
         <choice name="Japanese">
-          <soundset name="RussianSettlerMaleSelect">
-          </soundset>
+          <techlogic>
+            <choice name="none">
+              <soundset name="RussianSettlerMaleSelect">
+              </soundset>
+            </choice>
+            <choice name="ypJapaneseMeijiVisualsShadow">
+              <soundset name="JapaneseVillagerM_Select">
+              </soundset>
+            </choice>
+          </techlogic>
         </choice>
         <choice name="Chinese">
           <soundset name="RussianSettlerMaleSelect">
@@ -148,7 +156,7 @@
           </soundset>
         </choice>
         <choice name="DEMexicans">
-          <soundset name="SpanishSettlerMaleSelect">
+          <soundset name="DEMexicanSettlerMaleSelect">
           </soundset>
         </choice>
          <choice name="DEItalians">
@@ -160,6 +168,18 @@
           </soundset>
         </choice>
 
+        <choice name="DEDanish">
+          <soundset name="DanishSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="DEPolish">
+          <soundset name="PolishSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCCanadians">
+          <soundset name="BritishSettlerMaleSelect">
+          </soundset>
+        </choice>
       </civlogic>
     </soundtype>
     <soundtype name="Grunt">
@@ -277,8 +297,16 @@
           </soundset>
         </choice>
         <choice name="Japanese">
-          <soundset name="RussianSettlerMaleAcknowledge">
-          </soundset>
+          <techlogic>
+            <choice name="none">
+              <soundset name="RussianSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="ypJapaneseMeijiVisualsShadow">
+              <soundset name="JapaneseVillagerM_Acknowledge">
+              </soundset>
+            </choice>
+          </techlogic>
         </choice>
         <choice name="Chinese">
           <soundset name="RussianSettlerMaleAcknowledge">
@@ -330,10 +358,22 @@
           </soundset>
         </choice>
         <choice name="DEMexicans">
-          <soundset name="SpanishSettlerMaleAcknowledge">
+          <soundset name="DEMexicanSettlerMaleAcknowledge">
           </soundset>
         </choice>
 
+        <choice name="DEDanish">
+          <soundset name="DanishSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEPolish">
+          <soundset name="PolishSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCCanadians">
+          <soundset name="BritishSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
       </civlogic>
     </soundtype>
   </protounit>

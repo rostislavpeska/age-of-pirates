@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>4</width>
+	<height>6</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="1" posx="0.5101" posz="-3.5604" orientx="-0.9198" orienty="0.0000" orientz="0.3924">PropsColony</unit>
+		<unit variation="1" posx="0.3512" posz="-4.2859" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">PropsColony</unit>
+		<unit variation="30" posx="-3.1093" posz="-1.7904" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">deNativePropsCiviliansMale</unit>
+		<unit variation="0" posx="-1.3914" posz="-3.6600" orientx="0.9238" orienty="0.0000" orientz="-0.3828">zpPropOttomanMarketStall</unit>
+		<unit variation="90" posx="-0.2467" posz="-1.0363" orientx="0.0001" orienty="-0.0000" orientz="1.0000">zpNatEUPropObelisk</unit>
+		<unit variation="86" posx="-3.0051" posz="-0.3892" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">deNativePropsCiviliansMale</unit>
+		<unit variation="4" posx="0.8951" posz="0.4060" orientx="1.0000" orienty="0.0000" orientz="-0.0001">PropsColony</unit>
+		<unit variation="2" posx="-1.8250" posz="1.1643" orientx="-0.9240" orienty="0.0000" orientz="-0.3824">zpPropJewishMarketStall</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob">
+			<block startx="-2" startz="-3" endx="-2" endz="1"></block>
+			<block startx="-2" startz="2" endx="-2" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="props\east_colony2">
+			<block startx="-1" startz="-3" endx="-1" endz="1"></block>
+			<block startx="0" startz="-3" endx="0" endz="1"></block>
+			<block startx="1" startz="-3" endx="1" endz="1"></block>
+			<block startx="-1" startz="2" endx="-1" endz="2"></block>
+			<block startx="0" startz="2" endx="0" endz="2"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

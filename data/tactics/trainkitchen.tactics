@@ -13,7 +13,7 @@
         <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
     </action>
     <action>
-        <name stringid="301083">ExtraHPWagon</name>
+        <name stringid="501083">ExtraHPWagon</name>
         <type>AutoRangedModify</type>
         <active>0</active>
         <maxrange>100</maxrange>

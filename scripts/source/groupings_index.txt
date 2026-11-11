@@ -1,0 +1,469 @@
+# Vanilla grouping stems from <AoE3DE>/Game/RandMaps/groupings/ (loose files, not in .bar).
+# Snapshot 2026-08-09, build 24241387 (Baltic Powers open beta).
+# Refresh: ls that folder, strip .xml -> this file. Used by scripts/refdata grouping catalog.
+5star_fort
+5star_fort_giant_noTC
+5star_fort_large_battery
+5star_fort_large_battery_sockets
+5star_fort_large_noTC
+5star_fort_noTC_moarGates
+Araucania_HerdablePen 1
+Araucania_HerdablePen 2
+Araucania_HerdablePen 3
+Araucania_HerdablePen 4
+army_camp_01
+BerryPatch 1
+BerryPatch 2
+BerryPatch 3
+BerryPatch 4
+casualties_01
+casualties_02
+casualties_03
+casualties_04
+casualties_05
+casualties_06
+casualties_07
+casualties_08
+casualties_cart01
+casualties_cart02
+casualties_coffins_01
+clifftest
+clifftest2
+european/
+fixed_gun_east
+fixed_gun_north
+fixed_gun_northeast
+fixed_gun_northwest
+fixed_gun_south
+fixed_gun_southeast
+fixed_gun_southwest
+fixed_gun_west
+gl_silvermine01
+gl_silvermine_2
+gp_bigpatch
+gp_bigpatch02
+gp_bigpatch03
+gp_carcass_bison
+gp_dry_bigpatch04
+gp_dry_bigpatch05
+gp_dry_bigpatch06
+gp_dry_bigpatch07
+gp_dry_bigpatch08
+gp_dry_bigpatch09
+gp_flower01
+gp_flower02
+gp_flower03
+gp_flower04
+gp_flower05
+gp_flower06
+gp_flower07
+gp_flower08
+gp_grasspatch01
+gp_grasspatch02
+gp_grasspatch03
+gp_grasspatch04
+gp_grasspatch05
+gp_grasspatch06
+gp_grasspatch07
+great plains native
+hm01_economic_city_abandoned_01
+hm01_economic_city_abandoned_02
+hm01_economic_city_abandoned_03
+hm01_economic_city_abandoned_04
+hm01_economic_city_state_01
+hm01_economic_city_state_02
+hm01_economic_city_state_03
+hm01_economic_city_state_04
+hm01_prop_01
+hm01_prop_02
+hm01_prop_03
+hm01_prop_04
+hm01_prop_05
+hm01_prop_06
+hm01_religious_city_abandoned_01
+hm01_religious_city_abandoned_02
+hm01_religious_city_abandoned_03
+hm01_religious_city_abandoned_04
+hm01_religious_city_state_01
+hm01_religious_city_state_02
+hm01_religious_city_state_03
+hm01_religious_city_state_04
+hm02_fortress
+hm02_fortress_big
+hm02_prop_01
+hm02_prop_02
+hm02_prop_03
+hm02_prop_04
+hm02_prop_05
+hm03_farming_01
+hm03_farming_02
+hm03_farming_03
+hm03_lumber_01
+hm03_lumber_02
+hm03_lumber_03
+hm03_merchant_01
+hm03_merchant_02
+hm03_merchant_03
+hm03_mining_01
+hm03_mining_02
+hm03_mining_03
+hm03_prop_01
+hm03_prop_02
+hm03_prop_03
+hm03_prop_04
+hm03_prop_05
+hm04_cossacks_camp_01
+hm04_cossacks_camp_02
+hm04_outlaw_trading_camp_01
+hm04_outlaw_trading_camp_02
+hm04_outlaw_trading_camp_03
+hm04_outlaw_trading_camp_04
+hm04_prop_01
+hm04_prop_02
+hm04_prop_03
+hm04_prop_04
+hm04_prop_05
+hm05_district_01
+hm05_district_02
+hm05_district_03
+hm05_district_04
+hm05_megafortress_3side
+hm05_mega_fortress
+hm05_prop_01
+hm05_prop_02
+hm05_prop_03
+hm05_prop_04
+hm05_prop_05
+hm05_prop_06
+hm05_prop_07
+hm05_redoubt_base
+hm05_redoubt_resources
+hm06prop1
+hm06prop10
+hm06prop11
+hm06prop12
+hm06prop2
+hm06prop3
+hm06prop4
+hm06prop5
+hm06prop6
+hm06prop7
+hm06prop8
+hm06prop9
+hm06_coastbase_lower
+hm06_coastbase_upper
+hm06_crategroup_01
+hm06_crategroup_02
+hm06_crategroup_03
+hm06_crategroup_04
+hm06_crategroup_05
+hm06_crategroup_06
+hm06_playerbase
+hm07prop1
+hm07prop10
+hm07prop11
+hm07prop12
+hm07prop2
+hm07prop3
+hm07prop4
+hm07prop5
+hm07prop6
+hm07prop7
+hm07prop8
+hm07prop9
+hm07_capture_point_01
+hm07_capture_point_02
+hm07_capture_point_03
+hm07_capture_point_04
+hm07_capture_point_05
+hm07_redoubt_base
+hm08cliffprop1
+hm08cliffprop2
+hm08cliffprop3
+hm08cliffprop4
+hm08cliffprop5
+hm08prop1
+hm08prop10
+hm08prop11
+hm08prop12
+hm08prop13
+hm08prop2
+hm08prop3
+hm08prop4
+hm08prop5
+hm08prop6
+hm08prop7
+hm08prop8
+hm08prop9
+hm08_playerbase
+igc_treasure_ship
+Iroquois SPC Scenario 11
+native af akan village 1
+native af akan village 2
+native af akan village 3
+native af akan village 4
+native af akan village 5
+native af berber village 1
+native af berber village 2
+native af berber village 3
+native af berber village 4
+native af berber village 5
+native af somali village 1
+native af somali village 2
+native af somali village 3
+native af somali village 4
+native af somali village 5
+native af somali village des 1
+native af somali village des 2
+native af somali village des 3
+native af somali village des 4
+native af somali village des 5
+native af somali village east 1
+native af somali village east 2
+native af somali village east 3
+native af somali village east 4
+native af somali village east 5
+native af sudanese village 1
+native af sudanese village 2
+native af sudanese village 3
+native af sudanese village 4
+native af sudanese village 5
+native af yoruba village 1
+native af yoruba village 2
+native af yoruba village 3
+native af yoruba village 4
+native af yoruba village 5
+native apache village 1
+native apache village 2
+native apache village 3
+native apache village 4
+native apache village 5
+native aztec village 1
+native aztec village 2
+native aztec village 3
+native aztec village 4
+native aztec village 5
+native bhakti village 1
+Native Bhakti Village 2
+Native Bhakti Village 3
+Native Bhakti Village 4
+Native Bhakti Village 5
+native bhakti village ceylon 1
+native bhakti village ceylon 2
+native bhakti village ceylon 3
+native bhakti village ceylon 4
+native bhakti village ceylon 5
+native bhakti village himal 1
+native bhakti village himal 2
+native bhakti village himal 3
+native bhakti village himal 4
+native bhakti village himal 5
+native carib village 01
+native carib village 02
+native carib village 03
+native carib village 04
+native carib village 05
+native carib village 1
+native carib village 2
+native carib village 3
+native carib village 4
+native carib village 5
+native cherokee village 1
+native cherokee village 2
+native cherokee village 3
+native cherokee village 4
+native cherokee village 5
+native cheyenne village 1
+native cheyenne village 2
+native cheyenne village 3
+native cheyenne village 4
+native cheyenne village 5
+native comanche village 1
+native comanche village 2
+native comanche village 3
+native comanche village 4
+native comanche village 5
+native comanche village mockup
+native cree village 1
+native cree village 2
+native cree village 3
+native cree village 4
+native cree village 5
+native huron village 1
+native huron village 2
+native huron village 3
+native huron village 4
+native huron village 5
+native inca village 01
+native inca village 02
+native inca village 03
+native inca village 04
+native inca village 05
+native inca village 1
+native inca village 2
+native inca village 3
+native inca village 4
+native inca village 5
+native iroquois village 1
+native iroquois village 2
+native iroquois village 3
+native iroquois village 4
+native iroquois village 5
+native jesuit mission af 01
+native jesuit mission af 02
+native jesuit mission af 03
+native jesuit mission af 04
+native jesuit mission af 05
+native jesuit mission borneo 01
+native jesuit mission borneo 02
+native jesuit mission borneo 03
+native jesuit mission borneo 04
+native jesuit mission borneo 05
+native jesuit mission cj 01
+native jesuit mission cj 02
+native jesuit mission cj 03
+native jesuit mission cj 04
+native jesuit mission cj 05
+native klamath village 1
+native klamath village 2
+native klamath village 3
+native klamath village 4
+native klamath village 5
+native lakota village 1
+native lakota village 2
+native lakota village 3
+native lakota village 4
+native lakota village 5
+native lenape village 1
+native lenape village 2
+native lenape village 3
+native lenape village 4
+native lenape village 5
+native mapuche village 1
+native mapuche village 2
+native mapuche village 3
+native mapuche village 4
+native mapuche village 5
+native maya village 1
+native maya village 2
+native maya village 3
+native maya village 4
+native maya village 5
+native navajo village 1
+native navajo village 2
+native navajo village 3
+native navajo village 4
+native navajo village 5
+native nootka village 1
+native nootka village 2
+native nootka village 3
+native nootka village 4
+native nootka village 5
+native seminole village 1
+native seminole village 2
+native seminole village 3
+native seminole village 4
+native seminole village 5
+native shaolin temple mongol 01
+native shaolin temple mongol 02
+native shaolin temple mongol 03
+native shaolin temple mongol 04
+native shaolin temple mongol 05
+native shaolin temple yr 01
+native shaolin temple yr 02
+native shaolin temple yr 03
+native shaolin temple yr 04
+native shaolin temple yr 05
+native sufi mosque borneo 1
+native sufi mosque borneo 2
+native sufi mosque borneo 3
+native sufi mosque borneo 4
+native sufi mosque borneo 5
+native sufi mosque deccan 1
+native sufi mosque deccan 2
+native sufi mosque deccan 3
+native sufi mosque deccan 4
+native sufi mosque deccan 5
+native sufi mosque mongol 1
+native sufi mosque mongol 2
+native sufi mosque mongol 3
+native sufi mosque mongol 4
+native sufi mosque mongol 5
+native tengri village 01
+native tengri village 02
+native tengri village 03
+native tengri village 04
+native tengri village 05
+native tengri village steppe 01
+native tengri village steppe 02
+native tengri village steppe 03
+native tengri village steppe 04
+native tengri village steppe 05
+native tupi village 1
+native tupi village 2
+native tupi village 3
+native tupi village 4
+native tupi village 5
+native udasi village 1
+native Udasi village 2
+Native Udasi Village 3
+Native Udasi Village 4
+Native Udasi Village 5
+native udasi village himal 1
+native Udasi village himal 2
+native udasi village himal 3
+native udasi village himal 4
+native udasi village himal 5
+native zapotec village 1
+native zapotec village 2
+native zapotec village 3
+native zapotec village 4
+native zapotec village 5
+native zen temple ceylon 01
+native zen temple ceylon 02
+native zen temple ceylon 03
+native zen temple ceylon 04
+native zen temple ceylon 05
+native zen temple cj 01
+native zen temple cj 02
+native zen temple cj 03
+native zen temple cj 04
+native zen temple cj 05
+native zen temple yr 01
+native zen temple yr 02
+native zen temple yr 03
+native zen temple yr 04
+native zen temple yr 05
+native_camp01
+ne_rockwall 1
+ne_rockwall 2
+ne_rockwall 3
+ne_rockwall 4
+Nugget 1
+pampas_silermine01
+pa_grasspatch01
+Plymouth_PilgrimGroup 1
+Plymouth_PilgrimGroup 2
+Plymouth_PilgrimGroup 3
+Plymouth_PilgrimGroup 4
+Plymouth_PilgrimGroup 5
+Plymouth_PilgrimGroup 6
+plymouth_pumpkinpatch 1
+plymouth_pumpkinpatch 2
+plymouth_pumpkinpatch 3
+plymouth_pumpkinpatch 4
+plymouth_pumpkinpatch 5
+plymouth_pumpkinpatch 6
+prop_geyser
+regicide_walls
+saltpeter_01
+saltpeter_02
+saltpeter_03
+sonoramegamine_01
+sonoramegamine_02
+sonoramegamine_03
+sonora_mine01
+starforttest
+test
+Verseilles_Fixed_Gun_L
+Verseilles_Fixed_Gun_R

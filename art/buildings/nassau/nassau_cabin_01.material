@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_03_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_03_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_03_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

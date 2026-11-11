@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "301176" displayNameID = "301175" loadDetails="301177" largeMapName = "zpwwcanyon"
+<mapinfo details = "501176" displayNameID = "501175" loadDetails="501177" largeMapName = "zpwwcanyon"
     imagepath = "ui\random_map\wwcanyon\wwcanyon_mini" cannotReplace = "" loadBackground="ui\random_map\wwcanyon\wwcanyon_map">
 	<loadss>ui\random_map\wwcanyon\wwcanyon_01</loadss>
     <loadss>ui\random_map\wwcanyon\wwcanyon_02</loadss>

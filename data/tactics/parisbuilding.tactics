@@ -11,5 +11,19 @@
     <maxrange>20.0</maxrange>
     <persistent>1</persistent>
   </action>
-  <tactic>Normal<action>SpawnCardinal</action><action>AutoGather</action><action priority="25">AutoConvert</action></tactic>
+  <action>
+    <name stringid="103417">EstateEconomyAura</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>40</maxrange>
+    <modifyabstracttype>AbstractVillager</modifyabstracttype>
+    <forbidunittype>AbstractFishingBoat</forbidunittype>
+    <persistent>1</persistent>
+    <modifytype>GatherRate</modifytype>
+    <modifymultiplier>1.25</modifymultiplier>
+    <nostack>1</nostack>
+    <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <tactic>Normal<action>SpawnCardinal</action><action>AutoGather</action><action priority="25">AutoConvert</action><action>EstateEconomyAura</action></tactic>
 </tactics>

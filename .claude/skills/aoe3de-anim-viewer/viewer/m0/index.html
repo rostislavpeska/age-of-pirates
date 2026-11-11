@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M0 texture spike</title>
+<style>
+  body { margin: 16px; background: #1b1d21; color: #d8dbe0; font: 13px/1.4 ui-monospace, Consolas, monospace; }
+  canvas { display: none; }
+  pre { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Anim viewer M0: WebGL2 + S3TC + RGBA16F</h1>
+<p>Runs once on load and posts its report to the local server (scripts/server.py); headless.py reads the result.</p>
+<canvas id="gl" width="16" height="16"></canvas>
+<pre id="out">running...</pre>
+<script type="module" src="./m0.js"></script>
+</body>
+</html>

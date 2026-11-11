@@ -1,0 +1,22 @@
+<mix>
+  <title>Siberia Grass Snow B</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="3">rockies\groundsnow6_roc</texture>
+    <texture weight="5">rockies\groundsnow1_roc</texture>
+    <texture weight="2">rockies\groundsnow3_roc</texture>
+    <texture weight="2">rockies\groundsnow2_roc</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.75" octaves="8" persistence="0.6" emptyweight="90" posoffset="0.5">
+    <model weight="8" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_grass1</model>
+    <model weight="8" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_grass2</model>
+    <model weight="5" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_bush1</model>
+    <model weight="5" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_bush2</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_rock1</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_rock2</model>
+    <model weight="6" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_rock4</model>
+    <model weight="4" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_rock6</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_group1</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_snow_group2</model>
+  </objects>
+</mix>

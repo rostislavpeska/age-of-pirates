@@ -1,0 +1,27 @@
+{
+  "description": "AoP task inbox (AGENTS.md rule 13): late instructions reach a running agent; same hook as Claude's .claude/settings.json. Fallback when nothing arrives: python <tasks>/tasks.py inbox <TASK> --unread --reader codex at every step start. The command is plain Python (no shell syntax, any shell): a missing script (Codex started outside the repo root) exits 0 instead of python's exit 2.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -c \"import os,sys,runpy;f=os.path.join('.claude','hooks','inbox_hook.py');os.path.isfile(f) or sys.exit(0);sys.argv=[f];runpy.run_path(f,run_name='__main__')\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -c \"import os,sys,runpy;f=os.path.join('.claude','hooks','inbox_hook.py');os.path.isfile(f) or sys.exit(0);sys.argv=[f];runpy.run_path(f,run_name='__main__')\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

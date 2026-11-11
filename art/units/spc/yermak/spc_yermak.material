@@ -1,0 +1,44 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\yermak\textures\yermak_spc_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\yermak\textures\yermak_spc_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\yermak\textures\yermak_spc_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\yermak\textures\yermak_spc_mata_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\spc\yermak\textures\bogdan_spc_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\yermak\textures\bogdan_spc_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\yermak\textures\bogdan_spc_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="units\spc\yermak\textures\petro_spc_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\yermak\textures\petro_spc_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\yermak\textures\petro_spc_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\yermak\textures\ivan_spc_mata_Details">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="units\spc\yermak\textures\ivan_spc_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\yermak\textures\ivan_spc_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\yermak\textures\bogdan_spc_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\yermak\textures\ivan_spc_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

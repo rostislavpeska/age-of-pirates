@@ -1,0 +1,20 @@
+{
+  "proto": "zpSPCLondonBasilica",
+  "control": "House",
+  "stem": "000_unitbench_gaia",
+  "seed": 4242,
+  "players": 2,
+  "verdict": "FAIL_SPINE",
+  "units": 5,
+  "counts": {
+    "TownCenter": 2,
+    "AIStart": 3
+  },
+  "notes": [
+    "positions unreadable in this save (parser heuristic); verdict by proto names",
+    "control 'House' absent"
+  ],
+  "geo": {},
+  "screenshot": "C:\\Users\\TIGO\\Games\\Age of Empires 3 DE\\76561198347905238\\mods\\local\\age-of-pirates\\sandbox\\census\\samples\\bench\\ub_unitbench_gaia_s4242_generated.png",
+  "save": "C:\\Users\\TIGO\\Games\\Age of Empires 3 DE\\76561198347905238\\mods\\local\\age-of-pirates\\sandbox\\census\\samples\\bench\\ub_unitbench_gaia_s4242.age3Yscn"
+}

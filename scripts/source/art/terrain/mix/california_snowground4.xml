@@ -1,0 +1,9 @@
+<mix>
+  <title>California Snow Ground 4</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="1">california\groundsnow1_cal</texture>
+    <texture weight="1">california\groundsnow5_cal</texture>
+    <texture weight="1">california\groundsnow6_cal</texture>
+  </paint>
+</mix>

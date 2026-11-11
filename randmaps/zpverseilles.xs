@@ -70,10 +70,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "spcjesuit");
   
-		subCiv2=rmGetCivID("SPCbourbon");
-		rmEchoInfo("subCiv2 is SPCbourbon "+subCiv2);
+		subCiv2=rmGetCivID("Bourbon");
+		rmEchoInfo("subCiv2 is Bourbon "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "SPCbourbon");
+			rmSetSubCiv(2, "Bourbon");
 
         subCiv3=rmGetCivID("zpSansculottes");
 		rmEchoInfo("subCiv3 is zpSansculottes "+subCiv3);
@@ -1673,6 +1673,18 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers*1.5);
 
+	// ---- THE MAIN STREET (user 2026-09-24): the owner's EU_Deco_Main_Street export (3 x 114 tiles: flowers, statues,
+	// cypresses and a fountain on the cobbles) down the palace axis - the street between city columns 4 and 5 - its palace
+	// (north-west) end mainStreetStartTiles into the city: the first block row's palace-side tile is locZ1 + 7 tiles
+	// (15-tile blocks), the strip's is its origin + 56 tiles, so the origin sits 56 + mainStreetStartTiles - 7 tiles below
+	// locZ1 (a POSITIVE tile argument: negative ones are ignored silently). Placed last: no earlier unit index moves.
+	int mainStreetStartTiles = 1;
+	float mainStreetOffXM = 1.0;   // user 2026-09-24 in game: '1m offset northeast' - +x (minimap north-east = code +x)
+	int blockMainStreet = rmCreateGrouping("main street", "EU_Deco_Main_Street");
+	rmSetGroupingMinDistance(blockMainStreet, 0.00);
+	rmSetGroupingMaxDistance(blockMainStreet, 0.00);
+	rmPlaceGroupingAtLoc(blockMainStreet, 0, (locX4 + locX5) * 0.5 + rmXMetersToFraction(mainStreetOffXM), locZ1 - rmZTilesToFraction(56 + mainStreetStartTiles - 7));
+
 
 
 //add fish because why not
@@ -1692,11 +1704,11 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302069);
-	rmObjectiveScreenSetGoal(302070);
-	rmObjectiveAdd(302065, 302066, true, true, true); // General objective
+	rmObjectiveScreenSetTitle(502069);
+	rmObjectiveScreenSetGoal(502070);
+	rmObjectiveAdd(502065, 502066, true, true, true); // General objective
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302067, 302068, true, true, true); // Royal Court REV
+	rmObjectiveAdd(502067, 502068, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(2, 2);
 
 	// ************************* TRIGGERS ******************************
@@ -1807,6 +1819,10 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpForbidRevolutions"); // No normal revolutions on this map
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1816,6 +1832,10 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpBonusBourbon"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpExtendedBourbonsSPC");
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
@@ -1865,10 +1885,10 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParamInt("Level",1);
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("Civilization","SPCBourbon");
+	rmSetTriggerEffectParam("Civilization","Bourbon");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("StringID","302071");
+	rmSetTriggerEffectParam("StringID","502071");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2005,7 +2025,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 	rmSetTriggerEffectParamInt("Start", victoryCountDown);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","{302449}"); // Counter Message
+	rmSetTriggerEffectParam("Msg","{502449}"); // Counter Message
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("Victory_Defenders"));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
@@ -2098,6 +2118,32 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate Korea"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","zpKoreans");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2265,6 +2311,8 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
 	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
+	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
@@ -2294,7 +2342,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("Civilization","zpRevParis");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301916");
+	rmSetTriggerEffectParam("StringID","501916");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -2318,7 +2366,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("Civilization","DERevFrance");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301925");
+	rmSetTriggerEffectParam("StringID","501925");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -2342,7 +2390,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("Civilization","DERevFranceNE");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301926");
+	rmSetTriggerEffectParam("StringID","501926");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);

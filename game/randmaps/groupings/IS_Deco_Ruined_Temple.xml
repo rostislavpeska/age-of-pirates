@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>10</width>
+	<height>11</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="234" posx="-7.1085" posz="-8.8743" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpUnderbrushGreekColumns</unit>
+		<unit variation="239" posx="-3.2239" posz="-7.3858" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpUnderbrushGreekColumns</unit>
+		<unit variation="129" posx="-0.3838" posz="-7.6461" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpUnderbrushGreekColumns</unit>
+		<unit variation="137" posx="-5.8143" posz="-6.6056" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="236" posx="-4.0805" posz="-7.6533" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushMongolia</unit>
+		<unit variation="114" posx="-5.6571" posz="-6.2511" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushGreatPlains</unit>
+		<unit variation="10" posx="-4.1122" posz="-6.6540" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushSaguenay</unit>
+		<unit variation="236" posx="6.2498" posz="-6.0685" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushSaguenay</unit>
+		<unit variation="127" posx="-5.4201" posz="-5.6924" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="194" posx="-6.5326" posz="-5.7144" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="234" posx="8.2321" posz="-4.2866" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpUnderbrushGreekColumns</unit>
+		<unit variation="88" posx="8.9944" posz="-4.2213" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushSaguenay</unit>
+		<unit variation="71" posx="-5.6015" posz="-3.9147" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpUnderbrushGreekColumns</unit>
+		<unit variation="221" posx="-2.4311" posz="-3.3627" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RuinWallSmall</unit>
+		<unit variation="80" posx="-1.1951" posz="-3.2591" orientx="0.0000" orienty="0.0000" orientz="-1.0000">RuinWallSmall</unit>
+		<unit variation="21" posx="0.2723" posz="-3.2912" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RuinWallSmall</unit>
+		<unit variation="21" posx="6.4549" posz="-3.2535" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RuinWallSmall</unit>
+		<unit variation="21" posx="3.2186" posz="-3.2399" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RuinWallSmall</unit>
+		<unit variation="82" posx="4.8152" posz="-3.3204" orientx="0.0000" orienty="0.0000" orientz="-1.0000">RuinWallSmall</unit>
+		<unit variation="68" posx="-6.2085" posz="-0.9167" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="13" posx="-5.7549" posz="-0.5255" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="49" posx="-5.7657" posz="-1.7317" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="93" posx="-5.2832" posz="-1.3751" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushSaguenay</unit>
+		<unit variation="28" posx="-2.1620" posz="-0.6302" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">RuinWallSmall</unit>
+		<unit variation="158" posx="-5.9702" posz="1.6732" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushGreekColumns</unit>
+		<unit variation="57" posx="-6.0442" posz="1.0988" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="205" posx="-6.1129" posz="1.3603" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="184" posx="-6.0178" posz="1.7495" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="103" posx="6.8366" posz="0.3927" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="221" posx="6.9313" posz="2.7983" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">UnderbrushSaguenay</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="california\ground10_cal">
+			<block startx="-2" startz="0" endx="-2" endz="3"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="4"></block>
+			<block startx="0" startz="-2" endx="0" endz="4"></block>
+			<block startx="1" startz="-2" endx="1" endz="3"></block>
+			<block startx="2" startz="-1" endx="2" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

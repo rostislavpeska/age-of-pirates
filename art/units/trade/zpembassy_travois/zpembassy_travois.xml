@@ -1,0 +1,430 @@
+<animfile>
+  <submodel>az_travois<component>az_travois<logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\aztec_travois</file>
+          </assetreference>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\aztec_travois</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>2.00</width>
+        <height>4.00</height>
+      </decal>
+    </component>
+    <anim>Walk<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\aztec_travois_ani\walk</file>
+      </assetreference>
+      <component>az_travois</component>
+    </anim>
+    <anim>Idle<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\aztec_travois_ani\idle</file>
+      </assetreference>
+      <component>az_travois</component>
+    </anim>
+    <anim>Death<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\aztec_travois_ani\death</file>
+      </assetreference>
+      <component>az_travois</component>
+    </anim>
+  </submodel>
+  <submodel>iro_travois<definebone>HS Bone Hoof Back Rt</definebone>
+    <definebone>HS Bone Hoof Back Lt</definebone>
+    <definebone>HS Bone Master</definebone>
+    <attachment>Horse_Debris<component>Horse_Debris<assetreference type="ParticleSystem">
+          <file>effects\animal particles\horse_debris.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>Horse_Debris</component>
+      </anim>
+    </attachment>
+    <attachment>Horse_Dust<component>Horse_Dust<assetreference type="ParticleSystem">
+          <file>effects\animal particles\horse_dust.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>Horse_Dust</component>
+      </anim>
+    </attachment>
+    <component>iro_travois<linksection>
+        <linkoffset>.7</linkoffset>
+        <linkcomponent>iroquois_travois_m4Shape</linkcomponent>
+        <linkcomponent>iroquois_travois_m2Shape</linkcomponent>
+        <linkcomponent>iroquois_travoisShape</linkcomponent>
+        <linkconstraint>0</linkconstraint>
+      </linksection>
+      <linksection>
+        <linkoffset>0</linkoffset>
+        <linkcomponent>iroquois_travois_m1Shape</linkcomponent>
+        <linkcomponent>iroquois_travois_m3Shape</linkcomponent>
+        <linkconstraint>1</linkconstraint>
+      </linksection>
+      <logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\iroquois_travois</file>
+          </assetreference>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\iroquois_travois</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>2.00</width>
+        <height>4.00</height>
+      </decal>
+      <watersplash>
+        <texture>units\artillery\cannon\wheel_B</texture>
+        <width>1.75</width>
+        <height>2.00</height>
+      </watersplash>
+    </component>
+    <anim>Walk<assetreference type="GrannyAnim">
+        <file>units\trade\travois_walk</file>
+        <tag type="FootstepLeft">0.30</tag>
+        <tag type="FootstepRight">0.80</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.11</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.28</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.46</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.61</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.77</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.94</tag>
+      </assetreference>
+      <component>iro_travois</component>
+      <attach a="Horse_Debris" frombone="HS Bone Master" tobone="HS Bone Hoof Back Lt" syncanims="0" />
+      <attach a="Horse_Debris" frombone="HS Bone Master" tobone="HS Bone Hoof Back Rt" syncanims="0" />
+      <attach a="Horse_Dust" frombone="HS Bone Master" tobone="HS Bone Hoof Back Lt" syncanims="0" />
+      <attach a="Horse_Dust" frombone="HS Bone Master" tobone="HS Bone Hoof Back Rt" syncanims="0" />
+    </anim>
+    <anim>Idle<assetreference type="GrannyAnim">
+        <file>units\trade\travois_idle</file>
+      </assetreference>
+      <component>iro_travois</component>
+    </anim>
+    <anim>Death<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\travois_death</file>
+      </assetreference>
+      <component>iro_travois</component>
+    </anim>
+  </submodel>
+  <submodel>sio_travois<definebone>HS Bone Hoof Back Rt</definebone>
+    <definebone>HS Bone Hoof Back Lt</definebone>
+    <definebone>HS Bone Master</definebone>
+    <attachment>Horse_Debris<component>Horse_Debris<assetreference type="ParticleSystem">
+          <file>effects\animal particles\horse_debris.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>Horse_Debris</component>
+      </anim>
+    </attachment>
+    <attachment>Horse_Dust<component>Horse_Dust<assetreference type="ParticleSystem">
+          <file>effects\animal particles\horse_dust.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>Horse_Dust</component>
+      </anim>
+    </attachment>
+    <component>sio_travois<linksection>
+        <linkoffset>.7</linkoffset>
+        <linkcomponent>sioux_travois_guyShape</linkcomponent>
+        <linkcomponent>sioux_travois_horseShape</linkcomponent>
+        <linkcomponent>sioux_travois_ropeShape</linkcomponent>
+        <linkconstraint>0</linkconstraint>
+      </linksection>
+      <linksection>
+        <linkoffset>0</linkoffset>
+        <linkcomponent>sioux_travoisShape</linkcomponent>
+        <linkcomponent>sioux_travois_tiesShape</linkcomponent>
+        <linkconstraint>1</linkconstraint>
+      </linksection>
+      <logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\sioux_travois</file>
+          </assetreference>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\sioux_travois</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>2.00</width>
+        <height>4.00</height>
+      </decal>
+      <watersplash>
+        <texture>units\artillery\cannon\wheel_B</texture>
+        <width>1.75</width>
+        <height>2.00</height>
+      </watersplash>
+    </component>
+    <anim>Walk<assetreference type="GrannyAnim">
+        <file>units\trade\travois_walk</file>
+      </assetreference>
+      <component>sio_travois</component>
+      <attach a="Horse_Debris" frombone="HS Bone Master" tobone="HS Bone Hoof Back Lt" syncanims="0" />
+      <attach a="Horse_Debris" frombone="HS Bone Master" tobone="HS Bone Hoof Back Rt" syncanims="0" />
+      <attach a="Horse_Dust" frombone="HS Bone Master" tobone="HS Bone Hoof Back Lt" syncanims="0" />
+      <attach a="Horse_Dust" frombone="HS Bone Master" tobone="HS Bone Hoof Back Rt" syncanims="0" />
+    </anim>
+    <anim>Idle<assetreference type="GrannyAnim">
+        <file>units\trade\travois_idle</file>
+      </assetreference>
+      <component>sio_travois</component>
+    </anim>
+    <anim>Death<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\travois_death</file>
+      </assetreference>
+      <component>sio_travois</component>
+    </anim>
+  </submodel>
+  <submodel>inc_travois<component>inc_travois<logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\inca_travois</file>
+          </assetreference>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>units\trade\indian_travois\inca_travois</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>2.00</width>
+        <height>4.00</height>
+      </decal>
+    </component>
+    <anim>Walk<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\aztec_travois_ani\walk</file>
+      </assetreference>
+      <component>inc_travois</component>
+    </anim>
+    <anim>Idle<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\aztec_travois_ani\idle</file>
+      </assetreference>
+      <component>inc_travois</component>
+    </anim>
+    <anim>Death<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\aztec_travois_ani\death</file>
+      </assetreference>
+      <component>inc_travois</component>
+    </anim>
+  </submodel>
+  <submodel>african_travois<definebone>bone_prop_attach</definebone>
+    <definebone>bone_guide</definebone>
+    <definebone>bone_zebu_attach</definebone>
+    <attachment>Horse_Debris<component>Horse_Debris<assetreference type="ParticleSystem">
+          <file>effects\animal particles\horse_debris.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>Horse_Debris</component>
+      </anim>
+    </attachment>
+    <attachment>Prop_1<component>Prop_1<assetreference type="GrannyModel">
+          <file>units\trade\indian_travois\african_travois\african_travois_props</file>
+        </assetreference>
+      </component>
+      <anim>Idle<component>Prop_1</component>
+      </anim>
+    </attachment>
+    <attachment>Zebu<include>units\trade\indian_travois\african_travois\african_travois_zebu.xml</include>
+    </attachment>
+    <attachment>Guide<include>units\trade\indian_travois\african_travois\african_travois_guide.xml</include>
+    </attachment>
+    <component>constructiontravois<assetreference type="GrannyModel">
+        <file>units\trade\indian_travois\african_travois\african_travois</file>
+      </assetreference>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>2.00</width>
+        <height>4.00</height>
+      </decal>
+      <watersplash>
+        <texture>units\artillery\cannon\wheel_B</texture>
+        <width>1.75</width>
+        <height>2.00</height>
+      </watersplash>
+      <attach a="Prop_1" frombone="ATTACHPOINT" tobone="bone_prop_attach" syncanims="0" />
+      <attach a="Guide" frombone="ATTACHPOINT" tobone="bone_guide" syncanims="1" />
+      <attach a="Zebu" frombone="ATTACHPOINT" tobone="bone_zebu_attach" syncanims="1" />
+    </component>
+    <anim>Idle<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\african_travois\african_travois_idle</file>
+        <weight>10</weight>
+      </assetreference>
+      <component>constructiontravois</component>
+    </anim>
+    <anim>Walk<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\african_travois\african_travois_walk</file>
+        <weight>10</weight>
+      </assetreference>
+      <component>constructiontravois</component>
+    </anim>
+    <anim>Death<assetreference type="GrannyAnim">
+        <file>units\trade\indian_travois\african_travois\african_travois_death</file>
+        <weight>10</weight>
+      </assetreference>
+      <component>constructiontravois</component>
+    </anim>
+  </submodel>
+  <submodel>euro_wagon<definebone>bone_wheel03</definebone>
+    <definebone>bone_wheel04</definebone>
+    <attachment>yoke<include>units\trade\supply_cart\supply_cart_yoke.xml</include>
+    </attachment>
+    <component>euro_wagon<linksection>
+        <linkoffset>0</linkoffset>
+        <linkcomponent>axel</linkcomponent>
+        <linkconstraint>0</linkconstraint>
+      </linksection>
+      <linksection>
+        <linkoffset>-1.6</linkoffset>
+        <linkcomponent>supply_cart_outpostShape</linkcomponent>
+        <linkcomponent>supply_cart_outpost_cargoShape</linkcomponent>
+        <linkcomponent>supply_cart_outpost_driverShape</linkcomponent>
+        <linkconstraint>1</linkconstraint>
+      </linksection>
+      <linksection>
+        <linkoffset>-2.0</linkoffset>
+        <linkconstraint>1</linkconstraint>
+      </linksection>
+      <linksection>
+        <linkoffset>-3.0</linkoffset>
+        <linkconstraint>1</linkconstraint>
+      </linksection>
+      <assetreference type="GrannyModel">
+        <file>units\trade\supply_cart\supply_cart_outpost</file>
+      </assetreference>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture>shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+        <width>2.00</width>
+        <height>4.00</height>
+      </decal>
+      <attach a="yoke" frombone="hotspot" tobone="ATTACHPOINT" syncanims="1" />
+    </component>
+    <anim>Idle<assetreference type="GrannyAnim">
+        <file>units\villagers\covered_wagon\covered_wagon_idle</file>
+      </assetreference>
+      <component>euro_wagon</component>
+    </anim>
+    <anim>Walk<assetreference type="GrannyAnim">
+        <file>units\villagers\covered_wagon\covered_wagon_walk</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.14</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.26</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.38</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.51</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.64</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.77</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.90</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.03</tag>
+      </assetreference>
+      <component>euro_wagon</component>
+    </anim>
+    <anim>Death<assetreference type="GrannyAnim">
+        <file>animation_library\wagon\wagon_death</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.50</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.03</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.04</tag>
+      </assetreference>
+      <component>euro_wagon</component>
+    </anim>
+  </submodel>
+  <!-- AoP: the embassy wagon's own copy of the vanilla units\trade\indian_travois\native_travois.xml
+       (deEmbassyTravois only, protomods rewrite; the vanilla file stays with the 18 other travois units).
+       The none branch is the vanilla Culture logic unchanged; each tech below gives the wagon its European name,
+       so it shows the European wagon too (owner 2026-10-26). -->
+  <component>native_travois<logic type="Tech">
+      <none>
+        <logic type="Culture">
+          <aztec>
+            <submodelref ref="az_travois" />
+          </aztec>
+          <iroquois>
+            <submodelref ref="iro_travois" />
+          </iroquois>
+          <sioux>
+            <submodelref ref="sio_travois" />
+          </sioux>
+          <inca>
+            <submodelref ref="inc_travois" />
+          </inca>
+          <westerneurope>
+            <submodelref ref="euro_wagon" />
+          </westerneurope>
+          <easterneurope>
+            <submodelref ref="euro_wagon" />
+          </easterneurope>
+          <africaeast>
+            <submodelref ref="african_travois" />
+          </africaeast>
+          <africawest>
+            <submodelref ref="african_travois" />
+          </africawest>
+        </logic>
+      </none>
+      <deeumapupdatevisuals>
+        <submodelref ref="euro_wagon" />
+      </deeumapupdatevisuals>
+      <deenablespccitystatetechs>
+        <submodelref ref="euro_wagon" />
+      </deenablespccitystatetechs>
+      <dehcancienregime>
+        <submodelref ref="euro_wagon" />
+      </dehcancienregime>
+      <dehcprinceelectors>
+        <submodelref ref="euro_wagon" />
+      </dehcprinceelectors>
+      <dehcrevprinceelectors>
+        <submodelref ref="euro_wagon" />
+      </dehcrevprinceelectors>
+      <dehcroyalunion>
+        <submodelref ref="euro_wagon" />
+      </dehcroyalunion>
+      <dehcoldenburgkings>
+        <submodelref ref="euro_wagon" />
+      </dehcoldenburgkings>
+      <zpvenicecitysetup>
+        <submodelref ref="euro_wagon" />
+      </zpvenicecitysetup>
+      <zpenablespccitystatetechsclone>
+        <submodelref ref="euro_wagon" />
+      </zpenablespccitystatetechsclone>
+      <zpspcflorencesetup>
+        <submodelref ref="euro_wagon" />
+      </zpspcflorencesetup>
+      <zpenableistanbulcitytechs>
+        <submodelref ref="euro_wagon" />
+      </zpenableistanbulcitytechs>
+      <zpbosporusmapsetup>
+        <submodelref ref="euro_wagon" />
+      </zpbosporusmapsetup>
+    </logic>
+    <watersplash>
+      <texture>effects\projectiles\cannonball_splash</texture>
+      <width>1.5</width>
+      <height>1.5</height>
+    </watersplash>
+  </component>
+</animfile>

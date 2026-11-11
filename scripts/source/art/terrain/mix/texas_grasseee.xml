@@ -1,0 +1,10 @@
+<mix>
+  <title>Texas Grasseee</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="1" posoffset="0.1">
+    <model weight="1" scalemin="0.3" scalemax="0.7">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.3" scalemax="0.7">terrain\underbrush\underbrush_desert_bush6</model>
+    <model weight="2" scalemin="0.2" scalemax="0.7">terrain\underbrush\underbrush_desert_grass1</model>
+    <model weight="2" scalemin="0.2" scalemax="0.7">terrain\underbrush\underbrush_desert_grass2</model>
+  </objects>
+</mix>

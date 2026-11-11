@@ -1,0 +1,9 @@
+<mix>
+  <title>Ivory Coast Grass Medium</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="1">AfricaRainforest\ground_grass1_afriRainforest</texture>
+    <texture weight="2">AfricaRainforest\ground_grass2_afriRainforest</texture>
+    <texture weight="4">AfricaRainforest\ground_grass3_afriRainforest</texture>
+  </paint>
+</mix>

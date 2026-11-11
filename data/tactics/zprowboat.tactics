@@ -49,7 +49,7 @@
     <rate type="LogicalTypeShipsAndBuildings">1.0 </rate>
   </action>
   <action>
-    <name stringid="302477">SabotageAttack</name>
+    <name stringid="502477">SabotageAttack</name>
     <type>Attack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>

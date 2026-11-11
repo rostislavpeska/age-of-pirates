@@ -1692,7 +1692,7 @@ int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-string volcanoID = "0";
+string volcanoID = ""+(rmGetUnitPlaced(volcanoAvoider, 0)); // the crater-centre avoider, read at generation (literal ids drifted, docs/volcano_lava_system.md)
 
 int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
 int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
@@ -1705,30 +1705,6 @@ string wokou1ID = ""+(flag3-1);
 string wokou2ID = ""+(flag4-1);
 
 
-if (cNumberNonGaiaPlayers == 1){
-volcanoID = "270";
-}
-if (cNumberNonGaiaPlayers == 2){
-volcanoID = "271";
-}
-if (cNumberNonGaiaPlayers == 3){
-volcanoID = "272";
-}
-if (cNumberNonGaiaPlayers == 4){
-volcanoID = "273";
-}
-if (cNumberNonGaiaPlayers == 5){
-volcanoID = "274";
-}
-if (cNumberNonGaiaPlayers == 6){
-volcanoID = "275";
-}
-if (cNumberNonGaiaPlayers == 7){
-volcanoID = "276";
-}
-if (cNumberNonGaiaPlayers == 8){
-volcanoID = "277";
-}
 
 if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
@@ -2568,6 +2544,10 @@ rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2649,6 +2629,32 @@ rmSetTriggerLoop(false);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Korea"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","zpKoreans");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2785,6 +2791,8 @@ rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");

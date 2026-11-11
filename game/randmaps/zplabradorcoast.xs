@@ -441,15 +441,15 @@ int subCiv3=-1;
 
 if (rmAllocateSubCivs(4) == true)
 {
-	subCiv0=rmGetCivID("inuitnatives");
-	rmEchoInfo("subCiv0 is inuitnatives "+subCiv0);
+	subCiv0=rmGetCivID("Inuit");
+	rmEchoInfo("subCiv0 is Inuit "+subCiv0);
 	if (subCiv0 >= 0)
-		rmSetSubCiv(0, "inuitnatives");
+		rmSetSubCiv(0, "Inuit");
 
-	subCiv1=rmGetCivID("inuitnatives");
-	rmEchoInfo("subCiv1 is inuitnatives"+subCiv1);
+	subCiv1=rmGetCivID("Inuit");
+	rmEchoInfo("subCiv1 is Inuit"+subCiv1);
 	if (subCiv1 >= 0)
-			rmSetSubCiv(1, "inuitnatives");
+			rmSetSubCiv(1, "Inuit");
 	
 	subCiv2=rmGetCivID("zpscientists");
 	rmEchoInfo("subCiv2 is zpscientists"+subCiv2);
@@ -1044,6 +1044,30 @@ if (cNumberNonGaiaPlayers ==8){
 	unitID8 = "358";
 	}
 
+// Starting techs
+
+rmCreateTrigger("Starting Techs");
+rmSwitchToTrigger(rmTriggerID("Starting techs"));
+for(k=1; <= cNumberNonGaiaPlayers) {
+// King of the Hill on a tiny island (owner 2026-09-25): KotH mode unlocks - ships capture the hill - and any other
+// mode locks; one trigger, so exactly one of the two runs
+if (rmGetIsKOTH()) {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpUnlockNavalKotH"); // KotH on a tiny island: every ship captures
+	rmSetTriggerEffectParamInt("Status",2);
+} else {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+	rmSetTriggerEffectParamInt("Status",2);
+}
+}
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
 // Italian Vilager Balance
 
 for (k=1; <= cNumberNonGaiaPlayers) {
@@ -1106,6 +1130,32 @@ rmSetTriggerConditionParamInt("PlayerID",k);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Pick Consulate Tech");
+rmSetTriggerEffectParamInt("Player",k);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(true);
+}
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Activate Consulate Korea"+k);
+rmAddTriggerCondition("ZP Player Civilization");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("Civilization","zpKoreans");
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1241,6 +1291,8 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
 rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
+rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
@@ -1253,6 +1305,22 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// Inuit extension - unlocks the AoP big button on the DLC Inuit trading post
+
+for(k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Extended Inuits Plr"+k);
+rmAddTriggerCondition("Always");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpExtendedInuits");
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
 
 // Trade Route Setup
 

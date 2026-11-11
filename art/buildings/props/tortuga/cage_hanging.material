@@ -1,0 +1,40 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\props\tortuga\textures\gitter_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\props\tortuga\textures\gitter_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\props\tortuga\textures\gitter_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\casualties\textures\deadmusketeer02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\casualties\textures\deadmusketeer02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\casualties\textures\deadmusketeer02_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\casualties\textures\deadmusketeer02_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

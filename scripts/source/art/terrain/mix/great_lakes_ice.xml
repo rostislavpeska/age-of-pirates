@@ -1,0 +1,9 @@
+<mix>
+  <title>Great Lakes Ice</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="2" persistence="0.35">
+    <texture weight="1">great_lakes\ground_ice2_glw</texture>
+    <texture weight="1">great_lakes\ground_ice1_glw</texture>
+    <texture weight="2">great_lakes\ground_ice3_glw</texture>
+  </paint>
+</mix>

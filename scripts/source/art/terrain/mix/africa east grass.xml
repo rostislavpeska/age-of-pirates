@@ -1,0 +1,9 @@
+<mix>
+  <title>Africa East Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="1">andes\ground07_and</texture>
+    <texture weight="1">andes\ground08_and</texture>
+    <texture weight="4">andes\ground16_and</texture>
+  </paint>
+</mix>

@@ -112,6 +112,8 @@ extern bool gPirateBlockWalls = false;       // Used to prevent wall building on
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 extern bool gIsAtollMap = false;             // A subset of archipelago maps containing more, smaller islands
 extern bool gIsNavalKOTH = false;            // Maps with a naval KOTH fort on water
+extern bool gIsIstanbulMap = false;          // Istanbul map class - set by IstanbulVictoryObject, not by map name
+extern int  gIstanbulKothTarget = -1;        // the fort we are currently going for
 
 extern int gIslandAttackPlan = -1;              // Used on archipelago maps to tell ships to attack islands
 extern int forwardAttackWave = -1;
@@ -424,6 +426,7 @@ extern bool gDefenseReflexPaused =
 extern int gDefenseReflexBaseID = -1;                  // Set to the base ID that we're defending in this emergency
 extern vector gDefenseReflexLocation = cInvalidVector; // Location we're defending in this emergency
 extern int gDefenseReflexTimeout = 0;
+extern bool gDefensivelyOverrun = false;
 
 extern int gLandUnitPicker = -1; // Picks the best land military units to train.
 
@@ -495,6 +498,10 @@ extern int gGalleonUnit = cUnitTypeGalleon;
 extern int gFrigateUnit = cUnitTypeFrigate;
 extern int gMonitorUnit = cUnitTypeMonitor;
 extern int gCanoeUnit = -1;                    // Canoe type determined in navymanager
+
+extern int gEnemyPlayers = -1;
+extern int gSameIslandEnemyPlayers = -1;
+extern bool gForceRansomExplorer = false;
 
 extern int gRaidPlanID = -1;             // AssertiveWall: used for persistent raid plan
 
@@ -591,3 +598,22 @@ extern const bool cDebugHCCards = false;
 extern const bool cDebugChats = false;
 extern const bool cDebugSetup = false;
 extern const bool cDebugCore = false;
+
+// AssertiveWall: BETA CHANGE added new debug global variables
+//==============================================================================
+// Debug variables.
+//==============================================================================
+extern int gDebugUtilitiesID = -1;
+extern int gDebugBuildingsID = -1;
+extern int gDebugTechsID = -1;
+extern int gDebugExplorationID = -1;
+extern int gDebugEconomyID = -1;
+extern int gDebugEconomicUnitsID = -1;
+extern int gDebugMilitaryAttackingID = -1;
+extern int gDebugMilitaryDefendingID = -1;
+extern int gDebugMilitaryUnitsID = -1;
+extern int gDebugMilitaryNavyID = -1;
+extern int gDebugHCCardsID = -1;
+extern int gDebugChatsID = -1;
+extern int gDebugSetupID = -1;
+extern int gDebugCoreID = -1;

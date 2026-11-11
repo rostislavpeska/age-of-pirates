@@ -1,0 +1,14 @@
+{
+  "verdict": "PASS",
+  "counts": {
+    "TownCenter": 2,
+    "House": 1,
+    "zpSPCLondonBasilica": 1,
+    "AIStart": 3
+  },
+  "notes": [
+    "positions unreadable in this save (parser heuristic); verdict by proto names"
+  ],
+  "save": "C:\\Users\\TIGO\\Games\\Age of Empires 3 DE\\76561198347905238\\mods\\local\\age-of-pirates\\sandbox\\census\\samples\\bench\\bench_000_unitbench_zpSPCLondonBasilica_s4242.age3Yscn",
+  "screenshot": "C:\\Users\\TIGO\\Games\\Age of Empires 3 DE\\76561198347905238\\mods\\local\\age-of-pirates\\sandbox\\census\\samples\\bench\\bench_000_unitbench_zpSPCLondonBasilica_s4242_generated.png"
+}

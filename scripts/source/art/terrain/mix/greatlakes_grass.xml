@@ -1,0 +1,21 @@
+<mix>
+  <title>Great Lakes Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.5">
+    <texture weight="2">great_lakes\ground_grass1_gls</texture>
+    <texture weight="2">great_lakes\ground_grass2_gls</texture>
+    <texture weight="1">great_lakes\ground_grass3_gls</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.35" octaves="3" persistence="0.65" emptyweight="65" posoffset="0.95">
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_lake_bush1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_lake_bush2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="1" scalemin="0.5" scalemax="0.8">terrain\underbrush\underbrush_forest_rock5</model>
+    <model weight="1" scalemin="1.0" scalemax="1.0">terrain\underbrush\underbrush_forest_group4</model>
+  </objects>
+</mix>

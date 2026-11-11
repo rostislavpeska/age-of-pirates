@@ -1,0 +1,27 @@
+<mix>
+  <title>Bayou Plants</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.1" octaves="4" persistence="0.7" emptyweight="0" posoffset="0.1">
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_group1</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_lilypads1</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_lilypads2</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_lilypads3</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_lilypads4</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_lilypads5</model>
+    <model weight="30" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_lake_stump1</model>
+    <model weight="30" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_lake_stump2</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_grass1</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_grass2</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock1</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock2</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock3</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock4</model>
+    <model weight="30" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock5</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_algae1</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_algae2</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_algae3</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_algae4</model>
+    <model weight="30" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_lake_algae5</model>
+    <model weight="30" scalemin="0.3" scalemax="1.0">terrain\underbrush\underbrush_lake_deadtree1</model>
+  </objects>
+</mix>

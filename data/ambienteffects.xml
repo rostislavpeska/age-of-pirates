@@ -30,6 +30,7 @@
       <type>arcticterritories</type>
       <type>hawaii</type>
       <type>cookislands</type>
+      <type>arcticterritorieswater</type>
     </maptypes>
     <minspawntime>90</minspawntime>
     <maxspawntime>300</maxspawntime>
@@ -50,6 +51,7 @@
       <type>newEngland</type>
       <type>dakota</type>
       <type>northwestTerritory</type>
+      <type>arcticterritorieswater</type>
     </maptypes>
     <minspawntime>90</minspawntime>
     <maxspawntime>300</maxspawntime>

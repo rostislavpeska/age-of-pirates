@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "300403" displayNameID = "300398" loadDetails="300404" largeMapName = "zpeldorado"
+<mapinfo details = "500403" displayNameID = "500398" loadDetails="500404" largeMapName = "zpeldorado"
     imagepath = "ui\random_map\eldorado\eldorado_mini" cannotReplace = "" loadBackground="ui\random_map\eldorado\eldorado_map">
 	<loadss>ui\random_map\eldorado\eldorado_01</loadss>
     <loadss>ui\random_map\eldorado\eldorado_02</loadss>

@@ -7,12 +7,12 @@
 		<logic type="Variation">
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\polish_church_age4</file>
+					<file>buildings\church\zppolish_church_age4</file>
 				</assetreference>
 			</data>
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\polish_church_age2</file>
+					<file>buildings\church\zppolish_church_age2</file>
 				</assetreference>
 			</data>
 		</logic>

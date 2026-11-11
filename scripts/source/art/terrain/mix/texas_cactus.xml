@@ -1,0 +1,29 @@
+<mix>
+  <title>Texas Cactus</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="6" persistence="0.9" emptyweight="0.01" posoffset="0.5">
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_bush1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_bush3</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_bush4</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_bush6</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_rock1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_rock2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_rock3</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_rock4</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_pearcactus1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_pearcactus2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_pearcactus3</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_pearcactus4</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_desert_pearcactus5</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_saguarocactus1</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_saguarocactus2</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_saguarocactus3</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_desert_saguarocactus4</model>
+    <model weight="0.3" scalemin="0.4" scalemax="1.0">terrain\patagonia\underbrush_log_a_pat</model>
+    <model weight="0.3" scalemin="1.0" scalemax="4.0">terrain\patagonia\underbrush_log_b_pat</model>
+    <model weight="0.3" scalemin="0.2" scalemax="0.6">terrain\underbrush\underbrush_forest_log1</model>
+    <model weight="0.3" scalemin="0.2" scalemax="0.6">terrain\underbrush\underbrush_forest_log2</model>
+    <model weight="0.3" scalemin="0.2" scalemax="0.6">terrain\underbrush\underbrush_forest_log3</model>
+  </objects>
+</mix>

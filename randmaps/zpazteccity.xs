@@ -1321,11 +1321,11 @@ void main(void)
 	rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302437);
-	rmObjectiveScreenSetGoal(302868);
-	rmObjectiveAdd(302452, 302453, true, true, true); // General objective
+	rmObjectiveScreenSetTitle(502437);
+	rmObjectiveScreenSetGoal(502868);
+	rmObjectiveAdd(502452, 502453, true, true, true); // General objective
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302451, 302453, true, true, true); // Royal Court REV
+	rmObjectiveAdd(502451, 502453, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(2, 2);
 
 
@@ -1459,6 +1459,13 @@ void main(void)
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	// players only - gaia keeps its protos (a setup tech on gaia resets AutoConvert suspensions)
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+	}
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
@@ -1532,7 +1539,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","VictoryCounter");
 	rmSetTriggerEffectParamInt("Start", victoryCountDown);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","{302450}"); // Counter Message
+	rmSetTriggerEffectParam("Msg","{502450}"); // Counter Message
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("Victory_Defenders"));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
@@ -1791,6 +1798,32 @@ void main(void)
 	}
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Korea"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","zpKoreans");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
 	rmCreateTrigger("Activate Consulate China"+k);
 	rmAddTriggerCondition("ZP Player Civilization");
 	rmSetTriggerConditionParamInt("Player",k);
@@ -1908,6 +1941,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 	rmAddTriggerEffect("Fire Event");

@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>20</width>
+	<height>25</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="86" posx="-1.7972" posz="-19.2025" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
+		<unit variation="66" posx="2.6137" posz="-21.7345" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="240" posx="-1.6884" posz="-21.6954" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSPCCityStateWall5Prop</unit>
+		<unit variation="124" posx="-2.6213" posz="-20.1016" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="47" posx="-7.6757" posz="-21.7979" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="240" posx="-11.6766" posz="-17.6982" orientx="0.7071" orienty="0.0000" orientz="0.7071">deSPCCityStateWall5Prop</unit>
+		<unit variation="124" posx="-7.3658" posz="-17.5692" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="124" posx="-6.9665" posz="-18.8850" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="240" posx="6.2791" posz="-18.2550" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deSPCCityStateWall5Prop</unit>
+		<unit variation="124" posx="4.5072" posz="-18.2855" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="124" posx="-2.7204" posz="-19.0414" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="124" posx="3.5356" posz="-17.2364" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="124" posx="2.7810" posz="-16.4817" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="141" posx="-8.2501" posz="-16.3297" orientx="0.7071" orienty="0.0000" orientz="0.7071">deSPCCityStateHouseProp</unit>
+		<unit variation="176" posx="-2.2592" posz="-18.2685" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeTowerHabsburg</unit>
+		<unit variation="124" posx="-3.0686" posz="-17.4370" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="124" posx="-11.2653" posz="-13.6697" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">SPCPathBlock3</unit>
+		<unit variation="124" posx="-9.2098" posz="-13.2399" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">SPCPathBlock3</unit>
+		<unit variation="124" posx="-10.1364" posz="-13.7354" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">SPCPathBlock3</unit>
+		<unit variation="181" posx="5.9273" posz="-12.5659" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCNationalBank</unit>
+		<unit variation="47" posx="-15.0485" posz="-14.4291" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="204" posx="12.7861" posz="-11.8087" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSPCCityStateWall5Prop</unit>
+		<unit variation="1" posx="-4.1952" posz="-13.9932" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCMarketStall</unit>
+		<unit variation="115" posx="-11.3646" posz="-11.0202" orientx="1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateHouseProp</unit>
+		<unit variation="38" posx="-15.0739" posz="-11.2095" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall3Prop</unit>
+		<unit variation="0" posx="-5.1639" posz="-9.7063" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
+		<unit variation="124" posx="12.0417" posz="-9.4311" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="124" posx="10.3904" posz="-8.4505" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="29" posx="-7.4963" posz="-9.2120" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCMarketStall</unit>
+		<unit variation="128" posx="-2.4112" posz="-8.3465" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainFlattenGround</unit>
+		<unit variation="128" posx="11.3270" posz="-9.3574" orientx="-0.9937" orienty="0.0000" orientz="-0.1118">deSPCTreeCypressProp</unit>
+		<unit variation="47" posx="-15.1075" posz="-8.3435" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="47" posx="16.7636" posz="-8.1159" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="124" posx="13.2815" posz="-5.7066" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="15.3541" posz="-5.7180" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="135" posx="4.8908" posz="-7.1871" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilFemale</unit>
+		<unit variation="99" posx="1.2752" posz="-8.4206" orientx="-0.7873" orienty="0.0007" orientz="0.6166">Sheep</unit>
+		<unit variation="37" posx="-11.0000" posz="-8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
+		<unit variation="83" posx="-9.0000" posz="-8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
+		<unit variation="128" posx="-12.5259" posz="-6.9547" orientx="0.9937" orienty="0.0000" orientz="0.1118">deSPCTreeCypressProp</unit>
+		<unit variation="38" posx="16.5950" posz="-4.9528" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCCityStateWall3Prop</unit>
+		<unit variation="107" posx="12.4490" posz="-5.1456" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateHouseProp</unit>
+		<unit variation="0" posx="-10.1712" posz="-5.4624" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
+		<unit variation="96" posx="7.4841" posz="-4.7064" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCMarketStall</unit>
+		<unit variation="162" posx="3.6214" posz="-6.2418" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpSPCMarketStall</unit>
+		<unit variation="7" posx="6.5123" posz="-6.4105" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
+		<unit variation="201" posx="2.0212" posz="-5.0044" orientx="0.8133" orienty="-0.0009" orientz="-0.5819">zpGoose</unit>
+		<unit variation="44" posx="5.4928" posz="-4.2234" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilMale</unit>
+		<unit variation="220" posx="9.6714" posz="-2.8077" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
+		<unit variation="165" posx="-0.5542" posz="-3.2988" orientx="-0.3744" orienty="-0.0022" orientz="0.9273">zpGoose</unit>
+		<unit variation="246" posx="0.8565" posz="-3.7521" orientx="-0.0309" orienty="0.0040" orientz="-0.9995">zpGoose</unit>
+		<unit variation="138" posx="-4.6772" posz="-2.2948" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNuggetKidnapGuillotine</unit>
+		<unit variation="0" posx="-5.2108" posz="-1.2882" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCPoles</unit>
+		<unit variation="0" posx="3.8056" posz="-1.3682" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
+		<unit variation="101" posx="10.6865" posz="-1.7268" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
+		<unit variation="224" posx="3.6773" posz="-2.3314" orientx="0.9819" orienty="-0.0046" orientz="0.1891">zpGoose</unit>
+		<unit variation="189" posx="8.8479" posz="-0.6924" orientx="0.3533" orienty="-0.0050" orientz="0.9355">Sheep</unit>
+		<unit variation="244" posx="0.0187" posz="-1.5876" orientx="-0.8346" orienty="0.0054" orientz="-0.5509">zpGoose</unit>
+		<unit variation="47" posx="16.4329" posz="-1.8790" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="138" posx="-0.7800" posz="0.1093" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
+		<unit variation="255" posx="3.1530" posz="-0.1515" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
+		<unit variation="208" posx="16.1948" posz="0.9352" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
+		<unit variation="96" posx="-8.3454" posz="0.7071" orientx="0.3104" orienty="0.0025" orientz="-0.9506">Sheep</unit>
+		<unit variation="9" posx="15.0000" posz="0.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
+		<unit variation="121" posx="-0.6419" posz="9.1960" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCGermanCathedral</unit>
+		<unit variation="48" posx="-9.1007" posz="3.2873" orientx="0.0700" orienty="0.0036" orientz="-0.9975">Sheep</unit>
+		<unit variation="216" posx="10.8902" posz="1.9886" orientx="-0.8842" orienty="0.0016" orientz="0.4670">Sheep</unit>
+		<unit variation="18" posx="-10.1211" posz="5.0873" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilMale</unit>
+		<unit variation="176" posx="-13.6305" posz="5.2769" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
+		<unit variation="215" posx="-13.7956" posz="4.6613" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
+		<unit variation="48" posx="-11.7079" posz="3.6616" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="17" posx="-13.0000" posz="4.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
+		<unit variation="47" posx="-15.5574" posz="4.5895" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="38" posx="-15.6090" posz="7.6464" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall3Prop</unit>
+		<unit variation="241" posx="-6.8937" posz="6.0934" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="0" posx="10.1267" posz="7.2071" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
+		<unit variation="0" posx="-8.9875" posz="6.7366" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
+		<unit variation="247" posx="-12.6539" posz="8.8138" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCCityStateHouseProp</unit>
+		<unit variation="124" posx="-11.0875" posz="9.5831" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="-12.9964" posz="10.4249" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="-13.7493" posz="10.1895" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="117" posx="14.7194" posz="8.5164" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
+		<unit variation="237" posx="14.9541" posz="7.5972" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
+		<unit variation="101" posx="13.3745" posz="7.9130" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="129" posx="12.3097" posz="8.0014" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="124" posx="-11.2972" posz="11.7854" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="-12.4992" posz="11.9513" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="-13.7830" posz="12.2786" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="47" posx="16.5517" posz="9.1438" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="204" posx="16.4440" posz="13.9273" orientx="1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall5Prop</unit>
+		<unit variation="216" posx="-9.0479" posz="10.8857" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilFemale</unit>
+		<unit variation="192" posx="13.9883" posz="9.5165" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
+		<unit variation="68" posx="10.9775" posz="11.2103" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
+		<unit variation="182" posx="13.0000" posz="10.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
+		<unit variation="240" posx="-15.5186" posz="15.5330" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall5Prop</unit>
+		<unit variation="1" posx="12.3463" posz="11.6090" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCMarketStall</unit>
+		<unit variation="43" posx="14.0109" posz="12.2982" orientx="-0.1584" orienty="0.0000" orientz="0.9874">deSPCTreeCypressProp</unit>
+		<unit variation="124" posx="8.2057" posz="13.7007" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="124" posx="14.5080" posz="15.3986" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="13.5769" posz="15.8416" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="12.3509" posz="16.0043" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="10.8500" posz="16.1720" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="124" posx="7.7272" posz="15.6066" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="124" posx="-6.5142" posz="14.9650" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="54" posx="-10.7425" posz="15.7550" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPROPBuildingMixCliffPlacement</unit>
+		<unit variation="124" posx="-11.6576" posz="16.6002" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="22" posx="10.1194" posz="17.1588" orientx="0.8882" orienty="0.0000" orientz="-0.4595">deSPCTreeCypressProp</unit>
+		<unit variation="124" posx="-7.6872" posz="17.3232" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="124" posx="-9.6321" posz="17.1345" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="47" posx="16.2669" posz="20.0831" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="124" posx="8.7166" posz="18.2112" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="47" posx="-15.5786" posz="20.4767" orientx="1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
+		<unit variation="240" posx="0.5351" posz="20.1767" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCCityStateWall5Prop</unit>
+		<unit variation="240" posx="10.3512" posz="20.1148" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCCityStateWall5Prop</unit>
+		<unit variation="240" posx="-9.4262" posz="20.1751" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCCityStateWall5Prop</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="props\east_colony">
+			<block startx="-8" startz="6" endx="-8" endz="6"></block>
+			<block startx="-7" startz="2" endx="-7" endz="6"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="-1"></block>
+			<block startx="-6" startz="2" endx="-6" endz="6"></block>
+			<block startx="-5" startz="5" endx="-5" endz="6"></block>
+			<block startx="-8" startz="-6" endx="-8" endz="-2"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-5"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-9" endx="-5" endz="-4"></block>
+			<block startx="-4" startz="-9" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-9" endx="-3" endz="-8"></block>
+			<block startx="-2" startz="-9" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-9" endx="-1" endz="-5"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="-2"></block>
+			<block startx="0" startz="-9" endx="0" endz="-4"></block>
+			<block startx="1" startz="-9" endx="1" endz="-3"></block>
+			<block startx="2" startz="-9" endx="2" endz="-3"></block>
+			<block startx="3" startz="-9" endx="3" endz="-2"></block>
+			<block startx="-4" startz="1" endx="-4" endz="6"></block>
+			<block startx="-3" startz="1" endx="-3" endz="6"></block>
+			<block startx="-2" startz="0" endx="-2" endz="6"></block>
+			<block startx="-1" startz="0" endx="-1" endz="6"></block>
+			<block startx="0" startz="0" endx="0" endz="6"></block>
+			<block startx="1" startz="0" endx="1" endz="6"></block>
+			<block startx="2" startz="0" endx="2" endz="3"></block>
+			<block startx="2" startz="5" endx="2" endz="6"></block>
+			<block startx="3" startz="1" endx="3" endz="6"></block>
+			<block startx="4" startz="-1" endx="4" endz="-1"></block>
+			<block startx="4" startz="3" endx="4" endz="6"></block>
+			<block startx="5" startz="-1" endx="5" endz="0"></block>
+			<block startx="6" startz="-1" endx="6" endz="0"></block>
+			<block startx="6" startz="4" endx="6" endz="5"></block>
+			<block startx="7" startz="-1" endx="7" endz="0"></block>
+			<block startx="7" startz="4" endx="7" endz="5"></block>
+			<block startx="8" startz="-1" endx="8" endz="0"></block>
+			<block startx="8" startz="5" endx="8" endz="6"></block>
+			<block startx="4" startz="-8" endx="4" endz="-2"></block>
+			<block startx="5" startz="-7" endx="5" endz="-6"></block>
+			<block startx="5" startz="-3" endx="5" endz="-2"></block>
+			<block startx="6" startz="-6" endx="6" endz="-6"></block>
+			<block startx="6" startz="-3" endx="6" endz="-2"></block>
+			<block startx="7" startz="-3" endx="7" endz="-2"></block>
+			<block startx="-4" startz="-10" endx="-4" endz="-10"></block>
+			<block startx="-3" startz="-10" endx="-3" endz="-10"></block>
+			<block startx="-2" startz="-10" endx="-2" endz="-10"></block>
+			<block startx="-1" startz="-10" endx="-1" endz="-10"></block>
+			<block startx="0" startz="-10" endx="0" endz="-10"></block>
+			<block startx="1" startz="-10" endx="1" endz="-10"></block>
+			<block startx="-8" startz="7" endx="-8" endz="8"></block>
+			<block startx="-7" startz="7" endx="-7" endz="9"></block>
+			<block startx="-6" startz="7" endx="-6" endz="9"></block>
+			<block startx="-5" startz="7" endx="-5" endz="9"></block>
+			<block startx="-4" startz="7" endx="-4" endz="8"></block>
+			<block startx="-3" startz="7" endx="-3" endz="9"></block>
+			<block startx="-2" startz="7" endx="-2" endz="9"></block>
+			<block startx="-1" startz="7" endx="-1" endz="9"></block>
+			<block startx="0" startz="7" endx="0" endz="9"></block>
+			<block startx="1" startz="7" endx="1" endz="9"></block>
+			<block startx="2" startz="7" endx="2" endz="9"></block>
+			<block startx="3" startz="7" endx="3" endz="8"></block>
+			<block startx="4" startz="7" endx="4" endz="8"></block>
+			<block startx="5" startz="8" endx="5" endz="8"></block>
+			<block startx="6" startz="7" endx="6" endz="10"></block>
+			<block startx="7" startz="7" endx="7" endz="9"></block>
+			<block startx="8" startz="7" endx="8" endz="8"></block>
+		</tilegroup>
+		<tilegroup type="Ice" subtype="city\ground1_cob">
+			<block startx="-8" startz="-1" endx="-8" endz="1"></block>
+			<block startx="-7" startz="-1" endx="-7" endz="1"></block>
+			<block startx="-6" startz="0" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="4"></block>
+			<block startx="-7" startz="-2" endx="-7" endz="-2"></block>
+			<block startx="-6" startz="-2" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-2"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-3" endx="0" endz="-2"></block>
+			<block startx="1" startz="-2" endx="1" endz="-2"></block>
+			<block startx="2" startz="-2" endx="2" endz="-2"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-1" endx="0" endz="-1"></block>
+			<block startx="1" startz="-1" endx="1" endz="-1"></block>
+			<block startx="2" startz="-1" endx="2" endz="-1"></block>
+			<block startx="3" startz="-1" endx="3" endz="0"></block>
+			<block startx="4" startz="0" endx="4" endz="2"></block>
+			<block startx="5" startz="1" endx="5" endz="6"></block>
+			<block startx="6" startz="1" endx="6" endz="3"></block>
+			<block startx="7" startz="1" endx="7" endz="3"></block>
+			<block startx="8" startz="1" endx="8" endz="2"></block>
+			<block startx="5" startz="7" endx="5" endz="7"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

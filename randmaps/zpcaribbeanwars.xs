@@ -939,13 +939,11 @@ for(i=1; <cNumberPlayers) {
    //rmForbidTradeMonopoly(true);
 
    // ____________________ MAP OBJECTIVES ____________________
-    rmObjectiveScreenSetTitle(302118);
-    rmObjectiveScreenSetGoal(302869);
-    if (rmGetIsKOTH())
-      rmObjectiveAdd(302236, 302232, true, true, true);
-    else
-      rmObjectiveAdd(302225, 302226, true, true, true);
-    rmObjectiveAdd(302223, 302224, false, true, true);
+   rmObjectiveScreenSetTitle(502219);
+   rmObjectiveScreenSetGoal(502869);
+   if (rmGetIsKOTH())
+      rmObjectiveAdd(502236, 502232, true, true, true);
+   rmObjectiveAdd(502223, 502224, false, true, true);
 
 
 // ------Triggers--------//
@@ -1001,6 +999,19 @@ string guardianUnit2 = "zpPirateGuard";
 rmCreateTrigger("Starting Techs");
 rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
+// naval KotH - one trigger, so exactly one of the two runs: KotH mode unlocks (every ship captures),
+// any other mode locks (ships capture nothing). Owner 2026-09-25: 'if / else will be better'
+if (rmGetIsKOTH()) {
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",i);
+   rmSetTriggerEffectParam("TechID","cTechzpUnlockNavalKotH"); // naval KotH: every ship captures
+   rmSetTriggerEffectParamInt("Status",2);
+} else {
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",i);
+   rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+   rmSetTriggerEffectParamInt("Status",2);
+}
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
@@ -1037,136 +1048,170 @@ rmSetTriggerEffectParamInt("Status",2);
 // **************** KotH Victory ************************
 
 if (rmGetIsKOTH()){
+
+   // ------------------------------------------------------------------
+   //  NAVAL KOTH - the ENGINE owns the capture decision.
+   //
+   //  zpKingsHillNaval carries zpnavalkingshill.tactics, an AutoConvert
+   //  action at maxrange 25; a ship trips it only with the ConvertsHerds
+   //  unittype. The base game gives most ships that type since its
+   //  2026-09-10 patch, so every mod map strips it (zpLockShipCapture) and
+   //  this map, in KotH mode, grants zpUnlockNavalKotH instead - both in
+   //  "Starting Techs" (if / else), so exactly one of them runs.
+   //
+   //  No guardians on this castle, so no AutoConvert suspension - capture is
+   //  live from the start, which is what KotH mode wants.
+   //
+   //  What used to live here was a hand-rolled rule whose blocker test was
+   //  (i != k) - player IDENTITY, not hostility - so two ALLIES each waited
+   //  for the other to leave and the castle never changed hands. That whole
+   //  family is gone; the engine has no such edge case.
+   //  Identical to the system in zpblacksea.xs.
+   // ------------------------------------------------------------------
+
+   //  FOLLOWERS - no logic, they only read who owns the castle. Exactly one
+   //  player can own it, so exactly one of these can ever be true: they need
+   //  no team test and cannot oscillate. AutoConvert converts ONLY the object
+   //  carrying the action, so the city-state flags need this to follow it.
    for (k=1; <= cNumberNonGaiaPlayers) {
-   rmCreateTrigger("ConvertKotH_Player"+k);
+      rmCreateTrigger("FollowKotH_Player"+k);
+   }
+   for (k=1; <= cNumberNonGaiaPlayers) {
+      rmSwitchToTrigger(rmTriggerID("FollowKotH_Player"+k));
+      rmAddTriggerCondition("Units Owned");
+      rmSetTriggerConditionParamInt("Player",k);
+      rmSetTriggerConditionParam("SrcObject",""+kothCastleMod);
+      for (i=0; <= cNumberNonGaiaPlayers) {
+         rmAddTriggerEffect("Convert Units in Area");
+         rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+         rmSetTriggerEffectParamInt("SrcPlayer",i);
+         rmSetTriggerEffectParamInt("TrgPlayer",k);
+         rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+         rmSetTriggerEffectParamInt("Dist",15);
+         // The lighthouse prop follows the castle too, so the tower reads as
+         // part of the captured fort instead of staying gaia. It sits 9.75
+         // from the castle - inside Dist 15, same as the flags at 12.9 - and
+         // carries ForceUpdateVisualWhenCnverted.
+         rmAddTriggerEffect("Convert Units in Area");
+         rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+         rmSetTriggerEffectParamInt("SrcPlayer",i);
+         rmSetTriggerEffectParamInt("TrgPlayer",k);
+         rmSetTriggerEffectParam("UnitType","zpPropWaterTower");
+         rmSetTriggerEffectParamInt("Dist",15);
+      }
+      // arm the sister followers so the NEXT owner change is caught
+      for (i=1; <= cNumberNonGaiaPlayers) {
+         if (i != k){
+            rmAddTriggerEffect("Fire Event");
+            rmSetTriggerEffectParamInt("EventID", rmTriggerID("FollowKotH_Player"+i));
+         }
+      }
+      rmAddTriggerEffect("Play Soundset");
+      rmSetTriggerEffectParam("Soundset","SheepFound");
+      rmSetTriggerPriority(4);
+      rmSetTriggerActive(true);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
    }
 
-   rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+i));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
-   rmAddTriggerEffect("Music Play");
-   rmSetTriggerPriority(1);
-   rmSetTriggerActive(false);
-   rmSetTriggerRunImmediately(false);
-   rmSetTriggerLoop(false);
+   // Team Victory and handling Objectives
 
-   // KotH Conversion
-   for (k=1; <= cNumberNonGaiaPlayers) {
-   rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
-   rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
-   rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParamInt("Dist",25);
-   rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-   rmSetTriggerConditionParam("Op",">=");
-   rmSetTriggerConditionParamFloat("Count",1);
-   for (i=1; <= cNumberNonGaiaPlayers) {
-      if (i != k){
-         rmAddTriggerCondition("Units in Area");
-         rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
-         rmSetTriggerConditionParamInt("Player",i);
-         rmSetTriggerConditionParamInt("Dist",25);
-         rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-         rmSetTriggerConditionParam("Op","==");
-         rmSetTriggerConditionParamFloat("Count",0);
-      }
-   }
-   rmAddTriggerEffect("Convert");
-   rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-   rmSetTriggerEffectParamInt("PlayerID",k);
-   for (i=0; <= cNumberNonGaiaPlayers) {
-      rmAddTriggerEffect("Convert Units in Area");
-      rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-      rmSetTriggerEffectParamInt("SrcPlayer",i);
-      rmSetTriggerEffectParamInt("TrgPlayer",k);
-      rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
-      rmSetTriggerEffectParamInt("Dist",15);
-   }
-   for (i=1; <= cNumberNonGaiaPlayers) {
-      if (i != k){
-         rmAddTriggerEffect("Fire Event");
-         rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertKotH_Player"+i));
-      }
-   }
-   rmAddTriggerEffect("Play Soundset");
-   rmSetTriggerEffectParam("Soundset","SheepFound");
-   rmSetTriggerPriority(4);
-   rmSetTriggerActive(true);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
+   for(i = 1; < cNumberTeams+1) {
+      rmCreateTrigger("TeamVictory"+i);
+      rmCreateTrigger("KotH_ON"+i);
+      rmCreateTrigger("KotH_OFF"+i);
+      rmCreateTrigger("Revolution_MusicEnd"+i);
    }
 
    for(i = 1; < cNumberTeams+1) {
-   rmCreateTrigger("TeamVictory"+i);
-   rmCreateTrigger("KotH_ON"+i);
-   }
-   for(i = 1; < cNumberTeams+1) {
 
-   // Team Victory 
-   rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
-   rmAddTriggerEffect("Team Victory");
-   rmSetTriggerEffectParamInt("TeamID", i);
-   rmSetTriggerPriority(4); 
-   rmSetTriggerActive(false);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
+      // Team Victory 
+      rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
+      rmAddTriggerEffect("Team Victory");
+      rmSetTriggerEffectParamInt("TeamID", i);
+      rmSetTriggerPriority(4); 
+      rmSetTriggerActive(false);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
 
-   // Team KotH Ownership
-   rmSwitchToTrigger(rmTriggerID("KotH_ON"+i));
-   rmAddTriggerCondition("Team Unit Count");
-   rmSetTriggerConditionParamInt("TeamID",i);
-   rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
-   rmSetTriggerConditionParam("Op",">=");
-   rmSetTriggerConditionParamInt("Count",1);
-   for(x=1; <= cNumberNonGaiaPlayers) {
-      if (rmGetPlayerTeam(x) == i-1) {
-         rmAddTriggerEffect("Flare Minimap");
-         rmSetTriggerEffectParamInt("PlayerID", x, false);
-         rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-         rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
-         rmSetTriggerEffectParam("Flash", "True", false);
+      // Team owns KotH
+      rmSwitchToTrigger(rmTriggerID("KotH_ON"+i));
+      rmAddTriggerCondition("Team Unit Count");
+      rmSetTriggerConditionParamInt("TeamID",i);
+      rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
+      rmSetTriggerConditionParam("Op",">=");
+      rmSetTriggerConditionParamInt("Count",1);
+      for(x=1; <= cNumberNonGaiaPlayers) {
+         if (rmGetPlayerTeam(x) == i-1) {
+            rmAddTriggerEffect("Flare Minimap");
+            rmSetTriggerEffectParamInt("PlayerID", x, false);
+            rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+            rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
+            rmSetTriggerEffectParam("Flash", "True", false);
+         }
       }
-   }
-   rmAddTriggerEffect("Counter:Add Timer");
-   rmSetTriggerEffectParam("Name","VictoryCounter"+i);
-   rmSetTriggerEffectParamInt("Start", victoryCountDown);
-   rmSetTriggerEffectParamInt("Stop",0);
-   rmAddTriggerEffect("ZP Set Tech Status (XS)");
-   rmSetTriggerEffectParamInt("PlayerID",1);
-   rmSetTriggerEffectParam("TechID","cTechzpKingOfTheSeasShadow"); // Europen Map
-   rmSetTriggerEffectParamInt("Status",2);
-   rmAddTriggerEffect("Music Filename");
-   rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
-   rmSetTriggerEffectParamFloat("Duration",0.5);
-   rmAddTriggerEffect("Sound Timer");
-   rmSetTriggerEffectParamInt("Time", 61000);
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+i));
-   rmAddTriggerEffect("Play Soundset");
-	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
-   if (i==1)
-      rmSetTriggerEffectParam("Msg","{302234}"); // Counter Revolutionaries
-   else
-      rmSetTriggerEffectParam("Msg","{302235}"); // Counter Revolutionaries
-   rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+      rmAddTriggerEffect("Counter:Add Timer");
+      rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+      rmSetTriggerEffectParamInt("Start", victoryCountDown);
+      rmSetTriggerEffectParamInt("Stop",0);
+      rmSetTriggerEffectParam("Msg","{503290}"); // Universal text for all players
+      rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",1);
+      rmSetTriggerEffectParam("TechID","cTechzpKingOfTheSeasShadow"); // Europen Map
+      rmSetTriggerEffectParamInt("Status",2);
+      rmAddTriggerEffect("Music Filename");
+      rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
+      rmSetTriggerEffectParamFloat("Duration",0.5);
+      rmAddTriggerEffect("Sound Timer");
+      rmSetTriggerEffectParamInt("Time", 61000);
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+i));
+      rmAddTriggerEffect("Play Soundset");
+      rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
+      rmAddTriggerEffect("Fire Event");
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_OFF"+i));
+      rmAddTriggerEffect("Flash Units");
+      rmSetTriggerEffectParam("SrcObject", ""+kothCastleMod, false);
+      rmSetTriggerPriority(4);
+      rmSetTriggerActive(true);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
 
-   rmAddTriggerEffect("Flash Units");
-   rmSetTriggerEffectParam("SrcObject", ""+kothCastleMod, false);
-   if (i==1){
+      // Team Lost KotH
+      rmSwitchToTrigger(rmTriggerID("KotH_OFF"+i));
+      rmAddTriggerCondition("Team Unit Count");
+      rmSetTriggerConditionParamInt("TeamID",i);
+      rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
+      rmSetTriggerConditionParam("Op","==");
+      rmSetTriggerConditionParamInt("Count",0);
+      for(x=1; <= cNumberNonGaiaPlayers) {
+         if (rmGetPlayerTeam(x) == i-1) {
+            rmAddTriggerEffect("Flare Minimap");
+            rmSetTriggerEffectParamInt("PlayerID", x, false);
+            rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+            rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
+            rmSetTriggerEffectParam("Flash", "True", false);
+         }
+      }
       rmAddTriggerEffect("Counter Stop");
-      rmSetTriggerEffectParam("Name","VictoryCounter2");
+      rmSetTriggerEffectParam("Name","VictoryCounter"+i);
       rmAddTriggerEffect("Fire Event");
-      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON2"));
-   }
-   else{
-      rmAddTriggerEffect("Counter Stop");
-      rmSetTriggerEffectParam("Name","VictoryCounter1");
-      rmAddTriggerEffect("Fire Event");
-      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON1"));
-   }
-   rmSetTriggerPriority(4);
-   rmSetTriggerActive(true);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON"+i));
+      rmSetTriggerPriority(4);
+      rmSetTriggerActive(false);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
+
+      // Revolution Music End
+      rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+i));
+      rmAddTriggerCondition("Timer");
+      rmSetTriggerConditionParamInt("Param1",5);
+      rmAddTriggerEffect("Music Play");
+      rmSetTriggerPriority(1);
+      rmSetTriggerActive(false);
+      rmSetTriggerRunImmediately(false);
+      rmSetTriggerLoop(false);
+
    }
 }
 
@@ -1301,6 +1346,32 @@ rmSetTriggerLoop(false);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Korea"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","zpKoreans");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKorean"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1461,6 +1532,8 @@ rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Korea"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
@@ -2810,6 +2883,14 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
 
+// Cliff unloading on: vanilla trigger effect added by the 2026-10-20 game update
+rmCreateTrigger("Cliff Unloading");
+rmAddTriggerEffect("Scenario: Enable Cliff Unloading");
+rmSetTriggerEffectParam("Enable", "true");
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
 
 
 // Testing
