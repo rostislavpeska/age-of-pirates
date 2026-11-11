@@ -1594,7 +1594,7 @@ int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-string volcanoID = "181";
+string volcanoID = ""+(rmGetUnitPlaced(volcanoAvoider, 0)); // the crater-centre avoider, read at generation (literal ids drifted, docs/volcano_lava_system.md)
 
 int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
 int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);

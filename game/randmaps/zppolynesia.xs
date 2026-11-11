@@ -1692,7 +1692,7 @@ int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-string volcanoID = "0";
+string volcanoID = ""+(rmGetUnitPlaced(volcanoAvoider, 0)); // the crater-centre avoider, read at generation (literal ids drifted, docs/volcano_lava_system.md)
 
 int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
 int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
@@ -1705,30 +1705,6 @@ string wokou1ID = ""+(flag3-1);
 string wokou2ID = ""+(flag4-1);
 
 
-if (cNumberNonGaiaPlayers == 1){
-volcanoID = "270";
-}
-if (cNumberNonGaiaPlayers == 2){
-volcanoID = "271";
-}
-if (cNumberNonGaiaPlayers == 3){
-volcanoID = "272";
-}
-if (cNumberNonGaiaPlayers == 4){
-volcanoID = "273";
-}
-if (cNumberNonGaiaPlayers == 5){
-volcanoID = "274";
-}
-if (cNumberNonGaiaPlayers == 6){
-volcanoID = "275";
-}
-if (cNumberNonGaiaPlayers == 7){
-volcanoID = "276";
-}
-if (cNumberNonGaiaPlayers == 8){
-volcanoID = "277";
-}
 
 if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
