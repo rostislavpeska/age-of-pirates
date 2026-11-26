@@ -1035,14 +1035,14 @@ void analyzeGameSettingsAndType()
          // Playing on hard in the campaign is a little bit different than Random Map hard.
          // We enable some stuff for the SPC Hard AI that RM Hard AI doesn't have.
          gDifficultyExpert = cDifficultyHard;
-         xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
+         //xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       }
       else
       {  // AssertiveWall: Interval decreased to 2 minutes 
          gMaxPop = maxPop;
          aiSetMicroFlags(cMicroLevelHigh);
          gAttackMissionInterval = 120000; // 2.5 Minutes.
-         xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
+         //xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       }
       break;
    }
@@ -1052,7 +1052,7 @@ void analyzeGameSettingsAndType()
          gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.15); // +15% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
-      xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
+      //xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       break;
    }
       case cDifficultyExtreme: // Extreme.
@@ -1061,7 +1061,7 @@ void analyzeGameSettingsAndType()
          gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.30); // +30% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
-      xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
+      //xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       break;
    }
    }

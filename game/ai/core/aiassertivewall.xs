@@ -674,6 +674,8 @@ void updateWantedTowersAssertive()
 /* manageMicro
    AssertiveWall: switches our micro strategy based on how many units there are.
       If our army gets too big, switch to less micro to avoid over-micro issues
+
+   NOTE: Suspect that this can cause OOS issues
 */
 //==============================================================================
 
@@ -681,6 +683,9 @@ rule manageMicro
 inactive
 minInterval 20
 {
+   xsDisableSelf();
+   return;
+
    int milNumber = kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive);
    static int switcherInt = 0;   // used to prevent setting too much. 
    
